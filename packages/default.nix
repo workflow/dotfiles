@@ -35,7 +35,6 @@ in
     pkgs.gnome3.gnome-terminal
     pkgs.powertop
     pkgs.redshift
-    pkgs.xorg.xsetroot
     pkgs.xscreensaver
 
     pkgs.cachix

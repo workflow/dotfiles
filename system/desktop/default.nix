@@ -6,9 +6,6 @@
   services.xserver = {
     enable = true;
 
-    layout = "us,gr";
-    xkbOptions = "caps:escape, ctrl:ralt_rctrl, grp:alt_space_toggle";
-
     libinput = {
       enable = true;
       naturalScrolling = true;
@@ -28,9 +25,8 @@
         enableXfwm = false;
         extraSessionCommands = ''
           (sleep 6 && xset r rate 500 45) &
-          setxkbmap -option caps:escape
           xscreensaver -nosplash &
-          xsetroot -cursor_name left_ptr
+          ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
         '';
       };
     };
