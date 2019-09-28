@@ -1,6 +1,10 @@
 { pkgs, lib, ... }:
 
 {
+  imports = [
+    ./screen-lock
+  ];
+
   services.gnome3.gnome-terminal-server.enable = true;
 
   services.xserver = {

@@ -44,7 +44,6 @@ in
     pkgs.powertop
     pkgs.redshift
     pkgs.i3lock-fancy
-    pkgs.xautolock
 
     pkgs.cachix
   ] ++ customPackages;
