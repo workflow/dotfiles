@@ -57,6 +57,7 @@ in {
     pkgs.powertop
     pkgs.redshift
 
+    pkgs.nix-prefetch-git
     pkgs.cachix
   ] ++ customPackages;
 }
