@@ -1,9 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ./screen-lock
-  ];
+  imports = [ ./screen-lock ];
 
   services.gnome3.gnome-terminal-server.enable = true;
 
@@ -50,9 +48,7 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.xfce.xfce4-battery-plugin
-    pkgs.xfce.xfce4-xkb-plugin
-  ];
+  environment.systemPackages =
+    [ pkgs.xfce.xfce4-battery-plugin pkgs.xfce.xfce4-xkb-plugin ];
 
 }

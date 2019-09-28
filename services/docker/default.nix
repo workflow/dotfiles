@@ -9,7 +9,5 @@
   # this will add "docker" to the existing user groups
   users.users.alex.extraGroups = [ "docker" ];
 
-  environment.systemPackages = [
-    pkgs.docker-compose
-  ];
+  environment.systemPackages = [ pkgs.docker-compose ];
 }

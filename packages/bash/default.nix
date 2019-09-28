@@ -3,13 +3,12 @@
 let
 
   git-prompt-sh = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/git/git/4c86140027f4a0d2caaa3ab4bd8bfc5ce3c11c8a/contrib/completion/git-prompt.sh";
+    url =
+      "https://raw.githubusercontent.com/git/git/4c86140027f4a0d2caaa3ab4bd8bfc5ce3c11c8a/contrib/completion/git-prompt.sh";
     sha256 = "0zs42vdr1ddr741zfym0nkdd4b6xrclinr24cpgkq7k70s9403ks";
   };
 
-in
-
-{
+in {
   programs.bash = {
     interactiveShellInit = ''
       export HISTSIZE=5000

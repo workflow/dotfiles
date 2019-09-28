@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
-{ imports = [
+{
+  imports = [
     ./nix
 
     ./services/docker

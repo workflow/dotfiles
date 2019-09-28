@@ -1,5 +1,5 @@
 # TODO: turn this into an overlay
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 let
 
@@ -10,11 +10,9 @@ let
       sha256 = "0jv9vh9hrx9svdy0jz6zyz3ylmw7sbf0xbk7i80yxbbia2j8k9j2";
       fetchSubmodules = false;
     };
-    patches = [];
+    patches = [ ];
     version = "27";
     name = "emacs-27";
   });
 
-in
-
-emacs.override { srcRepo = true; }
+in emacs.override { srcRepo = true; }

@@ -1,6 +1,4 @@
-{ pkgs ? import <nixpkgs> {}
-, localLib ? import ../../lib { pkgs = pkgs; }
-}:
+{ pkgs ? import <nixpkgs> { }, localLib ? import ../../lib { pkgs = pkgs; } }:
 
 localLib.shellScript "kbconfig" ''
   #!${pkgs.bash}/bin/bash

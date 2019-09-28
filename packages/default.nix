@@ -3,32 +3,34 @@
 let
 
   # system
-  tpacpi-bat = pkgs.callPackage ../system/power/tpacpi-bat {};
+  tpacpi-bat = pkgs.callPackage ../system/power/tpacpi-bat { };
   # applications
-  emacs = pkgs.callPackage ./emacs {};
+  emacs = pkgs.callPackage ./emacs { };
 
-  # various
-  var = pkgs.callPackage ./various.nix {};
+  # tools
+  nixfmt = pkgs.callPackage ./tools/nixfmt.nix { };
+  pydf = pkgs.callPackage ./tools/pydf.nix { };
+
+  # scripts
+  kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
 
   customPackages = [
     # system
     tpacpi-bat
     # applications
     emacs
-
-    # various
-    var.pydf
+    # tools
+    nixfmt
+    pydf
+    # scripts
+    kbconfig
   ];
 
-in
-
-{
+in {
   imports = [
     ./tmux
     ./bash
     ./haskell
-
-    ./scripts
   ];
 
   environment.variables.EDITOR = "vim";

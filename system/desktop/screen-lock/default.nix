@@ -4,9 +4,7 @@ let
 
   lock-cmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
 
-in
-
-{
+in {
   # lock after 10 minutes
   services.xserver.xautolock = {
     enable = true;

@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./tlp
-  ];
+  imports = [ ./tlp ];
 
   powerManagement.powertop.enable = true;
 
