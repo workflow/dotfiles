@@ -6,8 +6,6 @@ let
   tpacpi-bat = pkgs.callPackage ../system/power/tpacpi-bat {};
   # applications
   emacs = pkgs.callPackage ./emacs {};
-  # scripts
-  kbconfig = pkgs.callPackage ./scripts/kbconfig {};
 
   # various
   var = pkgs.callPackage ./various.nix {};
@@ -17,8 +15,6 @@ let
     tpacpi-bat
     # applications
     emacs
-    # scripts
-    kbconfig
 
     # various
     var.pydf
@@ -30,6 +26,9 @@ in
   imports = [
     ./tmux
     ./bash
+    ./haskell
+
+    ./scripts
   ];
 
   environment.variables.EDITOR = "vim";
@@ -43,6 +42,10 @@ in
     pkgs.tree
     pkgs.vim
     pkgs.wget
+    pkgs.gcc
+    pkgs.gnumake
+    pkgs.ncurses
+    pkgs.binutils
 
     pkgs.google-chrome
     pkgs.spotify

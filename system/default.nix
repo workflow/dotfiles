@@ -2,6 +2,10 @@
 
 {
 
+  environment.extraInit = ''
+    export PATH=$HOME/.local/bin:$PATH
+  '';
+
   time.timeZone = "Europe/London";
 
   boot.loader.systemd-boot.enable = true;
@@ -21,5 +25,9 @@
   hardware.pulseaudio.enable = true;
 
   services.devmon.enable = true;
+
+  services.logind.extraConfig = ''
+    RuntimeDirectorySize=4G
+  '';
 
 }
