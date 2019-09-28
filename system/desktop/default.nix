@@ -30,6 +30,8 @@
         extraSessionCommands = ''
           (sleep 6 && xset r rate 500 45) &
           ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
+          ~/projects/indicators/indicator-charge/run-indicator &
+          ~/projects/indicators/indicator-redshift/run-indicator &
         '';
       };
     };

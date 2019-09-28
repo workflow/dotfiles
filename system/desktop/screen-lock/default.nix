@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
 
-  lock-cmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy -p";
+  lock-cmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
 
 in
 
@@ -15,9 +15,14 @@ in
     time = 10;
   };
 
+  systemd.user.services.xautolock.serviceConfig.Restart = lib.mkForce "always";
+
   # lock on laptop lid close
   programs.xss-lock = {
     enable = true;
     lockerCommand = lock-cmd;
   };
+
+  systemd.user.services.xss-lock.serviceConfig.Restart = "always";
+
 }

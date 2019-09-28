@@ -9,6 +9,9 @@ let
   # scripts
   kbconfig = pkgs.callPackage ./scripts/kbconfig {};
 
+  # various
+  var = pkgs.callPackage ./various.nix {};
+
   customPackages = [
     # system
     tpacpi-bat
@@ -16,6 +19,9 @@ let
     emacs
     # scripts
     kbconfig
+
+    # various
+    var.pydf
   ];
 
 in
@@ -32,6 +38,7 @@ in
     pkgs.ag
     pkgs.fzf
     pkgs.git
+    pkgs.htop
     pkgs.rofi
     pkgs.tree
     pkgs.vim
@@ -41,9 +48,9 @@ in
     pkgs.spotify
 
     pkgs.gnome3.gnome-terminal
+    pkgs.i3lock-fancy
     pkgs.powertop
     pkgs.redshift
-    pkgs.i3lock-fancy
 
     pkgs.cachix
   ] ++ customPackages;
