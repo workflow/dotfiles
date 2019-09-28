@@ -25,6 +25,8 @@
 
   services.devmon.enable = true;
 
+  # to prevent nix-shell complaining about no space left
+  # default value is 10% of total RAM
   services.logind.extraConfig = ''
     RuntimeDirectorySize=4G
   '';

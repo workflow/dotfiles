@@ -2,10 +2,8 @@
 
 let
 
-  # system
-  tpacpi-bat = pkgs.callPackage ../system/power/tpacpi-bat { };
-  # applications
-  emacs = pkgs.callPackage ./emacs { };
+  # apps
+  emacs = pkgs.callPackage ./apps/emacs { };
 
   # tools
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix { };
@@ -15,9 +13,7 @@ let
   kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
 
   customPackages = [
-    # system
-    tpacpi-bat
-    # applications
+    # apps
     emacs
     # tools
     nixfmt
@@ -27,11 +23,7 @@ let
   ];
 
 in {
-  imports = [
-    ./tmux
-    ./bash
-    ./haskell
-  ];
+  imports = [ ./tools/tmux.nix ./dev/haskell ];
 
   environment.variables.EDITOR = "vim";
 
