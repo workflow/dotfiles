@@ -16,6 +16,10 @@ in
       export HISTFILESIZE=5000
       shopt -s histappend
       export PROMPT_COMMAND='history -a'
+
+      if command -v fzf-share >/dev/null; then
+        source "$(fzf-share)/key-bindings.bash"
+      fi
     '';
     promptInit = ''
       source ${git-prompt-sh}

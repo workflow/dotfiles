@@ -3,6 +3,8 @@
 { imports = [
     ./nix
 
+    ./services/docker
+
     ./system
     ./system/desktop
     ./system/keyboard

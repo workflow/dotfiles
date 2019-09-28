@@ -26,8 +26,11 @@ in
     ./bash
   ];
 
+  environment.variables.EDITOR = "vim";
+
   environment.systemPackages = [
     pkgs.ag
+    pkgs.fzf
     pkgs.git
     pkgs.rofi
     pkgs.tree
