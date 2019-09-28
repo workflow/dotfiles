@@ -2,7 +2,7 @@
 
 let
 
-  tpacpi-bat = pkgs.callPackage ./tpacpi-bat.nix { };
+  tpacpi-bat = pkgs.callPackage ./tpacpi-bat { };
 
 in {
   imports = [ ./tlp.nix ];
