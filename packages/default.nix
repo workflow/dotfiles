@@ -44,10 +44,8 @@ in {
     pkgs.tree
     pkgs.vim
     pkgs.wget
-    pkgs.gcc
     pkgs.gnumake
-    pkgs.ncurses
-    pkgs.binutils
+    pkgs.binutils-unwrapped
 
     pkgs.google-chrome
     pkgs.spotify
