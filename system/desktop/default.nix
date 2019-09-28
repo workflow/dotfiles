@@ -25,7 +25,6 @@
         enableXfwm = false;
         extraSessionCommands = ''
           (sleep 6 && xset r rate 500 45) &
-          xscreensaver -nosplash &
           ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
         '';
       };
@@ -45,9 +44,9 @@
     };
   };
 
-  services.acpid = {
-    enable = true;
-    logEvents = true;
-  };
+  environment.systemPackages = [
+    pkgs.xfce.xfce4-battery-plugin
+    pkgs.xfce.xfce4-xkb-plugin
+  ];
 
 }
