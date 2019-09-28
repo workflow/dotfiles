@@ -11,14 +11,18 @@ in
 
 {
   programs.bash = {
+    interactiveShellInit = ''
+      export HISTSIZE=5000
+      export HISTFILESIZE=5000
+      shopt -s histappend
+      export PROMPT_COMMAND='history -a'
+    '';
     promptInit = ''
       source ${git-prompt-sh}
       export GIT_PS1_SHOWDIRTYSTATE=1
       export GIT_PS1_SHOWSTASHSTATE=1
       export GIT_PS1_SHOWUNTRACKEDFILES=1
       export GIT_PS1_SHOWUPSTREAM="auto"
-      export GIT_PS1_SHOWCOLORHINTS=1
-      export PROMPT_COMMAND='__git_ps1 "\[\033[$PROMPT_COLOR\][\u@\h: \w\033[0m" "\033[$PROMPT_COLOR]\\$\[\033[0m\] "'
 
       # Provide a nice prompt if the terminal supports it.
       if [ "$TERM" != "dumb" -o -n "$INSIDE_EMACS" ]; then
@@ -26,9 +30,9 @@ in
         let $UID && PROMPT_COLOR="1;32m"
         if [ -n "$INSIDE_EMACS" ]; then
           # Emacs term mode doesn't support xterm title escape sequence (\e]0;)
-          PS1="\[\033[$PROMPT_COLOR\][\u@\h:\w]\\$\[\033[0m\] "
+          PS1='\[\033[$PROMPT_COLOR\][\u@\h:\w\[\033[1;33m\]$(__git_ps1 " (%s)")\[\033[$PROMPT_COLOR\]]\\$\[\033[0m\] '
         else
-          PS1="\[\033[$PROMPT_COLOR\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\\$\[\033[0m\] "
+          PS1='\[\033[$PROMPT_COLOR\][\[\e]0;\u@\h: \w\a\]\u@\h:\w\[\033[1;33m\]$(__git_ps1 " (%s)")\[\033[$PROMPT_COLOR\]]\\$\[\033[0m\] '
         fi
         if test "$TERM" = "xterm"; then
           PS1="\[\033]2;\h:\u:\w\007\]$PS1"
