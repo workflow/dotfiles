@@ -5,9 +5,9 @@ let
   # system
   tpacpi-bat = pkgs.callPackage ../system/power/tpacpi-bat {};
   # applications
-  emacs = pkgs.callPackage ../applications/emacs {};
+  emacs = pkgs.callPackage ./emacs {};
   # scripts
-  kbconfig = pkgs.callPackage ../scripts/kbconfig {};
+  kbconfig = pkgs.callPackage ./scripts/kbconfig {};
 
   customPackages = [
     # system
@@ -21,6 +21,11 @@ let
 in
 
 {
+  imports = [
+    ./tmux
+    ./bash
+  ];
+
   environment.systemPackages = [
     pkgs.ag
     pkgs.git
