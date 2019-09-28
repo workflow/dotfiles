@@ -13,6 +13,7 @@ in {
     interactiveShellInit = ''
       export HISTSIZE=5000
       export HISTFILESIZE=5000
+      export HISTCONTROL=ignoreboth:erasedups
       shopt -s histappend
       export PROMPT_COMMAND='history -a'
 
