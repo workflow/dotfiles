@@ -18,7 +18,10 @@ let
 
   recoverSymlinks = wrapped:
     let name = "recover-${wrapped.name}";
-    in pkgs.runCommand name { } ''
+    in pkgs.runCommand name {
+      name = name;
+      version = wrapped.version;
+    } ''
       mkdir -p $out/bin
       ver=${wrapped.version}
       for f in hp2ps hsc2hs hpc; do
