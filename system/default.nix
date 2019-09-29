@@ -13,7 +13,7 @@
   };
 
   users.users.alex = {
-    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" ];
+    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
     shell = pkgs.zsh;
   };
 
