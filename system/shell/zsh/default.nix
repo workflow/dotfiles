@@ -17,15 +17,11 @@ in {
       }
     '';
     promptInit = ''
-      prompt_status() {
+      build_prompt() {
         local symbols
         symbols=()
         [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{white}%}⚙"
         [[ -n "$symbols" ]] && echo -n "$symbols "
-      }
-
-      build_prompt() {
-        prompt_status
       }
 
       symb="$"
