@@ -45,6 +45,8 @@ in {
     pkgs.spotify
 
     pkgs.gnome3.gnome-terminal
+    pkgs.gnome3.nautilus
+    pkgs.gnome3.gedit
     pkgs.i3lock-fancy
     pkgs.powertop
     pkgs.redshift

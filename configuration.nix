@@ -4,6 +4,8 @@
   imports = [
     ./nix
 
+    ./options/user-symlinks
+
     ./services/docker
 
     ./system

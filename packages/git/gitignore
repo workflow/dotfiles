@@ -1,0 +1,23 @@
+# Python
+*.pyc
+*.pyo
+.ropeproject/
+
+# Sphinx
+#docs/_build
+
+# Vim
+*.swp
+
+# emacs
+.projectile
+.dir-locals.el
+
+# tern
+.tern-port
+
+# haskell
+.ghcid-output
+.stack-work
+
+.my_local_data
