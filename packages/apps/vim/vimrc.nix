@@ -1,4 +1,3 @@
-{ pkgs ? import <nixpkgs> { }, localLib ? import ../../../lib { pkgs = pkgs; }
-}:
+{ pkgs }:
 
-localLib.template ./vimrc { }
+pkgs.myLib.template ./vimrc { }

@@ -1,5 +1,5 @@
-{ pkgs ? import <nixpkgs> { }, localLib ? import ../../lib { pkgs = pkgs; } }:
+{ pkgs }:
 
-localLib.template ./gitconfig {
+pkgs.myLib.template ./gitconfig {
   gitignore = ./gitignore;
 }

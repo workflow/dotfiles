@@ -1,6 +1,6 @@
-{ pkgs ? import <nixpkgs> { }, localLib ? import ../../lib { pkgs = pkgs; } }:
+{ pkgs }:
 
-localLib.shellScript "kbconfig" ''
+pkgs.myLib.shellScript "kbconfig" ''
   #!${pkgs.bash}/bin/bash
 
   xset r rate 500 45
