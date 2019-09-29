@@ -38,6 +38,7 @@ in {
     pkgs.wget
     pkgs.gnumake
     pkgs.binutils-unwrapped
+    pkgs.acpilight
 
     pkgs.google-chrome
     pkgs.spotify

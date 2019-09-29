@@ -2,9 +2,20 @@
 
 {
 
-  environment.extraInit = ''
-    export PATH=$HOME/.local/bin:$PATH
-  '';
+  environment = {
+    extraInit = ''
+      export PATH=$HOME/.local/bin:$PATH
+    '';
+    shellAliases = {
+      detach = "udisksctl power-off -b";
+      rmpyc = "find . | grep -E '(__pycache__|.pyc|.pyo$)' | xargs rm -rf";
+    };
+  };
+
+  users.users.alex = {
+    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" ];
+    shell = pkgs.zsh;
+  };
 
   time.timeZone = "Europe/London";
 
