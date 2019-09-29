@@ -34,8 +34,8 @@ in {
 
       local ret_status="%(?:%{$fg_bold[green]%}$symb:%{$fg_bold[red]%}$symb)"
       local root_ret_status="%(?:%{$fg_bold[green]%}#:%{$fg_bold[red]%}#)"
-      PROMPT='$(build_prompt)%{$fg[cyan]%}%~%{$reset_color%}$(git_super_status) %(!.''${root_ret_status}.''${ret_status})%{$reset_color%} '
-      PROMPT2='%{$fg[cyan]%}┌─╼ %{$reset_color%}$(build_prompt)%{$fg[cyan]%}%~%{$reset_color%}$(git_super_status)
+      PROMPT='$(build_prompt)%{$fg[green]%}%~%{$reset_color%}$(git_super_status) %(!.''${root_ret_status}.''${ret_status})%{$reset_color%} '
+      PROMPT2='%{$fg[green]%}┌─╼ %{$reset_color%}$(build_prompt)%{$fg[cyan]%}%~%{$reset_color%}$(git_super_status)
       %{$fg[cyan]%}└╼ %(!.''${root_ret_status}.''${ret_status})%{$reset_color%} '
       RPROMPT='[%T]'
 
