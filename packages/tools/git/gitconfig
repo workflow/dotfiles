@@ -13,6 +13,7 @@
     ld = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     lla = log --graph --decorate --pretty=oneline --abbrev-commit --all
     c = commit --verbose
+    a = add -A
     fl = log -u
     count = shortlog -s -n --all
     squash = rebase -i HEAD^^
