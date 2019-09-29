@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-{
+let ghc = pkgs.callPackage ../packages/haskell/ghc.nix { };
+
+in {
 
   environment = {
     extraInit = ''
@@ -16,9 +18,9 @@
     extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
     shell = pkgs.zsh;
     symlinks = {
-      ".vimrc" = pkgs.callPackage ../packages/apps/vim/vimrc.nix { };
-      ".gitconfig" = pkgs.callPackage ../packages/git { };
-      ".ghci" = pkgs.callPackage ../packages/dev/haskell/scripts/ghci.nix { };
+      ".vimrc" = pkgs.callPackage ../packages/tools/vim/vimrc.nix { };
+      ".gitconfig" = pkgs.callPackage ../packages/tools/git { };
+      ".ghci" = pkgs.callPackage ../packages/haskell/scripts/ghci.nix { };
     };
   };
 

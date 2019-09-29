@@ -3,7 +3,7 @@
 let
 
   # apps
-  emacs = pkgs.callPackage ./apps/emacs { };
+  emacs = pkgs.callPackage ./emacs { };
 
   # tools
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix { };
@@ -23,7 +23,7 @@ let
   ];
 
 in {
-  imports = [ ./tools/tmux.nix ./dev/haskell ];
+  imports = [ ./tools/tmux.nix ./haskell ./docker ];
 
   environment.variables.EDITOR = "vim";
 

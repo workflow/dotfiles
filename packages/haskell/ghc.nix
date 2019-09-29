@@ -29,18 +29,8 @@ let
       done
     '';
 
+in rec {
   ghc863 = ghcQualified pkgs.haskell.compiler.ghc863Binary;
   ghc865 = ghcQualified pkgs.haskell.compiler.ghc865;
-
   ghc863Symlinks = recoverSymlinks ghc863;
-
-in {
-  environment.systemPackages = [
-    pkgs.cabal2nix
-    pkgs.cabal-install
-    # let's test these
-    ghc863
-    ghc865
-    ghc863Symlinks
-  ];
 }

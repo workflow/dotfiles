@@ -6,8 +6,6 @@
 
     ./options/user-symlinks
 
-    ./services/docker
-
     ./system
     ./system/shell
     ./system/desktop
