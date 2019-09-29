@@ -16,7 +16,9 @@
     extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
     shell = pkgs.zsh;
     symlinks = {
-      ".gitconfig" = pkgs.callPackage ../packages/git {};
+      ".vimrc" = pkgs.callPackage ../packages/apps/vim/vimrc.nix { };
+      ".gitconfig" = pkgs.callPackage ../packages/git { };
+      ".ghci" = pkgs.callPackage ../packages/dev/haskell/scripts/ghci.nix { };
     };
   };
 
