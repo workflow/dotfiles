@@ -29,6 +29,7 @@ in {
 
   environment.systemPackages = [
     pkgs.ag
+    pkgs.bat
     pkgs.fzf
     pkgs.git
     pkgs.htop
