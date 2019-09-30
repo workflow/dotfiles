@@ -26,10 +26,11 @@
         noDesktop = false;
         enableXfwm = false;
         extraSessionCommands = ''
-          xset dpms 0 0 600
+          (sleep 6 && xset dpms 0 0 600) &
           ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
           ~/projects/indicators/indicator-charge/run-indicator &
           ~/projects/indicators/indicator-redshift/run-indicator &
+          ${pkgs.dropbox}/bin/dropbox &
         '';
       };
     };

@@ -40,9 +40,11 @@ in {
     pkgs.gnumake
     pkgs.binutils-unwrapped
     pkgs.acpilight
+    pkgs.playerctl
 
     pkgs.google-chrome
     pkgs.spotify
+    pkgs.dropbox
 
     pkgs.gnome3.gnome-terminal
     pkgs.gnome3.nautilus
