@@ -41,6 +41,7 @@ in {
     pkgs.binutils-unwrapped
     pkgs.acpilight
     pkgs.playerctl
+    pkgs.scrot
 
     pkgs.google-chrome
     pkgs.spotify
