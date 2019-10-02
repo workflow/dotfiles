@@ -1,47 +1,25 @@
 { pkgs, ... }:
 
-let
-
-  # apps
-  emacs = pkgs.callPackage ./emacs { };
-
-  # tools
-  nixfmt = pkgs.callPackage ./tools/nixfmt.nix { };
-  pydf = pkgs.callPackage ./tools/pydf.nix { };
-
-  # scripts
-  kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
-
-  customPackages = [
-    # apps
-    emacs
-    # tools
-    nixfmt
-    pydf
-    # scripts
-    kbconfig
-  ];
-
-in {
+{
   imports = [ ./tools/tmux.nix ./haskell ./docker ];
 
   environment.variables.EDITOR = "vim";
 
   environment.systemPackages = [
+    pkgs.acpilight
     pkgs.ag
     pkgs.bat
+    pkgs.binutils-unwrapped
     pkgs.fzf
     pkgs.git
+    pkgs.gnumake
     pkgs.htop
+    pkgs.playerctl
     pkgs.rofi
+    pkgs.scrot
     pkgs.tree
     pkgs.vim
     pkgs.wget
-    pkgs.gnumake
-    pkgs.binutils-unwrapped
-    pkgs.acpilight
-    pkgs.playerctl
-    pkgs.scrot
 
     pkgs.google-chrome
     pkgs.spotify
@@ -56,5 +34,13 @@ in {
 
     pkgs.nix-prefetch-git
     pkgs.cachix
-  ] ++ customPackages;
+
+    # overlays
+    pkgs.emacs-27
+    pkgs.nixfmt
+    pkgs.pydf
+
+    pkgs.kbconfig
+    pkgs.i3lock-wrap
+  ];
 }

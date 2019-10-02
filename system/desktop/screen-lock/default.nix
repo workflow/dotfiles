@@ -2,7 +2,7 @@
 
 let
 
-  lock-cmd = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
+  lock-cmd = "${pkgs.i3lock-wrap}/bin/i3lock-wrap";
 
 in {
   # lock after 10 minutes
