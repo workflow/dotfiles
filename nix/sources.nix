@@ -5,11 +5,11 @@
 
 let
 
-  nixpkgs = builtins.fromJSON (builtins.readFile ./nixpkgs.json);
-  src = bootstrap.fetchFromGitHub {
+  sources = builtins.fromJSON (builtins.readFile ./sources.json);
+  nixos-beta = bootstrap.fetchFromGitHub {
     owner = "NixOS";
     repo = "nixpkgs";
-    inherit (nixpkgs) rev sha256;
+    inherit (sources.nixos-beta) rev sha256;
   };
 
-in import src { }
+in { nixos-beta = nixos-beta; }
