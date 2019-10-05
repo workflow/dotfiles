@@ -15,6 +15,10 @@ in {
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
       }
+
+      hs() {
+        eval "nix-shell -p 'haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $@ ])'"
+      }
     '';
     promptInit = ''
       build_prompt() {
