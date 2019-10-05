@@ -38,6 +38,7 @@
     # overlays
     pkgs.emacs-27
     pkgs.nixfmt
+    pkgs.nix-derivation-pretty
     pkgs.pydf
 
     pkgs.kbconfig
