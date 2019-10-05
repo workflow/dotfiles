@@ -116,7 +116,7 @@ highlight MatchParen cterm=reverse ctermfg=240
 highlight ExtraWhitespace ctermbg=88
 match ExtraWhitespace /\s\+$/
 highlight Comment cterm=italic gui=italic
-highlight Normal ctermbg=NONE guibg=NONE
+highlight Normal ctermbg=235 guibg=NONE
 highlight haskellBottom ctermfg=Red
 highlight haskellFail ctermfg=LightRed
 highlight LineNr ctermfg=241 ctermbg=NONE
