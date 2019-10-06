@@ -19,7 +19,7 @@ in {
     shell = pkgs.zsh;
     symlinks = {
       ".vimrc" = pkgs.callPackage ../packages/tools/vim/vimrc.nix { };
-      ".gitconfig" = pkgs.callPackage ../packages/tools/git { };
+      ".gitconfig" = pkgs.callPackage ../packages/tools/git/gitconfig.nix { };
       ".ghci" = pkgs.callPackage ../packages/haskell/scripts/ghci.nix { };
     };
   };
