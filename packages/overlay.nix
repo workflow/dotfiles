@@ -6,6 +6,7 @@ self: super:
 
   nixfmt = super.callPackage ./tools/nixfmt.nix { };
   nix-derivation-pretty = super.callPackage ./tools/nix-derivation-pretty.nix { };
+  patat = super.callPackage ./tools/patat.nix { };
   pydf = super.callPackage ./tools/pydf.nix { };
 
   kbconfig = super.callPackage ./scripts/kbconfig.nix { };

@@ -39,6 +39,7 @@
     pkgs.emacs-27
     pkgs.nixfmt
     pkgs.nix-derivation-pretty
+    pkgs.patat
     pkgs.pydf
 
     pkgs.kbconfig
