@@ -1,4 +1,3 @@
-# TODO: turn this into an overlay
 { pkgs ? import <nixpkgs> { } }:
 
 let

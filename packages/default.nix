@@ -1,5 +1,21 @@
 { pkgs, ... }:
 
+let
+
+  # TODO: build emacs with a pinned nixpkgs
+  emacs-27 = pkgs.callPackage ./emacs { };
+
+  niv = pkgs.callPackage ./tools/niv.nix { };
+  nixfmt = pkgs.callPackage ./tools/nixfmt.nix { };
+  nix-derivation-pretty = pkgs.callPackage ./tools/nix-derivation-pretty.nix { };
+  patat = pkgs.callPackage ./tools/patat.nix { };
+  pydf = pkgs.callPackage ./tools/pydf.nix { };
+
+  kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
+  i3lock-wrap = pkgs.callPackage ./scripts/i3lock-wrap { };
+
+in
+
 {
   imports = [ ./tools/tmux.nix ./haskell ./docker ];
 
@@ -40,14 +56,14 @@
     # pkgs.dwarf-fortress-packages.dwarf-fortress
 
     # overlays
-    pkgs.emacs-27
-    pkgs.nixfmt
-    pkgs.nix-derivation-pretty
-    pkgs.niv
-    pkgs.patat
-    pkgs.pydf
+    emacs-27
+    nixfmt
+    nix-derivation-pretty
+    niv
+    patat
+    pydf
 
-    pkgs.kbconfig
-    pkgs.i3lock-wrap
+    kbconfig
+    i3lock-wrap
   ];
 }
