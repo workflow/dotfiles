@@ -7,6 +7,8 @@ in {
   programs.zsh = {
     enable = true;
     interactiveShellInit = ''
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+      source ${pkgs.fzf}/share/fzf/completion.zsh
       # eval "$(stack --bash-completion-script stack)"
       source ${git-prompt}
 
@@ -49,7 +51,7 @@ in {
     '';
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "nix" "zsh-completions" ];
+      plugins = [ "git" ];
     };
   };
 

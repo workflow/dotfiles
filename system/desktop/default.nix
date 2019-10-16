@@ -3,7 +3,8 @@
 {
   imports = [ ./screen-lock ];
 
-  services.gnome3.gnome-terminal-server.enable = true;
+  # services.gnome3.gnome-terminal-server.enable = true;
+  programs.gnome-terminal.enable = true;
 
   services.xserver = {
     enable = true;

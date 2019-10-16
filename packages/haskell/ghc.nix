@@ -30,7 +30,7 @@ let
     '';
 
 in rec {
-  ghc863 = ghcQualified pkgs.haskell.compiler.ghc863Binary;
   ghc865 = ghcQualified pkgs.haskell.compiler.ghc865;
-  ghc863Symlinks = recoverSymlinks ghc863;
+  ghc881 = ghcQualified pkgs.haskell.compiler.ghc881;
+  ghc865Symlinks = recoverSymlinks ghc865;
 }

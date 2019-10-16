@@ -13,8 +13,11 @@
     pkgs.fzf
     pkgs.git
     pkgs.gnumake
+    pkgs.gnupg
     pkgs.htop
+    pkgs.pandoc
     pkgs.playerctl
+    pkgs.ripgrep
     pkgs.rofi
     pkgs.scrot
     pkgs.tree
@@ -25,20 +28,22 @@
     pkgs.spotify
     pkgs.dropbox
 
-    pkgs.gnome3.gnome-terminal
+    pkgs.nix-prefetch-git
+    pkgs.cachix
+
     pkgs.gnome3.nautilus
     pkgs.gnome3.gedit
     pkgs.i3lock-fancy
     pkgs.powertop
     pkgs.redshift
 
-    pkgs.nix-prefetch-git
-    pkgs.cachix
+    # pkgs.dwarf-fortress-packages.dwarf-fortress
 
     # overlays
     pkgs.emacs-27
     pkgs.nixfmt
     pkgs.nix-derivation-pretty
+    pkgs.niv
     pkgs.patat
     pkgs.pydf
 

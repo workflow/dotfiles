@@ -6,9 +6,10 @@ in {
   environment.systemPackages = [
     pkgs.cabal2nix
     pkgs.cabal-install
+    pkgs.ghcid
     # let's test these
-    ghc.ghc863
     ghc.ghc865
-    ghc.ghc863Symlinks
+    ghc.ghc881
+    ghc.ghc865Symlinks
   ];
 }
