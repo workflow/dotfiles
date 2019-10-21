@@ -40,12 +40,15 @@ in
     pkgs.vim
     pkgs.wget
 
+    pkgs.dropbox
+    pkgs.evince
     pkgs.google-chrome
     pkgs.spotify
-    pkgs.dropbox
+    pkgs.vlc
 
     pkgs.nix-prefetch-git
     pkgs.cachix
+    pkgs.python37
 
     pkgs.gnome3.nautilus
     pkgs.gnome3.gedit
