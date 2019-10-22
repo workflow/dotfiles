@@ -46,8 +46,9 @@ in
     pkgs.spotify
     pkgs.vlc
 
-    pkgs.nix-prefetch-git
     pkgs.cachix
+    pkgs.direnv
+    pkgs.nix-prefetch-git
     pkgs.python37
 
     pkgs.gnome3.nautilus

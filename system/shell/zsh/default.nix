@@ -12,6 +12,8 @@ in {
       # eval "$(stack --bash-completion-script stack)"
       source ${git-prompt}
 
+      eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+
       nvminit() {
         unset -f npm
         export NVM_DIR="$HOME/.nvm"
