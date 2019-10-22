@@ -23,22 +23,29 @@ in
 
   environment.systemPackages = [
     pkgs.acpilight
-    pkgs.ag
-    pkgs.bat
+    pkgs.gnome3.gedit
+    pkgs.gnome3.nautilus
+    pkgs.htop
+    pkgs.i3lock-fancy
+    pkgs.playerctl
+    pkgs.powertop
+    pkgs.redshift
+
     pkgs.binutils-unwrapped
-    pkgs.fzf
     pkgs.git
     pkgs.gnumake
     pkgs.gnupg
-    pkgs.htop
+    pkgs.tree
+    pkgs.wget
+
+    pkgs.ag
+    pkgs.bat
+    pkgs.fzf
     pkgs.pandoc
-    pkgs.playerctl
     pkgs.ripgrep
     pkgs.rofi
     pkgs.scrot
-    pkgs.tree
     pkgs.vim
-    pkgs.wget
 
     pkgs.dropbox
     pkgs.evince
@@ -51,15 +58,9 @@ in
     pkgs.nix-prefetch-git
     pkgs.python37
 
-    pkgs.gnome3.nautilus
-    pkgs.gnome3.gedit
-    pkgs.i3lock-fancy
-    pkgs.powertop
-    pkgs.redshift
-
     # pkgs.dwarf-fortress-packages.dwarf-fortress
 
-    # overlays
+    # overlays & custom pkgs
     emacs-27
     nixfmt
     nix-derivation-pretty

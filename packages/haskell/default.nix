@@ -13,6 +13,7 @@ in {
     pkgs.cabal-install
     pkgs.ghcid
     nixpkgs-master.hlint
+    pkgs.stack
     # let's test these
     ghc.ghc865
     ghc.ghc881
