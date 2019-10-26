@@ -5,8 +5,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "tweag";
     repo = "ormolu";
-    rev = "d02483a8ab64c658015466693cce38c3c2d55db5";
-    sha256 = "0zhc2n5l6vnkxli6v20c82qyshks0bvs2xkb560xahhs1abpcvka";
+    rev = "f83f6fd1dab5ccbbdf55ee1653b24595c1d653c2";
+    sha256 = "1hs7ayq5d15m9kxwfmdac3p2i3s6b0cn58cm4rrqc4d447yl426y";
   };
 
   ormolu = pkgs.haskellPackages.callCabal2nix "ormolu" src { };

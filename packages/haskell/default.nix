@@ -5,6 +5,8 @@ let
   sources = import ../../nix/sources.nix;
   nixpkgs-master = import sources.nixpkgs-master { };
 
+  ormolu = pkgs.callPackage ./ormolu.nix { };
+
   ghc = pkgs.callPackage ./ghc.nix { };
 
 in {
@@ -14,7 +16,9 @@ in {
     pkgs.ghcid
     nixpkgs-master.hlint
     pkgs.stack
-    # let's test these
+
+    ormolu
+
     ghc.ghc865
     ghc.ghc881
     ghc.ghc865Symlinks
