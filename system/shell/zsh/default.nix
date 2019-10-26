@@ -7,8 +7,6 @@ in {
   programs.zsh = {
     enable = true;
     interactiveShellInit = ''
-      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-      source ${pkgs.fzf}/share/fzf/completion.zsh
       # eval "$(stack --bash-completion-script stack)"
       source ${git-prompt}
 
@@ -50,6 +48,10 @@ in {
       }
 
       alias sp=switch_prompts
+
+      # surprisingly only works if I put these here
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+      source ${pkgs.fzf}/share/fzf/completion.zsh
     '';
     ohMyZsh = {
       enable = true;

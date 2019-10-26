@@ -41,6 +41,7 @@ in
     pkgs.ag
     pkgs.bat
     pkgs.fzf
+    pkgs.graphviz
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.rofi

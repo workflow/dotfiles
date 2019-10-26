@@ -6,6 +6,8 @@ let
   nixpkgs-master = import sources.nixpkgs-master { };
 
   ormolu = pkgs.callPackage ./ormolu.nix { };
+  brittany = pkgs.callPackage ./brittany.nix { };
+  floskell = pkgs.callPackage ./floskell.nix { };
 
   ghc = pkgs.callPackage ./ghc.nix { };
 
@@ -18,6 +20,8 @@ in {
     pkgs.stack
 
     ormolu
+    brittany
+    floskell
 
     ghc.ghc865
     ghc.ghc881

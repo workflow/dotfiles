@@ -16,7 +16,7 @@ let g:lucius_style = 'dark'
 let g:lucius_no_term_bg = 1
 
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
+set rtp+=@fzf@
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
