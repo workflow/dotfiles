@@ -17,7 +17,7 @@ let
 in
 
 {
-  imports = [ ./tools/tmux.nix ./haskell ./docker ];
+  imports = [ ./tools/tmux.nix ./haskell ./python ./docker ];
 
   environment.variables.EDITOR = "vim";
 
@@ -57,7 +57,6 @@ in
     pkgs.cachix
     pkgs.direnv
     pkgs.nix-prefetch-git
-    pkgs.python37
 
     # pkgs.dwarf-fortress-packages.dwarf-fortress
 

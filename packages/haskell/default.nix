@@ -22,6 +22,7 @@ in {
     ormolu
     brittany
     floskell
+    nixpkgs-master.stylish-haskell
 
     ghc.ghc865
     ghc.ghc881
