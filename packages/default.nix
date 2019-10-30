@@ -35,6 +35,7 @@ in
     pkgs.git
     pkgs.gnumake
     pkgs.gnupg
+    pkgs.ispell
     pkgs.tree
     pkgs.wget
 
