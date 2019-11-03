@@ -43,6 +43,12 @@ in {
 
   services.devmon.enable = true;
 
+  services.printing.enable = true;
+  services.printing.drivers = [
+    pkgs.gutenprint
+    pkgs.hplip
+  ];
+
   # to prevent nix-shell complaining about no space left
   # default value is 10% of total RAM
   services.logind.extraConfig = ''

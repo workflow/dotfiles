@@ -9,6 +9,5 @@ let
     sha256 = "1qx4c0in8vwf4yybz3sdi7arm9q0ngd3vhadhycgd828z6jjj80k";
   };
 
-  ormolu = pkgs.haskellPackages.callCabal2nix "ormolu" src { };
+in pkgs.haskellPackages.callCabal2nix "ormolu" src { }
 
-in pkgs.haskell.lib.doJailbreak ormolu

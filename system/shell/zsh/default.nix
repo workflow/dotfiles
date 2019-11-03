@@ -7,10 +7,13 @@ in {
   programs.zsh = {
     enable = true;
     interactiveShellInit = ''
-      # eval "$(stack --bash-completion-script stack)"
       source ${git-prompt}
 
       eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+
+      # eval "$(stack --bash-completion-script stack)"
+      # export WORKON_HOME=$HOME/.virtualenvs
+      # source ${pkgs.python37Packages.virtualenvwrapper}/bin/virtualenvwrapper_lazy.sh
 
       nvminit() {
         unset -f npm

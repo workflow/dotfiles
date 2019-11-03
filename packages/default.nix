@@ -30,6 +30,7 @@ in
     pkgs.playerctl
     pkgs.powertop
     pkgs.redshift
+    pkgs.system-config-printer
 
     pkgs.binutils-unwrapped
     pkgs.git

@@ -8,6 +8,7 @@ let
   ormolu = pkgs.callPackage ./ormolu.nix { };
   brittany = pkgs.callPackage ./brittany.nix { };
   floskell = pkgs.callPackage ./floskell.nix { };
+  fast-tags = pkgs.callPackage ./fast-tags.nix { };
 
   ghc = pkgs.callPackage ./ghc.nix { };
 
@@ -23,6 +24,7 @@ in {
     brittany
     floskell
     nixpkgs-master.stylish-haskell
+    fast-tags
 
     ghc.ghc865
     ghc.ghc881
