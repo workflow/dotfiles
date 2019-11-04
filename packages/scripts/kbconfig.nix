@@ -3,6 +3,7 @@
 pkgs.myLib.shellScript "kbconfig" ''
   #!${pkgs.bash}/bin/bash
 
+  ${pkgs.killall}/bin/killall xcape || true
   setxkbmap -option
   setxkbmap -option ctrl:ralt_rctrl
   setxkbmap -layout us,gr -option grp:alt_space_toggle
@@ -12,7 +13,6 @@ pkgs.myLib.shellScript "kbconfig" ''
     setxkbmap -option ctrl:nocaps
     ${pkgs.xcape}/bin/xcape -t "$${2:-300}" -e 'Control_L=Escape'
   else
-    ${pkgs.killall}/bin/killall xcape || true
     xset r rate 500 45
     setxkbmap -option caps:escape
   fi
