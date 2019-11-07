@@ -39,7 +39,13 @@ in {
   networking.hostName = "nixos"; # Define your hostname.
 
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   services.devmon.enable = true;
 
@@ -48,6 +54,9 @@ in {
     pkgs.gutenprint
     pkgs.hplip
   ];
+
+  services.keybase.enable = true;
+  services.kbfs.enable = true;
 
   # to prevent nix-shell complaining about no space left
   # default value is 10% of total RAM
