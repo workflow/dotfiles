@@ -27,6 +27,7 @@ in
     pkgs.gnome3.nautilus
     pkgs.htop
     pkgs.i3lock-fancy
+    pkgs.pavucontrol
     pkgs.playerctl
     pkgs.powertop
     pkgs.redshift
@@ -54,6 +55,7 @@ in
     pkgs.evince
     pkgs.google-chrome
     pkgs.spotify
+    pkgs.transmission-gtk
     pkgs.vlc
 
     pkgs.cachix
