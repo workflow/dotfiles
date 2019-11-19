@@ -3,7 +3,7 @@
 let
 
   sources = import ../../nix/sources.nix;
-  nixpkgs-master = import sources.nixpkgs-master { };
+  nixos-beta = import sources.nixos-beta { };
 
   src = pkgs.fetchFromGitHub {
     owner = "ennocramer";
@@ -12,9 +12,9 @@ let
     sha256 = "150nhdph2v145yagsp7rj2frp66r0hsd84wf2ln9xbnv7vhnkm1g";
   };
 
-  floskell = nixpkgs-master.haskellPackages.callCabal2nix "floskell" src {
+  floskell = nixos-beta.haskellPackages.callCabal2nix "floskell" src {
     monad-dijkstra = pkgs.haskell.lib.dontCheck
       (pkgs.haskellPackages.callHackage "monad-dijkstra" "0.1.1.2" { });
   };
 
-in nixpkgs-master.haskell.lib.doJailbreak floskell
+in nixos-beta.haskell.lib.doJailbreak floskell

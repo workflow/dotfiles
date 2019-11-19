@@ -22,7 +22,7 @@ in {
       "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
       "nixos-config=/etc/nixos/configuration.nix"
       "/nix/var/nix/profiles/per-user/root/channels"
-      "nixpkgs-master=${sources.nixpkgs-master}"
+      "nixos-beta=${sources.nixos-beta}"
     ];
   };
 
