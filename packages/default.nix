@@ -27,6 +27,7 @@ in
     pkgs.gnome3.nautilus
     pkgs.htop
     pkgs.i3lock-fancy
+    pkgs.openvpn
     pkgs.pavucontrol
     pkgs.playerctl
     pkgs.powertop
@@ -43,12 +44,15 @@ in
 
     pkgs.ag
     pkgs.bat
+    pkgs.exa
+    pkgs.fd
     pkgs.fzf
     pkgs.graphviz
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.rofi
     pkgs.scrot
+    pkgs.tldr
     pkgs.vim
 
     pkgs.dropbox

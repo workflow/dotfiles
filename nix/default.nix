@@ -7,6 +7,11 @@ let
 in {
 
   nix = {
+    # trusted users for pulling from caches
+    trustedUsers = [ "root" "alex" "@wheel" "@sudo"];
+    # required for building with bazel
+    nrBuildUsers = 128;
+
     binaryCaches = [
       "https://cache.nixos.org/"
       "https://alexpeits.cachix.org"
