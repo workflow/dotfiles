@@ -41,6 +41,7 @@ in
     pkgs.ispell
     pkgs.tree
     pkgs.wget
+    pkgs.texlive.combined.scheme-small
 
     pkgs.ag
     pkgs.bat
@@ -48,6 +49,7 @@ in
     pkgs.fd
     pkgs.fzf
     pkgs.graphviz
+    pkgs.mdl
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.rofi
@@ -58,6 +60,7 @@ in
     pkgs.dropbox
     pkgs.evince
     pkgs.google-chrome
+    pkgs.postman
     pkgs.spotify
     pkgs.transmission-gtk
     pkgs.vlc

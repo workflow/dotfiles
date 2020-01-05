@@ -37,6 +37,7 @@ in {
 
   networking.networkmanager.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
+  #networking.firewall.allowedTCPPorts = [ 80 ];
 
   sound.enable = true;
   hardware.pulseaudio = {
