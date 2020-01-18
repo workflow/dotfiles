@@ -35,6 +35,8 @@ in {
     preLVM = true;
   }];
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.networkmanager.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   #networking.firewall.allowedTCPPorts = [ 80 ];
