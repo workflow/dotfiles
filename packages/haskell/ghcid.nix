@@ -5,8 +5,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "ndmitchell";
     repo = "ghcid";
-    rev = "b3b376e42389463ffc5e450af40f79d6b6343a17";
-    sha256 = "08gvkgmka199vxkxxgdlwk9hacqm8b9icycl4ddglx0sn6w6y9vg";
+    rev = "40a6ed21bc811e7795c525ce9a4fc689c6b99f60";
+    sha256 = "020g3032gggxllnapqf7nbg5wqjg3c2z190f2jx3cl6z0fswgiwz";
   };
 
 in pkgs.haskellPackages.callCabal2nix "ghcid" src { }

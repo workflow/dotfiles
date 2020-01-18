@@ -5,8 +5,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "ndmitchell";
     repo = "hlint";
-    rev = "e6e549f11239d666978a822cde71f14017a5cb7f";
-    sha256 = "13vf8h3nwbd8mrfr4wkbbsmqnc3x56znydm6aqg0lk26vak1xjsk";
+    rev = "5f267eb873e349fc010a4a0da7778211853b6f03";
+    sha256 = "1dnsf7m8x2ghykgyzpjw0wh53spzcwk4ybg2gmvshvqkvpz9w4zi";
   };
 
 in pkgs.haskellPackages.callCabal2nix "hlint" src overrides
