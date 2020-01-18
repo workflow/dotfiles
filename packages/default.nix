@@ -62,7 +62,7 @@ in
     pkgs.google-chrome
     pkgs.postman
     pkgs.spotify
-    pkgs.transmission-gtk
+    pkgs.deluge
     pkgs.vlc
 
     pkgs.cachix
