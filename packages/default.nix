@@ -14,6 +14,11 @@ let
   kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
   i3lock-wrap = pkgs.callPackage ./scripts/i3lock-wrap { };
 
+  latex = pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-medium latexmk paralist;
+  };
+
 in
 
 {
@@ -41,7 +46,7 @@ in
     pkgs.ispell
     pkgs.tree
     pkgs.wget
-    pkgs.texlive.combined.scheme-small
+    latex
 
     pkgs.ag
     pkgs.bat

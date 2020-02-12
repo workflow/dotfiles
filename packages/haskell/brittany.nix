@@ -5,8 +5,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "lspitzner";
     repo = "brittany";
-    rev = "38f77f6c5e04883dcbda60286ce88e83275009ab";
-    sha256 = "032v7zanl4g9w86akaqim64h1a6g8qlnmhv23xyzg8hma177rr1h";
+    rev = "fad9db8fd8b138c19a3bceb260bca0fd652a2b73";
+    sha256 = "06l7c0ba8asfvkv6xxg3hf9gwjls2fysix8ldsb1rdp9x5ycdpp0";
   };
 
   brittany = pkgs.haskellPackages.callCabal2nix "brittany" src { };

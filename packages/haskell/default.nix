@@ -26,6 +26,7 @@ let
   ormolu = pkgs.callPackage ./ormolu.nix {
     overrides = { ghc-lib-parser = ghc-lib-parser; };
   };
+  brittany = pkgs.callPackage ./brittany.nix { };
 
   ghc = pkgs.callPackage ./ghc.nix { };
 
@@ -39,6 +40,7 @@ in {
     hlint
     ghcid
     ormolu
+    brittany
 
     ghc.ghc865
     ghc.ghc881
