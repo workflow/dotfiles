@@ -24,6 +24,10 @@ in {
       hs() {
         eval "nix-shell -p 'haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $@ ])'"
       }
+
+      py() {
+        eval "nix-shell -p 'python37.withPackages (pkgs: with pkgs; [ ipython $@ ])'"
+      }
     '';
     promptInit = ''
       build_prompt() {

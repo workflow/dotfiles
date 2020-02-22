@@ -44,9 +44,11 @@ in
     pkgs.gnumake
     pkgs.gnupg
     pkgs.ispell
+    pkgs.nixpkgs-fmt
     pkgs.tree
     pkgs.wget
     latex
+    pkgs.vscode
 
     pkgs.ag
     pkgs.bat
