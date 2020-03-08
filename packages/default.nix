@@ -11,6 +11,7 @@ let
   patat = pkgs.callPackage ./tools/patat.nix { };
   pydf = pkgs.callPackage ./tools/pydf.nix { };
 
+  cookie = pkgs.callPackage ./scripts/cookie.nix { };
   kbconfig = pkgs.callPackage ./scripts/kbconfig.nix { };
   i3lock-wrap = pkgs.callPackage ./scripts/i3lock-wrap { };
 
@@ -86,6 +87,7 @@ in
     patat
     pydf
 
+    cookie
     kbconfig
     i3lock-wrap
   ];
