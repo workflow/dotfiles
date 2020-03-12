@@ -2,6 +2,9 @@
 
 let
 
+  sources = import ../nix/sources.nix;
+  nixpkgs-unstable = import sources.nixpkgs-unstable {};
+
   # TODO: build emacs with a pinned nixpkgs
   emacs-27 = pkgs.callPackage ./emacs { };
 
@@ -58,6 +61,7 @@ in
     pkgs.fzf
     pkgs.graphviz
     pkgs.mdl
+    nixpkgs-unstable.miniserve
     pkgs.pandoc
     pkgs.ripgrep
     pkgs.rofi
