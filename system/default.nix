@@ -12,6 +12,9 @@ in {
       detach = "udisksctl power-off -b";
       rmpyc = "find . | grep -E '(__pycache__|.pyc|.pyo$)' | xargs rm -rf";
     };
+    etc."ipsec.secrets".text = ''
+      include ipsec.d/ipsec.nm-l2tp.secrets
+    '';
   };
 
   users.users.alex = {
