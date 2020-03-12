@@ -15,6 +15,10 @@ in {
       # export WORKON_HOME=$HOME/.virtualenvs
       # source ${pkgs.python37Packages.virtualenvwrapper}/bin/virtualenvwrapper_lazy.sh
 
+      if [ -f $HOME/.local-zshrc ]; then
+        source $HOME/.local-zshrc
+      fi
+
       nvminit() {
         unset -f npm
         export NVM_DIR="$HOME/.nvm"
