@@ -15,6 +15,9 @@ in {
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
     '';
+    variables = {
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    };
   };
 
   users.users.alex = {

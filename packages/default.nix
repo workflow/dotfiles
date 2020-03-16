@@ -76,6 +76,7 @@ in
     pkgs.spotify
     pkgs.deluge
     pkgs.vlc
+    pkgs.zoom-us
 
     pkgs.cachix
     pkgs.direnv
