@@ -24,7 +24,7 @@ let
     } ''
       mkdir -p $out/bin
       ver=${wrapped.version}
-      for f in hp2ps hsc2hs hpc; do
+      for f in ghc ghci hp2ps hsc2hs hpc; do
         ln -s ${wrapped}/bin/$f-$ver $out/bin/$f
       done
     '';
