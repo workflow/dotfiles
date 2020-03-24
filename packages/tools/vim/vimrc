@@ -101,12 +101,13 @@ let g:fzf_layout = { 'down': '~20%' }
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>s :Ag<CR>
+nnoremap <leader>s :Rg<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gd :BCommits<CR>
 
 if has("persistent_undo")
-    set undodir=~/.vimundo/
+    call system('mkdir -p ~/.vim/undo')
+    set undodir=~/.vim/undo/
     set undofile
 endif
 

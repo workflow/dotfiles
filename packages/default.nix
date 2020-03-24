@@ -51,6 +51,7 @@ in
     pkgs.nixpkgs-fmt
     pkgs.tree
     pkgs.wget
+    pkgs.xclip
     latex
     pkgs.vscode
 
