@@ -11,10 +11,6 @@ let g:haskell_enable_static_pointers = 1  " highlighting `static`
 let g:haskell_backpack = 1 " highlighting backpack keywords
 let g:haskell_indent_disable = 1
 
-let g:lucius_high_contrast = 1
-let g:lucius_style = 'dark'
-let g:lucius_no_term_bg = 1
-
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=@fzf@
 
@@ -30,6 +26,7 @@ Plugin 'jonathanfilip/vim-lucius'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'google/vim-searchindex'
 Plugin 'neovimhaskell/haskell-vim'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'LnL7/vim-nix'
 Plugin 'junegunn/fzf.vim'
 call vundle#end()
@@ -82,7 +79,6 @@ endif
 " Powerline setup
 set laststatus=2
 let g:airline_powerline_fonts=1
-let g:airline_theme='luna'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_skip_empty_sections = 1
@@ -91,10 +87,14 @@ let g:airline_skip_empty_sections = 1
 let g:NERDCustomDelimiters = {
     \ 'haskell': { 'left': '-- ', 'nested': 1, 'leftAlt': '{- ', 'rightAlt': ' -}', 'nestedAlt': 1 },
     \ 'cabal': { 'left': '-- ' },
+    \ 'nix': { 'left': '# ' },
     \ 'c': { 'left': '// ', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'cpp': { 'left': '// ', 'leftAlt': '/*', 'rightAlt': '*/' },
     \ 'javascript': { 'left': '// ', 'leftAlt': '/*', 'rightAlt': '*/' },
 \ }
+execute "set <M-;>=\e;"
+nnoremap <M-;> :call NERDComment(0, "toggle")<CR>
+vnoremap <M-;> :call NERDComment(0, "toggle")<CR>
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
@@ -102,6 +102,7 @@ nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>s :Rg<CR>
+nnoremap <leader>/ :BLines<CR>
 nnoremap <leader>gc :Commits<CR>
 nnoremap <leader>gd :BCommits<CR>
 
@@ -111,42 +112,51 @@ if has("persistent_undo")
     set undofile
 endif
 
-set background=dark
-colorscheme lucius
-highlight MatchParen cterm=reverse ctermfg=240
-highlight ExtraWhitespace ctermbg=88
-match ExtraWhitespace /\s\+$/
-highlight Normal ctermbg=234 guibg=NONE
-highlight haskellBottom ctermfg=Red
-highlight haskellFail ctermfg=LightRed
-highlight LineNr ctermfg=241 ctermbg=NONE
-highlight HaskellDecl ctermfg=DarkCyan
-highlight HaskellDeclKeyword ctermfg=DarkCyan
-highlight haskellImportKeywords ctermfg=DarkCyan
-highlight haskellWhere ctermfg=DarkCyan
-highlight haskellLet ctermfg=DarkCyan
-highlight haskellDefault ctermfg=DarkCyan
-highlight haskellKeyword ctermfg=DarkCyan
-highlight haskellStatic ctermfg=DarkCyan
-highlight haskellConditional ctermfg=DarkCyan
-highlight haskellBackpackStructure ctermfg=DarkCyan
-highlight haskellForall ctermfg=DarkCyan
-highlight haskellRecursiveDo ctermfg=DarkCyan
-highlight haskellPatternKeyword ctermfg=DarkCyan
-highlight haskellTypeRoles ctermfg=DarkCyan
+let g:lucius_high_contrast = 1
+" let g:lucius_no_term_bg = 1
 
+if empty($TERM_LIGHT)
+    let g:lucius_style = 'dark'
+    set background=dark
+    colorscheme lucius
+    highlight Normal ctermbg=234
+    highlight MatchParen cterm=reverse ctermfg=240
+    highlight ColorColumn ctermbg=236
+    highlight ExtraWhitespace ctermbg=88
+    highlight LineNr ctermfg=241 ctermbg=NONE
+    highlight VertSplit ctermfg=252 ctermbg=238
+    highlight haskellBottom ctermfg=Red
+    highlight haskellFail ctermfg=LightRed
+    let g:airline_theme='luna'
+else
+    let g:lucius_style = 'light'
+    set background=light
+    colorscheme lucius
+    highlight MatchParen ctermfg=240 ctermbg=152
+    highlight ColorColumn ctermbg=252
+    highlight ExtraWhitespace ctermbg=210
+    let g:airline_theme='lucius'
+endif
+
+match ExtraWhitespace /\s\+$/
 highlight GitGutterAdd ctermbg=none
 highlight GitGutterChange ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
 highlight GitGutterDelete ctermbg=none
 let g:gitgutter_map_keys = 0
 
-" why doesn't the nix plugin do that?
+" nix
+" TODO: find out why the nix plugin doesn't do that
 au BufRead,BufNewFile *.nix set filetype=nix
 
-" highlight if line exceeds specified amount
-highlight ColorColumn ctermbg=236
-au BufRead,BufNewFile *.py call matchadd('ColorColumn', '\%79v', 100) "set column nr
+" haskell
+function! JumpHaskellFunction(reverse)
+    call search('\C^[[:alnum:]]\+\_s*::', a:reverse ? 'bW' : 'W')
+endfunction
+
+au FileType haskell nnoremap <buffer><silent> ]] :call JumpHaskellFunction(0)<CR>
+au FileType haskell nnoremap <buffer><silent> [[ :call JumpHaskellFunction(1)<CR>
+au FileType haskell nnoremap <buffer> gI gg /\cimport<CR><ESC>:noh<CR>
 
 if exists("+mouse")
     set mouse=a
@@ -163,9 +173,7 @@ noremap <silent> k gk
 noremap <silent> j gj
 
 "" various shortcuts
-nnoremap <C-w>' ciw''<Esc>P
-nnoremap <C-w>" ciw""<Esc>P
-noremap <leader>[ :nohlsearch<CR>
+noremap <C-n> :nohlsearch<CR>
 vnoremap > >gv
 vnoremap < <gv
 
