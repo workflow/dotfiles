@@ -11,6 +11,10 @@ in {
     shellAliases = {
       detach = "udisksctl power-off -b";
       rmpyc = "find . | grep -E '(__pycache__|.pyc|.pyo$)' | xargs rm -rf";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
     };
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
@@ -19,7 +23,7 @@ in {
 
   users.users.alex = {
     extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     symlinks = {
       ".vimrc" = pkgs.callPackage ../packages/tools/vim/vimrc.nix { };
       ".gitconfig" = pkgs.callPackage ../packages/tools/git/gitconfig.nix { };

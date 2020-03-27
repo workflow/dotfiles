@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./bash.nix ./zsh ];
+  imports = [ ./bash.nix ./zsh ./fish.nix ];
 }

@@ -22,7 +22,7 @@ in
       run-shell ${pkgs.tmuxPlugins.pain-control.rtp}
       run-shell ${pkgs.tmuxPlugins.sessionist.rtp}
       run-shell ${pkgs.tmuxPlugins.yank.rtp}
-      source-file ${tmux-themepack}/powerline/block/blue.tmuxtheme
+      source-file ${tmux-themepack}/powerline/default/blue.tmuxtheme
 
       set -g base-index 1
       setw -g pane-base-index 1

@@ -1,6 +1,4 @@
 set nocompatible
-filetype off
-syntax enable
 
 let g:haskell_enable_quantification = 1   " highlighting `forall`
 let g:haskell_enable_recursivedo = 1      " highlighting `mdo` and `rec`
@@ -16,19 +14,27 @@ set rtp+=@fzf@
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-surround'
+
+" plugins
 Plugin 'Raimondi/delimitMate'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'google/vim-searchindex'
+Plugin 'junegunn/fzf.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+
+" filetypes
+Plugin 'LnL7/vim-nix'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'neovimhaskell/haskell-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+
+" themes & ui
 Plugin 'freeo/vim-kalisi'
 Plugin 'jonathanfilip/vim-lucius'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'google/vim-searchindex'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'LnL7/vim-nix'
-Plugin 'junegunn/fzf.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 
 
@@ -64,12 +70,14 @@ set formatoptions+=r
 set incsearch
 set ignorecase
 set smartcase
+syntax on
+filetype on
 filetype plugin indent on
 filetype plugin on
 
-autocmd BufRead,BufNewFile *.html,*.css,*.js,*.json,*.hs,*.nix set tabstop=2
-autocmd BufRead,BufNewFile *.html,*.css,*.js,*.json,*.hs,*.nix set softtabstop=2
-autocmd BufRead,BufNewFile *.html,*.css,*.js,*.json,*.hs,*.nix set shiftwidth=2
+autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.json,*.hs,*.nix set tabstop=2
+autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.json,*.hs,*.nix set softtabstop=2
+autocmd BufRead,BufNewFile *.html,*.css,*.js,*.jsx,*.ts,*.tsx,*.json,*.hs,*.nix set shiftwidth=2
 
 " jump to last position when opening file
 if has("autocmd")
@@ -144,10 +152,6 @@ highlight GitGutterChange ctermbg=none
 highlight GitGutterChangeDelete ctermbg=none
 highlight GitGutterDelete ctermbg=none
 let g:gitgutter_map_keys = 0
-
-" nix
-" TODO: find out why the nix plugin doesn't do that
-au BufRead,BufNewFile *.nix set filetype=nix
 
 " haskell
 function! JumpHaskellFunction(reverse)
