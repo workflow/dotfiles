@@ -1,34 +1,39 @@
 { pkgs, ... }:
 
-let ghc = pkgs.callPackage ../packages/haskell/ghc.nix { };
+let
 
-in {
+  ghc = pkgs.callPackage ../packages/haskell/ghc.nix {};
+  home-manager = import ../home-manager.nix;
+
+in
+
+{
+
+  imports = [ (import "${home-manager}/nixos") ];
+
+  home-manager = {
+    # useGlobalPkgs = true;
+    users.alex = import ../home.nix;
+  };
 
   environment = {
     extraInit = ''
       export PATH=$HOME/.local/bin:$PATH
     '';
-    shellAliases = {
-      detach = "udisksctl power-off -b";
-      rmpyc = "find . | grep -E '(__pycache__|.pyc|.pyo$)' | xargs rm -rf";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      "....." = "cd ../../../..";
-    };
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
     '';
   };
 
-  users.users.alex = {
-    extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
-    shell = pkgs.fish;
-    symlinks = {
-      ".vimrc" = pkgs.callPackage ../packages/tools/vim/vimrc.nix { };
-      ".gitconfig" = pkgs.callPackage ../packages/tools/git/gitconfig.nix { };
-      ".ghci" = pkgs.callPackage ../packages/haskell/scripts/ghci.nix { };
+  programs.fish.enable = true; # to add entry in /etc/shells
+
+  users = {
+    users.alex = {
+      extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
+      isNormalUser = true;
+      shell = pkgs.fish;
     };
+    defaultUserShell = pkgs.bash;
   };
 
   time.timeZone = "Europe/London";
@@ -36,11 +41,13 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices = [{
-    name = "root";
-    device = "/dev/sda2";
-    preLVM = true;
-  }];
+  boot.initrd.luks.devices = [
+    {
+      name = "root";
+      device = "/dev/sda2";
+      preLVM = true;
+    }
+  ];
 
   boot.supportedFilesystems = [ "ntfs" ];
 

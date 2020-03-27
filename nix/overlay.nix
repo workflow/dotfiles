@@ -2,5 +2,5 @@
 self: super:
 
 {
-  myLib = super.callPackage ../lib { pkgs = super; };
+  myLib = super.callPackage ../lib.nix { pkgs = super; };
 }
