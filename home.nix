@@ -13,6 +13,9 @@ in
     # vim
     ".vimrc".text = dotfile ./dotfiles/vimrc.nix;
 
+    # tmux
+    ".tmux.conf".text = dotfile ./dotfiles/tmux.nix;
+
     # git
     ".gitconfig".text = dotfile ./dotfiles/gitconfig.nix;
 

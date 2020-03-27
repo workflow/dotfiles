@@ -26,7 +26,7 @@ let
 in
 
 {
-  imports = [ ./tools/tmux.nix ./haskell ./python ./docker ];
+  imports = [ ./haskell ./python ./docker ];
 
   environment.variables.EDITOR = "vim";
 
@@ -68,6 +68,7 @@ in
     pkgs.rofi
     pkgs.scrot
     pkgs.tldr
+    pkgs.tmux
     pkgs.vim
 
     pkgs.dropbox
