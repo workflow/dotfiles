@@ -22,4 +22,4 @@ let
 
 in
 
-pkgs.writeText "xmonad-config.json" (builtins.toJSON config)
+builtins.toJSON config

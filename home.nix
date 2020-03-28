@@ -2,6 +2,8 @@
 
 let
 
+  home-dir = builtins.getEnv "HOME";
+
   myLib = import ./lib.nix { pkgs = pkgs; };
   tmpl = myLib.template;
   dotfile = path: import path { pkgs = pkgs; };
@@ -11,8 +13,9 @@ let
 in
 
 {
-  # I don't want packages to be managed by home-manager
-  home.packages = lib.mkForce [];
+  manual.html.enable = true;
+  manual.manpages.enable = true;
+  manual.json.enable = true;
 
   home.file = {
     # vim
@@ -31,7 +34,7 @@ in
 
     # others
     ".ghci".text = dotfile ./dotfiles/ghci.nix;
-    ".xmonad-config.json".source = dotfile ./dotfiles/xmonad-config.nix;
+    ".xmonad-config.json".text = dotfile ./dotfiles/xmonad-config.nix;
   };
 
   systemd.user.services = {

@@ -44,3 +44,61 @@ packages_ = {
   };
 };
 ```
+
+# kmonad
+
+```
+diff --git a/packages/default.nix b/packages/default.nix
+index 3410fc8..914804a 100644
+--- a/packages/default.nix
++++ b/packages/default.nix
+@@ -12,6 +12,7 @@ let
+   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
+   patat = pkgs.callPackage ./tools/patat.nix {};
+   pydf = pkgs.callPackage ./tools/pydf.nix {};
++  kmonad = pkgs.callPackage ./tools/kmonad {};
+
+   cookie = pkgs.callPackage ./scripts/cookie.nix {};
+   kbconfig = pkgs.callPackage ./scripts/kbconfig.nix {};
+@@ -95,6 +96,7 @@ let
+       niv
+       patat
+       pydf
++      kmonad
+
+       cookie
+       i3lock-wrap
+diff --git a/system/default.nix b/system/default.nix
+index 64969bf..0699971 100644
+--- a/system/default.nix
++++ b/system/default.nix
+@@ -30,11 +30,14 @@ in
+
+   users = {
+     users.alex = {
+-      extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
++      extraGroups = [ "wheel" "input" "uinput" "video" "audio" "disk" "networkmanager" "docker" ];
+       isNormalUser = true;
+       shell = pkgs.fish;
+     };
+     defaultUserShell = pkgs.bash;
++    groups = {
++      uinput = {};
++    };
+   };
+
+   time.timeZone = "Europe/London";
+@@ -51,6 +54,11 @@ in
+   ];
+
+   boot.supportedFilesystems = [ "ntfs" ];
++  boot.kernelModules = [ "uinput" ];
++
++  services.udev.extraRules = ''
++    KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
++  '';
+
+   networking.networkmanager.enable = true;
+   networking.hostName = "nixos"; # Define your hostname.
+```
+
