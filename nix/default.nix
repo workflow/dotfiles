@@ -33,9 +33,5 @@ in {
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      (import ./overlay.nix { })
-      (import ../packages/overlay.nix { })
-    ];
   };
 }

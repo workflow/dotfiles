@@ -2,7 +2,8 @@
 
 let
 
-  lock-cmd = "${pkgs.i3lock-wrap}/bin/i3lock-wrap";
+  i3lock-wrap = pkgs.callPackage ../../../packages/scripts/i3lock-wrap {};
+  lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
 in {
   # lock after 10 minutes

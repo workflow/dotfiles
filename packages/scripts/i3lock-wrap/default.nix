@@ -1,6 +1,12 @@
 { pkgs }:
 
-pkgs.myLib.shellScript "i3lock-wrap" ''
+let
+
+  myLib = pkgs.callPackage ../../../lib.nix { };
+
+in
+
+myLib.shellScript "i3lock-wrap" ''
   #!${pkgs.bash}/bin/bash
 
   if pidof i3lock; then

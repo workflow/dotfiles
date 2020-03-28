@@ -1,5 +1,11 @@
 { pkgs, ... }:
 
+let
+
+  packages = pkgs.callPackage ./packages {};
+
+in
+
 {
   imports = [
     ./nix
@@ -9,7 +15,7 @@
     ./system/keyboard
     ./system/power
     ./system/fonts
-
-    ./packages
   ];
+
+  environment.systemPackages = packages;
 }

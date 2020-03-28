@@ -56,6 +56,11 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   #networking.firewall.allowedTCPPorts = [ 80 ];
 
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
+
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;

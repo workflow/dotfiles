@@ -1,6 +1,12 @@
 { pkgs }:
 
-pkgs.myLib.shellScript "cookie" ''
+let
+
+  myLib = pkgs.callPackage ../../lib.nix { };
+
+in
+
+myLib.shellScript "cookie" ''
   #!${pkgs.bash}/bin/bash
 
   usage() {
