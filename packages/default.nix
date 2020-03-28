@@ -29,8 +29,6 @@ in
 {
   imports = [ ./haskell ./python ./docker ];
 
-  environment.variables.EDITOR = "vim";
-
   environment.systemPackages = [
     pkgs.acpilight
     pkgs.gnome3.gedit

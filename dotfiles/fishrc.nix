@@ -7,8 +7,16 @@ let
     set -gx PATH ${pkgs.lib.concatStringsSep " " profile.path} $PATH
 
     ${pkgs.lib.concatStringsSep "\n"
-    (pkgs.lib.mapAttrsToList (k: v: "alias ${k} ${pkgs.lib.escapeShellArg v}")
-      profile.aliases)}
+    (
+      pkgs.lib.mapAttrsToList (k: v: "set -gx ${k} ${pkgs.lib.escapeShellArg v}")
+        profile.variables
+    )}
+
+    ${pkgs.lib.concatStringsSep "\n"
+    (
+      pkgs.lib.mapAttrsToList (k: v: "alias ${k} ${pkgs.lib.escapeShellArg v}")
+        profile.aliases
+    )}
   '';
 
   variables = ''
@@ -55,7 +63,8 @@ let
     '';
   };
 
-in ''
+in
+''
   eval (${pkgs.direnv}/bin/direnv hook fish)
 
   # export WORKON_HOME=$HOME/.virtualenvs

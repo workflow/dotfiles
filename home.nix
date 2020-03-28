@@ -48,7 +48,7 @@ in
         ExecStart = "${kbconfig}/bin/kbconfig keep";
         RemainAfterExit = "no";
         Restart = "always";
-        RestartSec = "1s";
+        RestartSec = "5s";
       };
     };
   };

@@ -7,7 +7,16 @@ let
     export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
 
     ${pkgs.lib.concatStringsSep "\n"
-    (pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${v}"'') profile.aliases)}
+    (
+      pkgs.lib.mapAttrsToList (k: v: ''export ${k}=${pkgs.lib.escapeShellArg v}'')
+        profile.variables
+    )}
+
+    ${pkgs.lib.concatStringsSep "\n"
+    (
+      pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${pkgs.lib.escapeShellArg v}"'')
+        profile.aliases
+    )}
   '';
   git-prompt = ''
     # Adapted from code found at <https://gist.github.com/1712320>.

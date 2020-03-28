@@ -12,10 +12,20 @@ let
     export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
 
     ${pkgs.lib.concatStringsSep "\n"
-    (pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${v}"'') profile.aliases)}
+    (
+      pkgs.lib.mapAttrsToList (k: v: ''export ${k}=${pkgs.lib.escapeShellArg v}'')
+        profile.variables
+    )}
+
+    ${pkgs.lib.concatStringsSep "\n"
+    (
+      pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${pkgs.lib.escapeShellArg v}"'')
+        profile.aliases
+    )}
   '';
 
-in ''
+in
+''
   export HISTSIZE=5000
   export HISTFILESIZE=5000
   export HISTCONTROL=ignoreboth:erasedups
