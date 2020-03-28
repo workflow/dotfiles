@@ -5,6 +5,8 @@ let
   myLib = import ./lib.nix { pkgs = pkgs; };
   tmpl = myLib.template;
   dotfile = path: import path { pkgs = pkgs; };
+  terminalFont = "Hack 10.5";
+  kbconfig = pkgs.callPackage ./packages/scripts/kbconfig.nix {};
 
 in
 
@@ -29,17 +31,38 @@ in
 
     # others
     ".ghci".text = dotfile ./dotfiles/ghci.nix;
+    ".xmonad-config.json".source = dotfile ./dotfiles/xmonad-config.nix;
+  };
+
+  systemd.user.services = {
+    keyboard = {
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
+      Unit = {
+        Description = "Keyboard";
+        After = "graphical-session-pre.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${kbconfig}/bin/kbconfig keep";
+        RemainAfterExit = "no";
+        Restart = "always";
+        RestartSec = "1s";
+      };
+    };
   };
 
   programs.gnome-terminal = {
     enable = true;
     showMenubar = false;
+    themeVariant = "dark";
     profile = {
       "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = {
         default = true;
         visibleName = "Solarized Black";
         showScrollbar = false;
-        font = "Hack 10.5";
+        font = terminalFont;
         colors = {
           foregroundColor = "rgb(161,183,185)";
           backgroundColor = "rgb(24,24,24)";
@@ -68,7 +91,7 @@ in
         default = false;
         visibleName = "Solarized";
         showScrollbar = false;
-        font = "Hack 10.5";
+        font = terminalFont;
         colors = {
           foregroundColor = "rgb(148,173,175)";
           backgroundColor = "rgb(0,43,54)";
@@ -97,7 +120,7 @@ in
         default = false;
         visibleName = "Light";
         showScrollbar = false;
-        font = "Hack 10.5";
+        font = terminalFont;
         colors = {
           foregroundColor = "rgb(35,35,35)";
           backgroundColor = "rgb(240,255,240)";

@@ -23,6 +23,7 @@ let
       scheme-medium latexmk paralist;
   };
 
+  xmonad-build = pkgs.callPackage ./scripts/xmonad-build.nix { };
 in
 
 {
@@ -52,6 +53,7 @@ in
     pkgs.tree
     pkgs.wget
     pkgs.xclip
+    pkgs.xorg.xmessage
     latex
     pkgs.vscode
 
@@ -97,5 +99,6 @@ in
     cookie
     kbconfig
     i3lock-wrap
+    xmonad-build
   ];
 }
