@@ -10,7 +10,6 @@ let
 
   niv = pkgs.callPackage ./tools/niv.nix {};
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
-  nix-derivation-pretty = pkgs.callPackage ./tools/nix-derivation-pretty.nix {};
   patat = pkgs.callPackage ./tools/patat.nix {};
   pydf = pkgs.callPackage ./tools/pydf.nix {};
 
@@ -52,22 +51,22 @@ let
       pkgs.wget
       pkgs.xclip
       pkgs.xorg.xmessage
+
       latex
-      pkgs.vscode
 
       pkgs.ag
       pkgs.bat
       pkgs.exa
       pkgs.fd
       pkgs.fzf
-      pkgs.graphviz
-      pkgs.mdl
-      nixpkgs-unstable.miniserve
-      pkgs.pandoc
       pkgs.ripgrep
       pkgs.rofi
       pkgs.scrot
+
+      pkgs.graphviz
+      pkgs.pandoc
       pkgs.tldr
+
       pkgs.tmux
       pkgs.vim
 
@@ -76,12 +75,12 @@ let
 
       pkgs.docker-compose
 
+      pkgs.deluge
       pkgs.dropbox
       pkgs.evince
       pkgs.google-chrome
       pkgs.postman
       pkgs.spotify
-      pkgs.deluge
       pkgs.vlc
       pkgs.zoom-us
 
@@ -93,15 +92,13 @@ let
 
       # overlays & custom pkgs
       emacs-27
-      nixfmt
-      nix-derivation-pretty
       niv
       patat
       pydf
 
       cookie
-      kbconfig
       i3lock-wrap
+      kbconfig
       xmonad-build
     ];
 
