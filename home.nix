@@ -5,11 +5,9 @@ let
   home-dir = builtins.getEnv "HOME";
 
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
-  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
 
   myLib = import ./lib.nix { pkgs = pkgs; };
   tmpl = myLib.template;
-  dotfile = path: import path { pkgs = pkgs; };
   terminalFont = "Hack 10.5";
   kbconfig = pkgs.callPackage ./packages/scripts/kbconfig.nix {};
 
@@ -22,16 +20,13 @@ in
 
   home.file = {
     # vim
-    ".vimrc".text = dotfile ./dotfiles/vimrc.nix;
+    ".vimrc".text = pkgs.callPackage ./dotfiles/vimrc.nix {};
 
     # tmux
-    ".tmux.conf".text = dotfile ./dotfiles/tmux-conf.nix;
-
-    # git
-    ".gitconfig".text = dotfile ./dotfiles/gitconfig.nix;
+    ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix {};
 
     # others
-    ".ghci".text = dotfile ./dotfiles/ghci.nix;
+    ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};
   };
 
   systemd.user.services = {
@@ -53,11 +48,44 @@ in
     };
   };
 
-  programs.fish = {
+  programs.git = {
     enable = true;
-    interactiveShellInit = fishrc.shellInit;
-    promptInit = fishrc.promptInit;
+    userName = "Alexandros Peitsinis";
+    userEmail = "alexpeitsinis@gmail.com";
+    aliases = {
+      ls = ''log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'';
+      lr = ''log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative'';
+      ll = "log --graph --decorate --pretty=oneline --abbrev-commit";
+      ld = ''log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat'';
+      lla = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+      c = "commit --verbose";
+      a = "add -A";
+      fl = "log -u";
+      count = "shortlog -s -n --all";
+      squash = "rebase -i HEAD^^";
+      delremote = "push origin --delete";
+    };
+    extraConfig = {
+      core = {
+        editor = "vim";
+      };
+      credential.helper = "store";
+    };
+    ignores = [
+      ".projectile"
+      ".dir-locals.el"
+      "*.swp"
+    ];
   };
+
+  programs.fish = let
+    fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
+  in
+    {
+      enable = true;
+      interactiveShellInit = fishrc.shellInit;
+      promptInit = fishrc.promptInit;
+    };
 
   programs.bash = {
     enable = true;
@@ -70,7 +98,7 @@ in
     ];
     shellAliases = profile.aliases;
     sessionVariables = profile.variables;
-    initExtra = dotfile ./dotfiles/bashrc.nix;
+    initExtra = pkgs.callPackage ./dotfiles/bashrc.nix {};
   };
 
   programs.zsh = {
@@ -83,7 +111,7 @@ in
       ignoreDups = true;
       share = true;
     };
-    initExtra = dotfile ./dotfiles/zshrc.nix;
+    initExtra = pkgs.callPackage ./dotfiles/zshrc.nix {};
     shellAliases = profile.aliases;
     localVariables = profile.variables;
     oh-my-zsh = {
