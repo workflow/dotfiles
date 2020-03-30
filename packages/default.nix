@@ -27,6 +27,8 @@ let
 
   haskellPackages = pkgs.callPackage ./haskell {};
 
+  transcribe = pkgs.callPackage ./tools/transcribe.nix {};
+
   packages =
     [
       pkgs.acpilight
@@ -83,6 +85,9 @@ let
       pkgs.spotify
       pkgs.vlc
       pkgs.zoom-us
+
+      pkgs.audacity
+      transcribe
 
       pkgs.cachix
       pkgs.direnv

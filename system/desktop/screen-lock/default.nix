@@ -12,6 +12,7 @@ in {
     nowlocker = lock-cmd;
     locker = lock-cmd;
     time = 10;
+    extraOptions = [ "-corners" "0--0" "-cornersize" "30" ];
   };
 
   systemd.user.services.xautolock.serviceConfig.Restart = lib.mkForce "always";
