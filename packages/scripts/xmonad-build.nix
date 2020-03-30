@@ -8,9 +8,7 @@ let
         xmonad
         xmonad-contrib
         xmonad-extras
-        filepath
-        directory
-        aeson
+        hostname
       ]
     );
 

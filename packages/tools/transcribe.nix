@@ -7,6 +7,7 @@ let
       url = "https://www.seventhstring.com/xscribe/xsc64setup.tar.gz";
       sha256 = "01vysym52vbly7rss9c6i6wac4lbnfgz37xa5nz8ikqvwnmn34c3";
     };
+    meta = old.meta // { broken = false; };
   });
 
 in

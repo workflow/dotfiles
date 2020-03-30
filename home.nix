@@ -34,7 +34,6 @@ in
 
     # others
     ".ghci".text = dotfile ./dotfiles/ghci.nix;
-    ".xmonad-config.json".text = dotfile ./dotfiles/xmonad-config.nix;
   };
 
   systemd.user.services = {
