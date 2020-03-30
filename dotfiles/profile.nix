@@ -4,6 +4,7 @@
   path = ["$HOME/.local/bin" "$HOME/bin"];
   variables = {
     "EDITOR" = "vim";
+    "LESS" = "-r";
   };
   aliases = {
     detach = "udisksctl power-off -b";

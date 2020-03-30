@@ -4,6 +4,9 @@ let
 
   home-dir = builtins.getEnv "HOME";
 
+  profile = pkgs.callPackage ./dotfiles/profile.nix {};
+  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
+
   myLib = import ./lib.nix { pkgs = pkgs; };
   tmpl = myLib.template;
   dotfile = path: import path { pkgs = pkgs; };
@@ -27,11 +30,6 @@ in
     # git
     ".gitconfig".text = dotfile ./dotfiles/gitconfig.nix;
 
-    # shells
-    ".config/fish/config.fish".text = dotfile ./dotfiles/fishrc.nix;
-    ".bashrc".text = dotfile ./dotfiles/bashrc.nix;
-    ".zshrc".text = dotfile ./dotfiles/zshrc.nix;
-
     # others
     ".ghci".text = dotfile ./dotfiles/ghci.nix;
   };
@@ -39,7 +37,7 @@ in
   systemd.user.services = {
     keyboard = {
       Install = {
-        WantedBy = ["graphical-session.target"];
+        WantedBy = [ "graphical-session.target" ];
       };
       Unit = {
         Description = "Keyboard";
@@ -53,6 +51,59 @@ in
         RestartSec = "5s";
       };
     };
+  };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = fishrc.shellInit;
+    promptInit = fishrc.promptInit;
+  };
+
+  programs.bash = {
+    enable = true;
+    historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
+    shellOptions = [
+      "histappend"
+      "extglob"
+      "globstar"
+      "checkjobs"
+    ];
+    shellAliases = profile.aliases;
+    sessionVariables = profile.variables;
+    initExtra = dotfile ./dotfiles/bashrc.nix;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = false;
+    enableCompletion = true;
+    history = {
+      size = 50000;
+      save = 500000;
+      ignoreDups = true;
+      share = true;
+    };
+    initExtra = dotfile ./dotfiles/zshrc.nix;
+    shellAliases = profile.aliases;
+    localVariables = profile.variables;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    # enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
   };
 
   programs.gnome-terminal = {

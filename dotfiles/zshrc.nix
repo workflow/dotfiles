@@ -2,22 +2,8 @@
 
 let
 
-  profile = import ./profile.nix { pkgs = pkgs; };
-  extra = ''
-    export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
+  profile = pkgs.callPackage ./profile.nix {};
 
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: ''export ${k}=${pkgs.lib.escapeShellArg v}'')
-        profile.variables
-    )}
-
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${pkgs.lib.escapeShellArg v}"'')
-        profile.aliases
-    )}
-  '';
   git-prompt = ''
     # Adapted from code found at <https://gist.github.com/1712320>.
 
@@ -95,7 +81,7 @@ let
 in
 
 ''
-  eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+  export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
 
   # eval "$(stack --bash-completion-script stack)"
   # export WORKON_HOME=$HOME/.virtualenvs
@@ -118,8 +104,6 @@ in
   py() {
     eval "nix-shell -p 'python37.withPackages (pkgs: with pkgs; [ ipython $@ ])'"
   }
-
-  ${extra}
 
   ##########
   # prompt #
@@ -152,8 +136,4 @@ in
   }
 
   alias sp=switch_prompts
-
-  # surprisingly only works if I put these here
-  source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-  source ${pkgs.fzf}/share/fzf/completion.zsh
 ''

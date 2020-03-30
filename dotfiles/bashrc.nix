@@ -7,34 +7,13 @@ let
       "https://raw.githubusercontent.com/git/git/4c86140027f4a0d2caaa3ab4bd8bfc5ce3c11c8a/contrib/completion/git-prompt.sh";
     sha256 = "0zs42vdr1ddr741zfym0nkdd4b6xrclinr24cpgkq7k70s9403ks";
   };
+
   profile = import ./profile.nix { pkgs = pkgs; };
-  extra = ''
-    export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
-
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: ''export ${k}=${pkgs.lib.escapeShellArg v}'')
-        profile.variables
-    )}
-
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: ''alias "${k}"="${pkgs.lib.escapeShellArg v}"'')
-        profile.aliases
-    )}
-  '';
 
 in
 ''
-  export HISTSIZE=5000
-  export HISTFILESIZE=5000
-  export HISTCONTROL=ignoreboth:erasedups
-  shopt -s histappend
+  export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
   export PROMPT_COMMAND='history -a'
-
-  if command -v fzf-share >/dev/null; then
-    source "$(fzf-share)/key-bindings.bash"
-  fi
 
   source ${git-prompt-sh}
   export GIT_PS1_SHOWDIRTYSTATE=1
@@ -56,6 +35,4 @@ in
       PS1="\[\033]2;\h:\u:\w\007\]$PS1"
     fi
   fi
-
-  ${extra}
 ''
