@@ -2,31 +2,35 @@
 
 let
 
-  home-dir = builtins.getEnv "HOME";
-
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
-  myLib = import ./lib.nix { pkgs = pkgs; };
-  tmpl = myLib.template;
   terminalFont = "Hack 10.5";
   kbconfig = pkgs.callPackage ./packages/scripts/kbconfig.nix {};
+  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
 
 in
 
 {
-  manual.html.enable = true;
+  # home-manager manual
   manual.manpages.enable = true;
-  manual.json.enable = true;
+  manual.html.enable = true;
 
-  home.file = {
-    # vim
-    ".vimrc".text = pkgs.callPackage ./dotfiles/vimrc.nix {};
+  home = {
+    file = {
+      # vim
+      ".vimrc".text = pkgs.callPackage ./dotfiles/vimrc.nix {};
 
-    # tmux
-    ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix {};
+      # tmux
+      ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix {};
 
-    # others
-    ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};
+      # others
+      ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};
+    };
+    sessionVariables = {
+      PATH = "$HOME/.local/bin:$HOME/bin:$PATH";
+      EDITOR = "vim";
+      LESS = "-r";
+    };
   };
 
   systemd.user.services = {
@@ -78,14 +82,11 @@ in
     ];
   };
 
-  programs.fish = let
-    fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
-  in
-    {
-      enable = true;
-      interactiveShellInit = fishrc.shellInit;
-      promptInit = fishrc.promptInit;
-    };
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = fishrc.shellInit;
+    promptInit = fishrc.promptInit;
+  };
 
   programs.bash = {
     enable = true;
@@ -97,7 +98,6 @@ in
       "checkjobs"
     ];
     shellAliases = profile.aliases;
-    sessionVariables = profile.variables;
     initExtra = pkgs.callPackage ./dotfiles/bashrc.nix {};
   };
 
@@ -113,7 +113,6 @@ in
     };
     initExtra = pkgs.callPackage ./dotfiles/zshrc.nix {};
     shellAliases = profile.aliases;
-    localVariables = profile.variables;
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];

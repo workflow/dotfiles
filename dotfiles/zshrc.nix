@@ -2,8 +2,6 @@
 
 let
 
-  profile = pkgs.callPackage ./profile.nix {};
-
   git-prompt = ''
     # Adapted from code found at <https://gist.github.com/1712320>.
 
@@ -81,8 +79,6 @@ let
 in
 
 ''
-  export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
-
   # eval "$(stack --bash-completion-script stack)"
   # export WORKON_HOME=$HOME/.virtualenvs
   # source ${pkgs.python37Packages.virtualenvwrapper}/bin/virtualenvwrapper_lazy.sh

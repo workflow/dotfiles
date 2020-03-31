@@ -17,10 +17,6 @@ in
   };
 
   environment = {
-    extraInit = ''
-      export PATH=$HOME/.local/bin:$PATH
-    '';
-    variables.EDITOR = "vim";
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
     '';

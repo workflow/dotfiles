@@ -8,11 +8,8 @@ let
     sha256 = "0zs42vdr1ddr741zfym0nkdd4b6xrclinr24cpgkq7k70s9403ks";
   };
 
-  profile = import ./profile.nix { pkgs = pkgs; };
-
 in
 ''
-  export PATH=${pkgs.lib.concatStringsSep ":" profile.path}:$PATH
   export PROMPT_COMMAND='history -a'
 
   source ${git-prompt-sh}

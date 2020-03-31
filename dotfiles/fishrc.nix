@@ -5,13 +5,6 @@ let
   profile = pkgs.callPackage ./profile.nix {};
 
   extra = ''
-    set -gx PATH ${pkgs.lib.concatStringsSep " " profile.path} $PATH
-
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: "set -gx ${k} ${pkgs.lib.escapeShellArg v}")
-        profile.variables
-    )}
 
     ${pkgs.lib.concatStringsSep "\n"
     (
