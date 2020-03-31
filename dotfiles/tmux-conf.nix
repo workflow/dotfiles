@@ -16,14 +16,14 @@ in
   run-shell ${pkgs.tmuxPlugins.pain-control.rtp}
   run-shell ${pkgs.tmuxPlugins.sessionist.rtp}
   run-shell ${pkgs.tmuxPlugins.yank.rtp}
-  source-file ${tmux-themepack}/powerline/default/blue.tmuxtheme
+  source-file ${tmux-themepack}/powerline/default/green.tmuxtheme
 
   set  -g default-terminal "screen-256color"
   set  -g base-index      1
   setw -g pane-base-index 1
   setw -g aggressive-resize off
   setw -g clock-mode-style  12
-  set  -s escape-time       500
+  set  -s escape-time       0
   set  -g history-limit     2000
   setw -g monitor-activity on
   set  -g renumber-windows on
