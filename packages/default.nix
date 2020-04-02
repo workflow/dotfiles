@@ -75,6 +75,8 @@ let
       pkgs.python37
       pkgs.python37Packages.black
 
+      pkgs.coq
+
       pkgs.docker-compose
 
       pkgs.deluge

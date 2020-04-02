@@ -18,6 +18,36 @@ let
     set fish_greeting  # disable greeting
   '';
 
+  promptVariables = ''
+    set -g __fish_git_prompt_show_informative_status 1
+    set -g __fish_git_prompt_hide_untrackedfiles 1
+
+    set -g __fish_git_prompt_color_branch magenta
+
+    set -g __fish_git_prompt_showupstream "informative"
+    set -g __fish_git_prompt_char_upstream_ahead "↑"
+    set -g __fish_git_prompt_char_upstream_behind "↓"
+    set -g __fish_git_prompt_char_upstream_prefix ""
+    set -g __fish_git_prompt_color_upstream blue
+
+    set -g __fish_git_prompt_char_stagedstate "•"
+    set -g __fish_git_prompt_color_stagedstate green
+
+    set -g __fish_git_prompt_char_dirtystate "•"
+    set -g __fish_git_prompt_color_dirtystate yellow
+
+    set -g __fish_git_prompt_char_untrackedfiles "•"
+    set -g __fish_git_prompt_color_untrackedfiles red
+
+    set -g __fish_git_prompt_char_invalidstate "✖"
+    set -g __fish_git_prompt_color_invalidstate red
+
+    set -g __fish_git_prompt_char_cleanstate "✔"
+    set -g __fish_git_prompt_color_cleanstate green --bold
+
+    set -g __fish_prompt_normal (set_color normal)
+  '';
+
   theme = ''
     set -g fish_color_autosuggestion 586e75
     set -g fish_color_cancel \x2dr
@@ -86,44 +116,46 @@ in
       ${fzf.key-bindings}
     end
 
+    # messes with emacs
+    function fish_title
+    end
+
     ${extra}
     ${variables}
     ${theme}
   '';
   promptInit = ''
+    ${promptVariables}
+
+    set -g __my_prompt_multiline 0
+
+    function sp
+      if test $__my_prompt_multiline = 0
+        set -g __my_prompt_multiline 1
+      else
+        set -g __my_prompt_multiline 0
+      end
+    end
+
     function fish_prompt --description 'Write out the prompt'
+      function _when_multiline -a str nl
+        if test $__my_prompt_multiline = 1
+          if test $nl = 1
+            echo $str
+          else
+            echo -n $str
+          end
+        end
+      end
+
       set -l last_status $status
 
-      set -g __fish_git_prompt_show_informative_status 1
-      set -g __fish_git_prompt_hide_untrackedfiles 1
-
-      set -g __fish_git_prompt_color_branch magenta
-
-      set -g __fish_git_prompt_showupstream "informative"
-      set -g __fish_git_prompt_char_upstream_ahead "↑"
-      set -g __fish_git_prompt_char_upstream_behind "↓"
-      set -g __fish_git_prompt_char_upstream_prefix ""
-      set -g __fish_git_prompt_color_upstream blue
-
-      set -g __fish_git_prompt_char_stagedstate "•"
-      set -g __fish_git_prompt_color_stagedstate green
-
-      set -g __fish_git_prompt_char_dirtystate "•"
-      set -g __fish_git_prompt_color_dirtystate yellow
-
-      set -g __fish_git_prompt_char_untrackedfiles "•"
-      set -g __fish_git_prompt_color_untrackedfiles red
-
-      set -g __fish_git_prompt_char_invalidstate "✖"
-      set -g __fish_git_prompt_color_invalidstate red
-
-      set -g __fish_git_prompt_char_cleanstate "✔"
-      set -g __fish_git_prompt_color_cleanstate green --bold
-
-      set -g __fish_prompt_normal (set_color normal)
+      set_color green --bold
+      _when_multiline "┌─╼ " 0
+      set_color normal
 
       if jobs -q
-          echo -n '⚙ '
+        echo -n '⚙ '
       end
 
       if test -n "$IN_NIX_SHELL"
@@ -134,16 +166,16 @@ in
       set -l prefix
       set -l suffix
       switch "$USER"
-          case root toor
-              if set -q fish_color_cwd_root
-                  set color_cwd $fish_color_cwd_root
-              else
-                  set color_cwd $fish_color_cwd
-              end
-              set suffix '#'
-          case '*'
-              set color_cwd $fish_color_cwd
-              set suffix '$'
+        case root toor
+          if set -q fish_color_cwd_root
+            set color_cwd $fish_color_cwd_root
+          else
+            set color_cwd $fish_color_cwd
+          end
+          set suffix '#'
+        case '*'
+          set color_cwd $fish_color_cwd
+          set suffix '$'
       end
 
       # PWD
@@ -153,10 +185,15 @@ in
 
       printf '%s ' (__fish_vcs_prompt)
 
+      _when_multiline "" 1
+      set_color green --bold
+      _when_multiline "└╼ " 0
+      set_color normal
+
       if not test $last_status -eq 0
-          set_color $fish_color_error --bold
+        set_color $fish_color_error --bold
       else
-          set_color green --bold
+        set_color green --bold
       end
 
       echo -n "$suffix "
