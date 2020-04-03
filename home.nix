@@ -124,6 +124,7 @@ in
     # enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
   };
 
   programs.direnv = {
