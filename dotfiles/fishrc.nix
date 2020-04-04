@@ -138,6 +138,8 @@ in
     end
 
     function fish_prompt --description 'Write out the prompt'
+      set -l last_status $status
+
       function _when_multiline -a str nl
         if test $__my_prompt_multiline = 1
           if test $nl = 1
@@ -147,8 +149,6 @@ in
           end
         end
       end
-
-      set -l last_status $status
 
       set_color green --bold
       _when_multiline "┌─╼ " 0
