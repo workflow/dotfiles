@@ -159,7 +159,7 @@ in
       end
 
       if test -n "$IN_NIX_SHELL"
-        echo -n "(nix-shell) "
+        echo -n "(nix) "
       end
 
       set -l color_cwd
