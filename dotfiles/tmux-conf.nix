@@ -9,7 +9,19 @@ let
     sha256 = "1kl93d0b28f4gn1knvbb248xw4vzb0f14hma9kba3blwn830d4bk";
   };
 
-  theme = if tmate then "" else ''
+  theme = if tmate then ''
+    set -g status-justify centre
+    set -g status-left "#S #[fg=green]#(echo $USER) #[default]"
+    set -g status-left-length 20
+    set -g status-left-style default
+    set -g status-right-length 140
+    set -g status-right-style default
+    set -g status-style fg=colour136,bg=colour236
+    set-window-option -g window-status-fg colour244
+    set-window-option -g window-status-bg default
+    set-window-option -g window-status-current-fg colour166
+    set-window-option -g window-status-current-bg default
+  '' else ''
     source-file ${tmux-themepack}/powerline/default/green.tmuxtheme
   '';
 
