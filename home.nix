@@ -20,8 +20,9 @@ in
       # vim
       ".vimrc".text = pkgs.callPackage ./dotfiles/vimrc.nix {};
 
-      # tmux
-      ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix {};
+      # tmux & tmate
+      ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = false; };
+      ".tmate.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = true; };
 
       # others
       ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};

@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, tmate ? false }:
 
 let
 
@@ -9,6 +9,10 @@ let
     sha256 = "1kl93d0b28f4gn1knvbb248xw4vzb0f14hma9kba3blwn830d4bk";
   };
 
+  theme = if tmate then "" else ''
+    source-file ${tmux-themepack}/powerline/default/green.tmuxtheme
+  '';
+
 in
 
 ''
@@ -16,7 +20,8 @@ in
   run-shell ${pkgs.tmuxPlugins.pain-control.rtp}
   run-shell ${pkgs.tmuxPlugins.sessionist.rtp}
   run-shell ${pkgs.tmuxPlugins.yank.rtp}
-  source-file ${tmux-themepack}/powerline/default/green.tmuxtheme
+
+  ${theme}
 
   set  -g default-terminal "screen-256color"
   set  -g base-index      1

@@ -44,6 +44,7 @@ let
       pkgs.system-config-printer
 
       pkgs.binutils-unwrapped
+      pkgs.gcolor3
       pkgs.git
       pkgs.gnumake
       pkgs.gnupg
@@ -71,6 +72,7 @@ let
 
       pkgs.tmux
       pkgs.vim
+      nixpkgs-unstable.tmate
 
       pkgs.python37
       pkgs.python37Packages.black

@@ -44,7 +44,12 @@
     };
   };
 
-  environment.systemPackages = with pkgs.xfce;
-    [ xfce4-battery-plugin xfce4-xkb-plugin xfce4-systemload-plugin ];
+  environment.systemPackages = with pkgs;
+    [
+      xfce.xfce4-battery-plugin
+      xfce.xfce4-xkb-plugin
+      xfce.xfce4-systemload-plugin
+      pkgs.adapta-gtk-theme
+    ];
 
 }
