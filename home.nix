@@ -8,6 +8,9 @@ let
   kbconfig = pkgs.callPackage ./packages/scripts/kbconfig.nix {};
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
 
+  scripts = pkgs.callPackage ./dotfiles/scripts.nix {};
+  autostart = pkgs.callPackage ./dotfiles/autostart.nix {};
+
 in
 
 {
@@ -23,6 +26,15 @@ in
       # tmux & tmate
       ".tmux.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = false; };
       ".tmate.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = true; };
+
+      # ~/bin
+      "bin/em" = { text = scripts.emacsclient; executable = true; };
+      "bin/xfce-init" = { text = scripts.xfce-init; executable = true; };
+      "bin/dpi" = { text = scripts.dpi; executable = true; };
+      "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
+
+      # xfce autostart
+      ".config/autostart/xfce-init.desktop".text = autostart.xfce-init;
 
       # others
       ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};
