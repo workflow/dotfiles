@@ -56,7 +56,7 @@ in
       };
       Service = {
         Type = "simple";
-        ExecStart = "${kbconfig}/bin/kbconfig keep";
+        ExecStart = "${kbconfig}/bin/kbconfig --ctrl-esc-fg";
         RemainAfterExit = "no";
         Restart = "always";
         RestartSec = "5s";

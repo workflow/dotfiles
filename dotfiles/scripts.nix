@@ -22,9 +22,14 @@ in
       ''
         ${shebang}
 
-        ${emacs}/bin/emacsclient -c -t -s ${wsp} $* || \
-          (${emacs}/bin/emacs --daemon=${wsp} && \
-             ${emacs}/bin/emacsclient -c -t -s ${wsp} $*)
+        if [ $# -eq 0 ]; then
+            args="."
+        else
+            args="$@"
+        fi
+
+        ${emacs}/bin/emacsclient -c -t -s ${wsp} $args || \
+          (${emacs}/bin/emacs --daemon=${wsp} && ${emacs}/bin/emacsclient -c -t -s ${wsp} $args)
       '';
 
   dpi = ''
