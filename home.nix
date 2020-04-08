@@ -36,7 +36,11 @@ in
       ".config/autostart/xmonad-init.desktop".text = autostart.xmonad-init;
 
       # others
-      ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};
+      ".config/bat/config".text = ''
+        --theme="Monokai Extended"
+        --style="header,grid"
+      '';
+      ".ghci".source = ./dotfiles/ghci;
     };
     sessionVariables = {
       PATH = "$HOME/.local/bin:$HOME/bin:$PATH";
