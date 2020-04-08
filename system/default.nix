@@ -49,7 +49,7 @@ in
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager.enable = true;
-  networking.hostName = "nixos";
+  networking.hostName = "seabeast";
   #networking.firewall.allowedTCPPorts = [ 80 ];
 
   virtualisation.docker = {
