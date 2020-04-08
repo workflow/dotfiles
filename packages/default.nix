@@ -13,7 +13,6 @@ let
   patat = pkgs.callPackage ./tools/patat.nix {};
   pydf = pkgs.callPackage ./tools/pydf.nix {};
 
-  cookie = pkgs.callPackage ./scripts/cookie.nix {};
   kbconfig = pkgs.callPackage ./scripts/kbconfig.nix {};
   i3lock-wrap = pkgs.callPackage ./scripts/i3lock-wrap {};
 
@@ -105,7 +104,6 @@ let
       patat
       pydf
 
-      cookie
       i3lock-wrap
       kbconfig
       xmonad-build

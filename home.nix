@@ -28,8 +28,9 @@ in
       ".tmate.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = true; };
 
       # ~/bin
-      "bin/em" = { text = scripts.emacsclient; executable = true; };
       "bin/dpi" = { text = scripts.dpi; executable = true; };
+      "bin/em" = { text = scripts.emacsclient; executable = true; };
+      "bin/cookie" = { text = scripts.cookie; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
       # xfce autostart
