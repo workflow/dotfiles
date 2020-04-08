@@ -12,9 +12,9 @@ in
 
     ./system
     ./system/desktop
-    ./system/keyboard
+    ./system/fonts.nix
+    ./system/keyboard.nix
     ./system/power
-    ./system/fonts
   ];
 
   environment.systemPackages = packages;

@@ -2,7 +2,7 @@
 
 let
 
-  i3lock-wrap = pkgs.callPackage ../../../packages/scripts/i3lock-wrap {};
+  i3lock-wrap = pkgs.callPackage ../../packages/scripts/i3lock-wrap {};
   lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
 in {

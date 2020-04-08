@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [ ./screen-lock ];
+  imports = [ ./screen-lock.nix ];
 
   # services.gnome3.gnome-terminal-server.enable = true;
   programs.gnome-terminal.enable = true;
