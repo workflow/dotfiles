@@ -29,12 +29,11 @@ in
 
       # ~/bin
       "bin/em" = { text = scripts.emacsclient; executable = true; };
-      "bin/xfce-init" = { text = scripts.xfce-init; executable = true; };
       "bin/dpi" = { text = scripts.dpi; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
       # xfce autostart
-      ".config/autostart/xfce-init.desktop".text = autostart.xfce-init;
+      ".config/autostart/xmonad-init.desktop".text = autostart.xmonad-init;
 
       # others
       ".ghci".text = pkgs.callPackage ./dotfiles/ghci.nix {};

@@ -46,10 +46,12 @@
 
   environment.systemPackages = with pkgs;
     [
+      xfce.dconf
+      xfce.xfconf
       xfce.xfce4-battery-plugin
       xfce.xfce4-xkb-plugin
       xfce.xfce4-systemload-plugin
-      pkgs.adapta-gtk-theme
+      adapta-gtk-theme
     ];
 
 }

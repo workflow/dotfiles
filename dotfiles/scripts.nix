@@ -2,8 +2,14 @@
 
 let
 
-  bash = "${pkgs.bash}/bin/bash";
-  shebang = "#!${bash}";
+  shebang = "#!${pkgs.bash}/bin/bash";
+
+  ensure-binary-exists = bin: ''
+    if ! command -v ${bin} > /dev/null; then
+      ${pkgs.xorg.xmessage}/bin/xmessage "'${bin}' not found"
+      exit 1
+    fi
+  '';
 
 in
 
@@ -20,11 +26,6 @@ in
           (${emacs}/bin/emacs --daemon=${wsp} && \
              ${emacs}/bin/emacsclient -c -t -s ${wsp} $*)
       '';
-
-  xfce-init = ''
-    ${shebang}
-    xmonad --replace
-  '';
 
   dpi = ''
     ${shebang}
@@ -76,5 +77,11 @@ in
     }
 
     main "$@"
+  '';
+
+  xmonad-init = ''
+    ${shebang}
+    ${ensure-binary-exists "xmonad"}
+    xmonad --replace
   '';
 }
