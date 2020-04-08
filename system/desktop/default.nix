@@ -1,5 +1,12 @@
 { pkgs, lib, ... }:
 
+let
+
+  sources = import ../../nix/sources.nix;
+  nixpkgs-unstable = import sources.nixpkgs-unstable {};
+
+in
+
 {
   imports = [ ./screen-lock.nix ];
 
@@ -44,14 +51,16 @@
     };
   };
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
     [
-      xfce.dconf
-      xfce.xfconf
-      xfce.xfce4-battery-plugin
-      xfce.xfce4-xkb-plugin
-      xfce.xfce4-systemload-plugin
-      adapta-gtk-theme
+      pkgs.xfce.dconf
+      pkgs.xfce.xfconf
+      pkgs.xfce.xfce4-battery-plugin
+      pkgs.xfce.xfce4-xkb-plugin
+      pkgs.xfce.xfce4-systemload-plugin
+      # pkgs.adapta-gtk-theme
+      # pkgs.theme-vertex
+      nixpkgs-unstable.vimix-gtk-themes
     ];
 
 }
