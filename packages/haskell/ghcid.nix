@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -9,4 +9,5 @@ let
     sha256 = "020g3032gggxllnapqf7nbg5wqjg3c2z190f2jx3cl6z0fswgiwz";
   };
 
-in pkgs.haskellPackages.callCabal2nix "ghcid" src { }
+in
+pkgs.haskellPackages.callCabal2nix "ghcid" src {}

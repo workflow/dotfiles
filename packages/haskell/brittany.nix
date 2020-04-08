@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -9,6 +9,7 @@ let
     sha256 = "06l7c0ba8asfvkv6xxg3hf9gwjls2fysix8ldsb1rdp9x5ycdpp0";
   };
 
-  brittany = pkgs.haskellPackages.callCabal2nix "brittany" src { };
+  brittany = pkgs.haskellPackages.callCabal2nix "brittany" src {};
 
-in pkgs.haskell.lib.doJailbreak brittany
+in
+pkgs.haskell.lib.doJailbreak brittany

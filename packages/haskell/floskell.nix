@@ -1,9 +1,9 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
   sources = import ../../nix/sources.nix;
-  nixos-beta = import sources.nixos-beta { };
+  nixos-beta = import sources.nixos-beta {};
 
   src = pkgs.fetchFromGitHub {
     owner = "ennocramer";
@@ -14,7 +14,8 @@ let
 
   floskell = nixos-beta.haskellPackages.callCabal2nix "floskell" src {
     monad-dijkstra = pkgs.haskell.lib.dontCheck
-      (pkgs.haskellPackages.callHackage "monad-dijkstra" "0.1.1.2" { });
+      (pkgs.haskellPackages.callHackage "monad-dijkstra" "0.1.1.2" {});
   };
 
-in nixos-beta.haskell.lib.doJailbreak floskell
+in
+nixos-beta.haskell.lib.doJailbreak floskell

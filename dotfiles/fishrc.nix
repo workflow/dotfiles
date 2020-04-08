@@ -88,7 +88,8 @@ let
 
 in
 
-{ shellInit = ''
+{
+  shellInit = ''
     eval (${pkgs.direnv}/bin/direnv hook fish)
 
     # export WORKON_HOME=$HOME/.virtualenvs

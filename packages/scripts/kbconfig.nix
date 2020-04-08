@@ -2,7 +2,7 @@
 
 let
 
-  myLib = pkgs.callPackage ../../lib.nix { };
+  myLib = pkgs.callPackage ../../lib.nix {};
   setxkbmap = "${pkgs.xorg.setxkbmap}/bin/setxkbmap";
   xset = "${pkgs.xorg.xset}/bin/xset";
   xcape = "${pkgs.xcape}/bin/xcape";

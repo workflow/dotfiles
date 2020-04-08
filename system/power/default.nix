@@ -2,9 +2,10 @@
 
 let
 
-  tpacpi-bat = pkgs.callPackage ./tpacpi-bat { };
+  tpacpi-bat = pkgs.callPackage ./tpacpi-bat {};
 
-in {
+in
+{
   imports = [ ./tlp.nix ];
 
   powerManagement.powertop.enable = true;

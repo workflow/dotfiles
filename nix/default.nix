@@ -4,11 +4,12 @@ let
 
   sources = import ./sources.nix;
 
-in {
+in
+{
 
   nix = {
     # trusted users for pulling from caches
-    trustedUsers = [ "root" "alex" "@wheel" "@sudo"];
+    trustedUsers = [ "root" "alex" "@wheel" "@sudo" ];
     # required for building with bazel
     nrBuildUsers = 128;
 

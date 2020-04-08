@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 pkgs.python3Packages.buildPythonPackage rec {
   pname = "pydf";

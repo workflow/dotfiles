@@ -5,7 +5,8 @@ let
   i3lock-wrap = pkgs.callPackage ../../packages/scripts/i3lock-wrap {};
   lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
-in {
+in
+{
   # lock after 10 minutes
   services.xserver.xautolock = {
     enable = true;

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { }, overrides ? { } }:
+{ pkgs ? import <nixpkgs> {}, overrides ? {} }:
 
 let
 
@@ -9,4 +9,5 @@ let
     sha256 = "0ajyvhbq1czdn216bljvjs8ydkzfbaaf809r8yg187av9j7hsbhr";
   };
 
-in pkgs.haskellPackages.callCabal2nix "ormolu" src overrides
+in
+pkgs.haskellPackages.callCabal2nix "ormolu" src overrides

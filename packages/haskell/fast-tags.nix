@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -9,5 +9,5 @@ let
     sha256 = "0868k4w5s771yqmi4hsz09f3d21whl7s85mmnldk3fz2aiqdffgf";
   };
 
-in pkgs.haskellPackages.callCabal2nix "fast-tags" src { }
-
+in
+pkgs.haskellPackages.callCabal2nix "fast-tags" src {}

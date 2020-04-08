@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -9,6 +9,7 @@ let
     sha256 = "1b2vjnn8iac5iiqszjc2v1s1ygh0yri998c0k3s4x4kn0dsqik21";
   };
 
-  niv = pkgs.haskellPackages.callCabal2nix "niv" src { };
+  niv = pkgs.haskellPackages.callCabal2nix "niv" src {};
 
-in niv
+in
+niv

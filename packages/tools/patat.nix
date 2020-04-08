@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -9,6 +9,7 @@ let
     sha256 = "1fmh4h501f0vyygh10dc0b4njsrwicpz5nbqcvjykqs94vy7j113";
   };
 
-  patat = pkgs.haskellPackages.callCabal2nix "nixfmt" src { };
+  patat = pkgs.haskellPackages.callCabal2nix "nixfmt" src {};
 
-in patat
+in
+patat

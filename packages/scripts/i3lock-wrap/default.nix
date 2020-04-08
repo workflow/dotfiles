@@ -2,7 +2,7 @@
 
 let
 
-  myLib = pkgs.callPackage ../../../lib.nix { };
+  myLib = pkgs.callPackage ../../../lib.nix {};
 
 in
 
