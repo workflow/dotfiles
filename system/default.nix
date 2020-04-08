@@ -49,7 +49,7 @@ in
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager.enable = true;
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   #networking.firewall.allowedTCPPorts = [ 80 ];
 
   virtualisation.docker = {

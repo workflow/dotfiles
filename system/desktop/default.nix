@@ -58,6 +58,7 @@ in
       pkgs.xfce.xfce4-battery-plugin
       pkgs.xfce.xfce4-xkb-plugin
       pkgs.xfce.xfce4-systemload-plugin
+      pkgs.xfce.xfce4-cpugraph-plugin
       pkgs.adapta-gtk-theme
       nixpkgs-unstable.vimix-gtk-themes
     ];
