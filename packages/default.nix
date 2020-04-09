@@ -28,6 +28,9 @@ let
 
   transcribe = pkgs.callPackage ./tools/transcribe.nix {};
 
+  indicator-redshift = pkgs.callPackage ./tools/indicator-redshift {};
+  indicator-tpacpi = pkgs.callPackage ./tools/indicator-tpacpi {};
+
   packages =
     [
       pkgs.acpilight
@@ -103,6 +106,9 @@ let
       niv
       patat
       pydf
+
+      indicator-redshift
+      indicator-tpacpi
 
       i3lock-wrap
       kbconfig

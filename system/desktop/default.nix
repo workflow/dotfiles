@@ -5,6 +5,9 @@ let
   sources = import ../../nix/sources.nix;
   nixpkgs-unstable = import sources.nixpkgs-unstable {};
 
+  indicator-tpacpi = pkgs.callPackage ../../packages/tools/indicator-tpacpi {};
+  indicator-redshift = pkgs.callPackage ../../packages/tools/indicator-redshift {};
+
 in
 
 {
@@ -36,8 +39,8 @@ in
         extraSessionCommands = ''
           (sleep 6 && xset dpms 0 0 600) &
           ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
-          ~/projects/indicators/indicator-charge/run-indicator &
-          ~/projects/indicators/indicator-redshift/run-indicator &
+          ${indicator-tpacpi}/bin/indicator-tpacpi &
+          ${indicator-redshift}/bin/indicator-redshift &
           ${pkgs.dropbox}/bin/dropbox &
         '';
       };
