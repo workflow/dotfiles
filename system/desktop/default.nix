@@ -2,9 +2,6 @@
 
 let
 
-  sources = import ../../nix/sources.nix;
-  nixpkgs-unstable = import sources.nixpkgs-unstable {};
-
   indicator-tpacpi = pkgs.callPackage ../../packages/tools/indicator-tpacpi {};
   indicator-redshift = pkgs.callPackage ../../packages/tools/indicator-redshift {};
 
@@ -62,8 +59,6 @@ in
       pkgs.xfce.xfce4-xkb-plugin
       pkgs.xfce.xfce4-systemload-plugin
       pkgs.xfce.xfce4-cpugraph-plugin
-      pkgs.adapta-gtk-theme
-      nixpkgs-unstable.vimix-gtk-themes
     ];
 
 }
