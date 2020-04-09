@@ -2,7 +2,7 @@
 
 let
 
-  i3lock-wrap = pkgs.callPackage ../../packages/scripts/i3lock-wrap {};
+  i3lock-wrap = pkgs.callPackage ../../packages/tools/i3lock-wrap {};
   lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
 in
@@ -24,6 +24,6 @@ in
     lockerCommand = lock-cmd;
   };
 
-  systemd.user.services.xss-lock.serviceConfig.Restart = "always";
+  systemd.user.services.xss-lock.serviceConfig.Restart = lib.mkForce "always";
 
 }

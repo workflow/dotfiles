@@ -8,28 +8,22 @@ let
   # TODO: build emacs with a pinned nixpkgs
   emacs-27 = pkgs.callPackage ./emacs.nix {};
 
+  latex = pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-medium latexmk paralist;
+  };
+
+  i3lock-wrap = pkgs.callPackage ./tools/i3lock-wrap {};
+  indicator-redshift = pkgs.callPackage ./tools/indicator-redshift {};
+  indicator-tpacpi = pkgs.callPackage ./tools/indicator-tpacpi {};
+  kbconfig = pkgs.callPackage ./tools/kbconfig.nix {};
   niv = pkgs.callPackage ./tools/niv.nix {};
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
   patat = pkgs.callPackage ./tools/patat.nix {};
   pydf = pkgs.callPackage ./tools/pydf.nix {};
-
-  kbconfig = pkgs.callPackage ./scripts/kbconfig.nix {};
-  i3lock-wrap = pkgs.callPackage ./scripts/i3lock-wrap {};
-
-  latex = pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-medium latexmk paralist
-      ;
-  };
-
-  xmonad-build = pkgs.callPackage ./scripts/xmonad-build.nix {};
+  transcribe = pkgs.callPackage ./tools/transcribe.nix {};
+  xmonad-build = pkgs.callPackage ./tools/xmonad-build.nix {};
 
   haskellPackages = pkgs.callPackage ./haskell {};
-
-  transcribe = pkgs.callPackage ./tools/transcribe.nix {};
-
-  indicator-redshift = pkgs.callPackage ./tools/indicator-redshift {};
-  indicator-tpacpi = pkgs.callPackage ./tools/indicator-tpacpi {};
 
   packages =
     [

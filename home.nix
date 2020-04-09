@@ -5,7 +5,7 @@ let
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
   terminalFont = "Hack 10.5";
-  kbconfig = pkgs.callPackage ./packages/scripts/kbconfig.nix {};
+  kbconfig = pkgs.callPackage ./packages/tools/kbconfig.nix {};
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
 
   scripts = pkgs.callPackage ./dotfiles/scripts.nix {};

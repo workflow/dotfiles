@@ -3,7 +3,7 @@
 let
 
   ghc = pkgs.callPackage ../packages/haskell/ghc.nix {};
-  home-manager = import ../home-manager.nix;
+  home-manager = import ../nix/home-manager.nix;
 
 in
 
