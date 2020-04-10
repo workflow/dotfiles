@@ -32,36 +32,69 @@ in
           (${emacs}/bin/emacs --daemon=${wsp} && ${emacs}/bin/emacsclient -c -t -s ${wsp} $args)
       '';
 
-  dpi = ''
-    ${shebang}
-    declare -r query="${pkgs.xfce.xfconf}/bin/xfconf-query -c xsettings -p /Xft/DPI"
-    declare -r lo="83"
-    declare -r off="-1"
-    declare -r hi="110"
+  xfce-manage =
+    let
+      xfconf-query = "${pkgs.xfce.xfconf}/bin/xfconf-query";
+    in
+      ''
+        ${shebang}
+        usage() {
+            cat <<EOF
+        Usage: xfce-manage [mode]
 
-    get() {
-        declare -r cur="$(eval $query)"
-        echo -ne $cur
-    }
+        available modes:
 
-    set() {
-        declare -r new="$1"
-        eval "$query -s $new"
-    }
+          --dpi      toggle dpi
+          --panel    toggle panel size
 
-    toggle() {
-        declare -r cur="$(get)"
-        if [ "$cur" == "$off" ]; then
-            set "$hi"
-        elif [ "$cur" == "$hi" ]; then
-            set "$lo"
-        else
-            set "$off"
-        fi
-    }
+        EOF
+        }
 
-    toggle
-  '';
+        toggle_dpi() {
+            declare -r query="${xfconf-query} -c xsettings -p /Xft/DPI"
+            declare -r small="83"
+            declare -r medium="-1"
+            declare -r large="110"
+            declare -r cur="$(eval $query)"
+
+            if [ "$cur" == "$medium" ]; then
+                eval "$query -s $large"
+            elif [ "$cur" == "$large" ]; then
+                eval "$query -s $small"
+            else
+                eval "$query -s $medium"
+            fi
+        }
+
+        toggle_panel_size() {
+            declare -r query="${xfconf-query} -c xfce4-panel -p /panels/panel-1/size"
+            declare -r small="24"
+            declare -r large="36"
+            declare -r cur="$(eval $query)"
+
+            if [ "$cur" == "$small" ]; then
+                eval "$query -s $large"
+            else
+                eval "$query -s $small"
+            fi
+        }
+
+        case "$1" in
+            --dpi)
+                toggle_dpi
+                ;;
+            --panel)
+                toggle_panel_size
+                ;;
+            -h | --help)
+                usage
+                ;;
+            *)
+                usage
+                exit 1
+                ;;
+        esac
+      '';
 
   gen-gitignore = ''
     ${shebang}

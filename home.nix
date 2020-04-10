@@ -30,7 +30,7 @@ in
       ".tmate.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = true; };
 
       # ~/bin
-      "bin/dpi" = { text = scripts.dpi; executable = true; };
+      "bin/xfce-manage" = { text = scripts.xfce-manage; executable = true; };
       "bin/em" = { text = scripts.emacsclient; executable = true; };
       "bin/cookie" = { text = scripts.cookie; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
