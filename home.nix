@@ -11,6 +11,8 @@ let
   scripts = pkgs.callPackage ./dotfiles/scripts.nix {};
   autostart = pkgs.callPackage ./dotfiles/autostart.nix {};
 
+  emacs = pkgs.callPackage ./packages/emacs.nix {};
+
 in
 
 {
@@ -65,6 +67,21 @@ in
         RemainAfterExit = "no";
         Restart = "always";
         RestartSec = "5s";
+      };
+    };
+    emacs = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "Emacs server";
+        After = "graphical-session-pre.target";
+      };
+      Service = {
+        Type = "notify";
+        ExecStart = "${emacs}/bin/emacs --fg-daemon";
+        ExecStop = "${emacs}/bin/emacsclient --eval '(kill-emacs)'";
+        Restart = "on-failure";
       };
     };
   };
