@@ -11,15 +11,14 @@ let
       ''
         [Desktop Entry]
         Encoding=UTF-8
-        Version=0.9.4
         Type=Application
-        Name=${name}
-        Comment=${name}
-        Exec=${drv}/bin/autostart-${name}
         OnlyShowIn=XFCE;
         StartupNotify=false
         Terminal=false
         Hidden=false
+        Name=${name}
+        Comment=${name}
+        Exec=${drv}/bin/autostart-${name}
       '';
 
 in

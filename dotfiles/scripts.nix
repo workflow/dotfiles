@@ -14,7 +14,7 @@ let
 in
 
 {
-  emacsclient =
+  em =
     let
       wsp = "wsp-term";
       emacs = pkgs.callPackage ../packages/emacs.nix {};

@@ -31,7 +31,7 @@ in
 
       # ~/bin
       "bin/xfce-manage" = { text = scripts.xfce-manage; executable = true; };
-      "bin/em" = { text = scripts.emacsclient; executable = true; };
+      "bin/em" = { text = scripts.em; executable = true; };
       "bin/cookie" = { text = scripts.cookie; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
@@ -158,7 +158,7 @@ in
     # enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
+    # fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
   };
 
   programs.direnv = {
