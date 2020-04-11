@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs }:
 
 pkgs.tpacpi-bat.overrideAttrs (
   old: {

@@ -14,7 +14,7 @@ in
     ./system/desktop
     ./system/fonts.nix
     ./system/keyboard.nix
-    ./system/power
+    ./system/power.nix
   ];
 
   environment.systemPackages = packages;

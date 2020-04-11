@@ -1,6 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
 
+let
+
+  tpacpi-bat = pkgs.callPackage ../packages/tools/tpacpi-bat.nix {};
+
+in
 {
+  powerManagement.powertop.enable = true;
+
   services.tlp = {
     enable = true;
     extraConfig = ''
@@ -45,4 +52,11 @@
       RESTORE_DEVICE_STATE_ON_STARTUP=0
     '';
   };
+
+  services.acpid.acEventCommands = ''
+    echo -1 > /sys/module/usbcore/parameters/autosuspend
+  '';
+
+  environment.systemPackages = [ tpacpi-bat ];
+
 }
