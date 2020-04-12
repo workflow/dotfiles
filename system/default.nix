@@ -1,21 +1,6 @@
 { pkgs, ... }:
 
-let
-
-  ghc = pkgs.callPackage ../packages/haskell/ghc.nix {};
-  home-manager = import ../nix/home-manager.nix;
-
-in
-
 {
-
-  imports = [ (import "${home-manager}/nixos") ];
-
-  home-manager = {
-    # useGlobalPkgs = true;
-    users.alex = import ../home.nix;
-  };
-
   environment = {
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets

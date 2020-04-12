@@ -9,6 +9,7 @@ in
 {
   imports = [
     ./nix
+    ./nix/home-manager.nix
 
     ./system
     ./system/desktop
