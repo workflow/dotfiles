@@ -12,7 +12,7 @@ in
     ./nix/home-manager.nix
 
     ./system
-    ./system/desktop
+    ./system/desktop.nix
     ./system/fonts.nix
     ./system/keyboard.nix
     ./system/power.nix

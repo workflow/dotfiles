@@ -2,14 +2,15 @@
 
 let
 
-  indicator-tpacpi = pkgs.callPackage ../../packages/tools/indicator-tpacpi {};
-  indicator-redshift = pkgs.callPackage ../../packages/tools/indicator-redshift {};
+  indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
+  indicator-tpacpi = pkgs.callPackage ../packages/tools/indicator-tpacpi {};
+
+  i3lock-wrap = pkgs.callPackage ../packages/tools/i3lock-wrap {};
+  lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
 in
 
 {
-  imports = [ ./screen-lock.nix ];
-
   # services.gnome3.gnome-terminal-server.enable = true;
   programs.gnome-terminal.enable = true;
 
@@ -50,6 +51,23 @@ in
       };
     };
   };
+
+  # lock screen after 10 minutes
+  services.xserver.xautolock = {
+    enable = true;
+    nowlocker = lock-cmd;
+    locker = lock-cmd;
+    time = 10;
+    extraOptions = [ "-corners" "0--0" "-cornersize" "30" ];
+  };
+  systemd.user.services.xautolock.serviceConfig.Restart = lib.mkForce "always";
+
+  # lock on laptop lid close
+  programs.xss-lock = {
+    enable = true;
+    lockerCommand = lock-cmd;
+  };
+  systemd.user.services.xss-lock.serviceConfig.Restart = lib.mkForce "always";
 
   environment.systemPackages =
     [

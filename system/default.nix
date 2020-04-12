@@ -20,17 +20,6 @@
 
   time.timeZone = "Europe/London";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.initrd.luks.devices = [
-    {
-      name = "root";
-      device = "/dev/sda2";
-      preLVM = true;
-    }
-  ];
-
   boot.supportedFilesystems = [ "ntfs" ];
 
   networking.networkmanager.enable = true;
