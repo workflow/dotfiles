@@ -9,7 +9,11 @@ let
   emacs-27 = pkgs.callPackage ./emacs.nix {};
 
   latex = pkgs.texlive.combine {
-    inherit (pkgs.texlive) scheme-medium latexmk paralist;
+    inherit (pkgs.texlive)
+      scheme-medium
+      latexmk
+      paralist
+      ;
   };
 
   i3lock-wrap = pkgs.callPackage ./tools/i3lock-wrap {};
