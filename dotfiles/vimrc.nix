@@ -144,6 +144,15 @@ in
       highlight VertSplit ctermfg=252 ctermbg=238
       highlight haskellBottom ctermfg=Red
       highlight haskellFail ctermfg=LightRed
+      highlight haskellImportKeywords ctermfg=DarkCyan
+      highlight haskellWhere ctermfg=DarkCyan
+      highlight haskellLet ctermfg=DarkCyan
+      highlight haskellDefault ctermfg=DarkCyan
+      highlight haskellStatic ctermfg=DarkCyan
+      highlight haskellConditional ctermfg=DarkCyan
+      highlight haskellForall ctermfg=DarkCyan
+      highlight haskellPatternKeyword ctermfg=DarkCyan
+      highlight haskellTypeRoles ctermfg=DarkCyan
       let g:airline_theme='luna'
   else
       let g:lucius_style = 'light'
