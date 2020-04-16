@@ -40,7 +40,7 @@ in
 
       # others
       ".config/bat/config".text = ''
-        --theme="Monokai Extended"
+        --theme="TwoDark"
         --style="header,grid"
       '';
       ".ghci".source = ./dotfiles/ghci;
@@ -98,6 +98,7 @@ in
       lla = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       c = "commit --verbose";
       a = "add -A";
+      pr = ''!git pull --rebase "$(git rev-parse --abbrev-ref HEAD)"'';
       fl = "log -u";
       count = "shortlog -s -n --all";
       squash = "rebase -i HEAD^^";
