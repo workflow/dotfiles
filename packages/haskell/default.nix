@@ -4,10 +4,7 @@ let
 
   hsLib = import ./lib.nix { pkgs = pkgs; };
 
-  sources = import ../../nix/sources.nix;
-  nixos-beta = import sources.nixos-beta {};
-
-  ghc-lib-parser = nixos-beta.haskellPackages.ghc-lib-parser_8_8_1;
+  ghc-lib-parser = pkgs.haskellPackages.ghc-lib-parser_8_8_1;
   ghc-lib-parser-ex = hsLib.fetchFromHackage {
     name = "ghc-lib-parser-ex";
     version = "8.8.2";
