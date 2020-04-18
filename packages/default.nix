@@ -35,7 +35,6 @@ let
       pkgs.gnome3.gedit
       pkgs.gnome3.nautilus
       pkgs.htop
-      pkgs.i3lock-fancy
       pkgs.openvpn
       pkgs.pavucontrol
       pkgs.playerctl
@@ -75,6 +74,7 @@ let
       nixpkgs-unstable.tmate
 
       pkgs.python37
+      pkgs.python37Packages.ipython
       pkgs.python37Packages.black
 
       pkgs.coq

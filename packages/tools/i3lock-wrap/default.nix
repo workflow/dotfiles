@@ -7,6 +7,6 @@ pkgs.writeScriptBin "i3lock-wrap" ''
       echo "Already locked"
       exit 0
   else
-      ${pkgs.i3lock}/bin/i3lock -n -i ${./lock.png} "$@"
+      ${pkgs.i3lock}/bin/i3lock -n -e -f -i ${./lock.png} "$@"
   fi
 ''

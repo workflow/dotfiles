@@ -13,6 +13,20 @@ let
     )}
   '';
 
+  edit-cmd = ''
+    function edit_cmd --description 'Edit cmdline in editor'
+          set -l f (mktemp --tmpdir=.)
+          set -l p (commandline -C)
+          commandline -b > $f
+          vim -c set\ ft=fish $f
+          commandline -r (more $f)
+          commandline -C $p
+          rm $f
+    end
+
+    bind \cx\ce edit_cmd
+  '';
+
   variables = ''
     set -g fish_key_bindings fish_default_key_bindings
     set fish_greeting  # disable greeting
@@ -122,6 +136,7 @@ in
     end
 
     ${extra}
+    ${edit-cmd}
     ${variables}
     ${theme}
   '';
