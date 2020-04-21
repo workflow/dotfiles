@@ -5,6 +5,7 @@
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
     '';
+    etc.hosts.mode = "0644";
   };
 
   programs.fish.enable = true; # to add entry in /etc/shells
@@ -18,17 +19,14 @@
     defaultUserShell = pkgs.bash;
   };
 
+  networking.hostName = "seabeast";
+
   time.timeZone = "Europe/London";
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking = {
-    networkmanager.enable = true;
-
-    hostName = "seabeast";
-
-    # firewall.allowedTCPPorts = [ 80 ];
-  };
+  networking.networkmanager.enable = true;
+  # networking.firewall.allowedTCPPorts = [ 80 ];
 
   virtualisation.docker = {
     enable = true;
