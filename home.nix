@@ -67,6 +67,23 @@ in
         RestartSec = "5s";
       };
     };
+    wiki = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "Wiki";
+        After = "graphical-session-pre.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart =
+          "${pkgs.python37}/bin/python -m http.server 23456 -b localhost -d %h/Dropbox/emacs/deft";
+        RemainAfterExit = "no";
+        Restart = "always";
+        RestartSec = "3s";
+      };
+    };
   };
 
   programs.git = {

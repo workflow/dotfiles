@@ -22,9 +22,13 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.networkmanager.enable = true;
-  networking.hostName = "seabeast";
-  #networking.firewall.allowedTCPPorts = [ 80 ];
+  networking = {
+    networkmanager.enable = true;
+
+    hostName = "seabeast";
+
+    # firewall.allowedTCPPorts = [ 80 ];
+  };
 
   virtualisation.docker = {
     enable = true;

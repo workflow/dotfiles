@@ -42,6 +42,7 @@ let
       pkgs.redshift
       pkgs.system-config-printer
 
+      pkgs.bind
       pkgs.binutils-unwrapped
       pkgs.gcolor3
       pkgs.git

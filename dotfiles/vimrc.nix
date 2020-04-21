@@ -15,7 +15,7 @@ in
   let g:haskell_enable_pattern_synonyms = 1 " highlighting `pattern`
   let g:haskell_enable_typeroles = 1        " highlighting type roles
   let g:haskell_enable_static_pointers = 1  " highlighting `static`
-  let g:haskell_backpack = 1 " highlighting backpack keywords
+  let g:haskell_backpack = 1                " highlighting backpack keywords
   let g:haskell_indent_disable = 1
 
   set rtp+=~/.vim/bundle/Vundle.vim
@@ -38,6 +38,7 @@ in
   Plugin 'leafgarland/typescript-vim'
   Plugin 'neovimhaskell/haskell-vim'
   Plugin 'peitalin/vim-jsx-typescript'
+  Plugin 'chr4/nginx.vim'
 
   " themes & ui
   Plugin 'freeo/vim-kalisi'
