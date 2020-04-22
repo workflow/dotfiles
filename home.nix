@@ -42,6 +42,7 @@ in
         --style="header,grid"
       '';
       ".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
+      ".config/rofi/config.rasi".source = ./dotfiles/rofi;
       ".ghci".source = ./dotfiles/ghci;
     };
     sessionVariables = {

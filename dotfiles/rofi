@@ -1,0 +1,9 @@
+configuration {
+  matching: "fuzzy";
+  theme: "lb";
+  show-icons: true;
+  kb-mode-next: "Alt+m";
+  sort: true;
+  sorting-method: "fzf";
+  terminal: "gnome-terminal";
+}

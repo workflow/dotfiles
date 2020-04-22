@@ -15,7 +15,7 @@ let
     ${shebang}
     cat "$1" \
         | cut -d ',' -f 1 \
-        | ${pkgs.rofi}/bin/rofi -theme lb -matching fuzzy -no-levenshtein-sort -sort -dmenu -p "run" \
+        | ${pkgs.rofi}/bin/rofi -theme lb -matching fuzzy -sorting-method fzf -sort -dmenu -p "run" \
         | head -n 1 \
         | xargs -i --no-run-if-empty grep "{}" "$1" \
         | cut -d ',' -f 2 \
