@@ -2,17 +2,6 @@
 
 let
 
-  profile = pkgs.callPackage ./profile.nix {};
-
-  extra = ''
-
-    ${pkgs.lib.concatStringsSep "\n"
-    (
-      pkgs.lib.mapAttrsToList (k: v: "alias ${k} ${pkgs.lib.escapeShellArg v}")
-        profile.aliases
-    )}
-  '';
-
   edit-cmd = ''
     function edit_cmd --description 'Edit cmdline in editor'
           set -l f (mktemp --tmpdir=.)
@@ -91,15 +80,6 @@ let
     set -g fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
   '';
 
-  fzf = {
-    key-bindings = ''
-      if command -s fzf-share >/dev/null
-        source (fzf-share)/key-bindings.fish
-      end
-      fzf_key_bindings
-    '';
-  };
-
 in
 
 {
@@ -127,15 +107,10 @@ in
       eval "nix-shell -p 'python37.withPackages (pkgs: with pkgs; [ ipython $argv ])'"
     end
 
-    function fish_user_key_bindings
-      ${fzf.key-bindings}
-    end
-
     # messes with emacs
     function fish_title
     end
 
-    ${extra}
     ${edit-cmd}
     ${variables}
     ${theme}

@@ -122,6 +122,7 @@ in
     enable = true;
     interactiveShellInit = fishrc.shellInit;
     promptInit = fishrc.promptInit;
+    shellAliases = profile.aliases;
   };
 
   programs.bash = {
@@ -157,7 +158,7 @@ in
 
   programs.fzf = {
     enable = true;
-    # enableFishIntegration = true;
+    enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
     # fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
