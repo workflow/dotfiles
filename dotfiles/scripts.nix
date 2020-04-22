@@ -11,6 +11,32 @@ let
     fi
   '';
 
+  rofi-runner = pkgs.writeScriptBin "rofi-runner" ''
+    ${shebang}
+    cat "$1" \
+        | cut -d ',' -f 1 \
+        | ${pkgs.rofi}/bin/rofi -theme lb -matching fuzzy -no-levenshtein-sort -sort -dmenu -p "run" \
+        | head -n 1 \
+        | xargs -i --no-run-if-empty grep "{}" "$1" \
+        | cut -d ',' -f 2 \
+        | head -n 1 \
+        | xargs -i --no-run-if-empty ${pkgs.bash}/bin/bash -c "{}"
+    exit 0
+  '';
+
+  mkRunner = name: args:
+  let
+    mapping = pkgs.lib.forEach args ({name, command}:
+      "${name},${command}"
+    );
+    mapFile = pkgs.writeText "rofi-runner-${name}-args" ''
+      ${pkgs.lib.concatStringsSep "\n" mapping}
+    '';
+  in ''
+    ${shebang}
+    ${rofi-runner}/bin/rofi-runner ${mapFile}
+  '';
+
 in
 
 {
@@ -31,6 +57,12 @@ in
         ${emacs}/bin/emacsclient -c -t -s ${wsp} $args || \
           (${emacs}/bin/emacs --daemon=${wsp} && ${emacs}/bin/emacsclient -c -t -s ${wsp} $args)
       '';
+
+  session-quit = mkRunner "session-quit" [
+    { name = "Logout"; command = "${pkgs.procps}/bin/pkill xmonad"; }
+    { name = "Restart"; command = "systemctl reboot"; }
+    { name = "Shutdown"; command = "systemctl poweroff"; }
+  ];
 
   xfce-manage =
     let

@@ -8,6 +8,8 @@ let
   i3lock-wrap = pkgs.callPackage ../packages/tools/i3lock-wrap {};
   lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
 
+  trayer-wrap = pkgs.callPackage ../packages/tools/trayer-wrap.nix {};
+
 in
 
 {
@@ -23,29 +25,35 @@ in
     };
 
     displayManager = {
-      gdm.enable = true;
+      gdm = {
+        enable = true;
+        wayland = false;
+      };
       sddm.enable = lib.mkForce false;
+      defaultSession = "none+xmonad";
+      sessionCommands = ''
+        (sleep 6 && xset dpms 0 0 600) &
+        ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
+        ${indicator-tpacpi}/bin/indicator-tpacpi &
+        ${indicator-redshift}/bin/indicator-redshift &
+        ${pkgs.dropbox}/bin/dropbox &
+        ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        ${trayer-wrap}/bin/trayer-wrap &
+        ${pkgs.dunst}/bin/dunst &
+        ${pkgs.feh}/bin/feh --bg-max ${../assets/wallpaper.png}
+      '';
     };
 
     desktopManager = {
-      default = "xfce";
       plasma5.enable = lib.mkForce false;
       xfce = {
         enable = true;
         noDesktop = false;
         enableXfwm = false;
-        extraSessionCommands = ''
-          (sleep 6 && xset dpms 0 0 600) &
-          ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
-          ${indicator-tpacpi}/bin/indicator-tpacpi &
-          ${indicator-redshift}/bin/indicator-redshift &
-          ${pkgs.dropbox}/bin/dropbox &
-        '';
       };
     };
 
     windowManager = {
-      default = "xmonad";
       xmonad = {
         enable = true;
       };

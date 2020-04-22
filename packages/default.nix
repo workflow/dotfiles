@@ -25,13 +25,17 @@ let
   patat = pkgs.callPackage ./tools/patat.nix {};
   pydf = pkgs.callPackage ./tools/pydf.nix {};
   transcribe = pkgs.callPackage ./tools/transcribe.nix {};
+  trayer-wrap = pkgs.callPackage ./tools/trayer-wrap.nix {};
   xmonad-build = pkgs.callPackage ./tools/xmonad-build.nix {};
 
   haskellPackages = pkgs.callPackage ./haskell {};
 
+  dunst = pkgs.dunst.override { dunstify = true; };
+
   packages =
     [
       pkgs.acpilight
+      pkgs.brightnessctl
       pkgs.gnome3.gedit
       pkgs.gnome3.nautilus
       pkgs.htop
@@ -48,6 +52,7 @@ let
       pkgs.git
       pkgs.gnumake
       pkgs.gnupg
+      pkgs.gsimplecal
       pkgs.ispell
       pkgs.nixpkgs-fmt
       pkgs.tree
@@ -55,7 +60,7 @@ let
       pkgs.xclip
       pkgs.xorg.xmessage
 
-      latex
+      # latex
 
       pkgs.ag
       pkgs.bat
@@ -91,6 +96,11 @@ let
       pkgs.vlc
       pkgs.zoom-us
 
+      dunst
+      pkgs.trayer
+      trayer-wrap
+      pkgs.xmobar
+
       pkgs.audacity
       transcribe
 
@@ -100,10 +110,9 @@ let
 
       # pkgs.dwarf-fortress-packages.dwarf-fortress
 
-      # overlays & custom pkgs
       emacs-27
       niv
-      patat
+      # patat
       pydf
 
       indicator-redshift

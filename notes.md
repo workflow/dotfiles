@@ -23,6 +23,12 @@ chattr -i /sys/firmware/efi/efivars/LoaderConfigTimeout-....
 nix-shell -p efibootmgr
 efibootmgr -t 5
 ```
+
+# upgrade to 20.03
+
+- The option `services.xserver.desktopManager.xfce.extraSessionCommands' defined in `/home/alex/nixos-config/system/desktop.nix' has been renamed to `services.xserver.displayManager.sessionCommands'
+
+
 # kmonad
 
 ```

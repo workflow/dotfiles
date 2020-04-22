@@ -1,5 +1,11 @@
 { pkgs }:
 
+let
+
+  icon = "${./icon_small.png}";
+
+in
+
 pkgs.writeScriptBin "indicator-redshift" ''
   #! /usr/bin/env nix-shell
   #! nix-shell -i python2 -p python27 python27Packages.pygobject3 -p libappindicator-gtk3 -p gobjectIntrospection
@@ -13,7 +19,7 @@ pkgs.writeScriptBin "indicator-redshift" ''
   gi.require_version('AppIndicator3', '0.1')
   from gi.repository import Gtk, AppIndicator3
 
-  ICON = '${./icon.svg}'
+  ICON = '${icon}'
 
   ENV = os.environ.copy()
   ENV.setdefault('DISPLAY', ':0')

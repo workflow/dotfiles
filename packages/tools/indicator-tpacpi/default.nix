@@ -5,6 +5,8 @@ let
   tpacpi-bat = pkgs.callPackage ../tpacpi-bat.nix {};
   tpacpi = "${tpacpi-bat}/bin/tpacpi-bat";
 
+  icon = "${./icon_white_small.png}";
+
 in
 
 pkgs.writeScriptBin "indicator-tpacpi" ''
@@ -19,7 +21,7 @@ pkgs.writeScriptBin "indicator-tpacpi" ''
   gi.require_version('AppIndicator3', '0.1')
   from gi.repository import Gtk, AppIndicator3
 
-  ICON = "${./icon_black.svg}"
+  ICON = "${icon}"
 
   START_CHARGE = '${tpacpi} -s ST 1 0 ; tpacpi-bat -s SP 1 0'
   STOP_CHARGE = '${tpacpi} -s ST 1 40 ; tpacpi-bat -s SP 1 80'

@@ -4,7 +4,7 @@ let
 
   hsLib = import ./lib.nix { pkgs = pkgs; };
 
-  ghc-lib-parser = pkgs.haskellPackages.ghc-lib-parser_8_8_1;
+  ghc-lib-parser = pkgs.haskellPackages.ghc-lib-parser;
   ghc-lib-parser-ex = hsLib.fetchFromHackage {
     name = "ghc-lib-parser-ex";
     version = "8.8.2";
@@ -21,7 +21,9 @@ let
   };
   ghcid = pkgs.callPackage ./ghcid.nix {};
   ormolu = pkgs.callPackage ./ormolu.nix {
-    overrides = { ghc-lib-parser = ghc-lib-parser; };
+    overrides = {
+      ghc-lib-parser = pkgs.haskellPackages.ghc-lib-parser_8_8_2_20200205;
+    };
   };
 
   ghc = pkgs.callPackage ./ghc.nix {};

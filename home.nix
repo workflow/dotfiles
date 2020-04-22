@@ -4,7 +4,6 @@ let
 
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
-  terminalFont = "Hack 10.5";
   kbconfig = pkgs.callPackage ./packages/tools/kbconfig.nix {};
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
 
@@ -30,6 +29,7 @@ in
       # ~/bin
       "bin/xfce-manage" = { text = scripts.xfce-manage; executable = true; };
       "bin/em" = { text = scripts.em; executable = true; };
+      "bin/session-quit" = { text = scripts.session-quit; executable = true; };
       "bin/cookie" = { text = scripts.cookie; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
@@ -41,6 +41,7 @@ in
         --theme="TwoDark"
         --style="header,grid"
       '';
+      ".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
       ".ghci".source = ./dotfiles/ghci;
     };
     sessionVariables = {
@@ -178,7 +179,7 @@ in
         default = true;
         visibleName = "Solarized Black";
         showScrollbar = false;
-        font = terminalFont;
+        font = "Hack 10.5";
         colors = {
           foregroundColor = "rgb(161,183,185)";
           backgroundColor = "rgb(24,24,24)";
@@ -203,17 +204,17 @@ in
           ];
         };
       };
-      "b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
-        default = false;
-        visibleName = "Solarized";
+      "cd0124dc-173f-430a-a5f0-4eb1847845f4" = {
+        default = true;
+        visibleName = "Solarized Black Large";
         showScrollbar = false;
-        font = terminalFont;
+        font = "Hack 12";
         colors = {
-          foregroundColor = "rgb(148,173,175)";
-          backgroundColor = "rgb(0,43,54)";
+          foregroundColor = "rgb(161,183,185)";
+          backgroundColor = "rgb(24,24,24)";
           boldColor = null;
           palette = [
-            "rgb(7,54,66)"
+            "rgb(3,29,35)"
             "rgb(220,50,47)"
             "rgb(133,153,0)"
             "rgb(181,137,0)"
@@ -221,7 +222,7 @@ in
             "rgb(211,54,130)"
             "rgb(42,161,152)"
             "rgb(238,232,213)"
-            "rgb(23,96,115)"
+            "rgb(31,124,149)"
             "rgb(203,75,22)"
             "rgb(133,153,0)"
             "rgb(181,137,0)"
@@ -236,7 +237,7 @@ in
         default = false;
         visibleName = "Light";
         showScrollbar = false;
-        font = terminalFont;
+        font = "Hack 10.5";
         colors = {
           foregroundColor = "rgb(35,35,35)";
           backgroundColor = "rgb(240,255,240)";
