@@ -2,7 +2,7 @@
 
 let
 
-  fzf-plugin = "${pkgs.fzf}/share/vim-plugins/fzf-${pkgs.fzf.version}";
+  fzf-plugin = "${pkgs.fzf}/share/vim-plugins/fzf";
 
 in
 
