@@ -161,7 +161,6 @@ in
     enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    # fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
   };
 
   programs.direnv = {
@@ -175,94 +174,78 @@ in
     enable = true;
     showMenubar = false;
     themeVariant = "dark";
-    profile = {
-      "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = {
-        default = true;
-        visibleName = "Solarized Black";
-        showScrollbar = false;
-        font = "Hack 10.5";
-        colors = {
-          foregroundColor = "rgb(161,183,185)";
-          backgroundColor = "rgb(24,24,24)";
-          boldColor = null;
-          palette = [
-            "rgb(3,29,35)"
-            "rgb(220,50,47)"
-            "rgb(133,153,0)"
-            "rgb(181,137,0)"
-            "rgb(38,139,210)"
-            "rgb(211,54,130)"
-            "rgb(42,161,152)"
-            "rgb(238,232,213)"
-            "rgb(31,124,149)"
-            "rgb(203,75,22)"
-            "rgb(133,153,0)"
-            "rgb(181,137,0)"
-            "rgb(38,139,210)"
-            "rgb(211,54,130)"
-            "rgb(42,161,152)"
-            "rgb(253,246,227)"
-          ];
+    profile =
+      let
+        dark = {
+          default = false;
+          visibleName = "Dark";
+          showScrollbar = false;
+          font = "Hack 10.5";
+          colors = {
+            foregroundColor = "rgb(161,183,185)";
+            backgroundColor = "rgb(24,24,24)";
+            boldColor = null;
+            palette = [
+              "rgb(3,29,35)"
+              "rgb(220,50,47)"
+              "rgb(133,153,0)"
+              "rgb(181,137,0)"
+              "rgb(38,139,210)"
+              "rgb(211,54,130)"
+              "rgb(42,161,152)"
+              "rgb(238,232,213)"
+              "rgb(31,124,149)"
+              "rgb(203,75,22)"
+              "rgb(133,153,0)"
+              "rgb(181,137,0)"
+              "rgb(38,139,210)"
+              "rgb(211,54,130)"
+              "rgb(42,161,152)"
+              "rgb(253,246,227)"
+            ];
+          };
         };
-      };
-      "cd0124dc-173f-430a-a5f0-4eb1847845f4" = {
-        default = true;
-        visibleName = "Solarized Black Large";
-        showScrollbar = false;
-        font = "Hack 12";
-        colors = {
-          foregroundColor = "rgb(161,183,185)";
-          backgroundColor = "rgb(24,24,24)";
-          boldColor = null;
-          palette = [
-            "rgb(3,29,35)"
-            "rgb(220,50,47)"
-            "rgb(133,153,0)"
-            "rgb(181,137,0)"
-            "rgb(38,139,210)"
-            "rgb(211,54,130)"
-            "rgb(42,161,152)"
-            "rgb(238,232,213)"
-            "rgb(31,124,149)"
-            "rgb(203,75,22)"
-            "rgb(133,153,0)"
-            "rgb(181,137,0)"
-            "rgb(38,139,210)"
-            "rgb(211,54,130)"
-            "rgb(42,161,152)"
-            "rgb(253,246,227)"
-          ];
+        light = {
+          default = false;
+          visibleName = "Light";
+          showScrollbar = false;
+          font = "Hack 10.5";
+          colors = {
+            foregroundColor = "rgb(35,35,35)";
+            backgroundColor = "rgb(240,255,240)";
+            boldColor = null;
+            palette = [
+              "rgb(0,0,0)"
+              "rgb(205,0,0)"
+              "rgb(0,197,0)"
+              "rgb(205,205,0)"
+              "rgb(0,0,238)"
+              "rgb(205,0,205)"
+              "rgb(0,205,205)"
+              "rgb(229,229,229)"
+              "rgb(127,127,127)"
+              "rgb(231,0,0)"
+              "rgb(0,205,0)"
+              "rgb(218,218,0)"
+              "rgb(92,92,255)"
+              "rgb(255,0,255)"
+              "rgb(0,201,201)"
+              "rgb(255,255,255)"
+            ];
+          };
         };
-      };
-      "71fe2833-7417-43da-8459-008eb2f9e115" = {
-        default = false;
-        visibleName = "Light";
-        showScrollbar = false;
-        font = "Hack 10.5";
-        colors = {
-          foregroundColor = "rgb(35,35,35)";
-          backgroundColor = "rgb(240,255,240)";
-          boldColor = null;
-          palette = [
-            "rgb(0,0,0)"
-            "rgb(205,0,0)"
-            "rgb(0,197,0)"
-            "rgb(205,205,0)"
-            "rgb(0,0,238)"
-            "rgb(205,0,205)"
-            "rgb(0,205,205)"
-            "rgb(229,229,229)"
-            "rgb(127,127,127)"
-            "rgb(231,0,0)"
-            "rgb(0,205,0)"
-            "rgb(218,218,0)"
-            "rgb(92,92,255)"
-            "rgb(255,0,255)"
-            "rgb(0,201,201)"
-            "rgb(255,255,255)"
-          ];
+      in
+        {
+          "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = dark // { default = true; };
+          "cd0124dc-173f-430a-a5f0-4eb1847845f4" = dark // {
+            visibleName = "Dark large";
+            font = "Hack 12";
+          };
+          "71fe2833-7417-43da-8459-008eb2f9e115" = light;
+          "636893b8-eb99-4361-a0ff-fe7b5e61e4c7" = light // {
+            visibleName = "Light large";
+            font = "Hack 12";
+          };
         };
-      };
-    };
   };
 }
