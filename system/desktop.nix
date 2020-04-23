@@ -36,8 +36,6 @@ in
       sessionCommands = ''
         (sleep 6 && xset dpms 0 0 600) &
         ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
-        ${indicator-tpacpi}/bin/indicator-tpacpi &
-        ${indicator-redshift}/bin/indicator-redshift &
         ${pkgs.dropbox}/bin/dropbox &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
         ${trayer-wrap}/bin/trayer-wrap &
