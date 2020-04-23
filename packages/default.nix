@@ -3,7 +3,7 @@
 let
 
   sources = import ../nix/sources.nix;
-  nixpkgs-unstable = import sources.nixpkgs-unstable {};
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   # TODO: build emacs with a pinned nixpkgs
   emacs-27 = pkgs.callPackage ./emacs.nix {};
@@ -53,12 +53,15 @@ let
       pkgs.gnumake
       pkgs.gnupg
       pkgs.gsimplecal
+      pkgs.feh
       pkgs.ispell
+      pkgs.libnotify
       pkgs.nixpkgs-fmt
       pkgs.tree
       pkgs.wget
       pkgs.xclip
       pkgs.xorg.xmessage
+      pkgs.gnome3.zenity
 
       # latex
 
@@ -67,6 +70,7 @@ let
       pkgs.exa
       pkgs.fd
       pkgs.fzf
+      pkgs.jq
       pkgs.ripgrep
       pkgs.rofi
       pkgs.scrot
@@ -95,11 +99,12 @@ let
       pkgs.spotify
       pkgs.vlc
       pkgs.zoom-us
+      nixpkgs-unstable.firefox-devedition-bin
 
       dunst
       pkgs.trayer
       trayer-wrap
-      pkgs.xmobar
+      nixpkgs-unstable.xmobar
 
       pkgs.audacity
       transcribe

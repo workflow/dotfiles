@@ -160,22 +160,23 @@ close_all = mod1+F6
 history = mod1+F7
 
 [urgency_low]
-# frame_color = "#3B7C87"
-frame_color = "#00afaf"
-foreground = "#00afaf"
-background = "#252525"
+frame_color = "#88C0D0"
+foreground = "#88C0D0"
+background = "#252a33"
 timeout = 4
 
 [urgency_normal]
-# frame_color = "#5B8234"
-frame_color = "#79c779"
-foreground = "#79c779"
-background = "#252525"
+frame_color = "#A3BE8C"
+foreground = "#A3BE8C"
+background = "#252a33"
 timeout = 6
 
 [urgency_critical]
-# frame_color = "#B7472A"
-frame_color = "#c46485"
-foreground = "#c46485"
-background = "#252525"
+frame_color = "#D08770"
+foreground = "#D08770"
+background = "#252a33"
 timeout = 8
+
+[history-ignore]
+appname = "history-ignore"
+history_ignore = yes

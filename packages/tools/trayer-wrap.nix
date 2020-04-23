@@ -7,5 +7,5 @@ pkgs.writeScriptBin "trayer-wrap" ''
     --edge top --align right --widthtype percent --width 6 \
     --heighttype pixel --height 25 --SetDockType true \
     --SetPartialStrut true --expand false --transparent true \
-    --alpha 0 --tint 0x252525
+    --alpha 0 --tint 0x272727
 ''

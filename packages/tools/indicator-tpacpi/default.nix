@@ -23,8 +23,8 @@ pkgs.writeScriptBin "indicator-tpacpi" ''
 
   ICON = "${icon}"
 
-  START_CHARGE = '${tpacpi} -s ST 1 0 ; tpacpi-bat -s SP 1 0'
-  STOP_CHARGE = '${tpacpi} -s ST 1 40 ; tpacpi-bat -s SP 1 80'
+  START_CHARGE = '${tpacpi} -s ST 1 0 ; ${tpacpi} -s SP 1 0'
+  STOP_CHARGE = '${tpacpi} -s ST 1 40 ; ${tpacpi} -s SP 1 80'
   TMPL = "${pkgs.gnome3.zenity}/bin/zenity --password | sudo -k -S -- sh -c '{}'"
 
   def start_charge():

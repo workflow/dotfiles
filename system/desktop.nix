@@ -22,6 +22,8 @@ in
     libinput = {
       enable = true;
       naturalScrolling = true;
+      tapping = false;
+      disableWhileTyping = true;
     };
 
     displayManager = {

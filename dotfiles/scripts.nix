@@ -25,17 +25,16 @@ let
   '';
 
   mkRunner = name: args:
-  let
-    mapping = pkgs.lib.forEach args ({name, command}:
-      "${name},${command}"
-    );
-    mapFile = pkgs.writeText "rofi-runner-${name}-args" ''
-      ${pkgs.lib.concatStringsSep "\n" mapping}
-    '';
-  in ''
-    ${shebang}
-    ${rofi-runner}/bin/rofi-runner ${mapFile}
-  '';
+    let
+      argsList = pkgs.lib.mapAttrsToList (k: v: "${k},${v}") args;
+      mapFile = pkgs.writeText "rofi-runner-${name}-args" ''
+        ${pkgs.lib.concatStringsSep "\n" argsList}
+      '';
+    in
+      ''
+        ${shebang}
+        ${rofi-runner}/bin/rofi-runner ${mapFile}
+      '';
 
 in
 
@@ -58,11 +57,11 @@ in
           (${emacs}/bin/emacs --daemon=${wsp} && ${emacs}/bin/emacsclient -c -t -s ${wsp} $args)
       '';
 
-  session-quit = mkRunner "session-quit" [
-    { name = "Logout"; command = "${pkgs.procps}/bin/pkill xmonad"; }
-    { name = "Restart"; command = "systemctl reboot"; }
-    { name = "Shutdown"; command = "systemctl poweroff"; }
-  ];
+  session-quit = mkRunner "session-quit" {
+    Logout = "${pkgs.procps}/bin/pkill xmonad";
+    Restart = "systemctl reboot";
+    Shutdown = "systemctl poweroff";
+  };
 
   xfce-manage =
     let
