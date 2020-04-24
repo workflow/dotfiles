@@ -23,7 +23,6 @@ let
   niv = pkgs.callPackage ./tools/niv.nix {};
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
   patat = pkgs.callPackage ./tools/patat.nix {};
-  pydf = pkgs.callPackage ./tools/pydf.nix {};
   transcribe = pkgs.callPackage ./tools/transcribe.nix {};
   trayer-wrap = pkgs.callPackage ./tools/trayer-wrap.nix {};
   xmonad-build = pkgs.callPackage ./tools/xmonad-build.nix {};
@@ -34,98 +33,89 @@ let
 
   packages =
     [
-      pkgs.acpilight
-      pkgs.brightnessctl
+      nixpkgs-unstable.firefox-devedition-bin
+      pkgs.deluge
+      pkgs.dropbox
+      pkgs.evince
       pkgs.gnome3.gedit
       pkgs.gnome3.nautilus
-      pkgs.htop
-      pkgs.openvpn
+      pkgs.google-chrome
       pkgs.pavucontrol
-      pkgs.playerctl
-      pkgs.powertop
-      pkgs.redshift
-      pkgs.system-config-printer
+      pkgs.postman
+      pkgs.spotify
+      pkgs.vlc
+      pkgs.zoom-us
 
       pkgs.bind
       pkgs.binutils-unwrapped
-      pkgs.gcolor3
+      pkgs.docker-compose
       pkgs.git
       pkgs.gnumake
       pkgs.gnupg
-      pkgs.gsimplecal
-      pkgs.feh
+      pkgs.htop
       pkgs.ispell
-      pkgs.libnotify
-      pkgs.nixpkgs-fmt
+      pkgs.openvpn
+      pkgs.pandoc
+      pkgs.powertop
+      pkgs.system-config-printer
       pkgs.tree
       pkgs.wget
       pkgs.xclip
-      pkgs.xorg.xmessage
-      pkgs.gnome3.zenity
-
-      # latex
 
       pkgs.ag
       pkgs.bat
+      pkgs.direnv
       pkgs.exa
       pkgs.fd
       pkgs.fzf
       pkgs.jq
       pkgs.ripgrep
-      pkgs.rofi
-      pkgs.scrot
 
-      pkgs.graphviz
-      pkgs.pandoc
-      pkgs.tldr
-
+      emacs-27
+      nixpkgs-unstable.tmate
       pkgs.tmux
       pkgs.vim
-      nixpkgs-unstable.tmate
-
-      pkgs.python37
-      pkgs.python37Packages.ipython
-      pkgs.python37Packages.black
-
-      pkgs.coq
-
-      pkgs.docker-compose
-
-      pkgs.deluge
-      pkgs.dropbox
-      pkgs.evince
-      pkgs.google-chrome
-      pkgs.postman
-      pkgs.spotify
-      pkgs.vlc
-      pkgs.zoom-us
-      nixpkgs-unstable.firefox-devedition-bin
 
       dunst
-      pkgs.trayer
-      trayer-wrap
+      i3lock-wrap
       nixpkgs-unstable.xmobar
+      pkgs.acpilight
+      pkgs.brightnessctl
+      pkgs.feh
+      pkgs.gcolor3
+      pkgs.gnome3.zenity
+      pkgs.gsimplecal
+      pkgs.libnotify
+      pkgs.playerctl
+      pkgs.redshift
+      pkgs.rofi
+      pkgs.scrot
+      pkgs.trayer
+      pkgs.wmctrl
+      pkgs.xorg.xmessage
+      trayer-wrap
+      xmonad-build
 
       pkgs.audacity
       transcribe
 
-      pkgs.cachix
-      pkgs.direnv
-      pkgs.nix-prefetch-git
+      pkgs.python37
+      pkgs.python37Packages.black
+      pkgs.python37Packages.ipython
 
-      # pkgs.dwarf-fortress-packages.dwarf-fortress
+      pkgs.coq
 
-      emacs-27
       niv
-      # patat
-      pydf
+      pkgs.cachix
+      pkgs.nix-prefetch-git
+      pkgs.nixpkgs-fmt
 
       indicator-redshift
       indicator-tpacpi
-
-      i3lock-wrap
       kbconfig
-      xmonad-build
+
+      # latex
+      # pkgs.dwarf-fortress-packages.dwarf-fortress
     ];
 
 in
