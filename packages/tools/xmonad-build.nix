@@ -8,6 +8,7 @@ let
         xmonad
         xmonad-contrib
         xmonad-extras
+        directory
         hostname
       ]
     );

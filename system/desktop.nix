@@ -39,7 +39,6 @@ in
         ${pkgs.dropbox}/bin/dropbox &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
         ${trayer-wrap}/bin/trayer-wrap &
-        ${pkgs.dunst}/bin/dunst &
         ${pkgs.feh}/bin/feh --bg-max ${../assets/wallpaper.png}
       '';
     };

@@ -1,6 +1,7 @@
 configuration {
   matching: "fuzzy";
   theme: "lb";
+  font: "Iosevka Term 13";
   show-icons: true;
   kb-mode-next: "Alt+m";
   sort: true;

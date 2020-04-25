@@ -3,6 +3,7 @@
 let
 
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
+  colors = import ./assets/colors.nix;
 
   kbconfig = pkgs.callPackage ./packages/tools/kbconfig.nix {};
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
@@ -27,21 +28,12 @@ in
       ".tmate.conf".text = pkgs.callPackage ./dotfiles/tmux-conf.nix { tmate = true; };
 
       # ~/bin
-      "bin/xfce-manage" = { text = scripts.xfce-manage; executable = true; };
       "bin/em" = { text = scripts.em; executable = true; };
       "bin/session-quit" = { text = scripts.session-quit; executable = true; };
       "bin/cookie" = { text = scripts.cookie; executable = true; };
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
-      # xfce autostart
-      ".config/autostart/xmonad-init.desktop".text = autostart.xmonad-init;
-
       # others
-      ".config/bat/config".text = ''
-        --theme="TwoDark"
-        --style="header,grid"
-      '';
-      ".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
       ".config/rofi/config.rasi".source = ./dotfiles/rofi;
       ".ghci".source = ./dotfiles/ghci;
     };
@@ -50,6 +42,7 @@ in
       EDITOR = "vim";
       LESS = "-r";
     };
+    stateVersion = "20.03";
   };
 
   systemd.user.services = {
@@ -171,6 +164,77 @@ in
     enableZshIntegration = true;
   };
 
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "TwoDark";
+      style = "header,grid";
+    };
+  };
+
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        font = "Iosevka Term 12";
+        markup = true;
+        plain_text = false;
+        format = "<b>%s</b>\\n%b";
+        sort = false;
+        indicate_hidden = true;
+        alignment = "center";
+        bounce_freq = 0;
+        show_age_threshold = -1;
+        word_wrap = true;
+        ignore_newline = false;
+        stack_duplicates = false;
+        hide_duplicates_count = true;
+        geometry = "300x50-15+49";
+        shrink = false;
+        idle_threshold = 0;
+        monitor = 0;
+        follow = "mouse";
+        sticky_history = true;
+        history_length = 15;
+        show_indicators = false;
+        line_height = 3;
+        separator_height = 4;
+        padding = 6;
+        horizontal_padding = 8;
+        separator_color = "frame";
+        frame_width = 3;
+        frame_color = colors.green;
+      };
+      shortcuts = {
+        close = "mod1+F5";
+        close_all = "mod1+F6";
+        history = "mod1+F7";
+      };
+      urgency_low = {
+        frame_color = colors.cyan;
+        foreground = colors.cyan;
+        background = colors.bg;
+        timeout = 4;
+      };
+      urgency_normal = {
+        frame_color = colors.green;
+        foreground = colors.green;
+        background = colors.bg;
+        timeout = 6;
+      };
+      urgency_critical = {
+        frame_color = colors.orange;
+        foreground = colors.orange;
+        background = colors.bg;
+        timeout = 8;
+      };
+      history_ignore_app = {
+        appname = "history-ignore";
+        history_ignore = true;
+      };
+    };
+  };
+
   programs.gnome-terminal = {
     enable = true;
     showMenubar = false;
@@ -240,12 +304,12 @@ in
           "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = dark // { default = true; };
           "cd0124dc-173f-430a-a5f0-4eb1847845f4" = dark // {
             visibleName = "Dark large";
-            font = "Hack 12";
+            font = "Source Code Pro 11";
           };
           "71fe2833-7417-43da-8459-008eb2f9e115" = light;
           "636893b8-eb99-4361-a0ff-fe7b5e61e4c7" = light // {
             visibleName = "Light large";
-            font = "Hack 12";
+            font = "Source Code Pro 11";
           };
         };
   };

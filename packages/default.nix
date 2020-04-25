@@ -53,16 +53,13 @@ let
       pkgs.gnumake
       pkgs.gnupg
       pkgs.htop
-      pkgs.ispell
       pkgs.openvpn
       pkgs.pandoc
       pkgs.powertop
-      pkgs.system-config-printer
       pkgs.tree
       pkgs.wget
       pkgs.xclip
 
-      pkgs.ag
       pkgs.bat
       pkgs.direnv
       pkgs.exa
@@ -78,7 +75,6 @@ let
 
       dunst
       i3lock-wrap
-      nixpkgs-unstable.xmobar
       pkgs.acpilight
       pkgs.brightnessctl
       pkgs.feh
@@ -91,9 +87,10 @@ let
       pkgs.rofi
       pkgs.scrot
       pkgs.trayer
-      pkgs.wmctrl
       pkgs.xorg.xmessage
       trayer-wrap
+
+      nixpkgs-unstable.xmobar
       xmonad-build
 
       pkgs.audacity
