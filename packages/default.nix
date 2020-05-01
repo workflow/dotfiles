@@ -94,6 +94,7 @@ let
       xmonad-build
 
       pkgs.audacity
+      nixpkgs-unstable.musescore
       transcribe
 
       pkgs.python37

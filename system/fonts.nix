@@ -30,7 +30,6 @@ in
 {
   fonts.fonts = [
     iosevka-term
-    pkgs.d2coding
     pkgs.hack-font
     pkgs.source-code-pro
   ];

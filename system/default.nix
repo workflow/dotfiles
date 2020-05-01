@@ -27,6 +27,7 @@
 
   networking.networkmanager.enable = true;
   # networking.firewall.allowedTCPPorts = [ 80 ];
+  # networking.extraHosts = ''1.2.3.4 whatever'';
 
   virtualisation.docker = {
     enable = true;
@@ -52,6 +53,11 @@
 
   services.keybase.enable = true;
   services.kbfs.enable = true;
+
+  # limit the amount of logs stored in /var/log/journal
+  services.journald.extraConfig = ''
+    SystemMaxUse=2G
+  '';
 
   # to prevent nix-shell complaining about no space left
   # default value is 10% of total RAM

@@ -176,7 +176,7 @@ in
     enable = true;
     settings = {
       global = {
-        font = "Iosevka Term 12";
+        font = "Iosevka Term 11.5";
         markup = true;
         plain_text = false;
         format = "<b>%s</b>\\n%b";
@@ -241,11 +241,13 @@ in
     themeVariant = "dark";
     profile =
       let
+        smallFont = "Source Code Pro Medium-10.5";
+        largeFont = "Source Code Pro-11";
         dark = {
           default = false;
           visibleName = "Dark";
           showScrollbar = false;
-          font = "Hack 10.5";
+          font = smallFont;
           colors = {
             foregroundColor = "rgb(161,183,185)";
             backgroundColor = "rgb(24,24,24)";
@@ -274,7 +276,7 @@ in
           default = false;
           visibleName = "Light";
           showScrollbar = false;
-          font = "Hack 10.5";
+          font = smallFont;
           colors = {
             foregroundColor = "rgb(35,35,35)";
             backgroundColor = "rgb(240,255,240)";
@@ -304,12 +306,12 @@ in
           "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = dark // { default = true; };
           "cd0124dc-173f-430a-a5f0-4eb1847845f4" = dark // {
             visibleName = "Dark large";
-            font = "Source Code Pro 11";
+            font = largeFont;
           };
           "71fe2833-7417-43da-8459-008eb2f9e115" = light;
           "636893b8-eb99-4361-a0ff-fe7b5e61e4c7" = light // {
             visibleName = "Light large";
-            font = "Source Code Pro 11";
+            font = largeFont;
           };
         };
   };
