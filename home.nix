@@ -242,7 +242,7 @@ in
     profile =
       let
         smallFont = "Source Code Pro Medium-10.5";
-        largeFont = "Source Code Pro-11";
+        largeFont = "Source Code Pro Medium-11";
         dark = {
           default = false;
           visibleName = "Dark";
