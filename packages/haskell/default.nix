@@ -12,6 +12,7 @@ let
     overrides = { ghc-lib-parser = ghc-lib-parser; };
   };
 
+  brittany = pkgs.callPackage ./brittany.nix {};
   fast-tags = pkgs.callPackage ./fast-tags.nix {};
   hlint = pkgs.callPackage ./hlint.nix {
     overrides = {
@@ -35,6 +36,7 @@ in
   pkgs.cabal-install
   pkgs.stack
 
+  brittany
   fast-tags
   hlint
   ghcid
