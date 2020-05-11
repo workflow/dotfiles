@@ -97,6 +97,8 @@ let
       nixpkgs-unstable.musescore
       transcribe
 
+      pkgs.scummvm
+
       pkgs.python37
       pkgs.python37Packages.black
       pkgs.python37Packages.ipython

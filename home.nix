@@ -11,6 +11,9 @@ let
   scripts = pkgs.callPackage ./dotfiles/scripts.nix {};
   autostart = pkgs.callPackage ./dotfiles/autostart.nix {};
 
+  i3lock-wrap = pkgs.callPackage ./packages/tools/i3lock-wrap {};
+  lock-cmd = "${i3lock-wrap}/bin/i3lock-wrap";
+
 in
 
 {
@@ -60,6 +63,44 @@ in
         RemainAfterExit = "no";
         Restart = "always";
         RestartSec = "5s";
+      };
+    };
+    xautolock = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "xautolock";
+        After = ["graphical-session-pre.target"];
+        PartOf = ["graphical-session.target"];
+      };
+      Service = {
+        ExecStart = pkgs.lib.concatStringsSep " " [
+          "${pkgs.xautolock}/bin/xautolock"
+          "-time 10"
+          "-locker ${lock-cmd}"
+          "-detectsleep"
+          "-corners 0--0 -cornersize 30"
+        ];
+        Restart = "always";
+      };
+    };
+    xss-lock = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "xss-lock";
+        After = ["graphical-session-pre.target"];
+        PartOf = ["graphical-session.target"];
+      };
+      Service = {
+        ExecStart = pkgs.lib.concatStringsSep " " [
+          "${pkgs.xss-lock}/bin/xss-lock"
+          "--"
+          "${lock-cmd}"
+        ];
+        Restart = "always";
       };
     };
     wiki = {
@@ -243,6 +284,10 @@ in
       let
         mkFont = { name, size }: "${name} ${builtins.toString size}";
         smallFont = mkFont {
+          name = "Source Code Pro Medium";
+          size = 10.5;
+        };
+        smallFontHeavy = mkFont {
           name = "Source Code Pro Semibold";
           size = 10.5;
         };
@@ -254,7 +299,7 @@ in
           default = false;
           visibleName = "Dark";
           showScrollbar = false;
-          font = smallFont;
+          font = smallFontHeavy;
           colors = {
             foregroundColor = "rgb(161,183,185)";
             backgroundColor = "rgb(24,24,24)";
@@ -286,7 +331,7 @@ in
           font = smallFont;
           colors = {
             foregroundColor = "rgb(35,35,35)";
-            backgroundColor = "rgb(240,255,240)";
+            backgroundColor = "rgb(255,255,255)";
             boldColor = null;
             palette = [
               "rgb(0,0,0)"
