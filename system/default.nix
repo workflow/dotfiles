@@ -5,6 +5,9 @@
     etc."ipsec.secrets".text = ''
       include ipsec.d/ipsec.nm-l2tp.secrets
     '';
+    etc."opt/chrome/policies/managed/external_protocol_dialog.json".text = ''
+      {"ExternalProtocolDialogShowAlwaysOpenCheckbox": true}
+    '';
     etc.hosts.mode = "0644";
   };
 

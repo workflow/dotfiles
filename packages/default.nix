@@ -34,6 +34,7 @@ let
   packages =
     [
       nixpkgs-unstable.firefox-devedition-bin
+      pkgs.gnome3.cheese
       pkgs.deluge
       pkgs.dropbox
       pkgs.evince
@@ -49,9 +50,11 @@ let
       pkgs.bind
       pkgs.binutils-unwrapped
       pkgs.docker-compose
+      pkgs.gcc
       pkgs.git
       pkgs.gnumake
       pkgs.gnupg
+      pkgs.graphviz
       pkgs.htop
       pkgs.openvpn
       pkgs.pandoc
@@ -87,6 +90,7 @@ let
       pkgs.rofi
       pkgs.scrot
       pkgs.trayer
+      pkgs.wmctrl
       pkgs.xorg.xmessage
       trayer-wrap
 
@@ -94,6 +98,7 @@ let
       xmonad-build
 
       pkgs.audacity
+      nixpkgs-unstable.lilypond
       nixpkgs-unstable.musescore
       transcribe
 
@@ -114,7 +119,7 @@ let
       indicator-tpacpi
       kbconfig
 
-      # latex
+      latex
       # pkgs.dwarf-fortress-packages.dwarf-fortress
     ];
 

@@ -41,11 +41,11 @@ in
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
         ${trayer-wrap}/bin/trayer-wrap &
 
+        ${pkgs.feh}/bin/feh --bg-max ${../assets/wallpaper.png}
+
         ${pkgs.xorg.xsetroot}/bin/xsetroot -cursor_name left_ptr
         ${pkgs.xorg.xset}/bin/xset s off
         ${pkgs.xorg.xset}/bin/xset dpms 0 0 600
-
-        ${pkgs.feh}/bin/feh --bg-max ${../assets/wallpaper.png}
       '';
     };
 

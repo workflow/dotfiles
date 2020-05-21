@@ -39,6 +39,7 @@ in
       # others
       ".config/rofi/config.rasi".source = ./dotfiles/rofi;
       ".ghci".source = ./dotfiles/ghci;
+      ".local/share/applications/org-protocol.desktop".source = ./dotfiles/org-protocol.desktop;
     };
     sessionVariables = {
       PATH = "$HOME/.local/bin:$HOME/bin:$PATH";
@@ -101,23 +102,6 @@ in
           "${lock-cmd}"
         ];
         Restart = "always";
-      };
-    };
-    wiki = {
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      Unit = {
-        Description = "Wiki";
-        After = "graphical-session-pre.target";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.python37}/bin/python -m http.server 23456 -b localhost -d %h/Dropbox/emacs/deft";
-        RemainAfterExit = "no";
-        Restart = "always";
-        RestartSec = "3s";
       };
     };
   };
@@ -273,6 +257,13 @@ in
         appname = "history-ignore";
         history_ignore = true;
       };
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "x-scheme-handler/org-protocol" = "org-protocol.desktop";
     };
   };
 
