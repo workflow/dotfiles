@@ -33,7 +33,7 @@ let
 
   packages =
     [
-      nixpkgs-unstable.firefox-devedition-bin
+      pkgs.firefox-devedition-bin
       pkgs.gnome3.cheese
       pkgs.deluge
       pkgs.dropbox
