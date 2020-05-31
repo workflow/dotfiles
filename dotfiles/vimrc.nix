@@ -39,6 +39,7 @@ in
   Plugin 'neovimhaskell/haskell-vim'
   Plugin 'peitalin/vim-jsx-typescript'
   Plugin 'chr4/nginx.vim'
+  Plugin 'tpope/vim-markdown'
 
   " themes & ui
   Plugin 'freeo/vim-kalisi'

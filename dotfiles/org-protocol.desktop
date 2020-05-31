@@ -5,3 +5,4 @@ Icon=emacs-icon
 Type=Application
 Terminal=false
 MimeType=x-scheme-handler/org-protocol
+NoDisplay=true

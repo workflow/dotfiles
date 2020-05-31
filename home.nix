@@ -72,8 +72,8 @@ in
       };
       Unit = {
         Description = "xautolock";
-        After = ["graphical-session-pre.target"];
-        PartOf = ["graphical-session.target"];
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
       Service = {
         ExecStart = pkgs.lib.concatStringsSep " " [
@@ -92,8 +92,8 @@ in
       };
       Unit = {
         Description = "xss-lock";
-        After = ["graphical-session-pre.target"];
-        PartOf = ["graphical-session.target"];
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
       };
       Service = {
         ExecStart = pkgs.lib.concatStringsSep " " [
@@ -102,6 +102,23 @@ in
           "${lock-cmd}"
         ];
         Restart = "always";
+      };
+    };
+    wiki = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "Wiki";
+        After = "graphical-session-pre.target";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart =
+          "${pkgs.python37}/bin/python -m http.server 25001 -b localhost -d %h/org-roam-publish";
+        RemainAfterExit = "no";
+        Restart = "always";
+        RestartSec = "3s";
       };
     };
   };
@@ -264,6 +281,11 @@ in
     enable = true;
     defaultApplications = {
       "x-scheme-handler/org-protocol" = "org-protocol.desktop";
+      "text/html" = "google-chrome.desktop";
+      "x-scheme-handler/http" = "google-chrome.desktop";
+      "x-scheme-handler/https" = "google-chrome.desktop";
+      "application/pdf" = "org.gnome.Evince.desktop";
+      "audio/mpeg" = "vlc.desktop";
     };
   };
 

@@ -23,9 +23,11 @@ let
   niv = pkgs.callPackage ./tools/niv.nix {};
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
   patat = pkgs.callPackage ./tools/patat.nix {};
-  transcribe = pkgs.callPackage ./tools/transcribe.nix {};
   trayer-wrap = pkgs.callPackage ./tools/trayer-wrap.nix {};
   xmonad-build = pkgs.callPackage ./tools/xmonad-build.nix {};
+
+  transcribe = pkgs.callPackage ./apps/transcribe.nix {};
+  obsidian = pkgs.callPackage ./apps/obsidian.nix {};
 
   haskellPackages = pkgs.callPackage ./haskell {};
 
@@ -59,6 +61,7 @@ let
       pkgs.openvpn
       pkgs.pandoc
       pkgs.powertop
+      pkgs.sqlite
       pkgs.tree
       pkgs.wget
       pkgs.xclip
@@ -108,6 +111,8 @@ let
       pkgs.python37Packages.black
       pkgs.python37Packages.ipython
 
+      pkgs.nodejs-12_x
+
       pkgs.coq
 
       niv
@@ -120,6 +125,7 @@ let
       kbconfig
 
       latex
+      obsidian
       # pkgs.dwarf-fortress-packages.dwarf-fortress
     ];
 
