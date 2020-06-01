@@ -2,11 +2,11 @@
 
 let
 
-  version = "0.6.4";
+  version = "0.6.5";
+  sha256 = "1qr6wj7i8f09ill0rp50sq54w7k824g4hwq0zl363fbj5vrb9msx";
 
   app = "Obsidian-${version}.AppImage";
   url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/${app}";
-  sha256 = "14yawv9k1j4lly9c5hricvzn9inzx23q38vsymgwwy6qhkpkrjcb";
 
   icon = pkgs.fetchurl {
     url = "https://avatars3.githubusercontent.com/u/65011256";

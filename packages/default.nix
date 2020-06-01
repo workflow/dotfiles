@@ -47,7 +47,7 @@ let
       pkgs.postman
       pkgs.spotify
       pkgs.vlc
-      pkgs.zoom-us
+      nixpkgs-unstable.zoom-us
 
       pkgs.bind
       pkgs.binutils-unwrapped
