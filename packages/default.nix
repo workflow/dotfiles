@@ -100,6 +100,8 @@ let
       nixpkgs-unstable.xmobar
       xmonad-build
 
+      pkgs.lastpass-cli
+
       pkgs.audacity
       nixpkgs-unstable.lilypond
       nixpkgs-unstable.musescore

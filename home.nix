@@ -121,6 +121,35 @@ in
         RestartSec = "3s";
       };
     };
+    notes-git-push = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "notes-git-push";
+        After = "graphical-session-pre.target";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "%h/Dropbox/emacs/org/.autocommit";
+      };
+    };
+  };
+
+  systemd.user.timers = {
+    notes-git-push-timer = {
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+      Unit = {
+        Description = "notes-git-push-timer";
+        Requires = "notes-git-push.service";
+      };
+      Timer = {
+        Unit = "notes-git-push.service";
+        OnCalendar = "hourly";
+      };
+    };
   };
 
   programs.git = {

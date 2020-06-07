@@ -13,5 +13,6 @@ in
   home-manager = {
     # useGlobalPkgs = true;
     users.alex = import ../home.nix;
+    backupFileExtension = "home-manager-backup";
   };
 }
