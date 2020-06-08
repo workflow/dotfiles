@@ -147,7 +147,7 @@ in
       };
       Timer = {
         Unit = "notes-git-push.service";
-        OnCalendar = "hourly";
+        OnCalendar = "*:0/30";  # every 30 mins, 'hourly' = every 1 hr
       };
     };
   };
