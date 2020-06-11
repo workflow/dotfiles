@@ -81,6 +81,7 @@ in
   set incsearch
   set ignorecase
   set smartcase
+  set colorcolumn=80
   syntax on
   filetype on
   filetype plugin indent on

@@ -2,8 +2,8 @@
 
 let
 
-  version = "0.6.5";
-  sha256 = "1qr6wj7i8f09ill0rp50sq54w7k824g4hwq0zl363fbj5vrb9msx";
+  version = "0.6.7";
+  sha256 = "0pv6csks6pznsbr07xjgrf9ks7lfxr635xw37prnarlqiifh4bn0";
 
   app = "Obsidian-${version}.AppImage";
   url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v${version}/${app}";
