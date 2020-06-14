@@ -32,4 +32,7 @@ in
       PS1="\[\033]2;\h:\u:\w\007\]$PS1"
     fi
   fi
+
+  # disable C-s and C-q if interactive
+  [[ $- == *i* ]] && stty -ixon -ixoff
 ''

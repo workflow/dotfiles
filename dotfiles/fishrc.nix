@@ -4,13 +4,13 @@ let
 
   edit-cmd = ''
     function edit_cmd --description 'Edit cmdline in editor'
-          set -l f (mktemp --tmpdir=.)
-          set -l p (commandline -C)
-          commandline -b > $f
-          vim -c set\ ft=fish $f
-          commandline -r (more $f)
-          commandline -C $p
-          rm $f
+      set -l f (mktemp --tmpdir=.)
+      set -l p (commandline -C)
+      commandline -b > $f
+      vim -c set\ ft=fish $f
+      commandline -r (more $f)
+      commandline -C $p
+      rm $f
     end
 
     bind \cx\ce edit_cmd
@@ -21,7 +21,14 @@ let
     set fish_greeting  # disable greeting
   '';
 
-  promptVariables = ''
+  # disable default C-s and C-q behavior if interactive
+  disable-keys = ''
+    if status --is-interactive
+      stty -ixon -ixoff
+    end
+  '';
+
+  prompt-variables = ''
     set -g __fish_git_prompt_show_informative_status 1
     set -g __fish_git_prompt_hide_untrackedfiles 1
 
@@ -114,9 +121,10 @@ in
     ${edit-cmd}
     ${variables}
     ${theme}
+    ${disable-keys}
   '';
   promptInit = ''
-    ${promptVariables}
+    ${prompt-variables}
 
     set -g __my_prompt_multiline 0
 

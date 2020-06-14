@@ -42,8 +42,8 @@ in
   Plugin 'tpope/vim-markdown'
 
   " themes & ui
-  Plugin 'freeo/vim-kalisi'
   Plugin 'jonathanfilip/vim-lucius'
+  Plugin 'lifepillar/vim-solarized8'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   call vundle#end()

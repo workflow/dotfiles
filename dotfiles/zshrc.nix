@@ -132,4 +132,9 @@ in
   }
 
   alias sp=switch_prompts
+
+  # disable C-s and C-q if interactive
+  if [[ -o interactive ]]; then
+    stty -ixon -ixoff
+  fi
 ''

@@ -16,6 +16,11 @@ let
       ;
   };
 
+  agda = nixpkgs-unstable.agda.withPackages {
+    pkgs = [nixpkgs-unstable.agdaPackages.standard-library];
+    ghc = nixpkgs-unstable.ghc.withPackages (ps: [ps.ieee754]);
+  };
+
   i3lock-wrap = pkgs.callPackage ./tools/i3lock-wrap {};
   indicator-redshift = pkgs.callPackage ./tools/indicator-redshift {};
   indicator-tpacpi = pkgs.callPackage ./tools/indicator-tpacpi {};
@@ -114,6 +119,9 @@ let
       pkgs.python37Packages.ipython
 
       pkgs.nodejs-12_x
+
+      nixpkgs-unstable.emacsPackages.agda2-mode
+      agda
 
       pkgs.coq
 
