@@ -147,7 +147,7 @@ in
       };
       Timer = {
         Unit = "notes-git-push.service";
-        OnCalendar = "*:0/30";  # every 30 mins, 'hourly' = every 1 hr
+        OnCalendar = "*:0/30"; # every 30 mins, 'hourly' = every 1 hr
       };
     };
   };
@@ -329,40 +329,73 @@ in
           name = "Source Code Pro Medium";
           size = 10.5;
         };
-        smallFontHeavy = mkFont {
-          name = "Source Code Pro Semibold";
-          size = 10.5;
-        };
         largeFont = mkFont {
-          name = "Source Code Pro Medium";
+          name = "Source Code Pro";
           size = 11;
         };
         dark = {
           default = false;
           visibleName = "Dark";
           showScrollbar = false;
-          font = smallFontHeavy;
+          font = smallFont;
           colors = {
-            foregroundColor = "rgb(161,183,185)";
-            backgroundColor = "rgb(24,24,24)";
+            foregroundColor = "#d2e9eb";
+            backgroundColor = "#0a0a0a";
             boldColor = null;
+            highlight = {
+              background = "#88c0d0";
+              foreground = "#0a0a0a";
+            };
             palette = [
-              "rgb(3,29,35)"
-              "rgb(220,50,47)"
-              "rgb(133,153,0)"
-              "rgb(181,137,0)"
-              "rgb(38,139,210)"
-              "rgb(211,54,130)"
-              "rgb(42,161,152)"
-              "rgb(238,232,213)"
-              "rgb(31,124,149)"
-              "rgb(203,75,22)"
-              "rgb(133,153,0)"
-              "rgb(181,137,0)"
-              "rgb(38,139,210)"
-              "rgb(211,54,130)"
-              "rgb(42,161,152)"
-              "rgb(253,246,227)"
+              "#3d5358"
+              "#ff8059"
+              "#44bc44"
+              "#eecc00"
+              "#33beff"
+              "#f78fe7"
+              "#00d3d0"
+              "#eee8d5"
+              "#6d8990"
+              "#ff8059"
+              "#44bc44"
+              "#eecc00"
+              "#33beff"
+              "#f78fe7"
+              "#00d3d0"
+              "#fdf6e3"
+            ];
+          };
+        };
+        lowContrast = {
+          default = false;
+          visibleName = "Low Contrast";
+          showScrollbar = false;
+          font = smallFont;
+          colors = {
+            foregroundColor = "#d8dee9";
+            backgroundColor = "#2e3440";
+            boldColor = null;
+            highlight = {
+              background = "#88c0d0";
+              foreground = "#2e3440";
+            };
+            palette = [
+              "#3b4252"
+              "#bf616a"
+              "#a3be8c"
+              "#ebcb8b"
+              "#81a1c1"
+              "#b48ead"
+              "#88c0d0"
+              "#e5e9f0"
+              "#4c566a"
+              "#bf616a"
+              "#a3be8c"
+              "#ebcb8b"
+              "#81a1c1"
+              "#b48ead"
+              "#8fbcbb"
+              "#eceff4"
             ];
           };
         };
@@ -372,26 +405,30 @@ in
           showScrollbar = false;
           font = smallFont;
           colors = {
-            foregroundColor = "rgb(35,35,35)";
-            backgroundColor = "rgb(255,255,255)";
+            foregroundColor = "#101010";
+            backgroundColor = "#fafafa";
             boldColor = null;
+            highlight = {
+              background = "#0073A4";
+              foreground = "#fafafa";
+            };
             palette = [
-              "rgb(0,0,0)"
-              "rgb(205,0,0)"
-              "rgb(0,197,0)"
-              "rgb(205,205,0)"
-              "rgb(0,0,238)"
-              "rgb(205,0,205)"
-              "rgb(0,205,205)"
-              "rgb(229,229,229)"
-              "rgb(127,127,127)"
-              "rgb(231,0,0)"
-              "rgb(0,205,0)"
-              "rgb(218,218,0)"
-              "rgb(92,92,255)"
-              "rgb(255,0,255)"
-              "rgb(0,201,201)"
-              "rgb(255,255,255)"
+              "#000000"
+              "#b20000"
+              "#007200"
+              "#925f00"
+              "#033dcc"
+              "#80114d"
+              "#0073a4"
+              "#8b8b8b"
+              "#444444"
+              "#b20000"
+              "#007200"
+              "#925f00"
+              "#033dcc"
+              "#80114d"
+              "#0073a4"
+              "#a6a6a6"
             ];
           };
         };
@@ -399,12 +436,17 @@ in
         {
           "a5914944-7bfe-4e88-8699-695bf6ce9f2c" = dark // { default = true; };
           "cd0124dc-173f-430a-a5f0-4eb1847845f4" = dark // {
-            visibleName = "Dark large";
+            visibleName = dark.visibleName + " large";
+            font = largeFont;
+          };
+          "cc0cc7dc-f63e-4fe6-909c-b7c4509a1df2" = lowContrast;
+          "f91c4e9c-676e-4225-a756-fba7149f447f" = lowContrast // {
+            visibleName = lowContrast.visibleName + " large";
             font = largeFont;
           };
           "71fe2833-7417-43da-8459-008eb2f9e115" = light;
           "636893b8-eb99-4361-a0ff-fe7b5e61e4c7" = light // {
-            visibleName = "Light large";
+            visibleName = light.visibleName + " large";
             font = largeFont;
           };
         };
