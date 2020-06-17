@@ -35,7 +35,7 @@ in
         wayland = false;
       };
       sddm.enable = lib.mkForce false;
-      defaultSession = "none+xmonad";
+      # defaultSession = "none+xmonad";
       sessionCommands = ''
         ${pkgs.dropbox}/bin/dropbox &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
@@ -51,11 +51,11 @@ in
 
     desktopManager = {
       plasma5.enable = lib.mkForce false;
-      xfce = {
-        enable = true;
-        noDesktop = false;
-        enableXfwm = false;
-      };
+      # xfce = {
+        # enable = true;
+        # noDesktop = false;
+        # enableXfwm = false;
+      # };
     };
 
     windowManager = {
