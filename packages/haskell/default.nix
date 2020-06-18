@@ -36,7 +36,7 @@ in
   pkgs.cabal-install
   pkgs.stack
 
-  brittany
+  # brittany
   fast-tags
   hlint
   ghcid

@@ -39,6 +39,7 @@ in
       sessionCommands = ''
         ${pkgs.dropbox}/bin/dropbox &
         ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        ${pkgs.blueman}/bin/blueman-applet &
         ${trayer-wrap}/bin/trayer-wrap &
 
         ${pkgs.feh}/bin/feh --bg-max ${../assets/wallpaper.png}
@@ -64,6 +65,8 @@ in
       };
     };
   };
+
+  services.gnome3.gnome-keyring.enable = true;
 
   environment.systemPackages =
     [

@@ -330,7 +330,7 @@ in
           size = 10.5;
         };
         largeFont = mkFont {
-          name = "Source Code Pro";
+          name = "Source Code Pro Medium";
           size = 11;
         };
         dark = {
@@ -372,30 +372,31 @@ in
           showScrollbar = false;
           font = smallFont;
           colors = {
-            foregroundColor = "#d8dee9";
-            backgroundColor = "#2e3440";
+            foregroundColor = "#DCDCCC";
+            backgroundColor = "#3F3F3F";
             boldColor = null;
             highlight = {
-              background = "#88c0d0";
-              foreground = "#2e3440";
+              background = "#8FB28F";
+              foreground = "#3F3F3F";
             };
             palette = [
-              "#3b4252"
-              "#bf616a"
-              "#a3be8c"
-              "#ebcb8b"
-              "#81a1c1"
-              "#b48ead"
-              "#88c0d0"
-              "#e5e9f0"
-              "#4c566a"
-              "#bf616a"
-              "#a3be8c"
-              "#ebcb8b"
-              "#81a1c1"
-              "#b48ead"
-              "#8fbcbb"
-              "#eceff4"
+              # "#94BFF3"
+              "#494949"
+              "#CC9393"
+              "#7F9F7F"
+              "#E3CEAB"
+              "#DFAF8F"
+              "#DC8CC3"
+              "#93E0E3"
+              "#DCDCCC"
+              "#909090"
+              "#CC9393"
+              "#7F9F7F"
+              "#E3CEAB"
+              "#DFAF8F"
+              "#DC8CC3"
+              "#93E0E3"
+              "#989890"
             ];
           };
         };

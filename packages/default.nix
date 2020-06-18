@@ -25,7 +25,6 @@ let
   indicator-redshift = pkgs.callPackage ./tools/indicator-redshift {};
   indicator-tpacpi = pkgs.callPackage ./tools/indicator-tpacpi {};
   kbconfig = pkgs.callPackage ./tools/kbconfig.nix {};
-  niv = pkgs.callPackage ./tools/niv.nix {};
   nixfmt = pkgs.callPackage ./tools/nixfmt.nix {};
   patat = pkgs.callPackage ./tools/patat.nix {};
   trayer-wrap = pkgs.callPackage ./tools/trayer-wrap.nix {};
@@ -41,15 +40,15 @@ let
   packages =
     [
       pkgs.firefox-devedition-bin
-      pkgs.gnome3.cheese
+      # pkgs.gnome3.cheese
       pkgs.deluge
-      pkgs.dropbox
+      nixpkgs-unstable.dropbox
       pkgs.evince
       pkgs.gnome3.gedit
       pkgs.gnome3.nautilus
       pkgs.google-chrome
       pkgs.pavucontrol
-      pkgs.postman
+      # pkgs.postman
       pkgs.spotify
       pkgs.vlc
       nixpkgs-unstable.zoom-us
@@ -109,10 +108,10 @@ let
 
       pkgs.audacity
       nixpkgs-unstable.lilypond
-      nixpkgs-unstable.musescore
-      transcribe
+      # nixpkgs-unstable.musescore
+      # transcribe
 
-      pkgs.scummvm
+      # pkgs.scummvm
 
       pkgs.python37
       pkgs.python37Packages.black
@@ -125,17 +124,17 @@ let
 
       pkgs.coq
 
-      niv
+      pkgs.niv
       pkgs.cachix
       pkgs.nix-prefetch-git
       pkgs.nixpkgs-fmt
 
-      indicator-redshift
-      indicator-tpacpi
+      # indicator-redshift
+      # indicator-tpacpi
       kbconfig
 
-      latex
-      obsidian
+      # latex
+      # obsidian
       # pkgs.dwarf-fortress-packages.dwarf-fortress
     ];
 

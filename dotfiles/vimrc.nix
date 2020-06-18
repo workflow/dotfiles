@@ -18,6 +18,7 @@ in
   let g:haskell_backpack = 1                " highlighting backpack keywords
   let g:haskell_indent_disable = 1
 
+  " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   set rtp+=~/.vim/bundle/Vundle.vim
   set rtp+=${fzf-plugin}
 
@@ -42,10 +43,8 @@ in
   Plugin 'tpope/vim-markdown'
 
   " themes & ui
-  Plugin 'jonathanfilip/vim-lucius'
-  Plugin 'lifepillar/vim-solarized8'
+  Plugin 'gruvbox-community/gruvbox'
   Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
   call vundle#end()
 
 
@@ -132,39 +131,18 @@ in
       set undofile
   endif
 
-  let g:lucius_high_contrast = 1
-  " let g:lucius_no_term_bg = 1
-
   if empty($TERM_LIGHT)
-      let g:lucius_style = 'dark'
+      let g:gruvbox_contrast_dark = 'medium'
       set background=dark
-      colorscheme lucius
-      highlight Normal ctermbg=234
-      highlight MatchParen cterm=reverse ctermfg=240
-      highlight ColorColumn ctermbg=236
+      colorscheme gruvbox
       highlight ExtraWhitespace ctermbg=88
-      highlight LineNr ctermfg=241 ctermbg=NONE
-      highlight VertSplit ctermfg=252 ctermbg=238
-      highlight haskellBottom ctermfg=Red
-      highlight haskellFail ctermfg=LightRed
-      highlight haskellImportKeywords ctermfg=DarkCyan
-      highlight haskellWhere ctermfg=DarkCyan
-      highlight haskellLet ctermfg=DarkCyan
-      highlight haskellDefault ctermfg=DarkCyan
-      highlight haskellStatic ctermfg=DarkCyan
-      highlight haskellConditional ctermfg=DarkCyan
-      highlight haskellForall ctermfg=DarkCyan
-      highlight haskellPatternKeyword ctermfg=DarkCyan
-      highlight haskellTypeRoles ctermfg=DarkCyan
-      let g:airline_theme='luna'
+      let g:airline_theme='gruvbox'
   else
-      let g:lucius_style = 'light'
+      let g:gruvbox_contrast_light = 'hard'
       set background=light
-      colorscheme lucius
-      highlight MatchParen ctermfg=240 ctermbg=152
-      highlight ColorColumn ctermbg=252
+      colorscheme gruvbox
       highlight ExtraWhitespace ctermbg=210
-      let g:airline_theme='lucius'
+      let g:airline_theme='gruvbox'
   endif
 
   match ExtraWhitespace /\s\+$/

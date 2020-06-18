@@ -37,6 +37,11 @@
     enableOnBoot = true;
   };
 
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
