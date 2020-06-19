@@ -347,22 +347,22 @@ in
               foreground = "#0a0a0a";
             };
             palette = [
-              "#3d5358"
+              "#252525"
               "#ff8059"
               "#44bc44"
               "#eecc00"
               "#33beff"
               "#f78fe7"
               "#00d3d0"
-              "#eee8d5"
-              "#6d8990"
+              "#d0d0d0"
+              "#808080"
               "#ff8059"
               "#44bc44"
               "#eecc00"
               "#33beff"
               "#f78fe7"
               "#00d3d0"
-              "#fdf6e3"
+              "#e0e0e0"
             ];
           };
         };
@@ -372,31 +372,30 @@ in
           showScrollbar = false;
           font = smallFont;
           colors = {
-            foregroundColor = "#DCDCCC";
-            backgroundColor = "#3F3F3F";
+            foregroundColor = "#dcdccc";
+            backgroundColor = "#3f3f3f";
             boldColor = null;
             highlight = {
-              background = "#8FB28F";
-              foreground = "#3F3F3F";
+              background = "#8fb28f";
+              foreground = "#3f3f3f";
             };
             palette = [
-              # "#94BFF3"
-              "#494949"
-              "#CC9393"
-              "#7F9F7F"
-              "#E3CEAB"
-              "#DFAF8F"
-              "#DC8CC3"
-              "#93E0E3"
-              "#DCDCCC"
+              "#505050"
+              "#cc9393"
+              "#7f9f7f"
+              "#e3ceab"
+              "#dfaf8f"
+              "#dc8cc3"
+              "#93e0e3"
+              "#dcdccc"
               "#909090"
-              "#CC9393"
-              "#7F9F7F"
-              "#E3CEAB"
-              "#DFAF8F"
-              "#DC8CC3"
-              "#93E0E3"
-              "#989890"
+              "#cc9393"
+              "#7f9f7f"
+              "#e3ceab"
+              "#dfaf8f"
+              "#dc8cc3"
+              "#93e0e3"
+              "#dcdccc"
             ];
           };
         };
@@ -414,7 +413,7 @@ in
               foreground = "#fafafa";
             };
             palette = [
-              "#000000"
+              "#202020"
               "#b20000"
               "#007200"
               "#925f00"

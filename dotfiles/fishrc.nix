@@ -136,9 +136,9 @@ in
       end
     end
 
-    function fish_right_prompt
-      date '+[%H:%M]'
-    end
+    # function fish_right_prompt
+    #   date '+[%H:%M]'
+    # end
 
     function fish_prompt
       set -l last_status $status

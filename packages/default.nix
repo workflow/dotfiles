@@ -40,7 +40,7 @@ let
   packages =
     [
       pkgs.firefox-devedition-bin
-      # pkgs.gnome3.cheese
+      pkgs.gnome3.cheese
       pkgs.deluge
       nixpkgs-unstable.dropbox
       pkgs.evince
@@ -133,7 +133,7 @@ let
       # indicator-tpacpi
       kbconfig
 
-      # latex
+      latex
       # obsidian
       # pkgs.dwarf-fortress-packages.dwarf-fortress
     ];
