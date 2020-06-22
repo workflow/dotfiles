@@ -1,5 +1,7 @@
 # NixOS configuration
 
+Structure, ideas and some jokes looted from https://github.com/alexpeits/nixos-config. Thank you! 
+
 ## Installation instructions
 
 (`$CONFIG` is the location of this repo)
@@ -9,6 +11,6 @@
 - add `$CONFIG/nixos-config/hardware-configuration.nix` to the same list
 - `sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware`
 - `sudo nix-channel --update`
-- change your name to alex because it's hardcoded in the configurations
-- `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/alex` (for `home-manager`)
+- change your name to farlion because it's hardcoded in the configurations
+- `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
 - `sudo nixos-rebuild switch`
