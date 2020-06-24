@@ -28,27 +28,11 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  #console = {
-  #   font = "Lat2-Terminus16";
-  #   #keyMap = "us";
-  #   # Make xkbOptions (key mapping) work in TTY
-  #   useXkbConfig = true;
-  #};
-
-  # List services that you want to enable:
-  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # KWallet auto-login
-  #security.pam.services.lightdm.enableKwallet = true;
-  #security.pam.services.kwallet = {
-  #  name = "kwallet";
-  #  enableKwallet = true;
-  #};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.farlion.home = "/home/farlion";

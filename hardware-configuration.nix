@@ -1,5 +1,5 @@
 { lib, ... }:
 
 {
-  // No overrides so far
+  # No overrides so far
 }

@@ -16,7 +16,7 @@
 
   users = {
     users.farlion = {
-      description = "Florian Peter"
+      description = "Florian Peter";
       extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
       isNormalUser = true;
     };
