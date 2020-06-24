@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  services.clipmenu.enable = true;
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
