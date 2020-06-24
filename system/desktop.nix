@@ -43,6 +43,9 @@ in
 
   };
 
+  # I3 on KDE Plasma
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
+
   environment.systemPackages = [];
 
 }

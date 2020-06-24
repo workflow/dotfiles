@@ -58,4 +58,14 @@
     SystemMaxUse=2G
   '';
 
+  # Default editor for root
+  programs.vim.defaultEditor = true;
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+  programs.ssh.startAgent = true;
+
+  # Enable system-wide Yubikey Support
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+
 }
