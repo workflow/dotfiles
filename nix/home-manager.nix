@@ -12,7 +12,7 @@ in
 
   home-manager = {
     # useGlobalPkgs = true;
-    users.alex = import ../home.nix;
+    users.farlion = import ../home.nix;
     backupFileExtension = "home-manager-backup";
   };
 }

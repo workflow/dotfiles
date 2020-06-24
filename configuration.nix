@@ -18,5 +18,5 @@ in
     ./system/power.nix
   ];
 
-  environment.systemPackages = packages;
+  #environment.systemPackages = packages;
 }

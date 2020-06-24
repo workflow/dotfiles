@@ -2,10 +2,7 @@
 
 {
   services.xserver = {
-    layout = "us,gr";
-    xkbOptions = "caps:escape, ctrl:ralt_rctrl, grp:alt_space_toggle";
-    # xfce overrides these settings
-    autoRepeatDelay = 500;
-    autoRepeatInterval = 45;
+    layout = "us";
+    xkbOptions = "eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
   };
 }
