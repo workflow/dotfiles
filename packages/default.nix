@@ -30,7 +30,6 @@ let
       pkgs.spotify
       pkgs.terminator
       pkgs.variety
-      pkgs.vim
       pkgs.wget
     ];
 
