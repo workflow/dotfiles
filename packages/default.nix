@@ -13,7 +13,6 @@ let
   packages =
     [
       pkgs.asciinema
-      pkgs.bat
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
