@@ -1,3 +1,5 @@
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
 # NixOS configuration
 
 Structure, ideas and some jokes looted from https://github.com/alexpeits/nixos-config. Thank you! 
