@@ -21,6 +21,7 @@ let
       pkgs.i3status-rust
       pkgs.konsole
       pkgs.ksshaskpass
+      pkgs.niv
       pkgs.patchelf
       pkgs.playerctl
       pkgs.ripgrep
