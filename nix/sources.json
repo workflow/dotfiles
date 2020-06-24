@@ -12,15 +12,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
-        "branch": "release-20.03",
+        "branch": "master",
         "description": "Manage a user environment using Nix",
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "3461ceebc01169f99362ab5cc62d26224e7886d9",
-        "sha256": "0242ibqrr8wn8wipl41dmchmr76lh6zrv046hp374wx4dpkdl7r1",
+        "rev": "8f2342e13a2ddc84ed5053e2bfc393184258c686",
+        "sha256": "0amfj3524jjnk15nickjkpcjngsnhz87gnfyznnky2kvdn8zlq71",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/3461ceebc01169f99362ab5cc62d26224e7886d9.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/8f2342e13a2ddc84ed5053e2bfc393184258c686.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {
