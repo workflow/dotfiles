@@ -1,26 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # TODO: Move to modules
-  home.packages = with pkgs; [
-    asciinema
-    binutils
-    bluez
-    bluez-tools
-    feh
-    fortune
-    i3status-rust
-    konsole
-    ksshaskpass
-    patchelf
-    playerctl
-    roboto
-    spideroak
-    spotify
-    terminator
-    variety
-  ];
-
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
