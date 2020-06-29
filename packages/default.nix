@@ -17,6 +17,7 @@ let
       pkgs.bluez
       pkgs.bluez-tools
       pkgs.feh
+      pkgs.file
       pkgs.fortune
       pkgs.i3status-rust
       pkgs.konsole
