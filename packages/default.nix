@@ -5,9 +5,7 @@ let
   sources = import ../nix/sources.nix;
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
-  #emacs-27 = pkgs.callPackage ./emacs.nix {};
-
-  #i3lock-wrap = pkgs.callPackage ./tools/i3lock-wrap {};
+  #torguard = pkgs.callPackage ./torguard {};
 
   # TODO: Move whatever we can to home manager modules
   packages =
