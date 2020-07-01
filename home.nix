@@ -46,6 +46,18 @@
     enable = true;
   };
 
+  programs.tmux = {
+    enable = true;
+
+    # Reduce escape time to 10ms, otherwise VIM <esc> is slooooow
+    escapeTime = 10;
+
+    historyLimit = 20000;
+
+    shortcut = "w";
+
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
