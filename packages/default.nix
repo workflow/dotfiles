@@ -31,6 +31,7 @@ let
       pkgs.terminator
       pkgs.variety
       pkgs.wget
+      pkgs.whois
     ];
 
 in
