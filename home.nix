@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.clipmenu.enable = true;
+  services.parcellite.enable = true;
 
   services.gpg-agent = {
     enable = true;
