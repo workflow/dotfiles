@@ -14,6 +14,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
+      pkgs.deluge
       pkgs.feh
       pkgs.file
       pkgs.fortune
