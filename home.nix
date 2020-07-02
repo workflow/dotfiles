@@ -1,5 +1,12 @@
 { config, lib, pkgs, ... }:
 
+let 
+
+  #fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
+  profile = pkgs.callPackage ./dotfiles/profile.nix {};
+
+in
+
 {
   services.parcellite.enable = true;
 
@@ -19,6 +26,14 @@
     enable = true;
     #enableIcedTea = true;
   };
+
+  programs.fish = {
+    enable = true;
+
+    shellAbbrs = profile.aliases;
+  };
+
+
 
   programs.git = {
     enable = true;
