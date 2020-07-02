@@ -32,6 +32,7 @@ let
       pkgs.variety
       pkgs.wget
       pkgs.whois
+      pkgs.xclip
     ];
 
 in

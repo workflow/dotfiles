@@ -52,6 +52,8 @@
     # Reduce escape time to 10ms, otherwise VIM <esc> is slooooow
     escapeTime = 10;
 
+    extraConfig = pkgs.callPackage ./dotfiles/tmux-conf.nix { };
+
     historyLimit = 20000;
 
     shortcut = "w";
