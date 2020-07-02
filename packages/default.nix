@@ -11,6 +11,7 @@ let
   packages =
     [
       pkgs.asciinema
+      pkgs.bind # Provides dig
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
