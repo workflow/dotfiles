@@ -34,12 +34,17 @@
 
   programs.neovim = {
     enable = true;
-    vimAlias = true;
+
+    extraConfig = ''
+      set number
+      set clipboard=unnamedplus
+    '';
 
     plugins = with pkgs.vimPlugins; [
       vim-nix
     ];
-    
+
+    vimAlias = true;
   };
 
   programs.ssh = {
