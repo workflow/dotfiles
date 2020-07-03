@@ -40,7 +40,7 @@ in
 
 {
   shellInit = ''
-    eval (${pkgs.direnv}/bin/direnv hook fish)
+    #eval (${pkgs.direnv}/bin/direnv hook fish)
 
     if test -e $HOME/.local-fishrc
       source $HOME/.local-fishrc
