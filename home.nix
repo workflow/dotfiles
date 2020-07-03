@@ -2,7 +2,7 @@
 
 let 
 
-  #fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
+  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
 in
@@ -29,7 +29,7 @@ in
 
   programs.fish = {
     enable = true;
-
+    interactiveShellInit = fishrc.shellInit;
     shellAbbrs = profile.aliases;
   };
 
