@@ -76,6 +76,6 @@ in
     ${variables}
     ${theme}
 
-    start_tmux
+    #start_tmux
   '';
 }
