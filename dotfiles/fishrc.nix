@@ -13,6 +13,18 @@ let
     '';
   };
 
+  plugins = [
+    {
+      name = "fish-ssh-agent";
+      src = pkgs.fetchFromGitHub {
+        owner = "danhper";
+        repo = "fish-ssh-agent";
+        rev = "ce90d80aa9549c626f9c5fc5a964536de015a192";
+        sha256 = "03zj5g7dxkhqpp9lijxxlnyx4cc7nqpapj5iqfv7swavyximicyi";
+      };
+    }
+  ];
+
   theme = ''
     set -g fish_color_autosuggestion 586e75
     set -g fish_color_cancel -r
@@ -51,6 +63,8 @@ in
 
 {
   inherit functions;
+
+  inherit plugins;
 
   shellInit = ''
     #eval (${pkgs.direnv}/bin/direnv hook fish)

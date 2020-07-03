@@ -31,6 +31,7 @@ in
     enable = true;
     interactiveShellInit = fishrc.shellInit;
     functions = fishrc.functions;
+    plugins = fishrc.plugins;
     shellAbbrs = profile.aliases;
   };
 
