@@ -30,6 +30,7 @@ in
   programs.fish = {
     enable = true;
     interactiveShellInit = fishrc.shellInit;
+    functions = fishrc.functions;
     shellAbbrs = profile.aliases;
   };
 
