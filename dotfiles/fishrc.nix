@@ -2,11 +2,6 @@
 
 let
 
-  variables = ''
-    set -g fish_key_bindings fish_default_key_bindings
-    set fish_greeting  # disable greeting
-  '';
-
   theme = ''
     set -g fish_color_autosuggestion 586e75
     set -g fish_color_cancel -r
@@ -34,6 +29,11 @@ let
     set -g fish_pager_color_description B3A06D
     set -g fish_pager_color_prefix cyan --underline
     set -g fish_pager_color_progress brwhite --background=cyan
+  '';
+
+  variables = ''
+    set -g fish_key_bindings fish_default_key_bindings
+    set fish_greeting  # disable greeting
   '';
 
 in
