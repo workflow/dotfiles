@@ -10,6 +10,10 @@ let
 	bind \t forward-char
 	bind \cs complete
     '';
+    issue_branch = ''
+	set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g') 
+        echo (git checkout -b $converted)
+    '';
     pirate = ''
 	set toTranslate $argv
 	curl -sG \
