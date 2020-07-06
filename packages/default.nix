@@ -20,11 +20,13 @@ let
       pkgs.file
       pkgs.fortune
       pkgs.i3status-rust
+      pkgs.jq
       pkgs.konsole
       pkgs.ksshaskpass
       pkgs.niv
       pkgs.patchelf
       pkgs.playerctl
+      pkgs.pup
       pkgs.ripgrep
       pkgs.roboto
       pkgs.spideroak
@@ -34,6 +36,7 @@ let
       pkgs.wget
       pkgs.whois
       pkgs.xclip
+      pkgs.yq
     ];
 
 in
