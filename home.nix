@@ -10,11 +10,6 @@ in
 {
   services.parcellite.enable = true;
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-  };
-
   programs.bat.enable = true;
 
   programs.chromium = {
