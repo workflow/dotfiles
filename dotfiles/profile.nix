@@ -32,6 +32,7 @@
     k = "kubectl";
     ll = "ls -l";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
+    n = "sudo nixos-rebuild switch";
     watch-lorri = "journalctl --user -eu lorri -f";
     x = "exit";
   };
