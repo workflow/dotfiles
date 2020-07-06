@@ -14,15 +14,15 @@ let
   };
 
   plugins = [
-    #{
-    #  name = "fish-ssh-agent";
-    #  src = pkgs.fetchFromGitHub {
-    #    owner = "danhper";
-    #    repo = "fish-ssh-agent";
-    #    rev = "ce90d80aa9549c626f9c5fc5a964536de015a192";
-    #    sha256 = "03zj5g7dxkhqpp9lijxxlnyx4cc7nqpapj5iqfv7swavyximicyi";
-    #  };
-    #}
+    {
+      name = "pure-prompt";
+      src = pkgs.fetchFromGitHub {
+        owner = "rafaelrinaldi";
+        repo = "pure";
+        rev = "d66aa7f0fec5555144d29faec34a4e7eff7af32b";
+        sha256 = "0klcwlgsn6nr711syshrdqgjy8yd3m9kxakfzv94jvcnayl0h62w";
+      };
+    }
   ];
 
   theme = ''
