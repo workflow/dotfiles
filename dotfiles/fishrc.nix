@@ -3,6 +3,13 @@
 let
 
   functions = {
+    fish_user_key_bindings = ''
+	# CTRL-F --> original TAB behaviour
+	bind \cf forward-word
+	# Tab --> accept autosuggestions
+	bind \t forward-char
+	bind \cs complete
+    '';
     start_tmux = ''
       if type tmux > /dev/null
         #if not inside a tmux session, and if no session is started, start a new session
