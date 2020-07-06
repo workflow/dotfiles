@@ -54,6 +54,15 @@ let
         sha256 = "0ffkhm0ap96kixrck3r3fnmc1iq1wl018iqb7wjwf6miqwxhlb7v";
       };
     }
+    {
+      name = "bang-bang";
+      src = pkgs.fetchFromGitHub {
+        owner = "oh-my-fish";
+        repo = "plugin-bang-bang";
+        rev = "d45ae216969fa5c3eac0b6248119e8a1da56fe89";
+        sha256 = "0jpcs8fpw9a69ai6mwhgikw77j03fhnixcl21yx1b5p65333pddc";
+      };
+    }
   ];
 
   theme = ''
