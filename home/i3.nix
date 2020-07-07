@@ -63,9 +63,6 @@ in {
         "${mod}+Shift+l" = "move up";
         "${mod}+Shift+semicolon" = "move right";
 
-        # start a terminal
-        "${mod}+Return" = "exec konsole";
-
         # lock screen
         "${mod}+Shift+x" = "exec i3lock";
 
@@ -100,6 +97,8 @@ in {
         # Autoconnect to WIFI after wallet unlock
         { command = "kcmshell5 kcm_networkmanagement"; }
       ];
+
+      terminal = "konsole";
 
     };
     extraConfig = ''
