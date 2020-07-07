@@ -37,8 +37,6 @@ in
     shellAbbrs = profile.aliases;
   };
 
-
-
   programs.git = {
     enable = true;
     ignores = [ ".idea" ]; # IntelliJ Idea dirs
@@ -83,9 +81,6 @@ in
     shortcut = "w";
 
   };
-
-  # https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
-  xsession.scriptPath = ".hm-xsession";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
