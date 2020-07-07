@@ -114,6 +114,8 @@ in {
         ];
       };
 
+      workspaceAutoBackAndForth = true;
+
     };
     extraConfig = ''
       # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
