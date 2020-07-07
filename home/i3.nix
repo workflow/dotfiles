@@ -87,8 +87,19 @@ in {
 
       };
 
-
       modifier = mod;
+
+      startup = [
+        { command = "spideroak"; notification = false; }
+        { command = "spotify"; notification = false; }
+        { command = "variety"; notification = false; }
+
+        # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
+        { command = "ssh-add -q < /dev/null"; notification = false; }
+
+        # Autoconnect to WIFI after wallet unlock
+        { command = "kcmshell5 kcm_networkmanagement"; }
+      ];
 
     };
     extraConfig = ''
@@ -98,21 +109,8 @@ in {
       for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
       no_focus [class="plasmashell" window_type="notification"] 
 
-      #
-      # Autostart stuff
-      #
-      exec spotify 
       # From https://wiki.archlinux.org/index.php/i3#Default_workspace_for_Spotify
       for_window [class="Spotify"] move to workspace ${ws9}
-
-      exec variety
-
-      exec spideroak
-
-      # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
-      exec --no-startup-id ssh-add -q < /dev/null
-      # Autoconnect to WIFI after wallet unlock
-      exec --no-startup-id kcmshell5 kcm_networkmanagement
     '';
   };
 }
