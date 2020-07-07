@@ -5,9 +5,16 @@ let
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
+  imports = [
+    ./home/i3.nix
+  ];
+
 in
 
 {
+
+  inherit imports;
+
   services.parcellite.enable = true;
 
   programs.bat.enable = true;
@@ -76,6 +83,9 @@ in
     shortcut = "w";
 
   };
+
+  # https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
+  xsession.scriptPath = ".hm-xsession";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
