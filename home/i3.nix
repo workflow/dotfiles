@@ -87,12 +87,14 @@ in {
       modifier = mod;
 
       startup = [
-        { command = "spideroak"; notification = false; }
-        { command = "spotify"; notification = false; }
-        { command = "variety"; notification = false; }
-
         # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
         { command = "ssh-add -q < /dev/null"; notification = false; }
+
+        # Wallpaper
+        { command = "variety"; always = true; }
+
+        { command = "spideroak"; }
+        { command = "spotify"; }
 
         # Autoconnect to WIFI after wallet unlock
         { command = "kcmshell5 kcm_networkmanagement"; }
