@@ -33,6 +33,21 @@ in {
         }
       ];
 
+      floating = {
+        border = 0;
+        criteria = [
+          { class = "plasmashell"; }
+          { class = "Plasma"; }
+          { title = "plasma-desktop"; }
+          { title = "win7"; }
+          { class = "krunner"; }
+          { class = "Kmix"; }
+          { class = "Klipper"; }
+          { class = "Plasmoidviewer"; }
+          { title = "Desktop - Plasma"; }
+        ];
+      };
+
       fonts = ["pango:monospace 8" "FontAwesome 6"];
 
       keybindings = lib.mkOptionDefault {
@@ -78,17 +93,9 @@ in {
     };
     extraConfig = ''
       # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-      for_window [title="Desktop — Plasma"] kill; floating enable; border none
-      for_window [class="plasmashell"] floating enable;
-      for_window [class="Plasma"] floating enable; border none
-      for_window [title="plasma-desktop"] floating enable; border none
-      for_window [title="win7"] floating enable; border none
-      for_window [class="krunner"] floating enable; border none
-      for_window [class="Kmix"] floating enable; border none
-      for_window [class="Klipper"] floating enable; border none
-      for_window [class="Plasmoidviewer"] floating enable; border none
+      for_window [title="Desktop — Plasma"] kill; 
       for_window [class="(?i)*nextcloud*"] floating disable
-      for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
+      for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
       no_focus [class="plasmashell" window_type="notification"] 
 
       #
