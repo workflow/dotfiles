@@ -48,7 +48,7 @@ in {
         ];
       };
 
-      fonts = ["pango:monospace 8" "FontAwesome 6"];
+      fonts = ["FontAwesome 10" "monospace 10"];
 
       keybindings = lib.mkOptionDefault {
         # Focus
