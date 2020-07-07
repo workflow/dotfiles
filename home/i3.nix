@@ -2,12 +2,30 @@
 
 let 
   mod = "Mod4";
+
+  ws1 = "1";
+  ws2 = "2";
+  ws3 = "3";
+  ws4 = "4";
+  ws5 = "5";
+  ws6 = "6";
+  ws7 = "7";
+  ws8 = "8: Chat ";
+  ws9 = "9: Music ";
+  ws10 = "10: Config ";
+
 in {
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 
   xsession.windowManager.i3 = {
     enable = true;
     config = {
+      assigns = {
+        "${ws8}" = [];
+        "${ws9}" = [{ class="^Spotify$"; }];
+        "${ws10}" = [{ class="^SpiderOakOne$"; }];
+      };
+
       bars = [
         {
           position = "bottom";
@@ -59,19 +77,6 @@ in {
 
     };
     extraConfig = ''
-      # Define names for default workspaces for which we configure key bindings later on.
-      # We use variables to avoid repeating the names in multiple places.
-      set $ws1 "1"
-      set $ws2 "2"
-      set $ws3 "3"
-      set $ws4 "4"
-      set $ws5 "5"
-      set $ws6 "6"
-      set $ws7 "7"
-      set $ws8 "8: Chat "
-      set $ws9 "9: Music "
-      set $ws10 "10: Config "
-
       # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
       for_window [title="Desktop — Plasma"] kill; floating enable; border none
       for_window [class="plasmashell"] floating enable;
@@ -91,12 +96,11 @@ in {
       #
       exec spotify 
       # From https://wiki.archlinux.org/index.php/i3#Default_workspace_for_Spotify
-      for_window [class="Spotify"] move to workspace $ws9
+      for_window [class="Spotify"] move to workspace ${ws9}
 
       exec variety
 
       exec spideroak
-      assign [class="SpiderOakOne"] $ws10
 
       # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
       exec --no-startup-id ssh-add -q < /dev/null
