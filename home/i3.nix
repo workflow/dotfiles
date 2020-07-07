@@ -100,16 +100,24 @@ in {
 
       terminal = "konsole";
 
+      window = {
+        commands = [
+          # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
+          { command = "kill"; criteria = { title = "Desktop - Plasma"; }; }
+          { command = "floating disable"; criteria = { class = "(?i)*nextcloud*"; }; }
+          { command = "border none"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
+          { command = "move right 700px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
+          { command = "move down 450px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
+
+          # From https://wiki.archlinux.org/index.php/i3#Default_workspace_for_Spotify
+          { command = "move to workspace ${ws9}"; criteria = { class = "Spotify"; }; }
+        ];
+      };
+
     };
     extraConfig = ''
       # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-      for_window [title="Desktop — Plasma"] kill; 
-      for_window [class="(?i)*nextcloud*"] floating disable
-      for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
       no_focus [class="plasmashell" window_type="notification"] 
-
-      # From https://wiki.archlinux.org/index.php/i3#Default_workspace_for_Spotify
-      for_window [class="Spotify"] move to workspace ${ws9}
     '';
   };
 }
