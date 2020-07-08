@@ -29,6 +29,7 @@ let
       pkgs.pup
       pkgs.ripgrep
       pkgs.roboto
+      pkgs.slack
       pkgs.spideroak
       pkgs.spotify
       pkgs.terminator

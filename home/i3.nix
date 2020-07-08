@@ -22,7 +22,7 @@ in {
     enable = true;
     config = {
       assigns = {
-        "${ws8}" = [];
+        "${ws8}" = [{ class="^Slack$"; }];
         "${ws9}" = [{ class="^Spotify$"; }];
         "${ws10}" = [{ class="^SpiderOakOne$"; }];
       };
@@ -94,6 +94,7 @@ in {
         # Wallpaper
         { command = "variety"; always = true; }
 
+        { command = "slack"; }
         { command = "spideroak"; }
         { command = "spotify"; }
 
