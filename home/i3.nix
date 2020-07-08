@@ -15,6 +15,7 @@ let
   ws10 = "10: Config ";
 
 in {
+  xsession.enable = true;
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 
   xsession.windowManager.i3 = {
