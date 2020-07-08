@@ -42,14 +42,8 @@ in
       ];
     };
 
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu # Application launcher most people use
-        i3status # Gives you the default i3 status bar
-        i3lock # Default i3 screen locker
-        i3blocks # If you are planning on using i3blocks over i3status
-      ];
+    windowManager = {
+      i3.enable = true;
     };
 
   };
