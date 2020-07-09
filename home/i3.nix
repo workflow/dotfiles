@@ -97,7 +97,7 @@ in {
         { command = "ssh-add -q < /dev/null"; notification = false; }
 
         # Wallpaper
-        { command = "variety"; always = true; }
+        { command = "variety"; }
 
         { command = "spideroak"; }
         { command = "spotify"; }
