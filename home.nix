@@ -7,6 +7,7 @@ let
 
   imports = [
     ./home/i3.nix
+    ./home/rofi.nix
   ];
 
 in

@@ -147,6 +147,8 @@ in {
 
       };
 
+      menu = "rofi -show run";
+
       # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
       # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
       # If you also press Shift with these keys, the change will be global for all workspaces.
