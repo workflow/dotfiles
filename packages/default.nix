@@ -16,6 +16,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
+      pkgs.dconf
       pkgs.deluge
       pkgs.feh
       pkgs.file

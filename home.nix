@@ -18,6 +18,13 @@ in
   services.flameshot.enable = true; 
 
   services.parcellite.enable = true;
+  gtk = {
+    enable = true;
+    font = {
+      name = "Inconsolata 10";
+      package = pkgs.google-fonts;
+    };
+  };
 
   programs.bat.enable = true;
 
