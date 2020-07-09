@@ -15,6 +15,8 @@ in
 
   inherit imports;
 
+  services.flameshot.enable = true; 
+
   services.parcellite.enable = true;
 
   programs.bat.enable = true;

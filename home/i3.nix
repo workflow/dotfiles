@@ -83,6 +83,11 @@ in {
         "XF86AudioNext" = "exec playerctl next";
         "XF86AudioPrev" = "exec playerctl previous";
 
+        # Screenshots
+        "Print" = "exec --no-startup-id flameshot gui";
+        # TODO: Crashes after first screenshot and takes a minute to recover. Is KDE capturing something?
+        "Shift+Print" = "exec --no-startup-id flameshot full --clipboard --path ~/Pictures/Flameshot/";
+
       };
 
       modifier = mod;
