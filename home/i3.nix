@@ -41,6 +41,29 @@ in {
         }
       ];
 
+      # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
+      # <border> <background> <text> <indicator> <child_border>
+      colors = rec {
+        background = "#1E272B";
+        focused = {
+          border = "#EAD49B";
+          background = "#1E272B";
+          text = "#EAD49B";
+          indicator = "#9D6A47";
+          childBorder = "#9D6A47";
+        };
+        focusedInactive = {
+          border = "#EAD49B";
+          background = "#1E272B";
+          text = "#EAD49B";
+          indicator = "#78824B";
+          childBorder = "#78824B";
+        };
+        placeholder = focusedInactive;
+        unfocused = focusedInactive;
+        urgent = focusedInactive;
+      };
+
       floating = {
         border = 0;
         criteria = [
@@ -195,5 +218,30 @@ in {
       # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
       no_focus [class="plasmashell" window_type="notification"] 
     '';
+  };
+
+  # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
+  xresources.properties = {
+    "*background" = "#1E272B";
+    "*foreground" = "#EAD49B";
+    "*cursorColor" = "#EAD49B";
+
+    "*color0" = "#1E272B";
+    "*color1" = "#685742";
+    "*color2" = "#9D6A47";
+    "*color3" = "#B36D43";
+    "*color4" = "#78824B";
+    "*color5" = "#D99F57";
+    "*color6" = "#C9A554";
+    "*color7" = "#EAD49B";
+    "*color8" = "#666666";
+    "*color9" = "#685743";
+    "*color10" = "#9D6A47";
+    "*color11" = "#B36D43";
+    "*color12" = "#78824B";
+    "*color13" = "#D99F57";
+    "*color14" = "#C9A554";
+    "*color15" = "#EAD49B";
+    
   };
 }
