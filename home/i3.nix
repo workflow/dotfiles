@@ -70,6 +70,14 @@ in {
         # toggle tiling / floating
         "${mod}+Shift+space" = "floating toggle";
 
+        # move the currently focused window to the scratchpad
+        "${mod}+Shift+minus" = "move scratchpad";
+
+        # navigate workspaces next / previous
+        "${mod}+Ctrl+semicolon" = "workspace next";
+        "${mod}+Ctrl+j" = "workspace prev";
+
+
         # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
         # Pulse Audio controls
         "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 1 +5%"; #increase sound volume
