@@ -99,7 +99,6 @@ in {
         # Wallpaper
         { command = "variety"; always = true; }
 
-        { command = "slack"; }
         { command = "spideroak"; }
         { command = "spotify"; }
 
