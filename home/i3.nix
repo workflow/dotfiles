@@ -111,6 +111,10 @@ in {
         # move the currently focused window to the scratchpad
         "${mod}+Shift+minus" = "move scratchpad";
 
+        # Show the next scratchpad window or hide the focused scratchpad window.
+        # If there are multiple scratchpad windows, this command cycles through them.
+        "${mod}+minus" = "scratchpad show";
+
         # navigate workspaces next / previous
         "${mod}+Ctrl+semicolon" = "workspace next";
         "${mod}+Ctrl+j" = "workspace prev";
