@@ -67,6 +67,9 @@ in {
         # lock screen
         "${mod}+Shift+x" = "exec i3lock";
 
+        # toggle tiling / floating
+        "${mod}+Shift+space" = "floating toggle";
+
         # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
         # Pulse Audio controls
         "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 1 +5%"; #increase sound volume
