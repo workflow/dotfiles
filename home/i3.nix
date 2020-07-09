@@ -49,7 +49,7 @@ in {
         ];
       };
 
-      fonts = ["FontAwesome 10" "monospace 10"];
+      fonts = ["FontAwesome 10" "Inconsolata 10"];
 
       keybindings = lib.mkOptionDefault {
         # Focus
