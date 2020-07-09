@@ -21,6 +21,7 @@ let
       pkgs.fortune
       pkgs.i3status-rust
       pkgs.jq
+      pkgs.killall
       pkgs.konsole
       pkgs.ksshaskpass
       pkgs.niv
