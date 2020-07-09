@@ -15,9 +15,6 @@ in
 
   inherit imports;
 
-  services.flameshot.enable = true; 
-
-  services.parcellite.enable = true;
   gtk = {
     enable = true;
     font = {
@@ -90,6 +87,11 @@ in
     shortcut = "w";
 
   };
+
+  services.flameshot.enable = true; 
+
+  services.parcellite.enable = true;
+
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
