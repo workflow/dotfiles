@@ -3,6 +3,13 @@
 let 
   mod = "Mod4";
 
+  # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
+  # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
+  # If you also press Shift with these keys, the change will be global for all workspaces.
+  mode_gaps = "Gaps: (o) outer, (i) inner";
+  mode_gaps_inner = "Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)";
+  mode_gaps_outer = "Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)";
+
   ws1 = "1";
   ws2 = "2";
   ws3 = "3";
@@ -85,7 +92,6 @@ in {
         "${mod}+Ctrl+semicolon" = "workspace next";
         "${mod}+Ctrl+j" = "workspace prev";
 
-
         # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
         # Pulse Audio controls
         "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 1 +5%"; #increase sound volume
@@ -107,6 +113,47 @@ in {
         # TODO: Crashes after first screenshot and takes a minute to recover. Is KDE capturing something?
         "Shift+Print" = "exec --no-startup-id flameshot full --clipboard --path ~/Pictures/Flameshot/";
 
+        # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
+        # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
+        # If you also press Shift with these keys, the change will be global for all workspaces.
+        "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
+
+      };
+
+      # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
+      # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
+      # If you also press Shift with these keys, the change will be global for all workspaces.
+      modes = lib.mkOptionDefault {
+        "${mode_gaps}" = {
+          i = "mode \"${mode_gaps_inner}\"";
+          o = "mode \"${mode_gaps_outer}\"";
+          Return = "mode default";
+          Escape = "mode default";
+        };
+        "${mode_gaps_inner}" = {
+          plus = "gaps inner current plus 5";
+          minus = "gaps inner current minus 5";
+          "0" = "gaps inner current set 0";
+
+          "Shift+plus" = "gaps inner all plus 5";
+          "Shift+minus" = "gaps inner all minus 5";
+          "Shift+0" = "gaps inner all set 0";
+
+          Return = "mode default";
+          Escape = "mode default";
+        };
+        "${mode_gaps_outer}" = {
+          plus = "gaps outer current plus 5";
+          minus = "gaps outer current minus 5";
+          "0" = "gaps outer current set 0";
+
+          "Shift+plus" = "gaps outer all plus 5";
+          "Shift+minus" = "gaps outer all minus 5";
+          "Shift+0" = "gaps outer all set 0";
+
+          Return = "mode default";
+          Escape = "mode default";
+        };
       };
 
       modifier = mod;
