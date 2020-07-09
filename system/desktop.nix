@@ -43,7 +43,10 @@ in
     };
 
     windowManager = {
-      i3.enable = true;
+      i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
     };
 
   };

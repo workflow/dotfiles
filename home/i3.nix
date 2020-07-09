@@ -53,6 +53,12 @@ in {
 
       fonts = ["FontAwesome 10" "Inconsolata 10"];
 
+      gaps = {
+        inner = 8;
+        smartGaps = true;
+        outer = -4;
+      }; 
+
       keybindings = lib.mkOptionDefault {
         # Focus
         "${mod}+j" = "focus left";
