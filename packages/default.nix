@@ -10,6 +10,7 @@ let
   # TODO: Move whatever we can to home manager modules
   packages =
     [
+      pkgs.arandr
       pkgs.asciinema
       pkgs.bind # Provides dig
       pkgs.binutils
