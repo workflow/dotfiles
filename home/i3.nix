@@ -31,7 +31,7 @@ in {
       assigns = {
         "${ws8}" = [{ class="^Slack$"; }];
         "${ws9}" = [{ class="^Spotify$"; }];
-        "${ws10}" = [{ class="^SpiderOakOne$"; }];
+        "${ws10}" = [{ class="^SpiderOakONE$"; }];
       };
 
       bars = [
