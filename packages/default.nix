@@ -37,6 +37,7 @@ let
       pkgs.spotify
       pkgs.terminator
       pkgs.variety
+      pkgs.vlc
       pkgs.wget
       pkgs.whois
       pkgs.xclip
