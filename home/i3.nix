@@ -17,9 +17,9 @@ let
   ws5 = "5";
   ws6 = "6";
   ws7 = "7";
-  ws8 = "8: Chat ";
-  ws9 = "9: Music ";
-  ws10 = "10: Config ";
+  ws8 = "8: ";
+  ws9 = "9: ";
+  ws10 = "10: ";
 
 in {
   xsession.enable = true;
