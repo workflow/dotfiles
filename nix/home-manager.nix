@@ -12,7 +12,6 @@ in
   imports = [ home-manager.nixos ];
 
   home-manager = {
-    # useGlobalPkgs = true;
     users.farlion = import ../home.nix;
     backupFileExtension = "home-manager-backup";
   };
