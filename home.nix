@@ -21,7 +21,7 @@ in
   home = {
     file = {
       # ~/bin
-      "bin/mega-backup" = { text = scripts.mega-backup; executable = true; };
+      "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
       # Syncthing
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;

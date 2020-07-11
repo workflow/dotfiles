@@ -14,7 +14,7 @@ let
 in
 
 {
-  mega-backup  = ''
+  configure-mega-backup  = ''
       ${shebang}
 
       ${pkgs.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents
