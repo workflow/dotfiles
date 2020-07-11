@@ -1,0 +1,17 @@
+// .stignore for ~/code
+
+// IntelliJ
+.idea
+
+// NodeJS
+node_modules
+
+// React Native
+android/app/build
+
+// Rust
+target/debug
+target/release
+
+// DAS
+build
