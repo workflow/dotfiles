@@ -22,8 +22,6 @@
     };
   };
 
-  networking.hostName = "nixbox";
-
   networking.networkmanager = {
     enable = true;
     packages = [ pkgs.networkmanager-l2tp ];
