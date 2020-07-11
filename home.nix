@@ -102,6 +102,7 @@ in
   home = {
     file = {
       "code/.stignore".source = ./dotfiles/stignore_code;
+      ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
     };
 
     # This value determines the Home Manager release that your

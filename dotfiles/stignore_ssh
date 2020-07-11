@@ -1,0 +1,4 @@
+// .stignore for ~/.ssh
+config
+environment
+known_hosts
