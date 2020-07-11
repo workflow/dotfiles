@@ -197,7 +197,6 @@ in {
         # Wallpaper
         { command = "variety"; }
 
-        { command = "spideroak"; }
         { command = "spotify"; }
 
         # Autoconnect to WIFI after wallet unlock
