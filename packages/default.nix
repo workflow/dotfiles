@@ -26,6 +26,7 @@ let
       pkgs.killall
       pkgs.konsole
       pkgs.ksshaskpass
+      pkgs.ncdu
       pkgs.niv
       pkgs.patchelf
       pkgs.playerctl
