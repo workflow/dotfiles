@@ -9,9 +9,8 @@ node_modules
 // React Native
 android/app/build
 
-// Rust
-target/debug
-target/release
+// Rust/Scala builds
+target/**
 
 // DAS
 build
