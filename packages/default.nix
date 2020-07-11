@@ -26,6 +26,7 @@ let
       pkgs.killall
       pkgs.konsole
       pkgs.ksshaskpass
+      pkgs.megacmd
       pkgs.ncdu
       pkgs.niv
       pkgs.patchelf
