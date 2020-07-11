@@ -36,6 +36,7 @@ let
       pkgs.spideroak
       pkgs.spotify
       pkgs.terminator
+      pkgs.unzip
       pkgs.variety
       pkgs.vlc
       pkgs.wget
