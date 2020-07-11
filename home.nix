@@ -101,6 +101,8 @@ in
 
   home = {
     file = {
+      # Syncthing
+      ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
     };
