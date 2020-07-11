@@ -18,7 +18,19 @@ in
   configure-mega-backup  = ''
       ${shebang}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents >/dev/null || true
+      hostname="$(hostname)"
+
+      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Documents" >/dev/null || true
+      ${pkgs.megacmd}/bin/mega-backup ~/Documents "/backup/$hostname/Documents" --period="1d" --num-backups=60
+
+      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Videos" >/dev/null || true
+      ${pkgs.megacmd}/bin/mega-backup ~/Videos "/backup/$hostname/Videos" --period="1d" --num-backups=60
+
+      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Music" >/dev/null || true
+      ${pkgs.megacmd}/bin/mega-backup ~/Music "/backup/$hostname/Music" --period="1d" --num-backups=60
+
+      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Pictures" >/dev/null || true
+      ${pkgs.megacmd}/bin/mega-backup ~/Pictures "/backup/$hostname/Pictures" --period="1d" --num-backups=60
   '';
 
   gen-gitignore = ''
