@@ -2,8 +2,12 @@
 
 let 
 
+  sources = import ./nix/sources.nix;
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
+  scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
   imports = [
     ./home/i3.nix
@@ -16,6 +20,9 @@ in
 
   home = {
     file = {
+      # ~/bin
+      "bin/mega-backup" = { text = scripts.mega-backup; executable = true; };
+
       # Syncthing
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
