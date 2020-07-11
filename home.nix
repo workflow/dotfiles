@@ -50,6 +50,10 @@ in
     };
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   programs.bat.enable = true;
 
   programs.chromium = {

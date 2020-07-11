@@ -17,7 +17,7 @@ in
   mega-backup  = ''
       ${shebang}
 
-      ${nixpkgs-unstable.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents
+      ${pkgs.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents
   '';
 
   gen-gitignore = ''
