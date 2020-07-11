@@ -1,4 +1,8 @@
-{ pkgs }:
+{ 
+  lib,
+  pkgs,
+  profile
+}:
 
 let
 
@@ -34,6 +38,8 @@ let
       end
     '';
   };
+
+  path = lib.concatStringsSep " " profile.path;
 
   plugins = [
     {
@@ -112,6 +118,8 @@ in
     if test -e $HOME/.local-fishrc
       source $HOME/.local-fishrc
     end
+
+    set PATH ${path} $PATH
 
     ${variables}
     ${theme}

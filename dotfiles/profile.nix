@@ -1,7 +1,8 @@
 { pkgs }:
 
 {
-  #path = [ "$HOME/.local/bin" "$HOME/bin" ];
+  path = [ "$HOME/bin" ];
+
   aliases = {
     ".." = "cd ..";
     "..." = "cd ../..";

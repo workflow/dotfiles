@@ -5,7 +5,7 @@ let
   sources = import ./nix/sources.nix;
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
-  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix {};
+  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
@@ -28,6 +28,10 @@ in
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
+    };
+
+    sessionVariables = {
+      PATH = "$HOME/bin:$PATH";
     };
 
     # This value determines the Home Manager release that your
