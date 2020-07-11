@@ -21,6 +21,7 @@ in
   home = {
     file = {
       # ~/bin
+      # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
       # Syncthing

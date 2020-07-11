@@ -14,6 +14,7 @@ let
 in
 
 {
+  # Declaratively configure Mega backups
   configure-mega-backup  = ''
       ${shebang}
 
