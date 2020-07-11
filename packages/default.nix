@@ -35,7 +35,7 @@ let
       pkgs.roboto
       pkgs.slack
       pkgs.spideroak
-      pkgs.spotify
+      nixpkgs-unstable.spotify
       pkgs.terminator
       pkgs.unzip
       pkgs.variety
