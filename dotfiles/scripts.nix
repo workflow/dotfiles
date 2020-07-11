@@ -18,7 +18,7 @@ in
   configure-mega-backup  = ''
       ${shebang}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents
+      ${pkgs.megacmd}/bin/mega-mkdir -p /backup/$(hostname)/Documents >/dev/null || true
   '';
 
   gen-gitignore = ''
