@@ -54,78 +54,82 @@ in
     allowUnfree = true;
   };
 
-  programs.bat.enable = true;
+  programs = {
+    bat.enable = true;
 
-  programs.chromium = {
-    enable = true;
-    extensions = [];
+    chromium = {
+      enable = true;
+      extensions = [];
+    };
+
+    firefox = {
+      enable = true;
+      #enableIcedTea = true;
+    };
+
+    fish = {
+      enable = true;
+      interactiveShellInit = fishrc.shellInit;
+      functions = fishrc.functions;
+      plugins = fishrc.plugins;
+      shellAbbrs = profile.aliases;
+    };
+
+    git = {
+      enable = true;
+      ignores = [ ".idea" ]; # IntelliJ Idea dirs
+      userEmail = "florian.peter@gmx.at";
+      userName = "workflow";
+    };
+
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    htop.enable = true;
+
+    neovim = {
+      enable = true;
+
+      extraConfig = ''
+        set number
+        set clipboard=unnamedplus
+      '';
+
+      plugins = with pkgs.vimPlugins; [
+        vim-nix
+      ];
+
+      vimAlias = true;
+    };
+
+    ssh = {
+      enable = true;
+    };
+
+    tmux = {
+      enable = true;
+
+      # Reduce escape time to 10ms, otherwise VIM <esc> is slooooow
+      escapeTime = 10;
+
+      extraConfig = pkgs.callPackage ./dotfiles/tmux-conf.nix { };
+
+      historyLimit = 20000;
+
+      shortcut = "w";
+
+    };
   };
 
-  programs.firefox = {
-    enable = true;
-    #enableIcedTea = true;
-  };
+  services = {
+    flameshot.enable = true; 
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = fishrc.shellInit;
-    functions = fishrc.functions;
-    plugins = fishrc.plugins;
-    shellAbbrs = profile.aliases;
-  };
+    parcellite.enable = true;
 
-  programs.git = {
-    enable = true;
-    ignores = [ ".idea" ]; # IntelliJ Idea dirs
-    userEmail = "florian.peter@gmx.at";
-    userName = "workflow";
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  programs.htop.enable = true;
-
-  programs.neovim = {
-    enable = true;
-
-    extraConfig = ''
-      set number
-      set clipboard=unnamedplus
-    '';
-
-    plugins = with pkgs.vimPlugins; [
-      vim-nix
-    ];
-
-    vimAlias = true;
-  };
-
-  programs.ssh = {
-    enable = true;
-  };
-
-  programs.tmux = {
-    enable = true;
-
-    # Reduce escape time to 10ms, otherwise VIM <esc> is slooooow
-    escapeTime = 10;
-
-    extraConfig = pkgs.callPackage ./dotfiles/tmux-conf.nix { };
-
-    historyLimit = 20000;
-
-    shortcut = "w";
-
-  };
-
-  services.flameshot.enable = true; 
-
-  services.parcellite.enable = true;
-
-  services.syncthing = {
-    enable = true;
-    tray = true;
+    syncthing = {
+      enable = true;
+      tray = true;
+    };
   };
 
 }
