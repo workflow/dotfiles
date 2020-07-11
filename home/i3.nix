@@ -191,6 +191,9 @@ in {
         # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
         { command = "ssh-add -q < /dev/null"; notification = false; }
 
+        # Configure Mega backups
+        { command = "configure-mega-backup"; notification = false; }
+
         # Wallpaper
         { command = "variety"; }
 
