@@ -41,6 +41,7 @@ let
       pkgs.unzip
       pkgs.variety
       pkgs.vlc
+      pkgs.vnstat # Network Traffic Monitor
       pkgs.wget
       pkgs.whois
       pkgs.xclip
