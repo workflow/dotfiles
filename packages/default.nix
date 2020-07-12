@@ -34,6 +34,7 @@ let
       pkgs.pup
       pkgs.ripgrep
       pkgs.roboto
+      nixpkgs-unstable.signal-desktop
       pkgs.slack
       pkgs.spideroak
       nixpkgs-unstable.spotify

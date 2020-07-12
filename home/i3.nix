@@ -29,7 +29,10 @@ in {
     enable = true;
     config = {
       assigns = {
-        "${ws8}" = [{ class="^Slack$"; }];
+        "${ws8}" = [
+          { class="^Slack$"; }
+          { class="^Signal$"; }
+        ];
         "${ws9}" = [{ class="^Spotify$"; }];
         "${ws10}" = [{ class="^SpiderOakONE$"; }];
       };
@@ -78,6 +81,7 @@ in {
           { title = "Desktop - Plasma"; }
           { class = "Skype"; }
           { class = "Pavucontrol"; }
+          { class = "Signal"; }
         ];
       };
 
