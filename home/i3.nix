@@ -198,6 +198,9 @@ in {
         # Configure Mega backups
         { command = "configure-mega-backup"; notification = false; }
 
+        # Start duplicati server (not a service yet)
+        { command = "duplicati-server"; notification = false; }
+
         # Wallpaper
         { command = "variety"; }
 

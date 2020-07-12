@@ -18,6 +18,7 @@ let
       pkgs.bluez-tools
       pkgs.dconf
       pkgs.deluge
+      pkgs.duplicati
       pkgs.feh
       pkgs.file
       pkgs.fortune
