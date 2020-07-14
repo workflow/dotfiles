@@ -17,6 +17,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
+      pkgs.brave
       pkgs.dconf
       pkgs.deluge
       pkgs.duplicati
