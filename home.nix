@@ -9,24 +9,15 @@ let
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
 
-  # https://github.com/nix-community/NUR
-  nixpkgs-nur = import sources.nixpkgs-unstable {
-    config = { 
-      allowUnfree = true;
-      packageOverrides = pkgs: {
-        nur = import sources.NUR { inherit pkgs; };
-      };
-    };
-  };
-
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
+  nur = import sources.NUR { inherit pkgs; };
 
   profile = pkgs.callPackage ./dotfiles/profile.nix {};
 
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
   sources = import ./nix/sources.nix;
-
 
 in
 
@@ -83,7 +74,7 @@ in
 
     firefox = {
       enable = true;
-      extensions = with nixpkgs-nur.nur.repos.rycee.firefox-addons; [
+      extensions = with nur.repos.rycee.firefox-addons; [
         https-everywhere
         privacy-badger
       ];
