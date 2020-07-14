@@ -2,17 +2,31 @@
 
 let 
 
-  sources = import ./nix/sources.nix;
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
-
-  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
-  profile = pkgs.callPackage ./dotfiles/profile.nix {};
-  scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
-
   imports = [
     ./home/i3.nix
     ./home/rofi.nix
   ];
+
+  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
+
+  # https://github.com/nix-community/NUR
+  nixpkgs-nur = import sources.nixpkgs-unstable {
+    config = { 
+      allowUnfree = true;
+      packageOverrides = pkgs: {
+        nur = import sources.NUR { inherit pkgs; };
+      };
+    };
+  };
+
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
+  profile = pkgs.callPackage ./dotfiles/profile.nix {};
+
+  scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
+
+  sources = import ./nix/sources.nix;
+
 
 in
 
@@ -69,7 +83,10 @@ in
 
     firefox = {
       enable = true;
-      #enableIcedTea = true;
+      extensions = with nixpkgs-nur.nur.repos.rycee.firefox-addons; [
+        https-everywhere
+        privacy-badger
+      ];
     };
 
     fish = {
