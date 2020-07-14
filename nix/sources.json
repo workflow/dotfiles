@@ -1,4 +1,16 @@
 {
+    "NUR": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "189718513725d970c98d177993f05f103349411c",
+        "sha256": "0j3yjxd4j9y78s1vwy66p46s4j8ia822069mw08y5kc3h638d4ss",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/189718513725d970c98d177993f05f103349411c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "channels-nixos": {
         "branch": "nixos-20.03",
         "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
