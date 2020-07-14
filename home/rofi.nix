@@ -3,6 +3,11 @@
 {
   programs.rofi = {
     enable = true;
-    theme = "fancy";
+    extraConfig = ''
+      rofi.opacity: 85
+    '';
+    font = "Inconsolata 14";
+    fullscreen = true;
+    theme = "Pop-Dark";
   };
 }
