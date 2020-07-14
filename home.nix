@@ -58,6 +58,14 @@ in
       name = "Inconsolata 11";
       package = pkgs.google-fonts;
     };
+    iconTheme = {
+      name = "Pop";
+      package = pkgs.pop-gtk-theme;
+    };
+    theme = {
+      name = "Pop";
+      package = pkgs.pop-gtk-theme;
+    };
   };
 
   nixpkgs.config = {
