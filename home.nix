@@ -50,7 +50,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = "Inconsolata 10";
+      name = "Inconsolata 11";
       package = pkgs.google-fonts;
     };
   };

@@ -85,7 +85,7 @@ in {
         ];
       };
 
-      fonts = ["FontAwesome 10" "Inconsolata 10"];
+      fonts = ["FontAwesome 11" "Inconsolata 11"];
 
       gaps = {
         inner = 8;
