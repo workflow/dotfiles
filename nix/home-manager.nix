@@ -4,7 +4,6 @@ let
 
   sources = import ../nix/sources.nix;
   home-manager = import sources.home-manager {};
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
 in
 
