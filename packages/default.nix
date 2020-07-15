@@ -28,7 +28,6 @@ let
       pkgs.i3status-rust
       pkgs.jq
       pkgs.killall
-      pkgs.konsole
       pkgs.ksshaskpass
       pkgs.megacmd
       pkgs.ncdu
