@@ -33,6 +33,9 @@ in
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
+
+      # Compton
+      ".config/picom.conf".source = ./dotfiles/picom.conf;
     };
 
     sessionVariables = {
