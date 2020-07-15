@@ -18,7 +18,7 @@ in
     };
 
    displayManager = {
-      defaultSession = "plasma5+i3";
+      defaultSession = "home-manager";
 
       lightdm = {
         enable = true;
