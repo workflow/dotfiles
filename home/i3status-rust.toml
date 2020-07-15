@@ -31,9 +31,8 @@ format = "{1m} {5m}"
 block = "net"
 device = "wlp3s0"
 ssid = true
-ip = false
-speed_up = false
-graph_up = true
+ip = true
+speed_up = true
 interval = 5
 
 [[block]]
