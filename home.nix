@@ -83,7 +83,7 @@ in
     firefox = {
       enable = true;
       extensions = with nur.repos.rycee.firefox-addons; [
-        https-everywhere
+        lastpass-password-manager
         privacy-badger
       ];
     };
