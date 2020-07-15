@@ -75,11 +75,6 @@ in
   programs = {
     bat.enable = true;
 
-    chromium = {
-      enable = true;
-      extensions = [];
-    };
-
     firefox = {
       enable = true;
       extensions = with nur.repos.rycee.firefox-addons; [
