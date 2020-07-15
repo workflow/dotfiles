@@ -43,6 +43,17 @@ in {
 
       bars = [
         {
+          colors = rec {
+            activeWorkspace =  {
+              background = color_bg;
+              border = color_txt;
+              text = color_txt;
+            };
+            background = color_bg;
+            focusedWorkspace = activeWorkspace;
+          };
+          command = "${pkgs.i3-gaps}/bin/i3bar -t";
+          fonts = [ "FontAwesome5 9" "Inconsolata 9" ];
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
         }
