@@ -29,7 +29,7 @@ format = "{1m} {5m}"
 
 [[block]]
 block = "net"
-device = "wlp4s0"
+device = "wlp3s0"
 ssid = true
 ip = false
 speed_up = false
