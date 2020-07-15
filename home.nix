@@ -144,6 +144,19 @@ in
       shortcut = "w";
 
     };
+
+    urxvt = {
+      enable = true;
+      extraConfig = {
+        #letterSpace = -1;
+      };
+      fonts = [ "xft:Inconsolata:size=9" ];
+      keybindings = { 
+        "Shift-Control-C" = "eval:selection_to_clipboard";
+        "Shift-Control-V" = "eval:paste_clipboard";
+      };
+      scroll.bar.enable = false;
+    };
   };
 
   services = {
