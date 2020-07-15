@@ -3,6 +3,7 @@
 let 
 
   imports = [
+    ./home/autorandr.nix
     ./home/i3.nix
     ./home/rofi.nix
     ./home/urxvt.nix
