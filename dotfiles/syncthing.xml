@@ -1,4 +1,3 @@
-
 <configuration version="29">
     <folder id="code" label="code" path="/home/farlion/code" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
