@@ -5,12 +5,21 @@
     enable = true;
 
     extraConfig = {
-      perl-ext-common = "default,matcher";
+      # Perl extensions
+      perl-ext-common = "default,matcher,resize-font";
+
+      # Matcher (clickable URLs)
       url-launcher = "${pkgs.xdg_utils}/bin/xdg-open";
       "matcher.button" = 1;
+
+      # Messes with CTRL+SHIFT Keybindings, see https://wiki.archlinux.org/index.php/Rxvt-unicode#Perl_extensions
+      iso14755_52 = "false";
     };
 
     fonts = [ "xft:Inconsolata:size=9" ];
+
+    # Messes with CTRL+SHIFT Keybindings, see https://wiki.archlinux.org/index.php/Rxvt-unicode#Perl_extensions
+    iso14755 = false;
 
     keybindings = { 
       "Shift-Control-C" = "eval:selection_to_clipboard";
