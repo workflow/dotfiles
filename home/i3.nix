@@ -228,7 +228,7 @@ in {
         { command = "kcmshell5 kcm_networkmanagement"; }
       ];
 
-      terminal = "konsole";
+      terminal = "urxvt -e fish";
 
       window = {
         commands = [
