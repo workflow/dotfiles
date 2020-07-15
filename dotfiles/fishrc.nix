@@ -52,15 +52,6 @@ let
       };
     }
     {
-      name = "done";
-      src = pkgs.fetchFromGitHub {
-        owner = "franciscolourenco";
-        repo = "done";
-        rev = "9351f5a9f4ae6c73dd6f18e41364e63a77be5d90";
-        sha256 = "0ffkhm0ap96kixrck3r3fnmc1iq1wl018iqb7wjwf6miqwxhlb7v";
-      };
-    }
-    {
       name = "bang-bang";
       src = pkgs.fetchFromGitHub {
         owner = "oh-my-fish";
