@@ -25,7 +25,7 @@ format = "{barchart} {utilization}%"
 [[block]]
 block = "load"
 interval = 1
-format = "{1m}"
+format = "{1m} {5m}"
 
 [[block]]
 block = "net"
