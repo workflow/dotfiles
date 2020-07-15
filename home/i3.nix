@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let 
+  # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
+  color_bg = "#1E272B";
+  color_txt = "#EAD49B";
+
   mod = "Mod4";
 
   # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
@@ -47,18 +51,18 @@ in {
       # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
       # <border> <background> <text> <indicator> <child_border>
       colors = rec {
-        background = "#1E272B";
+        background = color_bg;
         focused = {
-          border = "#EAD49B";
-          background = "#1E272B";
-          text = "#EAD49B";
+          border = color_txt;
+          background = color_bg;
+          text = color_txt;
           indicator = "#9D6A47";
           childBorder = "#9D6A47";
         };
         focusedInactive = {
-          border = "#EAD49B";
-          background = "#1E272B";
-          text = "#EAD49B";
+          border = color_txt;
+          background = color_bg;
+          text = color_txt;
           indicator = "#78824B";
           childBorder = "#78824B";
         };
