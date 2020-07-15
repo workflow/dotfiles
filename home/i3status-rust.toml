@@ -1,4 +1,4 @@
-theme = "modern"
+theme = "gruvbox-dark"
 icons = "awesome5"
 
 [[block]]
