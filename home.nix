@@ -81,6 +81,9 @@ in
         lastpass-password-manager
         privacy-badger
       ];
+      profiles = {
+        main = {};
+      };
     };
 
     fish = {
