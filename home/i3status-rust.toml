@@ -1,5 +1,5 @@
 theme = "modern"
-icons = "awesome"
+icons = "awesome5"
 
 [[block]]
 block = "disk_space"
