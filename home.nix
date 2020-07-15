@@ -98,6 +98,9 @@ in
     };
 
     git = {
+      aliases = {
+        c = "commit";
+      };
       enable = true;
       ignores = [ ".idea" ]; # IntelliJ Idea dirs
       userEmail = "florian.peter@gmx.at";
