@@ -38,6 +38,9 @@ in
 
       # Compton
       ".config/picom.conf".source = ./dotfiles/picom.conf;
+
+      # Variety
+      ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };
 
     sessionVariables = {
