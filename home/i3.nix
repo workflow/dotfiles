@@ -270,6 +270,7 @@ in {
       terminal = "urxvt -e fish";
 
       window = {
+        border = 1;
         commands = [
           # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
           { command = "kill"; criteria = { title = "Desktop - Plasma"; }; }
