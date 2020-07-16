@@ -11,7 +11,7 @@
 
     hooks = {
       postswitch = {
-        #notify-i3 = "${pkgs.i3}/bin/i3-msg restart";
+        notify-i3 = "${pkgs.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
             mobile)
