@@ -6,7 +6,7 @@
     extraConfig = ''
       rofi.opacity: 85
     '';
-    font = "Inconsolata 14";
+    font = "Inconsolata 12";
     fullscreen = true;
     theme = "Pop-Dark";
   };

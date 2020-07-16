@@ -53,7 +53,7 @@ in {
             focusedWorkspace = activeWorkspace;
           };
           command = "${pkgs.i3-gaps}/bin/i3bar -t";
-          fonts = [ "FontAwesome5 9" "Inconsolata 9" ];
+          fonts = [ "FontAwesome5 8" "Inconsolata 8" ];
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
         }
@@ -100,7 +100,7 @@ in {
         ];
       };
 
-      fonts = ["FontAwesome 11" "Inconsolata 11"];
+      fonts = ["FontAwesome 9" "Inconsolata 9"];
 
       gaps = {
         inner = 8;
@@ -243,6 +243,9 @@ in {
       modifier = mod;
 
       startup = [
+        # Detect and apply screen layout
+        { command = "autorandr --change"; }
+
         # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
         { command = "ssh-add -q < /dev/null"; notification = false; }
 

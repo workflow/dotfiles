@@ -60,7 +60,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = "Inconsolata 11";
+      name = "Inconsolata 9";
       package = pkgs.google-fonts;
     };
     iconTheme = {
