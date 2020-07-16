@@ -20,7 +20,7 @@ format_swap = "{SUp}%"
 [[block]]
 block = "cpu"
 interval = 1
-format = "{barchart} {utilization}%"
+format = "{barchart}"
 
 [[block]]
 block = "load"
