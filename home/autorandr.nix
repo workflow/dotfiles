@@ -21,7 +21,7 @@
               DPI=210
               ;;
             sophia)
-              DPI=168
+              DPI=109
               ;;
             *)
               echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
