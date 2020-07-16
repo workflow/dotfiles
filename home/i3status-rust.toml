@@ -28,6 +28,13 @@ interval = 1
 format = "{1m} {5m}"
 
 [[block]]
+block = "temperature"
+collapsed = true
+interval = 10
+format = "{min}° min, {max}° max, {average}° avg"
+chip = "*-isa-*"
+
+[[block]]
 block = "net"
 device = "wlp3s0"
 ssid = true

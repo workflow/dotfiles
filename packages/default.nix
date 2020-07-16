@@ -29,6 +29,7 @@ let
       pkgs.jq
       pkgs.killall
       pkgs.ksshaskpass
+      pkgs.lm_sensors
       pkgs.megacmd
       pkgs.ncdu
       pkgs.neofetch
