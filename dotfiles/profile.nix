@@ -9,6 +9,9 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
     c = "xclip -selection clipboard";
+
+    cdn = "cd ~/nixos-config";
+
     da = "direnv allow";
     freetapbeer = "nmcli c up 'Free Tap Beer'";
     g = "git";
