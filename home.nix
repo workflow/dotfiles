@@ -39,9 +39,6 @@ in
       # Syncthing tray
       ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
 
-      # Compton
-      ".config/picom.conf".source = ./dotfiles/picom.conf;
-
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };

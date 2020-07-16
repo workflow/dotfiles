@@ -18,7 +18,6 @@ let
       pkgs.bluez
       pkgs.bluez-tools
       pkgs.brave
-      pkgs.compton
       pkgs.dconf
       pkgs.deluge
       pkgs.duplicati
