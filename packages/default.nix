@@ -33,6 +33,7 @@ let
       pkgs.ncdu
       pkgs.niv
       pkgs.patchelf
+      pkgs.pavucontrol
       pkgs.playerctl
       pkgs.pup
       pkgs.ripgrep
