@@ -31,6 +31,7 @@ let
       pkgs.ksshaskpass
       pkgs.megacmd
       pkgs.ncdu
+      pkgs.neofetch
       pkgs.niv
       pkgs.patchelf
       pkgs.pavucontrol
