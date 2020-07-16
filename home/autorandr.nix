@@ -75,14 +75,14 @@
             enable = true;
             dpi = 168;
             mode = "2048x1152";
-            position = "0x0";
+            position = "0x1440";
             rate = "59.90";
           };
           DP-2-1 = {
             enable = true;
             dpi = 109;
             mode = "2560x1440";
-            position = "2048x1152";
+            position = "2048x0";
             primary = true;
             rate = "59.95";
           };
