@@ -121,7 +121,31 @@ in {
         "${mod}+Shift+l" = "move up";
         "${mod}+Shift+semicolon" = "move right";
 
-        # Move to workspace and focus
+        # Move to workspace
+        "${mod}+1" = "workspace ${ws1}";
+        "${mod}+2" = "workspace ${ws2}";
+        "${mod}+3" = "workspace ${ws3}";
+        "${mod}+4" = "workspace ${ws4}";
+        "${mod}+5" = "workspace ${ws5}";
+        "${mod}+6" = "workspace ${ws6}";
+        "${mod}+7" = "workspace ${ws7}";
+        "${mod}+8" = "workspace ${ws8}";
+        "${mod}+9" = "workspace ${ws9}";
+        "${mod}+0" = "workspace ${ws10}";
+
+        # Move container to workspace
+        "${mod}+Shift+1" = "move container to workspace ${ws1}";
+        "${mod}+Shift+2" = "move container to workspace ${ws2}";
+        "${mod}+Shift+3" = "move container to workspace ${ws3}";
+        "${mod}+Shift+4" = "move container to workspace ${ws4}";
+        "${mod}+Shift+5" = "move container to workspace ${ws5}";
+        "${mod}+Shift+6" = "move container to workspace ${ws6}";
+        "${mod}+Shift+7" = "move container to workspace ${ws7}";
+        "${mod}+Shift+8" = "move container to workspace ${ws8}";
+        "${mod}+Shift+9" = "move container to workspace ${ws9}";
+        "${mod}+Shift+0" = "move container to workspace ${ws10}";
+
+        # Move container to workspace and focus
         "${mod}+Control+1" = "move container to workspace ${ws1}; workspace ${ws1}";
         "${mod}+Control+2" = "move container to workspace ${ws2}; workspace ${ws2}";
         "${mod}+Control+3" = "move container to workspace ${ws3}; workspace ${ws3}";
