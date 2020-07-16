@@ -141,6 +141,11 @@ in
 
   };
 
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+  };
+
   services = {
     flameshot.enable = true; 
 
