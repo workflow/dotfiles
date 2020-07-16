@@ -36,6 +36,9 @@ in
       "code/.stignore".source = ./dotfiles/stignore_code;
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
 
+      # Syncthing tray
+      ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
+
       # Compton
       ".config/picom.conf".source = ./dotfiles/picom.conf;
 
@@ -145,7 +148,6 @@ in
 
     syncthing = {
       enable = true;
-      tray = true;
     };
   };
 

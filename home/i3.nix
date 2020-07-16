@@ -265,6 +265,10 @@ in {
 
         # Autoconnect to WIFI after wallet unlock
         { command = "kcmshell5 kcm_networkmanagement"; }
+
+        # Syncthing Tray
+        # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
+        { command = "sleep 10; syncthingtray"; notification = false; }
       ];
 
       terminal = "urxvt -e fish";
