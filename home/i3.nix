@@ -121,6 +121,22 @@ in {
         "${mod}+Shift+l" = "move up";
         "${mod}+Shift+semicolon" = "move right";
 
+        # Move to workspace and focus
+        "${mod}+Control+1" = "move container to workspace ${ws1}; workspace ${ws1}";
+        "${mod}+Control+2" = "move container to workspace ${ws2}; workspace ${ws2}";
+        "${mod}+Control+3" = "move container to workspace ${ws3}; workspace ${ws3}";
+        "${mod}+Control+4" = "move container to workspace ${ws4}; workspace ${ws4}";
+        "${mod}+Control+5" = "move container to workspace ${ws5}; workspace ${ws5}";
+        "${mod}+Control+6" = "move container to workspace ${ws6}; workspace ${ws6}";
+        "${mod}+Control+7" = "move container to workspace ${ws7}; workspace ${ws7}";
+        "${mod}+Control+8" = "move container to workspace ${ws8}; workspace ${ws8}";
+        "${mod}+Control+9" = "move container to workspace ${ws9}; workspace ${ws9}";
+        "${mod}+Control+0" = "move container to workspace ${ws10}; workspace ${ws10}";
+
+        # Move workspace between screens
+        "${mod}+Control+j" = "move workspace to output eDP-1";
+        "${mod}+Control+semicolon" = "move workspace to output DP-2-1";
+
         # lock screen
         "${mod}+Shift+x" = "exec i3lock";
 
@@ -133,10 +149,6 @@ in {
         # Show the next scratchpad window or hide the focused scratchpad window.
         # If there are multiple scratchpad windows, this command cycles through them.
         "${mod}+minus" = "scratchpad show";
-
-        # navigate workspaces next / previous
-        "${mod}+Ctrl+semicolon" = "workspace next";
-        "${mod}+Ctrl+j" = "workspace prev";
 
         # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
         # Pulse Audio controls
