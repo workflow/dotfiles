@@ -33,8 +33,10 @@
     gr = "git rebase";
     gs = "git status";
 
+    halt = "shutdown now";
     k = "kubectl";
     ll = "ls -l";
+    logout = "i3-msg exit";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
     n = "sudo nixos-rebuild switch";
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
