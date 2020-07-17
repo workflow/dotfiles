@@ -1,3 +1,4 @@
+# Some settings from https://pastebin.com/S8m1jnY3
 { pkgs, ... }:
 {
   services.picom = {
@@ -12,6 +13,7 @@
 
     inactiveOpacity = "0.98";
 
+    menuOpacity = "0.98";
     opacityRule = [
       "80:class_i ?= 'rofi'"
     ];
