@@ -5,6 +5,9 @@
 
     enable = true;
 
+    fade = true;
+    fadeDelta = 2;
+
     inactiveDim = "0.1";
 
     inactiveOpacity = "0.98";
