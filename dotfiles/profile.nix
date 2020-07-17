@@ -8,12 +8,15 @@
     "..." = "cd ../..";
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
+
     c = "xclip -selection clipboard";
 
     cdn = "cd ~/nixos-config";
 
     da = "direnv allow";
+
     freetapbeer = "nmcli c up 'Free Tap Beer'";
+
     g = "git";
 
     # TODO: Move these to git aliases
@@ -34,14 +37,23 @@
     gs = "git status";
 
     halt = "shutdown now";
+
     k = "kubectl";
+
     ll = "ls -l";
+
     logout = "i3-msg exit";
+
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
+
     n = "sudo nixos-rebuild switch";
+
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
+
     watch-lorri = "journalctl --user -eu lorri -f";
+
     x = "exit";
   };
 }
