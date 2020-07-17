@@ -167,7 +167,7 @@ in {
       "${mod}+Control+semicolon" = "move workspace to output DP-2-1";
 
       # lock screen
-      "${mod}+Shift+x" = "exec i3lock";
+      "${mod}+Shift+x" = "exec i3lock-pixeled";
 
       # toggle tiling / floating
       "${mod}+Shift+space" = "floating toggle";

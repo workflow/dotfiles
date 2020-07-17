@@ -24,6 +24,7 @@ let
       pkgs.feh
       pkgs.file
       pkgs.fortune
+      pkgs.i3lock-pixeled
       pkgs.i3status-rust
       pkgs.jq
       pkgs.kdeApplications.kcolorchooser
