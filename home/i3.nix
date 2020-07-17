@@ -255,7 +255,7 @@ in {
 
       startup = [
         # Detect and apply screen layout
-        { command = "autorandr --change"; }
+        { command = "autorandr --change"; notification = false; }
 
         # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
         { command = "ssh-add -q < /dev/null"; notification = false; }
@@ -267,9 +267,9 @@ in {
         { command = "duplicati-server"; notification = false; }
 
         # Wallpaper
-        { command = "variety"; }
+        { command = "variety"; notification = false; }
 
-        { command = "spotify"; }
+        { command = "spotify"; notification = false; }
 
         # Autoconnect to WIFI after wallet unlock
         { command = "kcmshell5 kcm_networkmanagement"; }
