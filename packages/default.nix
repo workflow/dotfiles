@@ -26,6 +26,7 @@ let
       pkgs.fortune
       pkgs.i3status-rust
       pkgs.jq
+      pkgs.kdeApplications.kcolorchooser
       pkgs.killall
       pkgs.ksshaskpass
       pkgs.lm_sensors
