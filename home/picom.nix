@@ -9,8 +9,8 @@
 
     inactiveOpacity = "0.98";
 
-    #opacityRule = [
-    #  "100:class_i ?= 'i3bar'"
-    #];
+    opacityRule = [
+      "80:class_i ?= 'rofi'"
+    ];
   };
 }
