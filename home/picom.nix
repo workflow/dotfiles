@@ -6,8 +6,13 @@
 
     enable = true;
 
+    extraOptions = ''
+      no-fading-openclose = true;
+    '';
+
     fade = true;
-    fadeDelta = 2;
+    fadeDelta = 12;
+    fadeSteps = [ "0.15" "0.15" ];
 
     inactiveDim = "0.1";
 
