@@ -106,7 +106,10 @@ in {
 
     gaps = {
       inner = 4;
+
+      smartBorders = "on";
       smartGaps = true;
+
       outer = -2;
     }; 
 
