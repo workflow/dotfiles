@@ -49,8 +49,13 @@ in {
               border = color_txt;
               text = color_txt;
             };
-            background = color_bg;
+            background = "#282828"; # To match i3status_rust theme
             focusedWorkspace = activeWorkspace;
+            inactiveWorkspace = {
+              background = "#282828"; # To match i3status_rust theme
+              border = "#282828"; # To match i3status_rust theme
+              text = "#ebdbb2"; # To match i3status_rust theme
+            };
           };
           command = "${pkgs.i3-gaps}/bin/i3bar";
           fonts = [ "FontAwesome5 8" "Inconsolata 8" ];
