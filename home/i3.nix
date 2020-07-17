@@ -114,9 +114,9 @@ in {
       fonts = ["FontAwesome 9" "Inconsolata 9"];
 
       gaps = {
-        inner = 8;
+        inner = 4;
         smartGaps = true;
-        outer = -4;
+        outer = -2;
       }; 
 
       keybindings = lib.mkOptionDefault {
