@@ -52,7 +52,7 @@ in {
             background = color_bg;
             focusedWorkspace = activeWorkspace;
           };
-          command = "${pkgs.i3-gaps}/bin/i3bar -t";
+          command = "${pkgs.i3-gaps}/bin/i3bar";
           fonts = [ "FontAwesome5 8" "Inconsolata 8" ];
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
