@@ -106,6 +106,7 @@ in
     git = {
       aliases = {
         c = "commit";
+        p = "push";
       };
       enable = true;
       ignores = [ ".idea" ]; # IntelliJ Idea dirs
