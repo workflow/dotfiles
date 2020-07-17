@@ -19,6 +19,12 @@
     inactiveOpacity = "0.98";
 
     menuOpacity = "0.98";
+
+    shadow = true;
+    shadowExclude = [ "n:e:Notification" ];
+    shadowOffsets = [ (-15) (-15) ];
+    shadowOpacity = "0.7";
+
     opacityRule = [
       "80:class_i ?= 'rofi'"
     ];
