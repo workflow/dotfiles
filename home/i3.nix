@@ -29,6 +29,12 @@ in {
   xsession.enable = true;
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 
+  xsession.pointerCursor = {
+    name = "capitaine-cursors-white";
+    package = pkgs.capitaine-cursors;
+    size = 16;
+  };
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
