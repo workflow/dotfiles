@@ -209,6 +209,9 @@ in {
       # If you also press Shift with these keys, the change will be global for all workspaces.
       "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
 
+      # Dunst restart
+      "${mod}+Shift+d" = ''exec "killall dunst; exec notify-send 'restart-dunst'"'';
+
     };
 
     menu = "rofi -show run";
