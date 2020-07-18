@@ -17,6 +17,8 @@
       vim-nix
     ];
 
+    viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
   };
 }
