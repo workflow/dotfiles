@@ -4,6 +4,8 @@ let
 
   #indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
 
+  xsession-name = "farlions-home";
+
 in
 
 {
@@ -18,7 +20,7 @@ in
     };
 
    displayManager = {
-      defaultSession = "home-manager";
+      defaultSession = xsession-name;
 
       lightdm = {
         enable = true;
@@ -33,7 +35,7 @@ in
       # See https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8 
       session = [
         {
-          name = "home-manager";
+          name = xsession-name;
           start = ''
             ${pkgs.runtimeShell} $HOME/.hm-xsession &
             waitPID=$!
