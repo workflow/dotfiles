@@ -300,6 +300,8 @@ in {
   extraConfig = ''
     default_border pixel 1
 
+    bindsym ${mod}+Ctrl+x --release exec --no-startup-id xkill
+
     # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
     no_focus [class="plasmashell" window_type="notification"] 
   '';
