@@ -56,6 +56,7 @@ let
       pkgs.vnstat # Network Traffic Monitor
       pkgs.wget
       pkgs.whois
+      pkgs.xorg.xkill
       pkgs.xclip
       pkgs.yq
     ];
