@@ -38,11 +38,20 @@
 
     halt = "shutdown now";
 
-    headphones = "pactl set-default-sink \"bluez_sink.70_26_05_DA_27_A4.a2dp_sink\"";
+    headphones = ''
+      echo -e 'power on\nquit' | bluetoothctl;
+      and sleep 2;
+      and echo -e 'connect 70:26:05:DA:27:A4\nquit' | bluetoothctl;
+      and sleep 5;
+      and pactl set-default-sink "bluez_sink.70_26_05_DA_27_A4.a2dp_sink";
+    '';
 
     k = "kubectl";
 
-    laptop = "pactl set-default-sink \"alsa_output.pci-0000_00_1f.3.analog-stereo\"";
+    laptop = ''
+      echo -e 'power off\nquit' | bluetoothctl;
+      pactl set-default-sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
+    '';
 
     ll = "ls -l";
 
