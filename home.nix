@@ -34,6 +34,8 @@ in
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
+      # IdeaVIM
+      ".ideavimrc".source = ./dotfiles/ideavimrc;
       # Syncthing
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
