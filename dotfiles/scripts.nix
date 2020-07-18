@@ -34,6 +34,9 @@ in
 
       ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/.backup" >/dev/null || true
       ${pkgs.megacmd}/bin/mega-backup ~/.backup "/backup/$hostname/.backup" --period="1d" --num-backups=60
+
+      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Jetbrains" >/dev/null || true
+      ${pkgs.megacmd}/bin/mega-backup ~/.config/JetBrains "/backup/$hostname/Jetbrains" --period="1d" --num-backups=60
   '';
 
   gen-gitignore = ''
