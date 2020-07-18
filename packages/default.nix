@@ -55,6 +55,7 @@ let
       pkgs.variety
       pkgs.vlc
       pkgs.vnstat # Network Traffic Monitor
+      nixpkgs-unstable.jetbrains.webstorm
       pkgs.wget
       pkgs.whois
       pkgs.xorg.xkill
