@@ -13,6 +13,7 @@ let
     [
       pkgs.arandr
       pkgs.asciinema
+      pkgs.bc
       pkgs.bind # Provides dig
       pkgs.binutils
       pkgs.bluez
