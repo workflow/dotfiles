@@ -23,6 +23,8 @@ in
     ''
         ${shebang}
 
+        set -euo pipefail
+
         hostname="$(hostname)"
 
         ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Documents" >/dev/null || true
