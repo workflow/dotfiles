@@ -4,14 +4,21 @@
 # Nixbox @ 2048x1152: 168
 # Nixbox @ 2560x1440: 210
 
-{ pkgs, ... }:
-{
+{ pkgs, ...  }:
+
+let
+
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
+  sources = import ../nix/sources.nix;
+
+in {
   programs.autorandr = {
     enable = true;
 
     hooks = {
       postswitch = {
-        notify-i3 = "${pkgs.i3-gaps}/bin/i3-msg restart";
+        notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
             mobile)

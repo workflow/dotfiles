@@ -1,4 +1,8 @@
-{ lib, pkgs, ...}:
+{ 
+  lib,
+  nixpkgs-unstable,
+  pkgs
+}:
 
 let 
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
@@ -54,7 +58,7 @@ in {
             text = "#ebdbb2"; # To match i3status_rust theme
           };
         };
-        command = "${pkgs.i3-gaps}/bin/i3bar";
+        command = "${nixpkgs-unstable.i3-gaps}/bin/i3bar";
         fonts = [ "FontAwesome5 8" "Inconsolata 8" ];
         position = "bottom";
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
@@ -299,4 +303,6 @@ in {
     # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
     no_focus [class="plasmashell" window_type="notification"] 
   '';
+
+  package = nixpkgs-unstable.i3-gaps;
 }

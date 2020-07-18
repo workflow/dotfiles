@@ -5,6 +5,10 @@ let
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
+  sources = import ../../nix/sources.nix;
+
 in {
   xsession.enable = true;
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
@@ -15,7 +19,7 @@ in {
     size = 16;
   };
 
-  xsession.windowManager.i3 = import ./i3.nix { inherit lib pkgs; };
+  xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs; };
 
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   xresources.properties = {
