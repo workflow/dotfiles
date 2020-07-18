@@ -35,13 +35,15 @@ format = "{min}° min, {max}° max, {average}° avg"
 chip = "*-isa-*"
 
 [[block]]
+block = "networkmanager"
+ap_format = "{ssid} @ {strength}%"
+on_click = "kcmshell5 kcm_networkmanagement"
+
+[[block]]
 block = "net"
 device = "wlp3s0"
-ip = true
 speed_up = true
 interval = 5
-ssid = true
-signal_strength = true
 
 [[block]]
 block = "speedtest"
