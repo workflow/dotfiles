@@ -4,7 +4,7 @@ let
 
   #indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
 
-  xsession-name = "farlions-home";
+  xsession-name = "farlion";
 
 in
 
