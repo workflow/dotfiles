@@ -4,10 +4,11 @@ let
 
   imports = [
     ./home/autorandr.nix
-    ./home/xsession
+    ./home/dunst.nix
     ./home/picom.nix
     ./home/rofi.nix
     ./home/urxvt.nix
+    ./home/xsession
   ];
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
