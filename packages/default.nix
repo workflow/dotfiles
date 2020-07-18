@@ -32,6 +32,7 @@ let
       pkgs.kdeApplications.kcolorchooser
       pkgs.killall
       pkgs.ksshaskpass
+      pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
       pkgs.megacmd
       pkgs.ncdu
