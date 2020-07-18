@@ -62,6 +62,11 @@ on_click = "pavucontrol --tab=3"
 "bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = ""
 
 [[block]]
+block = "music"
+buttons = ["play", "prev", "next"]
+on_collapsed_click = "i3-msg '[class=Spotify] focus'"
+
+[[block]]
 block = "time"
 interval = 60
 format = "%a %d.%m %R"
