@@ -15,29 +15,34 @@ in
 
 {
   # Declaratively configure Mega backups
-  configure-mega-backup  = ''
-      ${shebang}
+  configure-mega-backup  = 
+    let 
+      period = "1d";
+      numBackups = "60";
+    in
+    ''
+        ${shebang}
 
-      hostname="$(hostname)"
+        hostname="$(hostname)"
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Documents" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/Documents "/backup/$hostname/Documents" --period="1d" --num-backups=60
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Documents" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/Documents "/backup/$hostname/Documents" --period="${period}" --num-backups=${numBackups}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Videos" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/Videos "/backup/$hostname/Videos" --period="1d" --num-backups=60
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Videos" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/Videos "/backup/$hostname/Videos" --period="${period}" --num-backups=${numBackups}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Music" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/Music "/backup/$hostname/Music" --period="1d" --num-backups=60
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Music" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/Music "/backup/$hostname/Music" --period="${period}" --num-backups=${numBackups}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Pictures" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/Pictures "/backup/$hostname/Pictures" --period="1d" --num-backups=60
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Pictures" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/Pictures "/backup/$hostname/Pictures" --period="${period}" --num-backups=${numBackups}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/.backup" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/.backup "/backup/$hostname/.backup" --period="1d" --num-backups=60
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/.backup" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/.backup "/backup/$hostname/.backup" --period="${period}" --num-backups=${numBackups}
 
-      ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Jetbrains" >/dev/null || true
-      ${pkgs.megacmd}/bin/mega-backup ~/.config/JetBrains "/backup/$hostname/Jetbrains" --period="1d" --num-backups=60
-  '';
+        ${pkgs.megacmd}/bin/mega-mkdir -p "/backup/$hostname/Jetbrains" >/dev/null || true
+        ${pkgs.megacmd}/bin/mega-backup ~/.config/JetBrains "/backup/$hostname/Jetbrains" --period="${period}" --num-backups=${numBackups}
+    '';
 
   gen-gitignore = ''
     ${shebang}
