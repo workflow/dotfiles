@@ -38,7 +38,11 @@
 
     halt = "shutdown now";
 
+    headphones = "pactl set-default-sink \"bluez_sink.70_26_05_DA_27_A4.a2dp_sink\"";
+
     k = "kubectl";
+
+    laptop = "pactl set-default-sink \"alsa_output.pci-0000_00_1f.3.analog-stereo\"";
 
     ll = "ls -l";
 
@@ -49,6 +53,8 @@
     n = "sudo nixos-rebuild switch";
 
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+
+    p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
 
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
