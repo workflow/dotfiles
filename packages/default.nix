@@ -43,6 +43,7 @@ let
       pkgs.roboto
       nixpkgs-unstable.signal-desktop
       pkgs.slack
+      pkgs.python38Packages.speedtest-cli
       pkgs.spideroak
       nixpkgs-unstable.spotify
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged

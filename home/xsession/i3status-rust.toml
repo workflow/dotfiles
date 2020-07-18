@@ -43,6 +43,10 @@ speed_up = true
 interval = 5
 
 [[block]]
+block = "speedtest"
+bytes = true
+
+[[block]]
 block = "xrandr"
 interval = 6000 # Because running the commands causes screen lag, see https://github.com/greshake/i3status-rust/issues/668
 
