@@ -5,6 +5,7 @@ let
   imports = [
     ./home/autorandr.nix
     ./home/dunst.nix
+    ./home/neovim.nix
     ./home/picom.nix
     ./home/rofi.nix
     ./home/urxvt.nix
@@ -119,21 +120,6 @@ in
     home-manager.enable = true;
 
     htop.enable = true;
-
-    neovim = {
-      enable = true;
-
-      extraConfig = ''
-        set number
-        set clipboard=unnamedplus
-      '';
-
-      plugins = with pkgs.vimPlugins; [
-        vim-nix
-      ];
-
-      vimAlias = true;
-    };
 
     ssh = {
       enable = true;
