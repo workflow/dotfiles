@@ -19,6 +19,7 @@ let
       pkgs.bluez
       pkgs.bluez-tools
       pkgs.brave
+      pkgs.brightnessctl
       pkgs.dconf
       pkgs.deluge
       pkgs.duplicati

@@ -190,8 +190,8 @@ in {
       "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 1 toggle"; # mute sound
 
       # Sreen brightness controls
-      "XF86MonBrightnessUp" = "exec xbacklight -inc 20"; # increase screen brightness
-      "XF86MonBrightnessDown" = "exec xbacklight -dec 20"; # decrease screen brightness
+      "XF86MonBrightnessUp" = "exec brightnessctl set +50"; # increase screen brightness
+      "XF86MonBrightnessDown" = "exec brightnessctl set 50-"; # decrease screen brightness
 
       # Media player controls
       "XF86AudioPlay" = "exec playerctl play";
