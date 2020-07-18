@@ -17,8 +17,8 @@ in
   # Declaratively configure Mega backups
   configure-mega-backup  = 
     let 
-      period = "1d";
-      numBackups = "60";
+      period = "7d";
+      numBackups = "6";
     in
     ''
         ${shebang}
