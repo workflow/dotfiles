@@ -70,7 +70,7 @@ in
     };
     iconTheme = {
       name = "Pop";
-      package = pkgs.pop-gtk-theme;
+      package = nixpkgs-unstable.pop-icon-theme;
     };
     theme = {
       name = "Pop";
