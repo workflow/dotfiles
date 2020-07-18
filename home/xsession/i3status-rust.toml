@@ -63,6 +63,7 @@ on_click = "pavucontrol --tab=3"
 
 [[block]]
 block = "music"
+player = "spotify"
 buttons = ["play", "prev", "next"]
 on_collapsed_click = "i3-msg '[class=Spotify] focus'"
 
