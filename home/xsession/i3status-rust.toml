@@ -37,10 +37,11 @@ chip = "*-isa-*"
 [[block]]
 block = "net"
 device = "wlp3s0"
-ssid = true
 ip = true
 speed_up = true
 interval = 5
+ssid = true
+signal_strength = true
 
 [[block]]
 block = "speedtest"

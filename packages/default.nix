@@ -26,6 +26,7 @@ let
       pkgs.file
       pkgs.fortune
       pkgs.i3lock-pixeled
+      pkgs.iw # Wifi connection strength indicator
       pkgs.jq
       pkgs.kdeApplications.kcolorchooser
       pkgs.killall
