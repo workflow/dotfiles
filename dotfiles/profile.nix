@@ -65,9 +65,9 @@
 
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
 
-    p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
-
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
+
+    p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
 
     # Print timestamp along with cmd output
     # Example: cmd | ts
