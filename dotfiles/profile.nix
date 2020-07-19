@@ -12,6 +12,8 @@
     c = "xclip -selection clipboard";
 
     cdn = "cd ~/nixos-config";
+    cdc = "cd ~/code";
+    cdt = "cd ~/code/tenx";
 
     da = "direnv allow";
 
