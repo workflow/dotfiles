@@ -69,6 +69,10 @@
 
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
+    # Print timestamp along with cmd output
+    # Example: cmd | ts
+    ts = "gawk '{ print strftime(\"[%Y-%m-%d %H:%M:%S]\"), $0 }'";
+
     watch-lorri = "journalctl --user -eu lorri -f";
 
     x = "exit";
