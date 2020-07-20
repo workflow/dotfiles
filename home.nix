@@ -88,6 +88,8 @@ in
   programs = {
     bat.enable = true;
 
+    direnv.enable = true;
+
     firefox = {
       enable = true;
       extensions = with nur.repos.rycee.firefox-addons; [
@@ -135,6 +137,8 @@ in
   };
 
   services = {
+    lorri.enable = true;
+
     flameshot.enable = true; 
 
     parcellite.enable = true;
