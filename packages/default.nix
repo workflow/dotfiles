@@ -60,6 +60,7 @@ let
       pkgs.whois
       pkgs.xorg.xkill
       pkgs.xclip
+      pkgs.xidlehook
       pkgs.yq
     ];
 
