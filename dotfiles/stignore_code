@@ -1,8 +1,5 @@
 // .stignore for ~/code
 
-// IntelliJ
-.idea
-
 // NodeJS
 node_modules
 
