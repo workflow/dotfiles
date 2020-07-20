@@ -9,6 +9,8 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
 
+    aliases = "vim ~/nixos-config/dotfiles/profile.nix";
+
     c = "xclip -selection clipboard";
 
     cdn = "cd ~/nixos-config";
