@@ -13,6 +13,7 @@
 
     c = "xclip -selection clipboard";
 
+    cdd = "cd ~/code/tenx/dataaccessserver";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
     cdt = "cd ~/code/tenx";
