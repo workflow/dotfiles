@@ -39,6 +39,7 @@ let
       pkgs.ncdu
       pkgs.neofetch
       pkgs.niv
+      pkgs.okular
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.playerctl
