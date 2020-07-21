@@ -16,7 +16,7 @@
       iso14755_52 = "false";
     };
 
-    fonts = [ "xft:Inconsolata:size=8" ];
+    fonts = [ "xft:Inconsolata Nerd Font Mono:size=9" ];
 
     # Messes with CTRL+SHIFT Keybindings, see https://wiki.archlinux.org/index.php/Rxvt-unicode#Perl_extensions
     iso14755 = false;
