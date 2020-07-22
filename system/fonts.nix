@@ -2,7 +2,9 @@
 
 {
   fonts.fonts = with pkgs; [
-    font-awesome
+    fira-code
+    fira-code-symbols
+    font-awesome_4
     nerdfonts
   ];
 }

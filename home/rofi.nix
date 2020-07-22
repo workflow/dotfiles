@@ -40,7 +40,7 @@ in
       };
     };
 
-    font = "Inconsolata 12";
+    font = "Fira Code 12";
 
     lines = 5;
 

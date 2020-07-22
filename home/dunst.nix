@@ -53,7 +53,7 @@ in {
         # will be ignored.
         follow = "keyboard";
 
-        font = "Inconsolata 10";
+        font = "Fira Code 10";
 
         # The format of the message.  Possible variables are:
         #   %a  appname

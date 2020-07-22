@@ -68,8 +68,8 @@ in
   gtk = {
     enable = true;
     font = {
-      name = "Inconsolata 9";
-      package = pkgs.google-fonts;
+      name = "Fira Code 9";
+      package = pkgs.nerdfonts;
     };
     iconTheme = {
       name = "Pop";
