@@ -55,16 +55,16 @@ let
       pkgs.terminator
       pkgs.unzip
       pkgs.variety
-      pkgs.v4lutils # Video4Linux2 -> configuring webcam
+      pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.vlc
       pkgs.vnstat # Network Traffic Monitor
       nixpkgs-unstable.jetbrains.webstorm
       pkgs.wget
       pkgs.whois
       pkgs.xawtv # Basic Video4Linux2 device viewer. Example: xawtv -c /dev/video0
-      pkgs.xorg.xkill
       pkgs.xclip
       pkgs.xidlehook
+      pkgs.xorg.xkill
       pkgs.yq
     ];
 
