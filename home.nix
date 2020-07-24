@@ -36,6 +36,13 @@ in
 
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
+
+      # Less
+      ".lesskey" = {
+        onChange = "lesskey";
+        source = ./dotfiles/lesskey;
+      };
+
       # Syncthing
       ".config/syncthing/config.xml".source = ./dotfiles/syncthing.xml;
       "code/.stignore".source = ./dotfiles/stignore_code;
