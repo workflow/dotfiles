@@ -86,7 +86,13 @@ in
   };
 
   programs = {
-    bat.enable = true;
+    bat = {
+      config = {
+        theme = "ansi-dark"; 
+      };
+      enable = true;
+    };
+
 
     direnv.enable = true;
 
