@@ -37,6 +37,7 @@ in {
       "${ws8}" = [
         { class="^Slack$"; }
         { class="^Signal$"; }
+        { class="^TelegramDesktop$"; }
       ];
       "${ws9}" = [{ class="^Spotify$"; }];
       "${ws10}" = [{ class="^SpiderOakONE$"; }];
