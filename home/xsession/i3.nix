@@ -107,7 +107,7 @@ in {
       ];
     };
 
-    fonts = ["FontAwesome 9" "Fira Code 9"];
+    fonts = ["FontAwesome 9" "pango:Fira Code 9"];
 
     gaps = {
       inner = 4;
