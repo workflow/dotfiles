@@ -53,6 +53,7 @@ in {
             dpi = 96;
             mode = "2048x1152";
             position = "0x0";
+            primary = true;
             rate = "59.90";
           };
         };
@@ -69,6 +70,7 @@ in {
             dpi = 96;
             mode = "2560x1440";
             position = "0x0";
+            primary = true;
             rate = "60.00";
           };
         };
