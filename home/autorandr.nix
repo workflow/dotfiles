@@ -19,24 +19,24 @@ in {
     hooks = {
       postswitch = {
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
-        change-dpi = ''
-          case "$AUTORANDR_CURRENT_PROFILE" in
-            mobile)
-              DPI=168
-              ;;
-            movie)
-              DPI=210
-              ;;
-            sophia)
-              DPI=109
-              ;;
-            *)
-              echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
-              exit 1
-          esac
+        #change-dpi = ''
+        #  case "$AUTORANDR_CURRENT_PROFILE" in
+        #    mobile)
+        #      DPI=168
+        #      ;;
+        #    movie)
+        #      DPI=210
+        #      ;;
+        #    sophia)
+        #      DPI=109
+        #      ;;
+        #    *)
+        #      echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
+        #      exit 1
+        #  esac
 
-          echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
-        '';
+        #  echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
+        #'';
       };
     };
 
@@ -49,7 +49,8 @@ in {
         config = {
           eDP-1 = {
             enable = true;
-            dpi = 168;
+            #dpi = 168;
+            dpi = 96;
             mode = "2048x1152";
             position = "0x0";
             rate = "59.90";
@@ -64,7 +65,8 @@ in {
         config = {
           eDP-1 = {
             enable = true;
-            dpi = 210;
+            #dpi = 210;
+            dpi = 96;
             mode = "2560x1440";
             position = "0x0";
             rate = "60.00";
@@ -80,14 +82,14 @@ in {
         config = {
           eDP-1 = {
             enable = true;
-            dpi = 168;
+            dpi = 96;
             mode = "2048x1152";
             position = "0x1440";
             rate = "59.90";
           };
           DP-2-1 = {
             enable = true;
-            dpi = 109;
+            dpi = 96;
             mode = "2560x1440";
             position = "2048x0";
             primary = true;
