@@ -67,4 +67,9 @@
   # Enable system-wide Yubikey Support
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
+  # Rerun autorandr on pluggin in thunderbolt dock
+  services.udev.extraRules = ''
+    KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/farlion/.Xauthority", RUN+="${pkgs.autorandr}/bin/autorandr -c", ENV{XDG_CONFIG_DIRS}="/home/farlion/.config"
+  '';
+
 }
