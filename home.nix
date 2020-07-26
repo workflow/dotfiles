@@ -76,7 +76,6 @@ in
     enable = true;
     font = {
       name = "Fira Code 9";
-      package = pkgs.nerdfonts;
     };
     iconTheme = {
       name = "Pop";
