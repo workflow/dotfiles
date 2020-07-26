@@ -14,10 +14,39 @@ let
 	bind \t forward-char
 	bind \cs complete
     '';
+
+    fish_right_prompt = ''
+      # Capture the exit status of last command, to be displayed in notification
+      set exit_status $status
+
+      # Obtain the name of the command which executed last from the history
+      set command_name $history[1]
+
+      # Find out the command duration using fish built-in CMD_DURATION
+      set command_duration $CMD_DURATION
+
+      # CMD_DURATION will be empty when a new shell starts
+      if [ $command_duration ]
+          set finish_duration (math "$CMD_DURATION / 1000")
+      else
+          set finish_duration 0
+      end
+
+      # Set the notify duration to 10 secs
+      # This can be changed here or script modified to use env variable
+      set notify_duration 10
+
+      # If the last command exceeded 10 secs, pop up a notification
+      if [ $finish_duration -gt $notify_duration ]
+          notify-send --category=shell --icon=go-next "$command_name" "Finished in: $finish_duration secs\nStatus: $exit_status"
+      end
+    '';
+
     issue_branch = ''
 	set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g') 
         echo (git checkout -b $converted)
     '';
+
     pirate = ''
 	set toTranslate $argv
 	curl -sG \
@@ -29,6 +58,7 @@ let
 	'https://speakpirate.com/' -H 'authority: speakpirate.com' -H 'cache-control: max-age=0' -H 'origin: https://speakpirate.com' -H 'upgrade-insecure-requests: 1' -H 'content-type: application/x-www-form-urlencoded' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: same-origin' -H 'referer: https://speakpirate.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9' -H 'cookie: __utma=133499724.1448464120.1565964854.1565964854.1565964854.1; __utmc=133499724; __utmz=133499724.1565964854.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=133499724.1.10.1565964854' --compressed \
 	| pup 'textarea#translated json{}' | jq -r '.[0].text'
     '';
+
     start_tmux = ''
       if type tmux > /dev/null
         #if not inside a tmux session, and if no session is started, start a new session
