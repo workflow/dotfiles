@@ -9,6 +9,8 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
 
+    a = "autorandr --change";
+
     aliases = "vim ~/nixos-config/dotfiles/profile.nix";
 
     c = "xclip -selection clipboard";
