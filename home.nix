@@ -156,6 +156,8 @@ in
     syncthing = {
       enable = true;
     };
+
+    udiskie.enable = true;
   };
 
 }
