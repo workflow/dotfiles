@@ -67,9 +67,9 @@
   # Enable system-wide Yubikey Support
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
-  # Rerun autorandr on pluggin in thunderbolt dock
-  services.udev.extraRules = ''
-    KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/farlion/.Xauthority", RUN+="${pkgs.autorandr}/bin/autorandr -c", ENV{XDG_CONFIG_DIRS}="/home/farlion/.config"
-  '';
+  # Rerun autorandr on plugging in thunderbolt dock
+  #services.udev.extraRules = ''
+  #  ACTION=="add|remove", SUBSYSTEM=="sound", ENV{ID_VENDOR}=="Lenovo", ENV{ID_MODEL}=="ThinkPad_Thunderbolt_3_Dock_USB_Audio", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/farlion/.Xauthority", ENV{XDG_CONFIG_DIRS}="/home/farlion/.config", RUN+="${pkgs.autorandr}/bin/autorandr -c" 
+  #'';
 
 }
