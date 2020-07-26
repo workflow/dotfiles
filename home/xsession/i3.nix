@@ -25,9 +25,9 @@ let
   ws5 = "5";
   ws6 = "6";
   ws7 = "7";
-  ws8 = "8: 聆";
-  ws9 = "9: 阮";
-  ws10 = "10: 直";
+  ws8 = "8: ";
+  ws9 = "9: ";
+  ws10 = "10: ";
 
 in {
   enable = true;
@@ -60,7 +60,7 @@ in {
           };
         };
         command = "${nixpkgs-unstable.i3-gaps}/bin/i3bar";
-        fonts = [ "Fira Code Nerd Font Mono 8" ];
+        fonts = [ "Font Awesome 5 Free 8" "Fira Code 8" ];
         position = "bottom";
         statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${./i3status-rust.toml}";
       }
@@ -107,7 +107,7 @@ in {
       ];
     };
 
-    fonts = ["FontAwesome 9" "Fira Code 9"];
+    fonts = ["Font Awesome 5 Free 9" "Fira Code 9"];
 
     gaps = {
       inner = 4;
