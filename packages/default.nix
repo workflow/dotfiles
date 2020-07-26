@@ -27,6 +27,7 @@ let
       pkgs.file
       pkgs.fortune
       pkgs.i3lock-pixeled
+      pkgs.iftop
       pkgs.inkscape
       pkgs.iw # Wifi connection strength indicator
       pkgs.jq
@@ -38,6 +39,7 @@ let
       pkgs.megacmd
       pkgs.ncdu
       pkgs.neofetch
+      pkgs.nethogs
       pkgs.niv
       pkgs.okular
       pkgs.patchelf
