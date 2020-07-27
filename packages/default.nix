@@ -69,6 +69,7 @@ let
       pkgs.xidlehook
       pkgs.xorg.xkill
       pkgs.yq
+      pkgs.zoom-us
     ];
 
 in
