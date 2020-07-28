@@ -2,6 +2,8 @@
 
 {
 
+  boot.cleanTmpDir = true;
+
   boot.kernel.sysctl = {
     # Enable all magic sysrq commands (NixOS sets this to 16, which enables sync only)
     "kernel.sysrq" = 1;  
