@@ -213,6 +213,9 @@ in {
       # Dunst restart
       "${mod}+Shift+d" = ''exec "killall dunst; exec notify-send 'restart-dunst'"'';
 
+      # Launch Browser
+      "${mod}+b" = "exec brave";
+
     };
 
     menu = "rofi -show run";
