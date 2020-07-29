@@ -325,7 +325,7 @@ in {
     # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
     no_focus [class="plasmashell" window_type="notification"] 
 
-    # System mode. Can't be put into modes because of chained commands.
+    # System mode. Can't be put into config.modes because of chained commands.
     mode "${mode_system}" {
       bindsym l exec --no-startup-id ${locker}, mode "default"
       bindsym e exec --no-startup-id i3-msg exit, mode "default"
