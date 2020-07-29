@@ -338,6 +338,9 @@ in {
       bindsym Return mode "default"
       bindsym Escape mode "default"
     }
+
+    workspace "${ws9}" output eDP-1
+    #workspace "${ws9}" output left
   '';
 
   package = nixpkgs-unstable.i3-gaps;
