@@ -285,6 +285,7 @@ in {
 
       # Auto lock screen using xidlehook written in Rust :)
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "i3lock-pixeled" ""''; notification = false; }
+      { command = "xss-lock -- i3lock-pixeled"; notification = false; }
     ];
 
     terminal = "urxvt -e fish";

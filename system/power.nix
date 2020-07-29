@@ -6,6 +6,7 @@ let
 
 in
 {
+
   #powerManagement.powertop.enable = true;
 
   #services.tlp = {

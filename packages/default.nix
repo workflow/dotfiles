@@ -68,6 +68,7 @@ let
       pkgs.xclip
       pkgs.xidlehook
       pkgs.xorg.xkill
+      pkgs.xss-lock
       pkgs.yq
       pkgs.zoom-us
     ];
