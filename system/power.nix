@@ -7,8 +7,6 @@ let
 in
 {
 
-  #powerManagement.powertop.enable = true;
-
   #services.tlp = {
   #  enable = true;
   #  extraConfig = ''
@@ -59,5 +57,13 @@ in
   #'';
 
   #environment.systemPackages = [ tpacpi-bat ];
+
+  # DPMS Settings, see https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
+  services.xserver.serverFlagsSection = ''
+    Option "BlankTime" "0"
+    Option "StandbyTime" "600"
+    Option "SuspendTime" "1200"
+    Option "OffTime" "1800"
+  '';
 
 }
