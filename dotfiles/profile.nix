@@ -33,6 +33,7 @@
     gc = "git checkout";
     gca = "git commit --amend";
     gd = "git diff";
+    gdc = "git diff --cached";
     gf = "git fetch --prune";
     gfo = "git fetch origin master:master";
     gl = "git log";
