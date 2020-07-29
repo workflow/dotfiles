@@ -9,6 +9,10 @@ let
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
+  # sleep 1 adds a small delay to prevent possible race conditions with suspend
+  # resulting in the desktop being shown for a second or so
+  locker = "i3lock-pixeled && sleep 1";
+
   mod = "Mod4";
 
   # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
@@ -17,6 +21,8 @@ let
   mode_gaps = "Gaps: (o) outer, (i) inner";
   mode_gaps_inner = "Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)";
   mode_gaps_outer = "Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)";
+
+  mode_system = "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown";
 
   ws1 = "1";
   ws2 = "2";
@@ -172,7 +178,7 @@ in {
       "${mod}+Control+semicolon" = "move workspace to output DP-2-1";
 
       # lock screen
-      "${mod}+Shift+x" = "exec i3lock-pixeled";
+      "${mod}+Shift+x" = "exec --no-startup-id ${locker}";
 
       # toggle tiling / floating
       "${mod}+Shift+space" = "floating toggle";
@@ -215,6 +221,9 @@ in {
 
       # Launch Browser
       "${mod}+b" = "exec brave";
+
+      # System Mode
+      "${mod}+Pause" = "mode \"${mode_system}\"";
 
     };
 
@@ -284,8 +293,8 @@ in {
       { command = "sleep 10; syncthingtray"; notification = false; }
 
       # Auto lock screen using xidlehook written in Rust :)
-      { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "i3lock-pixeled" ""''; notification = false; }
-      { command = "xss-lock -- i3lock-pixeled"; notification = false; }
+      { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
+      { command = ''xss-lock -- "${locker}"''; notification = false; }
     ];
 
     terminal = "urxvt -e fish";
@@ -315,6 +324,20 @@ in {
 
     # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
     no_focus [class="plasmashell" window_type="notification"] 
+
+    # System mode. Can't be put into modes because of chained commands.
+    mode "${mode_system}" {
+      bindsym l exec --no-startup-id ${locker}, mode "default"
+      bindsym e exec --no-startup-id i3-msg exit, mode "default"
+      bindsym s exec --no-startup-id ${locker} && systemctl suspend, mode "default"
+      bindsym h exec --no-startup-id ${locker} && systemctl hibernate, mode "default"
+      bindsym r exec --no-startup-id systemctl reboot, mode "default"
+      bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+      # back to normal: Enter or Escape
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+    }
   '';
 
   package = nixpkgs-unstable.i3-gaps;
