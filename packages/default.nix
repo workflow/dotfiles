@@ -41,6 +41,7 @@ let
       pkgs.neofetch
       pkgs.nethogs
       pkgs.niv
+      nixpkgs-unstable.nixfmt
       pkgs.okular
       pkgs.patchelf
       pkgs.pavucontrol
