@@ -295,10 +295,6 @@ in {
       # Auto lock screen using xidlehook written in Rust :)
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
       { command = ''xss-lock -- "${locker}"''; notification = false; }
-
-      # Temporary small screen layout restore
-      { command = ''sleep 45;i3-msg "workspace ${ws9}; append_layout ~/.config/i3/smallscreen.json"'';}
-      { command = "sleep 60;brave"; }
     ];
 
     terminal = "urxvt -e fish";
