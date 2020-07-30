@@ -56,6 +56,7 @@ let
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       pkgs.tdesktop # Telegram
       pkgs.terminator
+      nixpkgs-unstable.todoist-electron
       pkgs.unzip
       pkgs.variety
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam

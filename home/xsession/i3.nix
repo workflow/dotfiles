@@ -45,7 +45,10 @@ in {
         { class="^Signal$"; }
         { class="^TelegramDesktop$"; }
       ];
-      "${ws9}" = [{ class="^Spotify$"; }];
+      "${ws9}" = [
+        { class="^Spotify$"; }
+        { class="^Todoist$"; }
+      ];
       "${ws10}" = [{ class="^SpiderOakONE$"; }];
     };
 
@@ -284,6 +287,7 @@ in {
       { command = "variety"; notification = false; }
 
       { command = "spotify"; notification = false; }
+      { command = "todoist"; notification = false; }
 
       # Autoconnect to WIFI after wallet unlock
       { command = "kcmshell5 kcm_networkmanagement"; }
