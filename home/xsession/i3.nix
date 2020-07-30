@@ -289,9 +289,6 @@ in {
       { command = "spotify"; notification = false; }
       { command = "todoist"; notification = false; }
 
-      # Autoconnect to WIFI after wallet unlock
-      { command = "kcmshell5 kcm_networkmanagement"; }
-
       # Syncthing Tray
       # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       { command = ''"sleep 10; syncthingtray"''; notification = false; }
@@ -299,6 +296,9 @@ in {
       # Auto lock screen using xidlehook written in Rust :)
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
       { command = ''xss-lock -- "${locker}"''; notification = false; }
+
+      # Autoconnect to WIFI after wallet unlock
+      { command = ''"sleep 3; i3-msg workspace number 1; kcmshell5 kcm_networkmanagement"''; notification = false; }
     ];
 
     terminal = "urxvt -e fish";
@@ -344,7 +344,7 @@ in {
     }
 
     workspace "${ws9}" output eDP-1
-    #workspace "${ws9}" output left
+    workspace "${ws1}" output primary
   '';
 
   package = nixpkgs-unstable.i3-gaps;
