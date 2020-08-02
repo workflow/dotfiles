@@ -51,6 +51,7 @@ let
       pkgs.roboto
       nixpkgs-unstable.signal-desktop
       pkgs.slack
+      pkgs.python3
       pkgs.python38Packages.speedtest-cli
       pkgs.spideroak
       nixpkgs-unstable.spotify
