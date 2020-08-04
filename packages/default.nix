@@ -60,6 +60,7 @@ let
       pkgs.tdesktop # Telegram
       pkgs.terminator
       nixpkgs-unstable.todoist-electron
+      pkgs.tree
       pkgs.unzip
       pkgs.variety
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
