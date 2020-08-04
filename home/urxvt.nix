@@ -6,7 +6,7 @@
 
     extraConfig = {
       # Perl extensions
-      perl-ext-common = "default,matcher,resize-font";
+      perl-ext-common = "default,matcher,resize-font,vtwheel";
 
       # Matcher (clickable URLs)
       url-launcher = "${pkgs.xdg_utils}/bin/xdg-open";
