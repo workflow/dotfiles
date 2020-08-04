@@ -43,6 +43,7 @@ let
       pkgs.niv
       nixpkgs-unstable.nixfmt
       pkgs.okular
+      pkgs.onboard # On screen keyboard
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.playerctl
