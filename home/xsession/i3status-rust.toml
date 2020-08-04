@@ -68,6 +68,9 @@ buttons = ["play", "prev", "next"]
 on_collapsed_click = "i3-msg '[class=Spotify] focus'"
 
 [[block]]
+block = "keyboard_layout"
+
+[[block]]
 block = "time"
 interval = 60
 format = "%a %d.%m %R"
