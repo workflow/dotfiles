@@ -46,6 +46,7 @@ let
       pkgs.onboard # On screen keyboard
       pkgs.patchelf
       pkgs.pavucontrol
+      pkgs.pciutils
       pkgs.playerctl
       pkgs.pup
       pkgs.ripgrep
