@@ -2,4 +2,5 @@
 set -euo pipefail
 
 variety
+sleep 2
 autorandr --change
