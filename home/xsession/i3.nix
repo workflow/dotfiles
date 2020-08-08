@@ -177,8 +177,8 @@ in {
       "${mod}+Control+0" = "move container to workspace ${ws10}; workspace ${ws10}";
 
       # Move workspace between screens
-      "${mod}+Control+j" = "move workspace to output eDP-1";
-      "${mod}+Control+semicolon" = "move workspace to output DP-2-1";
+      "${mod}+Control+j" = "move workspace to output left";
+      "${mod}+Control+semicolon" = "move workspace to output right";
 
       # lock screen
       "${mod}+Shift+x" = "exec --no-startup-id ${locker}";
