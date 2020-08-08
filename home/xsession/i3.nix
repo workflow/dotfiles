@@ -275,7 +275,8 @@ in {
       { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
 
       # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
-      { command = "ssh-add -q < /dev/null"; notification = false; }
+      # Autoconnect to WIFI after wallet unlock
+      { command = "~/nixos-config/home/xsession/i3_ssh_startup.sh"; notification = false; }
 
       # Configure Mega backups
       { command = "configure-mega-backup"; notification = false; }
@@ -294,8 +295,6 @@ in {
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
       { command = ''xss-lock -- "${locker}"''; notification = false; }
 
-      # Autoconnect to WIFI after wallet unlock
-      { command = ''"sleep 3; i3-msg workspace number 1; kcmshell5 kcm_networkmanagement"''; notification = false; }
     ];
 
     terminal = "urxvt -e fish";
@@ -340,7 +339,6 @@ in {
       bindsym Escape mode "default"
     }
 
-    workspace "${ws9}" output eDP-1
     workspace "${ws1}" output primary
   '';
 
