@@ -23,6 +23,7 @@ let
       pkgs.dconf
       pkgs.deluge
       pkgs.duplicati
+      pkgs.fd
       pkgs.feh
       pkgs.file
       pkgs.fortune
