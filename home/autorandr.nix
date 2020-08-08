@@ -18,7 +18,10 @@ in {
 
     hooks = {
       postswitch = {
-        background = "variety --next && variety --previous";
+        background = ''
+          variety --prev 2> /dev/null
+          variety --next 2> /dev/null
+        '';
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         #change-dpi = ''
         #  case "$AUTORANDR_CURRENT_PROFILE" in
