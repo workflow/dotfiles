@@ -19,8 +19,8 @@ in {
     hooks = {
       postswitch = {
         background = ''
-          variety --prev 2> /dev/null
-          variety --next 2> /dev/null
+          pkill -9 variety 2> /dev/null
+          variety &>/dev/null &
         '';
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         #change-dpi = ''
