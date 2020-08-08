@@ -60,6 +60,7 @@ let
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       pkgs.tdesktop # Telegram
       pkgs.terminator
+      pkgs.tldr
       nixpkgs-unstable.todoist-electron
       pkgs.tree
       pkgs.unzip
