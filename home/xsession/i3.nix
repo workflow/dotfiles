@@ -271,8 +271,8 @@ in {
     modifier = mod;
 
     startup = [
-      # Detect and apply screen layout
-      { command = "autorandr --change"; notification = false; }
+      # Detect and apply screen layout + wallpaper
+      { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
 
       # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
       { command = "ssh-add -q < /dev/null"; notification = false; }
@@ -282,9 +282,6 @@ in {
 
       # Start duplicati server (not a service yet)
       { command = "duplicati-server"; notification = false; }
-
-      # Wallpaper
-      { command = "variety"; notification = false; }
 
       { command = "spotify"; notification = false; }
       { command = "todoist"; notification = false; }
