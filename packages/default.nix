@@ -25,6 +25,7 @@ let
       pkgs.duplicati
       pkgs.fd
       pkgs.feh
+      pkgs.ffmpeg-full
       pkgs.file
       pkgs.fortune
       pkgs.i3lock-pixeled
