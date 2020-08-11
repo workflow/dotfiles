@@ -69,6 +69,7 @@ on_collapsed_click = "i3-msg '[class=Spotify] focus'"
 
 [[block]]
 block = "keyboard_layout"
+driver = "localebus"
 
 [[block]]
 block = "time"
