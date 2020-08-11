@@ -41,7 +41,7 @@ on_click = "kcmshell5 kcm_networkmanagement"
 
 [[block]]
 block = "net"
-device = "wlp3s0"
+device = "enp9s0u2u1u2c2"
 speed_up = true
 interval = 5
 
