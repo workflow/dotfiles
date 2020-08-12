@@ -7,6 +7,7 @@ let
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   #torguard = pkgs.callPackage ./torguard {};
+  nix-sysdig = pkgs.callPackage ./nix-sysdig {};
 
   # TODO: Move whatever we can to home manager modules
   packages =
@@ -46,6 +47,7 @@ let
       pkgs.niv
       nixpkgs-unstable.nixfmt
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
+      nix-sysdig
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.patchelf
