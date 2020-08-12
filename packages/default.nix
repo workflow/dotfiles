@@ -44,6 +44,7 @@ let
       pkgs.nethogs
       pkgs.niv
       nixpkgs-unstable.nixfmt
+      pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.patchelf
