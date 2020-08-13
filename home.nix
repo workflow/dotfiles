@@ -34,6 +34,9 @@ in
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
+      # i3status-rust
+      ".config/i3status-rust/config.toml".source = ./dotfiles/i3status-rust-config.toml;
+
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
