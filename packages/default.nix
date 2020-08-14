@@ -47,6 +47,7 @@ let
       pkgs.nethogs
       pkgs.niv
       nixpkgs-unstable.nixfmt
+      nixpkgs-unstable.nixpkgs-fmt
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       nix-sysdig
       pkgs.okular
