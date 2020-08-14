@@ -6,7 +6,7 @@
 
   boot.kernel.sysctl = {
     # Enable all magic sysrq commands (NixOS sets this to 16, which enables sync only)
-    "kernel.sysrq" = 1;  
+    "kernel.sysrq" = 1;
   };
 
   # https://github.com/NixOS/nixpkgs/issues/64965

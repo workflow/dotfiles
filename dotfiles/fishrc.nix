@@ -1,18 +1,15 @@
-{ 
-  lib,
-  pkgs,
-  profile
+{ lib
+, pkgs
+, profile
 }:
-
 let
-
   functions = {
     fish_user_key_bindings = ''
-	# CTRL-F --> original TAB behaviour
-	bind \cf forward-word
-	# Tab --> accept autosuggestions
-	bind \t forward-char
-	bind \cs complete
+      # CTRL-F --> original TAB behaviour
+      bind \cf forward-word
+      # Tab --> accept autosuggestions
+      bind \t forward-char
+      bind \cs complete
     '';
 
     fish_right_prompt = ''
@@ -43,20 +40,20 @@ let
     '';
 
     issue_branch = ''
-	set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g') 
-        echo (git checkout -b $converted)
+      set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g') 
+            echo (git checkout -b $converted)
     '';
 
     pirate = ''
-	set toTranslate $argv
-	curl -sG \
-		--data-urlencode "english=$toTranslate" \
-		'http://pirate.monkeyness.com/cgi-bin/translator.pl?client=monkeyness&version=1.0' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: http://pirate.monkeyness.com/online_pirate_translator' -H 'Accept-Language: en-US,en;q=0.9' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' --compressed --insecure \
-	| xq -r .pirateAPI.pirate \
-	| curl -sG \
-	--data-urlencode "source_text=$toTranslate" \
-	'https://speakpirate.com/' -H 'authority: speakpirate.com' -H 'cache-control: max-age=0' -H 'origin: https://speakpirate.com' -H 'upgrade-insecure-requests: 1' -H 'content-type: application/x-www-form-urlencoded' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: same-origin' -H 'referer: https://speakpirate.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9' -H 'cookie: __utma=133499724.1448464120.1565964854.1565964854.1565964854.1; __utmc=133499724; __utmz=133499724.1565964854.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=133499724.1.10.1565964854' --compressed \
-	| pup 'textarea#translated json{}' | jq -r '.[0].text'
+      set toTranslate $argv
+      curl -sG \
+        --data-urlencode "english=$toTranslate" \
+        'http://pirate.monkeyness.com/cgi-bin/translator.pl?client=monkeyness&version=1.0' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: http://pirate.monkeyness.com/online_pirate_translator' -H 'Accept-Language: en-US,en;q=0.9' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' --compressed --insecure \
+      | xq -r .pirateAPI.pirate \
+      | curl -sG \
+      --data-urlencode "source_text=$toTranslate" \
+      'https://speakpirate.com/' -H 'authority: speakpirate.com' -H 'cache-control: max-age=0' -H 'origin: https://speakpirate.com' -H 'upgrade-insecure-requests: 1' -H 'content-type: application/x-www-form-urlencoded' -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36' -H 'sec-fetch-mode: navigate' -H 'sec-fetch-user: ?1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'sec-fetch-site: same-origin' -H 'referer: https://speakpirate.com/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9' -H 'cookie: __utma=133499724.1448464120.1565964854.1565964854.1565964854.1; __utmc=133499724; __utmz=133499724.1565964854.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmt=1; __utmb=133499724.1.10.1565964854' --compressed \
+      | pup 'textarea#translated json{}' | jq -r '.[0].text'
     '';
 
     start_tmux = ''
@@ -127,7 +124,6 @@ let
   '';
 
 in
-
 {
   inherit functions;
 

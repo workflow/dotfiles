@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
 
   #tpacpi-bat = pkgs.callPackage ../packages/tools/tpacpi-bat.nix {};

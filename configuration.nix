@@ -1,11 +1,9 @@
 { pkgs, ... }:
-
 let
 
-  packages = pkgs.callPackage ./packages {};
+  packages = pkgs.callPackage ./packages { };
 
 in
-
 {
   imports = [
     ./nix

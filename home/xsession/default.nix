@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
-
-let 
+let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
@@ -9,7 +8,8 @@ let
 
   sources = import ../../nix/sources.nix;
 
-in {
+in
+{
   xsession.enable = true;
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 
@@ -43,6 +43,6 @@ in {
     "*color13" = "#D99F57";
     "*color14" = "#C9A554";
     "*color15" = color_txt;
-    
+
   };
 }

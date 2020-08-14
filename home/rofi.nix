@@ -1,14 +1,11 @@
 { config, lib, pkgs, ... }:
-
 let
-
   # Colors from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.resources/.extend.Xresources
   color1 = "#162025";
   color2 = "#662b37";
   color3 = "#bfbfbf";
 
 in
-
 {
   programs.rofi = {
     enable = true;

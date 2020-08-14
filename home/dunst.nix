@@ -1,13 +1,12 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
 { pkgs, ... }:
-
 let
-
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   sources = import ../nix/sources.nix;
 
-in {
+in
+{
   services.dunst = {
     enable = true;
 
@@ -254,4 +253,3 @@ in {
     };
   };
 }
-

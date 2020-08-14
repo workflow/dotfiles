@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 
 pkgs.python3.pkgs.buildPythonApplication rec {
   name = "nix-sysdig";
@@ -9,6 +9,8 @@ pkgs.python3.pkgs.buildPythonApplication rec {
     mypy nix_sysdig
   '';
   makeWrapperArgs = [
-    "--prefix PATH" ":" "${pkgs.sysdig}/bin"
+    "--prefix PATH"
+    ":"
+    "${pkgs.sysdig}/bin"
   ];
 }

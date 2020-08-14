@@ -1,10 +1,8 @@
-{ 
-  lib,
-  nixpkgs-unstable,
-  pkgs
+{ lib
+, nixpkgs-unstable
+, pkgs
 }:
-
-let 
+let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
@@ -35,27 +33,28 @@ let
   ws9 = "9: ";
   ws10 = "10: ";
 
-in {
+in
+{
   enable = true;
 
   config = {
     assigns = {
       "${ws8}" = [
-        { class="^Slack$"; }
-        { class="^Signal$"; }
-        { class="^TelegramDesktop$"; }
+        { class = "^Slack$"; }
+        { class = "^Signal$"; }
+        { class = "^TelegramDesktop$"; }
       ];
       "${ws9}" = [
-        { class="^Spotify$"; }
-        { class="^Todoist$"; }
+        { class = "^Spotify$"; }
+        { class = "^Todoist$"; }
       ];
-      "${ws10}" = [{ class="^SpiderOakONE$"; }];
+      "${ws10}" = [{ class = "^SpiderOakONE$"; }];
     };
 
     bars = [
       {
         colors = rec {
-          activeWorkspace =  {
+          activeWorkspace = {
             background = color_bg;
             border = color_txt;
             text = color_txt;
@@ -116,7 +115,7 @@ in {
       ];
     };
 
-    fonts = ["Font Awesome 5 Free 9" "Fira Code 9"];
+    fonts = [ "Font Awesome 5 Free 9" "Fira Code 9" ];
 
     gaps = {
       inner = 4;
@@ -125,7 +124,7 @@ in {
       smartGaps = true;
 
       outer = -2;
-    }; 
+    };
 
     keybindings = lib.mkOptionDefault {
       # Focus

@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
-
-let 
-
+let
   imports = [
     ./home/autorandr.nix
     ./home/dunst.nix
@@ -18,14 +16,13 @@ let
 
   nur = import sources.NUR { inherit pkgs; };
 
-  profile = pkgs.callPackage ./dotfiles/profile.nix {};
+  profile = pkgs.callPackage ./dotfiles/profile.nix { };
 
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
   sources = import ./nix/sources.nix;
 
 in
-
 {
 
   home = {
@@ -97,7 +94,7 @@ in
   programs = {
     bat = {
       config = {
-        theme = "ansi-dark"; 
+        theme = "ansi-dark";
       };
       enable = true;
     };
@@ -112,7 +109,7 @@ in
         privacy-badger
       ];
       profiles = {
-        main = {};
+        main = { };
       };
     };
 
@@ -151,7 +148,7 @@ in
   services = {
     lorri.enable = true;
 
-    flameshot.enable = true; 
+    flameshot.enable = true;
 
     parcellite.enable = true;
 

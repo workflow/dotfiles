@@ -1,13 +1,11 @@
 { pkgs, ... }:
-
 let
-
   sources = import ../nix/sources.nix;
 
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   #torguard = pkgs.callPackage ./torguard {};
-  nix-sysdig = pkgs.callPackage ./nix-sysdig {};
+  nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
   # TODO: Move whatever we can to home manager modules
   packages =
@@ -89,5 +87,4 @@ let
     ];
 
 in
-
 packages

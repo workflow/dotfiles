@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-
 let
 
   #indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
@@ -7,7 +6,6 @@ let
   xsession-name = "farlion";
 
 in
-
 {
 
   services.xserver = {
@@ -19,7 +17,7 @@ in
       disableWhileTyping = true;
     };
 
-   displayManager = {
+    displayManager = {
       defaultSession = xsession-name;
 
       lightdm = {
@@ -55,6 +53,6 @@ in
   # I3 on KDE Plasma
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ ];
 
 }

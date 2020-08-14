@@ -1,11 +1,9 @@
 { pkgs }:
-
 let
 
   fzf-plugin = "${pkgs.fzf}/share/vim-plugins/fzf";
 
 in
-
 ''
   set nocompatible
 

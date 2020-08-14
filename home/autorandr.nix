@@ -4,15 +4,14 @@
 # Nixbox @ 2048x1152: 168
 # Nixbox @ 2560x1440: 210
 
-{ pkgs, ...  }:
-
+{ pkgs, ... }:
 let
-
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   sources = import ../nix/sources.nix;
 
-in {
+in
+{
   programs.autorandr = {
     enable = true;
 

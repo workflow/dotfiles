@@ -1,14 +1,13 @@
 { pkgs }:
-
 let
-
   version = "v3.99.2";
   arch = "amd64";
 
   url = "https://torguard.net/downloads/torguard-latest-${arch}.deb";
   sha256 = "0x1d04fbj6qjbaq1j8zhaazi16fjlbinjyvwzj65ijy2w6zbzdrb";
 
-in with pkgs;
+in
+with pkgs;
 
 stdenv.mkDerivation {
   pname = "torguard";
