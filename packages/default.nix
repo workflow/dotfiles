@@ -14,6 +14,7 @@ let
     [
       pkgs.arandr
       pkgs.asciinema
+      pkgs.audio-recorder
       pkgs.bc
       pkgs.bind # Provides dig
       pkgs.binutils
