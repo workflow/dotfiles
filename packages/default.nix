@@ -29,6 +29,7 @@ let
       pkgs.ffmpeg-full
       pkgs.file
       pkgs.fortune
+      pkgs.github-cli
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.inkscape
