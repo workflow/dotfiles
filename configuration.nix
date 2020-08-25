@@ -10,6 +10,7 @@ in
     ./nix/home-manager.nix
 
     ./system
+    ./system/gpu.nix
     ./system/desktop.nix
     ./system/fonts.nix
     ./system/keyboard.nix
