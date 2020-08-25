@@ -22,24 +22,24 @@ in
           variety &>/dev/null &
         '';
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
-        #change-dpi = ''
-        #  case "$AUTORANDR_CURRENT_PROFILE" in
-        #    mobile)
-        #      DPI=168
-        #      ;;
-        #    movie)
-        #      DPI=210
-        #      ;;
-        #    sophia)
-        #      DPI=109
-        #      ;;
-        #    *)
-        #      echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
-        #      exit 1
-        #  esac
+        change-dpi = ''
+          case "$AUTORANDR_CURRENT_PROFILE" in
+            mobile)
+              DPI=96
+              ;;
+            movie)
+              DPI=96
+              ;;
+            sophia)
+              DPI=96
+              ;;
+            *)
+              echo "Unknown profle: $AUTORANDR_CURRENT_PROFILE"
+              exit 1
+          esac
 
-        #  echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
-        #'';
+          echo "Xft.dpi: $DPI" | ${pkgs.xorg.xrdb}/bin/xrdb -merge
+        '';
       };
     };
 
