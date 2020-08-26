@@ -18,8 +18,8 @@
 
     c = "xclip -selection clipboard";
 
-    cdb = "cd ~/code/tenx/backend-poc";
     cdd = "cd ~/code/tenx/dataaccessserver";
+    cdh = "cd ~/code/tenx/hyperion";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
     cdt = "cd ~/code/tenx";
