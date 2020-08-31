@@ -64,6 +64,8 @@ let
       pkgs.python38Packages.speedtest-cli
       pkgs.spideroak
       nixpkgs-unstable.spotify
+      pkgs.s-tui # processor monitor/stress test
+      pkgs.stress
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       pkgs.tdesktop # Telegram
       pkgs.terminator
