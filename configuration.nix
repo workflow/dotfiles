@@ -15,6 +15,7 @@ in
     ./system/fonts.nix
     ./system/keyboard.nix
     ./system/power.nix
+    ./system/virtualisation.nix
   ];
 
   environment.systemPackages = packages;
