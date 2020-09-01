@@ -39,6 +39,7 @@ let
       pkgs.killall
       pkgs.ksshaskpass
       pkgs.kubectx
+      pkgs.lame
       pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
       pkgs.megacmd
