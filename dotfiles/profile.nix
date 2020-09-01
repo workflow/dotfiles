@@ -38,6 +38,7 @@
     gaf = "git add -N";
     gc = "git checkout";
     gca = "git commit --amend";
+    gcb = "git checkout -b";
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
