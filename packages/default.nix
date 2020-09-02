@@ -43,6 +43,7 @@ let
       pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
       pkgs.megacmd
+      pkgs.minikube
       pkgs.ncdu
       pkgs.neofetch
       pkgs.nethogs
