@@ -58,6 +58,7 @@ let
       pkgs.pavucontrol
       pkgs.pciutils
       pkgs.playerctl
+      pkgs.postgresql
       pkgs.pup
       pkgs.ripgrep
       pkgs.roboto
