@@ -4,6 +4,12 @@
   services.picom = {
     activeOpacity = "0.98";
 
+    # For NVIDIA, we can run with the simpler xrender backend,
+    # which does not do vsync
+    # Note: This will also need ForceFullCompositionPipeline in xorg.conf
+    # See: https://github.com/chjj/compton/issues/227
+    #backend = "xrender";
+
     enable = true;
 
     extraOptions = ''
