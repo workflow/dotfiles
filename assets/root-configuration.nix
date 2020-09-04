@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
 
       /home/farlion/nixos-config/configuration.nix
       /home/farlion/nixos-config/hardware-configuration.nix
