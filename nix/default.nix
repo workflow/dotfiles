@@ -12,7 +12,11 @@ in
 
     binaryCaches = [
       "https://cache.nixos.org/"
-      # Add cachix here
+      "https://workflow.cachix.org/"
+    ];
+
+    binaryCachePublicKeys = [
+      "workflow.cachix.org-1:HhfBXgXCafJxYuATcMDQbC1qsbjF9qJUCchzFZS2zL4="
     ];
 
     nixPath = [
