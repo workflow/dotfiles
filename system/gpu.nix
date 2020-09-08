@@ -6,7 +6,7 @@
   # Enable ForceFullCompositionPipeline, to use the NVIDIA compositor over picom
   # See: https://github.com/chjj/compton/issues/227
   #services.xserver.screenSection = ''Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"'';
-    
+
   #services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
   #services.xserver.videoDrivers = [ "nvidia" ];
 

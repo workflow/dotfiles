@@ -99,7 +99,6 @@ in
       enable = true;
     };
 
-
     direnv.enable = true;
 
     firefox = {
