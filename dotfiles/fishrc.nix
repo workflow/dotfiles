@@ -56,6 +56,10 @@ let
       | pup 'textarea#translated json{}' | jq -r '.[0].text'
     '';
 
+    py = ''
+      eval "nix-shell -p 'python38.withPackages (pkgs: with pkgs; [ ipython $argv ])'"
+    '';
+
     start_tmux = ''
       if type tmux > /dev/null
         #if not inside a tmux session, and if no session is started, start a new session
