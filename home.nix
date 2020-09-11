@@ -8,6 +8,8 @@ let
     ./home/rofi.nix
     ./home/urxvt.nix
     ./home/xsession
+    base
+    prod-star
   ];
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
@@ -21,6 +23,10 @@ let
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
   sources = import ./nix/sources.nix;
+
+  base = import /home/farlion/code/tenx/tenx-home/base;
+
+  prod-star = import /home/farlion/code/tenx/tenx-home/prod-star { };
 
 in
 {
