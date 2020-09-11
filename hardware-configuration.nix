@@ -1,6 +1,7 @@
 { config, lib, ... }:
 
 {
+  boot.blacklistedKernelModules = [ "nouveau" ];
 
   services.logind.lidSwitch = "lock";
 
