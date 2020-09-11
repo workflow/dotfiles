@@ -113,6 +113,28 @@
         <copyOwnershipFromParent>false</copyOwnershipFromParent>
         <modTimeWindowS>0</modTimeWindowS>
     </folder>
+    <folder id="nix-config" label="Nix Netrc Files (private cachix)" path="/home/farlion/.config/nix" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+        <filesystemType>basic</filesystemType>
+        <device id="FELK4NV-J77NJSI-PE6OHRL-POXYEXI-6VWNSO5-HBM3FV3-JLU56NR-GIZ5KQB" introducedBy=""></device>
+        <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <minDiskFree unit="%">1</minDiskFree>
+        <versioning></versioning>
+        <copiers>0</copiers>
+        <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
+        <hashers>0</hashers>
+        <order>random</order>
+        <ignoreDelete>false</ignoreDelete>
+        <scanProgressIntervalS>0</scanProgressIntervalS>
+        <pullerPauseS>0</pullerPauseS>
+        <maxConflicts>10</maxConflicts>
+        <disableSparseFiles>false</disableSparseFiles>
+        <disableTempIndexes>false</disableTempIndexes>
+        <paused>false</paused>
+        <weakHashThresholdPct>25</weakHashThresholdPct>
+        <markerName>.stfolder</markerName>
+        <copyOwnershipFromParent>false</copyOwnershipFromParent>
+        <modTimeWindowS>0</modTimeWindowS>
+    </folder>
     <folder id="music" label="Music" path="/home/farlion/Music" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="FELK4NV-J77NJSI-PE6OHRL-POXYEXI-6VWNSO5-HBM3FV3-JLU56NR-GIZ5KQB" introducedBy=""></device>
