@@ -75,7 +75,10 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
   # Autorandr service
-  services.autorandr.enable = true;
+  services.autorandr = {
+    enable = true;
+    defaultTarget = "sophia";
+  };
 
   # Sysdig + kernel module
   programs.sysdig.enable = true;
