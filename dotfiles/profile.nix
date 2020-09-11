@@ -62,6 +62,7 @@
     '';
 
     k = "kubectl";
+    kh = "prod-kubectl -n hyperion-staging";
 
     laptop = ''
       echo -e 'power off\nquit' | bluetoothctl;
