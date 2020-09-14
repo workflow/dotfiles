@@ -14,6 +14,10 @@
       size = 1024 * 32 * 2; # twice the RAM should leave enough space for hibernation
     }
   ];
+  # Writees to /etc/sysctl.d/60-nixos.conf
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 0;
+  };
 
   services.hardware.bolt.enable = true;
 
