@@ -9,7 +9,8 @@ let
 
   # sleep 1 adds a small delay to prevent possible race conditions with suspend
   # resulting in the desktop being shown for a second or so
-  locker = "i3lock-pixeled && sleep 1";
+  #locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled && sleep 1";
+  locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
 
   mod = "Mod4";
 
