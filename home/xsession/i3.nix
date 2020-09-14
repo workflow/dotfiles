@@ -7,9 +7,6 @@ let
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
-  # sleep 1 adds a small delay to prevent possible race conditions with suspend
-  # resulting in the desktop being shown for a second or so
-  #locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled && sleep 1";
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
 
   mod = "Mod4";
