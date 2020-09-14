@@ -329,8 +329,8 @@ in
     mode "${mode_system}" {
       bindsym l exec --no-startup-id ${locker}, mode "default"
       bindsym e exec --no-startup-id i3-msg exit, mode "default"
-      bindsym s exec --no-startup-id ${locker} && systemctl suspend, mode "default"
-      bindsym h exec --no-startup-id ${locker} && systemctl hibernate, mode "default"
+      bindsym s exec --no-startup-id systemctl suspend, mode "default"
+      bindsym h exec --no-startup-id systemctl hibernate, mode "default"
       bindsym r exec --no-startup-id systemctl reboot, mode "default"
       bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
 
