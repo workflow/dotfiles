@@ -34,6 +34,7 @@ let
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.inkscape
+      pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
       pkgs.jq
       pkgs.kdeApplications.kcolorchooser
