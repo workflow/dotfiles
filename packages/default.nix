@@ -29,6 +29,7 @@ let
       pkgs.feh
       pkgs.ffmpeg-full
       pkgs.file
+      pkgs.fluidsynth # Midi playback
       pkgs.fortune
       pkgs.github-cli
       pkgs.i3lock-pixeled
@@ -62,11 +63,12 @@ let
       pkgs.playerctl
       pkgs.postgresql
       pkgs.pup
+      pkgs.python3
       pkgs.ripgrep
       pkgs.roboto
       nixpkgs-unstable.signal-desktop
       pkgs.slack
-      pkgs.python3
+      pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli
       pkgs.spideroak
       nixpkgs-unstable.spotify
