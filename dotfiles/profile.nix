@@ -49,6 +49,7 @@
     gpf = "git push --force-with-lease";
     gpn = "git push -u origin HEAD";
     gr = "git rebase";
+    grm = "git rebase master";
     gs = "git status";
 
     halt = "shutdown now";
