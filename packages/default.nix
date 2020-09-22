@@ -32,6 +32,7 @@ let
       pkgs.fluidsynth # Midi playback
       pkgs.fortune
       pkgs.github-cli
+      pkgs.gparted
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.inkscape
