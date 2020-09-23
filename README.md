@@ -112,14 +112,17 @@ services.xserver = {
 
 (`$CONFIG` is the location of this repo)
 
-- `git clone git@github.com:workflow/nixos-config.git $CONFIG`
-- add `$CONFIG/configuration.nix` to the imports in `/etc/nixos/configuration.nix` (sample configuration is in `assets`)
-- add `$CONFIG/nixos-config/hardware-configuration.nix` to the same list
-- `sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware`
-- `sudo nix-channel --update`
-- change your name to `farlion` because it's hardcoded in the configurations
-- `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
-- `sudo nixos-rebuild switch`
+1. `passwd farlion`
+1. `git clone https://github.com/workflow/nixos-config.git $CONFIG`
+1. add `$CONFIG/configuration.nix` to the imports in `/etc/nixos/configuration.nix` (sample configuration is in `assets`)
+1. add `$CONFIG/nixos-config/hardware-configuration.nix` to the same list
+1. `sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware`
+1. `sudo nix-channel --update`
+1. change your name to `farlion` because it's hardcoded in the configurations
+1. `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
+1. `sudo nixos-rebuild switch`
+1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
+1. Change `root` passwd
 
 ## Acknowledgements
 
