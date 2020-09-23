@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 let
+  tenx-imports = lib.optionals (lib.pathExists tenx-home-path) [ base prod-star ];
+
   imports = [
     ./home/autorandr.nix
     ./home/dunst.nix
@@ -8,9 +10,7 @@ let
     ./home/rofi.nix
     ./home/urxvt.nix
     ./home/xsession
-    base
-    prod-star
-  ];
+  ] ++ tenx-imports;
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
 
@@ -24,9 +24,11 @@ let
 
   sources = import ./nix/sources.nix;
 
-  base = import /home/farlion/code/tenx/tenx-home/base;
+  base = import (tenx-home-path + "/base");
 
-  prod-star = import /home/farlion/code/tenx/tenx-home/prod-star { };
+  prod-star = import (tenx-home-path + "/prod-star") { };
+
+  tenx-home-path = /home/farlion/code/tenx/tenx-home;
 
 in
 {
