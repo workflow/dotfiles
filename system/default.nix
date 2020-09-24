@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
 
@@ -77,7 +77,7 @@
   # Autorandr service
   services.autorandr = {
     enable = true;
-    defaultTarget = "sophia";
+    defaultTarget = if (config.networking.hostName == "boar") then "boar" else "sophia";
   };
 
   # Sysdig + kernel module
