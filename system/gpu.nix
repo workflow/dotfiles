@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 {
 
   # TODO: Give this another shot on 20.09 with offload mode
@@ -8,7 +8,6 @@
   #services.xserver.screenSection = ''Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"'';
 
   #services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-  #services.xserver.videoDrivers = [ "nvidia" ];
 
   #hardware.nvidia.optimus_prime = {
   #  enable = true;
@@ -20,4 +19,8 @@
   #  intelBusId = "PCI:0:2:0";
   #};
 
+} // (lib.mkIf (config.networking.hostName == "boar") 
+{
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
+) 
