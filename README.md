@@ -123,8 +123,12 @@ services.xserver = {
 1. `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
 1. `sudo nixos-rebuild switch`
 
-## Post-installation cleanup
+## Post-installation steps
 
+1. On another device, accept syncthing and update the config file there to add new device
+1. Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
+1. Push any local `$CONFIG` config changes to github
+1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
 1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
 1. Change `root` passwd
 
