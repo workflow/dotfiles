@@ -131,6 +131,7 @@ services.xserver = {
 1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
 1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
 1. Change `root` passwd
+1. Login to mega (`mega-cmd` for interactive mode)
 
 ## Acknowledgements
 
