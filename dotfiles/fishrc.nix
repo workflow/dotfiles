@@ -56,6 +56,15 @@ let
       | pup 'textarea#translated json{}' | jq -r '.[0].text'
     '';
 
+    # Source .env files
+    # Source: http://lewandowski.io/2016/10/fish-env/
+    posix-source = ''
+	for i in (cat $argv)
+        set arr (echo $i | string match -r "([^=]+)=(.*)")
+  		set -gx $arr[2] $arr[3]
+	end
+    '';
+
     py = ''
       eval "nix-shell -p 'python38.withPackages (pkgs: with pkgs; [ ipython $argv ])'"
     '';
