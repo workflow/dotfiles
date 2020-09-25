@@ -6,11 +6,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
 
-	/home/farlion/nixos-config/configuration.nix
-       /home/farlion/nixos-config/hardware-configuration.nix
+      /home/farlion/nixos-config/configuration.nix
+      /home/farlion/nixos-config/hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -19,11 +20,11 @@
 
   # LUKS over LVM
   boot.initrd.luks.devices = {
-   root = {
- 	device = "/dev/nvme0n1p2";
-	preLVM = true;
-};
-};
+    root = {
+      device = "/dev/nvme0n1p2";
+      preLVM = true;
+    };
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -32,7 +33,7 @@
   networking.interfaces.eno1.useDHCP = true;
   networking.interfaces.eth0.useDHCP = true;
 
- networking.hostName = "boar";
+  networking.hostName = "boar";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -43,4 +44,3 @@
   system.stateVersion = "20.03"; # Did you read the comment?
 
 }
-
