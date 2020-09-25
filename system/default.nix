@@ -21,6 +21,7 @@
       description = "Florian Peter";
       extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
       isNormalUser = true;
+      group = "users";
       shell = pkgs.fish;
     };
   };
