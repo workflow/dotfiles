@@ -19,8 +19,9 @@
   #  intelBusId = "PCI:0:2:0";
   #};
 
-} // (lib.mkIf (config.networking.hostName == "boar") 
-{
-  services.xserver.videoDrivers = [ "nvidia" ];
-}
-) 
+} // (
+  lib.mkIf
+    (config.networking.hostName == "boar") {
+    services.xserver.videoDrivers = [ "nvidia" ];
+  }
+)

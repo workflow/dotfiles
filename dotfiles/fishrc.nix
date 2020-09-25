@@ -59,10 +59,10 @@ let
     # Source .env files
     # Source: http://lewandowski.io/2016/10/fish-env/
     posix-source = ''
-	for i in (cat $argv)
-        set arr (echo $i | string match -r "([^=]+)=(.*)")
-  		set -gx $arr[2] $arr[3]
-	end
+      for i in (cat $argv)
+            set arr (echo $i | string match -r "([^=]+)=(.*)")
+          set -gx $arr[2] $arr[3]
+      end
     '';
 
     py = ''
