@@ -116,7 +116,7 @@ services.xserver = {
 1. `git clone https://github.com/workflow/nixos-config.git $CONFIG`
 1. Add `$CONFIG/configuration.nix` to the imports in `/etc/nixos/configuration.nix` (sample configuration is in `assets`)
 1. Add `$CONFIG/nixos-config/hardware-configuration.nix` to the same list
-1. Copy other stuff from `$CONFIG/assets/root-configuration.nix` like the `networking.hostname`
+1. From`$CONFIG/assets/root-configuration-*.nix` as a template, set required settings like the `networking.hostname` and the correct networking interfaces to enable DHCP
 1. `sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware`
 1. `sudo nix-channel --update`
 1. change your name to `farlion` because it's hardcoded in the configurations
