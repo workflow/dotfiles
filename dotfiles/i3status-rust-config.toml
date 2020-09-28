@@ -1,0 +1,80 @@
+theme = "gruvbox-dark"
+icons = "awesome5"
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 60
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mug}GB ({Mup}%)"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart}"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m} {5m}"
+
+[[block]]
+block = "temperature"
+collapsed = true
+interval = 10
+format = "{min}° min, {max}° max, {average}° avg"
+chip = "*-isa-*"
+
+[[block]]
+block = "networkmanager"
+ap_format = "{ssid} @ {strength}%"
+on_click = "kcmshell5 kcm_networkmanagement"
+
+[[block]]
+block = "net"
+device = "enp9s0u2u1u2c2"
+speed_up = true
+interval = 5
+
+[[block]]
+block = "speedtest"
+bytes = true
+
+[[block]]
+block = "xrandr"
+interval = 6000 # Because running the commands causes screen lag, see https://github.com/greshake/i3status-rust/issues/668
+
+[[block]]
+block = "sound"
+format = "{output_name} {volume}%"
+on_click = "pavucontrol --tab=3"
+[block.mappings]
+"alsa_output.pci-0000_00_1f.3.analog-stereo" = ""
+"bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = ""
+
+[[block]]
+block = "music"
+player = "spotify"
+buttons = ["play", "prev", "next"]
+on_collapsed_click = "i3-msg '[class=Spotify] focus'"
+
+[[block]]
+block = "keyboard_layout"
+driver = "localebus"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d.%m %R"
+
+[[block]]
+block = "battery"
