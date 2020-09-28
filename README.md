@@ -122,6 +122,7 @@ services.xserver = {
 1. `sudo nix-channel --update`
 1. `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
 1. `sudo nixos-rebuild switch`
+1. Reboot
 
 ## Post-installation steps
 
