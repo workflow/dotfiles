@@ -1,2 +1,5 @@
 result
 result-*
+
+# Direnv temp files
+.direnv/
