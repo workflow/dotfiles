@@ -16,6 +16,7 @@ in
     ./system/keyboard.nix
     ./system/power.nix
     ./system/virtualisation.nix
+    ./system/ledgerlive.nix
   ];
 
   environment.systemPackages = packages;

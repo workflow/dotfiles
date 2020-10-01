@@ -5,6 +5,7 @@ let
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
   #torguard = pkgs.callPackage ./torguard {};
+  ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
   # TODO: Move whatever we can to home manager modules
@@ -44,6 +45,7 @@ let
       pkgs.ksshaskpass
       pkgs.kubectx
       pkgs.lame
+      ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
       pkgs.megacmd
