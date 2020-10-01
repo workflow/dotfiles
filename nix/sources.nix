@@ -15,11 +15,12 @@ with rec
   sources_nixpkgs =
     if builtins.hasAttr "nixpkgs" sources
     then sources.nixpkgs
-    else abort
-      ''
-        Please specify either <nixpkgs> (through -I or NIX_PATH=nixpkgs=...) or
-        add a package called "nixpkgs" to your sources.json.
-      '';
+    else
+      abort
+        ''
+          Please specify either <nixpkgs> (through -I or NIX_PATH=nixpkgs=...) or
+          add a package called "nixpkgs" to your sources.json.
+        '';
 
   # fetchTarball version that is compatible between all the versions of Nix
   builtins_fetchTarball =
@@ -90,8 +91,9 @@ mapAttrs
   (
     _: spec:
       if builtins.hasAttr "outPath" spec
-      then abort
-        "The values in sources.json should not have an 'outPath' attribute"
+      then
+        abort
+          "The values in sources.json should not have an 'outPath' attribute"
       else
         if builtins.hasAttr "url" spec && builtins.hasAttr "sha256" spec
         then
