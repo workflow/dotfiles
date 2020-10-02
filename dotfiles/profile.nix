@@ -52,20 +52,19 @@
     grm = "git rebase master";
     gs = "git status";
 
-    halt = "shutdown now";
-
-    headphones = ''
+    h = ''
       echo -e 'power on\nquit' | bluetoothctl;
       and sleep 2;
       and echo -e 'connect 70:26:05:DA:27:A4\nquit' | bluetoothctl;
       and sleep 5;
       and pactl set-default-sink "bluez_sink.70_26_05_DA_27_A4.a2dp_sink";
     '';
+    halt = "shutdown now";
 
     k = "kubectl";
     kh = "prod-kubectl -n hyperion-staging";
 
-    laptop = ''
+    l = ''
       echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink "alsa_output.pci-0000_00_1f.3.analog-stereo"
     '';
