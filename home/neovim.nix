@@ -15,6 +15,7 @@
 
     plugins = with pkgs.vimPlugins; [
       vim-nix
+      vim-solidity
     ];
 
     viAlias = true;
