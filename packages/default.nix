@@ -82,6 +82,7 @@ let
       pkgs.terminator
       pkgs.tldr
       nixpkgs-unstable.todoist-electron
+      pkgs.trash-cli
       pkgs.tree
       pkgs.unzip
       pkgs.variety
