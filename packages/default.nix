@@ -98,7 +98,7 @@ let
       pkgs.xorg.xkill
       pkgs.xss-lock
       pkgs.yq
-      pkgs.zoom-us
+      nixpkgs-unstable.zoom-us
     ];
 
 in
