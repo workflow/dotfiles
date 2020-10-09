@@ -5,6 +5,7 @@ let
   imports = [
     ./home/autorandr.nix
     ./home/dunst.nix
+    ./home/lf.nix
     ./home/neovim.nix
     ./home/picom.nix
     ./home/rofi.nix
