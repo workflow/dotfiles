@@ -21,6 +21,7 @@ let
       pkgs.bluez-tools
       pkgs.brave
       pkgs.brightnessctl
+      pkgs.bsdgames
       pkgs.cachix
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       pkgs.dconf
