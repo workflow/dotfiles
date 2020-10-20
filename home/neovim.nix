@@ -25,6 +25,7 @@
       vim-nix
       vim-one # Colorscheme
       vim-solidity
+      vim-startify
     ];
 
     viAlias = true;
