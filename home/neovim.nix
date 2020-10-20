@@ -30,6 +30,7 @@
 
     plugins = with pkgs.vimPlugins; [
       LanguageClient-neovim
+      vim-highlightedyank
       vim-nix
       vim-one # Colorscheme
       vim-solidity
