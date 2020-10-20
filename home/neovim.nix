@@ -11,6 +11,8 @@
       noremap l k
       noremap k j
       noremap j h
+
+      set shell=/run/current-system/sw/bin/bash
     '';
 
     plugins = with pkgs.vimPlugins; [
