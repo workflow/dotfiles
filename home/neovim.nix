@@ -13,10 +13,17 @@
       noremap j h
 
       set shell=/run/current-system/sw/bin/bash
+
+      let mapleader = ' '
+
+      colorscheme one
+      let g:one_allow_italics = 1
+      set background=dark
     '';
 
     plugins = with pkgs.vimPlugins; [
       vim-nix
+      vim-one # Colorscheme
       vim-solidity
     ];
 
