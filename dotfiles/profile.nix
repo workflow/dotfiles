@@ -53,8 +53,11 @@
     gpf = "git push --force-with-lease";
     gpn = "git push -u origin HEAD";
     gr = "git rebase";
+    grc = "git rebase --continue";
     grm = "git rebase master";
     gs = "git status";
+
+    ghco = "gh pr checkout";
 
     h = ''
       echo -e 'power on\nquit' | bluetoothctl;
@@ -86,6 +89,8 @@
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
     p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
+
+    "r+" = ''gh pr review --comment --body "bors r+"'';
 
     # Print timestamp along with cmd output
     # Example: cmd | ts
