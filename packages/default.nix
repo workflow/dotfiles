@@ -33,6 +33,7 @@ let
       pkgs.file
       pkgs.fluidsynth # Midi playback
       pkgs.fortune
+      pkgs.gimp
       pkgs.github-cli
       pkgs.gparted
       pkgs.i3lock-pixeled
