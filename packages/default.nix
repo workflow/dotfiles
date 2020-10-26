@@ -99,6 +99,7 @@ let
       pkgs.xidlehook
       pkgs.xorg.xkill
       pkgs.xss-lock
+      nixpkgs-unstable.youtube-dl
       pkgs.yq
       nixpkgs-unstable.zoom-us
     ];
