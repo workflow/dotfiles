@@ -1,13 +1,11 @@
-<configuration version="31">
+<configuration version="30">
     <folder id="code" label="code" path="/home/farlion/code" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -26,17 +24,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="desktop" label="Desktop" path="/home/farlion/Desktop" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -55,17 +50,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="documents" label="Documents" path="/home/farlion/Documents" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -84,17 +76,15 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="dotbackup" label="Various Backups" path="/home/farlion/.backup" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning type="trashcan">
             <param key="cleanoutDays" val="0"></param>
-            <cleanupIntervalS>3600</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -114,17 +104,15 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="dotssh" label="SSH keys" path="/home/farlion/.ssh" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning type="trashcan">
             <param key="cleanoutDays" val="0"></param>
-            <cleanupIntervalS>3600</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -144,17 +132,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="music" label="Music" path="/home/farlion/Music" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -173,17 +158,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="nix-config" label="Nix Netrc Files (private cachix)" path="/home/farlion/.config/nix" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -202,17 +184,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="pictures" label="Pictures" path="/home/farlion/Pictures" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -231,17 +210,14 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
     <folder id="videos" label="Videos" path="/home/farlion/Videos" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" introducedBy=""></device>
         <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
-        <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
-        </versioning>
+        <versioning></versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
         <hashers>0</hashers>
@@ -260,16 +236,7 @@
         <maxConcurrentWrites>0</maxConcurrentWrites>
         <disableFsync>false</disableFsync>
         <blockPullOrder>standard</blockPullOrder>
-        <copyRangeMethod>standard</copyRangeMethod>
     </folder>
-    <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" name="boar" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
-        <address>dynamic</address>
-        <paused>false</paused>
-        <autoAcceptFolders>false</autoAcceptFolders>
-        <maxSendKbps>0</maxSendKbps>
-        <maxRecvKbps>0</maxRecvKbps>
-        <maxRequestKiB>0</maxRequestKiB>
-    </device>
     <device id="LANEASI-VLB3SLQ-NOGLO2C-J3UC6E5-RB3HCKL-4K7ZN5R-LTKTXE3-LDSQCQB" name="nixbox" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
@@ -279,6 +246,14 @@
         <maxRequestKiB>0</maxRequestKiB>
     </device>
     <device id="SEDCLFT-Z66TUDK-ITUICDR-ZGJJZIF-WF5U7CG-LZWYMG7-WGHSKPO-ETJDJQK" name="topbox" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+        <address>dynamic</address>
+        <paused>false</paused>
+        <autoAcceptFolders>false</autoAcceptFolders>
+        <maxSendKbps>0</maxSendKbps>
+        <maxRecvKbps>0</maxRecvKbps>
+        <maxRequestKiB>0</maxRequestKiB>
+    </device>
+    <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" name="boar" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>
