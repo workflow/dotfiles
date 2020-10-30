@@ -90,6 +90,8 @@
 
     p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
 
+    pk = "prod-kubectl";
+
     "r+" = ''gh pr review --comment --body "bors r+"'';
 
     # Print timestamp along with cmd output
