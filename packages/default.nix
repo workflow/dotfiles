@@ -3,6 +3,7 @@ let
   sources = import ../nix/sources.nix;
 
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+  nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
 
   #torguard = pkgs.callPackage ./torguard {};
   ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
@@ -50,6 +51,7 @@ let
       ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
+      nixos-unstable.manix
       pkgs.megacmd
       nixpkgs-unstable.minikube
       pkgs.ncdu
