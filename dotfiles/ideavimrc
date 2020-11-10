@@ -1,8 +1,10 @@
-set clipboard+=unnamed 
-set surround
-set multiple-cursors
+set clipboard+=unnamed
 set number
 set relativenumber
+
+set surround
+set multiple-cursors
+set highlightedyank
 
 noremap ; l
 noremap l k
