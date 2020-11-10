@@ -50,6 +50,7 @@ let
       ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.lm_sensors
+      pkgs.lsof
       nixos-unstable.manix
       pkgs.megacmd
       nixpkgs-unstable.minikube
