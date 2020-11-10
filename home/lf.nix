@@ -81,6 +81,7 @@
       md = "mkdir";
       mf = "mkfile";
       mr = "sudomkfile";
+      u = "unarchive";
     };
 
     settings = {
