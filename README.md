@@ -61,17 +61,13 @@ boot.initrd.luks.devices = {
   };
 };
 
+# If not dual-booting with GRUB
 boot.loader.systemd-boot.enable = true;
 
 networking.networkmanager.enable = true;
 
-users.extraUsers.farlion = {
-  createHome = true;
+users.users.farlion = {
   extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
-  group = "users";
-  home = "/home/farlion";
-  isNormalUser = true;
-  uid = 1000;
 };
 ```
 
@@ -137,4 +133,4 @@ services.xserver = {
 
 ## Acknowledgements
 
-A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you! 
+A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
