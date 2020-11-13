@@ -64,6 +64,7 @@ let
       nix-sysdig
       pkgs.okular
       pkgs.onboard # On screen keyboard
+      pkgs.parted
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.pciutils
