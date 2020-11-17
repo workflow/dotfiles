@@ -79,7 +79,6 @@ let
       pkgs.slack
       pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli
-      pkgs.spideroak
       nixpkgs-unstable.spotify
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
