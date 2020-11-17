@@ -122,14 +122,16 @@ services.xserver = {
 
 ## Post-installation steps
 
-1. On another device, accept syncthing and update the config file there to add new device
-1. Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
+1. On an existing syncthing device, mutually add the new device
+1. Push addition of new syncthing device on old device
+1. On new device, Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
 1. Push any local `$CONFIG` config changes to github
 1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
 1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
 1. Change `root` passwd
 1. Login to mega (`mega-cmd` for interactive mode)
 1. Manually set up Duplicati backups (config under ~/.backup)
+1. Rerun `n`
 
 ## Acknowledgements
 
