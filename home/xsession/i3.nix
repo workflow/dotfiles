@@ -216,8 +216,8 @@ in
       # If you also press Shift with these keys, the change will be global for all workspaces.
       "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
 
-      # Dunst restart
-      "${mod}+Shift+d" = ''exec "killall dunst; exec notify-send 'restart-dunst'"'';
+      # Rofi window switcher
+      "${mod}+Shift+d" = ''exec "rofi -show window"'';
 
       # Launch Browser
       "${mod}+b" = "exec brave";
@@ -320,7 +320,7 @@ in
     bindsym ${mod}+Ctrl+x --release exec --no-startup-id xkill
 
     # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-    no_focus [class="plasmashell" window_type="notification"] 
+    no_focus [class="plasmashell" window_type="notification"]
 
     # System mode. Can't be put into config.modes because of chained commands.
     mode "${mode_system}" {
@@ -329,7 +329,7 @@ in
       bindsym s exec --no-startup-id systemctl suspend, mode "default"
       bindsym h exec --no-startup-id systemctl hibernate, mode "default"
       bindsym r exec --no-startup-id systemctl reboot, mode "default"
-      bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+      bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
       # back to normal: Enter or Escape
       bindsym Return mode "default"
