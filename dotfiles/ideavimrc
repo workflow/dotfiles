@@ -3,7 +3,6 @@ set number
 set relativenumber
 
 set surround
-set multiple-cursors
 set highlightedyank
 
 noremap ; l
