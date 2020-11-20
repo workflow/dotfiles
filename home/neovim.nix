@@ -38,6 +38,7 @@
       vim-solidity
       vim-startify
       vim-commentary
+      ReplaceWithRegister
     ];
 
     viAlias = true;

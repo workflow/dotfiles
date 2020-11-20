@@ -4,6 +4,8 @@ set relativenumber
 
 set surround
 set highlightedyank
+set commentary
+set ReplaceWithRegister
 
 noremap ; l
 noremap l k
