@@ -10,6 +10,8 @@ set argtextobj
 set exchange
 set textobj-entire
 
+set ideajoin " Fancy IDE join :)
+
 noremap ; l
 noremap l k
 noremap k j
