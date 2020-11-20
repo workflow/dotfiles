@@ -40,6 +40,7 @@
       vim-commentary
       ReplaceWithRegister
       argtextobj-vim
+      vim-exchange
     ];
 
     viAlias = true;
