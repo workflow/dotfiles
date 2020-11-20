@@ -11,6 +11,7 @@ set exchange
 set textobj-entire
 
 set ideajoin " Fancy IDE join :)
+set ideamarks " Sync Vim marks with IntelliJ bookmarks
 
 noremap ; l
 noremap l k
