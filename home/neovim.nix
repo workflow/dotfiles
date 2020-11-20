@@ -26,6 +26,8 @@
       set background=dark
 
       nnoremap <leader>' :call LanguageClient_contextMenu()<CR>
+
+
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -35,6 +37,7 @@
       vim-one # Colorscheme
       vim-solidity
       vim-startify
+      vim-commentary
     ];
 
     viAlias = true;
