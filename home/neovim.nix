@@ -39,6 +39,7 @@
       vim-startify
       vim-commentary
       ReplaceWithRegister
+      argtextobj-vim
     ];
 
     viAlias = true;

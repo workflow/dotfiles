@@ -6,6 +6,7 @@ set surround
 set highlightedyank
 set commentary
 set ReplaceWithRegister
+set argtextobj
 
 noremap ; l
 noremap l k
