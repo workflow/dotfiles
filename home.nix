@@ -144,7 +144,7 @@ in
         p = "push";
       };
       enable = true;
-      ignores = [ ".idea" ]; # IntelliJ Idea dirs
+      ignores = [ ".idea" "nohup.out" ];
       userEmail = "florian.peter@gmx.at";
       userName = "workflow";
     };
