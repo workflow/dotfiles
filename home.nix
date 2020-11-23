@@ -71,7 +71,6 @@ in
 
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
-      ".config/variety/scripts/set_wallpaper".source = ./dotfiles/variety_set_wallpaper;
     };
 
     sessionVariables = {
