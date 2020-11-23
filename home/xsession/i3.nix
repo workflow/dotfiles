@@ -294,7 +294,7 @@ in
 
     ];
 
-    terminal = "urxvt -e fish";
+    terminal = "alacritty";
 
     window = {
       commands = [
