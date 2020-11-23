@@ -3,7 +3,7 @@ let
 
   #indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
 
-  xsession-name = "farlion";
+  xsession-name = "i3";
 
 in
 {
@@ -30,7 +30,7 @@ in
     desktopManager = {
       plasma5.enable = true;
       # Delegate xsession to home-manager
-      # See https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8 
+      # See https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
       session = [
         {
           name = xsession-name;
