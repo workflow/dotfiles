@@ -3,6 +3,7 @@ let
   tenx-imports = lib.optionals (lib.pathExists tenx-home-path) [ base prod-star ];
 
   imports = [
+    ./home/alacritty.nix
     ./home/autorandr.nix
     ./home/dunst.nix
     ./home/lf.nix
