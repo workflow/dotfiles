@@ -6,6 +6,7 @@ let
     ./home/alacritty.nix
     ./home/autorandr.nix
     ./home/dunst.nix
+    ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim.nix
     ./home/picom.nix
@@ -40,9 +41,6 @@ in
       # ~/bin
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
-
-      # i3status-rust
-      ".config/i3status-rust/config.toml".source = ./dotfiles/i3status-rust-config.toml;
 
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;

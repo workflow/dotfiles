@@ -68,7 +68,7 @@ in
         command = "${nixpkgs-unstable.i3-gaps}/bin/i3bar";
         fonts = [ "Font Awesome 5 Free 8" "Fira Code 8" ];
         position = "bottom";
-        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs";
+        statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
       }
     ];
 
