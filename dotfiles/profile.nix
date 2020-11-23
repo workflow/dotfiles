@@ -98,6 +98,7 @@
     # Example: cmd | ts
     ts = "gawk '{ print strftime(\"[%Y-%m-%d %H:%M:%S]\"), $0 }'";
 
+    w = "nohup webstorm &disown";
     watch-lorri = "journalctl --user -eu lorri -f";
 
     x = "exit";
