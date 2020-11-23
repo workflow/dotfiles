@@ -11,7 +11,6 @@
       noremap l k
       noremap k j
       noremap j h
-
       noremap <C-w>; <C-w>l
       noremap <C-w>l <C-w>k
       noremap <C-w>k <C-w>j
@@ -26,12 +25,9 @@
       set background=dark
 
       nnoremap <leader>' :call LanguageClient_contextMenu()<CR>
-
-
     '';
 
     plugins = with pkgs.vimPlugins; [
-      LanguageClient-neovim
       vim-highlightedyank
       vim-nix
       vim-one # Colorscheme
@@ -41,6 +37,13 @@
       ReplaceWithRegister
       argtextobj-vim
       vim-exchange
+
+      coc-nvim
+      coc-tsserver
+      coc-json
+      coc-html
+      coc-css
+      coc-prettier
     ];
 
     viAlias = true;

@@ -1,5 +1,4 @@
 { stdenv, fetchurl, makeDesktopItem, appimageTools, imagemagick }:
-
 let
   pname = "ledger-live-desktop";
   version = "2.13.0";

@@ -63,6 +63,7 @@ let
       nixpkgs-unstable.nixpkgs-fmt
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       nix-sysdig
+      pkgs.nodejs # For coc.nvim
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.parted
@@ -74,6 +75,7 @@ let
       pkgs.pup
       pkgs.python3
       pkgs.ripgrep
+      pkgs.rnix-lsp
       pkgs.roboto
       nixpkgs-unstable.signal-desktop
       pkgs.slack
