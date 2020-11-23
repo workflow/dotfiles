@@ -46,6 +46,10 @@
         };
       };
 
+      key_bindings = [
+        { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
+      ];
+
     };
   };
 }
