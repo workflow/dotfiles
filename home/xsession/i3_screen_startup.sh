@@ -2,4 +2,5 @@
 set -euo pipefail
 
 autorandr sophia || true
+autorandr boar || true
 autorandr --change
