@@ -53,6 +53,10 @@
       key_bindings = [
         { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
         { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
+        { key = "Semicolon"; mode = "Vi"; action = "Right"; }
+        { key = "L"; mode = "Vi"; action = "Up"; }
+        { key = "K"; mode = "Vi"; action = "Down"; }
+        { key = "J"; mode = "Vi"; action = "Left"; }
       ];
 
     };
