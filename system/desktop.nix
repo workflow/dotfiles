@@ -18,12 +18,12 @@ in
     };
 
     displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "farlion";
       defaultSession = xsession-name;
 
       lightdm = {
         enable = true;
-        autoLogin.enable = true;
-        autoLogin.user = "farlion";
       };
     };
 
