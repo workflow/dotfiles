@@ -46,10 +46,13 @@
         };
       };
 
+      cursor = {
+        vi_mode_style = "Underline";
+      };
+
       key_bindings = [
         { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
-        # Enable me after 0.5.0 upgrade!
-        # { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
+        { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
       ];
 
     };
