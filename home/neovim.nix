@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  nixpkgs-vimplugins-vim-textobj-entire = import sources.nixpkgs-vimplugins-vim-textobj-entire { config.allowUnfree = true; };
+
+  sources = import ../nix/sources.nix;
+
+in
 {
   programs.neovim = {
     enable = true;
@@ -27,23 +33,25 @@
       nnoremap <leader>' :call LanguageClient_contextMenu()<CR>
     '';
 
-    plugins = with pkgs.vimPlugins; [
-      vim-highlightedyank
-      vim-nix
-      vim-one # Colorscheme
-      vim-solidity
-      vim-startify
-      vim-commentary
-      ReplaceWithRegister
-      argtextobj-vim
-      vim-exchange
+    plugins = [
+      pkgs.vimPlugins.vim-highlightedyank
+      pkgs.vimPlugins.vim-nix
+      pkgs.vimPlugins.vim-one # Colorscheme
+      pkgs.vimPlugins.vim-solidity
+      pkgs.vimPlugins.vim-startify
+      pkgs.vimPlugins.vim-commentary
+      pkgs.vimPlugins.ReplaceWithRegister
+      pkgs.vimPlugins.argtextobj-vim
+      pkgs.vimPlugins.vim-exchange
 
-      coc-nvim
-      coc-tsserver
-      coc-json
-      coc-html
-      coc-css
-      coc-prettier
+      pkgs.vimPlugins.coc-nvim
+      pkgs.vimPlugins.coc-tsserver
+      pkgs.vimPlugins.coc-json
+      pkgs.vimPlugins.coc-html
+      pkgs.vimPlugins.coc-css
+      pkgs.vimPlugins.coc-prettier
+
+      nixpkgs-vimplugins-vim-textobj-entire.vimPlugins.vim-textobj-entire
     ];
 
     viAlias = true;
