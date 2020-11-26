@@ -62,6 +62,7 @@ let
       pkgs.niv
       nixpkgs-unstable.nixfmt
       nixpkgs-unstable.nixpkgs-fmt
+      nixpkgs-unstable.nixpkgs-review
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       nix-sysdig
       pkgs.nodejs # For coc.nvim
