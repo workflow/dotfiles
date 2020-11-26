@@ -54,6 +54,9 @@ in
       # Parcellite
       ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
 
+      # Pistol
+      ".config/pistol/pistol.conf".source = ./dotfiles/pistol.conf;
+
       # Syncthing
       # As a safety measure, install the config only after synchronization has first happened
       ".config/syncthing/config.xml" = lib.mkIf (lib.pathExists /home/farlion/code) {

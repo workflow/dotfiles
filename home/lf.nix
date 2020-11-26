@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
+  sources = import ../nix/sources.nix;
+
+in
 {
   programs.lf = {
     enable = true;
@@ -82,6 +88,11 @@
       mf = "mkfile";
       mr = "sudomkfile";
       u = "unarchive";
+    };
+
+    previewer = {
+      keybinding = "i";
+      source = "${nixpkgs-unstable.pistol}/bin/pistol";
     };
 
     settings = {

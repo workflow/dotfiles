@@ -23,6 +23,7 @@ let
       pkgs.brave
       pkgs.brightnessctl
       pkgs.cachix
+      pkgs.chafa
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       pkgs.dconf
       pkgs.deluge
