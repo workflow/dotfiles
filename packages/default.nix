@@ -79,6 +79,7 @@ let
       pkgs.rnix-lsp
       pkgs.roboto
       nixpkgs-unstable.signal-desktop
+      pkgs.skype
       pkgs.slack
       pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli

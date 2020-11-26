@@ -41,6 +41,7 @@ in
         { class = "^Slack$"; }
         { class = "^Signal$"; }
         { class = "^TelegramDesktop$"; }
+        { class = "^Skype$"; }
       ];
       "${ws9}" = [
         { class = "^Spotify$"; }
