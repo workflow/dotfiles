@@ -5,6 +5,7 @@ let
   imports = [
     ./home/alacritty.nix
     ./home/autorandr.nix
+    ./home/broot.nix
     ./home/dunst.nix
     ./home/i3status-rust.nix
     ./home/lf.nix
