@@ -1,8 +1,6 @@
 { pkgs, lib, ... }:
 let
 
-  #indicator-redshift = pkgs.callPackage ../packages/tools/indicator-redshift {};
-
   xsession-name = "i3";
 
 in
