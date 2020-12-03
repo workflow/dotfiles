@@ -7,6 +7,7 @@ let
     ./home/autorandr.nix
     ./home/broot.nix
     ./home/dunst.nix
+    ./home/git.nix
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim.nix
@@ -138,17 +139,6 @@ in
       functions = fishrc.functions;
       plugins = fishrc.plugins;
       shellAbbrs = profile.aliases;
-    };
-
-    git = {
-      aliases = {
-        c = "commit";
-        p = "push";
-      };
-      enable = true;
-      ignores = [ ".idea" "nohup.out" ];
-      userEmail = "florian.peter@gmx.at";
-      userName = "workflow";
     };
 
     htop.enable = true;
