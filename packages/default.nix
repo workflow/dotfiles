@@ -40,6 +40,7 @@ let
       pkgs.gparted
       pkgs.i3lock-pixeled
       pkgs.iftop
+      pkgs.imagemagick
       pkgs.inkscape
       pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
