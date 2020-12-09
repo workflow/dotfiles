@@ -26,7 +26,6 @@ in
     };
 
     desktopManager = {
-      plasma5.enable = true;
       # Delegate xsession to home-manager
       # See https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
       session = [
@@ -47,9 +46,6 @@ in
     };
 
   };
-
-  # I3 on KDE Plasma
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
 
   environment.systemPackages = [ ];
 
