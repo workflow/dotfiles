@@ -84,4 +84,7 @@
   # Sysdig + kernel module
   programs.sysdig.enable = true;
 
+  # Steam
+  programs.steam.enable = true;
+
 }
