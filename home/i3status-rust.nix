@@ -23,16 +23,16 @@ let
     }
   ];
 
-  nixboxNetBlocks = [
+  topboxNetBlocks = [
     {
       block = "net";
-      device = "enp9s0u2u1u2c2";
+      device = "wlp4s0";
       speed_up = true;
       interval = 5;
     }
   ];
 
-  nixboxSoundBlocks = [
+  topboxSoundBlocks = [
     {
       block = "sound";
       format = "{output_name} {volume}%";
@@ -45,7 +45,7 @@ let
     }
   ];
 
-  nixboxExtraBlocks = [
+  topboxExtraBlocks = [
     {
       block = "battery";
     }
@@ -104,7 +104,7 @@ in
           }
         ]
         ++ lib.lists.optionals (sysconfig.networking.hostName == "boar") boarNetBlocks
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "nixbox") nixboxNetBlocks
+        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxNetBlocks
         ++ [
           {
             block = "xrandr";
@@ -112,7 +112,7 @@ in
           }
         ]
         ++ lib.lists.optionals (sysconfig.networking.hostName == "boar") boarSoundBlocks
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "nixbox") nixboxSoundBlocks
+        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxSoundBlocks
         ++ [
           {
             block = "music";
@@ -134,7 +134,7 @@ in
             bytes = true;
           }
         ]
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "nixbox") nixboxExtraBlocks
+        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxExtraBlocks
         ;
 
         icons = "awesome5";
