@@ -81,6 +81,7 @@ let
       pkgs.ripgrep
       pkgs.rnix-lsp
       pkgs.roboto
+      pkgs.gnome3.seahorse
       nixpkgs-unstable.signal-desktop
       pkgs.skype
       pkgs.slack

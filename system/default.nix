@@ -30,7 +30,6 @@
     enable = true;
     packages = [ pkgs.networkmanager-l2tp ];
   };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   time.timeZone = "Asia/Singapore";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -68,9 +67,10 @@
   # Default editor for root
   programs.vim.defaultEditor = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
   programs.ssh.startAgent = true;
+
+  # Switch to a user-owned keyring once https://github.com/nix-community/home-manager/issues/1454 is resolved?
+  services.gnome3.gnome-keyring.enable = true;
 
   # Enable system-wide Yubikey Support
   services.udev.packages = [ pkgs.yubikey-personalization ];

@@ -159,6 +159,11 @@ in
 
     flameshot.enable = true;
 
+    network-manager-applet.enable = true;
+
+    # Buggy, see: https://github.com/nix-community/home-manager/issues/1454
+    #gnome-keyring.enable = true;
+
     parcellite.enable = true;
 
     pasystray.enable = true;
