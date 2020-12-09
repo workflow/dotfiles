@@ -52,6 +52,7 @@ let
       pkgs.lame
       ledger-live-desktop
       pkgs.libnotify # Provides notify-send
+      pkgs.libreoffice
       pkgs.lm_sensors
       pkgs.lsof
       nixos-unstable.manix
