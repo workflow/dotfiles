@@ -23,7 +23,7 @@ let
       pkgs.brave
       pkgs.brightnessctl
       pkgs.cachix
-      pkgs.chafa
+      pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       pkgs.dconf
       pkgs.deluge
@@ -77,7 +77,7 @@ let
       pkgs.playerctl
       pkgs.postgresql
       pkgs.pstree
-      pkgs.pup
+      pkgs.pup # Streaming HTML processor/selector
       pkgs.python3
       pkgs.ripgrep
       pkgs.rnix-lsp
@@ -93,7 +93,6 @@ let
       pkgs.stress
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       pkgs.tdesktop # Telegram
-      pkgs.terminator
       pkgs.tldr
       nixpkgs-unstable.todoist-electron
       pkgs.trash-cli
