@@ -21,6 +21,10 @@ in
 
   xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs; };
 
+  xsession.profileExtra = ''
+    eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=ssh,secrets)
+    export SSH_AUTH_SOCK
+  '';
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   xresources.properties = {
     "*background" = color_bg;

@@ -272,10 +272,6 @@ in
       # Detect and apply screen layout + wallpaper
       { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
 
-      # https://wiki.archlinux.org/index.php/KDE_Wallet for SSH key passphrases
-      # Autoconnect to WIFI after wallet unlock
-      { command = "~/nixos-config/home/xsession/i3_ssh_startup.sh"; notification = false; }
-
       # Configure Mega backups
       { command = "configure-mega-backup"; notification = false; }
 

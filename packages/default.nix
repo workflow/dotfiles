@@ -35,6 +35,7 @@ let
       pkgs.file
       pkgs.fluidsynth # Midi playback
       pkgs.fortune
+      pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
       pkgs.github-cli
       pkgs.gparted
