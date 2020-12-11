@@ -20,7 +20,7 @@ in
       autoLogin.user = "farlion";
       defaultSession = xsession-name;
 
-      lightdm = {
+      gdm = {
         enable = true;
       };
     };
