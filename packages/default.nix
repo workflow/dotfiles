@@ -76,6 +76,7 @@ let
       pkgs.pciutils
       pkgs.playerctl
       pkgs.postgresql
+      pkgs.pstree
       pkgs.pup
       pkgs.python3
       pkgs.ripgrep
