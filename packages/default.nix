@@ -48,7 +48,6 @@ let
       pkgs.jq
       pkgs.kdeApplications.kcolorchooser
       pkgs.killall
-      pkgs.ksshaskpass
       pkgs.kubectx
       pkgs.lame
       ledger-live-desktop
