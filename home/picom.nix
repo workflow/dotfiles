@@ -33,6 +33,7 @@
 
     opacityRule = [
       "80:class_i ?= 'rofi'"
+      "100:class_i ?= 'dota2'"
     ];
   };
 }
