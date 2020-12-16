@@ -62,6 +62,7 @@ in
             dpi = 96;
             mode = "2560x1440";
             position = "0x0";
+            primary = true;
             rate = "59.95";
           };
           DP-0 = {
@@ -69,7 +70,6 @@ in
             dpi = 96;
             mode = "2560x1440";
             position = "2560x0";
-            primary = true;
             rate = "59.95";
           };
         };

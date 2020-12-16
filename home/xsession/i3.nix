@@ -332,8 +332,6 @@ in
       bindsym Return mode "default"
       bindsym Escape mode "default"
     }
-
-    workspace "${ws1}" output primary
   '';
 
   package = nixpkgs-unstable.i3-gaps;
