@@ -10,8 +10,9 @@
     "....." = "cd ../../../..";
 
     a = "autorandr --change";
+    ab = "autorandr boar";
     am = "autorandr mobile";
-    as = "autorandr sophia";
+    as = "autorandr single";
     av = "autorandr movie";
 
     aliases = "vim ~/nixos-config/dotfiles/profile.nix";
