@@ -38,6 +38,7 @@ let
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
       pkgs.github-cli
+      pkgs.gomatrix # The Matrix
       pkgs.gparted
       pkgs.i3lock-pixeled
       pkgs.iftop
