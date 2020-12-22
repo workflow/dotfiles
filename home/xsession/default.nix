@@ -22,7 +22,7 @@ in
   xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs; };
 
   xsession.profileExtra = ''
-    eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=ssh,secrets)
+    eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=secrets,ssh,pkcs11)
     export SSH_AUTH_SOCK
   '';
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
