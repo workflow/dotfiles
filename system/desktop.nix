@@ -20,8 +20,9 @@ in
       autoLogin.user = "farlion";
       defaultSession = xsession-name;
 
-      gdm = {
+      lightdm = {
         enable = true;
+        greeter.enable = false;
       };
     };
 
