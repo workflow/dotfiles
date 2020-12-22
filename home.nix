@@ -78,7 +78,6 @@ in
 
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";
-      SSH_ASKPASS = "${pkgs.gnome3.gnome-keyring}/libexec/seahorse/ssh-askpass";
     };
 
     # This value determines the Home Manager release that your
