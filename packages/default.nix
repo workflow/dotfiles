@@ -29,6 +29,7 @@ let
       pkgs.deluge
       pkgs.duplicati
       pkgs.efivar
+      pkgs.element-desktop # Matrix client
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full

@@ -42,6 +42,7 @@ in
         { class = "^Signal$"; }
         { class = "^TelegramDesktop$"; }
         { class = "^Skype$"; }
+        { class = "^Element$"; }
       ];
       "${ws9}" = [
         { class = "^Spotify$"; }
