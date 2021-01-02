@@ -88,6 +88,7 @@ in
       mf = "mkfile";
       mr = "sudomkfile";
       u = "unarchive";
+      x = "cut";
     };
 
     previewer = {
