@@ -57,6 +57,7 @@ let
       pkgs.libreoffice
       pkgs.lm_sensors
       pkgs.lsof
+      pkgs.lz4 # compression
       nixos-unstable.manix
       pkgs.megacmd
       nixpkgs-unstable.minikube
