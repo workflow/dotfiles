@@ -20,7 +20,6 @@
     c = "xclip -selection clipboard";
 
     cdd = "cd ~/code/tenx/dataaccessserver";
-    cdh = "cd ~/code/tenx/hyperion";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
     cdt = "cd ~/code/tenx";
@@ -70,7 +69,6 @@
     halt = "shutdown now";
 
     k = "kubectl";
-    kh = "prod-kubectl -n hyperion-staging";
 
     l = ''
       echo -e 'power off\nquit' | bluetoothctl;
