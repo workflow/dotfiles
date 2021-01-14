@@ -1,7 +1,7 @@
 <configuration version="31">
     <folder id="6wxqh-9vqfm" label="kat-vids" path="/home/farlion/Videos/Kat/" type="sendonly" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
+        <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
         <device id="4NEVQR4-VBB247M-VUQMKHM-UEZUS4B-JU3J45L-XZ4MNDV-RLDMJAI-DKM3IA2" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
@@ -29,11 +29,11 @@
     </folder>
     <folder id="code" label="code" path="/home/farlion/code" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -57,11 +57,11 @@
     </folder>
     <folder id="desktop" label="Desktop" path="/home/farlion/Desktop" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -85,11 +85,11 @@
     </folder>
     <folder id="documents" label="Documents" path="/home/farlion/Documents" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -113,8 +113,8 @@
     </folder>
     <folder id="dotbackup" label="Various Backups" path="/home/farlion/.backup" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning type="trashcan">
             <param key="cleanoutDays" val="0"></param>
@@ -142,8 +142,8 @@
     </folder>
     <folder id="dotssh" label="SSH keys" path="/home/farlion/.ssh" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning type="trashcan">
             <param key="cleanoutDays" val="0"></param>
@@ -171,11 +171,11 @@
     </folder>
     <folder id="music" label="Music" path="/home/farlion/Music" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -199,11 +199,11 @@
     </folder>
     <folder id="nix-config" label="Nix Netrc Files (private cachix)" path="/home/farlion/.config/nix" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -227,11 +227,11 @@
     </folder>
     <folder id="pictures" label="Pictures" path="/home/farlion/Pictures" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -255,11 +255,11 @@
     </folder>
     <folder id="videos" label="Videos" path="/home/farlion/Videos" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
+        <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
-        <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" introducedBy=""></device>
         <minDiskFree unit="%">1</minDiskFree>
         <versioning>
-            <cleanupIntervalS>3600</cleanupIntervalS>
+            <cleanupIntervalS>0</cleanupIntervalS>
         </versioning>
         <copiers>0</copiers>
         <pullerMaxPendingKiB>0</pullerMaxPendingKiB>
@@ -281,7 +281,7 @@
         <blockPullOrder>standard</blockPullOrder>
         <copyRangeMethod>standard</copyRangeMethod>
     </folder>
-    <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" name="boar" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+    <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" name="topbox" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>
@@ -289,7 +289,7 @@
         <maxRecvKbps>0</maxRecvKbps>
         <maxRequestKiB>0</maxRequestKiB>
     </device>
-    <device id="JLQ52PV-JJXT4Z2-AKEHCB6-BIDFE65-5QFBVGS-BFJTIWW-SEMMTUB-2UGJXAY" name="topbox" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+    <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" name="boar" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
         <autoAcceptFolders>false</autoAcceptFolders>
