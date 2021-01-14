@@ -308,7 +308,7 @@ in
       ];
     };
 
-    workspaceAutoBackAndForth = true;
+    workspaceAutoBackAndForth = false;
 
   };
 
