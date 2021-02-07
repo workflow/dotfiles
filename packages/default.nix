@@ -27,6 +27,7 @@ let
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       pkgs.dconf
       pkgs.deluge
+      nixpkgs-unstable.discord
       pkgs.duplicati
       pkgs.efivar
       pkgs.element-desktop # Matrix client
