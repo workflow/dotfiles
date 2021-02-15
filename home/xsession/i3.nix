@@ -110,9 +110,7 @@ in
         { class = "Klipper"; }
         { class = "Plasmoidviewer"; }
         { title = "Desktop - Plasma"; }
-        { class = "Skype"; }
         { class = "Pavucontrol"; }
-        { class = "Signal"; }
       ];
     };
 
