@@ -83,6 +83,7 @@ let
       pkgs.playerctl
       pkgs.postgresql
       pkgs.pstree
+      pkgs.pulsemixer
       pkgs.pup # Streaming HTML processor/selector
       pkgs.python3
       pkgs.ripgrep
