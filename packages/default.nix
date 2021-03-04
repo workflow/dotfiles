@@ -29,6 +29,7 @@ let
       pkgs.deluge
       nixpkgs-unstable.discord
       pkgs.duplicati
+      pkgs.dunst
       pkgs.efivar
       pkgs.element-desktop # Matrix client
       pkgs.fd
