@@ -59,6 +59,9 @@ in
       # Pistol
       ".config/pistol/pistol.conf".source = ./dotfiles/pistol.conf;
 
+      # Pulsemixer
+      ".config/pulsemixer.cfg".source = ./dotfiles/pulsemixer.cfg;
+
       # Syncthing
       # As a safety measure, install the config only after synchronization has first happened
       ".config/syncthing/config.xml" = lib.mkIf (lib.pathExists /home/farlion/code) {
