@@ -49,6 +49,7 @@ in
       vim-exchange
       vim-highlightedyank
       vim-nix
+      vim-numbertoggle
       vim-one # Colorscheme
       ReplaceWithRegister
       vim-solidity
