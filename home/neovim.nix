@@ -34,7 +34,7 @@ in
       nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
       " FZF Settings
-      nnoremap <C-p> :FZF<cr>
+      nnoremap <C-p> :GFiles<cr>
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
