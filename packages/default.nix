@@ -32,6 +32,7 @@ let
       pkgs.dunst
       pkgs.efivar
       pkgs.element-desktop # Matrix client
+      pkgs.elmPackages.elm
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
