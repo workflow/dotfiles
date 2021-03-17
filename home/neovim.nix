@@ -30,26 +30,28 @@ in
       let g:one_allow_italics = 1
       set background=dark
 
-      nnoremap <leader>' :call LanguageClient_contextMenu()<CR>
+      " COC Settings
+      nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
     '';
 
-    plugins = [
-      pkgs.vimPlugins.vim-highlightedyank
-      pkgs.vimPlugins.vim-nix
-      pkgs.vimPlugins.vim-one # Colorscheme
-      pkgs.vimPlugins.vim-solidity
-      pkgs.vimPlugins.vim-startify
-      pkgs.vimPlugins.vim-commentary
-      pkgs.vimPlugins.ReplaceWithRegister
-      pkgs.vimPlugins.argtextobj-vim
-      pkgs.vimPlugins.vim-exchange
+    plugins = with pkgs.vimPlugins; [
+      argtextobj-vim
 
-      pkgs.vimPlugins.coc-nvim
-      pkgs.vimPlugins.coc-tsserver
-      pkgs.vimPlugins.coc-json
-      pkgs.vimPlugins.coc-html
-      pkgs.vimPlugins.coc-css
-      pkgs.vimPlugins.coc-prettier
+      coc-nvim
+      coc-tsserver
+      coc-json
+      coc-html
+      coc-css
+      coc-prettier
+
+      vim-commentary
+      vim-exchange
+      vim-highlightedyank
+      vim-nix
+      vim-one # Colorscheme
+      ReplaceWithRegister
+      vim-solidity
+      vim-startify
 
       nixpkgs-vimplugins-vim-textobj-entire.vimPlugins.vim-textobj-entire
     ];
