@@ -17,6 +17,7 @@ in
       noremap l k
       noremap k j
       noremap j h
+      noremap h ;
       noremap <C-w>; <C-w>l
       noremap <C-w>l <C-w>k
       noremap <C-w>k <C-w>j
