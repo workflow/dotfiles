@@ -45,6 +45,7 @@ in
       coc-prettier
 
       vim-commentary
+      elm-vim
       vim-exchange
       vim-highlightedyank
       vim-nix
