@@ -35,6 +35,9 @@ in
 
       " FZF Settings
       nnoremap <C-p> :FZF<cr>
+
+      " Open up a simple file tree
+      nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
