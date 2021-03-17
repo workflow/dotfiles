@@ -32,6 +32,9 @@ in
 
       " COC Settings
       nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
+
+      " FZF Settings
+      nnoremap <C-p> :FZF<cr>
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -47,6 +50,7 @@ in
       vim-commentary
       elm-vim
       vim-exchange
+      fzf-vim
       vim-highlightedyank
       vim-nix
       vim-numbertoggle
