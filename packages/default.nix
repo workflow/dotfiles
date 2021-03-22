@@ -9,6 +9,8 @@ let
   ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
+  variety = pkgs.callPackage ./variety { };
+
   # TODO: Move whatever we can to home manager modules
   packages =
     [
@@ -33,6 +35,8 @@ let
       pkgs.efivar
       pkgs.element-desktop # Matrix client
       pkgs.elmPackages.elm
+      pkgs.elmPackages.elm-format
+      pkgs.elmPackages.elm-test
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
