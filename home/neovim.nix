@@ -50,6 +50,7 @@ in
       coc-html
       coc-css
       coc-prettier
+      coc-vimlsp
 
       vim-commentary
       elm-vim
