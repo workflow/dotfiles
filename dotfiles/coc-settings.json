@@ -2,10 +2,14 @@
   "languageserver": {
     "nix": {
       "command": "rnix-lsp",
-      "filetypes": [
-        "nix"
-      ]
+      "filetypes": ["nix"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"]
     }
   },
+  "codeLens.enable": true,
   "coc.preferences.formatOnSaveFiletypes": ["js", "ts"]
 }
