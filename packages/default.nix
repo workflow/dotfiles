@@ -36,6 +36,7 @@ let
       pkgs.element-desktop # Matrix client
       pkgs.elmPackages.elm
       pkgs.elmPackages.elm-format
+      pkgs.elmPackages.elm-language-server
       pkgs.elmPackages.elm-test
       pkgs.fd
       pkgs.feh
