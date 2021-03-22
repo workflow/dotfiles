@@ -61,6 +61,7 @@ in
       vim-numbertoggle
       vim-one # Colorscheme
       ReplaceWithRegister
+      vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
       vim-startify
 
