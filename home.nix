@@ -54,6 +54,9 @@ in
         source = ./dotfiles/lesskey;
       };
 
+      # Nvim
+      ".config/nvim/coc-settings.json".source = ./dotfiles/coc-settings.json;
+
       # Parcellite
       ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
 

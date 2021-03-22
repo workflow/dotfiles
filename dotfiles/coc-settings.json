@@ -1,0 +1,11 @@
+{
+  "languageserver": {
+    "nix": {
+      "command": "rnix-lsp",
+      "filetypes": [
+        "nix"
+      ]
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["js", "ts"]
+}
