@@ -26,6 +26,7 @@ in
       set shell=/run/current-system/sw/bin/bash
 
       let mapleader = ' '
+      let maplocalleader = ' '
 
       colorscheme one
       let g:one_allow_italics = 1
