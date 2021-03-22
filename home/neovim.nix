@@ -173,6 +173,7 @@ in
     '';
 
     plugins = with pkgs.vimPlugins; [
+      airline
       argtextobj-vim
 
       coc-nvim
