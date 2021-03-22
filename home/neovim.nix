@@ -28,9 +28,6 @@ in
       let mapleader = ' '
       let maplocalleader = ' '
 
-      colorscheme one
-      let g:one_allow_italics = 1
-
       " COC Settings
       nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
       " TextEdit might fail if hidden is not set.
@@ -190,10 +187,10 @@ in
       elm-vim
       vim-exchange
       fzf-vim
+      gruvbox
       vim-highlightedyank
       vim-nix
       vim-numbertoggle
-      vim-one # Colorscheme
       ReplaceWithRegister
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
