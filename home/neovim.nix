@@ -196,6 +196,7 @@ in
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
       vim-startify
+      vim-surround
 
       nixpkgs-vimplugins-vim-textobj-entire.vimPlugins.vim-textobj-entire
     ];
