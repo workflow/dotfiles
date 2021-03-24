@@ -11,5 +11,5 @@
     }
   },
   "codeLens.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": ["js", "ts"]
+  "coc.preferences.formatOnSaveFiletypes": ["js", "ts", "elm"]
 }
