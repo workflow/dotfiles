@@ -35,6 +35,7 @@ let
       pkgs.efivar
       pkgs.element-desktop # Matrix client
       pkgs.elmPackages.elm
+      pkgs.elmPackages.create-elm-app
       pkgs.elmPackages.elm-format
       pkgs.elmPackages.elm-language-server
       pkgs.elmPackages.elm-test
