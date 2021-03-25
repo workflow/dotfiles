@@ -19,7 +19,7 @@
 
     c = "xclip -selection clipboard";
 
-    cde = "cd ~/code/elm-egghead";
+    cde = "cd ~/code/egghead/elm-ui";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
 
