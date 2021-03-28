@@ -18,7 +18,7 @@ let
       mappings = {
         "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
         "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
-        "bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = "";
+        "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
       };
     }
   ];
@@ -40,7 +40,7 @@ let
       mappings = {
         "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
         "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
-        "bluez_sink.70_26_05_DA_27_A4.a2dp_sink" = "";
+        "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
       };
     }
   ];

@@ -64,10 +64,10 @@
     ghco = "gh pr checkout";
 
     h = ''
-      set HEADSET "bluez_sink.70_26_05_DA_27_A4.a2dp_sink"
+      set HEADSET "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
       echo -e 'power on\nquit' | bluetoothctl;
       and sleep 2;
-      and echo -e 'connect 70:26:05:DA:27:A4\nquit' | bluetoothctl;
+      and echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl;
       and sleep 5;
       and pactl set-default-sink "$HEADSET";
       for i in $INPUTS
