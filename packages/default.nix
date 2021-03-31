@@ -29,7 +29,7 @@ let
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       pkgs.dconf
       pkgs.deluge
-      nixpkgs-unstable.discord
+      pkgs.discord
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
