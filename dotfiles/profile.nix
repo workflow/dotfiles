@@ -70,6 +70,7 @@
       and echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl;
       and sleep 5;
       and pactl set-default-sink "$HEADSET";
+      set INPUTS (pactl list sink-inputs short | cut -f 1)
       for i in $INPUTS
         pactl move-sink-input $i "$HEADSET"
       end
