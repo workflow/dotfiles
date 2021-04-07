@@ -83,6 +83,7 @@ let
       pkgs.nodejs # For coc.nvim
       pkgs.okular
       pkgs.onboard # On screen keyboard
+      pkgs.p7zip
       pkgs.parted
       pkgs.patchelf
       pkgs.pavucontrol
