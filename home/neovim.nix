@@ -190,6 +190,7 @@ in
       fzf-vim
       gruvbox
       vim-highlightedyank
+      vim-jsonnet
       vim-nix
       vim-numbertoggle
       ReplaceWithRegister
