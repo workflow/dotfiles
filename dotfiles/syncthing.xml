@@ -182,7 +182,7 @@
         <caseSensitiveFS>false</caseSensitiveFS>
         <junctionsAsDirs>true</junctionsAsDirs>
     </folder>
-    <folder id="hnuwx-gs2se" label="Gmailctl Credentials" path="/home/farlion/.gmailctl" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
+    <folder id="hnuwx-gs2se" label="Gmailctl Filters" path="/home/farlion/.gmailctl" type="sendreceive" rescanIntervalS="3600" fsWatcherEnabled="true" fsWatcherDelayS="10" ignorePerms="false" autoNormalize="true">
         <filesystemType>basic</filesystemType>
         <device id="AVJXUYJ-XE4APST-VDYGR4L-WMSG52T-UDDZBYA-PWG2A3J-EQ5QYCM-MRG7BA7" introducedBy=""></device>
         <device id="FD3UO27-IC76MDF-6DBKLZ3-S36P3HE-XOSCL2M-Z6JIQOR-DL2JBXT-XGWSUA3" introducedBy=""></device>
