@@ -45,6 +45,9 @@ in
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
+      # Gmailctl
+      ".gmailctl/config.jsonnet".source = ./dotfiles/gmailctl.config.jsonnet;
+
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
