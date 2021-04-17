@@ -14,6 +14,9 @@
       name: "300"
     },
     {
+      name: "Bank Marketing"
+    },
+    {
       name: "Bank Stuff/Austrian Mastercard"
     },
     {
@@ -392,6 +395,9 @@
       name: "Singapore"
     },
     {
+      name: "Singapore/Proof of Address"
+    },
+    {
       name: "Tom"
     },
     {
@@ -495,6 +501,7 @@
     }
   ],
   rules: [
+    # Delete Boiteajeux turn notifications
     {
       filter: {
       	and: [
@@ -507,6 +514,22 @@
 	delete: true,
       }
     },
+
+    # Ignore AmazonFresh Delivery Mails
+    {
+      filter: {
+      	and: [
+	  { from: "auto-confirm@amazon.sg" },
+	  { subject: "Your Amazon Fresh order has been received" },
+      	],
+      },
+      actions: {
+        markRead: true,
+        archive: true
+      }
+    },
+
+
     {
       filter: {
         from: "umsatznachricht@cardcomplete.com"
@@ -1132,15 +1155,62 @@
         ]
       }
     },
+
+    # Ignore OCBC Marketing Emails
+    {
+      filter: {
+        and: [
+          {
+            from: "cards_m@ocbc.com"
+          },
+          {
+            subject: "<ADV>"
+          },
+        ]
+      },
+      actions: {
+        archive: true,
+        markRead: true,
+        labels: [
+          "Bank Marketing"
+        ]
+      }
+    },
+
+    # Ignore DBS Marketing Emails
+    {
+      filter: {
+        and: [
+          {
+            from: "emktg@dbs.com"
+          },
+          {
+            subject: "<ADV>"
+          },
+        ]
+      },
+      actions: {
+        archive: true,
+        markRead: true,
+        labels: [
+          "Bank Marketing"
+        ]
+      }
+    },
+
+    # Archive and Keep DBS Statments
     {
       filter: {
         and: [
           {
             from: "ibanking.alert@dbs.com"
           },
-          {
-            query: "Your DBS/POSB Consolidated Statement is ready for viewing"
-          }
+	  {
+	    or: [
+              { subject: "Your DBS/POSB Consolidated Statement is ready for viewing" },
+	      { subject: "View your DBS/POSB Consolidated Statement" },
+	    ],
+	  },
         ]
       },
       actions: {
@@ -1151,6 +1221,7 @@
         ]
       }
     },
+
     {
       filter: {
         query: "DBS Vickers Online Statement Notification"
@@ -1231,6 +1302,8 @@
         markRead: true
       }
     },
+
+    # ViewQwest Invoices that serve as Proof of Address
     {
       filter: {
         and: [
@@ -1245,7 +1318,8 @@
       actions: {
         markRead: true,
         labels: [
-          "Singapore"
+          "Singapore",
+	  "Singapore/Proof of Address",
         ]
       }
     }
