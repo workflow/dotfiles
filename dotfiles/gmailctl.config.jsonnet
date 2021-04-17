@@ -29,9 +29,6 @@
       name: "Crowdfunding"
     },
     {
-      name: "Vienna Trip"
-    },
-    {
       name: "ZZZ_Sirenio/Customer Emails"
     },
     {
@@ -78,30 +75,6 @@
     },
     {
       name: "ZZZ_Sirenio/Ropes/OneBit"
-    },
-    {
-      name: "Purple",
-      color: {
-        background: "#b99aff",
-        text: "#ffffff"
-      }
-    },
-    {
-      name: "VA"
-    },
-    {
-      name: "Green",
-      color: {
-        background: "#44b984",
-        text: "#fad165"
-      }
-    },
-    {
-      name: "North",
-      color: {
-        background: "#000000",
-        text: "#ffffff"
-      }
     },
     {
       name: "Gabi"
@@ -342,9 +315,6 @@
     },
     {
       name: "Sailin"
-    },
-    {
-      name: "UBI"
     },
     {
       name: "ZZZ_Sev"
@@ -753,16 +723,6 @@
       actions: {
         labels: [
           "Bank Stuff/Austrian Mastercard"
-        ]
-      }
-    },
-    {
-      filter: {
-        from: "noreply@youtube.com"
-      },
-      actions: {
-        labels: [
-          "Green"
         ]
       }
     },
