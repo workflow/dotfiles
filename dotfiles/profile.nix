@@ -34,6 +34,7 @@
     '';
     da = "direnv allow";
 
+    filters = "vim ~/nixos-config/dotfiles/gmailctl.config.jsonnet";
     freetapbeer = "nmcli c up 'Free Tap Beer'";
 
     g = "git";
