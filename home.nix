@@ -45,6 +45,9 @@ in
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
+      # gh (Github CLI)
+      ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
+
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
