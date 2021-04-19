@@ -53,10 +53,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "366ad2f4d801e22a0f1ff50178fa4f078af706da",
-        "sha256": "1bznvvnpb9yz96gylj99mnhrgwp433gzjpgjq43agh1f8jpw1cbg",
+        "rev": "f0efbe21f9ae1e17d1aca922708f1bdef605039d",
+        "sha256": "0d3xyihm9f7x43vbrs1hi2fxchqi7b5jrwvvc7swhjvva1cyax1n",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/366ad2f4d801e22a0f1ff50178fa4f078af706da.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/f0efbe21f9ae1e17d1aca922708f1bdef605039d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-vimplugins-vim-textobj-entire": {
