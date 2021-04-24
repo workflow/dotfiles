@@ -91,6 +91,7 @@ let
       pkgs.pciutils
       pkgs.playerctl
       pkgs.postgresql
+      pkgs.postman
       pkgs.pstree
       pkgs.pulsemixer
       pkgs.pup # Streaming HTML processor/selector
