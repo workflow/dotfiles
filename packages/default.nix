@@ -73,6 +73,7 @@ let
       nixos-unstable.manix
       pkgs.megacmd
       nixpkgs-unstable.minikube
+      pkgs.ncat # nmap
       pkgs.ncdu
       pkgs.neofetch
       pkgs.nethogs
