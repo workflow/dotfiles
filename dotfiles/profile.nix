@@ -111,6 +111,8 @@
 
     "r+" = ''gh pr review --comment --body "bors r+"'';
 
+    toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
+
     # Print timestamp along with cmd output
     # Example: cmd | ts
     ts = "gawk '{ print strftime(\"[%Y-%m-%d %H:%M:%S]\"), $0 }'";
