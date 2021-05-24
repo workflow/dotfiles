@@ -119,6 +119,7 @@ let
       pkgs.unzip
       pkgs.variety
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
+      pkgs.virt-manager
       pkgs.vlc
       pkgs.vnstat # Network Traffic Monitor
       nixpkgs-unstable.jetbrains.webstorm
