@@ -52,6 +52,7 @@ let
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.gparted
+      pkgs.gptfdisk # gdisk
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.imagemagick
