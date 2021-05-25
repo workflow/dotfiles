@@ -107,6 +107,7 @@ let
       pkgs.slack
       pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli
+      pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
       nixpkgs-unstable.spotify
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
