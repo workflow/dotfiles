@@ -27,6 +27,10 @@
       device = "/dev/nvme0n1p2";
       preLVM = true;
     };
+    data = {
+      device = "/dev/sda1";
+      preLVM = true;
+    };
   };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
