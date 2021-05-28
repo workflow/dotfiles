@@ -5,7 +5,6 @@ let
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
   nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
 
-  #torguard = pkgs.callPackage ./torguard {};
   ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
