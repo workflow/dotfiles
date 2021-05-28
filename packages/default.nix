@@ -120,6 +120,7 @@ let
       pkgs.tree
       pkgs.unzip
       pkgs.variety
+      pkgs.usbutils # Provides lsusb
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.virt-manager
       pkgs.vlc
