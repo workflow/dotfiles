@@ -35,6 +35,7 @@
     da = "direnv allow";
 
     filters = "vim ~/.gmailctl/config.jsonnet";
+    filtersp = "vim ~/.gmailctl/playbooks/config.jsonnet";
     freetapbeer = "nmcli c up 'Free Tap Beer'";
 
     g = "git";
@@ -63,6 +64,8 @@
     gs = "git status";
 
     ghco = "gh pr checkout";
+
+    gmailctlp = "gmailctl --config ~/.gmailctl/playbooks/";
 
     h = ''
       set HEADSET "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
