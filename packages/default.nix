@@ -98,6 +98,7 @@ let
       pkgs.pulsemixer
       pkgs.pup # Streaming HTML processor/selector
       pkgs.python3
+      pkgs.qalculate-gtk # Calculator
       pkgs.ripgrep
       pkgs.rnix-lsp
       pkgs.roboto
