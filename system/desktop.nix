@@ -12,7 +12,7 @@ in
     # Touchpad
     libinput = {
       enable = true;
-      disableWhileTyping = true;
+      touchpad.disableWhileTyping = true;
     };
 
     displayManager = {
