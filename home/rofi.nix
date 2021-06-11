@@ -10,10 +10,10 @@ in
   programs.rofi = {
     enable = true;
 
-    extraConfig = ''
-      rofi.bw: 1
-      rofi.columns: 2
-    '';
+    extraConfig = {
+      bw = 1;
+      columns = 2;
+    };
 
     colors = {
       rows = rec {
