@@ -60,7 +60,6 @@ let
       pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
       pkgs.jq
-      pkgs.kdeApplications.kcolorchooser
       pkgs.killall
       pkgs.kubectx
       pkgs.lame
