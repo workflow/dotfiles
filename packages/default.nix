@@ -23,7 +23,6 @@ let
       pkgs.bluez-tools
       pkgs.brave
       pkgs.brightnessctl
-      pkgs.burpsuite
       pkgs.cachix
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
