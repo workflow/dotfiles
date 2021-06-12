@@ -289,6 +289,9 @@ in
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
       { command = ''xss-lock -- "${locker}"''; notification = false; }
 
+      # Run KBDD (XKB Daemon for per-window keyboard layout switching)
+      { command = "kbdd"; notification = false; }
+
     ];
 
     terminal = "alacritty";
