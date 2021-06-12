@@ -2,12 +2,6 @@
 { lib, config, pkgs, ... }:
 let
   boarNetBlocks = [
-    {
-      block = "net";
-      device = "eth0";
-      speed_up = true;
-      interval = 5;
-    }
   ];
 
   boarSoundBlocks = [
@@ -23,11 +17,12 @@ let
     }
   ];
 
+
   topboxNetBlocks = [
     {
       block = "net";
       device = "wlp4s0";
-      speed_up = true;
+      #speed_up = true;
       interval = 5;
     }
   ];
@@ -109,8 +104,14 @@ in
             on_click = "alacritty -e nmtui";
             interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" "virbr0" ];
           }
+          {
+            block = "net";
+            device = "eno1";
+            interval = 5;
+            hide_inactive = true;
+            format = "{speed_down;K*b} {speed_up;K*b}";
+          }
         ]
-        ++ lib.lists.optionals isBoar boarNetBlocks
         ++ lib.lists.optionals isTopbox topboxNetBlocks
         ++ [
           {
@@ -139,7 +140,7 @@ in
           }
           {
             block = "speedtest";
-            format = "{ping:1}{speed_down:3*_b;M}bit/s{speed_up:3*_b;M}bit/s";
+            format = "{ping:1}{speed_down:3*_b;M}{speed_up:3*_b;M}";
             interval = 600; # Every Ten Minutes
           }
           {
