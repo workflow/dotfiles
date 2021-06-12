@@ -53,6 +53,8 @@ let
 
   # https://github.com/nix-community/home-manager/issues/393
   # TODO: Should not access the global scope here
+  isBoar = sysconfig.networking.hostName == "boar";
+  isTopbox = sysconfig.networking.hostName == "topbox";
   sysconfig = (import <nixpkgs/nixos> { }).config;
 
 in
@@ -107,16 +109,16 @@ in
             on_click = "kcmshell5 kcm_networkmanagement";
           }
         ]
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "boar") boarNetBlocks
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxNetBlocks
+        ++ lib.lists.optionals isBoar boarNetBlocks
+        ++ lib.lists.optionals isTopbox topboxNetBlocks
         ++ [
           {
             block = "xrandr";
             interval = 6000; # Because running the commands causes screen lag, see https://github.com/greshake/i3status-rust/issues/668
           }
         ]
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "boar") boarSoundBlocks
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxSoundBlocks
+        ++ lib.lists.optionals isBoar boarSoundBlocks
+        ++ lib.lists.optionals isTopbox topboxSoundBlocks
         ++ [
           {
             block = "music";
@@ -143,7 +145,7 @@ in
             block = "notify";
           }
         ]
-        ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxExtraBlocks
+        ++ lib.lists.optionals isTopbox topboxExtraBlocks
         ;
 
         icons = "awesome5";
