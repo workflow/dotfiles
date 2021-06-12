@@ -1,9 +1,6 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
 { lib, config, pkgs, ... }:
 let
-  boarNetBlocks = [
-  ];
-
   boarSoundBlocks = [
     {
       block = "sound";
@@ -14,16 +11,6 @@ let
         "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
         "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
       };
-    }
-  ];
-
-
-  topboxNetBlocks = [
-    {
-      block = "net";
-      device = "wlp4s0";
-      #speed_up = true;
-      interval = 5;
     }
   ];
 
@@ -111,8 +98,14 @@ in
             hide_inactive = true;
             format = "{speed_down;K*b} {speed_up;K*b}";
           }
+          {
+            block = "net";
+            device = "wlp4s0";
+            format = "{speed_down;K*b} {speed_up;K*b}";
+            interval = 5;
+            hide_inactive = true;
+          }
         ]
-        ++ lib.lists.optionals isTopbox topboxNetBlocks
         ++ [
           {
             block = "xrandr";
