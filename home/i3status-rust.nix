@@ -127,10 +127,10 @@ in
             on_collapsed_click = "i3-msg '[class=Spotify] focus'";
             on_click = "i3-msg '[class=Spotify] focus'";
           }
-          #        {
-          #          block = "keyboard_layout";
-          #          driver = "localebus";
-          #        }
+          {
+            block = "keyboard_layout";
+            driver = "kbddbus";
+          }
           {
             block = "time";
             interval = 60;

@@ -59,6 +59,7 @@ let
       pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
       pkgs.jq
+      pkgs.kbdd # XKB Daemon
       pkgs.killall
       pkgs.kubectx
       pkgs.lame
