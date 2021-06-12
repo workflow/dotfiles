@@ -14,9 +14,10 @@ in
     ./system/desktop.nix
     ./system/fonts.nix
     ./system/keyboard.nix
-    ./system/power.nix
-    ./system/virtualisation.nix
     ./system/ledgerlive.nix
+    ./system/power.nix
+    ./system/security.nix
+    ./system/virtualisation.nix
   ];
 
   environment.systemPackages = packages;
