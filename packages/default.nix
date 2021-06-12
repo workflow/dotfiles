@@ -8,6 +8,7 @@ let
   ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
+  # https://github.com/NixOS/nixpkgs/pull/125660
   variety = pkgs.callPackage ./variety { };
 
   # TODO: Move whatever we can to home manager modules
@@ -119,8 +120,8 @@ let
       pkgs.trash-cli
       pkgs.tree
       pkgs.unzip
-      pkgs.variety
       pkgs.usbutils # Provides lsusb
+      variety
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.virt-manager
       pkgs.vlc
