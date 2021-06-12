@@ -98,6 +98,10 @@ in
             chip = "*-isa-*";
           }
           {
+            block = "nvidia_gpu";
+            label = "Quadro P2000";
+          }
+          {
             block = "networkmanager";
             ap_format = "{ssid} @ {strength}%";
             on_click = "kcmshell5 kcm_networkmanagement";
