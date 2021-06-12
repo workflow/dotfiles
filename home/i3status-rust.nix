@@ -106,7 +106,7 @@ in
           {
             block = "networkmanager";
             ap_format = "{ssid} @ {strength}%";
-            on_click = "kcmshell5 kcm_networkmanagement";
+            on_click = "alacritty -e nmtui";
           }
         ]
         ++ lib.lists.optionals isBoar boarNetBlocks
