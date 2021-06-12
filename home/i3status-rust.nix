@@ -123,6 +123,7 @@ in
             player = "spotify";
             buttons = [ "play" "prev" "next" ];
             on_collapsed_click = "i3-msg '[class=Spotify] focus'";
+            on_click = "i3-msg '[class=Spotify] focus'";
           }
           #        {
           #          block = "keyboard_layout";
