@@ -138,6 +138,9 @@ in
             format = "{ping:1}{speed_down:3*_b;M}bit/s{speed_up:3*_b;M}bit/s";
             interval = 600; # Every Ten Minutes
           }
+          {
+            block = "notify";
+          }
         ]
         ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxExtraBlocks
         ;
