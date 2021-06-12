@@ -131,7 +131,8 @@ in
           }
           {
             block = "speedtest";
-            bytes = true;
+            format = "{ping:1*_}{speed_down:3*_b;M}bit/s{speed_up:3*_b;M}bit/s";
+            interval = 600; # Every Ten Minutes
           }
         ]
         ++ lib.lists.optionals (sysconfig.networking.hostName == "topbox") topboxExtraBlocks
