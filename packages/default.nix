@@ -129,6 +129,7 @@ let
       nixpkgs-unstable.jetbrains.webstorm
       pkgs.wget
       pkgs.wgetpaste # CLI interface to various pastebins
+      pkgs.wireguard
       pkgs.wireshark
       pkgs.whois
       pkgs.xawtv # Basic Video4Linux2 device viewer. Example: xawtv -c /dev/video0
