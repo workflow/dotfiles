@@ -11,6 +11,17 @@
 - `lsblk` -> find out drive name (e.g. `/dev/sdb`) `$DRIVE`
 - run (as sudo) `dd bs=4M if=$ISO_PATH of=$DRIVE conv=fdatasync status=progress && sync`
 
+## Preparing Windows 10 to keep a Bootable Windows Partition
+
+Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
+
+- Install all updates from Windows
+- Create a windows recovery USB Drive (Searh for "Create Recovery Drive") just in case
+- Shrink Main Windows partition and through NTFS on it
+- Disable Bitlocker
+- Go to BIOS, disable Secure Boot and maybe fast startup
+
+
 ## Actual installation
 
 Roughly this https://qfpl.io/posts/installing-nixos/
