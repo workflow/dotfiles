@@ -27,6 +27,13 @@ let
     }
   ];
 
+  boarGPUBlocks = [
+    {
+      block = "nvidia_gpu";
+      label = "Quadro P2000";
+    }
+  ];
+
   topboxExtraBlocks = [
     {
       block = "battery";
@@ -81,10 +88,9 @@ in
             format = "{min}° min, {max}° max, {average}° avg";
             chip = "*-isa-*";
           }
-          {
-            block = "nvidia_gpu";
-            label = "Quadro P2000";
-          }
+        ]
+        ++ lib.lists.optionals isBoar boarGPUBlocks
+        ++ [
           {
             block = "networkmanager";
             ap_format = "{ssid} @ {strength}%";
