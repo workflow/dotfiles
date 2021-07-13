@@ -153,6 +153,10 @@ in
 
     htop.enable = true;
 
+    obs-studio = {
+      enable = true;
+    };
+
     ssh = {
       enable = true;
     };
