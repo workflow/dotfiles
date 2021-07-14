@@ -53,6 +53,7 @@ let
       pkgs.gparted
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap
+      pkgs.hamster
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.imagemagick
