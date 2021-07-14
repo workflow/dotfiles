@@ -17,7 +17,7 @@
 
       ignores = [ ".idea" "nohup.out" ];
 
-      userEmail = "florian.peter@gmx.at";
+      userEmail = "4farlion@gmail.com";
 
       userName = "workflow";
     };
