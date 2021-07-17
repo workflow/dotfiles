@@ -79,6 +79,7 @@ networking.networkmanager.enable = true;
 
 users.users.farlion = {
   extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
+  isNormalUser = true;
 };
 ```
 
