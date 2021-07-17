@@ -35,14 +35,14 @@
       device = "/dev/sda1";
       preLVM = true;
     };
-    data-b-enc = {
-      device = "/dev/sdb1";
-      preLVM = true;
-    };
-    data-c-enc = {
-      device = "/dev/sdc1";
-      preLVM = true;
-    };
+    #data-b-enc = {
+    #  device = "/dev/sdb1";
+    #  preLVM = true;
+    #};
+    #data-c-enc = {
+    #  device = "/dev/sdc1";
+    #  preLVM = true;
+    #};
   };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
