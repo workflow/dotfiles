@@ -20,6 +20,7 @@ Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_
 - Shrink Main Windows partition and through NTFS on it
 - Disable Bitlocker
 - Go to BIOS, disable Secure Boot and maybe fast startup
+- Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
 
 
 ## Actual installation
@@ -53,15 +54,6 @@ Roughly this https://qfpl.io/posts/installing-nixos/
 - generate config
   - `nixos-generate-config --root /mnt`
 - add stuff to config
-  - if dual boot check out https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
-
-dual boot:
-```nix
-boot.loader.grub.enable = true;
-boot.loader.grub.version = 2;
-boot.loader.grub.device = "/dev/sda";
-boot.loader.grub.useOSProber = true;
-```
 
 required:
 ```nix
