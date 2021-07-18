@@ -21,7 +21,7 @@
 
 } // (
   lib.mkIf
-    (config.networking.hostName == "boar")
+    (config.networking.hostName == "boar" || config.networking.hostName == "flexbox")
     {
       services.xserver.videoDrivers = [ "nvidia" ];
     }
