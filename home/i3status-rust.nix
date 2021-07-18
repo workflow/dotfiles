@@ -111,6 +111,20 @@ in
             interval = 5;
             hide_inactive = true;
           }
+          {
+            block = "net";
+            device = "enp164s0u1";
+            format = "{speed_down;K*b} {speed_up;K*b}";
+            interval = 5;
+            hide_inactive = true;
+          }
+          {
+            block = "net";
+            device = "wlp0s20f3";
+            format = "{speed_down;K*b} {speed_up;K*b}";
+            interval = 5;
+            hide_inactive = true;
+          }
         ]
         ++ [
           {
