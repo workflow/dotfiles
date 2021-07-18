@@ -13,6 +13,9 @@
         pull = {
           ff = "only";
         };
+        init = {
+          defaultBranch = "main";
+        };
       };
 
       ignores = [ ".idea" "nohup.out" ];
