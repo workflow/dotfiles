@@ -456,6 +456,16 @@
         <untrusted>false</untrusted>
         <remoteGUIPort>0</remoteGUIPort>
     </device>
+    <device id="XNMYZXR-4I4KDFK-E74FFUJ-3OMUSN5-VRZYPR6-A46FB2U-WQRSACC-V4X6NA7" name="flexbox" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
+        <address>dynamic</address>
+        <paused>false</paused>
+        <autoAcceptFolders>false</autoAcceptFolders>
+        <maxSendKbps>0</maxSendKbps>
+        <maxRecvKbps>0</maxRecvKbps>
+        <maxRequestKiB>0</maxRequestKiB>
+        <untrusted>false</untrusted>
+        <remoteGUIPort>0</remoteGUIPort>
+    </device>
     <device id="4NEVQR4-VBB247M-VUQMKHM-UEZUS4B-JU3J45L-XZ4MNDV-RLDMJAI-DKM3IA2" name="katair" compression="metadata" introducer="false" skipIntroductionRemovals="false" introducedBy="">
         <address>dynamic</address>
         <paused>false</paused>
