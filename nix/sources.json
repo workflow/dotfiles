@@ -41,10 +41,22 @@
         "homepage": null,
         "owner": "mozilla",
         "repo": "nixpkgs-mozilla",
-        "rev": "57c8084c7ef41366993909c20491e359bbb90f54",
-        "sha256": "0lchhjys1jj8fdiisd2718sqd63ys7jrj6hq6iq9l1gxj3mz2w81",
+        "rev": "3f3fba4e2066f28a1ad7ac60e86a688a92eb5b5f",
+        "sha256": "1mrj89gzrzhci4lssvzmmk31l715cddp7l39favnfs1qaijly814",
         "type": "tarball",
-        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/57c8084c7ef41366993909c20491e359bbb90f54.tar.gz",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/3f3fba4e2066f28a1ad7ac60e86a688a92eb5b5f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-mozilla-fork": {
+        "branch": "stdenv.lib",
+        "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
+        "homepage": "",
+        "owner": "andersk",
+        "repo": "nixpkgs-mozilla",
+        "rev": "3499e085fb6ae1a846bcf425fa9c98a3b77480da",
+        "sha256": "1fd9n6p8vjlb5vqka2fzxrf1xb7lif5ibjvx8h1fk5w3yqkds2lg",
+        "type": "tarball",
+        "url": "https://github.com/andersk/nixpkgs-mozilla/archive/3499e085fb6ae1a846bcf425fa9c98a3b77480da.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-unstable": {

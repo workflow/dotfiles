@@ -6,7 +6,7 @@ let
   pkgs = import source.nixpkgs-unstable {
     inherit system;
     overlays = [
-      (import "${source.nixpkgs-mozilla}/rust-overlay.nix")
+      (import "${source.nixpkgs-mozilla-fork}/rust-overlay.nix")
     ];
   };
   rust = pkgs.latest.rustChannels.nightly.rust;
