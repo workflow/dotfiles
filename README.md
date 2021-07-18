@@ -127,7 +127,7 @@ services.xserver = {
 ## Post-installation steps
 
 1. On an existing syncthing device, mutually add the new device
-1. Push addition of new syncthing device on old device
+1. Push addition of new syncthing device + folder sharing settins on old device and pull new syncthing config on new device
 1. On new device, Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
 1. Push any local `$CONFIG` config changes to github
 1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
