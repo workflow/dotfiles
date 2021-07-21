@@ -39,6 +39,7 @@ let
       pkgs.elmPackages.elm-format
       pkgs.elmPackages.elm-language-server
       pkgs.elmPackages.elm-test
+      pkgs.exercism
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
