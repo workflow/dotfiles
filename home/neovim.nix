@@ -167,6 +167,7 @@ in
 
       " FZF Settings
       nnoremap <C-p> :GFiles<cr>
+      nnoremap <C-l> :Files<cr>
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
