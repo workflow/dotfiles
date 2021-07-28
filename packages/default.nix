@@ -14,6 +14,7 @@ let
   # TODO: Move whatever we can to home manager modules
   packages =
     [
+      pkgs.android-studio
       pkgs.arandr
       pkgs.asciinema
       pkgs.audio-recorder
