@@ -186,8 +186,10 @@ in
       coc-vimlsp
 
       vim-commentary
+      dart-vim-plugin
       elm-vim
       vim-exchange
+      vim-flutter
       fzf-vim
       gruvbox
       vim-highlightedyank
