@@ -54,7 +54,7 @@
     gf = "git fetch --prune";
     gfo = "git fetch origin master:master";
     gl = "git log";
-    gm = "git checkout master";
+    gm = "git checkout main";
     gp = "git pull --prune";
     gpf = "git push --force-with-lease";
     gpn = "git push -u origin HEAD";
