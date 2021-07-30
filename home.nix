@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
 let
-  tenx-imports = lib.optionals (lib.pathExists tenx-home-path) [ base prod-star ];
-
   imports = [
     ./home/alacritty.nix
     ./home/autorandr.nix
@@ -16,7 +14,7 @@ let
     ./home/rofi.nix
     ./home/urxvt.nix
     ./home/xsession
-  ] ++ tenx-imports;
+  ];
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
 
@@ -29,12 +27,6 @@ let
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
 
   sources = import ./nix/sources.nix;
-
-  base = import (tenx-home-path + "/base");
-
-  prod-star = import (tenx-home-path + "/prod-star") { };
-
-  tenx-home-path = /home/farlion/code/tenx/tenx-home;
 
 in
 {
