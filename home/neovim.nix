@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
-  nixpkgs-vimplugins-vim-textobj-entire = import sources.nixpkgs-vimplugins-vim-textobj-entire { config.allowUnfree = true; };
+  coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
+  vim-textobj-entire-branch = import sources.nixpkgs-vimplugins-vim-textobj-entire { config.allowUnfree = true; };
 
   sources = import ../nix/sources.nix;
 
@@ -178,12 +179,13 @@ in
       airline
       argtextobj-vim
 
-      coc-nvim
-      coc-tsserver
-      coc-json
-      coc-html
       coc-css
+      coc-flutter-branch.vimPlugins.coc-flutter
+      coc-html
+      coc-json
+      coc-nvim
       coc-prettier
+      coc-tsserver
       coc-vimlsp
 
       vim-commentary
@@ -203,7 +205,7 @@ in
       vim-startify
       vim-surround
 
-      nixpkgs-vimplugins-vim-textobj-entire.vimPlugins.vim-textobj-entire
+      vim-textobj-entire-branch.vimPlugins.vim-textobj-entire
     ];
 
     viAlias = true;

@@ -82,5 +82,17 @@
         "type": "tarball",
         "url": "https://github.com/workflow/nixpkgs/archive/ece2aa8e2d21d6b7563b931db296a759f399a32e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-vimplugins-coc-flutter": {
+        "branch": "init-vimplugins-coc-flutter",
+        "description": "Nix Packages collection",
+        "homepage": null,
+        "owner": "workflow",
+        "repo": "nixpkgs",
+        "rev": "21936a77025f88930c59aa7c73584b0d615e7277",
+        "sha256": "1bxsah6x9v7mi2s25qph8j3kzxk7jlaaysmf4ahm8mf21iycswvr",
+        "type": "tarball",
+        "url": "https://github.com/workflow/nixpkgs/archive/21936a77025f88930c59aa7c73584b0d615e7277.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
