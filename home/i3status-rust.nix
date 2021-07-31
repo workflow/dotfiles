@@ -40,10 +40,17 @@ let
     }
   ];
 
+  flexboxExtraBlocks = [
+    {
+      block = "battery";
+    }
+  ];
+
   # https://github.com/nix-community/home-manager/issues/393
   # TODO: Should not access the global scope here
   isBoar = sysconfig.networking.hostName == "boar";
   isTopbox = sysconfig.networking.hostName == "topbox";
+  isFlexbox = sysconfig.networking.hostName == "flexbox";
   sysconfig = (import <nixpkgs/nixos> { }).config;
 
 in
@@ -161,6 +168,7 @@ in
           }
         ]
         ++ lib.lists.optionals isTopbox topboxExtraBlocks
+        ++ lib.lists.optionals isFlexbox flexboxExtraBlocks
         ;
 
         icons = "awesome5";
