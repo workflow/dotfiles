@@ -166,6 +166,9 @@ in
       " Resume latest coc list.
       nnoremap <silent><nowait> <localleader>p  :<C-u>CocListResume<CR>
 
+      " CoC Highlight Box colors fix
+      hi CocFloating ctermbg=240
+
       " FZF Settings
       nnoremap <C-p> :GFiles<cr>
       nnoremap <C-l> :Files<cr>
