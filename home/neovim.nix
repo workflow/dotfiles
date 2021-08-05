@@ -170,6 +170,8 @@ in
       nnoremap <C-p> :GFiles<cr>
       nnoremap <C-l> :Files<cr>
       nnoremap <C-g> :Rg<cr>
+      nnoremap <silent><nowait> <localleader>b :<C-u>Buf<cr>
+      nnoremap <silent><nowait> <localleader>m :<C-u>History<cr>
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
