@@ -23,6 +23,10 @@ in
       noremap <C-w>l <C-w>k
       noremap <C-w>k <C-w>j
       noremap <C-w>j <C-w>h
+      noremap <C-w>: <C-w>L
+      noremap <C-w>L <C-w>K
+      noremap <C-w>K <C-w>J
+      noremap <C-w>J <C-w>H
 
       set shell=/run/current-system/sw/bin/bash
 
