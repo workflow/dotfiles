@@ -171,6 +171,8 @@ in
 
       " FZF Settings
       nnoremap <C-p> :GFiles<cr>
+      nnoremap <silent><nowait> <Leader><Space> :GFiles<cr>
+      nnoremap <silent><nowait> <Leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
       nnoremap <C-l> :Files<cr>
       nnoremap <C-g> :Rg<cr>
       nnoremap <silent><nowait> <localleader>b :<C-u>Buf<cr>
