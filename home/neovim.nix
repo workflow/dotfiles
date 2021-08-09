@@ -180,6 +180,10 @@ in
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+      " Startify Settings
+      let g:startify_change_to_dir = 0
+      let g:startify_change_to_vcs_root = 1
     '';
 
     plugins = with pkgs.vimPlugins; [
