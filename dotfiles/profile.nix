@@ -52,7 +52,7 @@
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
-    gfo = "git fetch origin master:master";
+    gfo = "git fetch origin main:main";
     gl = "git log";
     gm = "git checkout main";
     gp = "git pull --prune";
