@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
+
+let
+  isLaptop = (config.networking.hostName == "topbox" || config.networking.hostName == "flexbox");
+in
 {
   # Adapting the rpfilter to ignore Wireguard related traffic
   # See https://nixos.wiki/wiki/WireGuard
@@ -15,5 +19,9 @@
       ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
     '';
   };
-
 }
+  //
+(lib.mkIf isLaptop
+  {
+    networking.dhcpcd.wait = "background";
+  })
