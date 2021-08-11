@@ -31,7 +31,7 @@
   # false here. Per-interface useDHCP will be mandatory in the future,
   # so this generated config replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp164s0u1.useDHCP = true;
+  #networking.interfaces.enp164s0u1.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # This value determines the NixOS release from which the default
