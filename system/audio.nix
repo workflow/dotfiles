@@ -22,6 +22,14 @@ in
   lib.mkIf
     isFlexbox
     {
-      boot.kernelModules = [ "dkms" ];
+      boot.kernelPatches = [{
+        name = "enable-soundwire-drivers";
+        patch = null;
+        extraConfig = ''
+          CONFIG_SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES=y
+          CONFIG_SND_SOC_INTEL_SOUNDWIRE_SOF_MACH=m
+          CONFIG_SND_SOC_RT1308=m
+        '';
+      }];
     }
 )
