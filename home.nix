@@ -64,7 +64,7 @@ in
       # Syncthing
       # As a safety measure, install the config only after synchronization has first happened
       ".config/syncthing/config.xml" = lib.mkIf (lib.pathExists /home/farlion/code) {
-        source = ./dotfiles/syncthing.xml;
+        source = /home/farlion/code/nixos-secrets/dotfiles/syncthing.xml;
       };
       "code/.stignore" = lib.mkIf (lib.pathExists /home/farlion/code) {
         source = ./dotfiles/stignore_code;
