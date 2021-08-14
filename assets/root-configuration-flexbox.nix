@@ -21,7 +21,6 @@
   # Switch to 5.13.x kernel because hardware is new
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-
   # Fix audio
   boot.kernelPatches = [{
     name = "enable-soundwire-drivers";
@@ -33,6 +32,14 @@
     '';
     ignoreConfigErrors = true;
   }];
+
+  # GPU
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.prime = {
+    sync.enable = true;
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
 
   boot.initrd.luks.devices = {
     root = {

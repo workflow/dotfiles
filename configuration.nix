@@ -13,7 +13,6 @@ in
 
     ./system
     ./system/audio.nix
-    ./system/gpu.nix
     ./system/desktop.nix
     ./system/fonts.nix
     ./system/keyboard.nix

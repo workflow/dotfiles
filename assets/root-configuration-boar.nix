@@ -21,6 +21,9 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # GPU
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   # LUKS over LVM
   boot.initrd.luks.devices = {
     root = {
