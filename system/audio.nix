@@ -1,7 +1,4 @@
 { lib, config, pkgs, ... }:
-let
-  isFlexbox = (config.networking.hostName == "flexbox");
-in
 {
   # Enable sound.
   sound.enable = true;
@@ -18,18 +15,4 @@ in
     package = pkgs.pulseaudioFull;
   };
 
-} // (
-  lib.mkIf
-    isFlexbox
-    {
-      boot.kernelPatches = [{
-        name = "enable-soundwire-drivers";
-        patch = null;
-        extraConfig = ''
-          CONFIG_SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES=y
-          CONFIG_SND_SOC_INTEL_SOUNDWIRE_SOF_MACH=m
-          CONFIG_SND_SOC_RT1308=m
-        '';
-      }];
-    }
-)
+}

@@ -18,7 +18,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Switch to 5.13.x kernel because hardware is new
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+
+  # Fix audio
+  boot.kernelPatches = [{
+    name = "enable-soundwire-drivers";
+    patch = null;
+    extraConfig = ''
+      SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES y
+      SND_SOC_INTEL_SOUNDWIRE_SOF_MACH m
+      SND_SOC_RT1308 m
+    '';
+    ignoreConfigErrors = true;
+  }];
 
   boot.initrd.luks.devices = {
     root = {
