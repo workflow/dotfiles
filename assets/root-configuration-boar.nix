@@ -30,10 +30,6 @@
       device = "/dev/nvme0n1p2";
       preLVM = true;
     };
-    nixos-data-nvme1n1 = {
-      device = "/dev/nvme1n1p1";
-      preLVM = true;
-    };
     data = {
       device = "/dev/sda1";
       preLVM = true;
