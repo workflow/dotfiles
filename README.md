@@ -131,6 +131,7 @@ services.xserver = {
 1. On new device, Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
 1. Push any local `$CONFIG` config changes to github
 1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
+1. Symlink `~/nixos-secrets` to `~/code/nixos-secrets`
 1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
 1. Change `root` passwd
 1. Rerun `n`
