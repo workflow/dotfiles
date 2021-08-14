@@ -57,6 +57,9 @@ in
 
   #environment.systemPackages = [ tpacpi-bat ];
 
+  # This will save you money and possibly your life!
+  services.thermald.enable = true;
+
   # DPMS Settings, see https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
   services.xserver.serverFlagsSection = ''
     Option "BlankTime" "0"
