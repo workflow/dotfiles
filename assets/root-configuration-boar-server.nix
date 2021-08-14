@@ -28,11 +28,27 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.eno1.useDHCP = true;
+  networking.interfaces.eno1 = {
+    name = "eno1";
+    ipv4 = {
+      addresses = [
+        {
+          address = "192.168.1.42";
+          prefixLength = 24;
+        }
+      ];
+    };
+  };
+  networking.defaultGateway = "192.168.1.1";
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
 
   networking.networkmanager.enable = true;
 
   networking.hostName = "boar-server";
+
+  environment.systemPackages = [
+    pkgs.neovim
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
