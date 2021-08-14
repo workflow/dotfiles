@@ -1,4 +1,8 @@
 { lib, config, pkgs, ... }:
+let
+  isBoar = config.networking.hostName == "boar";
+  isFlexbox = config.networking.hostName == "flexbox";
+in
 {
 
   # TODO: Give this another shot on 20.09 with offload mode
@@ -19,11 +23,6 @@
   #  intelBusId = "PCI:0:2:0";
   #};
 
-} // (
-  lib.mkIf
-    # (config.networking.hostName == "boar" || config.networking.hostName == "flexbox")
-    (config.networking.hostName == "boar")
-    {
-      services.xserver.videoDrivers = [ "nvidia" ];
-    }
-)
+  services.xserver.videoDrivers = lib.mkIf (isBoar || isFlexbox) [ "nvidia" ];
+
+}
