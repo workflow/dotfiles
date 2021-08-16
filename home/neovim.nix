@@ -200,6 +200,7 @@ in
       coc-json
       coc-nvim
       coc-prettier
+      coc-rust-analyzer
       coc-tsserver
       coc-vimlsp
 
