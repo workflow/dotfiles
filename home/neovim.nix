@@ -210,6 +210,7 @@ in
       vim-exchange
       vim-flutter
       fzf-vim
+      vim-graphql
       gruvbox
       vim-highlightedyank
       vim-jsonnet
