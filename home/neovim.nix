@@ -203,6 +203,7 @@ in
       coc-rust-analyzer
       coc-tsserver
       coc-vimlsp
+      coc-yaml
 
       vim-commentary
       dart-vim-plugin
@@ -212,6 +213,7 @@ in
       fzf-vim
       vim-graphql
       gruvbox
+      vim-helm
       vim-highlightedyank
       vim-jsonnet
       vim-nix
