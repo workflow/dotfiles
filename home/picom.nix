@@ -1,16 +1,20 @@
 # Some settings from https://pastebin.com/S8m1jnY3
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
+let
+  sysconfig = (import <nixpkgs/nixos> { }).config;
+  isNvidia = builtins.elem "nvidia" sysconfig.services.xserver.videoDrivers;
+in
 {
   services.picom = {
     activeOpacity = "0.98";
 
+    enable = true;
+
     # For NVIDIA, we can run with the simpler xrender backend,
     # which does not do vsync
-    # Note: This will also need ForceFullCompositionPipeline in xorg.conf
+    # Note: This may also need ForceFullCompositionPipeline in xorg.conf
     # See: https://github.com/chjj/compton/issues/227
-    #backend = "xrender";
-
-    enable = true;
+    backend = if isNvidia then "xrender" else "glx";
 
     extraOptions = ''
       no-fading-openclose = true;
