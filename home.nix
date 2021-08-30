@@ -37,6 +37,9 @@ in
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
 
+      # Dlfile (reverse drag-and-drop with dragon)
+      "bin/dlfile" = { text = scripts.dlfile; executable = true; };
+
       # gh (Github CLI)
       ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
 

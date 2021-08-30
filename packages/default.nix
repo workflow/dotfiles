@@ -31,6 +31,7 @@ let
       pkgs.dconf
       pkgs.deluge
       pkgs.discord
+      pkgs.dragon-drop
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar

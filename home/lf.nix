@@ -24,6 +24,9 @@ in
           }}
       '';
 
+      dlfile = "%dlfile";
+      dragon = "%dragon -a $fx";
+
       mkdir = ''
         ''${{
           printf "Directory Name: "
@@ -78,6 +81,8 @@ in
     keybindings = {
       d = null;
       dd = "trash";
+      dl = "dlfile";
+      dr = "dragon";
       h = "chmod";
       k = "down";
       l = "up";
