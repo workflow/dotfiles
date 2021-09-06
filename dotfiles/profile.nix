@@ -115,6 +115,8 @@
 
     "r+" = ''gh pr review --comment --body "bors r+"'';
 
+    soul = "nmcli c up 'Soul'";
+
     toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
 
     # Print timestamp along with cmd output
