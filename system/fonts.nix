@@ -11,5 +11,6 @@ in
     pkgs.font-awesome_4
     pkgs.font-awesome-ttf
     (nixpkgs-unstable.nerdfonts.override { fonts = [ "FiraCode" "Inconsolata" ]; })
+    pkgs.noto-fonts # For microsoft websites like Github and Linkedin on Chromium browsers
   ];
 }
