@@ -226,8 +226,8 @@ in
       vim-solidity
       vim-startify
       vim-surround
-
       vim-textobj-entire-branch.vimPlugins.vim-textobj-entire
+      vim-toml
     ];
 
     viAlias = true;
