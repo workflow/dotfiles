@@ -19,7 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Switch to 5.13.x kernel because hardware is new
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_13;
 
   # Fix audio
   boot.kernelPatches = [
