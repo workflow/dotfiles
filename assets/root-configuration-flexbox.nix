@@ -34,7 +34,9 @@
       ignoreConfigErrors = true;
     }
   ];
-  boot.blacklistedKernelModules = [ "snd_hda_intel" ];
+  # boot.extraModprobeConfig = ''
+  #   options snd-hda-intel model=auto, enable_msi=1
+  # '';
 
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
