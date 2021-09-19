@@ -57,6 +57,7 @@ let
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap
       pkgs.hamster
+      pkgs.hicolor-icon-theme # Needed for solaar
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.imagemagick
@@ -87,7 +88,6 @@ let
       nixpkgs-unstable.nixpkgs-fmt
       nixpkgs-unstable.nixpkgs-review
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
-      nix-sysdig
       pkgs.nodejs # For coc.nvim
       pkgs.okular
       pkgs.onboard # On screen keyboard
@@ -110,6 +110,7 @@ let
       nixpkgs-unstable.signal-desktop
       pkgs.skype
       pkgs.slack
+      pkgs.solaar
       pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli
       pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
@@ -117,6 +118,7 @@ let
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
+      nix-sysdig
       pkgs.tdesktop # Telegram
       pkgs.tlaplusToolbox
       pkgs.tldr
