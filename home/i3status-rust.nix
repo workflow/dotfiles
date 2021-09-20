@@ -114,7 +114,7 @@ in
         ++ [
           {
             block = "networkmanager";
-            ap_format = "{ssid} @ {strength}%";
+            ap_format = "{ssid} @ {strength}";
             on_click = "alacritty -e nmtui";
             interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" "virbr0" ];
           }
