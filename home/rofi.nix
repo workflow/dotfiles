@@ -41,6 +41,10 @@ in
 
     lines = 5;
 
+    package = pkgs.rofi.override {
+      plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
+    };
+
     padding = 5;
 
     scrollbar = false;
