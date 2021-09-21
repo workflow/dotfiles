@@ -107,6 +107,7 @@ let
       pkgs.ripgrep
       pkgs.rnix-lsp
       pkgs.roboto
+      pkgs.screenkey
       nixpkgs-unstable.signal-desktop
       pkgs.skype
       pkgs.slack
