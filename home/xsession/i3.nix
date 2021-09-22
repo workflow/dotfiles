@@ -188,7 +188,7 @@ in
       "${mod}+Shift+x" = "exec --no-startup-id ${locker}";
 
       # toggle tiling / floating
-      "Control+Shift+space" = "floating toggle";
+      "${mod}+Shift+space" = "floating toggle";
 
       # move the currently focused window to the scratchpad
       "${mod}+Shift+minus" = "move scratchpad";
