@@ -56,9 +56,9 @@ in
     nvidiaBusId = "PCI:1:0:0";
   };
   # Better performance according to https://github.com/chjj/compton/issues/227
-  #services.xserver.screenSection = ''
-  #  Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
-  #'';
+  services.xserver.screenSection = ''
+    Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+  '';
 
   boot.initrd.luks.devices = {
     root = {
