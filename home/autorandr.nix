@@ -24,9 +24,6 @@ in
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
-            mobile)
-              DPI=96
-              ;;
             movie)
               DPI=96
               ;;
@@ -164,23 +161,6 @@ in
           };
           DP-0 = {
             enable = false;
-          };
-        };
-      };
-
-      "mobile" = {
-        fingerprint = {
-          eDP-1 = "00ffffffffffff0030e48b0500000000001a0104a51f1178e25715a150469d290f505400000001010101010101010101010101010101695e00a0a0a029503020a50035ae1000001a000000000000000000000000000000000000000000fe004c4720446973706c61790a2020000000fe004c503134305148322d5350423100b8";
-        };
-        config = {
-          eDP-1 = {
-            enable = true;
-            #dpi = 168;
-            dpi = 96;
-            mode = "2048x1152";
-            position = "0x0";
-            primary = true;
-            rate = "59.90";
           };
         };
       };
