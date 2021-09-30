@@ -51,6 +51,7 @@ let
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
       pkgs.github-cli
+      pkgs.gitkraken
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
