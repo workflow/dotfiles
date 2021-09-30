@@ -53,6 +53,7 @@ let
       pkgs.github-cli
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
+      pkgs.google-chrome
       pkgs.gparted
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap
