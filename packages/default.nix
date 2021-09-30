@@ -23,7 +23,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
-      pkgs.brave
+      nixpkgs-unstable.brave
       pkgs.brightnessctl
       pkgs.cachix
       pkgs.chafa # Images to terminal pixels
