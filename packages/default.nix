@@ -55,6 +55,7 @@ let
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
+      pkgs.google-cloud-sdk
       pkgs.gparted
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap
