@@ -19,7 +19,7 @@
   users = {
     users.farlion = {
       description = "Florian Peter";
-      extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" ];
+      extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" "adbusers" ];
       isNormalUser = true;
       group = "users";
       shell = pkgs.fish;
