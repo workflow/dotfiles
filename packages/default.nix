@@ -121,6 +121,7 @@ let
       pkgs.python38Packages.speedtest-cli
       pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
       nixpkgs-unstable.spotify
+      pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
