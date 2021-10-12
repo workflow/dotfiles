@@ -191,6 +191,9 @@ in
 
       " Diff Settings
       set diffopt+=internal,algorithm:patience
+
+      " NerdTree Settings
+        nnoremap <leader>n :NERDTreeFocus<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -219,6 +222,7 @@ in
       vim-helm
       vim-highlightedyank
       vim-jsonnet
+      nerdtree
       vim-nix
       vim-numbertoggle
       ReplaceWithRegister
