@@ -193,7 +193,7 @@ in
       set diffopt+=internal,algorithm:patience
 
       " NerdTree Settings
-        nnoremap <leader>n :NERDTreeFocus<CR>
+      nnoremap <leader>n :NERDTreeFocus<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
