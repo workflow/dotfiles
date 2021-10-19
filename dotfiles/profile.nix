@@ -55,6 +55,7 @@
     gfo = "git fetch origin main:main";
     gfoo = "git fetch origin master:master";
     gl = "git log";
+    glcs = "git rev-parse HEAD | xclip -selection clipboard"; # Get Latest Commit SHA
     gm = "git checkout main";
     gmo = "git checkout master";
     gp = "git pull --prune";
