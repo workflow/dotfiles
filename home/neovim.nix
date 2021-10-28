@@ -194,6 +194,11 @@ in
 
       " NerdTree Settings
       nnoremap <leader>n :NERDTreeFocus<CR>
+
+      " Quickfix Lists
+      nnoremap <silent><nowait> <C-j> :cprev<cr>
+      nnoremap <silent><nowait> <C-;> :cnext<cr>
+
     '';
 
     plugins = with pkgs.vimPlugins; [
