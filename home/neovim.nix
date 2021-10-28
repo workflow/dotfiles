@@ -227,6 +227,7 @@ in
       vim-numbertoggle
       ReplaceWithRegister
       vim-rooter
+      vim-shellcheck
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
       vim-startify

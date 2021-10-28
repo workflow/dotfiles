@@ -113,6 +113,7 @@ let
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
+      pkgs.shellcheck
       nixpkgs-unstable.signal-desktop
       pkgs.skype
       pkgs.slack
