@@ -5,7 +5,6 @@ let
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
   nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
 
-  ledger-live-desktop = pkgs.callPackage ./ledger-live-desktop { };
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
   # https://github.com/NixOS/nixpkgs/pull/125660
@@ -73,7 +72,7 @@ let
       pkgs.killall
       pkgs.kubectx
       pkgs.lame
-      ledger-live-desktop
+      nixpkgs-unstable.ledger-live-desktop
       pkgs.libav # Provides avconv for direct video to mp3 extraction
       pkgs.libnotify # Provides notify-send
       pkgs.libreoffice
