@@ -81,6 +81,8 @@ in
       " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
       nmap <silent> [g <Plug>(coc-diagnostic-prev)
       nmap <silent> ]g <Plug>(coc-diagnostic-next)
+      nmap <silent> [f <Plug>(coc-diagnostic-prev-error)
+      nmap <silent> ]f <Plug>(coc-diagnostic-next)
       " GoTo code navigation.
       nmap <silent> gd <Plug>(coc-definition)
       nmap <silent> gy <Plug>(coc-type-definition)
