@@ -45,7 +45,7 @@
     # TODO: Move these to git aliases
     ga = "git add -p";
     gaa = "git add --all";
-    gaf = "git add -N";
+    gaf = "git add -N *";
     gc = "git checkout";
     gca = "git commit --amend";
     gcb = "git checkout -b";
