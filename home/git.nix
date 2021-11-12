@@ -18,7 +18,7 @@
         };
       };
 
-      ignores = [ ".idea" "nohup.out" ];
+      ignores = [ ".idea" "nohup.out" "mzdata" ];
 
       userEmail = "4farlion@gmail.com";
 
