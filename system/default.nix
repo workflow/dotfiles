@@ -33,7 +33,8 @@
 
   #networking.firewall.allowedTCPPorts = [ 8080 ];
 
-  time.timeZone = "Europe/Lisbon";
+  #time.timeZone = "Europe/Lisbon";
+  time.timeZone = "America/Sao_Paulo";
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.bluetooth.enable = true;
