@@ -158,6 +158,16 @@ in
 
     ssh = {
       enable = true;
+      matchBlocks = {
+        "hetzner1" = {
+          hostname = "135.181.7.115";
+          user = "root";
+        };
+        "hetzner2" = {
+          hostname = "157.90.11.6";
+          user = "root";
+        };
+      };
     };
 
   };
