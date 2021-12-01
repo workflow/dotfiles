@@ -96,8 +96,8 @@
       end
     '';
 
-    ll = "br -sdph";
-    ls = "br -sdp";
+    llb = "br -sdph";
+    lsb = "br -sdp";
     lh = "/run/current-system/sw/bin/ls -ah";
 
     logout = "i3-msg exit";
