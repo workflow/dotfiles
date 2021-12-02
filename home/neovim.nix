@@ -220,6 +220,7 @@ in
 
       vim-commentary
       dart-vim-plugin
+      vim-devicons
       elm-vim
       vim-exchange
       vim-flutter
