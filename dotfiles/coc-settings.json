@@ -28,5 +28,7 @@
   "flutter.lsp.initialization.closingLabels": true,
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.cargo.runBuildScripts": true
+  "rust-analyzer.cargo.runBuildScripts": true,
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"]
 }
