@@ -50,7 +50,6 @@ let
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
       pkgs.github-cli
-      pkgs.gitkraken
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
@@ -135,7 +134,7 @@ let
       pkgs.tree
       pkgs.unzip
       pkgs.usbutils # Provides lsusb
-      variety
+      #variety # TODO: Reactivate
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.virt-manager
       pkgs.vlc

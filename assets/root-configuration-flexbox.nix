@@ -28,21 +28,21 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Switch to 5.13.x kernel because hardware is new
-  boot.kernelPackages = pkgs.linuxPackages_5_13;
+  #boot.kernelPackages = pkgs.linuxPackages_5_13;
 
   # Fix audio
-  boot.kernelPatches = [
-    {
-      name = "enable-soundwire-drivers";
-      patch = null;
-      extraConfig = ''
-        SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES y
-        SND_SOC_INTEL_SOUNDWIRE_SOF_MACH m
-        SND_SOC_RT1308 m
-      '';
-      ignoreConfigErrors = true;
-    }
-  ];
+  # boot.kernelPatches = [
+  #   {
+  #     name = "enable-soundwire-drivers";
+  #     patch = null;
+  #     extraConfig = ''
+  #       SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES y
+  #       SND_SOC_INTEL_SOUNDWIRE_SOF_MACH m
+  #       SND_SOC_RT1308 m
+  #     '';
+  #     ignoreConfigErrors = true;
+  #   }
+  # ];
   # boot.extraModprobeConfig = ''
   #   options snd-hda-intel model=auto, enable_msi=1
   # '';
