@@ -31,7 +31,6 @@ in
       "nixos-config=/etc/nixos/configuration.nix"
       "/nix/var/nix/profiles/per-user/root/channels"
       "nixpkgs-unstable=${sources.nixpkgs-unstable}"
-      "nixos-unstable=${sources.nixos-unstable}"
       "nur=${sources.NUR}"
     ];
   };
