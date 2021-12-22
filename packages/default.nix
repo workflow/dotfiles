@@ -93,6 +93,7 @@ let
       nixpkgs-unstable.nixpkgs-review
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       pkgs.nodejs # For coc.nvim
+      pkgs.nvtop
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
