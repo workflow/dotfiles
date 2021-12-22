@@ -65,10 +65,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f225322e3bea8638304adfcf415cd11de99f2208",
-        "sha256": "1cbl7w81h2m4as15z094jkcrgg2mdi2wnkzg2dhd6080vgic11vy",
+        "rev": "7ac6901f5e3038d59d3e2576af445fe418291dd8",
+        "sha256": "0p2him37s2p97ya46nrz515wrs5x8p7my7hz9bc1n11dfavhz05h",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/f225322e3bea8638304adfcf415cd11de99f2208.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/7ac6901f5e3038d59d3e2576af445fe418291dd8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-vimplugins-coc-flutter": {
