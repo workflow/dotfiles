@@ -130,7 +130,9 @@ let
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.tlaplusToolbox
       pkgs.tldr
-      nixpkgs-unstable.todoist-electron
+      # Monkey-patch needed for current todoist-electron: https://github.com/NixOS/nixpkgs/issues/147319
+      (nixpkgs-unstable.todoist-electron.override
+        { electron = nixpkgs-unstable.electron_15; })
       pkgs.trash-cli
       pkgs.tree
       pkgs.unzip
