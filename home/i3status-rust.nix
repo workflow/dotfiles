@@ -38,6 +38,7 @@ let
         "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
         "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
       };
+      headphones_indicator = true;
     }
   ];
 
