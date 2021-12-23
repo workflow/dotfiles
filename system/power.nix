@@ -8,6 +8,7 @@ in
 
   #services.tlp = {
   #  enable = true;
+  # writes to /etc/tpl.conf
   #  extraConfig = ''
   #    TLP_DEFAULT_MODE=AC
   #    TLP_PERSISTENT_DEFAULT=0

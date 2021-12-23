@@ -9,7 +9,7 @@ in
   services.xserver = {
     enable = true;
 
-    # Touchpad
+    # Writes to /etc/X11/xorg.conf.d
     libinput = {
       enable = true;
       touchpad.disableWhileTyping = true;

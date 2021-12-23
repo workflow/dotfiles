@@ -47,6 +47,7 @@
   ];
 
   # limit the amount of logs stored in /var/log/journal
+  # writes to /etc/systemd/journald.conf
   services.journald.extraConfig = ''
     SystemMaxUse=2G
   '';
