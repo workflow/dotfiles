@@ -47,6 +47,7 @@ in
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
       # Less
+      # TODO: This might now be supported natively, see home-manager news
       ".lesskey" = {
         onChange = "lesskey";
         source = ./dotfiles/lesskey;
@@ -129,14 +130,14 @@ in
     };
 
     direnv.enable = true;
-    direnv.enableNixDirenvIntegration = true;
+    direnv.nix-direnv.enable = true;
 
     firefox = {
       enable = true;
-      extensions = with nur.repos.rycee.firefox-addons; [
-        lastpass-password-manager
-        privacy-badger
-      ];
+      # extensions = with nur.repos.rycee.firefox-addons; [
+      #   lastpass-password-manager
+      #   privacy-badger
+      # ];
       profiles = {
         main = { };
       };

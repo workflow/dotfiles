@@ -50,7 +50,6 @@ let
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
       pkgs.github-cli
-      pkgs.gitkraken
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
@@ -80,7 +79,7 @@ let
       pkgs.lm_sensors
       pkgs.lsof
       pkgs.lz4 # compression
-      nixos-unstable.manix
+      #nixos-unstable.manix # TODO: Reactivate
       nixpkgs-unstable.materialize
       pkgs.megacmd
       nixpkgs-unstable.minikube
@@ -94,6 +93,7 @@ let
       nixpkgs-unstable.nixpkgs-review
       pkgs.nix-index # Provides nix-locate, see https://github.com/bennofs/nix-index
       pkgs.nodejs # For coc.nvim
+      pkgs.nvtop
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
@@ -130,12 +130,14 @@ let
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.tlaplusToolbox
       pkgs.tldr
-      nixpkgs-unstable.todoist-electron
+      # Monkey-patch needed for current todoist-electron: https://github.com/NixOS/nixpkgs/issues/147319
+      (nixpkgs-unstable.todoist-electron.override
+        { electron = nixpkgs-unstable.electron_15; })
       pkgs.trash-cli
       pkgs.tree
       pkgs.unzip
       pkgs.usbutils # Provides lsusb
-      variety
+      #variety # TODO: Reactivate
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.virt-manager
       pkgs.vlc

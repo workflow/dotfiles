@@ -67,7 +67,7 @@
   programs.sysdig.enable = true;
 
   # Steam
-  programs.steam.enable = true;
+  #programs.steam.enable = true; # TODO: Re-enable
 
   # Flatpack service
   # https://flatpak.org/setup/NixOS/

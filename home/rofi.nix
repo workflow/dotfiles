@@ -15,40 +15,42 @@ in
       columns = 2;
     };
 
-    colors = {
-      rows = rec {
-        normal = {
-          background = color1;
-          foreground = color3;
-          backgroundAlt = color1;
-          highlight = {
-            background = color1;
-            foreground = color2;
-          };
-        };
-        active = normal;
-        urgent = normal;
-      };
+    # theme = {
+    #   colors = {
+    #     rows = rec {
+    #       normal = {
+    #         background = color1;
+    #         foreground = color3;
+    #         backgroundAlt = color1;
+    #         highlight = {
+    #           background = color1;
+    #           foreground = color2;
+    #         };
+    #       };
+    #       active = normal;
+    #       urgent = normal;
+    #     };
 
-      window = {
-        background = color1;
-        border = color2;
-        separator = color2;
-      };
-    };
+    #     window = {
+    #       background = color1;
+    #       border = color2;
+    #       separator = color2;
+    #     };
+    #   };
+
+    #   separator = "solid";
+
+    #   scrollbar = false;
+
+    #   padding = 5;
+
+    #   lines = 5;
+    # };
 
     font = "Fira Code 12";
-
-    lines = 5;
 
     package = pkgs.rofi.override {
       plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
     };
-
-    padding = 5;
-
-    scrollbar = false;
-
-    separator = "solid";
   };
 }

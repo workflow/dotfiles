@@ -27,8 +27,8 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Switch to 5.13.x kernel because hardware is new
-  boot.kernelPackages = pkgs.linuxPackages_5_13;
+  # Switch to a newer kernel (>5.13) for audio and GPU support
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Fix audio
   boot.kernelPatches = [
@@ -43,9 +43,9 @@ in
       ignoreConfigErrors = true;
     }
   ];
-  # boot.extraModprobeConfig = ''
-  #   options snd-hda-intel model=auto, enable_msi=1
-  # '';
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=auto, enable_msi=1
+  '';
 
   # GPU
   environment.systemPackages = [ nvidia-offload ];
