@@ -130,7 +130,7 @@ in
     };
 
     direnv.enable = true;
-    direnv.enableNixDirenvIntegration = true;
+    direnv.nix-direnv.enable = true;
 
     firefox = {
       enable = true;
