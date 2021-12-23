@@ -27,9 +27,9 @@ in
     '';
 
     nixPath = [
-      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixpkgs=${sources.nixos}"
       "nixos-config=/etc/nixos/configuration.nix"
-      "/nix/var/nix/profiles/per-user/root/channels"
+      "nixos-hardware=${sources.nixos-hardware}"
       "nixpkgs-unstable=${sources.nixpkgs-unstable}"
       "nur=${sources.NUR}"
     ];

@@ -23,6 +23,30 @@
         "url": "https://github.com/rycee/home-manager/archive/829e89a16f4f96428d1b94e68d4c06107b5491c0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixos": {
+        "branch": "nixos-21.11",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9ab7d12287ced0e1b4c03b61c781901f178d9d77",
+        "sha256": "0bbd2pgcyavqn5wgq0xp8p67lha0kv9iqnh49i9w5fb5g29q7i30",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/9ab7d12287ced0e1b4c03b61c781901f178d9d77.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-hardware": {
+        "branch": "master",
+        "description": "A collection of NixOS modules covering hardware quirks.",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "3f92db38374b2977aea8daf4c4fe2fa0eddbd60c",
+        "sha256": "162f1jwy3aca8vd4dbk7yargsi3mhiclfby0jhxcra1v8sk3w39v",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixos-hardware/archive/3f92db38374b2977aea8daf4c4fe2fa0eddbd60c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs-mozilla": {
         "branch": "master",
         "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
