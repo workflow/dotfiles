@@ -1,5 +1,7 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
+Current version: 21.11
+
 ![neofetch nixbox](assets/neofetch-nixbox.png)
 
 # NixOS configuration
