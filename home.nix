@@ -181,6 +181,10 @@ in
 
     syncthing = {
       enable = true;
+      tray = {
+        enable = true;
+        command = "syncthingtray --wait";
+      };
     };
 
     udiskie.enable = true;

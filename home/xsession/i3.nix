@@ -286,10 +286,6 @@ in
       { command = "spotify"; notification = false; }
       { command = "todoist"; notification = false; }
 
-      # Syncthing Tray
-      # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
-      { command = ''"sleep 60; syncthingtray"''; notification = false; }
-
       # Auto lock screen using xidlehook written in Rust :)
       { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
       { command = ''xss-lock -- "${locker}"''; notification = false; }
