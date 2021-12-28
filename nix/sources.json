@@ -101,10 +101,10 @@
         "homepage": null,
         "owner": "workflow",
         "repo": "nixpkgs",
-        "rev": "ece2aa8e2d21d6b7563b931db296a759f399a32e",
-        "sha256": "121fnxnwj3q0r68diiqp1p9jq89k3sxs51q9nns7msgr6sx8p3ap",
+        "rev": "45a12413799db84fe3fa099696cc0d21875b9b8e",
+        "sha256": "0rnx6y5c37pb5vgz3fa841xdcpg3xr3mmzjkrcf89hyp68ip1yrd",
         "type": "tarball",
-        "url": "https://github.com/workflow/nixpkgs/archive/ece2aa8e2d21d6b7563b931db296a759f399a32e.tar.gz",
+        "url": "https://github.com/workflow/nixpkgs/archive/45a12413799db84fe3fa099696cc0d21875b9b8e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
