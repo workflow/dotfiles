@@ -215,7 +215,6 @@ in
 
       # Screenshots
       "Print" = "exec --no-startup-id flameshot gui";
-      # TODO: Crashes after first screenshot and takes a minute to recover. Is KDE capturing something?
       "Shift+Print" = "exec --no-startup-id flameshot full --clipboard --path ~/Pictures/Flameshot/";
 
       # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
