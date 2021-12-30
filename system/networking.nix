@@ -19,9 +19,12 @@ in
       ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
     '';
   };
+
+  # Tailscale
+  services.tailscale.enable = true;
+  networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
+  # Don't wait for dhcpcd while booting on laptops (wifi)
+  networking.dhcpcd.wait = lib.mkIf isLaptop "background";
 }
-  //
-(lib.mkIf isLaptop
-  {
-    networking.dhcpcd.wait = "background";
-  })
