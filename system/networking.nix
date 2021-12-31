@@ -22,8 +22,8 @@ in
 
   # Tailscale
   services.tailscale.enable = true;
-  networking.firewall.allowedUDPPorts = [ 41641 ];
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+  #networking.firewall.allowedUDPPorts = [ 41641 ];
+  #networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   networking.nameservers = [
     "1.1.1.1"
