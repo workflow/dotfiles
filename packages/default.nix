@@ -133,6 +133,7 @@ let
       # Monkey-patch needed for current todoist-electron: https://github.com/NixOS/nixpkgs/issues/147319
       (nixpkgs-unstable.todoist-electron.override
         { electron = nixpkgs-unstable.electron_15; })
+      pkgs.traceroute
       pkgs.trash-cli
       pkgs.tree
       pkgs.unzip

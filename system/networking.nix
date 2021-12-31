@@ -25,6 +25,13 @@ in
   networking.firewall.allowedUDPPorts = [ 41641 ];
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+    "100.100.100.100" # Tailscale Magic DNS
+  ];
+
   # Don't wait for dhcpcd while booting on laptops (wifi)
   networking.dhcpcd.wait = lib.mkIf isLaptop "background";
 }
