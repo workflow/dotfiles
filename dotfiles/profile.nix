@@ -122,6 +122,9 @@
 
     toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
 
+    tailup = "sudo tailscale up --accept-routes";
+    taildown = "sudo tailscale down";
+
     # Print timestamp along with cmd output
     # Example: cmd | ts
     ts = "gawk '{ print strftime(\"[%Y-%m-%d %H:%M:%S]\"), $0 }'";
