@@ -159,6 +159,12 @@ in
 
     ssh = {
       enable = true;
+      matchBlocks = {
+        syncthing = {
+          hostname = "34.124.145.71";
+          user = "farlion";
+        };
+      };
     };
 
   };
