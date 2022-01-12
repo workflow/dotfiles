@@ -161,7 +161,7 @@ in
       enable = true;
       matchBlocks = {
         syncthing = {
-          hostname = "34.124.145.71";
+          hostname = "34.124.158.69";
           user = "farlion";
         };
       };
