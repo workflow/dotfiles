@@ -87,6 +87,7 @@ let
       pkgs.ncdu
       pkgs.neofetch
       pkgs.nethogs
+      pkgs.newman
       pkgs.niv
       nixpkgs-unstable.nixfmt
       nixpkgs-unstable.nixpkgs-fmt
@@ -128,6 +129,7 @@ let
       nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
+      pkgs.telepresence2
       pkgs.tlaplusToolbox
       pkgs.tldr
       # Monkey-patch needed for current todoist-electron: https://github.com/NixOS/nixpkgs/issues/147319
