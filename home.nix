@@ -153,6 +153,10 @@ in
 
     htop.enable = true;
 
+    nix-index = {
+      enable = true;
+    };
+
     obs-studio = {
       enable = true;
     };
