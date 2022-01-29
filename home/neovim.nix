@@ -201,6 +201,9 @@ in
       nnoremap <silent><nowait> <C-j> :cprev<cr>
       nnoremap <silent><nowait> <C-;> :cnext<cr>
 
+      " Saving
+      nnoremap zz :update<CR>
+
       " Applying a macro to lines matching in visual selection
       " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
       xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
