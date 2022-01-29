@@ -12,15 +12,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
-        "branch": "master",
-        "description": "Manage a user environment using Nix",
-        "homepage": "https://rycee.gitlab.io/home-manager/",
-        "owner": "rycee",
+        "branch": "release-21.11",
+        "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
+        "homepage": "https://nix-community.github.io/home-manager/",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "829e89a16f4f96428d1b94e68d4c06107b5491c0",
-        "sha256": "1jgzwhlpxi204nl85dpdh6acwzqzznf4rpz9lnw7mpnmzb1lxgkp",
+        "rev": "28b9ae40c45c5e7711c353fee1b7af734e293979",
+        "sha256": "0b735d1wk53rnjrz1glvd4mxxf14q8sj5f1pkf4qsll770z8csfv",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/829e89a16f4f96428d1b94e68d4c06107b5491c0.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/28b9ae40c45c5e7711c353fee1b7af734e293979.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos": {
