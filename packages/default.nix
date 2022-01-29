@@ -27,6 +27,7 @@ let
       pkgs.cachix
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
+      nixpkgs-unstable.comma
       pkgs.dconf
       pkgs.deluge
       pkgs.discord
