@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
-  vim-textobj-entire-branch = import sources.nixpkgs-vimplugins-vim-textobj-entire { config.allowUnfree = true; };
 
   sources = import ../nix/sources.nix;
 
@@ -250,7 +249,7 @@ in
       vim-solidity
       vim-startify
       vim-surround
-      vim-textobj-entire-branch.vimPlugins.vim-textobj-entire
+      vim-textobj-entire
       vim-toml
     ];
 

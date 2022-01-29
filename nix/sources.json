@@ -94,17 +94,5 @@
         "type": "tarball",
         "url": "https://github.com/workflow/nixpkgs/archive/21936a77025f88930c59aa7c73584b0d615e7277.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "nixpkgs-vimplugins-vim-textobj-entire": {
-        "branch": "init-vimplugins-vim-textobj-entire",
-        "description": "Nix Packages collection",
-        "homepage": null,
-        "owner": "workflow",
-        "repo": "nixpkgs",
-        "rev": "45a12413799db84fe3fa099696cc0d21875b9b8e",
-        "sha256": "0rnx6y5c37pb5vgz3fa841xdcpg3xr3mmzjkrcf89hyp68ip1yrd",
-        "type": "tarball",
-        "url": "https://github.com/workflow/nixpkgs/archive/45a12413799db84fe3fa099696cc0d21875b9b8e.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
