@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d887ac7aee92e8fc54dde9060d60d927afae9d69",
-        "sha256": "1bpgfv45b1yvrgpwdgc4fm4a6sav198yd41bsrvlmm3jn2wi6qx5",
+        "rev": "6c4b9f1a2fd761e2d384ef86cff0d208ca27fdca",
+        "sha256": "1yl5gj0mzczhl1j8sl8iqpwa1jzsgr12fdszw9rq13cdig2a2r5f",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/d887ac7aee92e8fc54dde9060d60d927afae9d69.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/6c4b9f1a2fd761e2d384ef86cff0d208ca27fdca.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
@@ -77,10 +77,10 @@
         "homepage": "https://github.com/NixOS/nixpkgs",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7ac6901f5e3038d59d3e2576af445fe418291dd8",
-        "sha256": "0p2him37s2p97ya46nrz515wrs5x8p7my7hz9bc1n11dfavhz05h",
+        "rev": "d9e21f284317f85b3476c0043f4efea87a226c3a",
+        "sha256": "1gdcs1v2v39k4l3m2897mrg1sp2zx5lx73j8ygppyp0qf2avidsq",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/7ac6901f5e3038d59d3e2576af445fe418291dd8.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/d9e21f284317f85b3476c0043f4efea87a226c3a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-vimplugins-coc-flutter": {
