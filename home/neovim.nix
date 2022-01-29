@@ -210,6 +210,9 @@ in
         echo "@".getcmdline()
         execute ":'<,'>normal @".nr2char(getchar())
       endfunction
+
+      " https://github.com/Saecki/crates.nvim
+      lua require('crates').setup()
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -228,6 +231,7 @@ in
       coc-yaml
 
       vim-commentary
+      crates-nvim
       dart-vim-plugin
       vim-devicons
       elm-vim
