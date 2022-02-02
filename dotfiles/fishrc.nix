@@ -40,7 +40,7 @@ let
     '';
 
     issue_branch = ''
-      set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g') 
+      set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g')
             echo (git checkout -b $converted)
     '';
 
@@ -75,6 +75,13 @@ let
         if test -z "$TMUX" ; and test -z $TERMINAL_CONTEXT
             tmux -2 attach; or tmux -2 new-session
         end
+      end
+    '';
+
+    kubectlgetall = ''
+      for i in (kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq)
+        echo "Resource:" $i
+        kubectl -n "$argv[1]" get --ignore-not-found "$i"
       end
     '';
   };
