@@ -155,6 +155,7 @@ let
       pkgs.xclip
       pkgs.xidlehook
       pkgs.xorg.xkill
+      pkgs.xournal # PFD Annotations, useful for saving Okular annotations as well
       pkgs.xss-lock
       nixpkgs-unstable.youtube-dl
       pkgs.yq
