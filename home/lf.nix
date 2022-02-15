@@ -102,7 +102,6 @@ in
     };
 
     settings = {
-      hidden = true;
       icons = true;
     };
   };
