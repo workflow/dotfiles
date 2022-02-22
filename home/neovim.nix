@@ -156,8 +156,6 @@ in
       " Mappings for CoCList
       " Show all diagnostics.
       nnoremap <silent><nowait> <localleader>a  :<C-u>CocList diagnostics<cr>
-      " Manage extensions.
-      nnoremap <silent><nowait> <localleader>e  :<C-u>CocList extensions<cr>
       " Show commands.
       nnoremap <silent><nowait> <localleader>c  :<C-u>CocList commands<cr>
       " Find symbol of current document.
@@ -173,6 +171,10 @@ in
 
       " CoC Highlight Box colors fix
       hi CocFloating ctermbg=240
+
+      " CoC Rust-Analyzer
+      nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
+
 
       " FZF Settings
       nnoremap <C-p> :GFiles<cr>
