@@ -174,6 +174,10 @@ in
 
       " CoC Rust-Analyzer
       nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
+      nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
+      nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
+      nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
+      nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
 
 
       " FZF Settings
