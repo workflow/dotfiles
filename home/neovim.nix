@@ -235,6 +235,7 @@ in
       coc-html
       coc-json
       coc-nvim
+      coc-pairs
       coc-prettier
       coc-rust-analyzer
       coc-tsserver
