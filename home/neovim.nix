@@ -27,7 +27,7 @@ in
       noremap <C-w>K <C-w>J
       noremap <C-w>J <C-w>H
 
-      set shell=/run/current-system/sw/bin/bash
+      set shell=/home/farlion/.nix-profile/bin/fish
 
       let mapleader = ' '
       let maplocalleader = ','
