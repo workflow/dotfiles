@@ -98,10 +98,16 @@ in
           execute '!' . &keywordprg . " " . expand('<cword>')
         endif
       endfunction
+
       " Highlight the symbol and its references when holding the cursor.
       autocmd CursorHold * silent call CocActionAsync('highlight')
+
       " Symbol renaming.
       nmap <leader>rn <Plug>(coc-rename)
+
+      " Run the Code Lens action on the current line.
+      nmap <leader>cl  <Plug>(coc-codelens-action)
+
       " Formatting selected code.
       xmap <leader>f  <Plug>(coc-format-selected)
       nmap <leader>f  <Plug>(coc-format-selected)
@@ -112,6 +118,7 @@ in
         " Update signature help on jump placeholder.
         autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
       augroup end
+
       " Applying codeAction to the selected region.
       " Example: `<leader>aap` for current paragraph
       xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -173,6 +180,7 @@ in
       hi CocFloating ctermbg=240
 
       " CoC Rust-Analyzer
+      nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
       nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
       nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
       nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
