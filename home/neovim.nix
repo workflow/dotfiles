@@ -256,6 +256,7 @@ in
       vim-devicons
       elm-vim
       vim-exchange
+      vim-floaterm
       vim-flutter
       fzf-vim
       vim-graphql
