@@ -169,6 +169,10 @@ in
           user = "farlion";
         };
       };
+      extraConfig = ''
+        PubkeyAcceptedKeyTypes +ssh-rsa
+        HostKeyAlgorithms +ssh-rsa
+      '';
     };
 
   };
