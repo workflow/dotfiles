@@ -22,8 +22,11 @@ in
 
   # Tailscale
   services.tailscale.enable = true;
-  #networking.firewall.allowedUDPPorts = [ 41641 ];
-  #networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
+  # RMview Remarkable 2 Screensharing
+  networking.firewall.allowedUDPPorts = [ 5901 ];
+  #networking.firewall.allowedTCPPorts = [ 5900 ];
+
 
   networking.nameservers = [
     "1.1.1.1"
