@@ -4,6 +4,7 @@
   },
   "auth_method": "key",
   "key": "/home/farlion/.ssh/id_rsa_rm2screenshare",
+  "tunnel": true,
   "orientation": "auto",
   "pen_size": 15,
   "pen_color": "red",
