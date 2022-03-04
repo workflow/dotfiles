@@ -1,0 +1,11 @@
+{
+  "ssh": {
+    "address": ["192.168.1.205"]
+  },
+  "auth_method": "key",
+  "key": "/home/farlion/.ssh/id_rsa_rm2screenshare",
+  "orientation": "auto",
+  "pen_size": 15,
+  "pen_color": "red",
+  "pen_trail": 200
+}

@@ -68,6 +68,9 @@ in
       # PSQL
       ".psqlrc".source = ./dotfiles/psqlrc;
 
+      # Rmview (Remarkable II screensharing) config
+      ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
+
       # Syncthing
       # As a safety measure, install the config only after synchronization has first happened
       ".config/syncthing/config.xml" = lib.mkIf (lib.pathExists /home/farlion/code) {
