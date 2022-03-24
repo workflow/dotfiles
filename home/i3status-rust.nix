@@ -183,6 +183,11 @@ in
           {
             block = "notify";
           }
+          {
+            block = "pomodoro";
+            notifier = "notifysend";
+            notifier_path = "/run/current-system/sw/bin/notify-send";
+          }
         ]
         ++ lib.lists.optionals isTopbox topboxExtraBlocks
         ++ lib.lists.optionals isFlexbox flexboxExtraBlocks
