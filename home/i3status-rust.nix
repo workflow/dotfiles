@@ -152,8 +152,7 @@ in
         ]
         ++ [
           {
-            block = "xrandr";
-            interval = 6000; # Because running the commands causes screen lag, see https://github.com/greshake/i3status-rust/issues/668
+            block = "backlight";
           }
         ]
         ++ lib.lists.optionals isBoar boarSoundBlocks
