@@ -99,6 +99,7 @@ let
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
       pkgs.parted
+      pkgs.pasystray
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.pciutils
