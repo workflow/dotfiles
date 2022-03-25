@@ -99,7 +99,8 @@ let
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
       pkgs.parted
-      pkgs.pasystray
+      pkgs.paprefs # For pasystray
+      pkgs.pasystray # Pulse Audio systray
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.pciutils
