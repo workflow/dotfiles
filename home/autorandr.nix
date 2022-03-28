@@ -119,15 +119,15 @@ in
           eDP-1 = {
             enable = true;
             dpi = 96;
-            mode = "1920x1200";
+            mode = "1680x1050";
             position = "0x0";
-            rate = "59.88";
+            rate = "59.95";
           };
           DP-3-3 = {
             enable = true;
             dpi = 96;
             mode = "2560x1440";
-            position = "1920x0";
+            position = "1680x0";
             primary = true;
             rate = "59.95";
           };
