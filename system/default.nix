@@ -70,9 +70,4 @@
   # Steam
   #programs.steam.enable = true; # TODO: Re-enable
 
-  # Flatpack service
-  # https://flatpak.org/setup/NixOS/
-  xdg.portal.enable = true;
-  services.flatpak.enable = true;
-
 }
