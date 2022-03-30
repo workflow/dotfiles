@@ -28,7 +28,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Switch to a newer kernel (>5.13) for audio and GPU support
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_16;
 
   # Fix audio
   boot.kernelPatches = [
