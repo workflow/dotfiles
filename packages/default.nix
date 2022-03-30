@@ -3,6 +3,7 @@ let
   sources = import ../nix/sources.nix;
 
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+  nixpkgs-master = import sources.nixpkgs-master { config.allowUnfree = true; };
   nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
@@ -22,7 +23,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
-      nixpkgs-unstable.brave
+      nixpkgs-master.brave
       pkgs.brightnessctl
       pkgs.cachix
       pkgs.chafa # Images to terminal pixels
