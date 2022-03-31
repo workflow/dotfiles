@@ -105,6 +105,7 @@ let
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.pciutils
+      pkgs.pdftk # PDF Manipulation Toolkit
       pkgs.playerctl
       pkgs.postgresql
       pkgs.postman
