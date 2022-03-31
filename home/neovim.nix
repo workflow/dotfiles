@@ -208,9 +208,8 @@ in
       set diffopt+=internal,algorithm:patience
 
       " NerdTree Settings
-      nnoremap <silent><nowait> <leader>n :NERDTreeFocus<CR>
       nnoremap <silent><nowait> <leader>f :NERDTreeToggle<CR>
-      nnoremap <silent><nowait> <leader>r :NERDTreeFind<CR>
+      nnoremap <silent><nowait> <leader>n :NERDTreeFind<CR>
       " Close if only NERDTree is open
       autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
