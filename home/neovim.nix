@@ -1,6 +1,7 @@
 { pkgs, ... }:
 let
   coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
+  #coc-flutter-branch = import /home/farlion/code/nix/nixpkgs { config.allowUnfree = true; };
 
   sources = import ../nix/sources.nix;
 
