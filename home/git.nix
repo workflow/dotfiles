@@ -17,6 +17,9 @@
         init = {
           defaultBranch = "main";
         };
+        rebase = {
+          autoStash = true;
+        };
         # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
         url = {
           "https://github.com" = {
