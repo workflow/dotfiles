@@ -42,7 +42,6 @@
 
     i = "vim ~/nixos-config/home/xsession/i3.nix";
 
-    # TODO: Move these to git aliases
     ga = "git add -p";
     gaa = "git add --all";
     gaf = "git add -N *";
