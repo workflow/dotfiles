@@ -46,13 +46,6 @@ in
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
-      # Less
-      # TODO: This might now be supported natively, see home-manager news
-      ".lesskey" = {
-        onChange = "lesskey";
-        source = ./dotfiles/lesskey;
-      };
-
       # Nvim
       ".config/nvim/coc-settings.json".source = ./dotfiles/coc-settings.json;
 
@@ -155,6 +148,14 @@ in
     };
 
     htop.enable = true;
+
+    less = {
+      enable = true;
+      keys = ''
+        k forw-line
+        l back-line
+      '';
+    };
 
     nix-index = {
       enable = true;
