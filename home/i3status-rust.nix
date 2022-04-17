@@ -51,7 +51,7 @@ let
     }) [ "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "wlp0s20f3" ];
 
   # https://github.com/nix-community/home-manager/issues/393
-  # TODO: Should not access the global scope here
+  # Should not access the global scope here, but hey, it works
   isBoar = sysconfig.networking.hostName == "boar";
   isTopbox = sysconfig.networking.hostName == "topbox";
   isFlexbox = sysconfig.networking.hostName == "flexbox";
