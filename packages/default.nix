@@ -8,7 +8,6 @@ let
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
-  # TODO: Move whatever we can to home manager modules
   packages =
     [
       pkgs.android-studio
