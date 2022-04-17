@@ -62,18 +62,36 @@ in
       '';
 
       trash = ''
-        %trash-put $fx
+        ''${{
+          files=$(printf "$fx" | tr '\n' ';')
+          while [ "$files" ]; do
+            # extract the substring from start of string up to delimiter.
+            # this is the first "element" of the string.
+            file=''${files%%;*}
+
+            trash-put "$(basename "$file")"
+            # if there's only one element left, set `files` to an empty string.
+            # this causes us to exit this `while` loop.
+            # else, we delete the first "element" of the string from files, and move onto the next.
+            if [ "$files" = "$file" ]; then
+              files='''
+            else
+              files="''${files#*;}"
+            fi
+          done
+          }}
       '';
 
       unarchive = ''
-        ''${{
+          ''${{
           case "$f" in
-              *.zip) unzip "$f" ;;
-              *.tar.gz) tar -xzvf "$f" ;;
-              *.tar.bz2) tar -xjvf "$f" ;;
-              *.tar) tar -xvf "$f" ;;
-              *) echo "Unsupported format" ;;
-          esac
+          *.zip) unzip "$f";
+        ;
+        *.tar.gz) tar -xzvf "$f" ;;
+        *.tar.bz2) tar -xjvf "$f" ;;
+        *.tar) tar -xvf "$f" ;;
+        *) echo "Unsupported format" ;;
+        esac
         }}
       '';
     };
