@@ -16,7 +16,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
   boot.initrd.luks.devices = {
     root = {

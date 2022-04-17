@@ -25,7 +25,7 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
   # Switch to a newer kernel (>5.13) for audio and GPU support
   boot.kernelPackages = pkgs.linuxPackages_5_16;

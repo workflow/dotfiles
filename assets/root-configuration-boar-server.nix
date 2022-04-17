@@ -16,7 +16,7 @@
     enable = true;
     memtest86.enable = true;
   };
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
