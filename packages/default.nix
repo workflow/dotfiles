@@ -78,7 +78,7 @@ let
       pkgs.lm_sensors
       pkgs.lsof
       pkgs.lz4 # compression
-      #nixos-unstable.manix # TODO: Reactivate
+      pkgs.manix
       nixpkgs-unstable.materialize
       pkgs.megacmd
       nixpkgs-unstable.minikube
