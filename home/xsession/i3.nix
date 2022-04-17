@@ -208,8 +208,7 @@ in
       "XF86MonBrightnessDown" = "exec brightnessctl set 50-"; # decrease screen brightness
 
       # Media player controls
-      "XF86AudioPlay" = "exec playerctl play";
-      "XF86AudioPause" = "exec playerctl pause";
+      "XF86AudioPlay" = "exec playerctl play-pause";
       "XF86AudioNext" = "exec playerctl next";
       "XF86AudioPrev" = "exec playerctl previous";
 
