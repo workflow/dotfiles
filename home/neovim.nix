@@ -232,6 +232,10 @@ in
 
       " https://github.com/Saecki/crates.nvim
       lua require('crates').setup()
+
+      " LF Settings
+      let g:lf_map_keys = 0
+      nnoremap <silent><nowait> <localleader>f :Lf<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -264,6 +268,7 @@ in
       vim-helm
       vim-highlightedyank
       vim-jsonnet
+      lf-vim
       nerdtree
       vim-nix
       vim-numbertoggle
