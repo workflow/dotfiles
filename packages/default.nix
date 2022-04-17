@@ -127,7 +127,6 @@ let
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
-      nixpkgs-unstable.syncthingtray # TODO: Can be removed once https://github.com/rycee/home-manager/pull/1257 is merged
       nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.telepresence2
