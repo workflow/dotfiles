@@ -10,6 +10,7 @@
 
   # TODO: This is insecure
   # See https://nixos.wiki/wiki/Docker
-  users.users.farlion.extraGroups = [ "docker" "libvirtd" "kvm" ];
+  # users.users.farlion.extraGroups = [ "docker" "libvirtd" "kvm" ];
+  users.users.farlion.extraGroups = [ "libvirtd" "kvm" ];
 
 }
