@@ -8,9 +8,6 @@ let
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
 
-  # https://github.com/NixOS/nixpkgs/pull/125660
-  variety = pkgs.callPackage ./variety { };
-
   # TODO: Move whatever we can to home manager modules
   packages =
     [
@@ -143,7 +140,7 @@ let
       pkgs.tree
       pkgs.unzip
       pkgs.usbutils # Provides lsusb
-      #variety # TODO: Reactivate
+      pkgs.variety
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
       pkgs.virt-manager
       pkgs.vlc
