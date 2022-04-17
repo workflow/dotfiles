@@ -41,6 +41,15 @@ let
     }
   ];
 
+  netBlocks = map
+    (device: {
+      block = "net";
+      device = device;
+      interval = 5;
+      hide_inactive = true;
+      format = "{speed_down;K*b} {speed_up;K*b}";
+    }) [ "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "wlp0s20f3" ];
+
   # https://github.com/nix-community/home-manager/issues/393
   # TODO: Should not access the global scope here
   isBoar = sysconfig.networking.hostName == "boar";
@@ -99,42 +108,8 @@ in
             on_click = "alacritty -e nmtui";
             interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" "virbr0" ];
           }
-          {
-            block = "net";
-            device = "eno1";
-            interval = 5;
-            hide_inactive = true;
-            format = "{speed_down;K*b} {speed_up;K*b}";
-          }
-          {
-            block = "net";
-            device = "wlp4s0";
-            format = "{speed_down;K*b} {speed_up;K*b}";
-            interval = 5;
-            hide_inactive = true;
-          }
-          {
-            block = "net";
-            device = "enp164s0u1";
-            format = "{speed_down;K*b} {speed_up;K*b}";
-            interval = 5;
-            hide_inactive = true;
-          }
-          {
-            block = "net";
-            device = "enp61s0u2u1u2";
-            format = "{speed_down;K*b} {speed_up;K*b}";
-            interval = 5;
-            hide_inactive = true;
-          }
-          {
-            block = "net";
-            device = "wlp0s20f3";
-            format = "{speed_down;K*b} {speed_up;K*b}";
-            interval = 5;
-            hide_inactive = true;
-          }
         ]
+        ++ netBlocks
         ++ [
           {
             block = "backlight";
