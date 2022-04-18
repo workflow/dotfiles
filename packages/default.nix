@@ -95,8 +95,9 @@ let
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
-      pkgs.parted
+      pkgs.papirus-icon-theme
       pkgs.paprefs # For pasystray
+      pkgs.parted
       pkgs.pasystray # Pulse Audio systray
       pkgs.patchelf
       pkgs.pavucontrol

@@ -232,7 +232,7 @@ in
 
     };
 
-    menu = "rofi -modi run#calc#emoji -show run";
+    menu = "rofi -modi run#calc#emoji -show run -icon-theme \"Papirus\" -show-icons";
 
     # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
     # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
