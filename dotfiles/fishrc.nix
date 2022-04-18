@@ -211,8 +211,6 @@ in
   inherit plugins;
 
   shellInit = ''
-    #eval (${pkgs.direnv}/bin/direnv hook fish)
-
     if test -e $HOME/.local-fishrc
       source $HOME/.local-fishrc
     end
@@ -221,7 +219,5 @@ in
 
     ${variables}
     ${theme}
-
-    #start_tmux
   '';
 }
