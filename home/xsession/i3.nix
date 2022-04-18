@@ -291,10 +291,6 @@ in
 
       # Run KBDD (XKB Daemon for per-window keyboard layout switching)
       { command = "kbdd"; notification = false; }
-
-      # Switch keybboard layout (since the NixOS option no longer works in 21.11)
-      { command = ''setxkbmap -option "grp:ctrls_toggle,eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp"''; notification = false; }
-
     ];
 
     terminal = "alacritty";

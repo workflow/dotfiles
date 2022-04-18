@@ -15,7 +15,6 @@ in
     ./system/audio.nix
     ./system/desktop.nix
     ./system/fonts.nix
-    ./system/keyboard.nix
     ./system/ledgerlive.nix
     ./system/networking.nix
     ./system/power.nix
