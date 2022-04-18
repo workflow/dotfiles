@@ -23,15 +23,6 @@
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
 
-    d = ''
-      set DOCK "3"
-      echo -e 'power off\nquit' | bluetoothctl;
-      pactl set-default-sink "$DOCK"
-      set INPUTS (pactl list sink-inputs short | cut -f 1)
-      for i in $INPUTS
-        pactl move-sink-input $i "$DOCK"
-      end
-    '';
     da = "direnv allow";
 
     filters = "vim ~/.gmailctl/config.jsonnet";
@@ -69,40 +60,9 @@
 
     gmailctlp = "gmailctl --config ~/.gmailctl/playbooks/";
 
-    h = ''
-      set HEADSET "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
-      echo -e 'power on\nquit' | bluetoothctl;
-      and sleep 2;
-      and echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl;
-      and sleep 5;
-      and pactl set-default-sink "$HEADSET";
-      set INPUTS (pactl list sink-inputs short | cut -f 1)
-      for i in $INPUTS
-        pactl move-sink-input $i "$HEADSET"
-      end
-    '';
-    hh = ''
-      set LOCAL "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire__sink"
-      echo -e 'power off\nquit' | bluetoothctl;
-      pactl set-default-sink "$LOCAL"
-      set INPUTS (pactl list sink-inputs short | cut -f 1)
-      for i in $INPUTS
-        pactl move-sink-input $i "$LOCAL"
-      end
-    '';
     halt = "shutdown now";
 
     k = "kubectl";
-
-    l = ''
-      set LOCAL "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
-      echo -e 'power off\nquit' | bluetoothctl;
-      pactl set-default-sink "$LOCAL"
-      set INPUTS (pactl list sink-inputs short | cut -f 1)
-      for i in $INPUTS
-        pactl move-sink-input $i "$LOCAL"
-      end
-    '';
 
     llb = "br -sdph";
     lsb = "br -sdp";
