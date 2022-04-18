@@ -24,7 +24,7 @@
     cdc = "cd ~/code";
 
     d = ''
-      set DOCK "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo"
+      set DOCK "3"
       echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink "$DOCK"
       set INPUTS (pactl list sink-inputs short | cut -f 1)
@@ -81,12 +81,21 @@
         pactl move-sink-input $i "$HEADSET"
       end
     '';
+    hh = ''
+      set LOCAL "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire__sink"
+      echo -e 'power off\nquit' | bluetoothctl;
+      pactl set-default-sink "$LOCAL"
+      set INPUTS (pactl list sink-inputs short | cut -f 1)
+      for i in $INPUTS
+        pactl move-sink-input $i "$LOCAL"
+      end
+    '';
     halt = "shutdown now";
 
     k = "kubectl";
 
     l = ''
-      set LOCAL "alsa_output.pci-0000_00_1f.3.analog-stereo"
+      set LOCAL "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
       echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink "$LOCAL"
       set INPUTS (pactl list sink-inputs short | cut -f 1)
