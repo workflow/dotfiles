@@ -250,6 +250,7 @@ in
       coc-pairs
       coc-prettier
       coc-rust-analyzer
+      coc-tabnine
       coc-tsserver
       coc-vimlsp
       coc-yaml
