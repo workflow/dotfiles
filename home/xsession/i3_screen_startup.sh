@@ -5,5 +5,4 @@ autorandr flexbox || true
 autorandr sophia || true
 autorandr boar || true
 autorandr topbox || true
-autorandr flexbox-intel || true
 autorandr caparica || true

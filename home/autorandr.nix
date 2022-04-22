@@ -123,7 +123,7 @@ in
             enable = true;
             dpi = 96;
             mode = "1680x1050";
-            position = "2560x0";
+            position = "2560x390";
             rate = "59.95";
           };
           DP-3-3 = {
