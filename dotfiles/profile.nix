@@ -42,18 +42,16 @@
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
-    gfo = "git fetch origin main:main";
-    gfoo = "git fetch origin master:master";
+    gfo = "git fetch origin main:main || git fetch origin master:master";
     gl = "git log";
     glcs = "git rev-parse HEAD | xclip -selection clipboard"; # Get Latest Commit SHA
-    gm = "git checkout main";
-    gmo = "git checkout master";
+    gm = "git checkout main || git checkout master";
     gp = "git pull --prune";
     gpf = "git push --force-with-lease";
     gpn = "git push -u origin HEAD";
     gr = "git rebase";
     grc = "git rebase --continue";
-    grm = "git rebase master";
+    grm = "git rebase main || git rebase master";
     gs = "git status";
 
     ghco = "gh pr checkout";
