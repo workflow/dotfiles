@@ -68,6 +68,7 @@ let
       pkgs.k9s
       pkgs.kbdd # XKB Daemon
       pkgs.killall
+      pkgs.kubectl
       pkgs.kubectx
       pkgs.lame
       nixpkgs-unstable.ledger-live-desktop
