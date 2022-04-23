@@ -19,6 +19,7 @@
         };
         rebase = {
           autoStash = true;
+          autoSquash = true;
         };
         # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
         url = {
