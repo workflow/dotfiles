@@ -133,6 +133,8 @@ in
     direnv.enable = true;
     direnv.nix-direnv.enable = true;
 
+    exa.enable = true;
+
     firefox = {
       enable = true;
       # extensions = with nur.repos.rycee.firefox-addons; [
