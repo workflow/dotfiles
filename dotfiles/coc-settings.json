@@ -22,9 +22,6 @@
     "json",
     "jsonnet"
   ],
-  "flutter.sdk.searchPaths": [
-    "/nix/store/yd9k3z6wv5c3dk9vkq87zx3a6jsm68f6-flutter-2.2.1-unwrapped"
-  ],
   "flutter.lsp.initialization.closingLabels": true,
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
