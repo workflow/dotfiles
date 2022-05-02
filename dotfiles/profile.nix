@@ -55,6 +55,7 @@
     gr = "git rebase";
     grc = "git rebase --continue";
     grm = "git rebase main || git rebase master";
+    grim = "git rebase -i main || git rebase -i master";
     gs = "git status";
 
     ghco = "gh pr checkout";
