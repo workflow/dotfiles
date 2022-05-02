@@ -81,6 +81,8 @@
 
     p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
 
+    paste = "xclip -selection c -o";
+
     pu = "pulsemixer";
 
     pk = "prod-kubectl";
