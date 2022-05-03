@@ -59,6 +59,11 @@
         { key = "J"; mode = "Vi"; action = "Left"; }
       ];
 
+      env = {
+        # Better color support in some apps
+        TERM = "xterm-256color";
+      };
+
     };
   };
 }
