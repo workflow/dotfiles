@@ -11,6 +11,7 @@ in
     enable = true;
 
     extraConfig = ''
+      set mouse=a
       set number
       set clipboard=unnamedplus
 
