@@ -120,6 +120,15 @@ in
             block = "sound";
             driver = "pulseaudio";
             format = "{output_description} {volume}";
+            on_click = "pavucontrol --tab=4";
+            device_kind = "source";
+            # mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
+            headphones_indicator = true;
+          }
+          {
+            block = "sound";
+            driver = "pulseaudio";
+            format = "{output_description} {volume}";
             on_click = "pavucontrol --tab=3";
             mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
