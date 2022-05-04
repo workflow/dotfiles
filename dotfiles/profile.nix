@@ -90,6 +90,8 @@
 
     "r+" = ''gh pr review --comment --body "bors r+"'';
 
+    rm = "trash-put";
+
     soul = "nmcli c up 'Soul'";
 
     toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
