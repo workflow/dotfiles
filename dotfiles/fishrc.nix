@@ -87,15 +87,8 @@ let
     '';
 
     oh = ''
-      set OPENHEADSET1 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire__sink"
-      set OPENHEADSET2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire__sink"
+      set OPENHEADSET "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
       set SINKS (pactl list sinks)
-
-      if string match "*$OPENHEADSET1*" $SINKS
-        set OPENHEADSET $OPENHEADSET1
-      else if string match "*$OPENHEADSET2*" $SINKS
-        set OPENHEADSET $OPENHEADSET2
-      end
 
       echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink $OPENHEADSET
