@@ -22,6 +22,7 @@ let
       nixpkgs-master.brave
       pkgs.brightnessctl
       pkgs.cachix
+      pkgs.cargo-edit
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
