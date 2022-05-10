@@ -19,6 +19,10 @@ let
       "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
       "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
       "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
+      "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
+      "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source" = "";
+      "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source" = "";
+      "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source" = "";
     };
   };
 
@@ -122,7 +126,7 @@ in
             format = "{output_description} {volume}";
             on_click = "pavucontrol --tab=4";
             device_kind = "source";
-            # mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
+            mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
           }
           {

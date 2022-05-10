@@ -69,13 +69,33 @@ let
 
     l = ''
       set LOCALSPEAKER1 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
-      set LOCALSPEAKER2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
+      set LOCALSPEAKER2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
+      set LOCALSPEAKER3 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
       set SINKS (pactl list sinks)
+
+      set LOCALMIKE1 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
+      set LOCALMIKE2 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
+      set LOCALMIKE3 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
+      set SOURCES (pactl list sources)
 
       if string match "*$LOCALSPEAKER1*" $SINKS
         set LOCALSPEAKER $LOCALSPEAKER1
       else if string match "*$LOCALSPEAKER2*" $SINKS
         set LOCALSPEAKER $LOCALSPEAKER2
+      else if string match "*$LOCALSPEAKER3*" $SINKS
+        set LOCALSPEAKER $LOCALSPEAKER3
+      else
+        echo Local speaker not found
+      end
+
+      if string match "*$LOCALMIKE1*" $SOURCES
+        set LOCALMIKE $LOCALMIKE1
+      else if string match "*$LOCALMIKE2*" $SOURCES
+        set LOCALMIKE $LOCALMIKE2
+      else if string match "*$LOCALMIKE3*" $SOURCES
+        set LOCALMIKE $LOCALMIKE3
+      else
+        echo Local mike not found
       end
 
       echo -e 'power off\nquit' | bluetoothctl;
@@ -84,17 +104,32 @@ let
       for i in $INPUTS
         pactl move-sink-input $i $LOCALSPEAKER
       end
+
+      pactl set-default-source $LOCALMIKE
+      set OUTPUTS (pactl list source-outputs short | cut -f 1)
+      for i in $OUTPUTS
+        pactl move-source-output $i $LOCALMIKE
+      end
     '';
 
     oh = ''
       set OPENHEADSET "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
       set SINKS (pactl list sinks)
 
+      set OPENHEADSETMIKE "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback"
+      set SOURCES (pactl list sources)
+
       echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink $OPENHEADSET
       set INPUTS (pactl list sink-inputs short | cut -f 1)
       for i in $INPUTS
         pactl move-sink-input $i $OPENHEADSET
+      end
+
+      pactl set-default-source $OPENHEADSETMIKE
+      set OUTPUTS (pactl list source-outputs short | cut -f 1)
+      for i in $OUTPUTS
+        pactl move-source-output $i $OPENHEADSETMIKE
       end
     '';
 
