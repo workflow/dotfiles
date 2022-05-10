@@ -4,6 +4,19 @@
 }:
 let
   functions = {
+    b = ''
+      set BOOMBOX "bluez_sink.04_21_44_B6_92_39.a2dp_sink"
+      echo -e 'power on\nquit' | bluetoothctl;
+      and sleep 2;
+      and echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl;
+      and sleep 5;
+      and pactl set-default-sink "$BOOMBOX";
+      set INPUTS (pactl list sink-inputs short | cut -f 1)
+      for i in $INPUTS
+        pactl move-sink-input $i "$BOOMBOX"
+      end
+    '';
+
     d = ''
       set DOCK "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo"
       echo -e 'power off\nquit' | bluetoothctl;
