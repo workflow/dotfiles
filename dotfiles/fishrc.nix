@@ -98,7 +98,6 @@ let
         echo Local mike not found
       end
 
-      echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink $LOCALSPEAKER
       set INPUTS (pactl list sink-inputs short | cut -f 1)
       for i in $INPUTS
@@ -119,7 +118,6 @@ let
       set OPENHEADSETMIKE "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback"
       set SOURCES (pactl list sources)
 
-      echo -e 'power off\nquit' | bluetoothctl;
       pactl set-default-sink $OPENHEADSET
       set INPUTS (pactl list sink-inputs short | cut -f 1)
       for i in $INPUTS
