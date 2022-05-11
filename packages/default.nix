@@ -88,6 +88,7 @@ let
       pkgs.ncdu
       pkgs.neofetch
       pkgs.nethogs
+      pkgs.networkmanagerapplet
       pkgs.newman
       pkgs.niv
       nixpkgs-unstable.nixfmt
