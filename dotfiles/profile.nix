@@ -57,6 +57,8 @@
     grm = "git rebase main || git rebase master";
     grim = "git rebase -i main || git rebase -i master";
     gs = "git status";
+    gst = "git stash";
+    gsa = "git stash apply";
 
     ghco = "gh pr checkout";
 
