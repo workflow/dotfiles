@@ -96,7 +96,7 @@
 
     toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
 
-    tailup = "sudo tailscale up --accept-routes";
+    tailup = "sudo tailscale up --accept-routes --accept-dns=false";
     taildown = "sudo tailscale down";
 
     # Print timestamp along with cmd output
