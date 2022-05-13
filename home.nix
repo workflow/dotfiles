@@ -32,6 +32,8 @@ in
 {
 
   home = {
+    enableNixpkgsReleaseCheck = true;
+
     file = {
       # ~/bin
       # Declaratively configure Mega backups
