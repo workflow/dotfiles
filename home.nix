@@ -15,7 +15,8 @@ let
     ./home/rofi.nix
     ./home/urxvt.nix
     ./home/xsession
-  ];
+  ] ++ secretImports;
+
 
   fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
 
@@ -26,6 +27,10 @@ let
   profile = pkgs.callPackage ./dotfiles/profile.nix { };
 
   scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
+
+  secretImports = lib.optionals (lib.pathExists /home/farlion/code/nixos-secrets) [
+    ../nixos-secrets/home/secrets.nix
+  ];
 
   sources = import ./nix/sources.nix;
 
