@@ -7,6 +7,7 @@ let
     ./home/dunst.nix
     ./home/fzf.nix
     ./home/git.nix
+    ./home/gtk.nix
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim.nix
@@ -104,21 +105,6 @@ in
   };
 
   inherit imports;
-
-  gtk = {
-    enable = true;
-    font = {
-      name = "Fira Code 9";
-    };
-    iconTheme = {
-      name = "Pop";
-      package = nixpkgs-unstable.pop-icon-theme;
-    };
-    theme = {
-      name = "Pop";
-      package = pkgs.pop-gtk-theme;
-    };
-  };
 
   nixpkgs.config = {
     allowUnfree = true;
