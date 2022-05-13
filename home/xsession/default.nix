@@ -14,9 +14,9 @@ in
   xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 
   xsession.pointerCursor = {
-    name = "capitaine-cursors-white";
-    package = pkgs.capitaine-cursors;
-    size = 16;
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24;
   };
 
   xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs; };
