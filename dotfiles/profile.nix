@@ -42,6 +42,7 @@
     gc = "git checkout";
     gca = "git commit --amend";
     gcb = "git checkout -b";
+    gcf = "git commit --fixup";
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
