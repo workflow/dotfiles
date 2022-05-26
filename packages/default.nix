@@ -54,6 +54,7 @@ let
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
       pkgs.google-cloud-sdk
+      pkgs.gopls # Go language server
       pkgs.gparted
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap

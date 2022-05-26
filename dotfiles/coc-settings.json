@@ -8,6 +8,11 @@
       "command": "elm-language-server",
       "filetypes": ["elm"],
       "rootPatterns": ["elm.json"]
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
     }
   },
   "codeLens.enable": true,
@@ -20,7 +25,8 @@
     "nix",
     "toml",
     "json",
-    "jsonnet"
+    "jsonnet",
+    "yaml"
   ],
   "flutter.lsp.initialization.closingLabels": true,
   "rust-analyzer.updates.prompt": false,
@@ -30,5 +36,13 @@
   "rust-analyzer.diagnostics.disabled": [
     "unresolved-proc-macro",
     "type-mismatch"
-  ]
+  ],
+  "yaml.enable": true,
+  "yaml.format.enable": true,
+  "yaml.format.bracketSpacing": true,
+  "yaml.hover": true,
+  "yaml.completion": true,
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
+  }
 }
