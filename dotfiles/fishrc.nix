@@ -9,7 +9,7 @@ let
       echo -e 'power on\nquit' | bluetoothctl;
       and sleep 2;
       and echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl;
-      and sleep 5;
+      and sleep 10;
       and pactl set-default-sink "$BOOMBOX";
       set INPUTS (pactl list sink-inputs short | cut -f 1)
       for i in $INPUTS
