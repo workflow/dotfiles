@@ -188,6 +188,10 @@ in
       nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
       nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
       nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
+      xmap <leader>w  <Plug>(coc-codeaction-cursor)
+      nmap <leader>w  <Plug>(coc-codeaction-cursor)
+      xmap <leader>l  <Plug>(coc-codeaction-line)
+      nmap <leader>l  <Plug>(coc-codeaction-line)
 
 
       " FZF Settings

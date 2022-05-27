@@ -29,6 +29,7 @@
     "yaml"
   ],
   "flutter.lsp.initialization.closingLabels": true,
+
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.cargo.runBuildScripts": true,
@@ -37,6 +38,11 @@
     "unresolved-proc-macro",
     "type-mismatch"
   ],
+  "rust-analyzer.lens.enable": true,
+  "rust-analyzer.lens.run.enable": true,
+  "rust-analyzer.lru.capacity": 1024,
+  "rust-analyzer.lruCapacity": 1024,
+
   "yaml.enable": true,
   "yaml.format.enable": true,
   "yaml.format.bracketSpacing": true,
