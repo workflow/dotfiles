@@ -86,7 +86,7 @@ let
       pkgs.megacmd
       nixpkgs-unstable.minikube
       pkgs.ncat # nmap
-      pkgs.ncdu
+      pkgs.ncdu # Disk Space Visualization
       pkgs.neofetch
       pkgs.nethogs
       pkgs.networkmanagerapplet
