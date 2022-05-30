@@ -117,7 +117,7 @@ let
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
       pkgs.ripgrep
-      nixpkgs-unstable.rmview
+      nixpkgs-unstable.rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
