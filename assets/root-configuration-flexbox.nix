@@ -27,10 +27,8 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
-  # Switch to a newer kernel (>5.13) for audio and GPU support
-  boot.kernelPackages = pkgs.linuxPackages_5_16;
-
   # Fix audio
+  # TODO: Upstream these modules to nixpkgs
   boot.kernelPatches = [
     {
       name = "enable-soundwire-drivers";
@@ -50,6 +48,7 @@ in
   environment.systemPackages = [ nvidia-offload ];
   services.xserver.videoDrivers = [ "nvidia" ];
   # Switching to beta for https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/36
+  # TODO: Still needed?
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
   hardware.nvidia.prime = {
     offload.enable = true;

@@ -30,7 +30,7 @@ let
       pkgs.dconf
       pkgs.deluge
       pkgs.discord
-      pkgs.dragon-drop
+      pkgs.xdragon # drag n drop support
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
@@ -85,7 +85,7 @@ let
       nixpkgs-unstable.materialize
       pkgs.megacmd
       nixpkgs-unstable.minikube
-      pkgs.ncat # nmap
+      pkgs.nmap
       pkgs.ncdu # Disk Space Visualization
       pkgs.neofetch
       pkgs.nethogs
@@ -117,13 +117,13 @@ let
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
       pkgs.ripgrep
-      nixpkgs-unstable.rmview # Remarkable Screen Sharing
+      pkgs.rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
       pkgs.shellcheck
       nixpkgs-unstable.signal-desktop
-      pkgs.skype
+      pkgs.skypeforlinux
       pkgs.slack
       pkgs.solaar
       pkgs.soundfont-fluid
@@ -152,7 +152,7 @@ let
       nixpkgs-unstable.jetbrains.webstorm
       pkgs.wget
       pkgs.wgetpaste # CLI interface to various pastebins
-      pkgs.wireguard
+      pkgs.wireguard-tools
       pkgs.wireshark
       pkgs.whois
       pkgs.xawtv # Basic Video4Linux2 device viewer. Example: xawtv -c /dev/video0

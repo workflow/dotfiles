@@ -84,11 +84,13 @@ let
       set LOCALSPEAKER1 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
       set LOCALSPEAKER2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
       set LOCALSPEAKER3 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
+      set LOCALSPEAKER4 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
       set SINKS (pactl list sinks)
 
       set LOCALMIKE1 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
       set LOCALMIKE2 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
       set LOCALMIKE3 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
+      set LOCALMIKE4 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
       set SOURCES (pactl list sources)
 
       if string match "*$LOCALSPEAKER1*" $SINKS
@@ -97,6 +99,8 @@ let
         set LOCALSPEAKER $LOCALSPEAKER2
       else if string match "*$LOCALSPEAKER3*" $SINKS
         set LOCALSPEAKER $LOCALSPEAKER3
+      else if string match "*$LOCALSPEAKER4*" $SINKS
+        set LOCALSPEAKER $LOCALSPEAKER4
       else
         echo Local speaker not found
       end
@@ -107,6 +111,8 @@ let
         set LOCALMIKE $LOCALMIKE2
       else if string match "*$LOCALMIKE3*" $SOURCES
         set LOCALMIKE $LOCALMIKE3
+      else if string match "*$LOCALMIKE4*" $SOURCES
+        set LOCALMIKE $LOCALMIKE4
       else
         echo Local mike not found
       end
