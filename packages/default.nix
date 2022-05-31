@@ -7,6 +7,7 @@ let
   nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
+  rmview = pkgs.libsForQt5.callPackage ./rmview { };
 
   packages =
     [
@@ -116,7 +117,7 @@ let
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
       pkgs.ripgrep
-      pkgs.rmview # Remarkable Screen Sharing
+      rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
