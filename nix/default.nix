@@ -37,9 +37,5 @@ in
 
   nixpkgs = {
     config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "libav-11.12"
-    ];
-
   };
 }

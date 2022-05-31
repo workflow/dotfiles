@@ -75,7 +75,6 @@ let
       pkgs.kubectx
       pkgs.lame
       nixpkgs-unstable.ledger-live-desktop
-      pkgs.libav # Provides avconv for direct video to mp3 extraction
       pkgs.libnotify # Provides notify-send
       pkgs.libreoffice
       pkgs.lm_sensors
