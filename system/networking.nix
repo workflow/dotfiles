@@ -22,6 +22,8 @@ in
 
   # Tailscale
   services.tailscale.enable = true;
+  # Strict reverse path filtering breaks Tailscale exit node us and some subnet routing setups.
+  networking.firewall.checkReversePath = "loose";
 
   # RMview Remarkable 2 Screensharing
   networking.firewall.allowedUDPPorts = [ 5901 ];
