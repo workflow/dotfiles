@@ -28,7 +28,7 @@
 
   networking.networkmanager = {
     enable = true;
-    packages = [ pkgs.networkmanager-l2tp ];
+    plugins = [ pkgs.networkmanager-l2tp ];
   };
 
   #networking.firewall.allowedTCPPorts = [ 8080 ];
