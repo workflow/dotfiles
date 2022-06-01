@@ -1,6 +1,6 @@
 {
   "ssh": {
-    "address": ["192.168.1.205"]
+    "address": ["192.168.1.157"]
   },
   "auth_method": "key",
   "key": "/home/farlion/.ssh/id_rsa_rm2screenshare",
