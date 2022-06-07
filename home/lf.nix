@@ -121,6 +121,8 @@ in
 
     settings = {
       icons = true;
+      # Set IFS to newline to allow commands to work with spaces in filenames
+      ifs = "\n";
     };
   };
 
