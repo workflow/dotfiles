@@ -8,6 +8,7 @@ let
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
   rmview = pkgs.libsForQt5.callPackage ./rmview { };
+  confluent-cli = pkgs.callPackage ./confluent-cli { };
 
   packages =
     [
@@ -27,6 +28,7 @@ let
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
+      confluent-cli
       pkgs.dbeaver
       pkgs.dconf
       pkgs.deluge
