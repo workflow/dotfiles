@@ -37,6 +37,9 @@ in
     "100.100.100.100" # Tailscale Magic DNS
   ];
 
+  # Prevent IPv6 leaks when using VPNs
+  networking.enableIPv6 = false;
+
   # Don't wait for dhcpcd while booting on laptops (wifi)
   networking.dhcpcd.wait = lib.mkIf isLaptop "background";
 }
