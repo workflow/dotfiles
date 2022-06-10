@@ -33,7 +33,7 @@ let
       pkgs.dconf
       pkgs.deluge
       pkgs.discord
-      pkgs.xdragon # drag n drop support
+      pkgs.docker-machine-kvm2
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
@@ -80,13 +80,14 @@ let
       nixpkgs-unstable.ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.libreoffice
+      pkgs.lldb
       pkgs.lm_sensors
       pkgs.lsof
       pkgs.lz4 # compression
       pkgs.manix
       nixpkgs-unstable.materialize
       pkgs.megacmd
-      nixpkgs-unstable.minikube
+      pkgs.minikube
       pkgs.nmap
       pkgs.ncdu # Disk Space Visualization
       pkgs.neofetch
