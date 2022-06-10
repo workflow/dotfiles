@@ -6,3 +6,4 @@ autorandr sophia || true
 autorandr boar || true
 autorandr topbox || true
 autorandr caparica || true
+autorandr caparica-alt || true
