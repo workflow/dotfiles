@@ -116,6 +116,7 @@ let
       pkgs.postman
       pkgs.pstree
       pkgs.pulsemixer
+      pkgs.pulumi-bin
       pkgs.pup # Streaming HTML processor/selector
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
