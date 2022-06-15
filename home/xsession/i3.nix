@@ -291,6 +291,9 @@ in
 
       # Run KBDD (XKB Daemon for per-window keyboard layout switching)
       { command = "kbdd"; notification = false; }
+
+      # Change variety wallpaper
+      { command = "sleep 10s && variety --next"; notification = false; }
     ];
 
     terminal = "alacritty";
