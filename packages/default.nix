@@ -33,7 +33,6 @@ let
       pkgs.dconf
       pkgs.deluge
       pkgs.discord
-      pkgs.docker-machine-kvm2
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
