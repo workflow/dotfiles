@@ -97,6 +97,7 @@ let
       nixpkgs-unstable.nixfmt
       nixpkgs-unstable.nixpkgs-fmt
       nixpkgs-unstable.nixpkgs-review
+      pkgs.nixos-option # check values of nixos options and where they are being set
       pkgs.nodejs # For coc.nvim
       pkgs.nvtop
       pkgs.okular
