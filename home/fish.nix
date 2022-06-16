@@ -1,6 +1,7 @@
 { lib
 , pkgs
 , profile
+, ...
 }:
 let
   functions = {
@@ -215,6 +216,17 @@ let
     }
   ];
 
+  shellInit = ''
+    if test -e $HOME/.local-fishrc
+      source $HOME/.local-fishrc
+    end
+
+    set PATH ${path} $PATH
+
+    ${variables}
+    ${theme}
+  '';
+
   theme = ''
     set -g fish_color_autosuggestion 586e75
     set -g fish_color_cancel -r
@@ -251,18 +263,10 @@ let
 
 in
 {
-  inherit functions;
-
-  inherit plugins;
-
-  shellInit = ''
-    if test -e $HOME/.local-fishrc
-      source $HOME/.local-fishrc
-    end
-
-    set PATH ${path} $PATH
-
-    ${variables}
-    ${theme}
-  '';
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = shellInit;
+    inherit functions plugins;
+    shellAbbrs = profile.aliases;
+  };
 }

@@ -5,6 +5,7 @@ let
     ./home/autorandr.nix
     ./home/broot.nix
     ./home/dunst.nix
+    ./home/fish.nix
     ./home/fzf.nix
     ./home/git.nix
     ./home/gtk.nix
@@ -16,9 +17,6 @@ let
     ./home/urxvt.nix
     ./home/xsession
   ] ++ secretImports;
-
-
-  fishrc = pkgs.callPackage ./dotfiles/fishrc.nix { inherit profile; };
 
   nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
 
@@ -36,6 +34,8 @@ let
 
 in
 {
+
+  _module.args = { inherit profile; };
 
   home = {
     enableNixpkgsReleaseCheck = true;
@@ -140,14 +140,6 @@ in
       profiles = {
         main = { };
       };
-    };
-
-    fish = {
-      enable = true;
-      interactiveShellInit = fishrc.shellInit;
-      functions = fishrc.functions;
-      plugins = fishrc.plugins;
-      shellAbbrs = profile.aliases;
     };
 
     htop.enable = true;
