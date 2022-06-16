@@ -22,9 +22,9 @@ let
 
   nur = import sources.NUR { inherit pkgs; };
 
-  profile = pkgs.callPackage ./dotfiles/profile.nix { };
+  profile = pkgs.callPackage ./lib/profile.nix { };
 
-  scripts = pkgs.callPackage ./dotfiles/scripts.nix { inherit nixpkgs-unstable; };
+  scripts = pkgs.callPackage ./lib/scripts.nix { inherit nixpkgs-unstable; };
 
   secretImports = lib.optionals (lib.pathExists /home/farlion/code/nixos-secrets) [
     ../nixos-secrets/home/secrets.nix
