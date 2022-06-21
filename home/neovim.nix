@@ -1,7 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
-  #coc-flutter-branch = import /home/farlion/code/nix/nixpkgs { config.allowUnfree = true; };
+
+  updated-copilot-vim = pkgs.vimUtils.buildVimPlugin rec {
+    pname = "github-copilot-vim";
+    version = "1.4.2";
+
+    src = pkgs.fetchgit {
+      url = "https://github.com/github/copilot.vim";
+      rev = "c2e75a3a7519c126c6fdb35984976df9ae13f564";
+      hash = "sha256-V13La54aIb3hQNDE7BmOIIZWy7In5cG6kE0fti/wxVQ=";
+    };
+  };
 
   sources = import ../nix/sources.nix;
 
@@ -262,6 +272,7 @@ in
       coc-yaml
 
       vim-commentary
+      updated-copilot-vim
       crates-nvim
       dart-vim-plugin
       vim-devicons
