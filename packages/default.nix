@@ -94,6 +94,7 @@ let
       pkgs.networkmanagerapplet
       pkgs.newman
       pkgs.niv
+      pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
       nixpkgs-unstable.nixfmt
       nixpkgs-unstable.nixpkgs-fmt
       nixpkgs-unstable.nixpkgs-review
