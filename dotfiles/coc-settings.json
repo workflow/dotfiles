@@ -28,14 +28,11 @@
     "jsonnet",
     "yaml"
   ],
+
   "flutter.lsp.initialization.closingLabels": true,
 
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.diagnostics.disabled": [
-    "unresolved-proc-macro",
-    "type-mismatch"
-  ],
   "rust-analyzer.lru.capacity": 1024,
 
   "yaml.enable": true,
