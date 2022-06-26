@@ -10,6 +10,10 @@ let
   rmview = pkgs.libsForQt5.callPackage ./rmview { };
   confluent-cli = pkgs.callPackage ./confluent-cli { };
 
+  nightly-oxalica-rust = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+    extensions = [ "rust-src" ];
+  });
+
   packages =
     [
       pkgs.android-studio
@@ -125,6 +129,7 @@ let
       rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
+      nightly-oxalica-rust
       pkgs.screenkey
       pkgs.shellcheck
       nixpkgs-unstable.signal-desktop

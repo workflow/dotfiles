@@ -3,6 +3,8 @@ let
 
   sources = import ./sources.nix;
 
+  rust-overlay = import sources.rust-overlay;
+
 in
 {
 
@@ -34,9 +36,12 @@ in
       "nixpkgs-unstable=${sources.nixpkgs-unstable}"
       "nur=${sources.NUR}"
     ];
+
   };
 
   nixpkgs = {
     config.allowUnfree = true;
+
+    overlays = [ rust-overlay ];
   };
 }
