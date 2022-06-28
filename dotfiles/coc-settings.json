@@ -31,7 +31,6 @@
 
   "flutter.lsp.initialization.closingLabels": true,
 
-  "rust-analyzer.server.path": "/home/farlion/bin/ra-multiplex",
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.lru.capacity": 1024,
