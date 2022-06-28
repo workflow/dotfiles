@@ -125,6 +125,7 @@ let
       rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
+      pkgs.rust-analyzer # for https://github.com/pr2502/ra-multiplex
       pkgs.screenkey
       pkgs.shellcheck
       nixpkgs-unstable.signal-desktop
