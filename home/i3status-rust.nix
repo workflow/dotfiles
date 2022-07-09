@@ -119,7 +119,7 @@ in
         ++ netBlocks
         ++ [
           {
-            block = "backlight";
+            block = if isBoar then "xrandr" else "backlight";
           }
         ]
         ++ [
