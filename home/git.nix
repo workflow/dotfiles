@@ -29,7 +29,7 @@
         };
       };
 
-      ignores = [ ".idea" "nohup.out" "mzdata" ];
+      ignores = [ ".idea" "nohup.out" "mzdata" ".vimspector.json" ];
 
       userEmail = "4farlion@gmail.com";
 

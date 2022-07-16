@@ -252,6 +252,16 @@ in
       " LF Settings
       let g:lf_map_keys = 0
       nnoremap <silent><nowait> <localleader>f :Lf<CR>
+
+      " Vimspector settings
+      let g:vimspector_base_dir='/home/farlion/.vim/vimspector-config'
+      let g:vimspector_enable_mappings = 'HUMAN'
+      nmap <F8> <Plug>VimspectorToggleBreakpoint
+      " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+      " for normal mode - the word under the cursor
+      nmap <Leader>di <Plug>VimspectorBalloonEval
+      " for visual mode, the visually selected text
+      xmap <Leader>di <Plug>VimspectorBalloonEval
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -295,6 +305,7 @@ in
       vim-shellcheck
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
+      vimspector
       vim-startify
       vim-surround
       vim-textobj-entire

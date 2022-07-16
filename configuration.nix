@@ -17,6 +17,7 @@ in
     ./system/fonts.nix
     ./system/ledgerlive.nix
     ./system/networking.nix
+    ./system/nix-ld.nix
     ./system/power.nix
     ./system/security.nix
     ./system/virtualisation.nix

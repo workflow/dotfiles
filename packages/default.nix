@@ -27,6 +27,7 @@ let
       pkgs.cargo-edit
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
+      pkgs.vscode-extensions.vadimcn.vscode-lldb # For vimspector Rust debugging
       nixpkgs-unstable.comma
       confluent-cli
       pkgs.dbeaver
