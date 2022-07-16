@@ -36,33 +36,6 @@ let
       bind \cs complete
     '';
 
-    fish_right_prompt = ''
-      # Capture the exit status of last command, to be displayed in notification
-      set exit_status $status
-
-      # Obtain the name of the command which executed last from the history
-      set command_name $history[1]
-
-      # Find out the command duration using fish built-in CMD_DURATION
-      set command_duration $CMD_DURATION
-
-      # CMD_DURATION will be empty when a new shell starts
-      if [ $command_duration ]
-          set finish_duration (math "$CMD_DURATION / 1000")
-      else
-          set finish_duration 0
-      end
-
-      # Set the notify duration to 10 secs
-      # This can be changed here or script modified to use env variable
-      set notify_duration 10
-
-      # If the last command exceeded 10 secs, pop up a notification
-      if [ $finish_duration -gt $notify_duration ]
-          notify-send --category=shell --icon=go-next "$command_name" "Finished in: $finish_duration secs\nStatus: $exit_status"
-      end
-    '';
-
     h = ''
       set HEADSET "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
       echo -e 'power on\nquit' | bluetoothctl;
@@ -74,11 +47,6 @@ let
       for i in $INPUTS
         pactl move-sink-input $i "$HEADSET"
       end
-    '';
-
-    issue_branch = ''
-      set converted (echo $argv[1] | perl -pe 's|[\n\r]+||g' | perl -pe 's|\W+|-|g' | perl -nle 'print lc' | perl -pe 's|(\d+)$|#\1|g')
-            echo (git checkout -b $converted)
     '';
 
     l = ''
@@ -180,15 +148,6 @@ let
 
     py = ''
       eval "nix-shell -p 'python38.withPackages (pkgs: with pkgs; [ ipython $argv ])'"
-    '';
-
-    start_tmux = ''
-      if type tmux > /dev/null
-        #if not inside a tmux session, and if no session is started, start a new session
-        if test -z "$TMUX" ; and test -z $TERMINAL_CONTEXT
-            tmux -2 attach; or tmux -2 new-session
-        end
-      end
     '';
 
     kubectlgetall = ''
