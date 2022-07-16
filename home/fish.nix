@@ -205,10 +205,10 @@ let
     {
       name = "pure-prompt";
       src = pkgs.fetchFromGitHub {
-        owner = "rafaelrinaldi";
+        owner = "pure-fish";
         repo = "pure";
-        rev = "d66aa7f0fec5555144d29faec34a4e7eff7af32b";
-        sha256 = "0klcwlgsn6nr711syshrdqgjy8yd3m9kxakfzv94jvcnayl0h62w";
+        rev = "2d07e74567e9190c82ae66c37c34ca86850cd9ac";
+        sha256 = "sha256-F6IywGT50/2QHZPJejelhyAC+sU8hUw+pQKbZVIv7lo=";
       };
     }
     {
