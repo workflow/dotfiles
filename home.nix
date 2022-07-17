@@ -178,7 +178,9 @@ in
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    platformTheme = "gnome";
+    style.name = "adwaita-dark";
+    style.package = pkgs.adwaita-qt;
   };
 
   services = {
@@ -194,10 +196,6 @@ in
 
     syncthing = {
       enable = true;
-      tray = {
-        enable = true;
-        command = "syncthingtray --wait";
-      };
     };
 
     udiskie.enable = true;

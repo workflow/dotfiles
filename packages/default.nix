@@ -139,6 +139,7 @@ let
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
+      pkgs.syncthingtray
       nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.telepresence2

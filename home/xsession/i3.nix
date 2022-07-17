@@ -294,6 +294,9 @@ in
 
       # Change variety wallpaper
       { command = "sleep 10s && variety --next"; notification = false; }
+
+      # Launch syncthingtray
+      { command = "sleep 10s && syncthingtray"; notification = false; }
     ];
 
     terminal = "alacritty";
