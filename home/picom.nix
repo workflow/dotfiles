@@ -6,7 +6,7 @@ let
 in
 {
   services.picom = {
-    activeOpacity = "0.98";
+    activeOpacity = 0.98;
 
     enable = true;
 
@@ -16,24 +16,22 @@ in
     # See: https://github.com/chjj/compton/issues/227
     backend = if isNvidia then "xrender" else "glx";
 
-    extraOptions = ''
+    settings = {
       no-fading-openclose = true;
-    '';
+    };
 
     fade = true;
     fadeDelta = 12;
-    fadeSteps = [ "0.15" "0.15" ];
+    fadeSteps = [ 0.15 0.15 ];
 
-    inactiveDim = "0.1";
+    inactiveOpacity = 0.95;
 
-    inactiveOpacity = "0.98";
-
-    menuOpacity = "0.98";
+    menuOpacity = 0.98;
 
     shadow = true;
     shadowExclude = [ "n:e:Notification" ];
     shadowOffsets = [ (-15) (-15) ];
-    shadowOpacity = "0.7";
+    shadowOpacity = 0.7;
 
     opacityRule = [
       "80:class_i ?= 'rofi'"
