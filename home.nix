@@ -39,8 +39,6 @@ in
   _module.args = { inherit profile; };
 
   home = {
-    enableNixpkgsReleaseCheck = true;
-
     file = {
       # ~/bin
       # Declaratively configure Mega backups
