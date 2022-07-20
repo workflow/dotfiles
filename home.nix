@@ -15,6 +15,7 @@ let
     ./home/nushell.nix
     ./home/picom.nix
     ./home/rofi.nix
+    ./home/starship.nix
     ./home/urxvt.nix
     ./home/xsession
   ] ++ secretImports;

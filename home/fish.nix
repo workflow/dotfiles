@@ -28,11 +28,6 @@ let
       end
     '';
 
-    fish_right_prompt = ''
-      kube_ps on
-      echo (__kube_prompt)
-    '';
-
     fish_user_key_bindings = ''
       # CTRL-F --> original TAB behaviour
       bind \cf forward-word
@@ -166,24 +161,6 @@ let
   path = lib.concatStringsSep " " profile.path;
 
   plugins = [
-    {
-      name = "pure-prompt";
-      src = pkgs.fetchFromGitHub {
-        owner = "pure-fish";
-        repo = "pure";
-        rev = "2d07e74567e9190c82ae66c37c34ca86850cd9ac";
-        sha256 = "sha256-F6IywGT50/2QHZPJejelhyAC+sU8hUw+pQKbZVIv7lo=";
-      };
-    }
-    {
-      name = "fish-kube-prompt";
-      src = pkgs.fetchFromGitHub {
-        owner = "aluxian";
-        repo = "fish-kube-prompt";
-        rev = "bbb2c4bc511970b60df51bfbfb2289f6161b489b";
-        sha256 = "sha256-/ZdG0oAA6MUCjsFv+CeqCZQJq0AIS02+H2dliykn71s=";
-      };
-    }
     {
       name = "bang-bang";
       src = pkgs.fetchFromGitHub {
