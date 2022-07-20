@@ -26,7 +26,8 @@
     "toml",
     "json",
     "jsonnet",
-    "yaml"
+    "yaml",
+    "sh"
   ],
 
   "flutter.lsp.initialization.closingLabels": true,
@@ -44,5 +45,13 @@
   "yaml.completion": true,
   "yaml.schemas": {
     "kubernetes": "/*.yaml"
+  },
+  "diagnostic-languageserver.filetypes": {
+    "markdown": ["write-good", "markdownlint"],
+    "sh": "shellcheck",
+    "yaml": ["yamllint"]
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
   }
 }

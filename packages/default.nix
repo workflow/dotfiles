@@ -128,6 +128,7 @@ let
       pkgs.roboto
       pkgs.screenkey
       pkgs.shellcheck
+      pkgs.shfmt
       nixpkgs-unstable.signal-desktop
       pkgs.skypeforlinux
       pkgs.slack
