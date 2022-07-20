@@ -12,6 +12,7 @@ let
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim.nix
+    ./home/nushell.nix
     ./home/picom.nix
     ./home/rofi.nix
     ./home/urxvt.nix
