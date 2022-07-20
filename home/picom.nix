@@ -24,7 +24,7 @@ in
     fadeDelta = 12;
     fadeSteps = [ 0.15 0.15 ];
 
-    inactiveOpacity = 0.95;
+    inactiveOpacity = 0.97;
 
     menuOpacity = 0.98;
 
@@ -33,7 +33,7 @@ in
     shadowOffsets = [ (-15) (-15) ];
     shadowOpacity = 0.7;
 
-    opacityRule = [
+    opacityRules = [
       "80:class_i ?= 'rofi'"
       "100:class_i ?= 'dota2'"
     ];
