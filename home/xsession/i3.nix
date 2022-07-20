@@ -296,7 +296,7 @@ in
       { command = "sleep 10s && variety --next"; notification = false; }
 
       # Launch syncthingtray
-      { command = "sleep 10s && syncthingtray"; notification = false; }
+      { command = "sleep 10s && syncthingtray --wait"; notification = false; }
     ];
 
     terminal = "alacritty";
