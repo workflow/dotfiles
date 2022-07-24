@@ -182,9 +182,9 @@ in
       " Search workspace symbols.
       nnoremap <silent><nowait> <localleader>s  :<C-u>CocList -I symbols<cr>
       " Do default action for next item.
-      nnoremap <silent><nowait> <localleader>j  :<C-u>CocNext<CR>
+      nnoremap <silent><nowait> <leader>]  :<C-u>CocNext<CR>
       " Do default action for previous item.
-      nnoremap <silent><nowait> <localleader>k  :<C-u>CocPrev<CR>
+      nnoremap <silent><nowait> <leader>[  :<C-u>CocPrev<CR>
       " Resume latest coc list.
       nnoremap <silent><nowait> <localleader>p  :<C-u>CocListResume<CR>
 
@@ -313,6 +313,7 @@ in
       vim-surround
       vim-textobj-entire
       vim-toml
+      vim-unimpaired
     ];
 
     viAlias = true;
