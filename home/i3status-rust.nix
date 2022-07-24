@@ -56,7 +56,7 @@ let
       interval = 5;
       hide_inactive = true;
       format = "{speed_down;K*b} {speed_up;K*b}";
-    }) [ "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
+    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
 
   # https://github.com/nix-community/home-manager/issues/393
   # Should not access the global scope here, but hey, it works
