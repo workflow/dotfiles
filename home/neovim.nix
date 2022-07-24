@@ -203,6 +203,8 @@ in
       nmap <leader>w  <Plug>(coc-codeaction-cursor)
       xmap <leader>l  <Plug>(coc-codeaction-line)
       nmap <leader>l  <Plug>(coc-codeaction-line)
+      xmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
+      nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
 
 
       " FZF Settings
