@@ -303,6 +303,7 @@ in
       vim-exchange
       vim-floaterm
       vim-flutter
+      fugitive
       fzf-vim
       vim-graphql
       gruvbox
