@@ -315,6 +315,7 @@ in
       vim-nix
       vim-numbertoggle
       ReplaceWithRegister
+      vim-rhubarb # github bindings for fugitive
       vim-rooter
       vim-shellcheck
       vim-sleuth # Automatic shiftwidth and expandtab
