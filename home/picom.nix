@@ -24,7 +24,7 @@ in
     fadeDelta = 12;
     fadeSteps = [ 0.15 0.15 ];
 
-    inactiveOpacity = 0.97;
+    inactiveOpacity = 0.95;
 
     menuOpacity = 0.98;
 
