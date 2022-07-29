@@ -274,6 +274,19 @@ in
       nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
       nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
       nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
+      " Fugitive
+      nnoremap <leader>gs :Git<CR>
+      nnoremap <leader>gd :Gdiff<CR>
+      nnoremap <leader>ge :Gedit<CR>
+      nnoremap <leader>gr :Gread<CR>
+      nnoremap <leader>gw :Gwrite<CR>
+      nnoremap <leader>gm :GMove<CR>
+      nnoremap <leader>gb :Git branch<Space>
+      nnoremap <leader>gc :Git checkout<Space>
+      nnoremap <leader>gps :Git! push<Space>
+      nnoremap <leader>gpf :Git! push --force-with-lease<Space>
+      nnoremap <leader>gpl :Git! pull<Space>
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -305,6 +318,7 @@ in
       vim-flutter
       fugitive
       fzf-vim
+      gitgutter
       vim-graphql
       gruvbox
       vim-helm
