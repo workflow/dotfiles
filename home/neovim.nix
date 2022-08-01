@@ -55,7 +55,7 @@ in
       set cmdheight=2
       " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
       " delays and poor user experience.
-      set updatetime=300
+      set updatetime=100
       " Don't pass messages to |ins-completion-menu|.
       set shortmess+=c
       " Always show the signcolumn, otherwise it would shift the text each time
@@ -283,11 +283,22 @@ in
       nnoremap <leader>gr :Gread<CR>
       nnoremap <leader>gw :Gwrite<CR>
       nnoremap <leader>gm :GMove<CR>
-      nnoremap <leader>gb :Git branch<Space>
+      nnoremap <leader>gb :Git checkout -b<Space>
       nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gps :Git! push<CR>
       nnoremap <leader>gpf :Git! push --force-with-lease<CR>
       nnoremap <leader>gpl :Git! pull<CR>
+
+      " Git-gutter
+      " Use fontawesome icons as signs - stolen from https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
+      let g:gitgutter_sign_added = ''
+      let g:gitgutter_sign_modified = ''
+      let g:gitgutter_sign_removed = ''
+      let g:gitgutter_sign_removed_first_line = ''
+      let g:gitgutter_sign_modified_removed = ''
+      " Simpler highlighting, stolen from https://jakobgm.com/posts/vim/git-integration/
+      let g:gitgutter_override_sign_column_highlight = 1
+      highlight clear SignColumn
     '';
 
     plugins = with pkgs.vimPlugins; [
