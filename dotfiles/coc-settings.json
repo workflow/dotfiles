@@ -19,6 +19,7 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "js",
     "ts",
+    "typescript",
     "elm",
     "dart",
     "rust",
