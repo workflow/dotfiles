@@ -225,7 +225,8 @@ in
       "${mod}+Shift+d" = ''exec "rofi -show window"'';
 
       # Launch Browser
-      "${mod}+b" = "exec brave";
+      "${mod}+b" = "exec brave --profile-directory='Default'";
+      "${mod}+s" = "exec brave --profile-directory='Profile 1'";
 
       # System Mode
       "${mod}+Pause" = "mode \"${mode_system}\"";
