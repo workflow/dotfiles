@@ -82,6 +82,10 @@
         "$character"
       ];
 
+      aws = {
+        enabled = false;
+      };
+
       gcloud = {
         format = "on [$symbol$account(@$domain)|($project)](green) ";
       };
