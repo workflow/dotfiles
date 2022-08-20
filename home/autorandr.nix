@@ -67,7 +67,7 @@ in
           eDP-1-1 = {
             enable = true;
             dpi = 96;
-            mode = "1920x1200";
+            mode = "2560x1600";
             position = "0x0";
             primary = true;
           };
@@ -82,7 +82,7 @@ in
           eDP-1 = {
             enable = true;
             dpi = 96;
-            mode = "1920x1200";
+            mode = "2560x1600";
             position = "0x0";
             primary = true;
           };
