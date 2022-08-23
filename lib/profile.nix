@@ -83,11 +83,17 @@
 
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
-    p = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
+    p = "pulumi";
+    pu = "pulumi up";
+    pcs = "pulumi config set ";
+    pcss = "pulumi config set --secret ";
+    pcg = "pulumi config set ";
+    ps = "pulumi stack select sproutfi/staging";
+    pp = "pulumi stack select sproutfi/production";
+
+    pa = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
 
     paste = "xclip -selection c -o";
-
-    pu = "pulsemixer";
 
     pk = "prod-kubectl";
 
