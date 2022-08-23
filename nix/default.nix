@@ -12,13 +12,9 @@ in
 
     binaryCaches = [
       "https://cache.nixos.org/"
-      "https://workflow.cachix.org/"
-      "https://jupyterwith.cachix.org/"
     ];
 
     binaryCachePublicKeys = [
-      "workflow.cachix.org-1:HhfBXgXCafJxYuATcMDQbC1qsbjF9qJUCchzFZS2zL4="
-      "jupyterwith.cachix.org-1:/kDy2B6YEhXGJuNguG1qyqIodMyO4w8KwWH4/vAc7CI="
     ];
 
     extraOptions = ''
