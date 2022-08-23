@@ -133,6 +133,7 @@ let
       nixpkgs-unstable.signal-desktop
       pkgs.skypeforlinux
       pkgs.slack
+      pkgs.smartmontools
       pkgs.solaar
       pkgs.soundfont-fluid
       pkgs.python38Packages.speedtest-cli
