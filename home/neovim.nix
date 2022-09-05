@@ -215,6 +215,18 @@ in
       nnoremap <silent><nowait> <C-g> :Rg!<cr>
       nnoremap <silent><nowait> <localleader>b :<C-u>Buf<cr>
       nnoremap <silent><nowait> <localleader>m :<C-u>History<cr>
+      " CTRL-A CTRL-Q to select all and build quickfix list
+      function! s:build_quickfix_list(lines)
+        call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+        copen
+        cc
+      endfunction
+      let g:fzf_action = {
+        \ 'ctrl-q': function('s:build_quickfix_list'),
+        \ 'ctrl-t': 'tab split',
+        \ 'ctrl-x': 'split',
+        \ 'ctrl-v': 'vsplit' }
+      let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
