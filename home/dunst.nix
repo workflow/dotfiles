@@ -43,11 +43,11 @@ in
         #   mouse: follow mouse pointer
         #   keyboard: follow window with keyboard focus
         #   none: don't follow anything
-        # 
+        #
         # "keyboard" needs a windowmanager that exports the
         # _NET_ACTIVE_WINDOW property.
         # This should be the case for almost all modern windowmanagers.
-        # 
+        #
         # If this option is set to mouse or keyboard, the monitor option
         # will be ignored.
         follow = "keyboard";
@@ -154,22 +154,6 @@ in
         word_wrap = false;
       };
 
-      # Shortcuts are specified as [modifier+][modifier+]...key
-      # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-      # "mod3" and "mod4" (windows-key).
-      # Xev might be helpful to find names for keys.
-      shortcuts = {
-        # Close all notification
-        close_all = "ctrl+mod1+space";
-
-        # Context menu
-        # What's thaaat?
-        context = "ctrl+mod1+c";
-
-        # Redisplay last message(s)
-        history = "ctrl+mod1+h";
-      };
-
       urgency_critical = {
         background = urgency_normal.background;
         foreground = urgency_normal.foreground;
@@ -199,7 +183,7 @@ in
       # The script will be called as follows:
       #   script appname summary body icon urgency
       # where urgency can be "LOW", "NORMAL" or "CRITICAL".
-      # 
+      #
       # NOTE: if you don't want a notification to be displayed, set the format
       # to "".
       # NOTE: It might be helpful to run dunst -print in a terminal in order

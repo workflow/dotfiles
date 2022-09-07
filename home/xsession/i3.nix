@@ -224,6 +224,11 @@ in
       # Rofi window switcher
       "${mod}+Shift+d" = ''exec "rofi -show window"'';
 
+      # Dunst shortcuts via dunstctl
+      "${mod}+Ctrl+space" = "exec --no-startup-id dunstctl close-all";
+      "${mod}+Ctrl+c" = "exec --no-startup-id dunstctl context";
+      "${mod}+Ctrl+h" = "exec --no-startup-id dunstctl history-pop";
+
       # Launch Browser
       "${mod}+b" = "exec brave --profile-directory='Default'";
       "${mod}+s" = "exec brave --profile-directory='Profile 1'";
