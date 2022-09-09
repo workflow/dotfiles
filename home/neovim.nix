@@ -24,6 +24,8 @@ in
       set mouse=a
       set number
       set clipboard=unnamedplus
+      set ignorecase
+      set smartcase
 
       noremap h ;
       noremap ; l
