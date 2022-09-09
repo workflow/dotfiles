@@ -28,7 +28,6 @@ let
       pkgs.cargo-edit
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
-      pkgs.vscode-extensions.vadimcn.vscode-lldb # For vimspector Rust debugging
       nixpkgs-unstable.comma
       confluent-cli
       pkgs.dbeaver
@@ -38,13 +37,6 @@ let
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
-      pkgs.element-desktop # Matrix client
-      pkgs.elmPackages.elm
-      pkgs.elmPackages.create-elm-app
-      pkgs.elmPackages.elm-format
-      pkgs.elmPackages.elm-language-server
-      pkgs.elmPackages.elm-test
-      pkgs.exercism
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
@@ -145,8 +137,6 @@ let
       pkgs.syncthingtray
       nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
-      pkgs.telepresence2
-      pkgs.tlaplusToolbox
       pkgs.tldr
       nixpkgs-unstable.todoist-electron
       pkgs.traceroute
