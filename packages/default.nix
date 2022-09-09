@@ -22,7 +22,7 @@ let
       pkgs.binutils
       pkgs.bluez
       pkgs.bluez-tools
-      nixpkgs-master.brave
+      nixpkgs-unstable.brave
       pkgs.brightnessctl
       pkgs.cachix
       pkgs.cargo-edit
