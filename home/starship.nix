@@ -83,7 +83,7 @@
       ];
 
       aws = {
-        enabled = false;
+        disabled = true;
       };
 
       gcloud = {
