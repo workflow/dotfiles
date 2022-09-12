@@ -34,5 +34,6 @@ in
 
   nixpkgs = {
     config.allowUnfree = true;
+    config.permittedInsecurePackages = [ "electron-12.2.3" ]; # For etcher
   };
 }

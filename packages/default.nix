@@ -37,6 +37,7 @@ let
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
+      pkgs.etcher # Bootable USB stick creator
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
