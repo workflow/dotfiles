@@ -42,6 +42,19 @@ in
       noremap <C-w>K <C-w>J
       noremap <C-w>J <C-w>H
 
+      tnoremap <A-j> <C-\><C-N><C-w>h
+      tnoremap <A-k> <C-\><C-N><C-w>j
+      tnoremap <A-l> <C-\><C-N><C-w>k
+      tnoremap <A-;> <C-\><C-N><C-w>l
+      inoremap <A-j> <C-\><C-N><C-w>h
+      inoremap <A-k> <C-\><C-N><C-w>j
+      inoremap <A-l> <C-\><C-N><C-w>k
+      inoremap <A-;> <C-\><C-N><C-w>l
+      nnoremap <A-j> <C-w>h
+      nnoremap <A-k> <C-w>j
+      nnoremap <A-l> <C-w>k
+      nnoremap <A-;> <C-w>l
+
       set shell=/home/farlion/.nix-profile/bin/fish
 
       let mapleader = ' '
