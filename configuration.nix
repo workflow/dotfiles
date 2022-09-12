@@ -21,6 +21,7 @@ in
     ./system/nix-ld.nix
     ./system/power.nix
     ./system/security.nix
+    ./system/steam.nix
     ./system/virtualisation.nix
   ] ++ lib.lists.optional (lib.pathExists nixos-secrets-path) nixos-secrets-path;
 
