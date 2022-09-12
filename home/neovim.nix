@@ -328,6 +328,9 @@ in
       " Simpler highlighting, stolen from https://jakobgm.com/posts/vim/git-integration/
       let g:gitgutter_override_sign_column_highlight = 1
       highlight clear SignColumn
+
+      " Terminal mode
+      tnoremap <Esc> <C-\><C-n>
     '';
 
     plugins = with pkgs.vimPlugins; [
