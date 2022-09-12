@@ -2,6 +2,8 @@
 let
   coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
 
+  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+
   updated-copilot-vim = pkgs.vimUtils.buildVimPlugin rec {
     pname = "github-copilot-vim";
     version = "1.4.2";
@@ -14,7 +16,6 @@ let
   };
 
   sources = import ../nix/sources.nix;
-
 in
 {
   programs.neovim = {
@@ -328,7 +329,7 @@ in
       coc-nvim
       coc-pairs
       coc-prettier
-      coc-rust-analyzer
+      nixpkgs-unstable.vimPlugins.coc-rust-analyzer
       coc-tabnine
       coc-tsserver
       coc-vimlsp
