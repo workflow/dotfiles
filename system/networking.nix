@@ -20,6 +20,10 @@ in
     '';
   };
 
+  networking.extraHosts = ''
+    127.0.0.1  redpanda.default
+  '';
+
   # Tailscale
   services.tailscale.enable = true;
   # Strict reverse path filtering breaks Tailscale exit node us and some subnet routing setups.

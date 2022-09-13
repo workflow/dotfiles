@@ -68,6 +68,7 @@ let
       pkgs.k9s
       pkgs.kbdd # XKB Daemon
       pkgs.killall
+      pkgs.kind
       pkgs.kubectl
       pkgs.kubectx
       pkgs.lame
