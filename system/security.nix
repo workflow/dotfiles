@@ -6,4 +6,9 @@
   '';
 
   services.fwupd.enable = true;
+
+  security.pam.yubico = {
+    enable = true;
+    mode = "challenge-response";
+  };
 }

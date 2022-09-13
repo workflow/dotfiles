@@ -118,6 +118,10 @@ in
     allowUnfree = true;
   };
 
+  pam.yubico.authorizedYubiKeys.ids = [
+    "cccccchvrtfg"
+  ];
+
   programs = {
     bat = {
       config = {
