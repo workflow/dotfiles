@@ -317,6 +317,7 @@ in
       nnoremap <leader>gps :Git! push<CR>
       nnoremap <leader>gpf :Git! push --force-with-lease<CR>
       nnoremap <leader>gpl :Git! pull<CR>
+      nnoremap <leader>gpn :Git! push -u origin HEAD<CR>
 
       " Git-gutter
       " Use fontawesome icons as signs - stolen from https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
