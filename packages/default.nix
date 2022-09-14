@@ -89,6 +89,7 @@ let
       pkgs.nethogs
       pkgs.networkmanagerapplet
       pkgs.newman
+      pkgs.ngrok
       pkgs.niv
       pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
       nixpkgs-unstable.nixfmt
