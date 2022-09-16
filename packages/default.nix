@@ -80,7 +80,6 @@ let
       pkgs.lsof
       pkgs.lz4 # compression
       pkgs.manix
-      nixpkgs-unstable.materialize
       pkgs.megacmd
       pkgs.minikube
       pkgs.nmap
