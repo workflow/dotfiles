@@ -54,7 +54,7 @@ in
       nnoremap <A-l> <C-w>k
       nnoremap <A-;> <C-w>l
 
-      set shell=/home/farlion/.nix-profile/bin/fish
+      set shell=/etc/profiles/per-user/farlion/bin/fish
 
       let mapleader = ' '
       let maplocalleader = ','
