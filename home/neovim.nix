@@ -310,7 +310,7 @@ in
       nnoremap <leader>ge :Gedit<CR>
       nnoremap <leader>gr :Gread<CR>
       nnoremap <leader>gw :Gwrite<CR>
-      nnoremap <leader>gm :GMove<CR>
+      nnoremap <leader>gm :GMove
       nnoremap <leader>gb :Git checkout -b<Space>
       nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gl :Gclog<CR>
