@@ -143,6 +143,10 @@ services.xserver = {
 1. Rerun `n`
 1. Reboot
 
+## Useful notes
+
+[Useful Notes](NOTES.md)
+
 ## Acknowledgements
 
 A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
