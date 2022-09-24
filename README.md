@@ -1,6 +1,6 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-Current version: 22.05
+Current version: 22.05 (+flakes)
 
 ![neofetch boar](assets/neofetch-boar.png)
 
@@ -112,18 +112,17 @@ services.xserver = {
 
 ## Enable this setup
 
-(`$CONFIG` is the location of this repo)
+(`$NIXOS_CONFIG` is the location of this repo)
 
 1. change your name to `farlion` because it's hardcoded in the configurations
 1. `passwd farlion` and then `su`
-1. `git clone https://github.com/workflow/nixos-config.git $CONFIG`
-1. Add `$CONFIG/configuration.nix` to the imports in `/etc/nixos/configuration.nix` (sample configuration is in `assets`)
-1. Add `$CONFIG/nixos-config/hardware-configuration.nix` to the same list
-1. From`$CONFIG/assets/root-configuration-*.nix` as a template, set required settings like the `networking.hostname` and the correct networking interfaces to enable DHCP
+1. `git clone https://github.com/workflow/nixos-config.git $NIXOS_CONFIG`
+1. From`$NIXOS_CONFIG/machines/*.nix` as a template, set required settings like the `networking.hostname` and the correct networking interfaces to enable DHCP
 1. `sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware`
 1. `sudo nix-channel --update`
 1. `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`)
-1. `sudo nixos-rebuild switch`
+1. Update flake.nix with new machine (preferably name = hostname)
+1. `sudo nixos-rebuild switch --flake $NIXOS_CONFIG#<machine name, empty if hostname>`
 1. Reboot
 
 ## Post-installation steps
@@ -131,8 +130,8 @@ services.xserver = {
 1. On an existing syncthing device, mutually add the new device
 1. Push addition of new syncthing device + folder sharing settins on old device
 1. On new device, Accept new folders as "Receive only" (check the path is correct!) on new device and let it sync
-1. Push any local `$CONFIG` config changes to github
-1. Remove local `$CONFIG` and symlink it to `~/code/nixos-config`
+1. Push any local `$NIXOS_CONFIG` config changes to github
+1. Remove local `$NIXOS_CONFIG` and symlink it to `~/code/nixos-config`
 1. Symlink `~/nixos-secrets` to `~/code/nixos-secrets`
 1. Copy and symlink `/etc/nixos/configuration` to a new asset file under `assets/`
 1. Change `root` passwd

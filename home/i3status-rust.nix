@@ -1,5 +1,5 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, hostName, ... }:
 let
   soundBlockMappings = {
     "boar" = {
@@ -58,12 +58,9 @@ let
       format = "{speed_down;K*b} {speed_up;K*b}";
     }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
 
-  # https://github.com/nix-community/home-manager/issues/393
-  # Should not access the global scope here, but hey, it works
-  isBoar = sysconfig.networking.hostName == "boar";
-  isTopbox = sysconfig.networking.hostName == "topbox";
-  isFlexbox = sysconfig.networking.hostName == "flexbox";
-  sysconfig = (import <nixpkgs/nixos> { }).config;
+  isBoar = hostName == "boar";
+  isTopbox = hostName == "topbox";
+  isFlexbox = hostName == "flexbox";
 
 in
 {
@@ -132,7 +129,7 @@ in
             format = "{output_description} {volume}";
             on_click = "pavucontrol --tab=4";
             device_kind = "source";
-            mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
+            mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
           }
           {
@@ -140,7 +137,7 @@ in
             driver = "pulseaudio";
             format = "{output_description} {volume}";
             on_click = "pavucontrol --tab=3";
-            mappings = lib.attrsets.attrByPath [ "${sysconfig.networking.hostName}" ] { } soundBlockMappings;
+            mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
           }
           {

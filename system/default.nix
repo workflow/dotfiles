@@ -26,13 +26,6 @@
     };
   };
 
-  networking.networkmanager = {
-    enable = true;
-    plugins = [ pkgs.networkmanager-l2tp ];
-  };
-
-  #networking.firewall.allowedTCPPorts = [ 8080 ];
-
   time.timeZone = "Europe/Lisbon";
   # services.tzupdate.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";

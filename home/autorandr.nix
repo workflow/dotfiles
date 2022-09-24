@@ -6,9 +6,7 @@
 
 { pkgs, ... }:
 let
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
-
-  sources = import ../nix/sources.nix;
+  nixpkgs-unstable = pkgs.unstable;
 
 in
 {

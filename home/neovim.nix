@@ -1,8 +1,8 @@
 { pkgs, lib, ... }:
 let
-  coc-flutter-branch = import sources.nixpkgs-vimplugins-coc-flutter { config.allowUnfree = true; };
+  coc-flutter-branch = pkgs.nixpkgs-vimplugins-coc-flutter;
 
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+  nixpkgs-unstable = pkgs.unstable;
 
   updated-copilot-vim = pkgs.vimUtils.buildVimPlugin rec {
     pname = "github-copilot-vim";
@@ -15,7 +15,6 @@ let
     };
   };
 
-  sources = import ../nix/sources.nix;
 in
 {
   programs.neovim = {

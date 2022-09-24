@@ -1,9 +1,5 @@
 # Some settings from https://pastebin.com/S8m1jnY3
-{ lib, pkgs, ... }:
-let
-  sysconfig = (import <nixpkgs/nixos> { }).config;
-  isNvidia = builtins.elem "nvidia" sysconfig.services.xserver.videoDrivers;
-in
+{ isNvidia, lib, pkgs, ... }:
 {
   services.picom = {
     activeOpacity = 0.98;

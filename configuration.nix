@@ -8,8 +8,8 @@ let
 in
 {
   imports = [
+    # TODO: merge this under system/
     ./nix
-    ./nix/home-manager.nix
 
     ./system
     ./system/audio.nix
@@ -23,7 +23,11 @@ in
     ./system/security.nix
     ./system/steam.nix
     ./system/virtualisation.nix
-  ] ++ lib.lists.optional (lib.pathExists nixos-secrets-path) nixos-secrets-path;
+
+    ./hardware-configuration.nix
+
+  ]
+  ++ lib.lists.optional (lib.pathExists nixos-secrets-path) nixos-secrets-path;
 
   environment.systemPackages = packages;
 }

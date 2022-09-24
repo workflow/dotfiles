@@ -20,9 +20,7 @@ let
     ./home/xsession
   ] ++ secretImports;
 
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
-
-  nur = import sources.NUR { inherit pkgs; };
+  nixpkgs-unstable = pkgs.unstable;
 
   profile = pkgs.callPackage ./lib/profile.nix { };
 
@@ -32,14 +30,22 @@ let
     ../nixos-secrets/home/secrets.nix
   ];
 
-  sources = import ./nix/sources.nix;
-
 in
 {
 
   _module.args = { inherit profile; };
 
   home = {
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    stateVersion = "22.05";
+
     file = {
       # ~/bin
       # Declaratively configure Mega backups
@@ -47,6 +53,9 @@ in
 
       # Dlfile (reverse drag-and-drop with dragon)
       "bin/dlfile" = { text = scripts.dlfile; executable = true; };
+
+      # Nixos script wrapper
+      "bin/nixos" = { text = scripts.nixos; executable = true; };
 
       # gh (Github CLI)
       ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
@@ -99,17 +108,9 @@ in
 
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";
+      NIXOS_CONFIG = "$HOME/nixos-config";
     };
 
-    # This value determines the Home Manager release that your
-    # configuration is compatible with. This helps avoid breakage
-    # when a new Home Manager release introduces backwards
-    # incompatible changes.
-    #
-    # You can update Home Manager without changing this value. See
-    # the Home Manager release notes for a list of state version
-    # changes in each release.
-    stateVersion = "20.03";
   };
 
   inherit imports;
@@ -137,10 +138,6 @@ in
 
     firefox = {
       enable = true;
-      # extensions = with nur.repos.rycee.firefox-addons; [
-      #   lastpass-password-manager
-      #   privacy-badger
-      # ];
       profiles = {
         main = { };
       };

@@ -31,8 +31,11 @@ in
 
   # RMview Remarkable 2 Screensharing
   networking.firewall.allowedUDPPorts = [ 5901 ];
-  #networking.firewall.allowedTCPPorts = [ 5900 ];
 
+  networking.networkmanager = {
+    enable = true;
+    plugins = [ pkgs.networkmanager-l2tp ];
+  };
 
   networking.nameservers = [
     "1.1.1.1"

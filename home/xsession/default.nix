@@ -4,9 +4,7 @@ let
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
-
-  sources = import ../../nix/sources.nix;
+  nixpkgs-unstable = pkgs.unstable;
 
 in
 {

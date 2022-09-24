@@ -1,9 +1,4 @@
 { pkgs, ... }:
-let
-
-  sources = import ./sources.nix;
-
-in
 {
 
   nix = {
@@ -24,11 +19,8 @@ in
     '';
 
     nixPath = [
-      "nixpkgs=${sources.nixos}"
-      "nixos-config=/etc/nixos/configuration.nix"
-      "nixos-hardware=${sources.nixos-hardware}"
-      "nixpkgs-unstable=${sources.nixpkgs-unstable}"
-      "nur=${sources.NUR}"
+      "nixpkgs=${pkgs.path}"
+      "nixpkgs-unstable=${pkgs.unstable.path}"
     ];
   };
 

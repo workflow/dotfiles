@@ -1,10 +1,6 @@
 { pkgs, ... }:
 let
-  sources = import ../nix/sources.nix;
-
-  nixpkgs-unstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
-  nixpkgs-master = import sources.nixpkgs-master { config.allowUnfree = true; };
-  nixos-unstable = import sources.nixos-unstable { config.allowUnfree = true; };
+  nixpkgs-unstable = pkgs.unstable;
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
   rmview = pkgs.libsForQt5.callPackage ./rmview { };

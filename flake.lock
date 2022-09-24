@@ -1,0 +1,116 @@
+{
+  "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1657887110,
+        "narHash": "sha256-8VV0/kZed2z8fGtEc2zr+WLxTow+JTIlMjnSisyv0GQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "4c5106ed0f3168ff2df21b646aef67e86cbfc11c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "4c5106ed0f3168ff2df21b646aef67e86cbfc11c",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1653463224,
+        "narHash": "sha256-bUxKhqZhki2vPzFTl8HOo1m7pagF7WzY1MZiso8U5ws=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "39a7bfc496d2ddfce73fe9542af1f2029ba4fe39",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "39a7bfc496d2ddfce73fe9542af1f2029ba4fe39",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1663939948,
+        "narHash": "sha256-tZROWStjk7aXbM6XTbspRb9dSk/4lw7EFBOrt2A09Ag=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7e27b838cd7ac90fed03d0d5a8487848c4b0b6d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1662096612,
+        "narHash": "sha256-R+Q8l5JuyJryRPdiIaYpO5O3A55rT+/pItBrKcy7LM4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "21de2b973f9fee595a7a1ac4693efff791245c34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "21de2b973f9fee595a7a1ac4693efff791245c34",
+        "type": "github"
+      }
+    },
+    "nixpkgs-vimplugins-coc-flutter": {
+      "locked": {
+        "lastModified": 1649148490,
+        "narHash": "sha256-t1A4ybq0CcKi5ruIjWUB+LG9Y35YhgD4a+G04QY7azQ=",
+        "owner": "workflow",
+        "repo": "nixpkgs",
+        "rev": "b8ff1009091486567bc217052b80184ab7077d71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "workflow",
+        "repo": "nixpkgs",
+        "rev": "b8ff1009091486567bc217052b80184ab7077d71",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixpkgs-vimplugins-coc-flutter": "nixpkgs-vimplugins-coc-flutter"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
