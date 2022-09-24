@@ -1,8 +1,8 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-Current version: 21.11
+Current version: 22.05
 
-![neofetch nixbox](assets/neofetch-nixbox.png)
+![neofetch boar](assets/neofetch-boar.png)
 
 # NixOS configuration
 
@@ -146,3 +146,7 @@ services.xserver = {
 ## Acknowledgements
 
 A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
+
+## History
+
+![neofetch nixbox](assets/archive/neofetch-nixbox.png)
