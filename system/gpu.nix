@@ -1,0 +1,6 @@
+{ pkgs, ... }:
+
+{
+  boot.blacklistedKernelModules = [ "nouveau" ];
+}
+

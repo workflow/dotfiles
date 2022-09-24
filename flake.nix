@@ -33,7 +33,8 @@
           { nixpkgs.overlays = [ (_: _: overlays) ]; }
           nixpkgs.nixosModules.notDetected
 
-          ./machines/boar.nix
+          ./machines/boar/hardware-scan.nix
+          ./machines/boar/system.nix
 
           ./configuration.nix
 

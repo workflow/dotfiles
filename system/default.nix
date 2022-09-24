@@ -1,12 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-
   boot.cleanTmpDir = true;
 
+  # Writes to /etc/sysctl.d/60-nixos.conf
   boot.kernel.sysctl = {
     # Enable all magic sysrq commands (NixOS sets this to 16, which enables sync only)
     "kernel.sysrq" = 1;
+
+    "vm.swappiness" = 0;
   };
 
   # https://github.com/NixOS/nixpkgs/issues/64965
@@ -30,8 +32,15 @@
   # services.tzupdate.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
-  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
+  hardware.bluetooth.enable = true;
+  services.logind.lidSwitch = "lock";
+
+  services.hardware.bolt.enable = true;
 
   services.printing.enable = true;
   services.printing.drivers = [
@@ -59,5 +68,4 @@
 
   # Sysdig + kernel module
   programs.sysdig.enable = true;
-
 }

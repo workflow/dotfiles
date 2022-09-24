@@ -8,7 +8,6 @@ let
 in
 {
   imports = [
-    # TODO: merge this under system/
     ./nix
 
     ./system
@@ -17,14 +16,13 @@ in
     ./system/fonts.nix
     ./system/keyboard.nix
     ./system/ledgerlive.nix
+    ./system/gpu.nix
     ./system/networking.nix
     ./system/nix-ld.nix
     ./system/power.nix
     ./system/security.nix
     ./system/steam.nix
     ./system/virtualisation.nix
-
-    ./hardware-configuration.nix
 
   ]
   ++ lib.lists.optional (lib.pathExists nixos-secrets-path) nixos-secrets-path;
