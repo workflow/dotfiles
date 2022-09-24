@@ -10,9 +10,13 @@
       url = "github:nix-community/home-manager/4c5106ed0f3168ff2df21b646aef67e86cbfc11c";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    secrets = {
+      url = "path:/home/farlion/code/nixos-secrets";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-vimplugins-coc-flutter, nixos-hardware, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-vimplugins-coc-flutter, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
         nixpkgs-vimplugins-coc-flutter = import nixpkgs-vimplugins-coc-flutter {
@@ -28,7 +32,11 @@
     {
       nixosConfigurations.boar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          hostName = "boar";
+          inherit inputs;
+          inherit secrets;
+        };
         modules = [
           { nixpkgs.overlays = [ (_: _: overlays) ]; }
           nixpkgs.nixosModules.notDetected
@@ -45,9 +53,10 @@
               useUserPackages = true;
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
-                inherit inputs;
                 hostName = "boar";
                 isNvidia = true;
+                inherit inputs;
+                inherit secrets;
               };
             };
           }

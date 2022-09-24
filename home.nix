@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, secrets, ... }:
 let
   imports = [
     ./home/alacritty.nix
@@ -26,8 +26,8 @@ let
 
   scripts = pkgs.callPackage ./lib/scripts.nix { inherit nixpkgs-unstable; };
 
-  secretImports = lib.optionals (lib.pathExists /home/farlion/code/nixos-secrets) [
-    ../nixos-secrets/home/secrets.nix
+  secretImports = lib.optionals (secrets ? homeManagerSecrets) [
+    secrets.homeManagerSecrets
   ];
 
 in
@@ -85,11 +85,10 @@ in
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
       # Syncthing
-      # As a safety measure, install the config only after synchronization has first happened
-      ".config/syncthing/config.xml" = lib.mkIf (lib.pathExists /home/farlion/code) {
-        source = /home/farlion/code/nixos-secrets/dotfiles/syncthing.xml;
+      ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
+        source = secrets.syncthingConfig;
       };
-      "code/.stignore" = lib.mkIf (lib.pathExists /home/farlion/code) {
+      "code/.stignore" = lib.mkIf (secrets ? syncthingConfig) {
         source = ./dotfiles/stignore_code;
       };
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;

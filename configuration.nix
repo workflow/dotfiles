@@ -1,9 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, secrets, ... }:
 let
 
   packages = pkgs.callPackage ./packages { };
-
-  nixos-secrets-path = /home/farlion/nixos-secrets;
 
 in
 {
@@ -25,7 +23,7 @@ in
     ./system/virtualisation.nix
 
   ]
-  ++ lib.lists.optional (lib.pathExists nixos-secrets-path) nixos-secrets-path;
+  ++ lib.lists.optional (secrets ? systemSecrets) secrets.systemSecrets;
 
   environment.systemPackages = packages;
 }

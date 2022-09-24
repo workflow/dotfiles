@@ -92,7 +92,25 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-vimplugins-coc-flutter": "nixpkgs-vimplugins-coc-flutter"
+        "nixpkgs-vimplugins-coc-flutter": "nixpkgs-vimplugins-coc-flutter",
+        "secrets": "secrets"
+      }
+    },
+    "secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1664062808,
+        "narHash": "sha256-qxZnp73DFtbasI/WEhKElSVsW8gEZSg+n+9yLnTnqr0=",
+        "path": "/home/farlion/code/nixos-secrets",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/farlion/code/nixos-secrets",
+        "type": "path"
       }
     },
     "utils": {
