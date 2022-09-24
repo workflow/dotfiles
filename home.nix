@@ -108,7 +108,7 @@ in
 
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";
-      NIXOS_CONFIG = "$HOME/nixos-config";
+      NIXOS_CONFIG = "$HOME/code/nixos-config/";
     };
 
   };

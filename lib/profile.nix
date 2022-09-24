@@ -77,7 +77,7 @@
 
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
-    n = "sudo nixos-rebuild switch";
+    n = "nixos s";
 
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
 
