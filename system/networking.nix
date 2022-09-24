@@ -49,4 +49,6 @@ in
 
   # Don't wait for dhcpcd while booting on laptops (wifi)
   networking.dhcpcd.wait = lib.mkIf isLaptop "background";
+  # Only wait for a single interface to come up on desktops
+  systemd.network.wait-online.anyInterface = true;
 }
