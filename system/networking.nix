@@ -1,8 +1,5 @@
 { lib, config, pkgs, ... }:
 
-let
-  isLaptop = (config.networking.hostName == "topbox" || config.networking.hostName == "flexbox");
-in
 {
   # Adapting the rpfilter to ignore Wireguard related traffic
   # See https://nixos.wiki/wiki/WireGuard
@@ -47,8 +44,8 @@ in
   # Prevent IPv6 leaks when using VPNs
   networking.enableIPv6 = false;
 
-  # Don't wait for dhcpcd while booting on laptops (wifi)
-  networking.dhcpcd.wait = lib.mkIf isLaptop "background";
-  # Only wait for a single interface to come up on desktops
+  # Don't wait for dhcpcd while booting
+  networking.dhcpcd.wait = "background";
+  # Only wait for a single interface to come up
   systemd.network.wait-online.anyInterface = true;
 }
