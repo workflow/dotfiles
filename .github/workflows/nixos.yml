@@ -14,12 +14,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: "Create Dir for Mounting moar Disk Space ❄"
+        run: |
+          sudo mkdir /nix
+
       - name: "Maximize Disk Space 😈"
         uses: easimon/maximize-build-space@v6
         with:
           root-reserve-mb: 512
           swap-size-mb: 1024
+          build-mount-path: /nix
           remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
 
       - uses: actions/checkout@v3
 
@@ -32,6 +39,9 @@ jobs:
           name: workflow-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       - name: "Build NixOS config ❄️"
         run: |
-          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs --debug --verbose
+          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs
