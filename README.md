@@ -1,8 +1,11 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+[![CI System](https://github.com/workflow/nixos-config/workflows/NixOS/badge.svg)](https://github.com/workflow/nixos-config/actions)
 
-Current version: 22.05 (+flakes)
+Workflow's current — and immutably evolving — NixOS configuration files, home-manager, neovim, etc.
 
 ![neofetch boar](assets/neofetch-boar.png)
+
+![boar](assets/boar_2022-09-26_10-41.png)
 
 # NixOS configuration
 
