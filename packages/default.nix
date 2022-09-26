@@ -147,7 +147,6 @@ let
       pkgs.virt-manager
       pkgs.vlc
       pkgs.vnstat # Network Traffic Monitor
-      nixpkgs-unstable.jetbrains.webstorm
       pkgs.wget
       pkgs.wgetpaste # CLI interface to various pastebins
       pkgs.wireguard-tools
