@@ -149,6 +149,8 @@ services.xserver = {
 
 A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
 
+CI build ~stolen from~ inspired by https://github.com/gvolpe/nix-config
+
 ## History
 
 ![neofetch nixbox](assets/archive/neofetch-nixbox.png)

@@ -1,0 +1,30 @@
+name: NixOS
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "NOTES.md"
+      - ".gitignore"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Install Nix ❄️"
+        uses: cachix/install-nix-action@v17
+
+      - name: "Install Cachix ❄️"
+        uses: cachix/cachix-action@v10
+        with:
+          name: workflow-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: "Build NixOS config ❄️"
+        run: |
+          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs
