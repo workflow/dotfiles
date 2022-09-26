@@ -1,5 +1,5 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
-[![CI System](https://github.com/workflow/nixos-config/workflows/NixOS/badge.svg)](https://github.com/workflow/nixos-config/actions)
+[![NixOS Systems Build](https://github.com/workflow/nixos-config/actions/workflows/nixos.yml/badge.svg)](https://github.com/workflow/nixos-config/actions/)
 
 Workflow's current — and immutably evolving — NixOS configuration files, home-manager, neovim, etc.
 
