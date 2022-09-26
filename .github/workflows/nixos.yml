@@ -34,4 +34,4 @@ jobs:
 
       - name: "Build NixOS config ❄️"
         run: |
-          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs
+          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs --debug --verbose
