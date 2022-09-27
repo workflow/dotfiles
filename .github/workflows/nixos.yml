@@ -12,6 +12,7 @@ on:
 
 jobs:
   build-boar:
+    needs: build-topbox
     runs-on: ubuntu-latest
     steps:
       - name: "Create Dir for Mounting moar Disk Space ❄"
