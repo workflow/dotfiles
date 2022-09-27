@@ -96,5 +96,38 @@
         ];
       };
 
+      nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          hostName = "flexbox";
+          inherit inputs;
+          inherit secrets;
+        };
+        modules = [
+          { nixpkgs.overlays = [ (_: _: overlays) ]; }
+          nixpkgs.nixosModules.notDetected
+
+          ./machines/flexbox/hardware-scan.nix
+          ./machines/flexbox/system.nix
+
+          ./configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.farlion = import ./home.nix;
+              extraSpecialArgs = {
+                hostName = "flexbox";
+                isNvidia = true;
+                inherit inputs;
+                inherit secrets;
+              };
+            };
+          }
+        ];
+      };
+
     };
 }
