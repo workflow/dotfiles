@@ -5,15 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-
-      /home/farlion/nixos-config/configuration.nix
-      /home/farlion/nixos-config/hardware-configuration.nix
-    ];
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage

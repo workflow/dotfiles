@@ -125,6 +125,7 @@ services.xserver = {
 1. `sudo nix-channel --update` -> still needed? 🤔
 1. `sudo mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/farlion` (for `home-manager`) -> still needed? 🤔
 1. Update flake.nix with new machine (preferably name = hostname)
+1. `nix shell nixpkgs#cachix -c cachix use workflow-nixos-config`
 1. `sudo nixos-rebuild switch --flake $NIXOS_CONFIG#<machine name, empty if hostname> --override-input secrets nixpkgs`
 1. Reboot
 
