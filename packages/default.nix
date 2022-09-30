@@ -113,6 +113,7 @@ let
       pkgs.pup # Streaming HTML processor/selector
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
+      pkgs.q-text-as-data # https://github.com/harelba/q
       pkgs.ripgrep
       rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp

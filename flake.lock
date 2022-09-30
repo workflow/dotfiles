@@ -103,8 +103,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1664271073,
-        "narHash": "sha256-uPA766MEx7VH4NMV4ushIMLrpEyeKh1KBYgnXzOBmsI=",
+        "lastModified": 1664280362,
+        "narHash": "sha256-VWQHxHYQwq7sEi+Uhgyx0jLxFkAFPKEF3qHwA16FjqQ=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
