@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/21de2b973f9fee595a7a1ac4693efff791245c34";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-vimplugins-coc-flutter.url = "github:workflow/nixpkgs/b8ff1009091486567bc217052b80184ab7077d71";
     nixos-hardware.url = "github:nixos/nixos-hardware/39a7bfc496d2ddfce73fe9542af1f2029ba4fe39";
     home-manager = {
