@@ -88,6 +88,8 @@ in
       ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
         source = secrets.syncthingConfig;
       };
+
+      # Set ignore files only when code/ dir is present (flake mode)
       "code/.stignore" = lib.mkIf (secrets ? syncthingConfig) {
         source = ./dotfiles/stignore_code;
       };
