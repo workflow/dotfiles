@@ -13,8 +13,6 @@
     {
       device = "/dev/disk/by-uuid/647ff1a6-e9a1-425b-99ee-806fd2dc25d5";
       fsType = "ext4";
-      # TODO: Move to hardware-overrides
-      options = [ "noatime" "nodiratime" ]; # SSD Optimizations
     };
 
   fileSystems."/boot" =

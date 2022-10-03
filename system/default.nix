@@ -18,6 +18,9 @@
     '';
   };
 
+  # Default SSD Optimizations
+  fileSystems."/".options = [ "noatime" "nodiratime" ];
+
   users = {
     users.farlion = {
       description = "Florian Peter";
