@@ -47,6 +47,11 @@ in
     stateVersion = "22.05";
 
     file = {
+      # Cargo
+      ".cargo/config.toml" = lib.mkIf (secrets ? cargoConfig) {
+        source = secrets.cargoConfig;
+      };
+
       # ~/bin
       # Declaratively configure Mega backups
       "bin/configure-mega-backup" = { text = scripts.configure-mega-backup; executable = true; };
