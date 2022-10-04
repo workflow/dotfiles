@@ -20,6 +20,9 @@ let
     ./home/xsession
   ] ++ secretImports;
 
+  # Requires --impure
+  isFullSetup = lib.pathExists /home/farlion/code;
+
   nixpkgs-unstable = pkgs.unstable;
 
   profile = pkgs.callPackage ./lib/profile.nix { };
@@ -90,12 +93,11 @@ in
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
       # Syncthing
-      ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
+      ".config/syncthing/config.xml" = lib.mkIf (isFullSetup && secrets ? syncthingConfig) {
         source = secrets.syncthingConfig;
       };
 
-      # Set ignore files only when code/ dir is present (flake mode)
-      "code/.stignore" = lib.mkIf (secrets ? syncthingConfig) {
+      "code/.stignore" = lib.mkIf isFullSetup {
         source = ./dotfiles/stignore_code;
       };
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
