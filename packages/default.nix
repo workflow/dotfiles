@@ -78,6 +78,7 @@ let
       pkgs.lz4 # compression
       pkgs.manix
       pkgs.megacmd
+      pkgs.microplane # Make changes accross many git repos
       pkgs.minikube
       nixpkgs-unstable.mold
       pkgs.nmap
