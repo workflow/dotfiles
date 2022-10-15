@@ -183,6 +183,10 @@ in
       '';
     };
 
+    vscode = {
+      enable = true;
+    };
+
   };
 
   qt = {
