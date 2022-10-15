@@ -331,6 +331,9 @@ in
 
       " Terminal mode
       tnoremap <Esc> <C-\><C-n>
+
+      " Vim Visual Multi
+      let g:VM_custom_motions  = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -384,6 +387,7 @@ in
       vim-textobj-entire
       vim-toml
       vim-unimpaired
+      vim-visual-multi
     ];
 
     viAlias = true;
