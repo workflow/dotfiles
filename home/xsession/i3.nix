@@ -303,6 +303,9 @@ in
 
       # Launch syncthingtray
       { command = "sleep 10s && syncthingtray --wait"; notification = false; }
+
+      # Autotiling
+      { command = "autotiling"; notification = false; always = true; }
     ];
 
     terminal = "alacritty";

@@ -12,6 +12,7 @@ let
       pkgs.arandr
       pkgs.asciinema
       pkgs.audio-recorder
+      nixpkgs-unstable.autotiling # autotiling script for i3
       pkgs.awscli2
       pkgs.bc
       pkgs.bind # Provides dig
