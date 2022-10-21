@@ -329,9 +329,6 @@ in
       let g:gitgutter_override_sign_column_highlight = 1
       highlight clear SignColumn
 
-      " Terminal mode
-      tnoremap <Esc> <C-\><C-n>
-
       " Vim Visual Multi
       let g:VM_custom_motions  = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
     '';
