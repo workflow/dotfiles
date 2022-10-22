@@ -330,7 +330,8 @@ in
       highlight clear SignColumn
 
       " Vim Visual Multi
-      let g:VM_custom_motions  = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
+      let g:VM_custom_motions = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
+      let g:VM_mouse_mappings = 1
     '';
 
     plugins = with pkgs.vimPlugins; [
