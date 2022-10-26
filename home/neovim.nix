@@ -332,6 +332,9 @@ in
       " Vim Visual Multi
       let g:VM_custom_motions = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
       let g:VM_mouse_mappings = 1
+
+      " Leap
+      lua require('leap').add_default_mappings()
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -369,6 +372,7 @@ in
       vim-helm
       vim-highlightedyank
       vim-jsonnet
+      nixpkgs-unstable.vimPlugins.leap-nvim
       lf-vim
       nerdtree
       vim-nix
