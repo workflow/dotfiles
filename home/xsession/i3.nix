@@ -330,6 +330,7 @@ in
 
   extraConfig = ''
     default_border pixel 1
+    for_window [class="^.*"] border pixel 1
 
     bindsym ${mod}+Ctrl+x --release exec --no-startup-id xkill
 
