@@ -236,6 +236,8 @@ in
       # System Mode
       "${mod}+Pause" = "mode \"${mode_system}\"";
 
+      # Invert Colors
+      "${mod}+i" = "exec --no-startup-id xrandr-invert-colors";
     };
 
     menu = "rofi -modi run#calc#emoji -show run -icon-theme \"Papirus\" -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"'";
