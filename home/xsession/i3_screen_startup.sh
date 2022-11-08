@@ -2,7 +2,7 @@
 set -euo pipefail
 
 autorandr flexbox || true
-autorandr flexbox-intel || true
+autorandr flexbox-intel-lo-res || true
 autorandr sophia || true
 autorandr boar || true
 autorandr caparica || true
