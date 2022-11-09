@@ -13,7 +13,7 @@
   # Switching to beta for https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/36
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  # LUKS over LVM
+  # LVM on LUKS 
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/74d4c5f3-f5fe-4aba-ac7a-56b0d28efc64";

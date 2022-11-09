@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  boot.loader.systemd-boot.editor = false;
 
   security.sudo.extraConfig = ''
     Defaults:root,%wheel timestamp_timeout=30

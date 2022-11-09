@@ -17,6 +17,7 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
+  boot.consoleLogLevel = 7;
 
   # Fix audio
   # TODO: Upstream these modules to nixpkgs
@@ -51,6 +52,7 @@ in
     Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
   '';
 
+  # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/nvme0n1p4";
