@@ -200,7 +200,15 @@ in
   services = {
     lorri.enable = true;
 
-    flameshot.enable = true;
+    flameshot = {
+      package = nixpkgs-unstable.flameshot;
+      enable = true;
+      settings = {
+        General = {
+          copyPathAfterSave = true;
+        };
+      };
+    };
 
     network-manager-applet.enable = true;
 
