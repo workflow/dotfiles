@@ -350,6 +350,7 @@ in
       coc-pairs
       coc-prettier
       nixpkgs-unstable.vimPlugins.coc-rust-analyzer
+      nixpkgs-unstable.vimPlugins.coc-sqlfluff
       coc-tabnine
       coc-tsserver
       coc-vimlsp

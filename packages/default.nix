@@ -133,6 +133,7 @@ let
       pkgs.python38Packages.speedtest-cli
       pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
       nixpkgs-unstable.spotify
+      nixpkgs-unstable.sqlfluff
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
