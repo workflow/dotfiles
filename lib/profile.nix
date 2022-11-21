@@ -62,6 +62,8 @@
     gsa = "git stash apply";
 
     ghco = "gh pr checkout";
+    ghpa = "gh pr review --approve";
+    ghmr = "gh pr merge -r";
 
     gmailctlp = "gmailctl --config ~/.gmailctl/playbooks/";
 
