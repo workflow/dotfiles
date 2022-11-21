@@ -31,7 +31,7 @@ let
       pkgs.dbeaver
       pkgs.dconf
       pkgs.deluge
-      pkgs.discord
+      nixpkgs-unstable.discord
       pkgs.duplicati
       pkgs.dunst
       pkgs.efivar
