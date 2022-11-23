@@ -44,9 +44,6 @@
   "yaml.format.bracketSpacing": true,
   "yaml.hover": true,
   "yaml.completion": true,
-  "yaml.schemas": {
-    "kubernetes": "/*.yaml"
-  },
   "diagnostic-languageserver.filetypes": {
     "markdown": ["write-good", "markdownlint"],
     "sh": "shellcheck",
