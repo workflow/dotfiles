@@ -8,12 +8,19 @@
   };
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
+  # External monitors brightness control
+  # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/11
+  boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
+  security.sudo.extraRules = [
+    { users = [ "farlion" ]; commands = [{ command = "/home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; options = [ "NOPASSWD" "SETENV" ]; }]; }
+  ];
+
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
   # Switching to beta for https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/36
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  # LVM on LUKS 
+  # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/74d4c5f3-f5fe-4aba-ac7a-56b0d28efc64";

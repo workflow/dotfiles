@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hostName, ... }:
 let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
@@ -18,7 +18,7 @@ in
     x11.enable = true;
   };
 
-  xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs; };
+  xsession.windowManager.i3 = import ./i3.nix { inherit lib nixpkgs-unstable pkgs hostName; };
 
   xsession.profileExtra = ''
     eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=secrets,ssh,pkcs11)

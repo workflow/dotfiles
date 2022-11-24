@@ -117,9 +117,13 @@ in
         ++ netBlocks
         ++ [
           {
-            block = if isBoar then "xrandr" else "backlight";
-            # To workaround the xrandr block hanging, see https://github.com/greshake/i3status-rust/blob/v0.22.0/doc/blocks.md#xrandr
-            interval = lib.mkIf isBoar 60;
+            block = "backlight";
+          }
+        ]
+        ++ lib.lists.optionals isBoar [
+          {
+            block = "backlight";
+            device = "ddcci3";
           }
         ]
         ++ [

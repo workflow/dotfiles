@@ -1,11 +1,14 @@
 { lib
 , nixpkgs-unstable
 , pkgs
+, hostName
 }:
 let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
+
+  isBoar = hostName == "boar";
 
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
 
@@ -308,7 +311,13 @@ in
 
       # Autotiling
       { command = "autotiling &"; notification = false; always = true; }
-    ];
+    ]
+    ++ lib.lists.optionals isBoar
+      [
+        # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/10
+        # For some reason this has to run from userland, after the xSession is started
+        { command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; notification = false; }
+      ];
 
     terminal = "alacritty";
 

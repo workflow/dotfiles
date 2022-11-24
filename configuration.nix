@@ -18,6 +18,7 @@ in
     ./system/networking.nix
     ./system/nix-ld.nix
     ./system/power.nix
+    ./system/screens.nix
     ./system/security.nix
     ./system/steam.nix
     ./system/virtualisation.nix
