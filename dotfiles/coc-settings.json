@@ -35,6 +35,15 @@
 
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.checkOnSave.extraArgs": [
+    "--workspace",
+    "--",
+    "-D",
+    "warnings",
+    "-D",
+    "clippy::all"
+  ],
+  "rust-analyzer.checkOnSave.features": "all",
   "rust-analyzer.lru.capacity": 1024,
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.debug.vimspector.configuration.name": "Run - CodeLLDB",
