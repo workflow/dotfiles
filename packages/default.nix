@@ -54,6 +54,7 @@ let
       pkgs.gptfdisk # gdisk
       pkgs.gucharmap
       pkgs.hamster
+      pkgs.hardinfo # Hardware/System Info
       pkgs.hicolor-icon-theme # Needed for solaar
       pkgs.i3lock-pixeled
       pkgs.iftop
