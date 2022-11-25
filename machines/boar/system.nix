@@ -17,8 +17,6 @@
 
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
-  # Switching to beta for https://forums.developer.nvidia.com/t/bug-nvidia-v495-29-05-driver-spamming-dbus-enabled-applications-with-invalid-messages/192892/36
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   # LVM on LUKS
   boot.initrd.luks.devices = {
