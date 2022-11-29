@@ -27,6 +27,8 @@ in
       set ignorecase
       set smartcase
 
+      set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
       noremap h ;
       noremap ; l
       noremap l k
