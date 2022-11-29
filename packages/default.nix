@@ -31,6 +31,7 @@ let
       pkgs.dbeaver
       pkgs.dconf
       pkgs.deluge
+      pkgs.delta # Syntax highlighter for git
       nixpkgs-unstable.discord
       pkgs.duplicati
       pkgs.dunst
