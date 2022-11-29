@@ -337,6 +337,14 @@ in
 
       " Leap
       lua require('leap').add_default_mappings()
+
+      " Vim-test
+      let test#strategy = "floaterm"
+      nmap <silent> <leader>tt :TestNearest<CR>
+      nmap <silent> <leader>tT :TestFile<CR>
+      nmap <silent> <leader>ta :TestSuite<CR>
+      nmap <silent> <leader>tl :TestLast<CR>
+      nmap <silent> <leader>tg :TestVisit<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -389,6 +397,7 @@ in
       vimspector
       vim-startify
       vim-surround
+      vim-test
       vim-textobj-entire
       vim-toml
       vim-unimpaired
