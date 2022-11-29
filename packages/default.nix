@@ -126,6 +126,7 @@ let
       pkgs.shellcheck
       pkgs.shfmt
       nixpkgs-unstable.signal-desktop
+      nixpkgs-unstable.skaffold
       pkgs.skypeforlinux
       pkgs.slack
       pkgs.smartmontools
