@@ -84,6 +84,7 @@ let
       pkgs.microplane # Make changes accross many git repos
       pkgs.minikube
       nixpkgs-unstable.mold
+      pkgs.mpv # video player
       pkgs.nmap
       pkgs.ncdu # Disk Space Visualization
       pkgs.neofetch
