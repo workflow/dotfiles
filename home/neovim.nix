@@ -340,6 +340,7 @@ in
 
       " Vim-test
       let test#strategy = "floaterm"
+      let g:test#rust#runner = 'cargonextest'
       nmap <silent> <leader>tt :TestNearest<CR>
       nmap <silent> <leader>tT :TestFile<CR>
       nmap <silent> <leader>ta :TestSuite<CR>

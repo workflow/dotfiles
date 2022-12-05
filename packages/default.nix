@@ -24,6 +24,7 @@ let
       pkgs.btop
       pkgs.cachix
       pkgs.cargo-edit
+      pkgs.cargo-nextest
       pkgs.chafa # Images to terminal pixels
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
