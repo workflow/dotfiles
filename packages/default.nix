@@ -31,6 +31,7 @@ let
       confluent-cli
       pkgs.dbeaver
       pkgs.dconf
+      pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
       pkgs.deluge
       pkgs.delta # Syntax highlighter for git
       nixpkgs-unstable.discord
