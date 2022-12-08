@@ -25,7 +25,11 @@
     menuOpacity = 0.98;
 
     shadow = true;
-    shadowExclude = [ "n:e:Notification" ];
+    shadowExclude = [
+      "n:e:Notification"
+      "name = 'cpt_frame_xcb_window'" # Zoom screen sharing
+      "class_g ?= 'zoom'" # Zoom screen sharing
+    ];
     shadowOffsets = [ (-15) (-15) ];
     shadowOpacity = 0.7;
 
