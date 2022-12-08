@@ -346,6 +346,9 @@ in
       nmap <silent> <leader>ta :TestSuite<CR>
       nmap <silent> <leader>tl :TestLast<CR>
       nmap <silent> <leader>tg :TestVisit<CR>
+
+      " Background light/dark toggling
+      nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
