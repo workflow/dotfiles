@@ -146,6 +146,7 @@ let
       pkgs.syncthingtray
       nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
+      pkgs.thefuck
       pkgs.tldr
       nixpkgs-unstable.todoist-electron
       pkgs.traceroute

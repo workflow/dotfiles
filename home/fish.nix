@@ -178,6 +178,7 @@ let
     end
 
     set PATH ${path} $PATH
+    thefuck --alias | source
 
     ${variables}
     ${theme}
