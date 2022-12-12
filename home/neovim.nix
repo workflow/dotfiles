@@ -357,7 +357,7 @@ in
 
       coc-css
       coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
-      coc-flutter-branch.vimPlugins.coc-flutter
+      #coc-flutter-branch.vimPlugins.coc-flutter
       coc-html
       coc-json
       coc-nvim
