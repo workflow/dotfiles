@@ -361,7 +361,6 @@ in
       coc-html
       coc-json
       coc-nvim
-      coc-pairs
       coc-prettier
       nixpkgs-unstable.vimPlugins.coc-rust-analyzer
       nixpkgs-unstable.vimPlugins.coc-sqlfluff
