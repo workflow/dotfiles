@@ -14,6 +14,7 @@
 
     settings = {
       no-fading-openclose = true;
+      invert-color-include = [ "TAG_INVERT@:8c = 1" ];
     };
 
     fade = true;

@@ -240,7 +240,8 @@ in
       "${mod}+Pause" = "mode \"${mode_system}\"";
 
       # Invert Colors
-      "${mod}+i" = "exec --no-startup-id xrandr-invert-colors";
+      "${mod}+i" = "exec --no-startup-id ~/nixos-config/home/xsession/per_window_color_invert.sh";
+      "${mod}+Shift+i" = "exec --no-startup-id xrandr-invert-colors";
     };
 
     menu = "rofi -modi run#calc#emoji -show run -icon-theme \"Papirus\" -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"'";

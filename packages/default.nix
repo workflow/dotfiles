@@ -166,6 +166,7 @@ let
       pkgs.whois
       pkgs.xawtv # Basic Video4Linux2 device viewer. Example: xawtv -c /dev/video0
       pkgs.xclip
+      pkgs.xdotool
       pkgs.xdragon # drag n drop support
       pkgs.xidlehook
       pkgs.xorg.xkill
