@@ -113,6 +113,7 @@ let
       pkgs.pciutils
       pkgs.pdftk # PDF Manipulation Toolkit
       pkgs.playerctl
+      pkgs.poetry
       pkgs.postgresql
       pkgs.postman
       pkgs.pstree
