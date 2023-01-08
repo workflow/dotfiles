@@ -47,6 +47,7 @@ let
       pkgs.fortune
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
+      pkgs.git-crypt
       pkgs.github-cli
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
