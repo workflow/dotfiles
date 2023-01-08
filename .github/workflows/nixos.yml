@@ -1,4 +1,5 @@
 name: NixOS
+concurrency: nixos
 
 on:
   pull_request:
