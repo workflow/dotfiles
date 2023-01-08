@@ -38,7 +38,16 @@
           inherit secrets;
         };
         modules = [
-          { nixpkgs.overlays = [ (_: _: overlays) ]; }
+          {
+            nix = {
+              registry = {
+                # Pin registry to current nixpkgs in use to speed up `nix search`
+                nixpkgs.flake = nixpkgs;
+              };
+            };
+
+            nixpkgs.overlays = [ (_: _: overlays) ];
+          }
           nixpkgs.nixosModules.notDetected
 
           ./machines/boar/hardware-scan.nix
@@ -71,7 +80,17 @@
           inherit secrets;
         };
         modules = [
-          { nixpkgs.overlays = [ (_: _: overlays) ]; }
+          {
+            nix = {
+              registry = {
+                # Pin registry to current nixpkgs in use to speed up `nix search`
+                nixpkgs.flake = nixpkgs;
+              };
+            };
+
+            nixpkgs.overlays = [ (_: _: overlays) ];
+          }
+
           nixpkgs.nixosModules.notDetected
 
           ./machines/topbox/hardware-scan.nix
@@ -104,7 +123,17 @@
           inherit secrets;
         };
         modules = [
-          { nixpkgs.overlays = [ (_: _: overlays) ]; }
+          {
+            nix = {
+              registry = {
+                # Pin registry to current nixpkgs in use to speed up `nix search`
+                nixpkgs.flake = nixpkgs;
+              };
+            };
+
+            nixpkgs.overlays = [ (_: _: overlays) ];
+          }
+
           nixpkgs.nixosModules.notDetected
 
           ./machines/flexbox/hardware-scan.nix
