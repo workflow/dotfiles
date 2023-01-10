@@ -1,14 +1,14 @@
 { lib
 , nixpkgs-unstable
 , pkgs
-, hostName
+, osConfig
 }:
 let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
-  isBoar = hostName == "boar";
+  isBoar = osConfig.networking.hostName == "boar";
 
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
 

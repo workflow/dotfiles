@@ -33,7 +33,6 @@
       nixosConfigurations.boar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          hostName = "boar";
           inherit inputs;
           inherit secrets;
         };
@@ -62,7 +61,6 @@
               useUserPackages = true;
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
-                hostName = "boar";
                 isNvidia = true;
                 inherit inputs;
                 inherit secrets;
@@ -75,7 +73,6 @@
       nixosConfigurations.topbox = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          hostName = "topbox";
           inherit inputs;
           inherit secrets;
         };
@@ -105,7 +102,6 @@
               useUserPackages = true;
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
-                hostName = "topbox";
                 isNvidia = false;
                 inherit inputs;
                 inherit secrets;
@@ -118,7 +114,6 @@
       nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          hostName = "flexbox";
           inherit inputs;
           inherit secrets;
         };
@@ -148,7 +143,6 @@
               useUserPackages = true;
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
-                hostName = "flexbox";
                 isNvidia = true;
                 inherit inputs;
                 inherit secrets;

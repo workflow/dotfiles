@@ -1,5 +1,5 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ lib, pkgs, hostName, ... }:
+{ lib, pkgs, osConfig, ... }:
 let
   soundBlockMappings = {
     "boar" = {
@@ -58,6 +58,7 @@ let
       format = "{speed_down;K*b} {speed_up;K*b}";
     }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
 
+  hostName = osConfig.networking.hostName;
   isBoar = hostName == "boar";
   isTopbox = hostName == "topbox";
   isFlexbox = hostName == "flexbox";
