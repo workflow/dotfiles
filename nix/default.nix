@@ -2,15 +2,15 @@
 {
 
   nix = {
-    # trusted users for pulling from caches
-    trustedUsers = [ "root" "farlion" "@wheel" "@sudo" ];
-
-    binaryCaches = [
-      "https://cache.nixos.org/"
-    ];
-
-    binaryCachePublicKeys = [
-    ];
+    settings = {
+      # trusted users for pulling from caches
+      trusted-users = [ "root" "farlion" "@wheel" "@sudo" ];
+      substituters = [
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+      ];
+    };
 
     extraOptions = ''
       # For private cachix caches
