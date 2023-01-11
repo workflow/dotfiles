@@ -226,4 +226,14 @@ in
     unclutter.enable = true;
   };
 
+  xdg = {
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = [ "brave-browser.desktop" ];
+        "application/pdf" = [ "okular.desktop" ];
+      };
+    };
+  };
+
 }
