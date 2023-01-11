@@ -14,6 +14,7 @@ let
       pkgs.audio-recorder
       nixpkgs-unstable.autotiling # autotiling script for i3
       pkgs.awscli2
+      pkgs.bats
       pkgs.bc
       pkgs.bind # Provides dig
       pkgs.binutils
@@ -39,6 +40,7 @@ let
       pkgs.dunst
       pkgs.efivar
       pkgs.etcher # Bootable USB stick creator
+      pkgs.exercism
       pkgs.fd
       pkgs.feh
       pkgs.ffmpeg-full
