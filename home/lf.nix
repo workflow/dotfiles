@@ -83,13 +83,12 @@ in
       unarchive = ''
           ''${{
           case "$f" in
-          *.zip) unzip "$f";
-        ;
-        *.tar.gz) tar -xzvf "$f" ;;
-        *.tar.bz2) tar -xjvf "$f" ;;
-        *.tar) tar -xvf "$f" ;;
-        *) echo "Unsupported format" ;;
-        esac
+            *.zip) unzip "$f";;
+            *.tar.gz) tar -xzvf "$f" ;;
+            *.tar.bz2) tar -xjvf "$f" ;;
+            *.tar) tar -xvf "$f" ;;
+            *) echo "Unsupported format" ;;
+          esac
         }}
       '';
     };
