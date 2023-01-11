@@ -44,7 +44,7 @@
     "clippy::all"
   ],
   "rust-analyzer.checkOnSave.features": "all",
-  "rust-analyzer.lru.capacity": 128,
+  "rust-analyzer.lru.capacity": 1280,
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.debug.vimspector.configuration.name": "Run - CodeLLDB",
 
