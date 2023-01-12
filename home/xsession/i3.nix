@@ -233,8 +233,8 @@ in
       "${mod}+Ctrl+h" = "exec --no-startup-id dunstctl history-pop";
 
       # Launch Browser
-      "${mod}+b" = "exec brave --profile-directory='Default'";
-      "${mod}+s" = "exec brave --profile-directory='Profile 1'";
+      "${mod}+b" = "exec brave --profile-directory='Default' --enable-features=VaapiVideoDecoder";
+      "${mod}+s" = "exec brave --profile-directory='Profile 1' --enable-features=VaapiVideoDecoder";
 
       # System Mode
       "${mod}+Pause" = "mode \"${mode_system}\"";
