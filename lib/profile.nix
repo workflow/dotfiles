@@ -60,6 +60,7 @@
     gs = "git status";
     gst = "git stash";
     gsa = "git stash apply";
+    gsp = "git stash pop";
 
     ghco = "gh pr checkout";
     ghpa = "gh pr review --approve";
