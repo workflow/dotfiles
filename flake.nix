@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-vimplugins-coc-flutter.url = "github:workflow/nixpkgs/b8ff1009091486567bc217052b80184ab7077d71";
-    nixos-hardware.url = "github:nixos/nixos-hardware/39a7bfc496d2ddfce73fe9542af1f2029ba4fe39";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
