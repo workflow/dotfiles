@@ -3,18 +3,6 @@ let
   coc-flutter-branch = pkgs.nixpkgs-vimplugins-coc-flutter;
 
   nixpkgs-unstable = pkgs.unstable;
-
-  updated-copilot-vim = pkgs.vimUtils.buildVimPlugin rec {
-    pname = "github-copilot-vim";
-    version = "1.4.2";
-
-    src = pkgs.fetchgit {
-      url = "https://github.com/github/copilot.vim";
-      rev = "c2e75a3a7519c126c6fdb35984976df9ae13f564";
-      hash = "sha256-V13La54aIb3hQNDE7BmOIIZWy7In5cG6kE0fti/wxVQ=";
-    };
-  };
-
 in
 {
   programs.neovim = {
@@ -371,7 +359,7 @@ in
       coc-yaml
 
       vim-commentary
-      updated-copilot-vim
+      nixpkgs-unstable.vimPlugins.copilot-vim
       crates-nvim
       dart-vim-plugin
       vim-devicons
