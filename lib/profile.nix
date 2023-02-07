@@ -86,6 +86,8 @@
 
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
+    nsn = "nix search nixpkgs";
+
     p = "pulumi";
     pu = "pulumi up";
     pcs = "pulumi config set ";
