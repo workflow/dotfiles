@@ -40,8 +40,8 @@
           {
             nix = {
               registry = {
-                # Pin registry to current nixpkgs in use to speed up `nix search`
-                nixpkgs.flake = nixpkgs;
+                # Pin registry to current unstable nixpkgs in use to speed up `nix search`
+                nixpkgs.flake = nixpkgs-unstable;
               };
             };
 
