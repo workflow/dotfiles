@@ -338,6 +338,9 @@ in
 
       " Background light/dark toggling
       nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
+
+      " ChatGPT
+      lua require("chatgpt").setup({ })
     '';
 
     plugins = with pkgs.vimPlugins; [
