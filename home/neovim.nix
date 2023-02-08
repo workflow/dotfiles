@@ -341,6 +341,10 @@ in
 
       " ChatGPT
       lua require("chatgpt").setup({ })
+      nmap <silent> <leader>cc :ChatGPT<CR>
+      nmap <silent> <leader>cp :ChatGPTActAs<CR>
+      nmap <silent> <leader>ce :ChatGPTEditWithInstructions<CR>
+      xmap <silent> <leader>ce :<C-U>ChatGPTEditWithInstructions<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
