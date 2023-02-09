@@ -131,6 +131,7 @@ let
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
+      pkgs.selectdefaultapplication
       pkgs.shellcheck
       pkgs.shfmt
       nixpkgs-unstable.signal-desktop
