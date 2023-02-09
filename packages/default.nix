@@ -90,6 +90,7 @@ let
       pkgs.minikube
       nixpkgs-unstable.mold
       pkgs.mpv # video player
+      pkgs.gnome.nautilus
       pkgs.nmap
       pkgs.ncdu # Disk Space Visualization
       pkgs.neofetch
