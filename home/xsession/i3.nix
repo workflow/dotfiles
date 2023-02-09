@@ -236,6 +236,9 @@ in
       "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw\"";
       "${mod}+s" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw\"";
 
+      # File Manager ("navigate")
+      "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
+
       # System Mode
       "${mod}+Pause" = "mode \"${mode_system}\"";
 
