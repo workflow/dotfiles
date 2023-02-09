@@ -28,7 +28,8 @@
         "x-scheme-handler/mailto" = [ "brave-browser.desktop" ];
         "application/pdf" = [ "okular.desktop" ];
         "inode/directory" = [ "lf.desktop" ];
-        "x-www-browser" = [ "lf.desktop" ];
+        "applications/x-www-browser" = [ "brave-browser.desktop" ];
+        "x-www-browser" = [ "brave-browser.desktop" ];
       };
     };
   };
