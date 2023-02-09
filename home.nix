@@ -119,7 +119,6 @@ in
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";
       NIXOS_CONFIG = "$HOME/code/nixos-config/";
-      HOME_MANAGER_BACKUP_EXT = ".home-manager-backup";
       BROWSER = "brave";
       DEFAULT_BROWSER = "brave";
     };

@@ -59,6 +59,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "home-manager-backup";
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
                 isNvidia = true;
@@ -100,6 +101,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "home-manager-backup";
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
                 isNvidia = false;
@@ -141,6 +143,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "home-manager-backup";
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
                 isNvidia = true;
