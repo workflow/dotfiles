@@ -232,6 +232,7 @@ in
         \ 'ctrl-x': 'split',
         \ 'ctrl-v': 'vsplit' }
       let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+      let g:fzf_history_dir = '~/.local/share/fzf-history'
 
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
