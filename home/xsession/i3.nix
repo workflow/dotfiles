@@ -107,16 +107,8 @@ in
     floating = {
       border = 0;
       criteria = [
-        { class = "plasmashell"; }
-        { class = "Plasma"; }
-        { title = "plasma-desktop"; }
-        { title = "win7"; }
-        { class = "krunner"; }
-        { class = "Kmix"; }
-        { class = "Klipper"; }
-        { class = "Plasmoidviewer"; }
-        { title = "Desktop - Plasma"; }
         { class = "Pavucontrol"; }
+        { class = "zoom"; }
       ];
     };
 
