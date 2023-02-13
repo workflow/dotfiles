@@ -31,6 +31,10 @@ in
       noremap <C-w>K <C-w>J
       noremap <C-w>J <C-w>H
 
+      " Vertical Awesomeness
+      nnoremap <C-d> <C-d>zz
+      nnoremap <C-u> <C-u>zz
+
       tnoremap <A-j> <C-\><C-N><C-w>h
       tnoremap <A-k> <C-\><C-N><C-w>j
       tnoremap <A-l> <C-\><C-N><C-w>k
