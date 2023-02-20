@@ -2,7 +2,7 @@
 { isNvidia, lib, pkgs, ... }:
 {
   services.picom = {
-    activeOpacity = 0.98;
+    activeOpacity = 0.99;
 
     enable = true;
 
@@ -21,7 +21,7 @@
     fadeDelta = 12;
     fadeSteps = [ 0.15 0.15 ];
 
-    inactiveOpacity = 0.95;
+    inactiveOpacity = 0.90;
 
     menuOpacity = 0.98;
 
