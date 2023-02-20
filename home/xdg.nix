@@ -29,6 +29,7 @@
         "application/pdf" = [ "okular.desktop" ];
         "inode/directory" = [ "lf.desktop" ];
         "applications/x-www-browser" = [ "brave-browser.desktop" ];
+        "x-scheme-handler/postman" = [ "Postman.desktop" ];
       };
     };
   };
