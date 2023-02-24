@@ -1,5 +1,7 @@
-{ config, lib, pkgs, secrets, ... }:
+{ config, lib, pkgs, secrets, osConfig, ... }:
 let
+  hostName = osConfig.networking.hostName;
+
   imports = [
     ./home/alacritty.nix
     ./home/autorandr.nix
@@ -63,6 +65,11 @@ in
 
       # Dlfile (reverse drag-and-drop with dragon)
       "bin/dlfile" = { text = scripts.dlfile; executable = true; };
+
+      # Duplicati
+      ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (isFullSetup && secrets ? duplicatiConfig) {
+        source = lib.attrsets.attrByPath [ "${hostName}" ] { } secrets.duplicatiConfig;
+      };
 
       # Nixos script wrapper
       "bin/nixos" = { text = scripts.nixos; executable = true; };
