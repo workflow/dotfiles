@@ -52,7 +52,6 @@ let
       pkgs.git-crypt
       pkgs.github-cli
       pkgs.gmailctl
-      pkgs.gnupg
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
       pkgs.google-cloud-sdk
