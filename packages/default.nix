@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
 
@@ -35,6 +35,7 @@ let
       pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
       pkgs.deluge
       pkgs.delta # Syntax highlighter for git
+      inputs.devenv.packages.x86_64-linux.devenv
       nixpkgs-unstable.discord
       pkgs.duplicati
       pkgs.dunst

@@ -1,7 +1,7 @@
-{ pkgs, lib, secrets, ... }:
+{ pkgs, lib, secrets, inputs, ... }:
 let
 
-  packages = pkgs.callPackage ./packages { };
+  packages = pkgs.callPackage ./packages { inherit inputs; };
 
 in
 {
