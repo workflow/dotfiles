@@ -34,16 +34,17 @@
   "flutter.lsp.initialization.closingLabels": true,
 
   "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.checkOnSave.command": "clippy",
-  "rust-analyzer.checkOnSave.extraArgs": [
-    "--workspace",
+  "rust-analyzer.check.allTargets": true,
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.check.extraArgs": [
+    "--tests",
     "--",
     "-D",
     "warnings",
     "-D",
     "clippy::all"
   ],
-  "rust-analyzer.checkOnSave.features": "all",
+  "rust-analyzer.check.features": "all",
   "rust-analyzer.lru.capacity": 1280,
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.debug.vimspector.configuration.name": "Run - CodeLLDB",
