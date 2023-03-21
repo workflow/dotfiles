@@ -33,8 +33,8 @@
   # Prevent IPv6 leaks when using VPNs
   networking.enableIPv6 = false;
 
-  # Don't wait for dhcpcd while booting
-  networking.dhcpcd.wait = "background";
+  # Disabling DHCPCD in favor of NetworkManager
+  networking.dhcpcd.enable = false;
   # Only wait for a single interface to come up
   systemd.network.wait-online.anyInterface = true;
 }
