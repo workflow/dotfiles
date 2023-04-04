@@ -34,6 +34,7 @@ in
       " Vertical Awesomeness
       nnoremap <C-d> <C-d>zz
       nnoremap <C-u> <C-u>zz
+      nnoremap G Gzz
 
       tnoremap <A-j> <C-\><C-N><C-w>h
       tnoremap <A-k> <C-\><C-N><C-w>j
