@@ -79,6 +79,7 @@ let
       pkgs.kubectl
       pkgs.kubectx
       pkgs.lame
+      pkgs.lazydocker
       nixpkgs-unstable.ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.libreoffice
