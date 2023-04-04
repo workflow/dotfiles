@@ -16,6 +16,7 @@ let
       pkgs.awscli2
       pkgs.bats
       pkgs.bc
+      pkgs.benthos
       pkgs.bind # Provides dig
       pkgs.binutils
       pkgs.bluez
