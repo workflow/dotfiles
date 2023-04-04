@@ -3,7 +3,6 @@ let
   nixpkgs-unstable = pkgs.unstable;
 
   nix-sysdig = pkgs.callPackage ./nix-sysdig { };
-  rmview = pkgs.libsForQt5.callPackage ./rmview { };
   confluent-cli = pkgs.callPackage ./confluent-cli { };
 
   packages =
@@ -130,7 +129,7 @@ let
       pkgs.qalculate-gtk # Calculator
       pkgs.q-text-as-data # https://github.com/harelba/q
       pkgs.ripgrep
-      rmview # Remarkable Screen Sharing
+      nixpkgs-unstable.rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
