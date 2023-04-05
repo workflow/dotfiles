@@ -135,6 +135,7 @@ let
       pkgs.rnix-lsp
       pkgs.roboto
       pkgs.screenkey
+      pkgs.scrcpy
       pkgs.selectdefaultapplication
       pkgs.shellcheck
       pkgs.shfmt
