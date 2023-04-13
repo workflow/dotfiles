@@ -28,10 +28,9 @@
     "json",
     "jsonnet",
     "yaml",
-    "sh"
+    "sh",
+    "python"
   ],
-
-  "flutter.lsp.initialization.closingLabels": true,
 
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.check.allTargets": true,
@@ -48,6 +47,14 @@
   "rust-analyzer.lru.capacity": 1280,
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.debug.vimspector.configuration.name": "Run - CodeLLDB",
+
+  "pyright.organizeimports.provider": "isort",
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.banditEnabled": true,
+  "python.analysis.typeCheckingMode": "off",
+  "pyright.testing.provider": "pytest",
 
   "yaml.enable": true,
   "yaml.format.enable": true,

@@ -364,6 +364,7 @@ in
       coc-json
       coc-nvim
       coc-prettier
+      coc-pyright
       nixpkgs-unstable.vimPlugins.coc-rust-analyzer
       nixpkgs-unstable.vimPlugins.coc-sqlfluff
       coc-tabnine
