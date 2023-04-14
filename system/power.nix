@@ -63,10 +63,10 @@ in
 
   # DPMS Settings, see https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
   services.xserver.serverFlagsSection = ''
-    Option "BlankTime" "0"
-    Option "StandbyTime" "600"
-    Option "SuspendTime" "1200"
-    Option "OffTime" "1800"
+    Option "BlankTime" "5"
+    Option "StandbyTime" "5"
+    Option "SuspendTime" "6"
+    Option "OffTime" "7"
   '';
 
 }
