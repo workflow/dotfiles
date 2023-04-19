@@ -45,6 +45,11 @@
         };
       };
 
+      signing = {
+        signByDefault = true;
+        key = "24575DB93F6CEC16";
+      };
+
       ignores = [ ".idea" "nohup.out" "mzdata" ".vimspector.json" ];
 
       userEmail = "4farlion@gmail.com";
