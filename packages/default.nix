@@ -157,7 +157,7 @@ let
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.thefuck
       pkgs.tldr
-      nixpkgs-unstable.todoist-electron
+      pkgs.todoist-electron
       pkgs.traceroute
       pkgs.trash-cli
       pkgs.tree
