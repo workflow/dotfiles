@@ -62,6 +62,7 @@ let
       set LOCALMIKE3 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
       set LOCALMIKE4 "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
       set LOCALMIKE5 "alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback"
+      set LOCALMIKE6 "alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
       set SOURCES (pactl list sources)
 
       if string match "*$LOCALSPEAKER1*" $SINKS
@@ -88,6 +89,8 @@ let
         set LOCALMIKE $LOCALMIKE4
       else if string match "*$LOCALMIKE5*" $SOURCES
         set LOCALMIKE $LOCALMIKE5
+      else if string match "*$LOCALMIKE6*" $SOURCES
+        set LOCALMIKE $LOCALMIKE6
       else
         echo Local mike not found
       end
