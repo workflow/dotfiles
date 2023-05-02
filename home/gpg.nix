@@ -6,6 +6,7 @@
 
   services.gpg-agent = {
     enable = true;
+    grabKeyboardAndMouse = false;
   };
 
 }
