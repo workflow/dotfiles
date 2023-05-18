@@ -60,13 +60,4 @@ in
 
   # This will save you money and possibly your life!
   services.thermald.enable = true;
-
-  # DPMS Settings, see https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling
-  services.xserver.serverFlagsSection = ''
-    Option "BlankTime" "5"
-    Option "StandbyTime" "5"
-    Option "SuspendTime" "6"
-    Option "OffTime" "7"
-  '';
-
 }

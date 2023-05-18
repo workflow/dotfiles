@@ -9,8 +9,12 @@ let
   color_txt = "#EAD49B";
 
   isBoar = osConfig.networking.hostName == "boar";
+  isFlexbox = osConfig.networking.hostName == "flexbox";
 
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
+  screenShutter = "xset dpms force off";
+  suspender = "systemctl suspend";
+  hibernator = "systemctl hibernate";
 
   mod = "Mod4";
 
@@ -180,7 +184,7 @@ in
       "${mod}+Control+semicolon" = "move workspace to output right";
 
       # lock screen
-      "${mod}+Shift+x" = "exec --no-startup-id ${locker}";
+      "${mod}+Shift+x" = "exec --no-startup-id ${screenShutter}";
 
       # toggle tiling / floating
       "${mod}+Shift+space" = "floating toggle";
@@ -292,8 +296,9 @@ in
       { command = "spotify"; notification = false; }
       { command = "todoist"; notification = false; }
 
-      # Auto lock screen using xidlehook written in Rust :)
-      { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${locker}" ""''; notification = false; }
+      # Auto turn off screens using xidlehook written in Rust :)
+      { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""''; notification = false; }
+      # Auto lock screen on screen off, suspend, etc...
       { command = ''xss-lock -- "${locker}"''; notification = false; }
 
       # Run KBDD (XKB Daemon for per-window keyboard layout switching)
@@ -308,6 +313,11 @@ in
       # Autotiling
       { command = "autotiling &"; notification = false; always = true; }
     ]
+    ++ lib.lists.optionals isFlexbox
+      [
+        { command = ''xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 "${suspender}" ""''; notification = false; }
+        { command = ''xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 3600 "${hibernator}" ""''; notification = false; }
+      ]
     ++ lib.lists.optionals isBoar
       [
         # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/10
@@ -346,7 +356,7 @@ in
 
     # System mode. Can't be put into config.modes because of chained commands.
     mode "${mode_system}" {
-      bindsym l exec --no-startup-id ${locker}, mode "default"
+      bindsym l exec --no-startup-id ${screenShutter}, mode "default"
       bindsym e exec --no-startup-id i3-msg exit, mode "default"
       bindsym s exec --no-startup-id systemctl suspend, mode "default"
       bindsym h exec --no-startup-id systemctl hibernate, mode "default"
