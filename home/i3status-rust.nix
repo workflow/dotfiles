@@ -35,6 +35,7 @@ let
     {
       block = "nvidia_gpu";
       label = "Quadro P2000";
+      on_click = "nvidia-settings";
     }
   ];
 
@@ -93,11 +94,13 @@ in
             block = "cpu";
             interval = 1;
             format = "{barchart}";
+            on_click = "alacritty -e htop";
           }
           {
             block = "load";
             interval = 1;
             format = "{1m} {5m}";
+            on_click = "alacritty -e htop";
           }
           {
             block = "temperature";
@@ -120,12 +123,14 @@ in
         ++ [
           {
             block = "backlight";
+            on_click = "arandr";
           }
         ]
         ++ lib.lists.optionals isBoar [
           {
             block = "backlight";
             device = "ddcci3";
+            on_click = "arandr";
           }
         ]
         ++ [
@@ -160,11 +165,13 @@ in
           {
             block = "time";
             format = "%a %d.%m %R";
+            on_click = "brave calendar.google.com";
           }
           {
             block = "speedtest";
             format = "{ping:1}{speed_down:3*_b;M}{speed_up:3*_b;M}";
             interval = 600; # Every Ten Minutes
+            on_click = "brave fast.com";
           }
           {
             block = "notify";
