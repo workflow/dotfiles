@@ -76,12 +76,12 @@ in
           {
             block = "disk_space";
             path = "/";
-            alias = "/";
             info_type = "available";
             unit = "GB";
             interval = 60;
             warning = 20.0;
             alert = 10.0;
+            on_click = "alacritty -e ncdu /";
           }
           {
             block = "memory";
@@ -184,8 +184,6 @@ in
         theme = "gruvbox-dark";
       };
     };
-
-    package = pkgs.unstable.i3status-rust;
 
   };
 }
