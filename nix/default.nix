@@ -28,6 +28,7 @@
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
       "electron-12.2.3" # For etcher
+      "electron-21.4.0" # For todoist-electron
     ];
   };
 }

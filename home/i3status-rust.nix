@@ -184,5 +184,7 @@ in
       };
     };
 
+    package = pkgs.unstable.i3status-rust;
+
   };
 }
