@@ -59,6 +59,9 @@ in
       ".cargo/config.toml" = lib.mkIf (secrets ? cargoConfig) {
         source = secrets.cargoConfig;
       };
+      ".cargo/config-mold.toml" = lib.mkIf (secrets ? cargoMoldConfig) {
+        source = secrets.cargoMoldConfig;
+      };
 
       # ~/bin
       # Declaratively configure Mega backups

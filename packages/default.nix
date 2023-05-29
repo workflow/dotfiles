@@ -27,6 +27,7 @@ let
       pkgs.cargo-edit
       pkgs.cargo-nextest
       pkgs.chafa # Images to terminal pixels
+      nixpkgs-unstable.llvmPackages.clang # For mold
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
       confluent-cli
