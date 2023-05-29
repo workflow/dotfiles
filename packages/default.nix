@@ -179,6 +179,7 @@ let
       pkgs.xdotool
       pkgs.xdragon # drag n drop support
       pkgs.xidlehook
+      pkgs.xkb-switch-i3
       pkgs.xorg.xkill
       pkgs.xournal # PFD Annotations, useful for saving Okular annotations as well
       pkgs.xrandr-invert-colors

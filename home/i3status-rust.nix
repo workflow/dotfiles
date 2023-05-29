@@ -161,6 +161,7 @@ in
           {
             block = "keyboard_layout";
             driver = "kbddbus";
+            on_click = "xkb-switch --next";
           }
           {
             block = "time";
