@@ -65,6 +65,7 @@ let
       pkgs.hamster
       pkgs.hardinfo # Hardware/System Info
       pkgs.hicolor-icon-theme # Needed for solaar
+      pkgs.httpie
       pkgs.i3lock-pixeled
       pkgs.iftop
       pkgs.imagemagick
