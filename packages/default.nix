@@ -18,6 +18,8 @@ let
       pkgs.benthos
       pkgs.bind # Provides dig
       pkgs.binutils
+      nixpkgs-unstable.bitwarden
+      nixpkgs-unstable.bitwarden-cli
       pkgs.bluez
       pkgs.bluez-tools
       nixpkgs-unstable.brave
