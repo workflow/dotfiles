@@ -255,7 +255,6 @@ in
       " Close if only NERDTree is open
       autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
       " Quickfix Lists
       nnoremap <silent><nowait> <C-j> :cprev<cr>
       nnoremap <silent><nowait> <C-;> :cnext<cr>
