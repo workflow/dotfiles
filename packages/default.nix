@@ -190,6 +190,7 @@ let
       pkgs.xrandr-invert-colors
       pkgs.xss-lock
       nixpkgs-unstable.youtube-dl
+      pkgs.youtube-music
       pkgs.yq
       nixpkgs-unstable.zoom-us
     ];
