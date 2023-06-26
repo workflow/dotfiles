@@ -36,6 +36,8 @@
 
     opacityRules = [
       "80:class_i ?= 'rofi'"
+      "100:class_g ?= 'firefox'"
+      "100:class_i ?= 'firefox'"
       "100:class_i ?= 'dota2'"
     ];
   };
