@@ -78,6 +78,7 @@ let
       pkgs.jq
       pkgs.jsonnet
       pkgs.k9s
+      pkgs.kaggle
       pkgs.kbdd # XKB Daemon
       pkgs.killall
       pkgs.kind
