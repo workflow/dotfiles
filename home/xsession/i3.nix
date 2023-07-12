@@ -49,14 +49,13 @@ in
         { class = "^Signal$"; }
         { class = "^TelegramDesktop$"; }
         { class = "^Skype$"; }
-        { class = "^Element$"; }
         { class = "^Discord$"; }
       ];
       "${ws9}" = [
         { class = "^Spotify$"; }
+        { class = "^YouTube Music$"; }
         { class = "^Todoist$"; }
       ];
-      "${ws10}" = [{ class = "^SpiderOakONE$"; }];
     };
 
     bars = [
@@ -293,7 +292,7 @@ in
       # Start duplicati server (not a service yet)
       { command = "duplicati-server"; notification = false; }
 
-      { command = "spotify"; notification = false; }
+      { command = "youtube-music"; notification = false; }
       { command = "todoist"; notification = false; }
 
       # Auto turn off screens using xidlehook written in Rust :)
