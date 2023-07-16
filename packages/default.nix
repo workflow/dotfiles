@@ -82,6 +82,7 @@ let
       pkgs.kbdd # XKB Daemon
       pkgs.killall
       pkgs.kind
+      pkgs.plasma5Packages.kruler
       pkgs.kubectl
       pkgs.kubectx
       pkgs.lame
