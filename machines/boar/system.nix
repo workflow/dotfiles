@@ -24,10 +24,6 @@
       device = "/dev/disk/by-uuid/74d4c5f3-f5fe-4aba-ac7a-56b0d28efc64";
       preLVM = true;
     };
-    data = {
-      device = "/dev/disk/by-uuid/85dd7178-c2b9-4b9a-93d4-9076221d3293";
-      preLVM = true;
-    };
     data-b-enc = {
       device = "/dev/disk/by-uuid/3c852f71-6ae8-4c1f-86ff-19ca0d18d33a";
       preLVM = true;
