@@ -21,8 +21,8 @@ Workflow's current — and immutably evolving — NixOS configuration files, hom
 Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
 
 - Install all updates from Windows
-- Create a windows recovery USB Drive (Searh for "Create Recovery Drive") just in case
-- Shrink Main Windows partition and through NTFS on it
+- Create a windows recovery USB Drive (Search for "Create Recovery Drive") just in case
+- Shrink Main Windows partition and throw NTFS on it
 - Disable Bitlocker
 - Go to BIOS, disable Secure Boot and maybe fast startup
 - Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
