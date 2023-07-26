@@ -43,6 +43,7 @@ Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_
 
 Roughly this https://qfpl.io/posts/installing-nixos/
 
+- sudo -i
 - lsblk -> find out disk name (e.g. `/dev/sda`) `$DISK`
 - `gdisk $DISK`
   - `p` (print)
