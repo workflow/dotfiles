@@ -20,8 +20,19 @@ Workflow's current — and immutably evolving — NixOS configuration files, hom
 
 Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
 
+1. Install all updates
+1. Create a windows recovery USB Drive (Search for "Create Recovery Drive") [Fair warning: This is slooooooooow]
+1. Shrink main Windows partition using built-in Disk Management tool
+1. Use Macrorit Partition Expert to extend EFI partition to 1024MB
+1. (optional) Delete Recovery Partition(s)
+1  Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
+
+## Preparing Windows 10 to keep a Bootable Windows Partition
+
+Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
+
 - Install all updates from Windows
-- Create a windows recovery USB Drive (Search for "Create Recovery Drive") just in case
+- Create a windows recovery USB Drive (Search for "Create Recovery Drive") [Fair warning: This is slooooooooow]
 - Shrink Main Windows partition and throw NTFS on it
 - Disable Bitlocker
 - Go to BIOS, disable Secure Boot and maybe fast startup
