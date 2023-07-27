@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -17,29 +18,29 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.useDHCP = false;
   networking.interfaces.enp60s0u1u1 = {
-	name = "enp60s0u1u1";
-	ipv4 = {
-		addresses = [
-			{
-				address = "192.168.1.43";
-				prefixLength = 24;
-			}
-		];
-	};
+    name = "enp60s0u1u1";
+    ipv4 = {
+      addresses = [
+        {
+          address = "192.168.1.43";
+          prefixLength = 24;
+        }
+      ];
+    };
   };
   networking.defaultGateway = "192.168.1.1";
-  networking.nameservers = ["1.1.1.1" "1.0.0.1"];
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.hostName = "autoriza";
   services.openssh = {
-	enable = true;
-	ports = [4343];
-	permitRootLogin = "no";
-	passwordAuthentication = false;
+    enable = true;
+    ports = [ 4343 ];
+    permitRootLogin = "no";
+    passwordAuthentication = false;
   };
-  users.users.autoriza.openssh.authorizedKeys.keys = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyNsCaP1NkguOYELnp9P8XdGECRgx3zWiCZxzqC6GVJlT6Av5W/eDpCW/gnyztXH2KYnDrvIwaZDmDzOYWqQyVqx2AQqnd87MS43G9gOYEY4tPBBjNQE72ngMjTHu8k1NmdNMjEYslD9xuLUrH6QxYmFYdJbBDJXqOnuUE4HjOpBqhRvb9OP5f2MuKQ4fhVyqI60XF/i8fAQ0KRP9ZFc9QWAlWNNBit1zuBzE/vvt03k0vPL3C/U8EwUqvy3UyesH5ZwiXPlzQLb0Kgja7VAn1+jOgTRQKVJFuwm80lJz4dvycXg0g+aHuoRI+8GgE0lsJzCf5KAdP3N73b/d5uMKumE63bjaA9TQtRLN3GupcZjq3uRl3ee78XycUnd+WPG16NbrvBzh7HS1xT/I4LAAxs6nCyzD5G+B9l3Z1rhM5qXXQNwWQ8jlNRKmgSNdTnD+/jAZ1epFsbh9N20TiSe3G22hYv2a6KjKecT7YQgagFe5iKAA/noNkANhsXzarT72bLdsDwzyyKczkHpEKqtUSOBS7tTjAUn64+DJNMda+CGgU0eIJWa/2wKCz4r5qQakP7TWUfppuyJCR+KItciXPss0EuMgZLtD6L+XhcnnD3NuIJ0H/UErhCI7BaWompbkW+bM072Nh6nqueZphkblNBwvKQYpmdGIGT76YV2uDpw== autoriza@boar"];
+  users.users.autoriza.openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCyNsCaP1NkguOYELnp9P8XdGECRgx3zWiCZxzqC6GVJlT6Av5W/eDpCW/gnyztXH2KYnDrvIwaZDmDzOYWqQyVqx2AQqnd87MS43G9gOYEY4tPBBjNQE72ngMjTHu8k1NmdNMjEYslD9xuLUrH6QxYmFYdJbBDJXqOnuUE4HjOpBqhRvb9OP5f2MuKQ4fhVyqI60XF/i8fAQ0KRP9ZFc9QWAlWNNBit1zuBzE/vvt03k0vPL3C/U8EwUqvy3UyesH5ZwiXPlzQLb0Kgja7VAn1+jOgTRQKVJFuwm80lJz4dvycXg0g+aHuoRI+8GgE0lsJzCf5KAdP3N73b/d5uMKumE63bjaA9TQtRLN3GupcZjq3uRl3ee78XycUnd+WPG16NbrvBzh7HS1xT/I4LAAxs6nCyzD5G+B9l3Z1rhM5qXXQNwWQ8jlNRKmgSNdTnD+/jAZ1epFsbh9N20TiSe3G22hYv2a6KjKecT7YQgagFe5iKAA/noNkANhsXzarT72bLdsDwzyyKczkHpEKqtUSOBS7tTjAUn64+DJNMda+CGgU0eIJWa/2wKCz4r5qQakP7TWUfppuyJCR+KItciXPss0EuMgZLtD6L+XhcnnD3NuIJ0H/UErhCI7BaWompbkW+bM072Nh6nqueZphkblNBwvKQYpmdGIGT76YV2uDpw== autoriza@boar" ];
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -59,17 +60,18 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    displayManager.sddm = {
-    	enable = true;
-	autoLogin = {
-	  enable = true;
-	  user = "autoriza";
-	};
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "autoriza";
+      };
+      sddm = {
+        enable = true;
+      };
     };
-    desktopManager.plasma5 = {
-	enable = true;
+    windowManager.i3 = {
+      enable = true;
     };
-    windowManager.i3.enable = true;
   };
 
   programs.neovim.enable = true;
@@ -77,7 +79,7 @@
   programs.neovim.viAlias = true;
 
 
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -98,17 +100,17 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.autoriza = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-       firefox
-       git
-       tree
-       neovim
-       x11vnc
-       xclip
-     ];
-   };
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      firefox
+      git
+      tree
+      neovim
+      x11vnc
+      xclip
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
