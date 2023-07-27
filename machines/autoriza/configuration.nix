@@ -72,6 +72,21 @@
     windowManager.i3 = {
       enable = true;
     };
+    serverFlags = {
+      blankTime = 0;
+      standbyTime = 0;
+      suspendTime = 0;
+      offTime = 0;
+    };
+  };
+
+  # Power management
+  services.logind = {
+    extraConfig = ''
+      HandleLidSwitch=ignore
+      HandleLidSwitchExternalPower=ignore
+      HandleLidSwitchDocked=ignore
+    '';
   };
 
   programs.neovim.enable = true;
@@ -111,6 +126,7 @@
       neovim
       x11vnc
       xclip
+      xdotool
     ];
   };
 
