@@ -136,6 +136,7 @@ let
       pkgs.python3
       pkgs.qalculate-gtk # Calculator
       pkgs.q-text-as-data # https://github.com/harelba/q
+      nixpkgs-unstable.realvnc-vnc-viewer
       pkgs.ripgrep
       nixpkgs-unstable.rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
