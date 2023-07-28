@@ -192,7 +192,7 @@ in
           user = "farlion";
         };
         autoriza = {
-          hostname = "192.168.1.43";
+          hostname = "148.63.20.188";
           user = "autoriza";
           port = 4343;
         };
