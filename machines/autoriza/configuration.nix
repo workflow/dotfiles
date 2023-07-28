@@ -123,6 +123,7 @@
       firefox
       git
       github-cli
+      killall
       tree
       neovim
       x11vnc
