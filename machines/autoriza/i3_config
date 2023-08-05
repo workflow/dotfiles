@@ -51,6 +51,9 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start firefox
+bindsym $mod+b exec firefox
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
