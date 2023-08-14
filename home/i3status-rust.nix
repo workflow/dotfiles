@@ -242,7 +242,7 @@ in
               }
               {
                 button = "right";
-                cmd = "xkb-switch --previous";
+                cmd = "xkb-switch --next";
               }
             ];
           }
