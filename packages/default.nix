@@ -2,7 +2,6 @@
 let
   nixpkgs-unstable = pkgs.unstable;
 
-  nix-sysdig = pkgs.callPackage ./nix-sysdig { };
   confluent-cli = pkgs.callPackage ./confluent-cli { };
 
   packages =
@@ -161,7 +160,6 @@ let
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
       pkgs.syncthingtray
-      nix-sysdig
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.thefuck
       pkgs.tldr

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   # Writes to /etc/sysctl.d/60-nixos.conf
   boot.kernel.sysctl = {
@@ -68,6 +68,8 @@
     enable = true;
     defaultTarget = if (config.networking.hostName == "boar") then "boar" else "sophia";
   };
+
+  programs.fish.enable = true;
 
   # Sysdig + kernel module
   programs.sysdig.enable = true;

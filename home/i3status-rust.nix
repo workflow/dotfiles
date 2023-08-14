@@ -34,8 +34,17 @@ let
   boarGPUBlocks = [
     {
       block = "nvidia_gpu";
-      label = "Quadro P2000";
-      on_click = "nvidia-settings";
+      format = " $name $utilization $memory $temperature ";
+      click = [
+        {
+          button = "left";
+          cmd = "nvidia-settings";
+        }
+        {
+          button = "right";
+          cmd = "alacritty -e nvidia-smi";
+        }
+      ];
     }
   ];
 
@@ -55,9 +64,18 @@ let
     (device: {
       block = "net";
       device = device;
-      interval = 5;
-      hide_inactive = true;
-      format = "{speed_down;K*b} {speed_up;K*b}";
+      format = " $icon $ip ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
+      click = [
+        {
+          button = "left";
+          cmd = "alacritty -e nmtui";
+        }
+        {
+          button = "right";
+          cmd = "alacritty -e nmtui";
+        }
+      ];
+      missing_format = "";
     }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
 
   hostName = osConfig.networking.hostName;
@@ -76,69 +94,108 @@ in
         blocks = [
           {
             block = "disk_space";
-            path = "/";
-            info_type = "available";
-            unit = "GB";
-            interval = 60;
-            warning = 20.0;
-            alert = 10.0;
-            on_click = "alacritty -e ncdu /";
+            click = [
+              {
+                button = "left";
+                cmd = "alacritty -e ncdu /";
+              }
+            ];
           }
           {
             block = "memory";
-            display_type = "memory";
-            format_mem = "{mem_used;G} ({mem_used_percents:1})";
-            format_swap = "{swap_used_percents}%";
+            format = " $icon $mem_used.eng(prefix:M)($mem_used_percents.eng(w:2)) ";
+            format_alt = "$swap_used_percents";
+            click = [
+              {
+                button = "right";
+                cmd = "alacritty -e htop";
+              }
+            ];
           }
           {
             block = "cpu";
             interval = 1;
-            format = "{barchart}";
-            on_click = "alacritty -e htop";
+            format = "$barchart";
+            click = [
+              {
+                button = "left";
+                cmd = "alacritty -e htop";
+              }
+              {
+                button = "right";
+                cmd = "alacritty -e btop";
+              }
+            ];
           }
           {
             block = "load";
             interval = 1;
-            format = "{1m} {5m}";
-            on_click = "alacritty -e htop";
+            format = "1m:$1m 5m:$5m";
+            click = [
+              {
+                button = "left";
+                cmd = "alacritty -e htop";
+              }
+              {
+                button = "right";
+                cmd = "alacritty -e btop";
+              }
+            ];
           }
           {
             block = "temperature";
-            collapsed = true;
-            interval = 10;
-            format = "{min}° min, {max}° max, {average}° avg";
+            format_alt = " $icon";
             chip = "*-isa-*";
           }
         ]
         ++ lib.lists.optionals isBoar boarGPUBlocks
-        ++ [
-          {
-            block = "networkmanager";
-            ap_format = "{ssid} @ {strength}";
-            on_click = "alacritty -e nmtui";
-            interface_name_exclude = [ "br\\-[0-9a-f]{12}" "docker\\d+" "virbr0" "virbr1" ];
-          }
-        ]
         ++ netBlocks
         ++ [
           {
             block = "backlight";
-            on_click = "arandr";
+            click = [
+              {
+                button = "left";
+                cmd = "arandr";
+              }
+              {
+                button = "right";
+                cmd = "arandr";
+              }
+            ];
           }
         ]
         ++ lib.lists.optionals isBoar [
           {
             block = "backlight";
             device = "ddcci3";
-            on_click = "arandr";
+            click = [
+              {
+                button = "left";
+                cmd = "arandr";
+              }
+              {
+                button = "right";
+                cmd = "arandr";
+              }
+            ];
           }
         ]
         ++ [
           {
             block = "sound";
             driver = "pulseaudio";
-            format = "{output_description} {volume}";
-            on_click = "pavucontrol --tab=4";
+            format = "$output_name {$volume.eng(w:2) |}";
+            click = [
+              {
+                button = "left";
+                cmd = "pavucontrol --tab=4";
+              }
+              {
+                button = "right";
+                cmd = "alacritty -e pulsemixer";
+              }
+            ];
             device_kind = "source";
             mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
@@ -146,41 +203,82 @@ in
           {
             block = "sound";
             driver = "pulseaudio";
-            format = "{output_description} {volume}";
-            on_click = "pavucontrol --tab=3";
+            format = "$output_name {$volume.eng(w:2) |}";
+            click = [
+              {
+                button = "left";
+                cmd = "pavucontrol --tab=3";
+              }
+              {
+                button = "right";
+                cmd = "alacritty -e pulsemixer";
+              }
+            ];
             mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
             headphones_indicator = true;
           }
-          {
-            block = "music";
-            player = "spotify";
-            buttons = [ "play" "prev" "next" ];
-            on_collapsed_click = "i3-msg '[class=Spotify] focus'";
-            on_click = "i3-msg '[class=Spotify] focus'";
-          }
+          # {
+          #   block = "music";
+          #   player = "spotify";
+          #   buttons = [ "play" "prev" "next" ];
+          #   click = [
+          #     {
+          #       button = "left";
+          #       cmd = "i3-msg '[class=Spotify] focus'";
+          #     }
+          #     {
+          #       button = "right";
+          #       cmd = "i3-msg '[class=Spotify] focus'";
+          #     }
+          #   ];
+          # }
           {
             block = "keyboard_layout";
             driver = "kbddbus";
-            on_click = "xkb-switch --next";
+            click = [
+              {
+                button = "left";
+                cmd = "xkb-switch --next";
+              }
+              {
+                button = "right";
+                cmd = "xkb-switch --previous";
+              }
+            ];
           }
           {
             block = "time";
-            format = "%a %d.%m %R";
-            on_click = "brave calendar.google.com";
+            click = [
+              {
+                button = "left";
+                cmd = "brave calendar.google.com";
+              }
+              {
+                button = "right";
+                cmd = "brave calendar.google.com";
+              }
+            ];
           }
           {
             block = "speedtest";
-            format = "{ping:1}{speed_down:3*_b;M}{speed_up:3*_b;M}";
-            interval = 600; # Every Ten Minutes
-            on_click = "brave fast.com";
+            click = [
+              {
+                button = "left";
+                cmd = "brave fast.com";
+              }
+              {
+                button = "right";
+                cmd = "brave fast.com";
+              }
+            ];
           }
           {
             block = "notify";
           }
           {
             block = "pomodoro";
-            notifier = "notifysend";
-            notifier_path = "/run/current-system/sw/bin/notify-send";
+            notify_cmd = "notify-send '{msg}'";
+            blocking_cmd = false;
           }
         ]
         ++ lib.lists.optionals isTopbox topboxExtraBlocks
