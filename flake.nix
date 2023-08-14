@@ -72,48 +72,6 @@
         ];
       };
 
-      nixosConfigurations.topbox = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit secrets;
-        };
-        modules = [
-          {
-            nix = {
-              registry = {
-                # Pin registry to current nixpkgs in use to speed up `nix search`
-                nixpkgs.flake = nixpkgs;
-              };
-            };
-
-            nixpkgs.overlays = [ (_: _: overlays) ];
-          }
-
-          nixpkgs.nixosModules.notDetected
-
-          ./machines/topbox/hardware-scan.nix
-          ./machines/topbox/system.nix
-
-          ./configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "home-manager-backup";
-              users.farlion = import ./home.nix;
-              extraSpecialArgs = {
-                isNvidia = false;
-                inherit inputs;
-                inherit secrets;
-              };
-            };
-          }
-        ];
-      };
-
       nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
