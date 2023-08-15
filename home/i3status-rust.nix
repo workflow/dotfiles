@@ -264,6 +264,11 @@ in
             block = "notify";
           }
           {
+            block = "tea_timer";
+            done_cmd = "notify-send 'Ring ring, ring ring...'";
+
+          }
+          {
             block = "pomodoro";
             notify_cmd = "notify-send '{msg}'";
             blocking_cmd = false;
