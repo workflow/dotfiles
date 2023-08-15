@@ -265,7 +265,7 @@ in
           }
           {
             block = "tea_timer";
-            done_cmd = "notify-send 'Ring ring, ring ring...'";
+            done_cmd = "notify-send 'Ring ring, ring ring...' && pactl upload-sample '/home/farlion/Music/Own Speech/IckbinArschratte.WAV' ratte && pactl play-sample ratte";
 
           }
           {
