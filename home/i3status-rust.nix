@@ -247,19 +247,19 @@ in
               }
             ];
           }
-          {
-            block = "speedtest";
-            click = [
-              {
-                button = "left";
-                cmd = "brave fast.com";
-              }
-              {
-                button = "right";
-                cmd = "brave fast.com";
-              }
-            ];
-          }
+          # {
+          #   block = "speedtest";
+          #   click = [
+          #     {
+          #       button = "left";
+          #       cmd = "brave fast.com";
+          #     }
+          #     {
+          #       button = "right";
+          #       cmd = "brave fast.com";
+          #     }
+          #   ];
+          # }
           {
             block = "notify";
           }
