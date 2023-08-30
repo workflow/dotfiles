@@ -75,12 +75,16 @@
     windowManager.i3 = {
       enable = true;
     };
+    monitorSection =
+      ''
+        Option         "DPMS" "true"
+      '';
     serverFlagsSection =
       ''
-        Option "BlankTime" "0"
-        Option "StandbyTime" "0"
-        Option "SuspendTime" "0"
-        Option "OffTime" "0"
+        Option "BlankTime" "5"
+        Option "StandbyTime" "5"
+        Option "SuspendTime" "5"
+        Option "OffTime" "5"
       '';
   };
 
