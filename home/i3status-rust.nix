@@ -53,7 +53,7 @@ let
     (device: {
       block = "net";
       device = device;
-      format = " $icon $ssid $signal_strength $ip ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
+      format = " $icon {$ssid $signal_strength $frequency|🚡} $ip ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
       click = [
         {
           button = "left";
