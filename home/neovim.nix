@@ -307,7 +307,7 @@ in
       nnoremap <leader>gm :GMove
       nnoremap <leader>gb :Git checkout -b<Space>
       nnoremap <leader>gc :Git checkout<Space>
-      nnoremap <leader>gl :Gclog<CR>
+      nnoremap <leader>gl :Gclog
       nnoremap <leader>g0l :0Gclog<CR>
       nnoremap <leader>gps :Git! push<CR>
       nnoremap <leader>gpf :Git! push --force-with-lease<CR>
