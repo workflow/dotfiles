@@ -371,6 +371,7 @@ in
       coc-vimlsp
       coc-yaml
 
+      vim-bookmarks
       nixpkgs-unstable.vimPlugins.ChatGPT-nvim
       vim-commentary
       nixpkgs-unstable.vimPlugins.copilot-vim
