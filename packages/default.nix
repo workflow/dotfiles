@@ -100,8 +100,8 @@ let
       nixpkgs-unstable.mold
       pkgs.mpv # video player
       pkgs.gnome.nautilus
-      pkgs.nmap
       pkgs.ncdu # Disk Space Visualization
+      pkgs.nmap
       pkgs.neofetch
       pkgs.nethogs
       pkgs.networkmanagerapplet
@@ -113,6 +113,7 @@ let
       nixpkgs-unstable.nixpkgs-fmt
       nixpkgs-unstable.nixpkgs-review
       pkgs.nodejs # For coc.nvim
+      nixpkgs-unstable.notesnook
       pkgs.nvtop
       pkgs.okular
       pkgs.onboard # On screen keyboard
