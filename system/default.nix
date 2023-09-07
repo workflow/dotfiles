@@ -11,6 +11,8 @@
     "vm.swappiness" = 0;
   };
 
+  boot.supportedFiles = [ "ntfs" ];
+
   # https://github.com/NixOS/nixpkgs/issues/64965
   environment = {
     etc."ipsec.secrets".text = ''
