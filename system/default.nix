@@ -11,7 +11,7 @@
     "vm.swappiness" = 0;
   };
 
-  boot.supportedFiles = [ "ntfs" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # https://github.com/NixOS/nixpkgs/issues/64965
   environment = {
