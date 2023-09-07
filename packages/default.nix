@@ -115,6 +115,7 @@ let
       pkgs.nodejs # For coc.nvim
       nixpkgs-unstable.notesnook
       pkgs.nvtop
+      pkgs.obsidian
       pkgs.okular
       pkgs.onboard # On screen keyboard
       pkgs.p7zip
