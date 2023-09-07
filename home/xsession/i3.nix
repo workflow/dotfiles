@@ -53,7 +53,7 @@ in
       ];
       "${ws9}" = [
         { class = "^Spotify$"; }
-        { class = "^YouTube Music$"; }
+        { title = "YouTube Music - Brave"; }
         { class = "^Todoist$"; }
       ];
     };
@@ -292,7 +292,7 @@ in
       # Start duplicati server (not a service yet)
       { command = "duplicati-server"; notification = false; }
 
-      { command = "youtube-music"; notification = false; }
+      { command = "brave music.youtube.com"; notification = false; }
       { command = "todoist"; notification = false; }
 
       # Auto turn off screens using xidlehook written in Rust :)
