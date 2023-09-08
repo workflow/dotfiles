@@ -49,7 +49,7 @@ let
       end
     '';
 
-    l = ''
+    lo = ''
       set LOCALSPEAKER1 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
       set LOCALSPEAKER2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
       set LOCALSPEAKER3 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
