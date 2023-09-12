@@ -127,6 +127,7 @@ let
       pkgs.pavucontrol
       pkgs.pciutils
       pkgs.pdftk # PDF Manipulation Toolkit
+      pkgs.piper # GUI for configuring Logitech mice
       pkgs.playerctl
       pkgs.postgresql
       pkgs.postman
