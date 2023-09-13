@@ -70,7 +70,7 @@ let
       pkgs.httpie
       pkgs.i3lock-pixeled
       pkgs.iftop
-      pkgs.iotop
+      pkgs.iotop-c
       pkgs.imagemagick
       pkgs.inkscape
       pkgs.insomnia
