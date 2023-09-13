@@ -107,7 +107,7 @@ in
 
       # Syncthing
       ".config/syncthing/config.xml" = lib.mkIf (isFullSetup && secrets ? syncthingConfig) {
-        source = secrets.syncthingConfig;
+        text = secrets.syncthingConfig;
       };
 
       "code/.stignore" = lib.mkIf isFullSetup {
