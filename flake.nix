@@ -11,6 +11,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-vimplugins-coc-flutter.url = "github:workflow/nixpkgs/b8ff1009091486567bc217052b80184ab7077d71";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    rmob = {
+      url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
+    };
     secrets = {
       url = "path:/home/farlion/code/nixos-secrets";
       inputs.nixpkgs.follows = "nixpkgs";

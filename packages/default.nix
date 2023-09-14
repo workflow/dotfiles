@@ -142,6 +142,7 @@ let
       pkgs.q-text-as-data # https://github.com/harelba/q
       nixpkgs-unstable.realvnc-vnc-viewer
       pkgs.ripgrep
+      inputs.rmob.defaultPackage.x86_64-linux
       nixpkgs-unstable.rmview # Remarkable Screen Sharing
       pkgs.rnix-lsp
       pkgs.roboto
