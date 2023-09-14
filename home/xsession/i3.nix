@@ -52,6 +52,7 @@ in
         { class = "^Discord$"; }
       ];
       "${ws9}" = [
+        { class = "^obsidian$"; }
         { class = "^Spotify$"; }
         { title = "YouTube Music - Brave"; }
         { class = "^Todoist$"; }
