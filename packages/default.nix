@@ -128,6 +128,7 @@ let
       pkgs.pavucontrol
       pkgs.pciutils
       pkgs.pdftk # PDF Manipulation Toolkit
+      pkgs.linuxKernel.packages.linux_5_4_hardened.perf
       pkgs.piper # GUI for configuring Logitech mice
       pkgs.playerctl
       pkgs.postgresql

@@ -17,6 +17,7 @@ in
     ./system/gpu.nix
     ./system/networking.nix
     ./system/nix-ld.nix
+    ./system/performance.nix
     ./system/power.nix
     ./system/screens.nix
     ./system/security.nix
