@@ -37,7 +37,7 @@ in
       '';
 
       dlfile = "%dlfile";
-      dragon = "%dragon -a $fx";
+      dragon = "%ripdrag -a $fx";
 
       mkdir = ''
         ''${{
