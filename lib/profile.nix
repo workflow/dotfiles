@@ -20,6 +20,7 @@
     aliases = "vim ~/nixos-config/dotfiles/profile.nix";
 
     c = "xclip -selection clipboard";
+    cc = "tee /dev/tty | xclip -selection clipboard";
 
     cde = "cd ~/code/egghead/elm-ui";
     cdn = "cd ~/nixos-config";
