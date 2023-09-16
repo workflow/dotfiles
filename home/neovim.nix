@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  coc-flutter-branch = pkgs.nixpkgs-vimplugins-coc-flutter;
+  vim-enmasse-branch = pkgs.nixpkgs-vim-enmasse-branch;
 
   nixpkgs-unstable = pkgs.unstable;
 in
@@ -358,7 +358,6 @@ in
 
       coc-css
       coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
-      #coc-flutter-branch.vimPlugins.coc-flutter
       coc-html
       coc-json
       coc-nvim
@@ -379,6 +378,7 @@ in
       dart-vim-plugin
       vim-devicons
       elm-vim
+      vim-enmasse-branch.vimPlugins.vim-enmasse
       vim-exchange
       vim-floaterm
       vim-flutter

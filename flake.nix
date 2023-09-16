@@ -9,7 +9,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-vimplugins-coc-flutter.url = "github:workflow/nixpkgs/b8ff1009091486567bc217052b80184ab7077d71";
+    nixpkgs-vim-enmasse-branch.url = "github:workflow/nixpkgs/vimplugins-enmasse";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     rmob = {
       url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
@@ -20,10 +20,10 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-vimplugins-coc-flutter, nixos-hardware, home-manager, secrets, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-vim-enmasse-branch, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
-        nixpkgs-vimplugins-coc-flutter = import nixpkgs-vimplugins-coc-flutter {
+        nixpkgs-vim-enmasse-branch = import nixpkgs-vim-enmasse-branch {
           system = "x86_64-linux";
           config.allowUnfree = true;
         };

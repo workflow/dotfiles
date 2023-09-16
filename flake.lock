@@ -234,19 +234,19 @@
         "type": "github"
       }
     },
-    "nixpkgs-vimplugins-coc-flutter": {
+    "nixpkgs-vim-enmasse-branch": {
       "locked": {
-        "lastModified": 1649148490,
-        "narHash": "sha256-t1A4ybq0CcKi5ruIjWUB+LG9Y35YhgD4a+G04QY7azQ=",
+        "lastModified": 1694897368,
+        "narHash": "sha256-wIafcB81JOpT/f601xEju9NAOe8jF3NLKaZ2H0Zt9dM=",
         "owner": "workflow",
         "repo": "nixpkgs",
-        "rev": "b8ff1009091486567bc217052b80184ab7077d71",
+        "rev": "3f3285096c9359be59a97c1d1c261ab73a812165",
         "type": "github"
       },
       "original": {
         "owner": "workflow",
+        "ref": "vimplugins-enmasse",
         "repo": "nixpkgs",
-        "rev": "b8ff1009091486567bc217052b80184ab7077d71",
         "type": "github"
       }
     },
@@ -334,7 +334,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-vimplugins-coc-flutter": "nixpkgs-vimplugins-coc-flutter",
+        "nixpkgs-vim-enmasse-branch": "nixpkgs-vim-enmasse-branch",
         "rmob": "rmob",
         "secrets": "secrets"
       }
