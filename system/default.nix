@@ -13,6 +13,12 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
+  services.duplicati = {
+    enable = true;
+    user = "farlion";
+    dataDir = "/home/farlion/.config/Duplicati";
+  };
+
   # https://github.com/NixOS/nixpkgs/issues/64965
   environment = {
     etc."ipsec.secrets".text = ''

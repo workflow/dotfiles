@@ -290,9 +290,6 @@ in
       # Configure Mega backups
       { command = "configure-mega-backup"; notification = false; }
 
-      # Start duplicati server (not a service yet)
-      { command = "duplicati-server"; notification = false; }
-
       { command = "brave music.youtube.com"; notification = false; }
       { command = "todoist"; notification = false; }
 
