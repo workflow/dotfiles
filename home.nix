@@ -199,7 +199,7 @@ in
       enable = true;
       matchBlocks = {
         syncthing = {
-          hostname = "34.124.158.69";
+          hostname = "34.124.137.146";
           user = "farlion";
         };
         autoriza = {
