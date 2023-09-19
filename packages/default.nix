@@ -42,6 +42,7 @@ let
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
+      pkgs.electrum
       pkgs.efivar
       pkgs.etcher # Bootable USB stick creator
       pkgs.exercism
