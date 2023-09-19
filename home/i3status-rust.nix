@@ -37,7 +37,7 @@ let
         }
         {
           button = "right";
-          cmd = "alacritty -e nvidia-smi";
+          cmd = "alacritty -e fish -c 'nvidia-smi; exec fish'";
         }
       ];
     }
@@ -138,6 +138,23 @@ in
         ]
         ++ lib.lists.optionals isBoar boarGPUBlocks
         ++ netBlocks
+        ++ [
+          {
+            block = "custom";
+            cycle = [ "echo -n '🦝 ' && sudo tailscale up --accept-routes --accept-dns=false && tailscale ip | head -n 1" "echo -n '🦝 ' && sudo tailscale down && echo down" ];
+            interval = 1;
+            click = [
+              {
+                button = "left";
+                action = "cycle";
+              }
+              {
+                button = "right";
+                cmd = "alacritty -e fish -c 'tailscale status; exec fish'";
+              }
+            ];
+          }
+        ]
         ++ [
           {
             block = "backlight";
