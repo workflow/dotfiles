@@ -42,7 +42,6 @@ let
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
-      pkgs.electrum
       pkgs.efivar
       pkgs.etcher # Bootable USB stick creator
       pkgs.exercism
@@ -160,6 +159,7 @@ let
       pkgs.smartmontools
       pkgs.solaar
       pkgs.soundfont-fluid
+      pkgs.sparrow
       pkgs.python38Packages.speedtest-cli
       pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
       nixpkgs-unstable.spotify
