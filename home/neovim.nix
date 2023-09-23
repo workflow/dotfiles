@@ -350,6 +350,9 @@ in
       nmap <silent> <leader>cp :ChatGPTActAs<CR>
       nmap <silent> <leader>ce :ChatGPTEditWithInstructions<CR>
       xmap <silent> <leader>ce :<C-U>ChatGPTEditWithInstructions<CR>
+
+      " Overseer
+      lua require('overseer').setup()
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -395,6 +398,7 @@ in
       nerdtree
       vim-nix
       vim-numbertoggle
+      nixpkgs-unstable.vimPlugins.overseer-nvim
       ReplaceWithRegister
       vim-rhubarb # github bindings for fugitive
       vim-rooter
