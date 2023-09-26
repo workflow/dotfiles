@@ -26,6 +26,7 @@
 
   networking.nameservers = [
     "127.0.0.1"
+    "1.1.1.1"
   ];
 
   # Prevent IPv6 leaks when using VPNs
