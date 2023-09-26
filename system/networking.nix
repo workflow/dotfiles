@@ -66,4 +66,7 @@
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
   };
+
+  programs.wireshark.enable = true;
+  users.users.farlion.extraGroups = [ "wireshark" ];
 }
