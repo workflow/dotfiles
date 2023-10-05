@@ -194,3 +194,4 @@ bar {
 
 exec --no-startup-id sleep 10s && x11vnc -display :0 -forever
 
+exec --no-startup-id "setxkbmap -option caps:none"
