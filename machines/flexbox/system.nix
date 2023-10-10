@@ -19,6 +19,26 @@ in
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
   boot.consoleLogLevel = 7;
 
+  # Fix audio
+  # TODO: Upstream these modules to nixpkgs
+  boot.kernelPatches = [
+    {
+      name = "enable-soundwire-drivers";
+      patch = null;
+      extraConfig = ''
+        SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES y
+        SND_SOC_INTEL_SOUNDWIRE_SOF_MACH m
+        SND_SOC_RT1308 m
+      '';
+    }
+  ];
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=auto, enable_msi=1
+  '';
+
+  # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
+  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
+
   # GPU
   environment.systemPackages = [ nvidia-offload ];
   services.xserver.videoDrivers = [ "nvidia" ];
