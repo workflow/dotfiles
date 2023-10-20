@@ -37,7 +37,7 @@ in
   '';
 
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
-  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
+  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1" ];
 
   # GPU
   environment.systemPackages = [ nvidia-offload ];
