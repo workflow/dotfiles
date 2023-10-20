@@ -309,6 +309,9 @@ in
 
       # Autotiling
       { command = "autotiling &"; notification = false; always = true; }
+
+      # Disconnect tailscale
+      { command = "sudo tailscale down"; notification = false; }
     ]
     ++ lib.lists.optionals isFlexbox
       [
