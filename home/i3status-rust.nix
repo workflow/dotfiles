@@ -65,7 +65,7 @@ let
         }
       ];
       missing_format = "";
-    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" ];
+    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" ];
 
   hostName = osConfig.networking.hostName;
   isBoar = hostName == "boar";
