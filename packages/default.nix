@@ -42,6 +42,7 @@ let
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
+      nixpkgs-unstable.dvc
       pkgs.element-desktop
       pkgs.efivar
       pkgs.etcher # Bootable USB stick creator
