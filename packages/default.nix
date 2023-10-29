@@ -7,6 +7,7 @@ let
   packages =
     [
       pkgs.android-studio
+      pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
       pkgs.audio-recorder
