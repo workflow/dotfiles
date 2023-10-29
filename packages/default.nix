@@ -4,6 +4,8 @@ let
 
   confluent-cli = pkgs.callPackage ./confluent-cli { };
 
+  todoist-electron = pkgs.callPackage ./todoist-electron { };
+
   packages =
     [
       pkgs.android-studio
@@ -174,7 +176,7 @@ let
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.thefuck
       pkgs.tldr
-      pkgs.todoist-electron
+      todoist-electron
       pkgs.traceroute
       pkgs.trash-cli
       pkgs.tree
