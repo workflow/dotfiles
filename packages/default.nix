@@ -97,6 +97,7 @@ let
       pkgs.libreoffice
       pkgs.lldb
       pkgs.lm_sensors
+      pkgs.localsend
       pkgs.lsof
       pkgs.lz4 # compression
       pkgs.manix
