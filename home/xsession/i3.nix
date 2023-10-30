@@ -312,7 +312,7 @@ in
       { command = "autotiling &"; notification = false; always = true; }
 
       # Disconnect tailscale
-      { command = "sleep 10s && sudo tailscale down"; notification = false; }
+      { command = "sudo tailscale down"; notification = false; }
     ]
     ++ lib.lists.optionals isFlexbox
       [
