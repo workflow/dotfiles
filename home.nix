@@ -118,6 +118,9 @@ in
       # Syncthing tray
       ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
 
+      # Get tailscale IP if online
+      "bin/tailscale-ip" = { text = scripts.tailscale-ip; executable = true; };
+
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };

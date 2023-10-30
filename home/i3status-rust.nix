@@ -141,16 +141,16 @@ in
         ++ [
           {
             block = "custom";
-            cycle = [ "echo -n '🦝 ' && sudo tailscale up --accept-routes --accept-dns=false && tailscale ip | head -n 1" "echo -n '🦝 ' && sudo tailscale down && echo down" ];
+            command = "echo -n '🦝 ' && /home/farlion/bin/tailscale-ip";
             interval = 1;
             click = [
               {
                 button = "left";
-                action = "cycle";
+                cmd = "sudo tailscale up --accept-routes --accept-dns=false";
               }
               {
                 button = "right";
-                cmd = "alacritty -e fish -c 'tailscale status; exec fish'";
+                cmd = "sudo tailscale down";
               }
             ];
           }

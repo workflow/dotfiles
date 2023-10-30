@@ -103,6 +103,17 @@ in
     fi
   '';
 
+  tailscale-ip = ''
+    ${shebang}
+    # Get the current tailscale ip if tailscale is up
+    set -euo pipefail
+    isOnline=$(tailscale status --json | jq -r '.Self.Online')
+    if [[ "$isOnline" == "true" ]]; then
+      tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
+      echo "$tailscaleIp"
+    fi
+  '';
+
   nixos = ''
     ${shebang}
     usage() {
