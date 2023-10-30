@@ -196,10 +196,6 @@ in
                 button = "left";
                 cmd = "pavucontrol --tab=4";
               }
-              {
-                button = "right";
-                cmd = "alacritty -e pulsemixer";
-              }
             ];
             device_kind = "source";
             mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
@@ -213,10 +209,6 @@ in
               {
                 button = "left";
                 cmd = "pavucontrol --tab=3";
-              }
-              {
-                button = "right";
-                cmd = "alacritty -e pulsemixer";
               }
             ];
             mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
