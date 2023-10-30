@@ -50,6 +50,7 @@ in
         { class = "^TelegramDesktop$"; }
         { class = "^Skype$"; }
         { class = "^Discord$"; }
+        { class = "^Element$"; }
       ];
       "${ws9}" = [
         { class = "^obsidian$"; }
