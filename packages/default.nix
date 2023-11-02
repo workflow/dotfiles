@@ -60,6 +60,7 @@ let
       pkgs.gimp
       pkgs.git-crypt
       pkgs.github-cli
+      pkgs.glab
       pkgs.gmailctl
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
