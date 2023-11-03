@@ -45,6 +45,13 @@
         };
       };
 
+      includes = [
+        {
+          path = "~/code/dlh/.gitconfig";
+          condition = "gitdir:~/code/dlh/";
+        }
+      ];
+
       signing = {
         signByDefault = true;
         key = "24575DB93F6CEC16";
