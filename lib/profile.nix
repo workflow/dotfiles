@@ -25,6 +25,7 @@
     cde = "cd ~/code/egghead/elm-ui";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
+    cnr = "cargo nextest r";
 
     da = "direnv allow";
 
