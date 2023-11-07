@@ -15,7 +15,7 @@
       "filetypes": ["go"]
     }
   },
-  "codeLens.enable": true,
+  "codeLens.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "js",
     "ts",
