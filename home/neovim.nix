@@ -369,6 +369,7 @@ in
       coc-css
       coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
       coc-html
+      coc-java
       coc-json
       coc-nvim
       coc-prettier
