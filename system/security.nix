@@ -14,6 +14,7 @@
       commands = [
         { command = "${pkgs.tailscale}/bin/tailscale up --accept-routes --accept-dns=false"; options = [ "NOPASSWD" "SETENV" ]; }
         { command = "${pkgs.tailscale}/bin/tailscale down"; options = [ "NOPASSWD" "SETENV" ]; }
+        { command = "${pkgs.python3.withPackages (ps: with ps; [ json5 ])}/bin/python setup_forwarding.py"; options = [ "NOPASSWD" "SETENV" ]; }
       ];
     }
   ];

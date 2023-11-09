@@ -144,7 +144,10 @@ let
       pkgs.pulsemixer
       pkgs.pulumi-bin
       pkgs.pup # Streaming HTML processor/selector
-      pkgs.python3
+      (pkgs.python3.withPackages
+        (ps: with ps; [
+          json5 # For Macgyver
+        ]))
       pkgs.qalculate-gtk # Calculator
       pkgs.q-text-as-data # https://github.com/harelba/q
       nixpkgs-unstable.realvnc-vnc-viewer

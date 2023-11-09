@@ -82,6 +82,7 @@
 
     logout = "i3-msg exit";
 
+    macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
     n = "nixos s";
