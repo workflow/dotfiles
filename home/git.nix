@@ -50,6 +50,10 @@
           path = "~/code/dlh/.gitconfig";
           condition = "gitdir:~/code/dlh/";
         }
+        {
+          path = "~/code/dlh/plansee/.gitconfig";
+          condition = "gitdir:~/code/dlh/plansee";
+        }
       ];
 
       signing = {

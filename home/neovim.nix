@@ -316,7 +316,7 @@ in
       nnoremap gj :diffget //2<CR>   
       nnoremap gl :diffget //3<CR>   
       " Fugitive-Gitlab
-      let g:fugitive_gitlab_domains = ['https://git.datalabhell.at']
+      let g:fugitive_gitlab_domains = ['https://git.datalabhell.at', 'https://gitlab.k8s.plansee-group.com']
         
       " Git-gutter
       " Use fontawesome icons as signs - stolen from https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579

@@ -14,6 +14,9 @@
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
 
+  # Allow for dynamic hosts file override (by root)
+  environment.etc.hosts.mode = "0644";
+
 
   # RMview Remarkable 2 Screensharing
   networking.firewall.allowedUDPPorts = [ 5901 ];
