@@ -226,6 +226,10 @@ in
       enable = true;
     };
 
+    zoxide = {
+      enable = true;
+    };
+
   };
 
   qt = {
