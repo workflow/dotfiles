@@ -132,6 +132,10 @@ in
     };
 
     keybindings = lib.mkOptionDefault {
+      # Split
+      "${mod}+v" = "split v";
+      "${mod}+s" = "split h";
+
       # Focus
       "${mod}+j" = "focus left";
       "${mod}+k" = "focus down";
@@ -231,7 +235,7 @@ in
 
       # Launch Browser
       "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw\"";
-      "${mod}+s" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw\"";
+      "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw\"";
 
       # File Manager ("navigate")
       "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";

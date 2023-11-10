@@ -234,7 +234,7 @@ in
       let g:fzf_action = {
         \ 'ctrl-q': function('s:build_quickfix_list'),
         \ 'ctrl-t': 'tab split',
-        \ 'ctrl-x': 'split',
+        \ 'ctrl-s': 'split',
         \ 'ctrl-v': 'vsplit' }
       let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
       let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -252,6 +252,8 @@ in
       " NerdTree Settings
       nnoremap <silent><nowait> <leader>f :NERDTreeToggle<CR>
       nnoremap <silent><nowait> <leader>n :NERDTreeFind<CR>
+      let g:NERDTreeMapOpenVSplit = 'v'
+      let g:NERDTreeMapOpenSplit = 's'
       " Close if only NERDTree is open
       autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
