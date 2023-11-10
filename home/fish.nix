@@ -31,20 +31,21 @@ let
     fish_user_key_bindings = ''
       fish_vi_key_bindings
 
+      # VI mode updates
       bind -s --preset -M default j backward-char
       bind -s --preset -M default \; forward-char
       bind -s --preset k down-or-search
       bind -s --preset l up-or-search
-
       bind -s --preset -M visual j backward-char
       bind -s --preset -M visual \; forward-char
       bind -s --preset -M visual l up-line
       bind -s --preset -M visual k down-line
 
-      # CTRL-F --> original TAB behaviour
+      # Completions
       bind -s -M insert \cw forward-word
       # Tab --> accept autosuggestions
       bind -s -M insert \t accept-autosuggestion
+      # CTRL-S --> original TAB behaviour
       bind -s -M insert \cs complete
     '';
 
