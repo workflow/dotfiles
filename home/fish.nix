@@ -42,10 +42,10 @@ let
       bind -s --preset -M visual k down-line
 
       # CTRL-F --> original TAB behaviour
-      bind -m insert \cf forward-word
+      bind -s -M insert \cw forward-word
       # Tab --> accept autosuggestions
-      bind -m insert \t forward-char
-      bind -m insert \cs complete
+      bind -s -M insert \t accept-autosuggestion
+      bind -s -M insert \cs complete
     '';
 
     h = ''
