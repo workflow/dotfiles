@@ -29,11 +29,23 @@ let
     '';
 
     fish_user_key_bindings = ''
+      fish_vi_key_bindings
+
+      bind -s --preset -M default j backward-char
+      bind -s --preset -M default \; forward-char
+      bind -s --preset k down-or-search
+      bind -s --preset l up-or-search
+
+      bind -s --preset -M visual j backward-char
+      bind -s --preset -M visual \; forward-char
+      bind -s --preset -M visual l up-line
+      bind -s --preset -M visual k down-line
+
       # CTRL-F --> original TAB behaviour
-      bind \cf forward-word
+      bind -m insert \cf forward-word
       # Tab --> accept autosuggestions
-      bind \t forward-char
-      bind \cs complete
+      bind -m insert \t forward-char
+      bind -m insert \cs complete
     '';
 
     h = ''
