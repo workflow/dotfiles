@@ -39,8 +39,8 @@
     };
   };
 
-  time.timeZone = "Europe/Lisbon";
-  # services.tzupdate.enable = true;
+  # time.timeZone = "Europe/Lisbon";
+  services.tzupdate.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.blueman.enable = true;
