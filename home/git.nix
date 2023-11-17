@@ -52,7 +52,7 @@
         }
         {
           path = "~/code/dlh/plansee/.gitconfig";
-          condition = "gitdir:~/code/dlh/plansee";
+          condition = "gitdir:~/code/dlh/plansee/";
         }
       ];
 
