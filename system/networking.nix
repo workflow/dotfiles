@@ -66,6 +66,22 @@
     };
   };
 
+  # MacGyver
+  systemd.services.macgyver = {
+    description = "MacGyver";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${ (pkgs.python3.withPackages (ps: with ps; [ json5 ])) }/bin/python /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/setup_forwarding.py --config_path /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/";
+      Environment = "PATH=/run/current-system/sw/bin:$PATH";
+      Restart = "always";
+      RestartSec = 30;
+      User = "root";
+      Group = "root";
+    };
+  };
+
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
   };
