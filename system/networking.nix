@@ -79,6 +79,7 @@
       RestartSec = 30;
       User = "root";
       Group = "root";
+      KillSignal = "SIGINT";
     };
   };
 
