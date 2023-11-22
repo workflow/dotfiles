@@ -141,6 +141,23 @@ in
         ++ [
           {
             block = "custom";
+            command = "echo -n '🧪 ' && systemctl status macgyver | grep 'Active:' | awk '{print $2}'";
+            interval = 1;
+            click = [
+              {
+                button = "left";
+                cmd = "sudo systemctl start macgyver";
+              }
+              {
+                button = "right";
+                cmd = "sudo systemctl stop macgyver";
+              }
+            ];
+          }
+        ]
+        ++ [
+          {
+            block = "custom";
             command = "echo -n '🦝 ' && /home/farlion/bin/tailscale-ip";
             interval = 1;
             click = [
