@@ -20,6 +20,7 @@ let
     ./home/redshift.nix
     ./home/rofi.nix
     ./home/starship.nix
+    ./home/thunderbird.nix
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
