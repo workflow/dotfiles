@@ -1,4 +1,4 @@
 { documentation, pkgs, ... }:
 {
-  documentation.man.enable = false;
+  documentation.man.enable = true;
 }

@@ -15,6 +15,9 @@
     { users = [ "farlion" ]; commands = [{ command = "/home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; options = [ "NOPASSWD" "SETENV" ]; }]; }
   ];
 
+  # Plenty of RAM so...
+  boot.tmp.useTmpfs = true;
+
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
 
