@@ -114,6 +114,21 @@ in
     fi
   '';
 
+  macgyver-status = ''
+    ${shebang}
+    # Get the current macgyver status
+    set -euo pipefail
+    output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
+
+    if [ "$output" = "active" ]; then
+        echo "up"
+    elif [ "$output" = "inactive" ]; then
+        echo "down"
+    else
+        echo "$output"
+    fi
+  '';
+
   nixos = ''
     ${shebang}
     usage() {

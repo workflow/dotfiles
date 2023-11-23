@@ -141,7 +141,7 @@ in
         ++ [
           {
             block = "custom";
-            command = "echo -n '🧪 ' && systemctl status macgyver | grep 'Active:' | awk '{print $2}'";
+            command = "echo -n '🧪 ' && /home/farlion/bin/macgyver-status";
             interval = 1;
             click = [
               {
