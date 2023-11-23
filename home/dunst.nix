@@ -15,27 +15,28 @@ in
     };
 
     settings = rec {
-      frame = {
-        color = "#75404b";
+      # frame = {
+      #   k
 
-        width = 2;
-      };
+      # };
 
       global = {
         # Alignment of message text.
         # Possible values are "left", "center" and "right".
         alignment = "left";
 
-        allow_markup = true;
+        # allow_markup = true;
 
         # The frequency with wich text that is longer than the notification
         # window allows bounces back and forth.
         # This option conflicts with "word_wrap".
         # Set to 0 to disable.
-        bounce_freq = 5;
+        # bounce_freq = 5;
 
         # Browser for opening urls in context menu.
         browser = "brave";
+
+        dmenu = "rofi -dmenu -i -p ''";
 
         # Display notification on focused monitor.  Possible modes are:
         #   mouse: follow mouse pointer
@@ -62,6 +63,10 @@ in
         # Markup is allowed
         format = ''%a: %s %p\n%b'';
 
+        frame_color = "#75404b";
+        frame_width = 2;
+
+
         # The geometry of the window:
         #   [{width}]x{height}[+/-{x}+/-{y}]
         # The geometry of the message window.
@@ -74,10 +79,10 @@ in
         # the top and down respectevly.
         # The width can be negative.  In this case the actual width is the
         # screen width minus the width defined in within the geometry option.
-        geometry = "0x4-25+25";
+        # geometry = "0x4-25+25";
 
         # Maximum amount of notifications kept in history
-        history_length = 50;
+        history_length = 500;
 
         # Horizontal padding.
         horizontal_padding = 10;
@@ -101,6 +106,10 @@ in
         # font height, it will get raised to the font height.
         # This adds empty space above and under the text.
         line_height = 0;
+
+        mouse_left_click = "context";
+        mouse_right_click = "close_current";
+        mouse_middle_click = "close_all";
 
         # Padding between text and separator.
         padding = 8;
@@ -136,7 +145,7 @@ in
         # Print a notification on startup.
         # This is mainly for error detection, since dbus (re-)starts dunst
         # automatically after a crash.
-        startup_notification = true;
+        # startup_notification = true;
 
         # Should a notification popped up from history be sticky or timeout
         # as if it would normally do.
@@ -215,6 +224,10 @@ in
       #    summary = *says*
       #    urgency = critical
       #
+      element-desktop = {
+        appname = "Element";
+        script = "element-desktop";
+      };
       #[twitter]
       #    appname = Pidgin
       #    summary = *twitter.com*
