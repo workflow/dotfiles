@@ -1,22 +1,26 @@
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 [![NixOS Systems Build](https://github.com/workflow/nixos-config/actions/workflows/nixos.yml/badge.svg)](https://github.com/workflow/nixos-config/actions/)
 
-Workflow's current — and immutably evolving — NixOS configuration files, home-manager, neovim, etc.
+# Dotfiles on Steroids - NixOS configuration
+
+Workflow's current, and immutably evolving, NixOS configuration files, home-manager, neovim, etc.
 
 ![neofetch boar](assets/neofetch-boar.png)
 
 ![boar](assets/boar_2022-09-26_10-41.png)
 
-# NixOS configuration
+Used as daily driver since 2020.
 
-## Create a bootable USB drive
+## Installation Instuctions
+
+### Create a bootable USB drive
 
 - Download NixOS to `$ISO_PATH`
 - insert drive
 - `lsblk` -> find out drive name (e.g. `/dev/sdb`) `$DRIVE`
 - run (as sudo) `dd bs=4M if=$ISO_PATH of=$DRIVE conv=fdatasync status=progress && sync`
 
-## Preparing Windows 10 to keep a Bootable Windows Partition
+### Preparing Windows 10 to keep a Bootable Windows Partition
 
 Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
 
@@ -27,7 +31,7 @@ Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_
 1. (optional) Delete Recovery Partition(s)
 1  Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
 
-## Preparing Windows 10 to keep a Bootable Windows Partition
+### Preparing Windows 10 to keep a Bootable Windows Partition
 
 Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
 
@@ -39,7 +43,7 @@ Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_
 - Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
 
 
-## Actual installation
+### Actual installation
 
 Roughly this https://qfpl.io/posts/installing-nixos/
 
@@ -117,7 +121,7 @@ services.xserver = {
 };
 ```
 
-## Useful
+### Useful
 
 - connect to internet from nmcli
   - find out interface: `nmcli d` (`$IF`)
@@ -125,7 +129,7 @@ services.xserver = {
   - search networks: `nmcli d wifi list`
   - connect: `nmcli d wifi connect $(B)SSID password $PASSWORD`
 
-## Enable this setup
+### Enable this setup
 
 (`$NIXOS_CONFIG` is the location of this repo)
 
@@ -141,7 +145,7 @@ services.xserver = {
 1. `sudo nixos-rebuild switch --flake $NIXOS_CONFIG#<machine name, empty if hostname> --override-input secrets nixpkgs`
 1. Reboot
 
-## Post-installation steps
+### Post-installation steps
 
 1. On an existing syncthing device, mutually add the new device
 1. Push addition of new syncthing device + folder sharing settins on old device
@@ -157,16 +161,16 @@ services.xserver = {
 1. Rerun `n`
 1. Reboot
 
-## Useful notes
+### Useful notes
 
 [Useful Notes](NOTES.md)
 
-## Acknowledgements
+### Acknowledgements
 
 A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
 
 CI build ~stolen from~ inspired by https://github.com/gvolpe/nix-config
 
-## History
+### History
 
 ![neofetch nixbox](assets/archive/neofetch-nixbox.png)
