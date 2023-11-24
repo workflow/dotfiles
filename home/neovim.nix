@@ -201,6 +201,9 @@ in
       " CoC Highlight Box colors fix
       hi CocFloating ctermbg=240
 
+      " Floaterm
+      let g:floaterm_keymap_toggle = '<Leader>t'
+
       " CoC Rust-Analyzer
       nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
       nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
