@@ -2,7 +2,7 @@
 { isNvidia, lib, pkgs, ... }:
 {
   services.picom = {
-    activeOpacity = 0.99;
+    activeOpacity = 0.90;
 
     enable = true;
 
@@ -10,9 +10,15 @@
     # which does not do vsync
     # Note: This may also need ForceFullCompositionPipeline in xorg.conf
     # See: https://github.com/chjj/compton/issues/227
-    backend = if isNvidia then "xrender" else "glx";
+    # backend = if isNvidia then "xrender" else "glx";
+    backend = "glx";
 
     settings = {
+      blur =
+        {
+          method = "dual_kawase";
+          strength = 2;
+        };
       no-fading-openclose = true;
       invert-color-include = [ "TAG_INVERT@:8c = 1" ];
     };
@@ -21,7 +27,7 @@
     fadeDelta = 12;
     fadeSteps = [ 0.15 0.15 ];
 
-    inactiveOpacity = 0.90;
+    inactiveOpacity = 0.99;
 
     menuOpacity = 0.98;
 
