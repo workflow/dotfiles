@@ -42,6 +42,7 @@
 
     opacityRules = [
       "80:class_i ?= 'rofi'"
+      "80:class_g ?= 'i3bar'"
       "100:class_g ?= 'firefox'"
       "100:class_i ?= 'firefox'"
       "100:class_i ?= 'dota2'"
