@@ -45,6 +45,7 @@
       "80:class_g ?= 'i3bar'"
       "100:class_g ?= 'firefox'"
       "100:class_i ?= 'firefox'"
+      "100:class_g ?= 'mpv'"
       "100:class_i ?= 'dota2'"
     ];
   };
