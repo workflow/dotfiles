@@ -71,12 +71,6 @@
   # Enable system-wide Yubikey Support
   services.udev.packages = [ pkgs.yubikey-personalization ];
 
-  # Autorandr service
-  services.autorandr = {
-    enable = true;
-    defaultTarget = if (config.networking.hostName == "boar") then "boar" else "sophia";
-  };
-
   programs.fish.enable = true;
 
   # Sysdig + kernel module
