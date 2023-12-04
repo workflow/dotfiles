@@ -45,7 +45,6 @@ let
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
-      nixpkgs-unstable.dvc
       pkgs.element-desktop
       pkgs.efivar
       pkgs.etcher # Bootable USB stick creator
@@ -81,6 +80,7 @@ let
       pkgs.inkscape
       pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
+      pkgs.jetbrains.idea-ultimate
       pkgs.jq
       pkgs.jsonnet
       pkgs.k9s
@@ -164,7 +164,6 @@ let
       pkgs.shfmt
       nixpkgs-unstable.signal-desktop
       nixpkgs-unstable.skaffold
-      pkgs.skypeforlinux
       pkgs.slack
       pkgs.smartmontools
       pkgs.solaar
@@ -185,6 +184,7 @@ let
       pkgs.traceroute
       pkgs.trash-cli
       pkgs.tree
+      pkgs.tzupdate
       pkgs.unzip
       pkgs.usbutils # Provides lsusb
       pkgs.variety
