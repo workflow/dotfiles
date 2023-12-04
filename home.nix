@@ -96,9 +96,6 @@ in
         source = secrets.mavenConfig;
       };
 
-      # Nvim
-      ".config/nvim/coc-settings.json".source = ./dotfiles/coc-settings.json;
-
       # Parcellite
       ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
 
