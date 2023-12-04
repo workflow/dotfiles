@@ -279,25 +279,6 @@ in
       let mapleader = ' '
       let maplocalleader = ','
 
-      " Floaterm
-      let g:floaterm_keymap_toggle = '<Leader>t'
-
-      " CoC Rust-Analyzer
-      nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
-      nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
-      nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
-      nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
-      nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
-      nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
-      nnoremap <silent><nowait> <leader>k  :<C-u>CocCommand rust-analyzer.openDocs<cr>
-      xmap <leader>w  <Plug>(coc-codeaction-cursor)
-      nmap <leader>w  <Plug>(coc-codeaction-cursor)
-      xmap <leader>l  <Plug>(coc-codeaction-line)
-      nmap <leader>l  <Plug>(coc-codeaction-line)
-      xmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
-      nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
-
-
       " FZF Settings
       nnoremap <C-p> :GFiles<cr>
       nnoremap <silent><nowait> <Leader><Space> :GFiles<cr>
@@ -440,9 +421,6 @@ in
 
       " Overseer
       lua require('overseer').setup()
-
-      " Treesitter Context
-      lua require("treesitter-context").setup({ })
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -452,17 +430,39 @@ in
       coc-css
       coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
       coc-html
-      coc-java
+      # coc-java
       coc-json
+      # coc-julia
       coc-nvim
       coc-prettier
       coc-pyright
-      nixpkgs-unstable.vimPlugins.coc-rust-analyzer
+
+      {
+        plugin = nixpkgs-unstable.vimPlugins.coc-rust-analyzer;
+        config = ''
+          nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
+          nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
+          nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
+          nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
+          nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
+          nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
+          nnoremap <silent><nowait> <leader>k  :<C-u>CocCommand rust-analyzer.openDocs<cr>
+          xmap <leader>w  <Plug>(coc-codeaction-cursor)
+          nmap <leader>w  <Plug>(coc-codeaction-cursor)
+          xmap <leader>l  <Plug>(coc-codeaction-line)
+          nmap <leader>l  <Plug>(coc-codeaction-line)
+          xmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
+          nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
+        '';
+      }
+
       nixpkgs-unstable.vimPlugins.coc-sqlfluff
       coc-tabnine
       coc-tsserver
       coc-vimlsp
       coc-yaml
+
+      nvim-jdtls # https://sookocheff.com/post/vim/neovim-java-ide/
 
       vim-bookmarks
       nixpkgs-unstable.vimPlugins.ChatGPT-nvim
@@ -474,7 +474,14 @@ in
       elm-vim
       vim-enmasse-branch.vimPlugins.vim-enmasse
       vim-exchange
-      vim-floaterm
+
+      {
+        plugin = vim-floaterm;
+        config = ''
+          let g:floaterm_keymap_toggle = '<Leader>t'
+        '';
+      }
+
       vim-flutter
       fugitive
       fugitive-gitlab-vim
@@ -485,6 +492,7 @@ in
       vim-helm
       vim-highlightedyank
       vim-jsonnet
+      julia-vim
       nixpkgs-unstable.vimPlugins.leap-nvim
       lf-vim
       nerdtree
@@ -503,8 +511,6 @@ in
       vim-test
       vim-textobj-entire
       vim-toml
-
-      nvim-treesitter-context
 
       vim-unimpaired
       vim-visual-multi
