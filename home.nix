@@ -166,7 +166,7 @@ in
 
     direnv = {
       nix-direnv.enable = true;
-      strict_env = true;
+      config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
     };
 
     exa.enable = true;
