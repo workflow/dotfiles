@@ -141,6 +141,7 @@ in
       NIXOS_CONFIG = "$HOME/code/nixos-config/";
       BROWSER = "brave";
       DEFAULT_BROWSER = "brave";
+      DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
     };
 
   };
@@ -163,8 +164,10 @@ in
       enable = true;
     };
 
-    direnv.enable = true;
-    direnv.nix-direnv.enable = true;
+    direnv = {
+      nix-direnv.enable = true;
+      strict_env = true;
+    };
 
     exa.enable = true;
 
