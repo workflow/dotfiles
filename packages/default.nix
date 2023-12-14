@@ -31,6 +31,7 @@ let
       pkgs.cargo-edit
       pkgs.cargo-nextest
       pkgs.chafa # Images to terminal pixels
+      pkgs.cht-sh
       nixpkgs-unstable.llvmPackages.clang # For mold
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
