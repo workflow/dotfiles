@@ -304,10 +304,6 @@ in
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
-      " Startify Settings
-      let g:startify_change_to_dir = 0
-      let g:startify_change_to_vcs_root = 1
-
       " Diff Settings
       set diffopt+=internal,algorithm:patience
 
@@ -506,7 +502,17 @@ in
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
       vimspector
-      vim-startify
+
+      {
+        plugin = vim-startify;
+        config = ''
+          let g:startify_change_to_dir = 0
+          let g:startify_change_to_vcs_root = 1
+          let g:startify_session_persistence = 1
+          let g:startify_bookmarks = [ {'c': '~/nixos-config/home/neovim.nix'} ]
+        '';
+      }
+
       vim-surround
       vim-test
       vim-textobj-entire
