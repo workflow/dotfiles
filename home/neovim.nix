@@ -520,6 +520,12 @@ in
 
       vim-unimpaired
       vim-visual-multi
+
+      {
+        plugin = which-key-nvim;
+        config = ''
+        '';
+      }
     ];
 
     viAlias = true;
