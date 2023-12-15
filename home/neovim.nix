@@ -415,6 +415,11 @@ in
     extraLuaConfig = ''
     '';
 
+    extraPackages = [
+      pkgs.shfmt
+      pkgs.rnix-lsp
+    ];
+
     plugins = with pkgs.vimPlugins; [
       airline
       argtextobj-vim
