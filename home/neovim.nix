@@ -456,7 +456,26 @@ in
       {
         plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
         config = ''
-          require("chatgpt").setup({ })
+          require("chatgpt").setup({
+            openai_params = {
+              model = "gpt-4",
+              frequency_penalty = 0,
+              presence_penalty = 0,
+              max_tokens = 800,
+              temperature = 0,
+              top_p = 1,
+              n = 1,
+            },
+            openai_edit_params = {
+              model = "gpt-4",
+              temperature = 0,
+              top_p = 1,
+              n = 1,
+            },
+            popup_input = {
+              submit = "<C-s>"
+            }
+          })
           local wk = require("which-key")
           wk.register({
             c = {
