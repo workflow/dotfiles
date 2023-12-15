@@ -409,7 +409,6 @@ in
       nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
 
       " ChatGPT
-      lua require("chatgpt").setup({ })
       nmap <silent> <leader>cc :ChatGPT<CR>
       nmap <silent> <leader>cp :ChatGPTActAs<CR>
       nmap <silent> <leader>ce :ChatGPTEditWithInstructions<CR>
@@ -461,7 +460,15 @@ in
       nvim-jdtls # https://sookocheff.com/post/vim/neovim-java-ide/
 
       vim-bookmarks
-      nixpkgs-unstable.vimPlugins.ChatGPT-nvim
+
+      {
+        plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
+        config = ''
+          require("chatgpt").setup({ })
+        '';
+        type = "lua";
+      }
+
       vim-commentary
       nixpkgs-unstable.vimPlugins.copilot-vim
       crates-nvim
