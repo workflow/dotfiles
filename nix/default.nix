@@ -27,8 +27,8 @@
   nixpkgs = {
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
-      "electron-12.2.3" # For etcher
-      "electron-21.4.0" # For todoist-electron
+      "electron-19.1.9" # For etcher
+      "electron-25.9.0" # For todoist-electron
     ];
   };
 }
