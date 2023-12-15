@@ -141,7 +141,6 @@ let
       pkgs.piper # GUI for configuring Logitech mice
       pkgs.playerctl
       pkgs.postgresql
-      pkgs.postman
       pkgs.pstree
       pkgs.pulsemixer
       pkgs.pulumi-bin
