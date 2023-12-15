@@ -170,8 +170,6 @@ in
       config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
     };
 
-    exa.enable = true;
-
     firefox = {
       enable = true;
       profiles = {
