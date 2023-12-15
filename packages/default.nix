@@ -8,16 +8,13 @@ let
 
   packages =
     [
-      pkgs.android-studio
       pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
       pkgs.audio-recorder
       nixpkgs-unstable.autotiling # autotiling script for i3
       pkgs.awscli2
-      pkgs.bats
       pkgs.bc
-      pkgs.benthos
       pkgs.bind # Provides dig
       pkgs.binutils
       nixpkgs-unstable.bitwarden
@@ -33,10 +30,8 @@ let
       pkgs.chafa # Images to terminal pixels
       pkgs.chatgpt-cli
       pkgs.cht-sh
-      nixpkgs-unstable.llvmPackages.clang # For mold
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
-      confluent-cli
       pkgs.dbeaver
       pkgs.dconf
       pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
@@ -55,7 +50,6 @@ let
       pkgs.feh
       pkgs.ffmpeg-full
       pkgs.file
-      pkgs.fluidsynth # Midi playback
       pkgs.fortune
       pkgs.gcr # Gnome crypto stuff for gnome-keyring
       pkgs.gimp
@@ -66,11 +60,9 @@ let
       pkgs.gomatrix # The Matrix
       pkgs.google-chrome
       pkgs.google-cloud-sdk
-      pkgs.gopls # Go language server
       pkgs.gparted
       pkgs.gptfdisk # gdisk
-      pkgs.gucharmap
-      pkgs.hamster
+      pkgs.gucharmap # Unicode Character Map
       pkgs.hardinfo # Hardware/System Info
       pkgs.hicolor-icon-theme # Needed for solaar
       pkgs.hplip
@@ -80,13 +72,11 @@ let
       pkgs.iotop-c
       pkgs.imagemagick
       pkgs.inkscape
-      pkgs.insomnia
       pkgs.iw # Wifi connection strength indicator
       pkgs.jetbrains.idea-ultimate
       pkgs.jq
       pkgs.jsonnet
       pkgs.k9s
-      pkgs.kaggle
       pkgs.kbdd # XKB Daemon
       pkgs.killall
       pkgs.kind
@@ -98,16 +88,11 @@ let
       nixpkgs-unstable.ledger-live-desktop
       pkgs.libnotify # Provides notify-send
       pkgs.libreoffice
-      pkgs.lldb
       pkgs.lm_sensors
       pkgs.localsend
       pkgs.lsof
       pkgs.lz4 # compression
-      pkgs.manix
       pkgs.megacmd
-      pkgs.microplane # Make changes accross many git repos
-      pkgs.minikube
-      nixpkgs-unstable.mold
       pkgs.mpv # video player
       pkgs.gnome.nautilus
       pkgs.ncdu # Disk Space Visualization
@@ -115,15 +100,8 @@ let
       pkgs.neofetch
       pkgs.nethogs
       pkgs.networkmanagerapplet
-      pkgs.newman
-      pkgs.ngrok
-      pkgs.niv
       pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
-      nixpkgs-unstable.nixfmt
-      nixpkgs-unstable.nixpkgs-fmt
-      nixpkgs-unstable.nixpkgs-review
       pkgs.nodejs # For coc.nvim
-      nixpkgs-unstable.notesnook
       pkgs.nvtop
       pkgs.obsidian
       pkgs.okular
@@ -137,14 +115,12 @@ let
       pkgs.pavucontrol
       pkgs.pciutils
       pkgs.pdftk # PDF Manipulation Toolkit
-      pkgs.linuxKernel.packages.linux_5_4_hardened.perf
       pkgs.piper # GUI for configuring Logitech mice
       pkgs.playerctl
       pkgs.postgresql
       pkgs.pstree
       pkgs.pulsemixer
       pkgs.pulumi-bin
-      pkgs.pup # Streaming HTML processor/selector
       (pkgs.python3.withPackages
         (ps: with ps; [
           json5 # For Macgyver
@@ -156,24 +132,16 @@ let
       pkgs.ripgrep
       inputs.rmob.defaultPackage.x86_64-linux
       nixpkgs-unstable.rmview # Remarkable Screen Sharing
-      pkgs.rnix-lsp
-      pkgs.roboto
       pkgs.screenkey
       pkgs.scrcpy
-      pkgs.selectdefaultapplication
-      pkgs.shellcheck
-      pkgs.shfmt
+      pkgs.selectdefaultapplication # XDG Default Application Chooser
       nixpkgs-unstable.signal-desktop
       nixpkgs-unstable.skaffold
       pkgs.slack
       pkgs.smartmontools
       pkgs.solaar
-      pkgs.soundfont-fluid
       pkgs.sparrow
       pkgs.python38Packages.speedtest-cli
-      pkgs.spice-gtk # Needed for correct perms to forward USB to virt-manager via GTK Spice
-      nixpkgs-unstable.spotify
-      nixpkgs-unstable.sqlfluff
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
@@ -199,7 +167,6 @@ let
       pkgs.wireshark
       pkgs.whois
       pkgs.woeusb # Create bootable disks from Windows ISOs
-      pkgs.xawtv # Basic Video4Linux2 device viewer. Example: xawtv -c /dev/video0
       pkgs.xclip
       pkgs.xdg-desktop-portal
       pkgs.xdotool
