@@ -4,6 +4,7 @@ let
 
   packages =
     [
+      pkgs.aichat
       pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
@@ -24,7 +25,6 @@ let
       pkgs.cargo-edit
       pkgs.cargo-nextest
       pkgs.chafa # Images to terminal pixels
-      pkgs.chatgpt-cli
       pkgs.cht-sh
       pkgs.cntr # for Nix sandbox breakpointHook debugging
       nixpkgs-unstable.comma
