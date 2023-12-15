@@ -3,7 +3,7 @@ let
   nixpkgs-unstable = pkgs.unstable;
 in
 {
-  fonts.fonts = [
+  fonts.packages = [
     pkgs.fira-code
     pkgs.fira-code-symbols
     pkgs.font-awesome
