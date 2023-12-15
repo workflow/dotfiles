@@ -457,8 +457,6 @@ in
       coc-vimlsp
       coc-yaml
 
-      nvim-jdtls # https://sookocheff.com/post/vim/neovim-java-ide/
-
       vim-bookmarks
 
       {
