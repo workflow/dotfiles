@@ -431,7 +431,6 @@ in
       coc-nvim
       coc-prettier
       coc-pyright
-
       {
         plugin = nixpkgs-unstable.vimPlugins.coc-rust-analyzer;
         config = ''
@@ -450,7 +449,6 @@ in
           nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
         '';
       }
-
       nixpkgs-unstable.vimPlugins.coc-sqlfluff
       coc-tabnine
       coc-tsserver
@@ -458,7 +456,6 @@ in
       coc-yaml
 
       vim-bookmarks
-
       {
         plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
         config = ''
@@ -466,7 +463,6 @@ in
         '';
         type = "lua";
       }
-
       vim-commentary
       nixpkgs-unstable.vimPlugins.copilot-vim
       crates-nvim
@@ -475,14 +471,12 @@ in
       elm-vim
       vim-enmasse-branch.vimPlugins.vim-enmasse
       vim-exchange
-
       {
         plugin = vim-floaterm;
         config = ''
           let g:floaterm_keymap_toggle = '<Leader>t'
         '';
       }
-
       vim-flutter
       fugitive
       fugitive-gitlab-vim
@@ -507,7 +501,6 @@ in
       vim-sleuth # Automatic shiftwidth and expandtab
       vim-solidity
       vimspector
-
       {
         plugin = vim-startify;
         config = ''
@@ -517,7 +510,6 @@ in
           let g:startify_bookmarks = [ {'c': '~/nixos-config/home/neovim.nix'} ]
         '';
       }
-
       vim-surround
       vim-test
       vim-textobj-entire
@@ -525,7 +517,6 @@ in
 
       vim-unimpaired
       vim-visual-multi
-
       {
         plugin = which-key-nvim;
         config = ''
