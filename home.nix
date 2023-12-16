@@ -159,7 +159,7 @@ in
   programs = {
     bat = {
       config = {
-        theme = "ansi-dark";
+        theme = "ansi";
       };
       enable = true;
     };
