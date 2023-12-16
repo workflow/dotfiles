@@ -554,11 +554,11 @@ in
           require("telescope").load_extension("fzf")
           local wk = require("which-key")
           wk.register({
-            f = {
+            ["<space>"] = {
               name = "Find(Telescope)",
-                a = { "<cmd>Telescope find_files<CR>", "All Files" },
+                ["<space>"] = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
                 b = { "<cmd>Telescope buffers<CR>", "Buffers" },
-                f = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
+                f = { "<cmd>Telescope find_files<CR>", "All Files" },
                 g = { "<cmd>Telescope live_grep<CR>", "Grep" },
                 h = { "<cmd>Telescope help_tags<CR>", "Help" },
                 ["?"] = { "<cmd>Telescope keymaps<CR>", "Vim Keymap Cheatsheet" },
