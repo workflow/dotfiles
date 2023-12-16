@@ -285,14 +285,6 @@ in
       " Diff Settings
       set diffopt+=internal,algorithm:patience
 
-      " NerdTree Settings
-      " nnoremap <silent><nowait> <leader>f :NERDTreeToggle<CR>
-      nnoremap <silent><nowait> <leader>n :NERDTreeFind<CR>
-      let g:NERDTreeMapOpenVSplit = 'v'
-      let g:NERDTreeMapOpenSplit = 's'
-      " Close if only NERDTree is open
-      autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
       " Quickfix Lists
       nnoremap <silent><nowait> <C-j> :cprev<cr>
       nnoremap <silent><nowait> <C-;> :cnext<cr>
@@ -391,6 +383,12 @@ in
     '';
 
     extraLuaConfig = ''
+      -- Disable netrw as recommended by nvim-tree
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
+      -- set termguicolors (24bit colors) to enable highlight groups
+      vim.opt.termguicolors = true
     '';
 
     extraPackages = [
@@ -491,7 +489,6 @@ in
         '';
         type = "lua";
       }
-      vim-devicons # legacy, for nerdtree until replaced
       elm-vim
       vim-enmasse-branch.vimPlugins.vim-enmasse
       vim-exchange
@@ -513,7 +510,6 @@ in
       julia-vim
       nixpkgs-unstable.vimPlugins.leap-nvim
       lf-vim
-      nerdtree
       vim-nix
       vim-numbertoggle
       nixpkgs-unstable.vimPlugins.overseer-nvim
@@ -574,7 +570,22 @@ in
       vim-test
       vim-textobj-entire
       vim-toml
-
+      {
+        plugin = nvim-tree-lua;
+        config = ''
+          require("nvim-tree").setup({})
+          local wk = require("which-key")
+          wk.register({
+            f = {
+              name = "Files(NvimTree)",
+                c = { "<cmd>NvimTreeCollapse<CR>", "Collapse NVimTree Node Recursively" },
+                f = { "<cmd>NvimTreeFindFile<CR>", "Move the cursor in the tree for the current buffer, opening folders if needed." },
+                t = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree Open/Close" },
+              },
+          }, { prefix = "<leader>" })
+        '';
+        type = "lua";
+      }
       {
         plugin = nvim-treesitter;
         config = ''
