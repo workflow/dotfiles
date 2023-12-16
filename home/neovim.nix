@@ -507,7 +507,15 @@ in
       nixpkgs-unstable.vimPlugins.copilot-vim
       crates-nvim
       dart-vim-plugin
-      vim-devicons
+
+      {
+        plugin = nvim-web-devicons;
+        config = ''
+        '';
+        type = "lua";
+      }
+      vim-devicons # legacy, for nerdtree until replaced
+
       elm-vim
       vim-enmasse-branch.vimPlugins.vim-enmasse
       vim-exchange
