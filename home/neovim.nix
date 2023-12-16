@@ -279,28 +279,6 @@ in
       let mapleader = ' '
       let maplocalleader = ','
 
-      " FZF Settings
-      nnoremap <C-p> :GFiles<cr>
-      nnoremap <silent><nowait> <Leader><Space> :GFiles<cr>
-      nnoremap <silent><nowait> <Leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
-      nnoremap <C-l> :Files<cr>
-      nnoremap <silent><nowait> <C-g> :Rg!<cr>
-      nnoremap <silent><nowait> <localleader>b :<C-u>Buf<cr>
-      nnoremap <silent><nowait> <localleader>m :<C-u>History<cr>
-      " CTRL-A CTRL-Q to select all and build quickfix list
-      function! s:build_quickfix_list(lines)
-        call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-        copen
-        cc
-      endfunction
-      let g:fzf_action = {
-        \ 'ctrl-q': function('s:build_quickfix_list'),
-        \ 'ctrl-t': 'tab split',
-        \ 'ctrl-s': 'split',
-        \ 'ctrl-v': 'vsplit' }
-      let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-      let g:fzf_history_dir = '~/.local/share/fzf-history'
-
       " Open up a simple file tree
       nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
@@ -308,7 +286,7 @@ in
       set diffopt+=internal,algorithm:patience
 
       " NerdTree Settings
-      nnoremap <silent><nowait> <leader>f :NERDTreeToggle<CR>
+      " nnoremap <silent><nowait> <leader>f :NERDTreeToggle<CR>
       nnoremap <silent><nowait> <leader>n :NERDTreeFind<CR>
       let g:NERDTreeMapOpenVSplit = 'v'
       let g:NERDTreeMapOpenSplit = 's'
@@ -526,7 +504,6 @@ in
       vim-flutter
       fugitive
       fugitive-gitlab-vim
-      fzf-vim
       gitgutter
       vim-graphql
       gruvbox
@@ -560,12 +537,39 @@ in
       {
         plugin = telescope-nvim;
         config = ''
+          local builtin = require("telescope.builtin")
+          local utils = require("telescope.utils")
+          require("telescope").setup({
+            defaults = {
+              mappings = {
+                i = {
+                  ["<C-s>"] = require("telescope.actions").select_horizontal,
+                },
+                n = {
+                  ["<C-s>"] = require("telescope.actions").select_horizontal,
+                },
+              },
+            },
+          })
+          require("telescope").load_extension("fzf")
           local wk = require("which-key")
           wk.register({
-            ["<leader>?"] = { "<cmd>Telescope keymaps<cr>", "Cheatsheet" }
-          })
+            f = {
+              name = "Find(Telescope)",
+                a = { "<cmd>Telescope find_files<CR>", "All Files" },
+                b = { "<cmd>Telescope buffers<CR>", "Buffers" },
+                f = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
+                g = { "<cmd>Telescope live_grep<CR>", "Grep" },
+                h = { "<cmd>Telescope help_tags<CR>", "Help" },
+                ["?"] = { "<cmd>Telescope keymaps<CR>", "Vim Keymap Cheatsheet" },
+                ["."] = { function() builtin.find_files({ cwd = utils.buffer_dir() }) end, "Files in CWD" },
+              },
+          }, { prefix = "<leader>" })
         '';
         type = "lua";
+      }
+      {
+        plugin = telescope-fzf-native-nvim;
       }
       vim-test
       vim-textobj-entire
