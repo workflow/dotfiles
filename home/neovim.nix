@@ -9,7 +9,7 @@ in
     enable = true;
 
     coc = {
-      enable = true;
+      enable = false;
       pluginConfig = ''
         nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
         " TextEdit might fail if hidden is not set.
@@ -389,6 +389,21 @@ in
 
       -- set termguicolors (24bit colors) to enable highlight groups
       vim.opt.termguicolors = true
+
+      -- Wrapped lines should follow the indent
+      vim.o.breakindent = true
+
+      -- Save undo history
+      -- TODO: sync this if useful
+      vim.o.undofile = true
+
+      -- Timeout and Updatetime settings
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      vim.o.updatetime = 250
+
+      -- Set completeopt to have a better completion experience
+      vim.o.completeopt = 'menuone,noselect'
     '';
 
     extraPackages = [
@@ -397,42 +412,40 @@ in
     ];
 
     plugins = with pkgs.vimPlugins; [
-      airline
+      ## General Plugins
       argtextobj-vim
-
-      coc-css
-      coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
-      coc-html
+      # coc-css
+      # coc-diagnostic # diagnostic-languageserver for linters like shellcheck and formatters like shfmt
+      # coc-html
       # coc-java
-      coc-json
+      # coc-json
       # coc-julia
-      coc-nvim
-      coc-prettier
-      coc-pyright
-      {
-        plugin = nixpkgs-unstable.vimPlugins.coc-rust-analyzer;
-        config = ''
-          nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
-          nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
-          nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
-          nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
-          nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
-          nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
-          nnoremap <silent><nowait> <leader>k  :<C-u>CocCommand rust-analyzer.openDocs<cr>
-          xmap <leader>w  <Plug>(coc-codeaction-cursor)
-          nmap <leader>w  <Plug>(coc-codeaction-cursor)
-          xmap <leader>l  <Plug>(coc-codeaction-line)
-          nmap <leader>l  <Plug>(coc-codeaction-line)
-          xmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
-          nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
-        '';
-      }
-      nixpkgs-unstable.vimPlugins.coc-sqlfluff
-      coc-tabnine
-      coc-tsserver
-      coc-vimlsp
-      coc-yaml
-
+      # coc-nvim
+      # coc-prettier
+      # coc-pyright
+      # {
+      #   plugin = nixpkgs-unstable.vimPlugins.coc-rust-analyzer;
+      #   config = ''
+      #     nnoremap <silent><nowait> <localleader>t  :<C-u>CocCommand rust-analyzer.run<cr>
+      #     nnoremap <silent><nowait> <localleader>e  :<C-u>CocCommand rust-analyzer.expandMacro<cr>
+      #     nnoremap <silent><nowait> <localleader>l  :<C-u>CocCommand rust-analyzer.moveItemUp<cr>
+      #     nnoremap <silent><nowait> <localleader>k  :<C-u>CocCommand rust-analyzer.moveItemDown<cr>
+      #     nnoremap <silent><nowait> <localleader>r  :<C-u>CocCommand rust-analyzer.reloadWorkspace<cr>
+      #     nnoremap <silent><nowait> <localleader>J  :<C-u>CocCommand rust-analyzer.joinLines<cr>
+      #     nnoremap <silent><nowait> <leader>k  :<C-u>CocCommand rust-analyzer.openDocs<cr>
+      #     xmap <leader>w  <Plug>(coc-codeaction-cursor)
+      #     nmap <leader>w  <Plug>(coc-codeaction-cursor)
+      #     xmap <leader>l  <Plug>(coc-codeaction-line)
+      #     nmap <leader>l  <Plug>(coc-codeaction-line)
+      #     xmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
+      #     nmap <leader>ct  :<C-u>CocCommand rust-analyzer.openCargoToml<cr>
+      #   '';
+      # }
+      # nixpkgs-unstable.vimPlugins.coc-sqlfluff
+      # coc-tabnine
+      # coc-tsserver
+      # coc-vimlsp
+      # coc-yaml
       vim-bookmarks
       {
         plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
@@ -479,46 +492,95 @@ in
         '';
         type = "lua";
       }
-      vim-commentary
+      {
+        plugin = nvim-cmp; # Autocompletion 
+      }
+      {
+        plugin = cmp_luasnip; # Autocompletion for luasnip
+      }
+      {
+        plugin = nvim-cmp; # Autocompletion 
+      }
+      {
+        plugin = cmp-nvim-lsp; # Autocompletion Additions
+      }
+      {
+        plugin = cmp-path; # Path completions
+      }
+      {
+        plugin = comment-nvim; # Commenting with gc
+        config = ''
+          require('Comment').setup()
+        '';
+        type = "lua";
+      }
       nixpkgs-unstable.vimPlugins.copilot-vim
-      crates-nvim
-      dart-vim-plugin
       {
         plugin = nvim-web-devicons;
         config = ''
         '';
         type = "lua";
       }
-      elm-vim
       vim-enmasse-branch.vimPlugins.vim-enmasse
-      vim-exchange
       {
         plugin = vim-floaterm;
         config = ''
           let g:floaterm_keymap_toggle = '<Leader>t'
         '';
       }
-      vim-flutter
+      {
+        plugin = fidget-nvim; # Status notifications for LSP
+        config = ''
+          require('fidget').setup()
+        '';
+        type = "lua";
+      }
+      {
+        plugin = friendly-snippets; # User-friendly snippets, work with LuaSnip and other engines
+      }
       fugitive
       fugitive-gitlab-vim
       gitgutter
-      vim-graphql
       gruvbox
-      vim-helm
       vim-highlightedyank
-      vim-jsonnet
-      julia-vim
+      {
+        plugin = indent-blankline-nvim; # Indentation guides
+        config = ''
+          require("ibl").setup()
+        '';
+        type = "lua";
+      }
       nixpkgs-unstable.vimPlugins.leap-nvim
       lf-vim
-      vim-nix
+      {
+        plugin = nvim-lspconfig; # Defaults for loads of LSP languages
+      }
+      {
+        plugin = lualine-nvim;
+        config = ''
+          require('lualine').setup {
+            options = {
+              theme = 'gruvbox',
+            },
+          }
+        '';
+        type = "lua";
+      }
+      {
+        plugin = luasnip; # Snippet engine
+      }
       vim-numbertoggle
+      {
+        plugin = mason-nvim; # Automatically install LSP servers
+      }
+      {
+        plugin = mason-lspconfig-nvim; # Automatically install LSP servers
+      }
       nixpkgs-unstable.vimPlugins.overseer-nvim
       ReplaceWithRegister
       vim-rhubarb # github bindings for fugitive
       vim-rooter
-      vim-shellcheck
       vim-sleuth # Automatic shiftwidth and expandtab
-      vim-solidity
       vimspector
       {
         plugin = vim-startify;
@@ -592,19 +654,38 @@ in
         '';
         type = "lua";
       }
-
+      {
+        plugin = nvim-treesitter-textobjects; # ip, ap, etc... from treesitter!
+        config = ''
+        '';
+        type = "lua";
+      }
       vim-unimpaired
       vim-visual-multi
       {
         plugin = which-key-nvim;
         config = ''
-          vim.o.timeout = true
-          vim.o.timeoutlen = 300
           require("which-key").setup {
           }
         '';
         type = "lua";
       }
+
+      ## Language Specific Plugins
+      crates-nvim
+      dart-vim-plugin
+      elm-vim
+      vim-graphql
+      julia-vim
+      vim-jsonnet
+      {
+        plugin = neodev-nvim; # Nvim LUA development
+      }
+      vim-flutter
+      vim-helm
+      vim-shellcheck
+      vim-solidity
+      vim-nix
     ];
 
     viAlias = true;
