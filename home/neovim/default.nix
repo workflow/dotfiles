@@ -490,6 +490,8 @@ in
       }
       {
         plugin = nvim-cmp; # Autocompletion 
+        config = builtins.readFile ./cmp.lua;
+        type = "lua";
       }
       {
         plugin = cmp_luasnip; # Autocompletion for luasnip
