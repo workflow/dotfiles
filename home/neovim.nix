@@ -473,7 +473,7 @@ in
           local wk = require("which-key")
           wk.register({
             c = {
-              name = "ChatGPT",
+              name = "[C]hatGPT",
                 c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
                 e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction", mode = { "n", "v" } },
                 g = { "<cmd>ChatGPTRun grammar_correction<CR>", "Grammar Correction", mode = { "n", "v" } },
@@ -538,9 +538,25 @@ in
       {
         plugin = friendly-snippets; # User-friendly snippets, work with LuaSnip and other engines
       }
-      fugitive
+      {
+        plugin = fugitive; # Git Fu
+        config = ''
+        require('which-key').register {
+          ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        }
+        '';
+        type = "lua";
+      }
       fugitive-gitlab-vim
-      gitgutter
+      {
+        plugin = gitgutter; # Git diff in the gutter
+        config = ''
+        require('which-key').register {
+          ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        }
+        '';
+        type = "lua";
+      }
       gruvbox
       vim-highlightedyank
       {
@@ -618,7 +634,7 @@ in
           local wk = require("which-key")
           wk.register({
             ["<space>"] = {
-              name = "Find(Telescope)",
+              name = "Find[ ](Telescope)",
                 ["<space>"] = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
                 b = { "<cmd>Telescope buffers<CR>", "Buffers" },
                 f = { "<cmd>Telescope find_files<CR>", "All Files" },
@@ -656,7 +672,7 @@ in
           local wk = require("which-key")
           wk.register({
             f = {
-              name = "Files(NvimTree)",
+              name = "[F]iles(NvimTree)",
                 c = { "<cmd>NvimTreeCollapse<CR>", "Collapse NVimTree Node Recursively" },
                 f = { "<cmd>NvimTreeFindFile<CR>", "Move the cursor in the tree for the current buffer, opening folders if needed." },
                 t = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree Open/Close" },
