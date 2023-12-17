@@ -205,8 +205,6 @@ in
         ];
         "rust-analyzer.check.features" = "all";
         "rust-analyzer.lru.capacity" = 1280;
-        "rust-analyzer.debug.runtime" = "vimspector";
-        "rust-analyzer.debug.vimspector.configuration.name" = "Run - CodeLLDB";
 
         "pyright.organizeimports.provider" = "isort";
         "python.formatting.provider" = "black";
@@ -302,16 +300,6 @@ in
 
       " https://github.com/Saecki/crates.nvim
       lua require('crates').setup()
-
-      " Vimspector settings
-      let g:vimspector_base_dir='/home/farlion/.vim/vimspector-config'
-      let g:vimspector_enable_mappings = 'HUMAN'
-      nmap <F8> <Plug>VimspectorToggleBreakpoint
-      " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-      " for normal mode - the word under the cursor
-      nmap <Leader>di <Plug>VimspectorBalloonEval
-      " for visual mode, the visually selected text
-      xmap <Leader>di <Plug>VimspectorBalloonEval
 
       " Colorscheme
       autocmd vimenter * ++nested colorscheme gruvbox
@@ -611,7 +599,6 @@ in
       vim-rhubarb # github bindings for fugitive
       vim-rooter
       vim-sleuth # Automatic shiftwidth and expandtab
-      vimspector
       {
         plugin = vim-startify;
         config = ''
