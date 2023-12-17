@@ -599,6 +599,8 @@ in
       vim-numbertoggle
       {
         plugin = mason-nvim; # Automatically install LSP servers
+        config = builtins.readFile ./lsp.lua;
+        type = "lua";
       }
       {
         plugin = mason-lspconfig-nvim; # Automatically install LSP servers

@@ -14,7 +14,7 @@ let
     ./home/gtk.nix
     ./home/i3status-rust.nix
     ./home/lf.nix
-    ./home/neovim.nix
+    ./home/neovim
     ./home/nushell.nix
     ./home/picom.nix
     ./home/redshift.nix
