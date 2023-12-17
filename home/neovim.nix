@@ -547,6 +547,11 @@ in
         plugin = indent-blankline-nvim; # Indentation guides
         config = ''
           require("ibl").setup()
+          local wk = require("which-key")
+          wk.register({
+            ["[i"] = { function() require("ibl").setup_buffer(0, {enabled = true}) end, "Indentation Guides ON" },
+            ["]i"] = { function() require("ibl").setup_buffer(0, {enabled = false}) end, "Indentation Guides OFF" },
+          })
         '';
         type = "lua";
       }
