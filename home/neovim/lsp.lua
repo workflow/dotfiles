@@ -47,13 +47,7 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  jdtls = {}, -- java
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -61,7 +55,9 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
-}
+  -- nil_ls = {}, -- nix
+  julials = {},
+  }
 
 -- Setup neovim lua configuration
 require('neodev').setup()
