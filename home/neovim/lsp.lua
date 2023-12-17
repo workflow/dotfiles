@@ -9,16 +9,16 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
   end
 
-  nmap('<localleader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<localleader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<localleader>r', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<localleader>a', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-  nmap('<localleader>t', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-  nmap('<localleader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  nmap('<localleader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('gy', require('telescope.builtin').lsp_type_definitions, '[G]oto T[y]pe Definition')
+  nmap('<localleader>s', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<localleader>w', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -58,7 +58,7 @@ local servers = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      diagnostics = { disable = { 'missing-fields' } },
+      -- diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
 }
