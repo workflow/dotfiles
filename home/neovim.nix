@@ -391,6 +391,15 @@ in
 
       -- Make <leader> faster
       vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+      -- Diagnostic keymaps
+      local wk = require("which-key")
+      wk.register({
+        ["[d"] = { vim.diagnostic.goto_prev, "Prev [D]iagnostic" },
+        ["]d"] = { vim.diagnostic.goto_next, "Next [D]iagnostic" },
+        ["<localleader>d"] = { vim.diagnostic.open_float, "Open Floating [D]iagnostics" },
+        ["<localleader>q"] = { vim.diagnostic.setloclist, "Open [Q]uickfix Diagnostics" },
+      })
     '';
 
     extraPackages = [
