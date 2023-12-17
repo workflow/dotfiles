@@ -400,6 +400,9 @@ in
 
       -- Set completeopt to have a better completion experience
       vim.o.completeopt = 'menuone,noselect'
+
+      -- Make <leader> faster
+      vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
     '';
 
     extraPackages = [
