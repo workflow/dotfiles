@@ -303,10 +303,6 @@ in
       " https://github.com/Saecki/crates.nvim
       lua require('crates').setup()
 
-      " LF Settings
-      let g:lf_map_keys = 0
-      nnoremap <silent><nowait> <localleader>f :Lf<CR>
-
       " Vimspector settings
       let g:vimspector_base_dir='/home/farlion/.vim/vimspector-config'
       let g:vimspector_enable_mappings = 'HUMAN'
@@ -572,7 +568,17 @@ in
         type = "lua";
       }
       nixpkgs-unstable.vimPlugins.leap-nvim
-      lf-vim
+      {
+        plugin = lf-vim;
+        config = ''
+          vim.g.lf_map_keys = 0
+          local wk = require("which-key")
+          wk.register({
+            ["<leader>fl"] = {"<cmd>Lf<cr>" , "[L]f" },
+          })
+        '';
+        type = "lua";
+      }
       {
         plugin = nvim-lspconfig; # Defaults for loads of LSP languages
       }
