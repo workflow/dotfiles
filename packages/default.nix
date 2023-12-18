@@ -69,7 +69,7 @@ let
       pkgs.imagemagick
       pkgs.inkscape
       pkgs.iw # Wifi connection strength indicator
-      pkgs.jetbrains.idea-ultimate
+      nixpkgs-unstable.jetbrains.idea-ultimate
       pkgs.jq
       pkgs.jsonnet
       pkgs.k9s
