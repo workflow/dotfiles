@@ -102,6 +102,7 @@ let
       pkgs.obsidian
       pkgs.okular
       pkgs.onboard # On screen keyboard
+      pkgs.openssl
       pkgs.p7zip
       pkgs.papirus-icon-theme
       pkgs.paprefs # For pasystray
