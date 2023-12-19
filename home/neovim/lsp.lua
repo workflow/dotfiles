@@ -35,7 +35,7 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
   -- And set it as automcd for buffers with LSP attached :)
-  vim.api.nvim_command('autocmd BufWritePost <buffer> Format')
+  vim.api.nvim_command('autocmd BufWritePre <buffer> Format')
 end
 
 -- Document workspace keymap
