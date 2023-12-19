@@ -11,6 +11,7 @@ local on_attach = function(_, bufnr)
 
   nmap('<localleader>r', vim.lsp.buf.rename, '[R]e[n]ame')
   nmap('<localleader>a', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  nmap('<localleader>x', function() vim.api.nvim_command('LspRestart') end, '[R]estart LSP Client')
 
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -64,7 +65,7 @@ local servers = {
       command = 'clippy',
     },
   },
-  }
+}
 
 -- Setup neovim lua configuration
 require('neodev').setup()
