@@ -59,6 +59,11 @@ local servers = {
   },
   -- nil_ls = {}, -- nix
   julials = {},
+  rust_analyzer = {
+    checkOnSave = {
+      command = 'clippy',
+    },
+  },
   }
 
 -- Setup neovim lua configuration
