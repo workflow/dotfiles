@@ -60,6 +60,7 @@ local servers = {
   },
   -- nil_ls = {}, -- nix
   julials = {},
+  pyright = {},
   rust_analyzer = {
     checkOnSave = {
       command = 'clippy',
