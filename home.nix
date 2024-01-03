@@ -225,6 +225,15 @@ in
       '';
     };
 
+    tealdeer = {
+      enable = true;
+      settings = {
+        updates = {
+          auto_update = true;
+        };
+      };
+    };
+
     vscode = {
       enable = true;
     };
