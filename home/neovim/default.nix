@@ -649,7 +649,6 @@ in
                 b = { "<cmd>Telescope buffers<CR>", "Buffers" },
                 f = { "<cmd>Telescope find_files<CR>", "All Files" },
                 g = { "<cmd>Telescope live_grep<CR>", "Grep" },
-                h = { "<cmd>Telescope help_tags<CR>", "Help" },
                 ["?"] = { "<cmd>Telescope keymaps<CR>", "Vim Keymap Cheatsheet" },
                 ["."] = { function() builtin.find_files({ cwd = utils.buffer_dir() }) end, "Files in CWD" },
               },
@@ -659,6 +658,20 @@ in
       }
       {
         plugin = telescope-fzf-native-nvim;
+      }
+      {
+        plugin = telescope-frecency-nvim;
+        config = ''
+          require("telescope").load_extension("frecency")
+          local wk = require("which-key")
+          wk.register({
+            ["<space>"] = {
+              name = "Find[ ](Telescope)",
+                h = { "<Cmd>Telescope frecency workspace=CWD<CR>", "History (Frecency)" },
+              },
+          }, { prefix = "<leader>" })
+        '';
+        type = "lua";
       }
       vim-test
       vim-textobj-entire
