@@ -11,8 +11,8 @@
     {
       users = [ "farlion" ];
       commands = [
-        { command = "${pkgs.tailscale}/bin/tailscale up --accept-routes --accept-dns=false"; options = [ "NOPASSWD" "SETENV" ]; }
-        { command = "${pkgs.tailscale}/bin/tailscale down"; options = [ "NOPASSWD" "SETENV" ]; }
+        { command = "/run/current-system/sw/bin/tailscale up --accept-routes --accept-dns=false"; options = [ "NOPASSWD" "SETENV" ]; }
+        { command = "/run/current-system/sw/bin/tailscale down"; options = [ "NOPASSWD" "SETENV" ]; }
         { command = "/run/current-system/sw/bin/systemctl start macgyver"; options = [ "NOPASSWD" "SETENV" ]; }
         { command = "/run/current-system/sw/bin/systemctl stop macgyver"; options = [ "NOPASSWD" "SETENV" ]; }
       ];
