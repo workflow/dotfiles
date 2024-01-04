@@ -495,6 +495,17 @@ in
         type = "lua";
       }
       {
+        plugin = nvim-dap; # Debug Adapter Protocol
+        config = builtins.readFile ./dap.lua;
+        type = "lua";
+      }
+      {
+        plugin = nvim-dap-ui; # DAP UI 
+        config = ''
+        '';
+        type = "lua";
+      }
+      {
         plugin = cmp_luasnip; # Autocompletion for luasnip
       }
       {
@@ -752,6 +763,12 @@ in
       vim-jsonnet
       {
         plugin = neodev-nvim; # Nvim LUA development
+        config = ''
+          require("neodev").setup({
+            library = { plugins = { "nvim-dap-ui" }, types = true },
+          })
+        '';
+        type = "lua";
       }
       vim-flutter
       vim-helm
