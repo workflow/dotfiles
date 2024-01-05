@@ -608,6 +608,14 @@ in
             options = {
               theme = 'gruvbox',
             },
+            extensions = {
+              'fugitive',
+              'mason',
+              'nvim-tree',
+              'toggleterm',
+              'overseer',
+              'trouble',
+            }
           }
         '';
         type = "lua";
