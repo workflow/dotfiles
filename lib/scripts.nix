@@ -142,10 +142,10 @@ in
     }
     ${ensure-env-var "NIXOS_CONFIG"}
     build() {
-        sudo nixos-rebuild test --flake "$NIXOS_CONFIG#" --impure
+        sudo nixos-rebuild test --flake "$NIXOS_CONFIG#"
     }
     switch() {
-        sudo nixos-rebuild switch --flake "$NIXOS_CONFIG#" --impure
+        sudo nixos-rebuild switch --flake "$NIXOS_CONFIG#"
     }
     case "$1" in
         -b | --build | b | build)

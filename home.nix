@@ -26,9 +26,6 @@ let
     ./home/xsession
   ] ++ secretImports;
 
-  # Requires --impure
-  isFullSetup = lib.pathExists /home/farlion/code;
-
   nixpkgs-unstable = pkgs.unstable;
 
   profile = pkgs.callPackage ./lib/profile.nix { };
@@ -72,7 +69,7 @@ in
       "bin/dlfile" = { text = scripts.dlfile; executable = true; };
 
       # Duplicati
-      ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (isFullSetup && secrets ? duplicatiConfig) {
+      ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
         source = lib.attrsets.attrByPath [ "${hostName}" ] { } secrets.duplicatiConfig;
       };
 
@@ -112,11 +109,11 @@ in
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
       # Syncthing
-      ".config/syncthing/config.xml" = lib.mkIf (isFullSetup && secrets ? syncthingConfig) {
+      ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
         text = secrets.syncthingConfig;
       };
 
-      "code/.stignore" = lib.mkIf isFullSetup {
+      "code/.stignore" = {
         source = ./dotfiles/stignore_code;
       };
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
