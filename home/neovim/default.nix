@@ -572,7 +572,12 @@ in
       {
         plugin = indent-blankline-nvim; # Indentation guides
         config = ''
-          require("ibl").setup()
+          require("ibl").setup({
+            enabled = false,
+            exclude = {
+             filetypes = {"startify"},
+            }
+          })
           local wk = require("which-key")
           wk.register({
             ["[i"] = { function() require("ibl").setup_buffer(0, {enabled = true}) end, "Indentation Guides ON" },
