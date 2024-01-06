@@ -62,6 +62,23 @@ let
       end
     '';
 
+    ## Wrap LF to add ability to quit with Q in current directory
+    ##
+    ## Adapted for fish from https://github.com/gokcehan/lf/wiki/Tips#cd-to-current-directory-on-quit
+    ##
+    lf = ''
+        set -x LF_CD_FILE /var/tmp/.lfcd-$fish_pid
+        command lf $argv
+        if test -s "$LF_CD_FILE"
+            set DIR (realpath (cat "$LF_CD_FILE"))
+            if test "$DIR" != "$PWD"
+                cd "$DIR"
+            end
+            rm "$LF_CD_FILE"
+        end
+        set -e LF_CD_FILE
+    '';
+
     lo = ''
       set LOCALSPEAKER1 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
       set LOCALSPEAKER2 "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"

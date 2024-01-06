@@ -65,6 +65,13 @@ in
         }}
       '';
 
+      quit-and-cd = ''
+        &{{
+          pwd > $LF_CD_FILE
+          lf -remote "send $id quit"
+        }}
+      '';
+
       sudomkfile = ''
         ''${{
           printf "File Name: "
@@ -139,6 +146,7 @@ in
       md = "mkdir";
       mf = "mkfile";
       mr = "sudomkfile";
+      Q = "quit-and-cd";
       u = "unarchive";
       x = "cut";
     };

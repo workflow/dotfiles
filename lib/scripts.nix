@@ -103,10 +103,11 @@ in
     fi
   '';
 
+  # Get the current tailscale ip if tailscale is up
   tailscale-ip = ''
     ${shebang}
-    # Get the current tailscale ip if tailscale is up
     set -euo pipefail
+
     isOnline=$(tailscale status --json | jq -r '.Self.Online')
     if [[ "$isOnline" == "true" ]]; then
       tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
@@ -114,9 +115,9 @@ in
     fi
   '';
 
+  # Get the current macgyver status
   macgyver-status = ''
     ${shebang}
-    # Get the current macgyver status
     set -euo pipefail
     output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
 
