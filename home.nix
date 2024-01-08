@@ -73,6 +73,9 @@ in
         source = lib.attrsets.attrByPath [ "${hostName}" ] { } secrets.duplicatiConfig;
       };
 
+      # Generate gitignores
+      "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
+
       # Nixos script wrapper
       "bin/nixos" = { text = scripts.nixos; executable = true; };
 
