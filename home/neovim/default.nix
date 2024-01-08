@@ -623,6 +623,9 @@ in
       {
         plugin = luasnip; # Snippet engine
       }
+      {
+        plugin = markdown-preview-nvim;
+      }
       vim-numbertoggle
       {
         plugin = mason-nvim; # Automatically install LSP servers
