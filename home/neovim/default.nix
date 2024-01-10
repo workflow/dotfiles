@@ -625,6 +625,13 @@ in
       }
       {
         plugin = markdown-preview-nvim;
+        config = ''
+          local wk = require("which-key")
+          wk.register({
+            ["<leader>m"] = { "<Plug>MarkdownPreviewToggle", "Toggle [M]arkdown Preview" },
+          })
+        '';
+        type = "lua";
       }
       vim-numbertoggle
       {
