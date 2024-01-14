@@ -167,7 +167,7 @@ services.xserver = {
 ## Moving an Existing Installation to a new Disk
 
 1. Prepare the new disk according to the [Partitioning Information](https://github.com/workflow/dotfiles?tab=readme-ov-file#installation-instuctions) up to the point just before mounting the swap/disks
-1. Update the hardware configuration (e.g. `nixos-config/machines/my-machine/hardware-scan.nix` and maybe `nixos-config/machines/X/system.nix`) to point to the new partitions 
+1. Update the hardware configuration (e.g. `nixos-config/machines/my-machine/hardware-scan.nix` and maybe `nixos-config/machines/my-machine/system.nix`) to point to the new partitions 
 1. Mount the new boot partition in-place: `sudo mount $NEWBOOT /boot`
 1. Install the new configuration, including bootloader: `sudo nixos-rebuild boot --install-bootloader --flake .#my-machine`
 1. Reboot into an installation disk
