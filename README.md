@@ -49,6 +49,7 @@ Roughly this https://qfpl.io/posts/installing-nixos/
 
 - sudo -i
 - lsblk -> find out disk name (e.g. `/dev/sda`) `$DISK`
+- `export DISK=/dev/sda`
 - `gdisk $DISK`
   - `p` (print)
   - `d` (delete)
@@ -56,12 +57,14 @@ Roughly this https://qfpl.io/posts/installing-nixos/
     - number=1, begin=default, end=`+1G`, hex code=`ef00` (not needed if dual boot) (`$BOOT` from now on, or `/dev/sda1` etc)
     - number=2, begin=default, end=default, hex code=`8e00` (`$MAIN` from now on)
   - `w` (write)
+- `export BOOT=/dev/sda1`
+- `export DISK=/dev/sda2`
 - encryption
   - `cryptsetup luksFormat $MAIN`
   - `cryptsetup luksOpen $MAIN nixos-enc`
   - `pvcreate /dev/mapper/nixos-enc`
   - `vgcreate nixos-vg /dev/mapper/nixos-enc`
-  - `lvcreate -L <swap size, e.g. 8G> -n swap nixos-vg`
+  - `lvcreate -L <swap size, e.g. 8G, usually pick 2xRAM for hibernation if space doesn't matter> -n swap nixos-vg`
   - `lvcreate -l 100%FREE -n root nixos-vg`
 - create fs
   - `mkfs.vfat -n boot $BOOT` (not needed if dual boot)
@@ -161,16 +164,31 @@ services.xserver = {
 1. Rerun `n`
 1. Reboot
 
-### Useful notes
+## Moving an Existing Installation to a new Disk
+
+1. Prepare the new disk according to the [Partitioning Information](https://github.com/workflow/dotfiles?tab=readme-ov-file#installation-instuctions) up to the point just before mounting the swap/disks
+1. Update the hardware configuration (e.g. `nixos-config/machines/my-machine/hardware-scan.nix` and maybe `nixos-config/machines/X/system.nix`) to point to the new partitions 
+1. Mount the new boot partition in-place: `sudo mount $NEWBOOT /boot`
+1. Install the new configuration, including bootloader: `sudo nixos-rebuild boot --install-bootloader --flake .#my-machine`
+1. Reboot into an installation disk
+1. Mount the old root parition at `/mnt/olddrive`
+1. Mount the new root parition at `/mnt/newdrive`
+1. Copy everything over:
+```bash
+rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /mnt/olddrive/ /mnt/newdrive
+```
+
+
+## Useful notes
 
 [Useful Notes](NOTES.md)
 
-### Acknowledgements
+## Acknowledgements
 
 A lot of this was looted from https://github.com/alexpeits/nixos-config. Thank you!
 
 CI build ~stolen from~ inspired by https://github.com/gvolpe/nix-config
 
-### History
+## History
 
 ![neofetch nixbox](assets/archive/neofetch-nixbox.png)
