@@ -404,8 +404,8 @@ in
     '';
 
     extraPackages = [
+      pkgs.shellcheck
       pkgs.shfmt
-      pkgs.rnix-lsp
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -551,9 +551,9 @@ in
       {
         plugin = fugitive; # Git Fu
         config = ''
-        require('which-key').register {
-          ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-        }
+          require('which-key').register {
+            ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+          }
         '';
         type = "lua";
       }
@@ -561,9 +561,9 @@ in
       {
         plugin = gitgutter; # Git diff in the gutter
         config = ''
-        require('which-key').register {
-          ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-        }
+          require('which-key').register {
+            ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+          }
         '';
         type = "lua";
       }

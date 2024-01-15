@@ -115,6 +115,7 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 local servers = {
+  bashls = {},
   jdtls = {}, -- java
   lua_ls = {
     Lua = {
