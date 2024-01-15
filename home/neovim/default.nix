@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let
   vim-enmasse-branch = pkgs.nixpkgs-vim-enmasse-branch;
 
@@ -406,6 +406,8 @@ in
     extraPackages = [
       pkgs.shellcheck
       pkgs.shfmt
+      pkgs.nixpkgs-fmt
+      inputs.nil.packages.x86_64-linux.default # Nix Language Server by Oxalica
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -648,7 +650,7 @@ in
       vim-numbertoggle
       {
         plugin = mason-nvim; # Automatically install LSP servers
-        config = builtins.readFile ./lsp.lua;
+        config = builtins.replaceStrings ["LSP_PATH"] ["${inputs.nil.packages.x86_64-linux.default}/bin/nil"] (builtins.readFile ./lsp.lua);
         type = "lua";
       }
       {

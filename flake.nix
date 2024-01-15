@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nil.url = "github:oxalica/nil";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-vim-enmasse-branch.url = "github:workflow/nixpkgs/vimplugins-enmasse";
@@ -20,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-vim-enmasse-branch, nixos-hardware, home-manager, secrets, ... }@inputs:
+  outputs = { self, nil, nixpkgs, nixpkgs-unstable, nixpkgs-vim-enmasse-branch, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
         nixpkgs-vim-enmasse-branch = import nixpkgs-vim-enmasse-branch {

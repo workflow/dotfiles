@@ -124,7 +124,6 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
-  -- nil_ls = {}, -- nix
   julials = {},
   pyright = {},
   rust_analyzer = {
@@ -155,4 +154,18 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end,
+}
+
+local lsp_path = 'LSP_PATH'
+require('lspconfig').nil_ls.setup {
+  autostart = true,
+  capabilities = capabilities,
+  cmd = { lsp_path },
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixpkgs-fmt" },
+      },
+    },
+  },
 }
