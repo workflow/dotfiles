@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   vim-enmasse-branch = pkgs.nixpkgs-vim-enmasse-branch;
 
@@ -629,6 +629,18 @@ in
           local wk = require("which-key")
           wk.register({
             ["<leader>m"] = { "<Plug>MarkdownPreviewToggle", "Toggle [M]arkdown Preview" },
+          })
+        '';
+        type = "lua";
+      }
+      {
+        plugin = null-ls-nvim;
+        config = ''
+          local null_ls = require("null-ls")
+          null_ls.setup({
+            sources = { 
+              null_ls.builtins.formatting.shfmt
+            } 
           })
         '';
         type = "lua";
