@@ -11,18 +11,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/feff7366-5589-4ea2-9b2e-40f714642892";
+      device = "/dev/disk/by-uuid/e5687086-9188-42e8-aa57-423df9cbb863";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/A874-9F10";
+      device = "/dev/disk/by-uuid/8483-92D7";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/58d90289-edea-4ffe-a89c-baad70b15f6b"; }];
+    [{ device = "/dev/disk/by-uuid/0fb837c4-ba4e-437d-a54c-ff25312af20c"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

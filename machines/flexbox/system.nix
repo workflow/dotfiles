@@ -55,7 +55,7 @@ in
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/nvme0n1p4";
+      device = "/dev/nvme1n1p2";
       preLVM = true;
     };
   };

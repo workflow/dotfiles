@@ -171,12 +171,13 @@ services.xserver = {
 1. Mount the new boot partition in-place: `sudo mount $NEWBOOT /boot`
 1. Install the new configuration, including bootloader: `sudo nixos-rebuild boot --install-bootloader --flake .#my-machine`
 1. Reboot into an installation disk
-1. Mount the old root parition at `/mnt/olddrive`
-1. Mount the new root parition at `/mnt/newdrive`
-1. Copy everything over:
+1. Mount the old root parition at `/mnt/old`
+1. Mount the new root parition at `/mnt/new`
+1. Copy everything over, preserving creation times with `-N` for syncthing:
 ```bash
-rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /mnt/olddrive/ /mnt/newdrive
+rsync -aAXvN --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /mnt/old/ /mnt/new
 ```
+1. Reboot into the new drive and enjoy =)
 
 
 ## Useful notes
