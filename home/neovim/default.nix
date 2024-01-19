@@ -189,6 +189,23 @@ in
 
     plugins = with pkgs.vimPlugins; [
       argtextobj-vim
+      {
+        plugin = b64-nvim; # Base64 encoding/decoding
+        config = ''
+          local wk = require("which-key")
+          wk.register({
+            b = {
+              name = "[B]ase64",
+              e = { require("b64").encode, "Base64 [E]ncode" },
+              d = { require("b64").decode, "Base64 [D]ecode" },
+            },
+          }, { 
+            prefix = "<leader>",
+            mode = "v",
+          })
+        '';
+        type = "lua";
+      }
       vim-bookmarks
       {
         plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
