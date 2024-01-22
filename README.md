@@ -58,7 +58,7 @@ Roughly this https://qfpl.io/posts/installing-nixos/
     - number=2, begin=default, end=default, hex code=`8e00` (`$MAIN` from now on)
   - `w` (write)
 - `export BOOT=/dev/sda1`
-- `export DISK=/dev/sda2`
+- `export MAIN=/dev/sda2`
 - encryption
   - `cryptsetup luksFormat $MAIN`
   - `cryptsetup luksOpen $MAIN nixos-enc`
