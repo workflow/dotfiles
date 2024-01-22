@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   # Use the systemd-boot EFI boot loader.
@@ -24,7 +24,7 @@
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/disk/by-uuid/74d4c5f3-f5fe-4aba-ac7a-56b0d28efc64";
+      device = "/dev/disk/by-uuid/69615b0a-fffd-4424-99e6-e39f11dab27e";
       preLVM = true;
     };
     data-b-enc = {
