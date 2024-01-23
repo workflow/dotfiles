@@ -294,6 +294,13 @@ in
         '';
         type = "lua";
       }
+      {
+        plugin = dressing-nvim; # Better UI for codeactions, code input etc...
+        config = ''
+          
+        '';
+        type = "lua";
+      }
       vim-enmasse-branch.vimPlugins.vim-enmasse
       {
         plugin = vim-floaterm;
