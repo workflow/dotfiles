@@ -117,6 +117,7 @@ require('mason-lspconfig').setup()
 local servers = {
   bashls = {},
   jdtls = {}, -- java
+  jsonls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
