@@ -38,6 +38,17 @@ let
   ws9 = "9: ";
   ws10 = "10: ";
 
+  ws11 = "11";
+  ws12 = "12";
+  ws13 = "13";
+  ws14 = "14";
+  ws15 = "15";
+  ws16 = "16";
+  ws17 = "17";
+  ws18 = "18";
+  ws19 = "19";
+  ws20 = "20";
+
 in
 {
   enable = true;
@@ -159,30 +170,38 @@ in
       "${mod}+8" = "workspace ${ws8}";
       "${mod}+9" = "workspace ${ws9}";
       "${mod}+0" = "workspace ${ws10}";
-
-      # Move container to workspace
-      "${mod}+Shift+1" = "move container to workspace ${ws1}";
-      "${mod}+Shift+2" = "move container to workspace ${ws2}";
-      "${mod}+Shift+3" = "move container to workspace ${ws3}";
-      "${mod}+Shift+4" = "move container to workspace ${ws4}";
-      "${mod}+Shift+5" = "move container to workspace ${ws5}";
-      "${mod}+Shift+6" = "move container to workspace ${ws6}";
-      "${mod}+Shift+7" = "move container to workspace ${ws7}";
-      "${mod}+Shift+8" = "move container to workspace ${ws8}";
-      "${mod}+Shift+9" = "move container to workspace ${ws9}";
-      "${mod}+Shift+0" = "move container to workspace ${ws10}";
+      "${mod}+Mod1+1" = "workspace ${ws11}";
+      "${mod}+Mod1+2" = "workspace ${ws12}";
+      "${mod}+Mod1+3" = "workspace ${ws13}";
+      "${mod}+Mod1+4" = "workspace ${ws14}";
+      "${mod}+Mod1+5" = "workspace ${ws15}";
+      "${mod}+Mod1+6" = "workspace ${ws16}";
+      "${mod}+Mod1+7" = "workspace ${ws17}";
+      "${mod}+Mod1+8" = "workspace ${ws18}";
+      "${mod}+Mod1+9" = "workspace ${ws19}";
+      "${mod}+Mod1+0" = "workspace ${ws20}";
 
       # Move container to workspace and focus
-      "${mod}+Control+1" = "move container to workspace ${ws1}; workspace ${ws1}";
-      "${mod}+Control+2" = "move container to workspace ${ws2}; workspace ${ws2}";
-      "${mod}+Control+3" = "move container to workspace ${ws3}; workspace ${ws3}";
-      "${mod}+Control+4" = "move container to workspace ${ws4}; workspace ${ws4}";
-      "${mod}+Control+5" = "move container to workspace ${ws5}; workspace ${ws5}";
-      "${mod}+Control+6" = "move container to workspace ${ws6}; workspace ${ws6}";
-      "${mod}+Control+7" = "move container to workspace ${ws7}; workspace ${ws7}";
-      "${mod}+Control+8" = "move container to workspace ${ws8}; workspace ${ws8}";
-      "${mod}+Control+9" = "move container to workspace ${ws9}; workspace ${ws9}";
-      "${mod}+Control+0" = "move container to workspace ${ws10}; workspace ${ws10}";
+      "${mod}+Shift+1" = "move container to workspace ${ws1}; workspace ${ws1}";
+      "${mod}+Shift+2" = "move container to workspace ${ws2}; workspace ${ws2}";
+      "${mod}+Shift+3" = "move container to workspace ${ws3}; workspace ${ws3}";
+      "${mod}+Shift+4" = "move container to workspace ${ws4}; workspace ${ws4}";
+      "${mod}+Shift+5" = "move container to workspace ${ws5}; workspace ${ws5}";
+      "${mod}+Shift+6" = "move container to workspace ${ws6}; workspace ${ws6}";
+      "${mod}+Shift+7" = "move container to workspace ${ws7}; workspace ${ws7}";
+      "${mod}+Shift+8" = "move container to workspace ${ws8}; workspace ${ws8}";
+      "${mod}+Shift+9" = "move container to workspace ${ws9}; workspace ${ws9}";
+      "${mod}+Shift+0" = "move container to workspace ${ws10}; workspace ${ws10}";
+      "${mod}+Shift+Mod1+1" = "move container to workspace ${ws11}; workspace ${ws11}";
+      "${mod}+Shift+Mod1+2" = "move container to workspace ${ws12}; workspace ${ws12}";
+      "${mod}+Shift+Mod1+3" = "move container to workspace ${ws13}; workspace ${ws13}";
+      "${mod}+Shift+Mod1+4" = "move container to workspace ${ws14}; workspace ${ws14}";
+      "${mod}+Shift+Mod1+5" = "move container to workspace ${ws15}; workspace ${ws15}";
+      "${mod}+Shift+Mod1+6" = "move container to workspace ${ws16}; workspace ${ws16}";
+      "${mod}+Shift+Mod1+7" = "move container to workspace ${ws17}; workspace ${ws17}";
+      "${mod}+Shift+Mod1+8" = "move container to workspace ${ws18}; workspace ${ws18}";
+      "${mod}+Shift+Mod1+9" = "move container to workspace ${ws19}; workspace ${ws19}";
+      "${mod}+Shift+Mod1+0" = "move container to workspace ${ws20}; workspace ${ws20}";
 
       # Move workspace between screens
       "${mod}+Control+j" = "move workspace to output left";
