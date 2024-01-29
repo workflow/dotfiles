@@ -21,6 +21,8 @@
 
   services.fwupd.enable = true;
 
+  services.trezord.enable = true;
+
   security.pam.yubico = {
     enable = true;
     mode = "challenge-response";

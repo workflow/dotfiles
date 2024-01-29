@@ -149,6 +149,8 @@ let
       pkgs.traceroute
       pkgs.trash-cli
       pkgs.tree
+      pkgs.trezor-suite
+      pkgs.trezor-udev-rules
       pkgs.tzupdate
       pkgs.unzip
       pkgs.usbutils # Provides lsusb
