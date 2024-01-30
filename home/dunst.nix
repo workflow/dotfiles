@@ -158,7 +158,7 @@ in
 
         # Split notifications into multiple lines if they don't fit into
         # geometry.
-        word_wrap = false;
+        word_wrap = true;
       };
 
       urgency_critical = {
