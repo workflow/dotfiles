@@ -7,6 +7,7 @@ let
     ./home/autorandr.nix
     ./home/broot.nix
     ./home/dunst.nix
+    ./home/email.nix
     ./home/fish.nix
     ./home/fzf.nix
     ./home/git.nix
@@ -20,7 +21,6 @@ let
     ./home/redshift.nix
     ./home/rofi.nix
     ./home/starship.nix
-    ./home/thunderbird.nix
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
