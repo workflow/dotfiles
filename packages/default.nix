@@ -89,6 +89,7 @@ let
       pkgs.lsof
       pkgs.lz4 # compression
       pkgs.megacmd
+      pkgs.microsoft-edge # For teams 😭
       pkgs.mpv # video player
       pkgs.gnome.nautilus
       pkgs.ncdu # Disk Space Visualization
