@@ -35,6 +35,7 @@ let
       pkgs.delta # Syntax highlighter for git
       inputs.devenv.packages.x86_64-linux.devenv
       nixpkgs-unstable.discord
+      pkgs.distrobox
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
