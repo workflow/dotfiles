@@ -47,35 +47,24 @@ function l {
 	LOCALMIKE6="alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
 	SOURCES=$(pactl list sources)
 
-	if [[ $SINKS == *"$LOCALSPEAKER1"* ]]; then
-		LOCALSPEAKER=$LOCALSPEAKER1
-	elif [[ $SINKS == *"$LOCALSPEAKER2"* ]]; then
-		LOCALSPEAKER=$LOCALSPEAKER2
-	elif [[ $SINKS == *"$LOCALSPEAKER3"* ]]; then
-		LOCALSPEAKER=$LOCALSPEAKER3
-	elif [[ $SINKS == *"$LOCALSPEAKER4"* ]]; then
-		LOCALSPEAKER=$LOCALSPEAKER4
-	elif [[ $SINKS == *"$LOCALSPEAKER5"* ]]; then
-		LOCALSPEAKER=$LOCALSPEAKER5
-	else
-		echo "Local speaker not found"
-	fi
+	case $SINKS in
+	*"$LOCALSPEAKER1"*) LOCALSPEAKER=$LOCALSPEAKER1 ;;
+	*"$LOCALSPEAKER2"*) LOCALSPEAKER=$LOCALSPEAKER2 ;;
+	*"$LOCALSPEAKER3"*) LOCALSPEAKER=$LOCALSPEAKER3 ;;
+	*"$LOCALSPEAKER4"*) LOCALSPEAKER=$LOCALSPEAKER4 ;;
+	*"$LOCALSPEAKER5"*) LOCALSPEAKER=$LOCALSPEAKER5 ;;
+	*) echo "Local speaker not found" ;;
+	esac
 
-	if [[ $SOURCES == *"$LOCALMIKE1"* ]]; then
-		LOCALMIKE=$LOCALMIKE1
-	elif [[ $SOURCES == *"$LOCALMIKE2"* ]]; then
-		LOCALMIKE=$LOCALMIKE2
-	elif [[ $SOURCES == *"$LOCALMIKE3"* ]]; then
-		LOCALMIKE=$LOCALMIKE3
-	elif [[ $SOURCES == *"$LOCALMIKE4"* ]]; then
-		LOCALMIKE=$LOCALMIKE4
-	elif [[ $SOURCES == *"$LOCALMIKE5"* ]]; then
-		LOCALMIKE=$LOCALMIKE5
-	elif [[ $SOURCES == *"$LOCALMIKE6"* ]]; then
-		LOCALMIKE=$LOCALMIKE6
-	else
-		echo "Local mike not found"
-	fi
+	case $SOURCES in
+	*"$LOCALMIKE1"*) LOCALMIKE=$LOCALMIKE1 ;;
+	*"$LOCALMIKE2"*) LOCALMIKE=$LOCALMIKE2 ;;
+	*"$LOCALMIKE3"*) LOCALMIKE=$LOCALMIKE3 ;;
+	*"$LOCALMIKE4"*) LOCALMIKE=$LOCALMIKE4 ;;
+	*"$LOCALMIKE5"*) LOCALMIKE=$LOCALMIKE5 ;;
+	*"$LOCALMIKE6"*) LOCALMIKE=$LOCALMIKE6 ;;
+	*) echo "Local mike not found" ;;
+	esac
 
 	pactl set-default-sink "$LOCALSPEAKER"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
