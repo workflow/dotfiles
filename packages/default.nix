@@ -127,6 +127,7 @@ let
       pkgs.qalculate-gtk # Calculator
       pkgs.q-text-as-data # https://github.com/harelba/q
       nixpkgs-unstable.realvnc-vnc-viewer
+      pkgs.remmina
       pkgs.ripdrag
       pkgs.ripgrep
       inputs.rmob.defaultPackage.x86_64-linux
