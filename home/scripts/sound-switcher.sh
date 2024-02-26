@@ -6,7 +6,7 @@ chosen="$(echo -e "🔌local\n\
 🔊dock\n\
 🎧sony\n\
 📢boombox\n\
-🎧openheadphones(laptop)" | rofi -dmenu -p "Zound:")"
+🎧openheadphones(laptop)" | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
 function b {
 	BOOMBOX="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
@@ -27,7 +27,7 @@ function d {
 	pactl set-default-sink "$DOCK"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
-		pactl move-sink-input $i "$DOCK"
+		pactl move-sink-input "$i" "$DOCK"
 	done
 }
 
