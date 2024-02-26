@@ -6,6 +6,7 @@
     extraConfig = {
       bw = 1;
       columns = 2;
+      icon-theme = "Papirus-Dark";
     };
 
     theme = "gruvbox-dark-soft";
