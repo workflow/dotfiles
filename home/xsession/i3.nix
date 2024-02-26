@@ -220,6 +220,9 @@ in
       # If there are multiple scratchpad windows, this command cycles through them.
       "${mod}+minus" = "scratchpad show";
 
+      # Sound Switcher
+      "${mod}+m" = "exec --no-startup-id sound-switcher";
+
       # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
       # Pulse Audio controls
       "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%"; #increase sound volume

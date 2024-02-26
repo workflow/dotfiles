@@ -111,6 +111,9 @@ in
       # Rmview (Remarkable II screensharing) config
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
+      # Sound Switcher
+      "bin/sound-switcher" = { source = ./home/scripts/sound-switcher.sh; executable = true; };
+
       # Syncthing
       ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
         text = secrets.syncthingConfig;
