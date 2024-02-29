@@ -228,7 +228,14 @@ in
             },
             popup_input = {
               submit = "<C-s>"
-            }
+            },
+            edit_with_instructions = {
+              keymaps = {
+                toggle_help = "<C-h>",
+                use_output_as_input = "<C-x>",
+              }
+            },
+
           })
           local wk = require("which-key")
           wk.register({
