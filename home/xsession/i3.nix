@@ -64,10 +64,12 @@ in
         { class = "^Element$"; }
       ];
       "${ws9}" = [
-        { class = "^obsidian$"; }
         { class = "^Spotify$"; }
         { title = "YouTube Music - Brave"; }
         { class = "^Todoist$"; }
+      ];
+      "${ws19}" = [
+        { class = "^obsidian$"; }
       ];
     };
 
