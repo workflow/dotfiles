@@ -4,7 +4,7 @@ let
 
   packages =
     [
-      pkgs.aichat
+      nixpkgs-unstable.aichat
       pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
