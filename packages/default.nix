@@ -1,10 +1,11 @@
 { pkgs, inputs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
+  aichat-13 = pkgs.callPackage ./aichat { rustPlatform = pkgs.unstable.rustPlatform; };
 
   packages =
     [
-      nixpkgs-unstable.aichat
+      aichat-13
       pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
