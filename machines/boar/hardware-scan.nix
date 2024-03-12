@@ -30,6 +30,6 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/1918e35f-be18-4ca8-a179-9a4e2e5107f8"; }];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
 
