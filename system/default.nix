@@ -48,7 +48,6 @@
     enableGraphical = true;
   };
   hardware.bluetooth.enable = true;
-  services.logind.lidSwitch = "lock";
 
   services.hardware.bolt.enable = true;
 

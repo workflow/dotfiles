@@ -6,6 +6,8 @@ in
   # This will save you money and possibly your life!
   services.thermald.enable = true;
 
+  services.logind.lidSwitch = "suspend";
+
   services.tlp = lib.mkIf isFlexbox {
     enable = true;
     settings = {
