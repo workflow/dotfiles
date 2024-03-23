@@ -138,9 +138,6 @@ in
 
       " Background light/dark toggling
       nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
-
-      " Overseer
-      lua require('overseer').setup()
     '';
 
     extraLuaConfig = ''
@@ -434,7 +431,13 @@ in
       {
         plugin = mason-lspconfig-nvim; # Automatically install LSP servers
       }
-      nixpkgs-unstable.vimPlugins.overseer-nvim
+      {
+        plugin = overseer-nvim;
+        config = ''
+          require('overseer').setup()
+        '';
+        type = "lua";
+      }
       ReplaceWithRegister
       vim-rhubarb # github bindings for fugitive
       vim-rooter
