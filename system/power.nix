@@ -6,7 +6,10 @@ in
   # This will save you money and possibly your life!
   services.thermald.enable = true;
 
-  services.logind.lidSwitch = "suspend";
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
 
   services.tlp = lib.mkIf isFlexbox {
     enable = true;

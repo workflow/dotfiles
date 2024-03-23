@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+
+  services.atd.enable = true;
+
   boot.tmp.cleanOnBoot = true;
 
   # Writes to /etc/sysctl.d/60-nixos.conf

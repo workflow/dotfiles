@@ -13,8 +13,7 @@ let
 
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
   screenShutter = "xset dpms force off";
-  suspender = "systemctl suspend";
-  hibernator = "systemctl hibernate";
+  suspender = "systemctl suspend-then-hibernate";
 
   mod = "Mod4";
 
@@ -345,7 +344,6 @@ in
     ++ lib.lists.optionals isFlexbox
       [
         { command = ''xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 "${suspender}" ""''; notification = false; }
-        { command = ''xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 3600 "${hibernator}" ""''; notification = false; }
       ]
     ++ lib.lists.optionals isBoar
       [
