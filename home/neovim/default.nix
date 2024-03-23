@@ -411,6 +411,9 @@ in
         type = "lua";
       }
       {
+        plugin = nvim-notify;
+      }
+      {
         plugin = null-ls-nvim;
         config = ''
           local null_ls = require("null-ls")
