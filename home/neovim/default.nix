@@ -435,6 +435,14 @@ in
         plugin = overseer-nvim;
         config = ''
           require('overseer').setup()
+          local wk = require("which-key")
+          wk.register({
+            o = {
+              name = "[O]verseer",
+                r = { "<cmd>OverseerRun<CR>", "[R]un" },
+                t = { "<cmd>OverseerToggle<CR>", "[T]oggle List" },
+              },
+          }, { prefix = "<leader>" })
         '';
         type = "lua";
       }
