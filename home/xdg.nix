@@ -16,21 +16,28 @@
     };
 
     mimeApps = {
+      associations = {
+        added = {
+          "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+        };
+      };
       enable = true;
       defaultApplications = {
         "text/html" = [ "brave-browser.desktop" ];
         "text/plain" = [ "nvim.desktop" ];
+        "inode/directory" = [ "lf.desktop" ];
+        "application/pdf" = [ "okular.desktop" ];
+        "applications/x-www-browser" = [ "brave-browser.desktop" ];
+        "x-scheme-handler/about" = [ "brave-browser.desktop" ];
         "x-scheme-handler/http" = [ "brave-browser.desktop" ];
         "x-scheme-handler/https" = [ "brave-browser.desktop" ];
-        "x-scheme-handler/about" = [ "brave-browser.desktop" ];
-        "x-scheme-handler/unknown" = [ "brave-browser.desktop" ];
-        "x-scheme-handler/webcal" = [ "brave-browser.desktop" ];
         "x-scheme-handler/mailto" = [ "brave-browser.desktop" ];
-        "application/pdf" = [ "okular.desktop" ];
-        "inode/directory" = [ "lf.desktop" ];
-        "applications/x-www-browser" = [ "brave-browser.desktop" ];
+        "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
         "x-scheme-handler/postman" = [ "Postman.desktop" ];
+        "x-scheme-handler/unknown" = [ "brave-browser.desktop" ];
         "x-scheme-handler/slack" = [ "slack.desktop" ];
+        "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+        "x-scheme-handler/webcal" = [ "brave-browser.desktop" ];
       };
     };
   };
