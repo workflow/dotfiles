@@ -146,7 +146,7 @@ in
         sudo nixos-rebuild test --flake "$NIXOS_CONFIG#"
     }
     switch() {
-        sudo nixos-rebuild switch --flake "$NIXOS_CONFIG#"
+        nixos-rebuild switch --flake "$NIXOS_CONFIG#"
     }
     case "$1" in
         -b | --build | b | build)
