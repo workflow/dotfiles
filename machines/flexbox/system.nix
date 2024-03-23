@@ -19,19 +19,6 @@ in
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
   boot.consoleLogLevel = 7;
 
-  # Fix audio
-  # TODO: Upstream these modules to nixpkgs
-  boot.kernelPatches = [
-    {
-      name = "enable-soundwire-drivers";
-      patch = null;
-      extraConfig = ''
-        SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES y
-        SND_SOC_INTEL_SOUNDWIRE_SOF_MACH m
-        SND_SOC_RT1308 m
-      '';
-    }
-  ];
   boot.extraModprobeConfig = ''
     options snd-hda-intel model=auto, enable_msi=1
   '';
