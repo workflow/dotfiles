@@ -307,12 +307,6 @@ in
       }
       vim-enmasse-branch.vimPlugins.vim-enmasse
       {
-        plugin = vim-floaterm;
-        config = ''
-          let g:floaterm_keymap_toggle = '<Leader>t'
-        '';
-      }
-      {
         plugin = fidget-nvim; # Status notifications for LSP
         config = ''
           require('fidget').setup()
@@ -512,6 +506,16 @@ in
       }
       vim-test
       vim-textobj-entire
+      {
+        plugin = toggleterm-nvim;
+        config = ''
+          require("toggleterm").setup({
+            open_mapping = [[<c-\>]],
+            direction = 'float',
+          })
+        '';
+        type = "lua";
+      }
       vim-toml
       {
         plugin = nvim-tree-lua;
