@@ -76,7 +76,6 @@ let
       pkgs.jsonnet
       pkgs.k9s
       pkgs.kbdd # XKB Daemon
-      pkgs.killall
       pkgs.kind
       pkgs.plasma5Packages.kruler
       pkgs.kubectl
