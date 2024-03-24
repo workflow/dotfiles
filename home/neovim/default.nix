@@ -619,6 +619,31 @@ in
         '';
         type = "lua";
       }
+      {
+        plugin = trouble-nvim;
+        config = ''
+          local wk = require("which-key")
+          wk.register({
+            x = {
+              name = "Trouble",
+              x = { "<cmd>Trouble<cr>", "Toggle Trouble" },
+              w = { "<cmd>Trouble workspace_diagnostics<cr>", "[W]orkspace Diagnostics" },
+              d = { "<cmd>Trouble document_diagnostics<cr>", "[D]ocument Diagnostics" },
+              q = { "<cmd>Trouble quickfix<cr>", "[Q]uickfix" },
+              l = { "<cmd>Trouble loclist<cr>", "[L]ocation List" },
+            },
+          }, { prefix = "<leader>" })
+          require("trouble").setup({
+            action_keys = { -- key mappings for actions in the trouble list
+              open_split = { "<c-s>" }, -- open buffer in new split
+              open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+              previous = "l", -- previous item
+              next = "k" -- next item
+            },
+          })
+        '';
+        type = "lua";
+      }
       vim-unimpaired
       vim-visual-multi
       {
