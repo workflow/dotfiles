@@ -404,7 +404,7 @@ in
       {
         plugin = nvim-notify;
         config = ''
-          require('nvim-notify').setup()
+          require('notify').setup()
         '';
         type = "lua";
       }
