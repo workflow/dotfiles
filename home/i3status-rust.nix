@@ -53,7 +53,7 @@ let
     (device: {
       block = "net";
       device = device;
-      format = " $icon {$ssid $signal_strength $frequency|🚡} $ip ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
+      format = " $icon {$ssid $signal_strength $frequency|🚡} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
       click = [
         {
           button = "left";
@@ -65,7 +65,7 @@ let
         }
       ];
       missing_format = "";
-    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" ];
+    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" "veth0" ];
 
   hostName = osConfig.networking.hostName;
   isBoar = hostName == "boar";
