@@ -403,6 +403,10 @@ in
       }
       {
         plugin = nvim-notify;
+        config = ''
+          require('nvim-notify').setup()
+        '';
+        type = "lua";
       }
       {
         plugin = null-ls-nvim;
@@ -428,7 +432,9 @@ in
       {
         plugin = overseer-nvim;
         config = ''
-          require('overseer').setup()
+          require('overseer').setup({
+            strategy = "toggleterm",
+          })
           local wk = require("which-key")
           wk.register({
             o = {
