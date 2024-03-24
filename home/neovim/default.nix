@@ -434,6 +434,11 @@ in
         config = ''
           require('overseer').setup({
             strategy = "toggleterm",
+            templates = {
+              "builtin",
+              "user.gmailctl_apply",
+              "user.nixos_rebuild_switch",
+            },
           })
           local wk = require("which-key")
           wk.register({
@@ -651,5 +656,11 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+  };
+
+  ## Overseer Templates
+  home.file = {
+    ".config/nvim/lua/overseer/template/user/gmailctl_apply.lua".source = ./overseer/gmailctl_apply.lua;
+    ".config/nvim/lua/overseer/template/user/nixos_rebuild_switch.lua".source = ./overseer/nixos_rebuild_switch.lua;
   };
 }
