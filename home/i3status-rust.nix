@@ -1,5 +1,5 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ lib, pkgs, osConfig, ... }:
+{ lib, osConfig, ... }:
 let
   soundBlockMappings = {
     "boar" = {
@@ -172,7 +172,7 @@ in
             ];
           }
         ]
-        ++ [
+        ++ lib.lists.optionals isFlexbox [
           {
             block = "backlight";
             click = [
@@ -190,7 +190,21 @@ in
         ++ lib.lists.optionals isBoar [
           {
             block = "backlight";
-            device = "ddcci3";
+            device = "ddcci4";
+            click = [
+              {
+                button = "left";
+                cmd = "arandr";
+              }
+              {
+                button = "right";
+                cmd = "arandr";
+              }
+            ];
+          }
+          {
+            block = "backlight";
+            device = "ddcci5";
             click = [
               {
                 button = "left";

@@ -5,22 +5,22 @@ set -euo pipefail
 
 sleep 5
 
-echo Trying to attach ddcci to i2c-3
+echo Trying to attach ddcci to i2c-4
 counter=10
 while [ $counter -gt 0 ]; do
-	if ddcutil getvcp 10 -b 3; then
-		echo ddcci 0x37 >/sys/bus/i2c/devices/i2c-3/new_device
+	if ddcutil getvcp 10 -b 4; then
+		echo ddcci 0x37 >/sys/bus/i2c/devices/i2c-4/new_device
 		break
 	fi
 	sleep 1
 	counter=$((counter - 1))
 done
 
-echo Trying to attach ddcci to i2c-4
+echo Trying to attach ddcci to i2c-5
 counter=10
 while [ $counter -gt 0 ]; do
-	if ddcutil getvcp 10 -b 4; then
-		echo ddcci 0x37 >/sys/bus/i2c/devices/i2c-4/new_device
+	if ddcutil getvcp 10 -b 5; then
+		echo ddcci 0x37 >/sys/bus/i2c/devices/i2c-5/new_device
 		break
 	fi
 	sleep 1
