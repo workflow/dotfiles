@@ -540,6 +540,7 @@ in
             api.config.mappings.default_on_attach(bufnr)
             -- custom mappings
             vim.keymap.set('n', '<C-s>', api.node.open.horizontal, opts('Open: Horizontal Split'))
+            vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
           end
           require("nvim-tree").setup({
             on_attach = my_on_attach,
