@@ -119,7 +119,6 @@ let
       pkgs.postgresql
       pkgs.pstree
       pkgs.pulsemixer
-      pkgs.pulumi-bin
       (pkgs.python3.withPackages
         (ps: with ps; [
           json5 # For Macgyver
