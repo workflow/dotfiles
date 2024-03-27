@@ -141,10 +141,6 @@ in
     '';
 
     extraLuaConfig = ''
-      -- Disable netrw as recommended by nvim-tree
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-
       -- set termguicolors (24bit colors) to enable highlight groups
       vim.opt.termguicolors = true
 
@@ -544,6 +540,8 @@ in
           end
           require("nvim-tree").setup({
             on_attach = my_on_attach,
+            disable_netrw = false, -- keeping netrw for :GBrowse from fugitive to work
+            hijack_netrw = true, -- once no longer needed, check :he nvim-tree-netrw
           })
           local wk = require("which-key")
           wk.register({
