@@ -53,7 +53,7 @@ let
     (device: {
       block = "net";
       device = device;
-      format = " $icon {$ssid $signal_strength $frequency|🚡} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) ";
+      format = "$icon {$ssid $signal_strength $frequency|🚡} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
       click = [
         {
           button = "left";
@@ -91,7 +91,7 @@ in
           }
           {
             block = "memory";
-            format = " $icon $mem_used.eng(prefix:M)($mem_used_percents.eng(w:2)) ";
+            format = "$icon $mem_used.eng(prefix:M)($mem_used_percents.eng(w:2)) ";
             format_alt = "$swap_used_percents";
             click = [
               {
