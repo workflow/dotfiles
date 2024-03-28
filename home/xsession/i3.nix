@@ -90,7 +90,7 @@ in
         };
         command = "${nixpkgs-unstable.i3-gaps}/bin/i3bar";
         fonts = {
-          names = [ "Fira Code" "Font Awesome 5 Free" ];
+          names = [ "Fira Code" "Font Awesome 6 Free" ];
           size = 8.0;
         };
         position = "bottom";
@@ -130,7 +130,7 @@ in
     };
 
     fonts = {
-      names = [ "Fira Code" "Font Awesome 5 Free" ];
+      names = [ "Fira Code" "Font Awesome 6 Free" ];
       size = 9.0;
     };
 

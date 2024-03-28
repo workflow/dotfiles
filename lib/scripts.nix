@@ -111,22 +111,23 @@ in
     isOnline=$(tailscale status --json | jq -r '.Self.Online')
     if [[ "$isOnline" == "true" ]]; then
       tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
-      echo "$tailscaleIp"
+      echo "{\"icon\": \"tailscale_up\", \"text\": \"$tailscaleIp\", \"state\": \"Good\"}"
+    else
+      echo "{\"icon\": \"tailscale_down\", \"text\": \"\", \"state\": \"Idle\"}"
     fi
   '';
 
   # Get the current macgyver status
   macgyver-status = ''
     ${shebang}
-    set -euo pipefail
     output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
 
     if [ "$output" = "active" ]; then
-        echo "up"
+      echo "{\"icon\": \"macgyver_up\", \"text\": \"up\", \"state\": \"Good\"}"
     elif [ "$output" = "inactive" ]; then
-        echo "down"
+      echo "{\"icon\": \"macgyver_down\", \"text\": \"down\", \"state\": \"Idle\"}"
     else
-        echo "$output"
+      echo "{\"icon\": \"macgyver_up\", \"text\": \"$output\", \"state\": \"Warning\"}"
     fi
   '';
 
