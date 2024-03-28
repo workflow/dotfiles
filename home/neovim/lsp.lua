@@ -132,6 +132,7 @@ local servers = {
       command = 'clippy',
     },
   },
+  terraformls = {},
   yamlls = {
     schemas = {
       kubernetes = "*.yaml",
