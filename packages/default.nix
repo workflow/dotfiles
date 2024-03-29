@@ -35,6 +35,7 @@ let
       pkgs.deluge
       pkgs.delta # Syntax highlighter for git
       nixpkgs-unstable.devenv
+      pkgs.difftastic
       nixpkgs-unstable.discord
       pkgs.distrobox
       pkgs.docker-compose
