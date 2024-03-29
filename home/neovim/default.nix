@@ -1,6 +1,16 @@
 { pkgs, inputs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
+
+  lf-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "lf-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "lmburns";
+      repo = "lf.nvim";
+      rev = "69ab1efcffee6928bf68ac9bd0c016464d9b2c8b";
+      sha256 = "ys3kgXtgaE5OGyNYZ2PuqM9FDGjxfIjRgXBUDBVIjUM=";
+    };
+  };
 in
 {
   programs.neovim = {
@@ -349,9 +359,11 @@ in
       }
       nixpkgs-unstable.vimPlugins.leap-nvim
       {
-        plugin = lf-vim;
+        plugin = lf-nvim;
         config = ''
-          vim.g.lf_map_keys = 0
+          require("lf").setup({
+            border = "rounded",
+          })
           local wk = require("which-key")
           wk.register({
             ["<leader>fl"] = {"<cmd>Lf<cr>" , "[L]f" },
