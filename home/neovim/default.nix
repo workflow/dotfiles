@@ -218,7 +218,7 @@ in
         plugin = bookmarks-nvim;
         config = ''
           require("bookmarks").setup({
-            save_file = vim.fn.expand "$HOME/.bookmarks",
+            save_file = vim.fn.expand "$HOME/.bookmarks/bookmarks.nvim",
             on_attach = function(bufnr)
               local bm = require("bookmarks")
               local wk = require("which-key")
