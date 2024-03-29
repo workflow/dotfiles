@@ -1,4 +1,4 @@
-{ config, lib, pkgs, secrets, osConfig, ... }:
+{ lib, pkgs, secrets, osConfig, ... }:
 let
   hostName = osConfig.networking.hostName;
 
@@ -68,6 +68,9 @@ in
       ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
         source = lib.attrsets.attrByPath [ "${hostName}" ] { } secrets.duplicatiConfig;
       };
+
+      # Font smoke-test
+      "bin/font-smoke-test" = { text = scripts.font-smoke-test; executable = true; };
 
       # Generate gitignores
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
