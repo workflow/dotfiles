@@ -159,7 +159,6 @@ services.xserver = {
 1. Change `root` passwd
 1. Rerun `n`
 1. Reboot
-1. Login to mega (`mega-cmd` for interactive mode)
 1. Manually set up Duplicati backups (config under ~/.backup)
 1. Rerun `n`
 1. Reboot
