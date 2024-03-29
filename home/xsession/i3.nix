@@ -315,10 +315,7 @@ in
       # Detect and apply screen layout + wallpaper
       { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
 
-      # Configure Mega backups
-      { command = "configure-mega-backup"; notification = false; }
-
-      { command = "brave music.youtube.com"; notification = false; }
+      { command = "google-chrome-stable music.youtube.com"; notification = false; }
       { command = "todoist"; notification = false; }
 
       # Auto turn off screens using xidlehook written in Rust :)
