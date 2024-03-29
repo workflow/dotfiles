@@ -36,7 +36,10 @@ let
     (device: {
       block = "net";
       device = device;
-      format = "$icon{$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
+      format = {
+        short = "$icon $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
+        full = "$icon{$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
+      };
       format_alt = "$icon{$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
       click = [
         {
