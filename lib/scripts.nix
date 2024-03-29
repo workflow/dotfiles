@@ -73,7 +73,7 @@ in
     printf "%b\n" "\033[3;1mBold Italic\033[0m"
     printf "%b\n" "\033[4mUnderline\033[24m"
     printf "%b\n" "== === !== >= <= =>"
-    printf "%b\n" "契          勒 鈴 "
+    printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
   '';
 
   # Get the current tailscale ip if tailscale is up
