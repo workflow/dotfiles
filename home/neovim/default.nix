@@ -553,6 +553,20 @@ in
         type = "lua";
       }
       vim-test
+      {
+        plugin = text-case-nvim;
+        config = ''
+          require("textcase").setup({
+            prefix = "ga",
+          })
+          require("telescope").load_extension("textcase")
+          local wk = require("which-key")
+          wk.register({
+            ["ga."] = { "<Cmd>TextCaseOpenTelescope<CR>", "Telescope" },
+          })
+        '';
+        type = "lua";
+      }
       vim-textobj-entire
       {
         plugin = toggleterm-nvim;
