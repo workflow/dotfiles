@@ -2,6 +2,16 @@
 let
   nixpkgs-unstable = pkgs.unstable;
 
+  bookmarks-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "bookmarks-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "tomasky";
+      repo = "bookmarks.nvim";
+      rev = "12bf1b32990c49192ff6e0622ede2177ac836f11";
+      sha256 = "DWtYdAioIrNLZg3nnkAXDo1MPZDbpA2F/KlKjS8kVls=";
+    };
+  };
+
   lf-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "lf-nvim";
     src = pkgs.fetchFromGitHub {
@@ -61,9 +71,6 @@ in
 
       let mapleader = ' '
       let maplocalleader = ','
-
-      " Open up a simple file tree
-      nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 
       " Diff Settings
       set diffopt+=internal,algorithm:patience
@@ -207,7 +214,31 @@ in
         '';
         type = "lua";
       }
-      vim-bookmarks
+      {
+        plugin = bookmarks-nvim;
+        config = ''
+          require("bookmarks").setup({
+            save_file = vim.fn.expand "$HOME/.bookmarks",
+            on_attach = function(bufnr)
+              local bm = require("bookmarks")
+              local wk = require("which-key")
+              wk.register({
+                ["m"] = {
+                  name = "Book[m]arks",
+                    a = { bm.bookmark_ann, "Toggle [a]nnotation at current line" },
+                    c = { bm.bookmark_clean, "Clean all marks in local buffer" },
+                    l = { bm.bookmark_list, "Show marked file list in quickfix list" },
+                    m = { bm.bookmark_toggle, "Toggle [m]ark at current line" },
+                    n = { bm.bookmark_next, "Jump to next mark in local buffer" },
+                    p = { bm.bookmark_prev, "Jump to previous mark in local buffer" },
+                  },
+                }, { prefix = "<leader>" })
+              require('telescope').load_extension('bookmarks')
+            end
+          })
+        '';
+        type = "lua";
+      }
       {
         plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
         config = ''
@@ -401,7 +432,7 @@ in
         config = ''
           local wk = require("which-key")
           wk.register({
-            ["<leader>m"] = { "<Plug>MarkdownPreviewToggle", "Toggle [M]arkdown Preview" },
+            ["<leader>p"] = { "<Plug>MarkdownPreviewToggle", "Toggle Markdown [P]review" },
           })
         '';
         type = "lua";
@@ -493,9 +524,10 @@ in
             ["<space>"] = {
               name = "Find[ ](Telescope)",
                 ["<space>"] = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
-                b = { "<cmd>Telescope buffers<CR>", "Buffers" },
-                f = { "<cmd>Telescope find_files<CR>", "All Files" },
-                g = { "<cmd>Telescope live_grep<CR>", "Grep" },
+                b = { "<cmd>Telescope buffers<CR>", "[B]uffers" },
+                f = { "<cmd>Telescope find_files<CR>", "All [F]iles" },
+                g = { "<cmd>Telescope live_grep<CR>", "[G]rep" },
+                m = { "<cmd>Telescope bookmarks list<CR>", "Book[m]arks" },
                 ["?"] = { "<cmd>Telescope keymaps<CR>", "Vim Keymap Cheatsheet" },
                 ["."] = { function() builtin.find_files({ cwd = utils.buffer_dir() }) end, "Files in CWD" },
               },
