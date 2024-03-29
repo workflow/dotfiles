@@ -263,6 +263,8 @@ in
       settings = {
         General = {
           copyPathAfterSave = true;
+          disabledTrayIcon = true;
+          showStartupLaunchMessage = false;
         };
       };
     };
