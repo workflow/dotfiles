@@ -125,22 +125,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-vim-enmasse-branch": {
-      "locked": {
-        "lastModified": 1694897368,
-        "narHash": "sha256-wIafcB81JOpT/f601xEju9NAOe8jF3NLKaZ2H0Zt9dM=",
-        "owner": "workflow",
-        "repo": "nixpkgs",
-        "rev": "3f3285096c9359be59a97c1d1c261ab73a812165",
-        "type": "github"
-      },
-      "original": {
-        "owner": "workflow",
-        "ref": "vimplugins-enmasse",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1711460390,
@@ -198,7 +182,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-vim-enmasse-branch": "nixpkgs-vim-enmasse-branch",
         "rmob": "rmob",
         "secrets": "secrets"
       }

@@ -1,7 +1,5 @@
 { pkgs, inputs, ... }:
 let
-  vim-enmasse-branch = pkgs.nixpkgs-vim-enmasse-branch;
-
   nixpkgs-unstable = pkgs.unstable;
 in
 {
@@ -301,7 +299,6 @@ in
         '';
         type = "lua";
       }
-      vim-enmasse-branch.vimPlugins.vim-enmasse
       {
         plugin = fidget-nvim; # Status notifications for LSP
         config = ''
