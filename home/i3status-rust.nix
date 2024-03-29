@@ -1,5 +1,5 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ lib, osConfig, ... }:
+{ lib, osConfig, isNvidia, ... }:
 let
   soundBlockMappings = {
     "boar" = {
@@ -25,23 +25,6 @@ let
       "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source" = "";
     };
   };
-
-  boarGPUBlocks = [
-    {
-      block = "nvidia_gpu";
-      format = " ^icon_gpu $utilization $memory $temperature";
-      click = [
-        {
-          button = "left";
-          cmd = "nvidia-settings";
-        }
-        {
-          button = "right";
-          cmd = "alacritty -e fish -c 'nvidia-smi; exec fish'";
-        }
-      ];
-    }
-  ];
 
   flexboxExtraBlocks = [
     {
@@ -132,7 +115,23 @@ in
               chip = "*-isa-*";
             }
           ]
-          ++ lib.lists.optionals isBoar boarGPUBlocks
+          ++ lib.lists.optionals isNvidia [
+            {
+              block = "nvidia_gpu";
+              format = " ^icon_gpu $utilization $memory $temperature";
+              click = [
+                {
+                  button = "left";
+                  cmd = "nvidia-settings";
+                }
+                {
+                  button = "right";
+                  cmd = "alacritty -e fish -c 'nvidia-smi; exec fish'";
+                }
+              ];
+            }
+          ]
+
           ++ netBlocks
           ++ [
             {
