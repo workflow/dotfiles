@@ -108,9 +108,7 @@ let
       pkgs.openssl
       pkgs.p7zip
       pkgs.papirus-icon-theme
-      pkgs.paprefs # For pasystray
       pkgs.parted
-      pkgs.pasystray # Pulse Audio systray
       pkgs.patchelf
       pkgs.pavucontrol
       pkgs.pciutils
