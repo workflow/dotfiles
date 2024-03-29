@@ -125,13 +125,13 @@ in
       let g:fugitive_gitlab_domains = ['https://git.datalabhell.at', 'https://gitlab.k8s.plansee-group.com']
 
       " Git-gutter
-      " Use fontawesome icons as signs - stolen from https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
+      " Use nerdfont icons as signs - inspired by https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
       let g:gitgutter_sign_added = ''
       let g:gitgutter_sign_modified = ''
       let g:gitgutter_sign_removed = ''
       let g:gitgutter_sign_removed_first_line = ''
       let g:gitgutter_sign_modified_removed = ''
-      " Simpler highlighting, stolen from https://jakobgm.com/posts/vim/git-integration/
+      " Simpler highlighting, looted from https://jakobgm.com/posts/vim/git-integration/
       let g:gitgutter_override_sign_column_highlight = 1
       highlight clear SignColumn
 

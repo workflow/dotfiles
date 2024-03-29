@@ -6,7 +6,7 @@
     settings = {
       font = {
         normal = {
-          family = "Fira Code Nerd Font";
+          family = "FiraCode Nerd Font";
         };
         size = 8;
       };
@@ -67,7 +67,6 @@
       scrolling = {
         history = 100000;
       };
-
     };
   };
 }
