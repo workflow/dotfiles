@@ -273,8 +273,6 @@ in
 
     parcellite.enable = true;
 
-    pasystray.enable = true;
-
     syncthing = {
       enable = true;
     };
