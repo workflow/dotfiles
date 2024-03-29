@@ -29,7 +29,7 @@ let
   boarGPUBlocks = [
     {
       block = "nvidia_gpu";
-      format = "^icon_gpu $utilization $memory $temperature";
+      format = " ^icon_gpu $utilization $memory $temperature";
       click = [
         {
           button = "left";
@@ -144,7 +144,7 @@ in
                 "macgyver_down" = "";
               };
               interval = 1;
-              format = "$icon $text";
+              format = " $icon $text";
               click = [
                 {
                   button = "left";
