@@ -8,10 +8,7 @@ case "$hostname" in
 	autorandr boar
 	;;
 "flexbox")
-	autorandr flexbox || true
-	autorandr flexbox-intel || true
-	autorandr flexbox-intel-lo-res || true
-	autorandr flexbox-caparica || true
+	autorandr flexbox-intel-hidpi || true
 	;;
 *)
 	echo "unknown - skipping autorandr setup"
