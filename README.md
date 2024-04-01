@@ -7,7 +7,7 @@ Workflow's current, and immutably evolving, NixOS configuration files, home-mana
 
 ![neofetch boar](assets/neofetch-boar.png)
 
-![boar](assets/boar_2024-04-01_22-55.pns)
+![boar](assets/boar_2024-04-01_22-55.png)
 
 Used as daily driver since 2020.
 
