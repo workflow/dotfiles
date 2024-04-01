@@ -24,6 +24,8 @@ let
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
+
+    ./home/services/clipcat.nix
   ] ++ secretImports;
 
   nixpkgs-unstable = pkgs.unstable;
@@ -94,9 +96,6 @@ in
       ".m2/settings.xml" = lib.mkIf (secrets ? mavenConfig) {
         source = secrets.mavenConfig;
       };
-
-      # Parcellite
-      ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
 
       # Pistol
       ".config/pistol/pistol.conf".source = ./dotfiles/pistol.conf;
@@ -266,8 +265,6 @@ in
     };
 
     network-manager-applet.enable = true;
-
-    parcellite.enable = true;
 
     syncthing = {
       enable = true;

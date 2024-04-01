@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.sessionVariables = {
+    XDG_CONFIG_HOME = "/home/farlion/.config";
+  };
+
   xdg = {
     desktopEntries = {
       brave-browser = {

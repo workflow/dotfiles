@@ -8,6 +8,9 @@ let
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
+  clipboardInserter = "${pkgs.clipcat}/bin/clipcat-menu insert";
+  clipboardRemover = "${pkgs.clipcat}/bin/clipcat-menu remove";
+
   isBoar = osConfig.networking.hostName == "boar";
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
@@ -223,6 +226,10 @@ in
 
       # Sound Switcher
       "${mod}+m" = "exec --no-startup-id sound-switcher";
+
+      # Clipcat
+      "${mod}+p" = "exec ${clipboardInserter}";
+      "${mod}+o" = "exec ${clipboardRemover}";
 
       # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
       # Pulse Audio controls
