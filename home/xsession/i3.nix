@@ -271,7 +271,7 @@ in
       "${mod}+Shift+i" = "exec --no-startup-id xrandr-invert-colors";
     };
 
-    menu = "rofi -modi run#calc#emoji -show run -icon-theme \"Papirus\" -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"'";
+    menu = "rofi -modi run#calc#emoji -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"'";
 
     # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
     # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).

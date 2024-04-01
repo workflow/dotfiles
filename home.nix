@@ -19,7 +19,7 @@ let
     ./home/nushell.nix
     ./home/picom.nix
     ./home/redshift.nix
-    ./home/rofi.nix
+    ./home/programs/rofi
     ./home/starship.nix
     ./home/urxvt.nix
     ./home/xdg.nix

@@ -62,6 +62,7 @@
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
                 isNvidia = true;
+                isHidpi = false;
                 inherit inputs;
                 inherit secrets;
               };
@@ -104,6 +105,7 @@
               users.farlion = import ./home.nix;
               extraSpecialArgs = {
                 isNvidia = true;
+                isHidpi = true;
                 inherit inputs;
                 inherit secrets;
               };
