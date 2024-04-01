@@ -48,8 +48,6 @@ in
 
   };
 
-  environment.systemPackages = [ ];
-
   programs.seahorse.enable = true;
 
 }
