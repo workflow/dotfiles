@@ -249,7 +249,7 @@ in
       "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
 
       # Rofi window switcher
-      "${mod}+Shift+d" = ''exec "rofi -show window"'';
+      "${mod}+Shift+d" = ''exec "rofi -show window -matching fuzzy"'';
 
       # Dunst shortcuts via dunstctl
       "${mod}+Ctrl+space" = "exec --no-startup-id dunstctl close-all";
@@ -271,7 +271,7 @@ in
       "${mod}+Shift+i" = "exec --no-startup-id xrandr-invert-colors";
     };
 
-    menu = "rofi -modi run#calc#emoji -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"'";
+    menu = "rofi -modi run#calc#emoji -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
     # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
     # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
