@@ -11,7 +11,7 @@ Workflow's current, and immutably evolving, NixOS configuration files, home-mana
 
 Used as daily driver since 2020.
 
-## Installation Instuctions
+## Installation Instructions
 
 ### Create a bootable USB drive
 
