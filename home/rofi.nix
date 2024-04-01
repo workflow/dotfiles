@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.rofi = {
     enable = true;
@@ -13,8 +13,9 @@
 
     font = "Fira Code 12";
 
-    package = pkgs.rofi.override {
-      plugins = [ pkgs.rofi-calc pkgs.rofi-emoji ];
-    };
+    plugins = with pkgs; [ rofi-calc rofi-emoji ];
   };
+
+  # for rofi-emoji to insert emojis directly
+  home.packages = [ pkgs.xdotool ];
 }

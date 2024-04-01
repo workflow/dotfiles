@@ -169,7 +169,6 @@ let
       pkgs.woeusb # Create bootable disks from Windows ISOs
       pkgs.xclip
       pkgs.xdg-desktop-portal
-      pkgs.xdotool
       pkgs.xdragon # drag n drop support
       pkgs.xidlehook
       pkgs.xkb-switch-i3
