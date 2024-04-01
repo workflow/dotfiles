@@ -7,7 +7,7 @@ Workflow's current, and immutably evolving, NixOS configuration files, home-mana
 
 ![neofetch boar](assets/neofetch-boar.png)
 
-![boar](assets/boar_2022-09-26_10-41.png)
+![boar](assets/boar_2024-04-01_22-55.pns)
 
 Used as daily driver since 2020.
 
@@ -192,3 +192,4 @@ CI build ~stolen from~ inspired by https://github.com/gvolpe/nix-config
 ## History
 
 ![neofetch nixbox](assets/archive/neofetch-nixbox.png)
+![boar-2022](assets/archive/boar_2022-09-26_10-41.png)
