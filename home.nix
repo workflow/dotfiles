@@ -138,6 +138,10 @@ in
       options = [ "grp:ctrls_toggle" "eurosign:e" "caps:escape_shifted_capslock" "terminate:ctrl_alt_bksp" ];
     };
 
+    packages = with pkgs; [
+      find-cursor
+    ];
+
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";
       NIXOS_CONFIG = "$HOME/code/nixos-config/";

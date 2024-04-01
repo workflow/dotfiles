@@ -1,4 +1,4 @@
-{ config, lib, pkgs, osConfig, ... }:
+{ isHidpi, lib, pkgs, osConfig, ... }:
 let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
@@ -14,7 +14,7 @@ in
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;
-    size = 24;
+    size = if isHidpi then 48 else 24;
     x11.enable = true;
   };
 
