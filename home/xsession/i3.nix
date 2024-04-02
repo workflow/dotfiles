@@ -11,6 +11,8 @@ let
   clipboardInserter = "${pkgs.clipcat}/bin/clipcat-menu insert";
   clipboardRemover = "${pkgs.clipcat}/bin/clipcat-menu remove";
 
+  networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+
   isBoar = osConfig.networking.hostName == "boar";
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
@@ -276,6 +278,9 @@ in
       # Invert Colors
       "${mod}+i" = "exec --no-startup-id ~/nixos-config/home/xsession/per_window_color_invert.sh";
       "${mod}+Shift+i" = "exec --no-startup-id xrandr-invert-colors";
+
+      # Net[w]orkmanager
+      "${mod}+w" = "exec ${networkManager}";
     };
 
     menu = "rofi -modi run#calc#emoji -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
