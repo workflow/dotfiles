@@ -7,6 +7,6 @@ return {
     }
   end,
   condition = {
-    filetype = { "nix" },
+    dir = "~/code/nixos-config",
   },
 }
