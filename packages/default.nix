@@ -98,7 +98,6 @@ let
       pkgs.nmap
       pkgs.neofetch
       pkgs.nethogs
-      pkgs.networkmanagerapplet
       pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
       pkgs.nodejs # For coc.nvim
       pkgs.nvtop

@@ -19,11 +19,13 @@ let
     ./home/nushell.nix
     ./home/picom.nix
     ./home/redshift.nix
-    ./home/programs/rofi
     ./home/starship.nix
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
+
+    ./home/programs/networkmanager-dmenu
+    ./home/programs/rofi
 
     ./home/services/clipcat.nix
   ] ++ secretImports;
@@ -140,6 +142,7 @@ in
     packages = with pkgs; [
       find-cursor
       neo-cowsay
+      networkmanager_dmenu
     ];
 
     sessionVariables = {
