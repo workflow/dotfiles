@@ -541,6 +541,14 @@ in
       {
         plugin = telescope-frecency-nvim;
         config = ''
+          require("telescope").setup({
+            extensions = {
+              frecency = {
+                show_scores = true,
+                auto_validate = false, -- manually gc with :FrecencyValidate
+              },
+            },
+          })
           require("telescope").load_extension("frecency")
           local wk = require("which-key")
           wk.register({
