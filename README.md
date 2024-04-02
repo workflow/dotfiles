@@ -9,6 +9,8 @@ Workflow's current, and immutably evolving, NixOS configuration files, home-mana
 
 ![boar](assets/boar_2024-04-01_22-55.png)
 
+![flexbox](assets/flexbox_2024-04-02.png)
+
 Used as daily driver since 2020.
 
 ## Installation Instructions
