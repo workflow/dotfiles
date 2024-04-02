@@ -8,7 +8,7 @@ case "$hostname" in
 	autorandr boar
 	;;
 "flexbox")
-	autorandr flexbox-intel-hidpi || true
+	autorandr flexbox-intel-hidpi
 	;;
 *)
 	echo "unknown - skipping autorandr setup"

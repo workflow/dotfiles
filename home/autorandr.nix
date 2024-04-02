@@ -18,6 +18,8 @@ in
         background = ''
           pkill -9 variety 2> /dev/null
           variety &>/dev/null &
+          pkill redshift-gtk 2> /dev/null
+          redshift-gtk &>/dev/null &
         '';
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
