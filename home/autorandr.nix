@@ -4,9 +4,20 @@
 # Nixbox @ 2048x1152: 168
 # Nixbox @ 2560x1440: 210
 
-{ pkgs, ... }:
+{ isHidpi, pkgs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
+
+  baseHook = ''
+    pkill -9 variety 2> /dev/null
+    variety &>/dev/null &
+  '';
+  hidpiHook = ''
+    ${baseHook}
+      pkill redshift-gtk 2> /dev/null
+      sleep 10 # redshift-gtk takes a while to die
+      redshift-gtk &>/dev/null &
+  '';
 
 in
 {
@@ -15,13 +26,7 @@ in
 
     hooks = {
       postswitch = {
-        background = ''
-          pkill -9 variety 2> /dev/null
-          variety &>/dev/null &
-          pkill redshift-gtk 2> /dev/null
-          sleep 10 # redshift-gtk takes a while to die
-          redshift-gtk &>/dev/null &
-        '';
+        background = if isHidpi then hidpiHook else baseHook;
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
