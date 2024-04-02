@@ -222,11 +222,6 @@ in
           hostname = "34.124.137.146";
           user = "farlion";
         };
-        autoriza = {
-          hostname = "148.63.20.188";
-          user = "autoriza";
-          port = 4343;
-        };
       };
       extraConfig = ''
         PubkeyAcceptedKeyTypes +ssh-rsa

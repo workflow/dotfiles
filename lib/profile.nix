@@ -15,7 +15,6 @@
     am = "autorandr mobile";
     as = "autorandr single";
     av = "autorandr movie";
-    avnc = "ssh -L 5900:localhost:5900 -N -f autoriza";
 
     aliases = "vim ~/nixos-config/dotfiles/profile.nix";
 
