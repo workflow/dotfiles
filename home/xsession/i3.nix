@@ -68,8 +68,7 @@ in
         { class = "^Element$"; }
       ];
       "${ws9}" = [
-        { class = "^Spotify$"; }
-        { title = "YouTube Music - Google Chrome"; }
+        { class = "^Google-chrome$"; }
         { class = "^Todoist$"; }
       ];
       "${ws19}" = [
@@ -371,9 +370,6 @@ in
         { command = "border none"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
         { command = "move right 700px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
         { command = "move down 450px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
-
-        # From https://wiki.archlinux.org/index.php/i3#Default_workspace_for_Spotify
-        { command = "move to workspace ${ws9}"; criteria = { class = "Spotify"; }; }
       ];
     };
 
