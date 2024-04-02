@@ -9,35 +9,14 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
 
-
-    a = "autorandr --change";
-    ab = "autorandr boar";
-    am = "autorandr mobile";
-    as = "autorandr single";
-    av = "autorandr movie";
-
-    aliases = "vim ~/nixos-config/dotfiles/profile.nix";
-
     c = "xclip -selection clipboard";
     cc = "tee /dev/tty | xclip -selection clipboard";
 
-    cde = "cd ~/code/egghead/elm-ui";
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
-    cnr = "cargo nextest r";
 
     da = "direnv allow";
-
-    ctnc = "cargo test -- --nocapture";
-    ctnr = "cargo test --no-run";
-
-    filters = "vim ~/.gmailctl/config.jsonnet";
-    filtersp = "vim ~/.gmailctl/playbooks/config.jsonnet";
-    freetapbeer = "nmcli c up 'Free Tap Beer'";
-
-    g = "git";
-
-    i = "vim ~/nixos-config/home/xsession/i3.nix";
+    dr = "direnv reload";
 
     ga = "git add -p";
     gaa = "git add --all";
@@ -69,17 +48,7 @@
     ghpa = "gh pr review --approve";
     ghmr = "gh pr merge -r";
 
-    gmailctlp = "gmailctl --config ~/.gmailctl/playbooks/";
-
-    halt = "shutdown now";
-
-    k = "kubectl";
-
-    llb = "br -sdph";
-    lsb = "br -sdp";
     lh = "/run/current-system/sw/bin/ls -ah";
-
-    logout = "i3-msg exit";
 
     macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
@@ -87,7 +56,6 @@
     n = "nixos s";
 
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
-
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
     nsn = "nix search nixpkgs";
@@ -96,25 +64,12 @@
 
     paste = "xclip -selection c -o";
 
-    pk = "prod-kubectl";
-
-    "r+" = ''gh pr review --comment --body "bors r+"'';
-
     rm = "trash-put";
 
     soul = "nmcli c up 'Soul'";
 
-    toshl2ynab = "cd ~/code/papasonprojects/csvfu/; and nix-shell --command 'python toshl2ynab.py'";
-
     tailup = "sudo tailscale up --accept-routes --accept-dns=false";
     taildown = "sudo tailscale down";
-
-    # Print timestamp along with cmd output
-    # Example: cmd | ts
-    ts = "gawk '{ print strftime(\"[%Y-%m-%d %H:%M:%S]\"), $0 }'";
-
-    w = "nohup webstorm &disown";
-    watch-lorri = "journalctl --user -eu lorri -f";
 
     x = "exit";
   };
