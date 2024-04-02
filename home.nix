@@ -271,7 +271,10 @@ in
       enable = true;
     };
 
-    udiskie.enable = true;
+    udiskie = {
+      enable = true;
+      automount = false;
+    };
 
     unclutter.enable = true;
   };
