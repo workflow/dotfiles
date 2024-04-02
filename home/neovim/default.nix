@@ -186,6 +186,9 @@ in
         ["<localleader>l"] = { vim.diagnostic.setloclist, "Open Diagnostics in [L]ocation List" },
         ["<localleader>q"] = { vim.diagnostic.setqflist, "Open Diagnostics in [Q]uickfix List" },
       })
+
+      -- Disable swapfiles
+      vim.opt.swapfile = false
     '';
 
     extraPackages = [
