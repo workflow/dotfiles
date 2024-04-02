@@ -263,8 +263,6 @@ in
       };
     };
 
-    network-manager-applet.enable = true;
-
     syncthing = {
       enable = true;
     };
