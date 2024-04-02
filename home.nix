@@ -139,6 +139,7 @@ in
 
     packages = with pkgs; [
       find-cursor
+      neo-cowsay
     ];
 
     sessionVariables = {
