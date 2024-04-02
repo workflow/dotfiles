@@ -27,8 +27,15 @@ in
 
   qt = {
     enable = true;
-    platformTheme = "gtk3";
+    platformTheme = "qtct";
+    style.name = "kvantum";
   };
+
+  home.packages = with pkgs; [
+    lxappearance # GTK Theme testing + tweaking
+    qt5ct # Qt 5 Theme testing + tweaking
+    qt6ct # Qt 6 Theme testing + tweaking
+  ];
 
   # https://wiki.archlinux.org/title/HiDPI
   home.sessionVariables = {
