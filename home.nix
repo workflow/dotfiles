@@ -12,7 +12,6 @@ let
     ./home/fzf.nix
     ./home/git.nix
     ./home/gpg.nix
-    ./home/gtk.nix
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim
@@ -23,6 +22,8 @@ let
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
+
+    ./home/gtk-qt
 
     ./home/programs/networkmanager-dmenu
     ./home/programs/rofi

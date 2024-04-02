@@ -31,6 +31,11 @@ in
     style.name = "kvantum";
   };
 
+  xdg.configFile = {
+    "qt5ct/qt5ct.conf".source = ./qtct.conf;
+    "qt6ct/qt6ct.conf".source = ./qtct.conf;
+  };
+
   home.packages = with pkgs; [
     lxappearance # GTK Theme testing + tweaking
     qt5ct # Qt 5 Theme testing + tweaking
