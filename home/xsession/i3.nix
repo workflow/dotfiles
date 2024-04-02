@@ -69,7 +69,7 @@ in
       ];
       "${ws9}" = [
         { class = "^Spotify$"; }
-        { title = "YouTube Music - Brave"; }
+        { title = "YouTube Music - Google Chrome"; }
         { class = "^Todoist$"; }
       ];
       "${ws19}" = [
