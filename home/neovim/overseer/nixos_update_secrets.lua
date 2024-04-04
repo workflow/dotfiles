@@ -3,7 +3,7 @@ return {
   builder = function()
     return {
       cmd = { "nix" },
-      args = { "flake lock --update-input secrets" },
+      args = { "flake", "lock", "--update-input", "secrets" },
     }
   end,
   condition = {
