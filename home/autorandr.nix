@@ -14,9 +14,7 @@ let
   '';
   hidpiHook = ''
     ${baseHook}
-      pkill redshift-gtk 2> /dev/null
-      sleep 10 # redshift-gtk takes a while to die
-      redshift-gtk &>/dev/null &
+      pkill -9 redshift-gtk 2> /dev/null # for applet to restart and adapt to hidpi
   '';
 
 in
