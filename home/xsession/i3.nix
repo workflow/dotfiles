@@ -324,7 +324,10 @@ in
 
     startup = [
       # Detect and apply screen layout + wallpaper
-      { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
+      { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; always = true; }
+
+      # Clipcat
+      { command = "clipcatd"; notification = false; always = true; } # start clipcatd at startup
 
       { command = "google-chrome-stable music.youtube.com"; notification = false; }
       { command = "todoist"; notification = false; }
@@ -335,10 +338,7 @@ in
       { command = ''xss-lock -- "${locker}"''; notification = false; }
 
       # Run KBDD (XKB Daemon for per-window keyboard layout switching)
-      { command = "kbdd"; notification = false; }
-
-      # Change variety wallpaper
-      { command = "sleep 10s && variety --next"; notification = false; }
+      { command = "kbdd"; notification = false; always = true; }
 
       # Launch syncthingtray
       { command = "sleep 10s && syncthingtray --wait"; notification = false; }
