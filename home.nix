@@ -66,6 +66,9 @@ in
         source = secrets.cargoMoldConfig;
       };
 
+      # dnscrypt cloaking rules from /etc/hosts
+      "bin/cloaking-rules-from-hosts" = { source = ./home/scripts/cloaking-rules-from-hosts.sh; executable = true; };
+
       # Dlfile (reverse drag-and-drop with dragon)
       "bin/dlfile" = { text = scripts.dlfile; executable = true; };
 
