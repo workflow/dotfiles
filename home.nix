@@ -28,7 +28,7 @@ let
     ./home/programs/networkmanager-dmenu
     ./home/programs/rofi
 
-    ./home/services/clipcat.nix
+    ./home/services/clipcat
   ] ++ secretImports;
 
   nixpkgs-unstable = pkgs.unstable;

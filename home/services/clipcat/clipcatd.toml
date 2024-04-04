@@ -14,7 +14,7 @@ level = "INFO"
 [watcher]
 enable_clipboard = true
 enable_primary = true
-enable_secondary = false
+enable_secondary = true
 sensitive_x11_atoms = ["x-kde-passwordManagerHint"]
 filter_text_min_length = 1
 filter_text_max_length = 20000000
