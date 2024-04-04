@@ -1,6 +1,6 @@
 daemonize = true
 pid_file = "/run/user/1000/clipcatd.pid"
-max_history = 50
+max_history = 100
 synchronize_selection_with_clipboard = true
 history_file_path = "/home/farlion/.cache/clipcat/clipcatd-history"
 snippets = []
