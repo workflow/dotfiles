@@ -478,6 +478,7 @@ in
               "user.gmailctl_apply",
               "user.nixos_rebuild_switch",
               "user.nixos_update_secrets",
+              "user.skaffold_dev",
             },
           })
           local wk = require("which-key")
@@ -754,5 +755,6 @@ in
     ".config/nvim/lua/overseer/template/user/gmailctl_apply.lua".source = ./overseer/gmailctl_apply.lua;
     ".config/nvim/lua/overseer/template/user/nixos_rebuild_switch.lua".source = ./overseer/nixos_rebuild_switch.lua;
     ".config/nvim/lua/overseer/template/user/nixos_update_secrets.lua".source = ./overseer/nixos_update_secrets.lua;
+    ".config/nvim/lua/overseer/template/user/skaffold_dev.lua".source = ./overseer/skaffold_dev.lua;
   };
 }
