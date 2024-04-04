@@ -19,7 +19,7 @@
       "keyboard-select.clipboard" = true;
     };
 
-    fonts = [ "xft:FiraCode Nerd Font:size=8" "xft:JetBrainsMono Nerd Font:size=8" ];
+    fonts = [ "xft:FiraCode Nerd Font:size=8" ];
 
     # Messes with CTRL+SHIFT Keybindings, see https://wiki.archlinux.org/index.php/Rxvt-unicode#Perl_extensions
     iso14755 = false;
