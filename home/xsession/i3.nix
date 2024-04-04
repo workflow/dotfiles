@@ -324,7 +324,7 @@ in
 
     startup = [
       # Detect and apply screen layout + wallpaper
-      { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; always = true; }
+      { command = "~/nixos-config/home/xsession/i3_screen_startup.sh"; notification = false; }
 
       # Clipcat
       { command = "clipcatd"; notification = false; always = true; } # start clipcatd at startup
