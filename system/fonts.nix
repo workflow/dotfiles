@@ -9,7 +9,7 @@ in
     pkgs.font-awesome_4
     pkgs.font-awesome_5
     pkgs.font-awesome_6
-    (nixpkgs-unstable.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     pkgs.noto-fonts # For microsoft websites like Github and Linkedin on Chromium browsers
   ];
 }
