@@ -23,9 +23,6 @@ in
     ./system/security.nix
     ./system/steam.nix
     ./system/virtualisation.nix
-
-    ./system/services/clipcat.nix
-
   ]
   ++ lib.lists.optional (secrets ? systemSecrets) secrets.systemSecrets;
 
