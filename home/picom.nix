@@ -1,5 +1,5 @@
 # Some settings from https://pastebin.com/S8m1jnY3
-{ isNvidia, lib, pkgs, ... }:
+{ ... }:
 {
   services.picom = {
     activeOpacity = 0.90;
@@ -46,7 +46,6 @@
       "100:class_g ?= 'firefox'"
       "100:class_i ?= 'firefox'"
       "100:class_g ?= 'mpv'"
-      "100:class_i ?= 'dota2'"
     ];
   };
 }
