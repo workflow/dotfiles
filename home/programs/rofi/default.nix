@@ -10,14 +10,14 @@ in
       bw = 1;
       columns = 2;
       icon-theme = "Papirus-Dark";
-      modi = "run,calc,emoji,window";
+      modi = "run,calc,window";
     };
 
     theme = if isHidpi then ./hidpi-theme.rasi else "gruvbox-dark-soft";
 
     font = "Fira Code ${toString fontSize}";
 
-    plugins = with pkgs; [ rofi-calc rofi-emoji ];
+    plugins = with pkgs; [ rofi-calc ];
 
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };

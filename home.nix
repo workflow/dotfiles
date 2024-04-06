@@ -27,6 +27,7 @@ let
 
     ./home/programs/networkmanager-dmenu
     ./home/programs/rofi
+    ./home/programs/rofimoji
 
     ./home/services/clipcat
   ] ++ secretImports;
