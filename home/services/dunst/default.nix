@@ -2,7 +2,6 @@
 { pkgs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
-
 in
 {
   services.dunst = {
@@ -107,7 +106,7 @@ in
         # This adds empty space above and under the text.
         line_height = 0;
 
-        mouse_left_click = "context";
+        mouse_left_click = "do_action";
         mouse_right_click = "close_current";
         mouse_middle_click = "close_all";
 
@@ -224,10 +223,10 @@ in
       #    summary = *says*
       #    urgency = critical
       #
-      element-desktop = {
-        appname = "Element";
-        script = "element-desktop";
-      };
+      # element-desktop = {
+      #   appname = "signal-desktop";
+      #   script = "dunst-open";
+      # };
       #[twitter]
       #    appname = Pidgin
       #    summary = *twitter.com*

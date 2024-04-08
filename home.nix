@@ -6,7 +6,6 @@ let
     ./home/alacritty.nix
     ./home/autorandr.nix
     ./home/broot.nix
-    ./home/dunst.nix
     ./home/email.nix
     ./home/fish.nix
     ./home/fzf.nix
@@ -30,6 +29,7 @@ let
     ./home/programs/rofimoji
 
     ./home/services/clipcat
+    ./home/services/dunst
   ] ++ secretImports;
 
   nixpkgs-unstable = pkgs.unstable;
