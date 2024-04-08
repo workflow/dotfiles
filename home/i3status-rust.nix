@@ -234,7 +234,7 @@ in
             {
               block = "sound";
               driver = "pulseaudio";
-              format = "$output_name {$volume.eng(w:2)}";
+              format = "$output_name {$volume.eng(w:2) |}";
               merge_with_next = true;
               click = [
                 {
@@ -249,7 +249,7 @@ in
             {
               block = "sound";
               driver = "pulseaudio";
-              format = " $output_name {$volume.eng(w:2)}";
+              format = " $output_name {$volume.eng(w:2) |}";
               click = [
                 {
                   button = "left";
