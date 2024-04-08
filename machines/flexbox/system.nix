@@ -26,18 +26,6 @@ in
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
   boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1" ];
 
-  # Fix audio
-  # TODO: Upstream these modules to nixpkgs
-  boot.kernelPatches = [
-    {
-      name = "enable-soundwire-drivers";
-      patch = null;
-      extraConfig = ''
-        SND_SOC_RT1308 m
-      '';
-    }
-  ];
-
   # GPU
   environment.systemPackages = [ nvidia-offload ];
   services.xserver.videoDrivers = [ "nvidia" ];
