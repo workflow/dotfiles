@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   networking.firewall = {
@@ -7,7 +7,6 @@
   };
 
   networking.extraHosts = ''
-    127.0.0.1  redpanda.default
   '';
 
   # Tailscale
