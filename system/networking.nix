@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   networking.firewall = {
@@ -30,12 +30,11 @@
   networking.networkmanager = {
     enable = true;
     plugins = [ pkgs.networkmanager-l2tp ];
-    dns = "none"; # Make sure networkmanager doesn't override our DNS settings
+    dns = lib.mkForce "none"; # Networkmanager connections will still provide DNS servers to systemd-resolved if explicitly set - so make sure DNS is always blank in Networkmanager!
   };
 
   networking.nameservers = [
     "127.0.0.1"
-    "1.1.1.1"
   ];
 
   # Prevent IPv6 leaks when using VPNs
@@ -45,6 +44,16 @@
   networking.dhcpcd.enable = false;
   # Only wait for a single interface to come up
   systemd.network.wait-online.anyInterface = true;
+
+  # Systemd Resolved
+  services.resolved = {
+    enable = true;
+    fallbackDns = [
+      "127.0.0.1"
+    ];
+    dnssec = "false"; # already provided by dnscrypt-proxy2
+    dnsovertls = "false"; # already provided by dnscrypt-proxy2
+  };
 
   # DoH (DNS over HTTPS)
   services.dnscrypt-proxy2 = {
