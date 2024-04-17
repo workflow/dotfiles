@@ -226,12 +226,6 @@ in
 
     ssh = {
       enable = true;
-      matchBlocks = {
-        syncthing = {
-          hostname = "34.124.137.146";
-          user = "farlion";
-        };
-      };
       extraConfig = ''
         PubkeyAcceptedKeyTypes +ssh-rsa
         HostKeyAlgorithms +ssh-rsa
