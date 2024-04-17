@@ -149,6 +149,7 @@ in
 
     packages = with pkgs; [
       find-cursor
+      galaxy-buds-client
       neo-cowsay
       networkmanager_dmenu
     ];

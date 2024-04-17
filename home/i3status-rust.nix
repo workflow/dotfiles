@@ -17,6 +17,7 @@ let
       "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
       "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
       "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
+      "bluez_sink.DC_69_E2_9A_6E_30.a2dp_sink" = "";
       "bluez_sink.04_21_44_B6_92_39.a2dp_sink" = "";
       "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
       "alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source" = "";
