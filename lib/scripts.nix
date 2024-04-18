@@ -104,39 +104,4 @@ in
     fi
   '';
 
-  nixos = ''
-    ${shebang}
-    usage() {
-        cat <<EOF
-    Run nixos commands
-    Usage:
-      -b, --build, b, build:      Build nixos configuration
-      -s, --switch, s, switch:    Build nixos configuration and switch to it
-      -h, --help, h, help:        This help message
-    EOF
-    }
-    ${ensure-env-var "NIXOS_CONFIG"}
-    build() {
-        sudo nixos-rebuild test --flake "$NIXOS_CONFIG#"
-    }
-    switch() {
-        sudo nixos-rebuild switch --flake "$NIXOS_CONFIG#"
-    }
-    case "$1" in
-        -b | --build | b | build)
-            build
-            ;;
-        -s |--switch | s | switch)
-            switch
-            ;;
-        -h | --help | h | help)
-            usage
-            ;;
-        *)
-            usage
-            exit 1
-            ;;
-    esac
-  '';
-
 }

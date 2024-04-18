@@ -85,9 +85,6 @@ in
       # Generate gitignores
       "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
 
-      # Nixos script wrapper
-      "bin/nixos" = { text = scripts.nixos; executable = true; };
-
       # gh (Github CLI)
       ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
 
