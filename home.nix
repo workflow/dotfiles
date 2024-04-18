@@ -25,6 +25,7 @@ let
     ./home/gtk-qt
 
     ./home/programs/networkmanager-dmenu
+    ./home/programs/nh
     ./home/programs/rofi
     ./home/programs/rofimoji
 
