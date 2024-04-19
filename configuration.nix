@@ -24,7 +24,7 @@ in
     ./system/steam.nix
     ./system/virtualisation.nix
   ]
-  ++ lib.lists.optional (secrets ? systemSecrets) secrets.systemSecrets;
+  ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets;
 
   environment.systemPackages = packages;
 }

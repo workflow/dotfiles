@@ -212,14 +212,9 @@
       }
     },
     "secrets": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
       "locked": {
-        "lastModified": 1713385862,
-        "narHash": "sha256-CgmNqbn0hUTfqBR0nyKlaCLZe3r9f7M/mW/cWhGtrRQ=",
+        "lastModified": 1713563165,
+        "narHash": "sha256-i+gIiRIFr3sVSXgp+B/vDpTNVZ3wuyl4FXIf97cKyG0=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },

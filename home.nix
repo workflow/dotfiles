@@ -39,9 +39,7 @@ let
 
   scripts = pkgs.callPackage ./lib/scripts.nix { inherit nixpkgs-unstable; };
 
-  secretImports = lib.optionals (secrets ? homeManagerSecrets) [
-    secrets.homeManagerSecrets
-  ];
+  secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
 
 in
 {
