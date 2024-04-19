@@ -10,7 +10,6 @@
       ];
       trusted-public-keys = [
       ];
-      max-jobs = 24;
     };
 
     extraOptions = ''
