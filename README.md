@@ -28,7 +28,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Notifications   | [Dunst](https://github.com/dunst-project/dunst) |
 | Prompt          | [Starship](https://github.com/starship/starship) |
 | Shell           | [Fish](https://fishshell.com/) |
-| Shell when data | [Nushell](https://fishshell.com/) |
+| Shell when data | [Nushell](https://www.nushell.sh/) |
 | Status Bar      | [i3status-rust](https://github.com/greshake/i3status-rust) |
 | Terminal        | [Alacritty](https://github.com/alacritty/alacritty) |
 | Animal          | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
