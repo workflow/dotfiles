@@ -148,6 +148,8 @@ in
       galaxy-buds-client
       neo-cowsay
       networkmanager_dmenu
+      rclone
+      restic
     ];
 
     sessionVariables = {
