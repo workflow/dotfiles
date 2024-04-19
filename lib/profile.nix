@@ -53,7 +53,7 @@
     macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
-    n = "nixos s";
+    n = "nh os switch";
 
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
