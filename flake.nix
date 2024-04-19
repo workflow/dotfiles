@@ -15,7 +15,6 @@
     };
     secrets = {
       url = "path:/home/farlion/code/nixos-secrets";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
