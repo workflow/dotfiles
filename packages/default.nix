@@ -38,6 +38,7 @@ let
       pkgs.difftastic
       nixpkgs-unstable.discord
       pkgs.distrobox
+      pkgs.dnstracer
       pkgs.docker-compose
       pkgs.duplicati
       pkgs.dunst
