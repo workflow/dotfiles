@@ -182,6 +182,14 @@ in
                 }
               ];
             }
+            {
+              block = "vpn";
+              driver = "mullvad";
+              format_connected = " $icon $flag";
+              format_disconnected = " $icon";
+              interval = 5;
+              state_connected = "good";
+            }
           ]
           ++ lib.lists.optionals isFlexbox [
             {
