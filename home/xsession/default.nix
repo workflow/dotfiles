@@ -1,15 +1,15 @@
-{ isHidpi, lib, pkgs, osConfig, ... }:
+{ isHidpi, pkgs, ... }:
 let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
-
-  nixpkgs-unstable = pkgs.unstable;
-
 in
 {
-  xsession.enable = true;
-  xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
+
+  home.file = {
+    "bin/caffeinate" = { source = ./caffeinate.sh; executable = true; };
+    "bin/decaffeinate" = { source = ./decaffeinate.sh; executable = true; };
+  };
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
@@ -46,4 +46,7 @@ in
     "*color15" = color_txt;
 
   };
+
+  xsession.enable = true;
+  xsession.scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
 }

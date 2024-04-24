@@ -147,6 +147,7 @@ in
     packages = with pkgs; [
       find-cursor
       galaxy-buds-client
+      lolcat
       neo-cowsay
       networkmanager_dmenu
       rclone
