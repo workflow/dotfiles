@@ -11,6 +11,7 @@ let
     ./home/fzf.nix
     ./home/git.nix
     ./home/gpg.nix
+    ./home/i3
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim
