@@ -1,13 +1,6 @@
 { pkgs, nixpkgs-unstable }:
 let
   shebang = "#!${pkgs.bash}/bin/bash";
-
-  ensure-env-var = var:
-    let v = "$" + "${var}"; in
-    ''
-      [ -z "${v}" ] && echo "${var} is not set" && exit 1
-    '';
-
 in
 {
   gen-gitignore = ''

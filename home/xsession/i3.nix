@@ -213,7 +213,7 @@ in
       "${mod}+Control+semicolon" = "move workspace to output right";
 
       # lock screen
-      "${mod}+Shift+x" = "exec --no-startup-id ${screenShutter}";
+      "${mod}+Shift+x" = "exec --no-startup-id xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
 
       # toggle tiling / floating
       "${mod}+Shift+space" = "floating toggle";
@@ -335,8 +335,6 @@ in
       { command = "google-chrome-stable music.youtube.com"; notification = false; }
       { command = "todoist"; notification = false; }
 
-      # Auto turn off screens using xidlehook written in Rust :)
-      { command = ''xidlehook --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""''; notification = false; }
       # Auto lock screen on screen off, suspend, etc...
       { command = ''xss-lock -- "${locker}"''; notification = false; }
 
@@ -354,10 +352,11 @@ in
     ]
     ++ lib.lists.optionals isFlexbox
       [
-        { command = ''xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 "${suspender}" ""''; notification = false; }
+        { command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""''; notification = false; }
       ]
     ++ lib.lists.optionals isBoar
       [
+        { command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""''; notification = false; }
         # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/10
         # For some reason this has to run from userland, after the xSession is started
         { command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; notification = false; }
