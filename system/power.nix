@@ -11,6 +11,12 @@ in
     HibernateDelaySec=1h
   '';
 
+  # Disable DPMS in favor of alternatives like xidlehook managed from userland
+  # XServer Only
+  environment.extraInit = ''
+    xset s off -dpms
+  '';
+
   services.tlp = lib.mkIf isFlexbox {
     enable = true;
     settings = {
