@@ -145,6 +145,7 @@ in
     };
 
     packages = with pkgs; [
+      unstable.aichat
       find-cursor
       galaxy-buds-client
       lolcat

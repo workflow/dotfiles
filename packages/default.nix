@@ -5,7 +5,6 @@ let
 
   packages =
     [
-      aichat-13
       pkgs.appimage-run
       pkgs.arandr
       pkgs.asciinema
