@@ -23,6 +23,11 @@ let
   };
 in
 {
+  imports = [
+    ./jdtls
+    ./mason-lsp
+  ];
+
   programs.neovim = {
     enable = true;
 
@@ -460,14 +465,6 @@ in
         type = "lua";
       }
       vim-numbertoggle
-      {
-        plugin = mason-nvim; # Automatically install LSP servers
-        config = builtins.replaceStrings [ "LSP_PATH" ] [ "${inputs.nil.packages.x86_64-linux.default}/bin/nil" ] (builtins.readFile ./lsp.lua);
-        type = "lua";
-      }
-      {
-        plugin = mason-lspconfig-nvim; # Automatically install LSP servers
-      }
       {
         plugin = overseer-nvim;
         config = ''
