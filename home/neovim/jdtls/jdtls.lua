@@ -1,7 +1,7 @@
 local shared_lsp_config = require('shared_lsp_config')
 local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' });
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
-local data_dir = '/home/farlion/.cache/nvim/jdtls/' .. project_name
+local data_dir = '/home/farlion/.cache/nvim/jdtls/workspaces/' .. project_name
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
