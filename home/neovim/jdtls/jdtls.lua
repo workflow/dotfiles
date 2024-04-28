@@ -44,6 +44,7 @@ local config = {
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
     '-Xmx1g',
+    '-javaagent:' .. jdtls_path .. '/lombok.jar',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
@@ -57,7 +58,6 @@ local config = {
 
     '-configuration', jdtls_path .. '/config_linux',
     '-data', data_dir,
-    '-javaagent:' .. jdtls_path .. '/lombok.jar'
   },
 
   on_attach = on_attach,
