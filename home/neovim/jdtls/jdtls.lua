@@ -2,7 +2,19 @@ local shared_lsp_config = require('shared_lsp_config')
 local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' });
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
 local data_dir = vim.fn.expand('$HOME/.cache/nvim/jdtls/workspaces/') .. project_name
+
 local jdtls_path = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/jdtls')
+local jdebug_path = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/java-debug-adapter')
+local jtest_path = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/java-test')
+
+
+local bundles = {
+  vim.fn.glob(jdebug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", true),
+}
+vim.list_extend(bundles, vim.split(vim.fn.glob(jtest_path .. "/extension/server/*.jar", true), "\n"))
+
+local extendedClientCapabilities = require('jdtls').extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local on_attach = function(_, bufnr)
   shared_lsp_config.on_attach(_, bufnr)
@@ -27,6 +39,9 @@ local on_attach = function(_, bufnr)
   -- " This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
   -- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
   -- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
+  -- require('jdtls').setup_dap({ hotcodereplace = "auto" })
+  -- require('jdtls.dap').setup_dap_main_class_configs()
+  -- require('jdtls.setup').add_commands()
 end
 
 
@@ -82,7 +97,8 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {}
+    bundles = bundles,
+    extendedClientCapabilities = extendedClientCapabilities,
   },
 }
 -- This starts a new client & server,
