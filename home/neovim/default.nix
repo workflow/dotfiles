@@ -26,6 +26,7 @@ in
   imports = [
     ./jdtls
     ./mason-lsp
+    ./overseer
   ];
 
   programs.neovim = {
@@ -465,30 +466,6 @@ in
         type = "lua";
       }
       vim-numbertoggle
-      {
-        plugin = overseer-nvim;
-        config = ''
-          require('overseer').setup({
-            strategy = "toggleterm",
-            templates = {
-              "builtin",
-              "user.gmailctl_apply",
-              "user.nixos_rebuild_switch",
-              "user.nixos_update_secrets",
-              "user.skaffold_dev",
-            },
-          })
-          local wk = require("which-key")
-          wk.register({
-            o = {
-              name = "[O]verseer",
-                r = { "<cmd>OverseerRun<CR>", "[R]un" },
-                t = { "<cmd>OverseerToggle<CR>", "[T]oggle List" },
-              },
-          }, { prefix = "<leader>" })
-        '';
-        type = "lua";
-      }
       ReplaceWithRegister
       vim-rhubarb # github bindings for fugitive
       vim-rooter
@@ -745,13 +722,5 @@ in
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-  };
-
-  ## Overseer Templates
-  home.file = {
-    ".config/nvim/lua/overseer/template/user/gmailctl_apply.lua".source = ./overseer/gmailctl_apply.lua;
-    ".config/nvim/lua/overseer/template/user/nixos_rebuild_switch.lua".source = ./overseer/nixos_rebuild_switch.lua;
-    ".config/nvim/lua/overseer/template/user/nixos_update_secrets.lua".source = ./overseer/nixos_update_secrets.lua;
-    ".config/nvim/lua/overseer/template/user/skaffold_dev.lua".source = ./overseer/skaffold_dev.lua;
   };
 }
