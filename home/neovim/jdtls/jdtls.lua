@@ -1,5 +1,5 @@
 local shared_lsp_config = require('shared_lsp_config')
-local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' });
+local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' });
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
 local data_dir = vim.fn.expand('$HOME/.cache/nvim/jdtls/workspaces/') .. project_name
 local jdtls_path = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/jdtls')
