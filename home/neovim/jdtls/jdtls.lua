@@ -3,6 +3,32 @@ local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' })
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
 local data_dir = '/home/farlion/.cache/nvim/jdtls/workspaces/' .. project_name
 
+local on_attach = function(_, bufnr)
+  shared_lsp_config.on_attach(_, bufnr)
+
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  local wk = require("which-key")
+  wk.register({
+    e = "[E]xtract",
+  }, { prefix = "<localleader>" })
+  nmap('<localleader>o', require('jdtls').organize_imports, '[O]rganize Imports')
+  nmap('<localleader>ev', require('jdtls').extract_variable, '[V]ariable')
+  nmap('<localleader>ec', require('jdtls').extract_constant, '[C]onstant')
+  nmap('<localleader>em', require('jdtls').extract_method, '[M]ethod')
+  -- " If using nvim-dap
+  -- " This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
+  -- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
+  -- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
+end
+
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -33,7 +59,7 @@ local config = {
     '-data', data_dir,
   },
 
-  on_attach = shared_lsp_config.on_attach,
+  on_attach = on_attach,
 
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
