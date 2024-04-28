@@ -1,7 +1,8 @@
 local shared_lsp_config = require('shared_lsp_config')
 local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' });
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
-local data_dir = '/home/farlion/.cache/nvim/jdtls/workspaces/' .. project_name
+local data_dir = vim.fn.expand('$HOME/.cache/nvim/jdtls/workspaces/') .. project_name
+local jdtls_path = vim.fn.expand('$HOME/.local/share/nvim/mason/packages/jdtls')
 
 local on_attach = function(_, bufnr)
   shared_lsp_config.on_attach(_, bufnr)
@@ -48,15 +49,15 @@ local config = {
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- 💀
-    '-jar',
-    '/home/farlion/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.800.v20240304-1850.jar',
+    '-jar', jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.800.v20240304-1850.jar',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version (`readlink (which jdt-language-server)`)
 
 
-    '-configuration', '/home/farlion/.local/share/nvim/mason/packages/jdtls/config_linux',
+    '-configuration', jdtls_path .. '/config_linux',
     '-data', data_dir,
+    '-javaagent:' .. jdtls_path .. '/lombok.jar'
   },
 
   on_attach = on_attach,
