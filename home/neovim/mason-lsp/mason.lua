@@ -73,12 +73,24 @@ require('which-key').register {
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup()
+require('mason').setup({
+  registries = {
+    'github:nvim-java/mason-registry',
+    'github:mason-org/mason-registry',
+  },
+})
 require('mason-lspconfig').setup()
 
 local servers = {
   bashls = {},
-  jdtls = {}, -- java
+  -- jdtls = {
+  --   import = {
+  --     gradle = {
+  --       verson = "8.6",
+  --       enable = false,
+  --     },
+  --   },
+  -- }, -- java
   jsonls = {},
   lua_ls = {
     Lua = {

@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, lib, pkgs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
 
@@ -12,6 +12,57 @@ let
     };
   };
 
+  nvim-java = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "nvim-java";
+      src = pkgs.fetchFromGitHub {
+        owner = "nvim-java";
+        repo = "nvim-java";
+        rev = "f53dc51322aeb9270bc7bef569f99f06730c8a01";
+        sha256 = "k+f1Zhucfubazw+t3NNNis6MCEjfIq8+Tnr5YXNcfvM=";
+      };
+    };
+  lua-async-await = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "lua-async-await";
+      src = pkgs.fetchFromGitHub {
+        owner = "nvim-java";
+        repo = "lua-async";
+        rev = "652d94df34e97abe2d4a689edbc4270e7ead1a98";
+        sha256 = "SB+gmBfF3AKZyktOmPaR9CRyTyCYz2jlrxi+jgBI/Eo=";
+      };
+    };
+  nvim-java-core = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "nvim-java-core";
+      src = pkgs.fetchFromGitHub {
+        owner = "nvim-java";
+        repo = "nvim-java-core";
+        rev = "44272f85cfaed04441627c61b77196b0f3493a36";
+        sha256 = "OXPh/gPaoDMBaOz9n9/FfgSrUfitRyjgn4w4taJ8yw4=";
+      };
+    };
+  nvim-java-test = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "nvim-java-test";
+      src = pkgs.fetchFromGitHub {
+        owner = "nvim-java";
+        repo = "nvim-java-test";
+        rev = "a3fe70c48936e1c143ed366e127e9c3db4791716";
+        sha256 = "98OleTFCj5W8fLUgZOQy5ECqR/tu4d+Ahl8ZUcrnaew=";
+      };
+    };
+  nvim-java-dap = pkgs.vimUtils.buildVimPlugin
+    {
+      name = "nvim-java-dap";
+      src = pkgs.fetchFromGitHub {
+        owner = "nvim-java";
+        repo = "nvim-java-dap";
+        rev = "55c90c5d2414f6e66f843f38e111bee284d71e61";
+        sha256 = "ExCgpbdXHDrt8b/ZInGZTd+vIEzehcLlTHJMFfjlFsM=";
+      };
+    };
+
   lf-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "lf-nvim";
     src = pkgs.fetchFromGitHub {
@@ -24,7 +75,7 @@ let
 in
 {
   imports = [
-    ./jdtls
+    # ./jdtls
     ./mason-lsp
     ./overseer
   ];
@@ -717,6 +768,20 @@ in
       vim-shellcheck
       vim-solidity
       vim-nix
+      lua-async-await
+      nvim-java-core
+      nvim-java-test
+      nvim-java-dap
+      nui-nvim
+      nvim-dap
+      {
+        plugin = nvim-java;
+        config = ''
+          require("java").setup()
+          require('lspconfig').jdtls.setup({})
+        '';
+        type = "lua";
+      }
     ];
 
     viAlias = true;
