@@ -1,6 +1,16 @@
 local shared_lsp_config = require('shared_lsp_config')
--- Autoformat, from https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/autoformat.lua
 
+-- General Diagnostic keymaps
+local wk = require("which-key")
+wk.register({
+  ["[d"] = { vim.diagnostic.goto_prev, "Prev [D]iagnostic" },
+  ["]d"] = { vim.diagnostic.goto_next, "Next [D]iagnostic" },
+  ["<localleader>d"] = { vim.diagnostic.open_float, "Open Floating [D]iagnostics" },
+  ["<localleader>l"] = { vim.diagnostic.setloclist, "Open Diagnostics in [L]ocation List" },
+  ["<localleader>q"] = { vim.diagnostic.setqflist, "Open Diagnostics in [Q]uickfix List" },
+})
+
+-- Autoformat, from https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/autoformat.lua
 -- Switch for controlling whether you want autoformatting.
 --  Use :AutoFormatToggle to toggle autoformatting on or off
 local format_is_enabled = true
