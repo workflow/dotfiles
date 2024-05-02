@@ -7,7 +7,7 @@ wk.register({
     c = { function() dap.continue() end, "[C]ontinue" },
     i = { function() dap.step_into() end, "Step [I]nto" },
     o = { function() dap.step_over() end, "Step [O]ver" },
-    t = { function() dap.step_over() end, "Step Ou[t]" },
+    t = { function() dap.step_out() end, "Step Ou[t]" },
   },
 }, { prefix = "<leader>" })
 
