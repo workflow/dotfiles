@@ -1,8 +1,10 @@
 local function ts_disable_long_files(_, bufnr)
-  return api.nvim_buf_line_count(bufnr) > 5000
+  return vim.api.nvim_buf_line_count(bufnr) > 5000
 end
 
-local disabled_languages = { "java" }
+local disabled_languages = {
+  "java"
+}
 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
