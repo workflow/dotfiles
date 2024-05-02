@@ -24,6 +24,7 @@ let
 in
 {
   imports = [
+    ./dap
     ./jdtls
     ./mason-lsp
     ./neotest
@@ -304,17 +305,6 @@ in
       {
         plugin = nvim-cmp; # Autocompletion 
         config = builtins.readFile ./cmp.lua;
-        type = "lua";
-      }
-      {
-        plugin = nvim-dap; # Debug Adapter Protocol
-        config = builtins.readFile ./dap.lua;
-        type = "lua";
-      }
-      {
-        plugin = nvim-dap-ui; # DAP UI 
-        config = ''
-        '';
         type = "lua";
       }
       {
