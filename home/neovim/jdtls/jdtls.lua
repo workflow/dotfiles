@@ -30,15 +30,16 @@ local on_attach = function(_, bufnr)
   local wk = require("which-key")
   wk.register({
     e = "[E]xtract",
+    t = "[T]est",
   }, { prefix = "<localleader>" })
   nmap('<localleader>o', require('jdtls').organize_imports, '[O]rganize Imports')
   nmap('<localleader>ev', require('jdtls').extract_variable, '[V]ariable')
   nmap('<localleader>ec', require('jdtls').extract_constant, '[C]onstant')
   nmap('<localleader>em', require('jdtls').extract_method, '[M]ethod')
-  -- " If using nvim-dap
-  -- " This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
-  -- nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
-  -- nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
+
+  -- DAP specific keybindings, since not yet compatible wit neotest
+  nmap('<localleader>tc', require('jdtls').test_class, 'Debug Test [C]lass')
+  nmap('<localleader>tn', require('jdtls').test_nearest_method, 'Debug Test [N]earest')
   -- require('jdtls').setup_dap({ hotcodereplace = "auto" })
   -- require('jdtls.dap').setup_dap_main_class_configs()
   -- require('jdtls.setup').add_commands()
