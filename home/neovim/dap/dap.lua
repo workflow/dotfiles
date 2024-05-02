@@ -4,6 +4,7 @@ wk.register({
   d = {
     name = "[D]ebug",
     b = { function() dap.toggle_breakpoint() end, "Toggle [B]reakpoint" },
+    B = { function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Set conditional [B]reakpoint" },
     c = { function() dap.continue() end, "[C]ontinue" },
     i = { function() dap.step_into() end, "Step [I]nto" },
     o = { function() dap.step_over() end, "Step [O]ver" },
