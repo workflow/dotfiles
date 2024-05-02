@@ -12,6 +12,13 @@
       config = builtins.readFile ./dap-ui.lua;
       type = "lua";
     }
+    {
+      plugin = nvim-dap-virtual-text; # Highlighting
+      config = ''
+        require("nvim-dap-virtual-text").setup()
+      '';
+      type = "lua";
+    }
   ];
 
 }
