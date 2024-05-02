@@ -40,9 +40,10 @@ local on_attach = function(_, bufnr)
   -- DAP specific keybindings, since not yet compatible wit neotest
   nmap('<localleader>tc', require('jdtls').test_class, 'Debug Test [C]lass')
   nmap('<localleader>tn', require('jdtls').test_nearest_method, 'Debug Test [N]earest')
-  -- require('jdtls').setup_dap({ hotcodereplace = "auto" })
-  -- require('jdtls.dap').setup_dap_main_class_configs()
-  -- require('jdtls.setup').add_commands()
+
+  require('jdtls').setup_dap({ hotcodereplace = "auto" })
+  require('jdtls.dap').setup_dap_main_class_configs()
+  require('jdtls.setup').add_commands()
 end
 
 
