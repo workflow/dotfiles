@@ -10,7 +10,8 @@
     {
       plugin = nvim-dap-ui; # DAP UI 
       config = ''
-        '';
+        require("dapui").setup()
+      '';
       type = "lua";
     }
   ];
