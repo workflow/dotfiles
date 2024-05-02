@@ -1,6 +1,17 @@
 { inputs, pkgs, ... }:
+let
+  mason-nvim-dap = pkgs.vimUtils.buildVimPlugin {
+    name = "mason-nvim-dap";
+    src = pkgs.fetchFromGitHub {
+      owner = "jay-babu";
+      repo = "mason-nvim-dap.nvim";
+      rev = "67210c0e775adec55de9826b038e8b62de554afc";
+      sha256 = "KhTAomLm57MWWNvLaOeaMGGHJK7uLiNBY0XCyQ1TLSY=";
+    };
+  };
+in
 {
-  programs.neovim.plugins = with pkgs.vimPlugins; [
+  programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
     {
       plugin = mason-nvim; # Automatically install LSP servers
       config = builtins.replaceStrings [ "LSP_PATH" ] [ "${inputs.nil.packages.x86_64-linux.default}/bin/nil" ] (builtins.readFile ./mason.lua);
@@ -11,6 +22,9 @@
     }
     {
       plugin = mason-lspconfig-nvim; # Automatically install LSP servers
+    }
+    {
+      plugin = mason-nvim-dap; # Automatically install LSP servers
     }
   ];
 }

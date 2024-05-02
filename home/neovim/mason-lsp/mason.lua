@@ -72,9 +72,16 @@ require('which-key').register {
 }
 
 -- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the servers.
+-- before setting up the LSP servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
+require("mason-nvim-dap").setup({
+  -- automatic_installation = true,
+  ensure_installed = {
+    "javadbg",
+    "javatest",
+  },
+})
 
 local servers = {
   bashls = {},
