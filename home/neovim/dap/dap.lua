@@ -9,6 +9,7 @@ wk.register({
     i = { function() dap.step_into() end, "Step [I]nto" },
     o = { function() dap.step_over() end, "Step [O]ver" },
     u = { function() dap.step_out() end, "Step O[u]t" },
+    q = { function() dap.close() end, "[Q]uit/Close dap" },
   },
 }, { prefix = "<leader>" })
 
