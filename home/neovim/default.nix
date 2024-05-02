@@ -26,6 +26,7 @@ in
   imports = [
     ./dap
     ./jdtls
+    ./folds
     ./mason-lsp
     ./neotest
     ./telescope
