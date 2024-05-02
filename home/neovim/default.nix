@@ -149,7 +149,7 @@ in
       lua require('leap').add_default_mappings()
 
       " Vim-test
-      let test#strategy = "floaterm"
+      let test#strategy = "toggleterm"
       let g:test#rust#runner = 'cargonextest'
       nmap <silent> <leader>tt :TestNearest<CR>
       nmap <silent> <leader>tT :TestFile<CR>
