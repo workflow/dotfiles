@@ -75,8 +75,6 @@
   # MacGyver
   systemd.services.macgyver = {
     description = "MacGyver";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${ (pkgs.python3.withPackages (ps: with ps; [ json5 ])) }/bin/python /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/setup_forwarding.py --config_path /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/";
