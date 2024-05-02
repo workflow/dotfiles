@@ -26,6 +26,7 @@ in
   imports = [
     ./jdtls
     ./mason-lsp
+    ./neotest
     ./overseer
   ];
 
@@ -707,7 +708,7 @@ in
         plugin = neodev-nvim; # Nvim LUA development
         config = ''
           require("neodev").setup({
-            library = { plugins = { "nvim-dap-ui" }, types = true },
+            library = { plugins = { "nvim-dap-ui", "neotest" }, types = true },
           })
         '';
         type = "lua";
