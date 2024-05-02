@@ -26,6 +26,7 @@
             name = "Find[ ](Telescope)",
               ["<space>"] = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
               b = { "<cmd>Telescope buffers<CR>", "[B]uffers" },
+              e = { "<cmd>Telescope help_tags<CR>", "H[e]lp Tags" },
               f = { "<cmd>Telescope find_files<CR>", "All [F]iles" },
               g = { "<cmd>Telescope live_grep<CR>", "[G]rep" },
               m = { "<cmd>Telescope bookmarks list<CR>", "Book[m]arks" },
