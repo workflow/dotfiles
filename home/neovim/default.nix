@@ -128,10 +128,10 @@ in
       nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gl :Gclog
       nnoremap <leader>g0l :0Gclog<CR>
-      nnoremap <leader>gps :Git! push<CR>
-      nnoremap <leader>gpf :Git! push --force-with-lease<CR>
-      nnoremap <leader>gpl :Git! pull<CR>
-      nnoremap <leader>gpn :Git! push -u origin HEAD<CR>
+      nnoremap <silent> <leader>gps :TermExec cmd="git push"<CR>
+      nnoremap <silent> <leader>gpf :TermExec cmd="git push --force-with-lease"<CR>
+      nnoremap <silent> <leader>gpl :TermExec cmd="git pull"<CR>
+      nnoremap <silent> <leader>gpn :TermExec cmd="git push -u origin HEAD"<CR>
       nnoremap gj :diffget //2<CR>
       nnoremap gl :diffget //3<CR>
       " Fugitive-Gitlab
