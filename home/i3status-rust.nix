@@ -340,6 +340,7 @@ in
               block = "pomodoro";
               notify_cmd = "notify-send '{msg}'";
               blocking_cmd = false;
+              format = " {$message| }";
             }
           ]
           ++ lib.lists.optionals isFlexbox flexboxExtraBlocks
