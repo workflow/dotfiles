@@ -8,6 +8,12 @@
       type = "lua";
     }
     {
+      plugin = nvim-treesitter-context; # ip, ap, etc... from treesitter!
+      config = ''
+        '';
+      type = "lua";
+    }
+    {
       plugin = nvim-treesitter-textobjects; # ip, ap, etc... from treesitter!
       config = ''
         '';
