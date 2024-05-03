@@ -29,6 +29,7 @@ in
     ./folds
     ./mason-lsp
     ./neotest
+    ./oil
     ./telescope
     ./treesitter
     ./overseer
