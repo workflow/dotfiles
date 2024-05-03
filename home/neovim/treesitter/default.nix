@@ -14,6 +14,9 @@
     {
       plugin = nvim-treesitter.withAllGrammars;
       config = builtins.readFile ./treesitter.lua;
+      runtime = {
+        "after/queries/nix/injections.scm".source = ./queries/nix/injections.scm;
+      };
       type = "lua";
     }
     {
