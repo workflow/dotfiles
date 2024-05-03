@@ -24,6 +24,7 @@ let
 in
 {
   imports = [
+    ./carbon
     ./dap
     ./jdtls
     ./folds
