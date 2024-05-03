@@ -453,6 +453,10 @@ in
         type = "lua";
       }
       vim-numbertoggle
+      {
+        plugin = vim-qf; # Quickfix improvements
+        config = '''';
+      }
       ReplaceWithRegister
       vim-rhubarb # github bindings for fugitive
       vim-rooter
