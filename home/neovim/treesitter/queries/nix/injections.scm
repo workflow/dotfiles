@@ -14,17 +14,31 @@
   (#match? @_path "^extraLuaConfig$")
   (#set! injection.combined))
 
-; extraConfig -> Vim
+; neovim.extraConfig -> Vim
 (binding
-  attrpath: (attrpath
-    (identifier) @_path)
-  expression: [
-    (string_expression
-      ((string_fragment) @injection.content
-        (#set! injection.language "vim")))
-    (indented_string_expression
-      ((string_fragment) @injection.content
-        (#set! injection.language "vim")))
-  ]
-  (#match? @_path "^extraConfig$")
-  (#set! injection.combined))
+  (
+   (attrpath
+     (identifier) @_outer
+     (identifier) @_inner
+   )
+  )
+  (attrset_expression
+    (binding_set
+	(binding
+	  attrpath: (attrpath
+	    (identifier) @_path)
+	  expression: [
+	    (string_expression
+	      ((string_fragment) @injection.content
+		(#set! injection.language "vim")))
+	    (indented_string_expression
+	      ((string_fragment) @injection.content
+		(#set! injection.language "vim")))
+	  ]
+	  (#match? @_path "^extraConfig$")
+	  (#match? @_inner "^neovim$")
+	  (#set! injection.combined)
+	)
+     )
+  )
+)
