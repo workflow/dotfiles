@@ -42,3 +42,35 @@
      )
   )
 )
+
+; inline vim plugin configs of type Lua
+(binding_set
+	binding: (binding
+	  attrpath: (attrpath
+	    (identifier) @_path)
+	  expression: [
+	    (string_expression
+	      ((string_fragment) @injection.content
+		(#set! injection.language "lua")))
+	    (indented_string_expression
+	      ((string_fragment) @injection.content
+		(#set! injection.language "lua")))
+	  ]
+	  )
+	binding: (binding
+	  attrpath: (attrpath
+	    (identifier) @_typearg)
+	  expression: [
+	    (string_expression
+	      ((string_fragment) @_typeval
+		))
+	    (indented_string_expression
+	      ((string_fragment) @_typeval
+		))
+	  ]
+	)
+	(#match? @_typearg "^type$")
+	(#match? @_typeval "^lua$")
+	(#match? @_path "^config$")
+	(#set! injection.combined)
+)
