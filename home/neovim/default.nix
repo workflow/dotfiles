@@ -28,6 +28,7 @@ in
     ./dap
     ./jdtls
     ./folds
+    ./fugitive
     ./mason-lsp
     ./neotest
     ./oil
@@ -349,38 +350,6 @@ in
         plugin = friendly-snippets; # User-friendly snippets, work with LuaSnip and other engines
       }
       {
-        plugin = fugitive; # Git Fu
-        config = ''
-          local function showFugitiveGit()
-            if vim.fn.FugitiveHead() ~= ''' then
-              vim.cmd [[
-              Git
-              " wincmd H  " Open Git window in vertical split
-              " setlocal winfixwidth
-              " vertical resize 31
-              " setlocal winfixwidth
-              setlocal nonumber
-              setlocal norelativenumber
-              ]]
-            end
-          end
-          local function toggleFugitiveGit()
-            if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
-              vim.cmd[[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
-            else
-              showFugitiveGit()
-            end
-          end
-          vim.keymap.set('n', '<F3>', toggleFugitiveGit, opts)
-
-          require('which-key').register {
-            ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-          }
-        '';
-        type = "lua";
-      }
-      fugitive-gitlab-vim
-      {
         plugin = gitgutter; # Git diff in the gutter
         config = ''
           require('which-key').register {
@@ -482,7 +451,6 @@ in
         config = '''';
       }
       ReplaceWithRegister
-      vim-rhubarb # github bindings for fugitive
       vim-rooter
       vim-sleuth # Automatic shiftwidth and expandtab
       {
