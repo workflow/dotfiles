@@ -29,6 +29,7 @@ in
     ./jdtls
     ./folds
     ./fugitive
+    ./mini-operators
     ./mason-lsp
     ./neotest
     ./oil
@@ -450,7 +451,6 @@ in
         plugin = vim-qf; # Quickfix improvements
         config = '''';
       }
-      ReplaceWithRegister
       vim-rooter
       vim-sleuth # Automatic shiftwidth and expandtab
       {
