@@ -53,6 +53,8 @@ let
   ws19 = "19";
   ws20 = "20";
 
+  wsc = "c";
+
 in
 {
   xsession.windowManager.i3 = {
@@ -186,6 +188,7 @@ in
         "${mod}+Mod1+8" = "workspace ${ws18}";
         "${mod}+Mod1+9" = "workspace ${ws19}";
         "${mod}+Mod1+0" = "workspace ${ws20}";
+        "${mod}+c" = "workspace ${wsc}";
 
         # Move container to workspace and focus
         "${mod}+Shift+1" = "move container to workspace ${ws1}; workspace ${ws1}";
@@ -208,6 +211,7 @@ in
         "${mod}+Shift+Mod1+8" = "move container to workspace ${ws18}; workspace ${ws18}";
         "${mod}+Shift+Mod1+9" = "move container to workspace ${ws19}; workspace ${ws19}";
         "${mod}+Shift+Mod1+0" = "move container to workspace ${ws20}; workspace ${ws20}";
+        "${mod}+Shift+c" = "move container to workspace ${wsc}; workspace ${wsc}";
 
         # Move workspace between screens
         "${mod}+Control+j" = "move workspace to output left";
