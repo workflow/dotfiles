@@ -119,21 +119,22 @@ in
       nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
       " Fugitive
-      nnoremap <leader>gs :Git<CR>
+      nnoremap <leader>g0l :0Gclog<CR>
+      nnoremap <leader>gb :Git checkout -b<Space>
+      nnoremap <leader>gB :Git blame<CR>
+      nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gd :Gdiff<CR>
       nnoremap <leader>gdc :Gdiffsplit!<CR>
       nnoremap <leader>ge :Gedit<CR>
-      nnoremap <leader>gr :Gread<CR>
-      nnoremap <leader>gw :Gwrite<CR>
-      nnoremap <leader>gm :GMove
-      nnoremap <leader>gb :Git checkout -b<Space>
-      nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gl :Gclog
-      nnoremap <leader>g0l :0Gclog<CR>
-      nnoremap <silent> <leader>gps :TermExec cmd="git push"<CR>
+      nnoremap <leader>gm :GMove
+      nnoremap <leader>gr :Gread<CR>
+      nnoremap <leader>gs :Git<CR>
+      nnoremap <leader>gw :Gwrite<CR>
       nnoremap <silent> <leader>gpf :TermExec cmd="git push --force-with-lease"<CR>
       nnoremap <silent> <leader>gpl :TermExec cmd="git pull"<CR>
       nnoremap <silent> <leader>gpn :TermExec cmd="git push -u origin HEAD"<CR>
+      nnoremap <silent> <leader>gps :TermExec cmd="git push"<CR>
       nnoremap gj :diffget //2<CR>
       nnoremap gl :diffget //3<CR>
       " Fugitive-Gitlab
