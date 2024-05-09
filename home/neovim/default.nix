@@ -137,6 +137,16 @@ in
       nnoremap <silent> <leader>gps :TermExec cmd="git push"<CR>
       nnoremap gj :diffget //2<CR>
       nnoremap gl :diffget //3<CR>
+      " See https://github.com/tpope/vim-fugitive/issues/1510#issuecomment-660837020
+      function! s:ftplugin_fugitive() abort
+        nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
+        nnoremap <buffer> <silent> ca :Git commit --quiet --amend<CR>
+        nnoremap <buffer> <silent> ce :Git commit --quiet --amend --no-edit<CR>
+      endfunction
+      augroup quiet_fugitive
+        autocmd!
+        autocmd FileType fugitive call s:ftplugin_fugitive()
+      augroup END
       " Fugitive-Gitlab
       let g:fugitive_gitlab_domains = ['https://git.datalabhell.at', 'https://gitlab.k8s.plansee-group.com']
 
