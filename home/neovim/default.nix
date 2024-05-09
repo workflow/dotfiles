@@ -147,8 +147,6 @@ in
         autocmd!
         autocmd FileType fugitive call s:ftplugin_fugitive()
       augroup END
-      " Fugitive-Gitlab
-      let g:fugitive_gitlab_domains = ['https://git.datalabhell.at', 'https://gitlab.k8s.plansee-group.com']
 
       " Git-gutter
       " Use nerdfont icons as signs - inspired by https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
