@@ -365,11 +365,17 @@ in
         plugin = indent-blankline-nvim; # Indentation guides
         config = ''
           require("ibl").setup({
-            enabled = false,
             exclude = {
              filetypes = {"startify"},
             }
           })
+          local hooks = require "ibl.hooks"
+          hooks.register(hooks.type.ACTIVE, function(bufnr)
+              return vim.tbl_contains(
+                  { "yaml", "html", "svelte" },
+                  vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+              )
+          end)
           local wk = require("which-key")
           wk.register({
             ["[i"] = { function() require("ibl").setup_buffer(0, {enabled = true}) end, "Indentation Guides ON" },
