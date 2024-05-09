@@ -33,6 +33,12 @@
       '';
       type = "lua";
     }
+    {
+      plugin = vim-fubitive;
+      config = ''
+        let g:fubitive_domain_pattern = 'bitbucket-ssh\.plansee-group\.com'
+      '';
+    }
     fugitive-gitlab-vim
     vim-rhubarb # github bindings for fugitive
   ];
