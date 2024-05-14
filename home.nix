@@ -15,7 +15,7 @@ let
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim
-    ./home/nushell.nix
+    ./home/nushell
     ./home/picom.nix
     ./home/redshift.nix
     ./home/starship.nix
