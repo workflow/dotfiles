@@ -31,6 +31,7 @@ in
     ./fugitive
     ./mini-operators
     ./mason-lsp
+    ./none-ls
     ./neotest
     ./oil
     ./telescope
@@ -446,18 +447,6 @@ in
         plugin = nvim-notify;
         config = ''
           require('notify').setup()
-        '';
-        type = "lua";
-      }
-      {
-        plugin = null-ls-nvim;
-        config = ''
-          local null_ls = require("null-ls")
-          null_ls.setup({
-            sources = { 
-              null_ls.builtins.formatting.shfmt
-            } 
-          })
         '';
         type = "lua";
       }
