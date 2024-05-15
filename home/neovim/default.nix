@@ -25,6 +25,7 @@ in
 {
   imports = [
     ./carbon
+    ./cmp
     ./dap
     ./jdtls
     ./folds
@@ -311,23 +312,6 @@ in
           }, { prefix = "<leader>" })
         '';
         type = "lua";
-      }
-      {
-        plugin = nvim-cmp; # Autocompletion 
-        config = builtins.readFile ./cmp.lua;
-        type = "lua";
-      }
-      {
-        plugin = cmp_luasnip; # Autocompletion for luasnip
-      }
-      {
-        plugin = nvim-cmp; # Autocompletion 
-      }
-      {
-        plugin = cmp-nvim-lsp; # Autocompletion Additions
-      }
-      {
-        plugin = cmp-path; # Path completions
       }
       {
         plugin = comment-nvim; # Commenting with gc
