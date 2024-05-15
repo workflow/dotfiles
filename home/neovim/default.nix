@@ -188,6 +188,10 @@ in
       -- Wrapped lines should follow the indent
       vim.o.breakindent = true
 
+      -- Remap for dealing with word wrap
+      vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+      vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
       -- Save undo history
       -- TODO: sync this if useful
       vim.o.undofile = true
