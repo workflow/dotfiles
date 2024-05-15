@@ -47,7 +47,10 @@
       };
 
       cursor = {
-        vi_mode_style = "Underline";
+        vi_mode_style = {
+          shape = "Beam";
+          blinking = "Always";
+        };
       };
 
       key_bindings = [
