@@ -56,10 +56,11 @@
       key_bindings = [
         { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
         { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
-        { key = "Semicolon"; mode = "Vi"; action = "Right"; }
-        { key = "L"; mode = "Vi"; action = "Up"; }
-        { key = "K"; mode = "Vi"; action = "Down"; }
-        { key = "J"; mode = "Vi"; action = "Left"; }
+        { key = "Semicolon"; mode = "Vi|~Search"; action = "Right"; }
+        { key = "L"; mode = "Vi|~Search"; action = "Up"; }
+        { key = "K"; mode = "Vi|~Search"; action = "Down"; }
+        { key = "J"; mode = "Vi|~Search"; action = "Left"; }
+        { key = 53; mode = "Vi|~Search"; mods = "Shift"; action = "SearchBackward"; }
       ];
 
       env = {
