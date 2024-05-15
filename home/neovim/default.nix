@@ -121,26 +121,6 @@ in
       nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
       " Fugitive
-      nnoremap <leader>gb :Git checkout -b<Space>
-      nnoremap <leader>gB :Git blame<CR>
-      nnoremap <leader>gc :Git checkout<Space>
-      nnoremap <leader>gd :Gdiff<CR>
-      nnoremap <leader>gdc :Gdiffsplit!<CR>
-      nnoremap <leader>ge :Gedit<CR>
-      nnoremap <leader>gh :0Gclog<CR>
-      nnoremap <leader>gH :Git log<CR>
-      vnoremap <leader>gh :Gclog<CR>
-      nnoremap <leader>gl :Gclog
-      nnoremap <leader>gm :GMove
-      nnoremap <leader>gr :Gread<CR>
-      nnoremap <leader>gs :Git<CR>
-      nnoremap <leader>gw :Gwrite<CR>
-      nnoremap <silent> <leader>gpf :TermExec cmd="git push --force-with-lease"<CR>
-      nnoremap <silent> <leader>gpl :TermExec cmd="git pull"<CR>
-      nnoremap <silent> <leader>gpn :TermExec cmd="git push -u origin HEAD"<CR>
-      nnoremap <silent> <leader>gps :TermExec cmd="git push"<CR>
-      nnoremap gj :diffget //2<CR>
-      nnoremap gl :diffget //3<CR>
       " See https://github.com/tpope/vim-fugitive/issues/1510#issuecomment-660837020
       function! s:ftplugin_fugitive() abort
         nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
