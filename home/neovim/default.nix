@@ -121,13 +121,15 @@ in
       nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
       " Fugitive
-      nnoremap <leader>g0l :0Gclog<CR>
       nnoremap <leader>gb :Git checkout -b<Space>
       nnoremap <leader>gB :Git blame<CR>
       nnoremap <leader>gc :Git checkout<Space>
       nnoremap <leader>gd :Gdiff<CR>
       nnoremap <leader>gdc :Gdiffsplit!<CR>
       nnoremap <leader>ge :Gedit<CR>
+      nnoremap <leader>gh :0Gclog<CR>
+      nnoremap <leader>gH :Git log<CR>
+      vnoremap <leader>gh :Gclog<CR>
       nnoremap <leader>gl :Gclog
       nnoremap <leader>gm :GMove
       nnoremap <leader>gr :Gread<CR>
