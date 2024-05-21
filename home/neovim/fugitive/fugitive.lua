@@ -39,12 +39,14 @@ wk.register({
 		r = { ":Gread<CR>", "[R]evert to working tree/index copy of file" },
 		w = { ":Gwrite<CR>", "[W]rite to index" },
 		p = {
-			-- TODO: Update Fugitive window after these
 			name = "[P]ush/pull",
-			f = { function() vim.cmd('TermExec cmd="git push --force-with-lease"') end, "[F]orce push with lease" },
-			l = { function() vim.cmd('TermExec cmd="git pull"') end, "[P]ull" },
-			n = { function() vim.cmd('TermExec cmd="git push -u origin HEAD"') end, "Push [n]ew branch" },
-			s = { function() vim.cmd('TermExec cmd="git push"') end, "Pu[s]h" },
+			f = { function()
+				vim.cmd(
+					'TermExec cmd="git push --force-with-lease" | call fugitive#ReloadStatus()')
+			end, "[F]orce push with lease" },
+			l = { function() vim.cmd('TermExec cmd="git pull" | call fugitive#ReloadStatus()') end, "[P]ull" },
+			n = { function() vim.cmd('TermExec cmd="git push -u origin HEAD" | call fugitive#ReloadStatus()') end, "Push [n]ew branch" },
+			s = { function() vim.cmd('TermExec cmd="git push" | call fugitive#ReloadStatus()') end, "Pu[s]h" },
 		}
 	},
 	-- TODO: provide these to Fugitive diff buffers only
