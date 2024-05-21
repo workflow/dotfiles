@@ -5,17 +5,21 @@ set -euo pipefail
 chosen="$(echo -e "🔌local\n\
 🔊dock\n\
 🎧sony\n\
- buds\n\
+ buds(listen)\n\
+ buds(talk)\n\
 📢boombox\n\
 🎧openheadphones(laptop)
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
 function b {
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"04_21\" | get id  | get 0")
 	BOOMBOX="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
-	echo -e 'power on\nquit' | bluetoothctl
-	sleep 2
-	echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl
-	sleep 10
+	if [[ -z $CARD_ID ]]; then
+		echo -e 'power on\nquit' | bluetoothctl
+		sleep 2
+		echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl
+		sleep 10
+	fi
 	pactl set-default-sink "$BOOMBOX"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
@@ -23,17 +27,49 @@ function b {
 	done
 }
 
-function buds {
+function budslisten {
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0")
 	HEADSET="bluez_sink.DC_69_E2_9A_6E_30.a2dp_sink"
-	echo -e 'power on\nquit' | bluetoothctl
-	sleep 2
-	echo -e 'connect DC:69:E2:9A:6E:30\nquit' | bluetoothctl
-	sleep 5
+
+	if [[ -z $CARD_ID ]]; then
+		echo -e 'power on\nquit' | bluetoothctl
+		sleep 2
+		echo -e 'connect DC:69:E2:9A:6E:30\nquit' | bluetoothctl
+		sleep 5
+	fi
+
+	pactl set-card-profile "$CARD_ID" a2dp_sink
+	pactl set-default-sink "$HEADSET"
+	# This is a workaround for a bug in pulseaudio where the sink is not properly detected after switching
+	pactl suspend-sink "$HEADSET" 1
+	pactl suspend-sink "$HEADSET" 0
+	INPUTS=$(pactl list sink-inputs short | cut -f 1)
+	for i in $INPUTS; do
+		pactl move-sink-input "$i" "$HEADSET"
+	done
+
+	localmike
+}
+
+function budstalk {
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0")
+	HEADSET="bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit"
+
+	if [[ -z $CARD_ID ]]; then
+		echo -e 'power on\nquit' | bluetoothctl
+		sleep 2
+		echo -e 'connect DC:69:E2:9A:6E:30\nquit' | bluetoothctl
+		sleep 5
+	fi
+
+	pactl set-card-profile "$CARD_ID" handsfree_head_unit
 	pactl set-default-sink "$HEADSET"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
 		pactl move-sink-input "$i" "$HEADSET"
 	done
+
+	budsmike
 }
 
 function d {
@@ -98,12 +134,28 @@ function localmike {
 	done
 }
 
+function budsmike {
+	BUDSMIKE="bluez_source.DC_69_E2_9A_6E_30.handsfree_head_unit"
+	SOURCES=$(pactl list sources)
+
+	pactl set-default-source "$BUDSMIKE"
+	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
+	for i in $OUTPUTS; do
+		pactl move-source-output "$i" "$BUDSMIKE"
+	done
+}
+
 function s {
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"14_3F\" | get id  | get 0")
 	HEADSET="bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
-	echo -e 'power on\nquit' | bluetoothctl
-	sleep 2
-	echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl
-	sleep 5
+
+	if [[ -z $CARD_ID ]]; then
+		echo -e 'power on\nquit' | bluetoothctl
+		sleep 2
+		echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl
+		sleep 5
+	fi
+
 	pactl set-default-sink "$HEADSET"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
@@ -135,7 +187,8 @@ case "$chosen" in
 🔌local) l ;;
 🔊dock) d ;;
 🎧sony) s ;;
-" buds") buds ;;
+" buds(listen)") budslisten ;;
+" buds(talk)") budstalk ;;
 📢boombox) b ;;
 "🎧openheadphones(laptop)") o ;;
 *) exit 1 ;;
