@@ -12,9 +12,9 @@ in
     ./system/audio.nix
     ./system/desktop.nix
     ./system/fonts.nix
-    ./system/keyboard.nix
-    ./system/ledgerlive.nix
     ./system/gpu.nix
+    ./system/io
+    ./system/ledgerlive.nix
     ./system/networking.nix
     ./system/nix-ld.nix
     ./system/performance.nix

@@ -9,12 +9,6 @@ in
   services.xserver = {
     enable = true;
 
-    # Writes to /etc/X11/xorg.conf.d
-    libinput = {
-      enable = true;
-      touchpad.disableWhileTyping = true;
-    };
-
     displayManager = {
       autoLogin.enable = true;
       autoLogin.user = "farlion";
