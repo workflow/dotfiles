@@ -12,7 +12,7 @@ chosen="$(echo -e "🔌local\n\
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
 function b {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"04_21\" | get id  | get 0")
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"04_21\" | get id  | get 0" || true)
 	BOOMBOX="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
 	if [[ -z $CARD_ID ]]; then
 		echo -e 'power on\nquit' | bluetoothctl
@@ -28,7 +28,7 @@ function b {
 }
 
 function budslisten {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0")
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
 	HEADSET="bluez_sink.DC_69_E2_9A_6E_30.a2dp_sink"
 
 	if [[ -z $CARD_ID ]]; then
@@ -52,7 +52,7 @@ function budslisten {
 }
 
 function budstalk {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0")
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
 	HEADSET="bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit"
 
 	if [[ -z $CARD_ID ]]; then
@@ -145,8 +145,8 @@ function budsmike {
 	done
 }
 
-function s {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"14_3F\" | get id  | get 0")
+function sony {
+	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"14_3F\" | get id  | get 0" || true)
 	HEADSET="bluez_sink.14_3F_A6_28_DC_51.a2dp_sink"
 
 	if [[ -z $CARD_ID ]]; then
@@ -186,7 +186,7 @@ function o {
 case "$chosen" in
 🔌local) l ;;
 🔊dock) d ;;
-🎧sony) s ;;
+🎧sony) sony ;;
 " buds(listen)") budslisten ;;
 " buds(talk)") budstalk ;;
 📢boombox) b ;;
