@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 let
   nixpkgs-unstable = pkgs.unstable;
-  aichat-13 = pkgs.callPackage ./aichat { rustPlatform = pkgs.unstable.rustPlatform; };
 
   packages =
     [
@@ -27,7 +26,6 @@ let
       pkgs.chafa # Images to terminal pixels
       pkgs.cht-sh
       pkgs.cntr # for Nix sandbox breakpointHook debugging
-      nixpkgs-unstable.comma
       pkgs.dbeaver
       pkgs.dconf
       pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh

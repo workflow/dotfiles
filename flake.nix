@@ -7,6 +7,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nil.url = "github:oxalica/nil";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -18,7 +22,7 @@
     };
   };
 
-  outputs = { self, nil, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
+  outputs = { self, nil, nix-index-database, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
         unstable = import nixpkgs-unstable {

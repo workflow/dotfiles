@@ -1,4 +1,4 @@
-{ lib, pkgs, secrets, osConfig, ... }:
+{ inputs, lib, pkgs, secrets, osConfig, ... }:
 let
   hostName = osConfig.networking.hostName;
 
@@ -15,6 +15,7 @@ let
     ./home/i3status-rust.nix
     ./home/lf.nix
     ./home/neovim
+    ./home/nix-index
     ./home/nushell
     ./home/picom.nix
     ./home/redshift.nix
@@ -215,10 +216,6 @@ in
         k forw-line
         l back-line
       '';
-    };
-
-    nix-index = {
-      enable = true;
     };
 
     obs-studio = {
