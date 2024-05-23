@@ -54,8 +54,6 @@ in
 
       noremap h ;
       noremap ; l
-      noremap l k
-      noremap k j
       noremap j h
       noremap <C-w>; <C-w>l
       noremap <C-w>l <C-w>k
@@ -171,8 +169,8 @@ in
       vim.o.breakindent = true
 
       -- Remap for dealing with word wrap
-      vim.keymap.set('n', 'l', "v:count == 0 ? 'gk' : 'l'", { expr = true, silent = true })
-      vim.keymap.set('n', 'k', "v:count == 0 ? 'gj' : 'k'", { expr = true, silent = true })
+      vim.keymap.set('n', 'k', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+      vim.keymap.set('n', 'l', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
       -- Save undo history
       -- TODO: sync this if useful
