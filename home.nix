@@ -149,6 +149,7 @@ in
       unstable.aichat
       find-cursor
       galaxy-buds-client
+      unstable.hoppscotch # Open-Source Postman
       lolcat
       neo-cowsay
       networkmanager_dmenu
