@@ -114,6 +114,7 @@ let
       pkgs.playerctl
       pkgs.postgresql
       pkgs.pstree
+      pkgs.pulseaudioFull
       pkgs.pulsemixer
       (pkgs.python3.withPackages
         (ps: with ps; [

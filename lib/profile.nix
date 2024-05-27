@@ -60,7 +60,7 @@
 
     nsn = "nix search nixpkgs";
 
-    pa = "pactl upload-sample ~/Music/Own\\ Speech/IckbinArschratte.WAV ratte; and pactl play-sample ratte";
+    pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
 
     paste = "xclip -selection c -o";
 
