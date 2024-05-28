@@ -149,6 +149,7 @@ in
       unstable.aichat
       find-cursor
       galaxy-buds-client
+      helvum # GTK patchbay for Pipewire
       unstable.hoppscotch # Open-Source Postman
       lolcat
       neo-cowsay
