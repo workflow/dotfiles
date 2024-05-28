@@ -43,6 +43,12 @@
     ]
   '';
 
+  environment.systemPackages = with pkgs; [
+      alsa-utils
+      pulseaudioFull
+      pulsemixer
+  ];
+
   # PipeWire!
   security.rtkit.enable = true;
   services.pipewire = {

@@ -5,7 +5,7 @@ let
     "boar" = {
       "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
       "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
-      "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
+      "bluez_output.14_3F_A6_28_DC_51.1" = "";
       "alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback" = "";
       "alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo" = "";
     };
@@ -16,8 +16,8 @@ let
       "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink" = "";
       "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
       "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
-      "bluez_sink.14_3F_A6_28_DC_51.a2dp_sink" = "";
-      "bluez_sink.DC_69_E2_9A_6E_30.a2dp_sink" = "";
+      "bluez_output.14_3F_A6_28_DC_51.1" = "";
+      "bluez_output.DC_69_E2_9A_6E_30.1" = "";
       "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
       "bluez_source.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
       "bluez_sink.04_21_44_B6_92_39.a2dp_sink" = "";
