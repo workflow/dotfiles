@@ -3,7 +3,7 @@
 let
   soundBlockMappings = {
     "boar" = {
-      "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
+      "alsa_output.pci-0000_00_1f.3.analog-stereo.2" = "";
       "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
       "alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback" = "";

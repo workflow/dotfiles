@@ -87,7 +87,7 @@ function l {
 	LOCALSPEAKER2="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
 	LOCALSPEAKER3="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
 	LOCALSPEAKER4="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
-	LOCALSPEAKER5="alsa_output.pci-0000_00_1f.3.analog-stereo"
+	LOCALSPEAKER5="alsa_output.pci-0000_00_1f.3.analog-stereo.2"
 	SINKS=$(pactl list sinks)
 
 	case $SINKS in
