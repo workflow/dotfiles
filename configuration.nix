@@ -22,6 +22,7 @@ in
     ./system/screens.nix
     ./system/security.nix
     ./system/steam.nix
+    ./system/video
     ./system/virtualisation.nix
   ]
   ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets;
