@@ -17,6 +17,7 @@ let
     ./home/neovim
     ./home/nix-index
     ./home/nushell
+    ./home/obs
     ./home/picom.nix
     ./home/redshift.nix
     ./home/starship.nix
@@ -218,10 +219,6 @@ in
         k forw-line
         l back-line
       '';
-    };
-
-    obs-studio = {
-      enable = true;
     };
 
     ssh = {
