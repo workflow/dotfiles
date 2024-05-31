@@ -51,6 +51,10 @@ in
       set ignorecase
       set smartcase
 
+      " Defaults to be overwritten by vim-sleuth
+      set tabstop=4
+      set shiftwidth=4
+
       set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
       noremap h ;
