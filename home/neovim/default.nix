@@ -26,6 +26,7 @@ in
   imports = [
     ./carbon
     ./cmp
+    ./dadbod
     ./dap
     ./jdtls
     ./folds
