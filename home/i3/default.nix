@@ -17,7 +17,7 @@ let
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
   locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
-  screenShutter = "xset dpms force off && xset s off -dpms";
+  screenShutter = "xset dpms force off";
   suspender = "systemctl suspend-then-hibernate";
 
   mod = "Mod4";
