@@ -131,7 +131,6 @@ let
       pkgs.smartmontools
       pkgs.solaar
       pkgs.sparrow
-      pkgs.python38Packages.speedtest-cli
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
