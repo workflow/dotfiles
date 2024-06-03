@@ -92,6 +92,9 @@ in
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
+      # Obs Virtual Mic
+      "bin/obs-mic" = { source = ./home/scripts/obs-mic.sh; executable = true; };
+
       # Get Macgyver status
       "bin/macgyver-status" = { text = scripts.macgyver-status; executable = true; };
 
