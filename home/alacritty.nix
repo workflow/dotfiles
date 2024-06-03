@@ -53,7 +53,7 @@
         };
       };
 
-      key_bindings = [
+      keyboard.bindings = [
         { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
         { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
         { key = "Semicolon"; mode = "Vi|~Search"; action = "Right"; }
