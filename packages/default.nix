@@ -25,7 +25,6 @@ let
       pkgs.chafa # Images to terminal pixels
       pkgs.cht-sh
       pkgs.cntr # for Nix sandbox breakpointHook debugging
-      pkgs.dbeaver
       pkgs.dconf
       pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
       pkgs.deluge
