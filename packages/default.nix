@@ -39,7 +39,6 @@ let
       pkgs.dunst
       pkgs.element-desktop
       pkgs.efivar
-      pkgs.etcher # Bootable USB stick creator
       pkgs.exercism
       pkgs.fd
       pkgs.feh
