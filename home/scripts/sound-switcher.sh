@@ -82,7 +82,7 @@ function d {
 	done
 }
 
-function l {
+function localspeaker {
 	LOCALSPEAKER1="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
 	LOCALSPEAKER2="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
 	LOCALSPEAKER3="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
@@ -186,7 +186,7 @@ function o {
 }
 
 case "$chosen" in
-🔌local) l ;;
+🔌local) localspeaker ;;
 🔊dock) d ;;
 🎧sony) sony ;;
 " buds(listen)") budslisten ;;
