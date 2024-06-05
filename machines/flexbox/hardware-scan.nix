@@ -25,7 +25,7 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/58d90289-edea-4ffe-a89c-baad70b15f6b"; }];
+    [{ device = "/dev/disk/by-uuid/0fb837c4-ba4e-437d-a54c-ff25312af20c"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
