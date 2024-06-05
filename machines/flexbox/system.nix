@@ -42,7 +42,7 @@ in
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/nvme1n1p2";
+      device = "/dev/disk/by-uuid/ae713884-749b-4edb-adbc-b16fe447e956";
       preLVM = true;
     };
   };
