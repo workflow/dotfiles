@@ -16,7 +16,11 @@ in
     {
       plugin = mini-operators;
       config = ''
-        require('mini.operators').setup()
+      require('mini.operators').setup({
+        exchange = {
+          prefix = 'gX', -- default is 'gx' which overrides gx as open link from neovim/netRW
+        },
+      })
       '';
       type = "lua";
     }
