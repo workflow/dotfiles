@@ -158,6 +158,7 @@ in
       lolcat
       neo-cowsay
       networkmanager_dmenu
+      nix-tree
       rclone
       restic
     ];

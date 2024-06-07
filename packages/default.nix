@@ -95,7 +95,6 @@ let
       pkgs.nethogs
       pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
       pkgs.nodejs # For coc.nvim
-      pkgs.nvtop
       pkgs.obsidian
       pkgs.okular
       pkgs.onboard # On screen keyboard

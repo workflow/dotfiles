@@ -9,6 +9,7 @@
   boot.kernelModules = [ "v4l2loopback" ];
 
   environment.systemPackages = [
+      pkgs.nvtopPackages.full # nvtop
       pkgs.v4l-utils # Video4Linux2 -> configuring webcam
   ];
 

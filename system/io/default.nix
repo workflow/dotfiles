@@ -15,7 +15,7 @@ in
   services.ratbagd.enable = true;
 
   # Writes to /etc/X11/xorg.conf.d
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     touchpad.disableWhileTyping = true;
   };

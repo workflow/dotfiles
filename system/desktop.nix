@@ -6,14 +6,17 @@ let
 in
 {
 
+  services.displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "farlion";
+
+      defaultSession = xsession-name;
+  };
+
   services.xserver = {
     enable = true;
 
     displayManager = {
-      autoLogin.enable = true;
-      autoLogin.user = "farlion";
-      defaultSession = xsession-name;
-
       lightdm = {
         enable = true;
         greeter.enable = false;

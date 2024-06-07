@@ -24,7 +24,7 @@ in
   # '';
 
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
-  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1" ];
+  # boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1" ];
 
   # GPU
   environment.systemPackages = [ nvidia-offload ];
@@ -42,7 +42,7 @@ in
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/nvme1n1p2";
+      device = "/dev/disk/by-uuid/ae713884-749b-4edb-adbc-b16fe447e956";
       preLVM = true;
     };
   };
@@ -63,6 +63,6 @@ in
   # install of this system. Before changing this value read the
   # documentation for this option (e.g. man configuration.nix or on
   # https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 
 }
