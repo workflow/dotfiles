@@ -56,6 +56,8 @@ But here's a rough guide:
 
 ## Notes
 
+* [NixOS 24.05 Upgrade Adventures](doc/upgrades/2405/NixOS-24.05.md)
+* [NixOS Upgrade Checklist](doc/upgrades/Checklist.md)
 * [Moving an Existing Installation to a new Disk](doc/MOVING.md)
 
 
