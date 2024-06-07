@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 {
   # Use the systemd-boot EFI boot loader.
@@ -17,6 +17,8 @@
 
   # Plenty of RAM so...
   boot.tmp.useTmpfs = true;
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   # GPU
   services.xserver.videoDrivers = [ "nvidia" ];
