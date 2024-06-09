@@ -151,6 +151,7 @@ in
 
     packages = with pkgs; [
       unstable.aichat
+      bluetuith
       find-cursor
       twentythreeeleven.galaxy-buds-client
       helvum # GTK patchbay for Pipewire
