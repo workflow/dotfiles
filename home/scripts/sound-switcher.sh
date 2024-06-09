@@ -53,16 +53,9 @@ function budslisten {
 
 function budstalk {
 	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
-	HEADSET="bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit"
+	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
 
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect DC:69:E2:9A:6E:30\nquit' | bluetoothctl
-		sleep 5
-	fi
-
-	pactl set-card-profile "$CARD_ID" handsfree_head_unit
+	pactl set-card-profile "$CARD_ID" headset-head-unit-msbc
 	pactl set-default-sink "$HEADSET"
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
@@ -137,7 +130,7 @@ function localmike {
 }
 
 function budsmike {
-	BUDSMIKE="bluez_source.DC_69_E2_9A_6E_30.handsfree_head_unit"
+	BUDSMIKE="bluez_input.DC:69:E2:9A:6E:30"
 	SOURCES=$(pactl list sources)
 
 	pactl set-default-source "$BUDSMIKE"
