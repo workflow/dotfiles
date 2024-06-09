@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     rmob = {
@@ -22,10 +23,14 @@
     };
   };
 
-  outputs = { self, nil, nix-index-database, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
+  outputs = { self, nil, nix-index-database, nixpkgs, nixpkgs-2311, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
         unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        twentythreeeleven = import nixpkgs-2311 {
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
