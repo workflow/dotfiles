@@ -31,18 +31,8 @@ function budslisten {
 	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
 	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
 
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect DC:69:E2:9A:6E:30\nquit' | bluetoothctl
-		sleep 5
-	fi
-
-	pactl set-card-profile "$CARD_ID" a2dp_sink
+	pactl set-card-profile "$CARD_ID" a2dp-sink-sbc
 	pactl set-default-sink "$HEADSET"
-	# This is a workaround for a bug in pulseaudio where the sink is not properly detected after switching
-	# pactl suspend-sink "$HEADSET" 1
-	# pactl suspend-sink "$HEADSET" 0
 	INPUTS=$(pactl list sink-inputs short | cut -f 1)
 	for i in $INPUTS; do
 		pactl move-sink-input "$i" "$HEADSET"

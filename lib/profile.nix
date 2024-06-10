@@ -61,9 +61,10 @@
     nsn = "nix search nixpkgs";
 
     pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
-    ra = "systemctl restart --user pipewire";
 
     paste = "xclip -selection c -o";
+
+    ra = "systemctl restart --user pipewire";
 
     rm = "trash-put";
 
