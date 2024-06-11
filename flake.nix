@@ -45,13 +45,6 @@
         };
         modules = [
           {
-            nix = {
-              registry = {
-                # Pin registry to current unstable nixpkgs in use to speed up `nix search`
-                nixpkgs.flake = nixpkgs;
-              };
-            };
-
             nixpkgs.overlays = [ (_: _: overlays) ];
           }
           nixpkgs.nixosModules.notDetected
@@ -87,13 +80,6 @@
         };
         modules = [
           {
-            nix = {
-              registry = {
-                # Pin registry to current nixpkgs in use to speed up `nix search`
-                nixpkgs.flake = nixpkgs;
-              };
-            };
-
             nixpkgs.overlays = [ (_: _: overlays) ];
           }
 
