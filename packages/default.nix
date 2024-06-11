@@ -132,7 +132,6 @@ let
       pkgs.stern
       pkgs.s-tui # processor monitor/stress test
       pkgs.stress
-      pkgs.syncthingtray
       nixpkgs-unstable.tdesktop # Telegram
       pkgs.teams-for-linux # Unofficial Msft Teams App
       pkgs.thefuck

@@ -21,6 +21,7 @@ let
     ./home/picom.nix
     ./home/redshift.nix
     ./home/starship.nix
+    ./home/syncthing
     ./home/urxvt.nix
     ./home/xdg.nix
     ./home/xsession
@@ -269,10 +270,6 @@ in
     };
 
     parcellite.enable = true;
-
-    syncthing = {
-      enable = true;
-    };
 
     udiskie = {
       enable = true;
