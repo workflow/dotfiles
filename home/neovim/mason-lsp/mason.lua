@@ -141,6 +141,14 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- UFO extension
+-- Tell the server the capability of foldingRange,
+-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
@@ -163,7 +171,7 @@ mason_lspconfig.setup_handlers {
 }
 
 -- Nixd
-require('lspconfig').nixd.setup({
+require('lspconfig').nixd.setup {
   capabilities = capabilities,
   on_attach = shared_lsp_config.on_attach,
   settings = {
@@ -173,4 +181,4 @@ require('lspconfig').nixd.setup({
       },
     },
   },
-})
+}
