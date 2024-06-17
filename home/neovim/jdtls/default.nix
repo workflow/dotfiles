@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.neovim.plugins = [
     {
       plugin = pkgs.vimPlugins.nvim-jdtls;
@@ -10,5 +8,4 @@
       type = "lua";
     }
   ];
-
 }

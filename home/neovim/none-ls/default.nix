@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   none-ls = pkgs.vimUtils.buildVimPlugin {
     name = "none-ls";
     src = pkgs.fetchFromGitHub {
@@ -9,9 +8,8 @@ let
       sha256 = "kV2+ryMoHaGvfh9DDnS/scmPzeicmxI09WQH2hd2e/c=";
     };
   };
-in
-{
-  programs.neovim.plugins =  [
+in {
+  programs.neovim.plugins = [
     {
       plugin = none-ls; # Automatically install LSP servers
       config = builtins.readFile ./none-ls.lua;

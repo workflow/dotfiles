@@ -1,4 +1,7 @@
-{ documentation, pkgs, ... }:
 {
+  documentation,
+  pkgs,
+  ...
+}: {
   documentation.man.enable = true;
 }

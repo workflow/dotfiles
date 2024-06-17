@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   nixpkgs-unstable = pkgs.unstable;
-
-in
-{
+in {
   programs.lf = {
     enable = true;
 
@@ -126,8 +123,6 @@ in
           lf -remote "send $id cd \"$result\""
         }}
       '';
-
-
     };
 
     keybindings = {

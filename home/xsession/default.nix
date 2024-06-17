@@ -1,20 +1,30 @@
-{ isHidpi, pkgs, ... }:
-let
+{
+  isHidpi,
+  pkgs,
+  ...
+}: let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
-in
-{
-
+in {
   home.file = {
-    "bin/caffeinate" = { source = ./caffeinate.sh; executable = true; };
-    "bin/decaffeinate" = { source = ./decaffeinate.sh; executable = true; };
+    "bin/caffeinate" = {
+      source = ./caffeinate.sh;
+      executable = true;
+    };
+    "bin/decaffeinate" = {
+      source = ./decaffeinate.sh;
+      executable = true;
+    };
   };
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;
-    size = if isHidpi then 48 else 24;
+    size =
+      if isHidpi
+      then 48
+      else 24;
     x11.enable = true;
   };
 
@@ -44,7 +54,6 @@ in
     "*color13" = "#D99F57";
     "*color14" = "#C9A554";
     "*color15" = color_txt;
-
   };
 
   xsession.enable = true;

@@ -1,11 +1,11 @@
-{ lib
-, stdenv
-, darwin
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
+{
+  lib,
+  stdenv,
+  darwin,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
 }:
-
 rustPlatform.buildRustPackage rec {
   pname = "aichat";
   version = "0.16.0";
@@ -33,7 +33,7 @@ rustPlatform.buildRustPackage rec {
     description = "Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal";
     homepage = "https://github.com/sigoden/aichat";
     license = licenses.mit;
-    maintainers = with maintainers; [ mwdomino ];
+    maintainers = with maintainers; [mwdomino];
     mainProgram = "aichat";
   };
 }

@@ -1,11 +1,9 @@
-{pkgs, ...}:
+{pkgs, ...}: {
+  home.packages = [
+    pkgs.syncthingtray-minimal
+  ];
 
-{
-    home.packages = [
-      pkgs.syncthingtray-minimal
-    ];
-
-    services.syncthing = {
-      enable = true;
-    };
+  services.syncthing = {
+    enable = true;
+  };
 }

@@ -1,15 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -19,7 +19,7 @@
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
   # GPU
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   # Unfree nixpkgs
   nixpkgs.config.allowUnfree = true;
@@ -40,7 +40,7 @@
     };
   };
   networking.defaultGateway = "192.168.1.1";
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  networking.nameservers = ["1.1.1.1" "1.0.0.1"];
 
   networking.networkmanager.enable = true;
 
@@ -64,5 +64,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
-
 }

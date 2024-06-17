@@ -1,8 +1,9 @@
-{ pkgs, nixpkgs-unstable }:
-let
-  shebang = "#!${pkgs.bash}/bin/bash";
-in
 {
+  pkgs,
+  nixpkgs-unstable,
+}: let
+  shebang = "#!${pkgs.bash}/bin/bash";
+in {
   gen-gitignore = ''
     ${shebang}
     set -e
@@ -96,5 +97,4 @@ in
       echo "{\"icon\": \"macgyver_up\", \"text\": \"$output\", \"state\": \"Warning\"}"
     fi
   '';
-
 }

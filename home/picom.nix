@@ -1,6 +1,5 @@
 # Some settings from https://pastebin.com/S8m1jnY3
-{ ... }:
-{
+{...}: {
   services.picom = {
     activeOpacity = 0.90;
 
@@ -14,18 +13,17 @@
     backend = "glx";
 
     settings = {
-      blur =
-        {
-          method = "dual_kawase";
-          strength = 2;
-        };
+      blur = {
+        method = "dual_kawase";
+        strength = 2;
+      };
       no-fading-openclose = true;
-      invert-color-include = [ "TAG_INVERT@:8c = 1" ];
+      invert-color-include = ["TAG_INVERT@:8c = 1"];
     };
 
     fade = true;
     fadeDelta = 12;
-    fadeSteps = [ 0.15 0.15 ];
+    fadeSteps = [0.15 0.15];
 
     inactiveOpacity = 0.99;
 
@@ -37,7 +35,7 @@
       "name = 'cpt_frame_xcb_window'" # Zoom screen sharing
       "class_g ?= 'zoom'" # Zoom screen sharing
     ];
-    shadowOffsets = [ (-15) (-15) ];
+    shadowOffsets = [(-15) (-15)];
     shadowOpacity = 0.7;
 
     opacityRules = [

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
     {
       plugin = vim-dadbod; # SQL Fu

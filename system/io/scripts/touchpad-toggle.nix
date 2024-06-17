@@ -1,5 +1,5 @@
 # Toggle Touchpad enabled/disabled based on external mouse connection status
-{ pkgs, ... }:
+{pkgs, ...}:
 pkgs.writeShellApplication {
   name = "touchpad-toggle";
 
@@ -26,4 +26,4 @@ pkgs.writeShellApplication {
         xinput enable "$touchpad_id"
     fi
   '';
-  }
+}

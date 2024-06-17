@@ -1,6 +1,8 @@
-{ lib, config, ... }:
-
 {
+  lib,
+  config,
+  ...
+}: {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
     enable = true;
@@ -10,9 +12,17 @@
 
   # External monitors brightness control
   # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/11
-  boot.extraModulePackages = with config.boot.kernelPackages; [ ddcci-driver ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
   security.sudo.extraRules = [
-    { users = [ "farlion" ]; commands = [{ command = "/home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; options = [ "NOPASSWD" "SETENV" ]; }]; }
+    {
+      users = ["farlion"];
+      commands = [
+        {
+          command = "/home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh";
+          options = ["NOPASSWD" "SETENV"];
+        }
+      ];
+    }
   ];
 
   # Plenty of RAM so...
@@ -21,7 +31,7 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   # GPU
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   # LVM on LUKS
   boot.initrd.luks.devices = {

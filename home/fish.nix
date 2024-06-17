@@ -1,9 +1,9 @@
-{ lib
-, pkgs
-, profile
-, ...
-}:
-let
+{
+  lib,
+  pkgs,
+  profile,
+  ...
+}: let
   functions = {
     fish_user_key_bindings = ''
       fish_vi_key_bindings
@@ -131,9 +131,7 @@ let
     set -g fish_key_bindings fish_default_key_bindings
     set fish_greeting  # disable greeting
   '';
-
-in
-{
+in {
   programs.fish = {
     enable = true;
     interactiveShellInit = shellInit;

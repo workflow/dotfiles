@@ -1,7 +1,5 @@
-{ pkgs }:
-
-{
-  path = [ "$HOME/bin" ];
+{pkgs}: {
+  path = ["$HOME/bin"];
 
   aliases = {
     ".." = "cd ..";

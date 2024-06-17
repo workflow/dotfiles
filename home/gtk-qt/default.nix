@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   nixpkgs-unstable = pkgs.unstable;
-
-in
-{
+in {
   gtk = {
     enable = true;
     font = {
@@ -47,5 +44,4 @@ in
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_ENABLE_HIGHDPI_SCALING = "1";
   };
-
 }

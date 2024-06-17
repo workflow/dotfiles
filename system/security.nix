@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   boot.loader.systemd-boot.editor = false;
 
   # Writes to /etc/sudoers
@@ -9,10 +8,16 @@
 
   security.sudo.extraRules = [
     {
-      users = [ "farlion" ];
+      users = ["farlion"];
       commands = [
-        { command = "/run/current-system/sw/bin/tailscale up --accept-routes --accept-dns=true"; options = [ "NOPASSWD" "SETENV" ]; }
-        { command = "/run/current-system/sw/bin/tailscale down"; options = [ "NOPASSWD" "SETENV" ]; }
+        {
+          command = "/run/current-system/sw/bin/tailscale up --accept-routes --accept-dns=true";
+          options = ["NOPASSWD" "SETENV"];
+        }
+        {
+          command = "/run/current-system/sw/bin/tailscale down";
+          options = ["NOPASSWD" "SETENV"];
+        }
       ];
     }
   ];

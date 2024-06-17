@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-
-{
-
+{pkgs, ...}: {
   services.atd.enable = true;
 
   boot.tmp.cleanOnBoot = true;
@@ -14,7 +11,7 @@
     "vm.swappiness" = 0;
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
   services.duplicati = {
     enable = true;
@@ -30,12 +27,12 @@
   };
 
   # Default SSD Optimizations
-  fileSystems."/".options = [ "noatime" "nodiratime" ];
+  fileSystems."/".options = ["noatime" "nodiratime"];
 
   users = {
     users.farlion = {
       description = "Florian Peter";
-      extraGroups = [ "wheel" "video" "audio" "disk" "networkmanager" "docker" "adbusers" ];
+      extraGroups = ["wheel" "video" "audio" "disk" "networkmanager" "docker" "adbusers"];
       isNormalUser = true;
       group = "users";
       shell = pkgs.fish;
@@ -70,7 +67,7 @@
   programs.vim.defaultEditor = true;
 
   # Enable system-wide Yubikey Support
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = [pkgs.yubikey-personalization];
 
   programs.fish.enable = true;
 

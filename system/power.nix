@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  isFlexbox = config.networking.hostName == "flexbox";
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  isFlexbox = config.networking.hostName == "flexbox";
+in {
   # This will save you money and possibly your life!
   services.thermald.enable = true;
 
@@ -12,13 +14,13 @@ in
   '';
 
   services.xserver = {
-     # Set DPMS timeouts to zero (any timeouts managed by xidlehook)
-     serverFlagsSection = ''
-       Option "BlankTime" "0"
-       Option "StandbyTime" "0"
-       Option "SuspendTime" "0"
-       Option "OffTime" "0"
-     '';
+    # Set DPMS timeouts to zero (any timeouts managed by xidlehook)
+    serverFlagsSection = ''
+      Option "BlankTime" "0"
+      Option "StandbyTime" "0"
+      Option "SuspendTime" "0"
+      Option "OffTime" "0"
+    '';
   };
 
   services.tlp = lib.mkIf isFlexbox {
@@ -36,4 +38,3 @@ in
     };
   };
 }
-

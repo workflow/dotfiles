@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-let 
-  touchpad-toggle = import ./scripts/touchpad-toggle.nix { inherit pkgs; };
-in
-{
-
+{pkgs, ...}: let
+  touchpad-toggle = import ./scripts/touchpad-toggle.nix {inherit pkgs;};
+in {
   # Enable Logitech K380 FN Lock
   # Disable Touchpad when External Mouse Connected
   # Writes to /etc/udev/rules.d/99-local.rules
@@ -19,5 +16,4 @@ in
     enable = true;
     touchpad.disableWhileTyping = true;
   };
-
 }

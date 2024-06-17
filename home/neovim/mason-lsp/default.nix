@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   mason-nvim-dap = pkgs.vimUtils.buildVimPlugin {
     name = "mason-nvim-dap";
     src = pkgs.fetchFromGitHub {
@@ -9,8 +8,7 @@ let
       sha256 = "KhTAomLm57MWWNvLaOeaMGGHJK7uLiNBY0XCyQ1TLSY=";
     };
   };
-in
-{
+in {
   programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
     {
       plugin = mason-nvim; # Automatically install LSP servers

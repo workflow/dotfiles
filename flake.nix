@@ -22,104 +22,111 @@
     };
   };
 
-  outputs = { self, nix-index-database, nixpkgs, nixpkgs-2311, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
-    let
-      overlays = {
-        unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-        twentythreeeleven = import nixpkgs-2311 {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-      };
-    in
-    {
-      nixosConfigurations.boar = nixpkgs.lib.nixosSystem {
+  outputs = {
+    self,
+    nix-index-database,
+    nixpkgs,
+    nixpkgs-2311,
+    nixpkgs-unstable,
+    nixos-hardware,
+    home-manager,
+    secrets,
+    ...
+  } @ inputs: let
+    overlays = {
+      unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit secrets;
-        };
-        modules = [
-          {
-            nix = {
-              registry = {
-                nixpkgs-local.flake = nixpkgs;
-                nixpkgs-unstable-local.flake = nixpkgs-unstable;
-              };
-            };
-
-            nixpkgs.overlays = [ (_: _: overlays) ];
-          }
-          nixpkgs.nixosModules.notDetected
-
-          ./machines/boar/hardware-scan.nix
-          ./machines/boar/system.nix
-
-          ./configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "home-manager-backup";
-              users.farlion = import ./home.nix;
-              extraSpecialArgs = {
-                isNvidia = true;
-                isHidpi = false;
-                inherit inputs;
-                inherit secrets;
-              };
-            };
-          }
-        ];
+        config.allowUnfree = true;
       };
-
-      nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
+      twentythreeeleven = import nixpkgs-2311 {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          inherit secrets;
-        };
-        modules = [
-          {
-            nix = {
-              registry = {
-                nixpkgs-local.flake = nixpkgs;
-                nixpkgs-unstable-local.flake = nixpkgs-unstable;
-              };
-            };
-
-            nixpkgs.overlays = [ (_: _: overlays) ];
-          }
-
-          nixpkgs.nixosModules.notDetected
-
-          ./machines/flexbox/hardware-scan.nix
-          ./machines/flexbox/system.nix
-
-          ./configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "home-manager-backup";
-              users.farlion = import ./home.nix;
-              extraSpecialArgs = {
-                isNvidia = true;
-                isHidpi = true;
-                inherit inputs;
-                inherit secrets;
-              };
-            };
-          }
-        ];
+        config.allowUnfree = true;
       };
-
     };
+  in {
+    nixosConfigurations.boar = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        inherit secrets;
+      };
+      modules = [
+        {
+          nix = {
+            registry = {
+              nixpkgs-local.flake = nixpkgs;
+              nixpkgs-unstable-local.flake = nixpkgs-unstable;
+            };
+          };
+
+          nixpkgs.overlays = [(_: _: overlays)];
+        }
+        nixpkgs.nixosModules.notDetected
+
+        ./machines/boar/hardware-scan.nix
+        ./machines/boar/system.nix
+
+        ./configuration.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "home-manager-backup";
+            users.farlion = import ./home.nix;
+            extraSpecialArgs = {
+              isNvidia = true;
+              isHidpi = false;
+              inherit inputs;
+              inherit secrets;
+            };
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        inherit secrets;
+      };
+      modules = [
+        {
+          nix = {
+            registry = {
+              nixpkgs-local.flake = nixpkgs;
+              nixpkgs-unstable-local.flake = nixpkgs-unstable;
+            };
+          };
+
+          nixpkgs.overlays = [(_: _: overlays)];
+        }
+
+        nixpkgs.nixosModules.notDetected
+
+        ./machines/flexbox/hardware-scan.nix
+        ./machines/flexbox/system.nix
+
+        ./configuration.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "home-manager-backup";
+            users.farlion = import ./home.nix;
+            extraSpecialArgs = {
+              isNvidia = true;
+              isHidpi = true;
+              inherit inputs;
+              inherit secrets;
+            };
+          };
+        }
+      ];
+    };
+  };
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   carbon-now = pkgs.vimUtils.buildVimPlugin {
     name = "carbon-now";
     src = pkgs.fetchFromGitHub {
@@ -9,9 +8,7 @@ let
       sha256 = "id9KSrv683eb03ZB9VZ+ERBKuAlWbypjx0kEzCeiL0c=";
     };
   };
-in
-{
-
+in {
   programs.neovim.plugins = [
     {
       plugin = carbon-now;
@@ -34,7 +31,7 @@ in
               padding_vertical = "5px",
             },
         })
-        
+
         vim.keymap.set("v", "<leader>s", ":CarbonNow<CR>", { silent = true })
         local wk = require("which-key")
         wk.register({
@@ -48,5 +45,4 @@ in
       type = "lua";
     }
   ];
-
 }

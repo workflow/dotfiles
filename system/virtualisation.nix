@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
@@ -19,6 +17,5 @@
     enable = true;
   };
 
-  users.users.farlion.extraGroups = [ "libvirtd" "kvm" ];
-
+  users.users.farlion.extraGroups = ["libvirtd" "kvm"];
 }

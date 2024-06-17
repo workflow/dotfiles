@@ -1,10 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
@@ -12,8 +9,7 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec -a "$0" "$@"
   '';
-in
-{
+in {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
@@ -23,8 +19,8 @@ in
   # boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1" ];
 
   # GPU
-  environment.systemPackages = [ nvidia-offload ];
-  services.xserver.videoDrivers = [ "nvidia" ];
+  environment.systemPackages = [nvidia-offload];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.prime = {
     offload.enable = true;
     intelBusId = "PCI:0:2:0";
@@ -60,5 +56,4 @@ in
   # documentation for this option (e.g. man configuration.nix or on
   # https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

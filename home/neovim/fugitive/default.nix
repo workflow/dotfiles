@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = fugitive;
@@ -21,5 +19,4 @@
     }
     vim-rhubarb # github bindings for fugitive
   ];
-
 }

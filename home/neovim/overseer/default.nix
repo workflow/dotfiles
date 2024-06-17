@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.file = {
     ".config/nvim/lua/overseer/template/user/gmailctl_apply.lua".source = ./templates/gmailctl_apply.lua;
 

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = nvim-dap; # Debug Adapter Protocol
@@ -8,7 +6,7 @@
       type = "lua";
     }
     {
-      plugin = nvim-dap-ui; # DAP UI 
+      plugin = nvim-dap-ui; # DAP UI
       config = builtins.readFile ./dap-ui.lua;
       type = "lua";
     }
@@ -20,5 +18,4 @@
       type = "lua";
     }
   ];
-
 }

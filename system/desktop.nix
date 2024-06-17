@@ -1,16 +1,15 @@
-{ pkgs, lib, ... }:
-let
-
-  xsession-name = "i3";
-
-in
 {
-
+  pkgs,
+  lib,
+  ...
+}: let
+  xsession-name = "i3";
+in {
   services.displayManager = {
-      autoLogin.enable = true;
-      autoLogin.user = "farlion";
+    autoLogin.enable = true;
+    autoLogin.user = "farlion";
 
-      defaultSession = xsession-name;
+    defaultSession = xsession-name;
   };
 
   services.xserver = {
@@ -42,9 +41,7 @@ in
         enable = true;
       };
     };
-
   };
 
   programs.seahorse.enable = true;
-
 }

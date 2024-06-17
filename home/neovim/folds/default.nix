@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.neovim.plugins = [
     {
       plugin = pkgs.unstable.vimPlugins.nvim-ufo;
@@ -8,5 +6,4 @@
       type = "lua";
     }
   ];
-
 }

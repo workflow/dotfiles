@@ -1,6 +1,3 @@
-{ pkgs, ... }:
-
-{
-  boot.blacklistedKernelModules = [ "nouveau" ];
+{pkgs, ...}: {
+  boot.blacklistedKernelModules = ["nouveau"];
 }
-

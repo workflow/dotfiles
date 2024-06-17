@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   networking.firewall = {
     # if packets are dropped, they will show up in dmesg
     logReversePathDrops = true;
@@ -16,7 +14,6 @@
   # Allow for dynamic hosts file override (by root)
   environment.etc.hosts.mode = "0644";
 
-
   networking.firewall.allowedTCPPorts = [
     22000 # Syncthing TCP
   ];
@@ -29,7 +26,7 @@
 
   networking.networkmanager = {
     enable = true;
-    plugins = [ pkgs.networkmanager-l2tp ];
+    plugins = [pkgs.networkmanager-l2tp];
     dns = "none"; # Make sure networkmanager doesn't override our DNS settings
   };
 
@@ -77,7 +74,7 @@
     description = "MacGyver";
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${ (pkgs.python3.withPackages (ps: with ps; [ json5 ])) }/bin/python /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/setup_forwarding.py --config_path /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/";
+      ExecStart = "${(pkgs.python3.withPackages (ps: with ps; [json5]))}/bin/python /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/setup_forwarding.py --config_path /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding/";
       Environment = "PATH=/run/current-system/sw/bin:$PATH";
       Restart = "always";
       RestartSec = 30;
@@ -92,5 +89,5 @@
   };
 
   programs.wireshark.enable = true;
-  users.users.farlion.extraGroups = [ "wireshark" ];
+  users.users.farlion.extraGroups = ["wireshark"];
 }

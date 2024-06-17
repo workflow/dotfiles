@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.alacritty = {
     enable = true;
 
@@ -31,7 +30,6 @@
           magenta = "#b16286";
           cyan = "#689d6a";
           white = "#a89984";
-
         };
         # Bright colors
         bright = {
@@ -54,13 +52,42 @@
       };
 
       keyboard.bindings = [
-        { key = "Return"; mods = "Control|Super"; action = "SpawnNewInstance"; }
-        { key = "Escape"; mods = "Alt"; action = "ToggleViMode"; }
-        { key = "Semicolon"; mode = "Vi|~Search"; action = "Right"; }
-        { key = "L"; mode = "Vi|~Search"; action = "Up"; }
-        { key = "K"; mode = "Vi|~Search"; action = "Down"; }
-        { key = "J"; mode = "Vi|~Search"; action = "Left"; }
-        { key = 53; mode = "Vi|~Search"; mods = "Shift"; action = "SearchBackward"; }
+        {
+          key = "Return";
+          mods = "Control|Super";
+          action = "SpawnNewInstance";
+        }
+        {
+          key = "Escape";
+          mods = "Alt";
+          action = "ToggleViMode";
+        }
+        {
+          key = "Semicolon";
+          mode = "Vi|~Search";
+          action = "Right";
+        }
+        {
+          key = "L";
+          mode = "Vi|~Search";
+          action = "Up";
+        }
+        {
+          key = "K";
+          mode = "Vi|~Search";
+          action = "Down";
+        }
+        {
+          key = "J";
+          mode = "Vi|~Search";
+          action = "Left";
+        }
+        {
+          key = 53;
+          mode = "Vi|~Search";
+          mods = "Shift";
+          action = "SearchBackward";
+        }
       ];
 
       env = {

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.gpg = {
     enable = true;
   };
@@ -9,5 +8,4 @@
     grabKeyboardAndMouse = false;
     pinentryPackage = pkgs.pinentry-tty;
   };
-
 }

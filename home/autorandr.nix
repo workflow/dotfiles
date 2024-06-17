@@ -3,9 +3,11 @@
 # PRISM+ @ 2560x1440: 109
 # Nixbox @ 2048x1152: 168
 # Nixbox @ 2560x1440: 210
-
-{ isHidpi, pkgs, ... }:
-let
+{
+  isHidpi,
+  pkgs,
+  ...
+}: let
   nixpkgs-unstable = pkgs.unstable;
 
   baseHook = ''
@@ -16,15 +18,16 @@ let
     ${baseHook}
       pkill -9 redshift-gtk 2> /dev/null # for applet to restart and adapt to hidpi
   '';
-
-in
-{
+in {
   programs.autorandr = {
     enable = true;
 
     hooks = {
       postswitch = {
-        background = if isHidpi then hidpiHook else baseHook;
+        background =
+          if isHidpi
+          then hidpiHook
+          else baseHook;
         notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
@@ -216,8 +219,6 @@ in
           };
         };
       };
-
     };
-
   };
 }

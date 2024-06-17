@@ -1,9 +1,9 @@
-{ lib
-, pkgs
-, osConfig
-, ...
-}:
-let
+{
+  lib,
+  pkgs,
+  osConfig,
+  ...
+}: let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
@@ -54,28 +54,26 @@ let
   ws20 = "20";
 
   wsc = "c";
-
-in
-{
+in {
   xsession.windowManager.i3 = {
     enable = true;
 
     config = {
       assigns = {
         "${ws8}" = [
-          { class = "^Slack$"; }
-          { class = "^Signal$"; }
-          { class = "^TelegramDesktop$"; }
-          { class = "^Skype$"; }
-          { class = "^Discord$"; }
-          { class = "^Element$"; }
+          {class = "^Slack$";}
+          {class = "^Signal$";}
+          {class = "^TelegramDesktop$";}
+          {class = "^Skype$";}
+          {class = "^Discord$";}
+          {class = "^Element$";}
         ];
         "${ws9}" = [
-          { class = "^Google-chrome$"; }
-          { class = "^Todoist$"; }
+          {class = "^Google-chrome$";}
+          {class = "^Todoist$";}
         ];
         "${ws19}" = [
-          { class = "^obsidian$"; }
+          {class = "^obsidian$";}
         ];
       };
 
@@ -97,7 +95,7 @@ in
           };
           command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
           fonts = {
-            names = [ "Fira Code" "Font Awesome 6 Free" ];
+            names = ["Fira Code" "Font Awesome 6 Free"];
             size = 9.0;
           };
           position = "bottom";
@@ -131,13 +129,13 @@ in
       floating = {
         border = 0;
         criteria = [
-          { class = "Pavucontrol"; }
-          { class = "zoom"; }
+          {class = "Pavucontrol";}
+          {class = "zoom";}
         ];
       };
 
       fonts = {
-        names = [ "Fira Code" "Font Awesome 6 Free" ];
+        names = ["Fira Code" "Font Awesome 6 Free"];
         size = 9.0;
       };
 
@@ -330,41 +328,81 @@ in
 
       modifier = mod;
 
-      startup = [
-        # Detect and apply screen layout + wallpaper
-        { command = "~/nixos-config/home/xsession/autorandr.sh"; notification = false; }
-
-        # Clipcat
-        { command = "clipcatd"; notification = false; always = true; } # start clipcatd at startup
-
-        { command = "google-chrome-stable music.youtube.com"; notification = false; }
-        { command = "todoist"; notification = false; }
-
-        # Auto lock screen on screen off, suspend, etc...
-        { command = ''xss-lock -- "${locker}"''; notification = false; }
-
-        # Run KBDD (XKB Daemon for per-window keyboard layout switching)
-        { command = "kbdd"; notification = false; always = true; }
-
-        # Launch syncthingtray
-        { command = "sleep 10s && syncthingtray --wait"; notification = false; }
-
-        # Autotiling
-        { command = "autotiling &"; notification = false; always = true; }
-
-        # Disconnect tailscale
-        { command = "sudo tailscale down"; notification = false; }
-      ]
-      ++ lib.lists.optionals isFlexbox
+      startup =
         [
-          { command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""''; notification = false; }
+          # Detect and apply screen layout + wallpaper
+          {
+            command = "~/nixos-config/home/xsession/autorandr.sh";
+            notification = false;
+          }
+
+          # Clipcat
+          {
+            command = "clipcatd";
+            notification = false;
+            always = true;
+          } # start clipcatd at startup
+
+          {
+            command = "google-chrome-stable music.youtube.com";
+            notification = false;
+          }
+          {
+            command = "todoist";
+            notification = false;
+          }
+
+          # Auto lock screen on screen off, suspend, etc...
+          {
+            command = ''xss-lock -- "${locker}"'';
+            notification = false;
+          }
+
+          # Run KBDD (XKB Daemon for per-window keyboard layout switching)
+          {
+            command = "kbdd";
+            notification = false;
+            always = true;
+          }
+
+          # Launch syncthingtray
+          {
+            command = "sleep 10s && syncthingtray --wait";
+            notification = false;
+          }
+
+          # Autotiling
+          {
+            command = "autotiling &";
+            notification = false;
+            always = true;
+          }
+
+          # Disconnect tailscale
+          {
+            command = "sudo tailscale down";
+            notification = false;
+          }
         ]
-      ++ lib.lists.optionals isBoar
+        ++ lib.lists.optionals isFlexbox
         [
-          { command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""''; notification = false; }
+          {
+            command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""'';
+            notification = false;
+          }
+        ]
+        ++ lib.lists.optionals isBoar
+        [
+          {
+            command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""'';
+            notification = false;
+          }
           # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/10
           # For some reason this has to run from userland, after the xSession is started
-          { command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh"; notification = false; }
+          {
+            command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh";
+            notification = false;
+          }
         ];
 
       terminal = "alacritty";
@@ -372,16 +410,39 @@ in
       window = {
         commands = [
           # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-          { command = "kill"; criteria = { title = "Desktop - Plasma"; }; }
-          { command = "floating disable"; criteria = { class = "(?i)*nextcloud*"; }; }
-          { command = "border none"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
-          { command = "move right 700px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
-          { command = "move down 450px"; criteria = { class = "plasmashell"; window_type = "notification"; }; }
+          {
+            command = "kill";
+            criteria = {title = "Desktop - Plasma";};
+          }
+          {
+            command = "floating disable";
+            criteria = {class = "(?i)*nextcloud*";};
+          }
+          {
+            command = "border none";
+            criteria = {
+              class = "plasmashell";
+              window_type = "notification";
+            };
+          }
+          {
+            command = "move right 700px";
+            criteria = {
+              class = "plasmashell";
+              window_type = "notification";
+            };
+          }
+          {
+            command = "move down 450px";
+            criteria = {
+              class = "plasmashell";
+              window_type = "notification";
+            };
+          }
         ];
       };
 
       workspaceAutoBackAndForth = false;
-
     };
 
     extraConfig = ''

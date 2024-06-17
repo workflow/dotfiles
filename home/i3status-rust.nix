@@ -1,6 +1,10 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ lib, osConfig, isNvidia, ... }:
-let
+{
+  lib,
+  osConfig,
+  isNvidia,
+  ...
+}: let
   soundBlockMappings = {
     "boar" = {
       "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
@@ -37,7 +41,8 @@ let
     }
   ];
 
-  netBlocks = map
+  netBlocks =
+    map
     (device: {
       block = "net";
       device = device;
@@ -53,22 +58,19 @@ let
         }
       ];
       missing_format = "";
-    }) [ "eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" "veth0" ];
+    }) ["eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" "veth0"];
 
   hostName = osConfig.networking.hostName;
   isBoar = hostName == "boar";
   isFlexbox = hostName == "flexbox";
-
-in
-{
+in {
   programs.i3status-rust = {
     enable = true;
 
     bars = {
-      default =
-        {
-
-          blocks = [
+      default = {
+        blocks =
+          [
             {
               block = "disk_space";
               click = [
@@ -139,7 +141,6 @@ in
               ];
             }
           ]
-
           ++ netBlocks
           ++ [
             {
@@ -256,7 +257,7 @@ in
                 }
               ];
               device_kind = "source";
-              mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
+              mappings = lib.attrsets.attrByPath ["${hostName}"] {} soundBlockMappings;
               headphones_indicator = true;
             }
             {
@@ -269,7 +270,7 @@ in
                   cmd = "pavucontrol --tab=3";
                 }
               ];
-              mappings = lib.attrsets.attrByPath [ "${hostName}" ] { } soundBlockMappings;
+              mappings = lib.attrsets.attrByPath ["${hostName}"] {} soundBlockMappings;
               headphones_indicator = true;
             }
             # {
@@ -338,7 +339,6 @@ in
             {
               block = "tea_timer";
               done_cmd = "notify-send 'Ring ring, ring ring...' && pw-play '/home/farlion/Music/Own Speech/IckbinArschratte.WAV'";
-
             }
             {
               block = "pomodoro";
@@ -347,14 +347,12 @@ in
               format = " {$message| }";
             }
           ]
-          ++ lib.lists.optionals isFlexbox flexboxExtraBlocks
-          ;
+          ++ lib.lists.optionals isFlexbox flexboxExtraBlocks;
 
-          icons = "awesome6";
+        icons = "awesome6";
 
-          theme = "gruvbox-dark";
-        };
+        theme = "gruvbox-dark";
+      };
     };
-
   };
 }

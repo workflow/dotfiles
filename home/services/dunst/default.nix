@@ -1,9 +1,7 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   nixpkgs-unstable = pkgs.unstable;
-in
-{
+in {
   services.dunst = {
     enable = true;
 
@@ -64,7 +62,6 @@ in
 
         frame_color = "#75404b";
         frame_width = 2;
-
 
         # The geometry of the window:
         #   [{width}]x{height}[+/-{x}+/-{y}]
@@ -243,7 +240,6 @@ in
       #     appname = mute
       #     category = mute.sound
       #     script = mute.sh
-
     };
   };
 }

@@ -1,54 +1,59 @@
-{ inputs, lib, pkgs, secrets, osConfig, ... }:
-let
+{
+  inputs,
+  lib,
+  pkgs,
+  secrets,
+  osConfig,
+  ...
+}: let
   hostName = osConfig.networking.hostName;
 
-  imports = [
-    ./home/alacritty.nix
-    ./home/autorandr.nix
-    ./home/broot.nix
-    ./home/email.nix
-    ./home/fish.nix
-    ./home/fzf.nix
-    ./home/git.nix
-    ./home/gpg.nix
-    ./home/i3
-    ./home/i3status-rust.nix
-    ./home/lf.nix
-    ./home/neovim
-    ./home/nix-index
-    ./home/nushell
-    ./home/obs
-    ./home/picom.nix
-    ./home/redshift.nix
-    ./home/starship.nix
-    ./home/syncthing
-    ./home/urxvt.nix
-    ./home/xdg.nix
-    ./home/xsession
+  imports =
+    [
+      ./home/alacritty.nix
+      ./home/autorandr.nix
+      ./home/broot.nix
+      ./home/email.nix
+      ./home/fish.nix
+      ./home/fzf.nix
+      ./home/git.nix
+      ./home/gpg.nix
+      ./home/i3
+      ./home/i3status-rust.nix
+      ./home/lf.nix
+      ./home/neovim
+      ./home/nix-index
+      ./home/nushell
+      ./home/obs
+      ./home/picom.nix
+      ./home/redshift.nix
+      ./home/starship.nix
+      ./home/syncthing
+      ./home/urxvt.nix
+      ./home/xdg.nix
+      ./home/xsession
 
-    ./home/gtk-qt
+      ./home/gtk-qt
 
-    ./home/programs/networkmanager-dmenu
-    ./home/programs/nh
-    ./home/programs/rofi
-    ./home/programs/rofimoji
+      ./home/programs/networkmanager-dmenu
+      ./home/programs/nh
+      ./home/programs/rofi
+      ./home/programs/rofimoji
 
-    ./home/services/clipcat
-    ./home/services/dunst
-  ] ++ secretImports;
+      ./home/services/clipcat
+      ./home/services/dunst
+    ]
+    ++ secretImports;
 
   nixpkgs-unstable = pkgs.unstable;
 
-  profile = pkgs.callPackage ./lib/profile.nix { };
+  profile = pkgs.callPackage ./lib/profile.nix {};
 
-  scripts = pkgs.callPackage ./lib/scripts.nix { inherit nixpkgs-unstable; };
+  scripts = pkgs.callPackage ./lib/scripts.nix {inherit nixpkgs-unstable;};
 
   secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
-
-in
-{
-
-  _module.args = { inherit profile; };
+in {
+  _module.args = {inherit profile;};
 
   home = {
     # This value determines the Home Manager release that your
@@ -71,21 +76,33 @@ in
       };
 
       # dnscrypt cloaking rules from /etc/hosts
-      "bin/cloaking-rules-from-hosts" = { source = ./home/scripts/cloaking-rules-from-hosts.sh; executable = true; };
+      "bin/cloaking-rules-from-hosts" = {
+        source = ./home/scripts/cloaking-rules-from-hosts.sh;
+        executable = true;
+      };
 
       # Dlfile (reverse drag-and-drop with dragon)
-      "bin/dlfile" = { text = scripts.dlfile; executable = true; };
+      "bin/dlfile" = {
+        text = scripts.dlfile;
+        executable = true;
+      };
 
       # Duplicati
       ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
-        source = lib.attrsets.attrByPath [ "${hostName}" ] { } secrets.duplicatiConfig;
+        source = lib.attrsets.attrByPath ["${hostName}"] {} secrets.duplicatiConfig;
       };
 
       # Font smoke-test
-      "bin/font-smoke-test" = { text = scripts.font-smoke-test; executable = true; };
+      "bin/font-smoke-test" = {
+        text = scripts.font-smoke-test;
+        executable = true;
+      };
 
       # Generate gitignores
-      "bin/gen-gitignore" = { text = scripts.gen-gitignore; executable = true; };
+      "bin/gen-gitignore" = {
+        text = scripts.gen-gitignore;
+        executable = true;
+      };
 
       # gh (Github CLI)
       ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
@@ -94,10 +111,16 @@ in
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
       # Obs Virtual Mic
-      "bin/obs-mic" = { source = ./home/scripts/obs-mic.sh; executable = true; };
+      "bin/obs-mic" = {
+        source = ./home/scripts/obs-mic.sh;
+        executable = true;
+      };
 
       # Get Macgyver status
-      "bin/macgyver-status" = { text = scripts.macgyver-status; executable = true; };
+      "bin/macgyver-status" = {
+        text = scripts.macgyver-status;
+        executable = true;
+      };
 
       # Parcellite
       ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
@@ -123,7 +146,10 @@ in
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
       # Sound Switcher
-      "bin/sound-switcher" = { source = ./home/scripts/sound-switcher.sh; executable = true; };
+      "bin/sound-switcher" = {
+        source = ./home/scripts/sound-switcher.sh;
+        executable = true;
+      };
 
       # Syncthing
       ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
@@ -139,7 +165,10 @@ in
       ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
 
       # Get tailscale IP if online
-      "bin/tailscale-ip" = { text = scripts.tailscale-ip; executable = true; };
+      "bin/tailscale-ip" = {
+        text = scripts.tailscale-ip;
+        executable = true;
+      };
 
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
@@ -147,7 +176,7 @@ in
 
     keyboard = {
       layout = "us,de,ua,pt";
-      options = [ "grp:ctrls_toggle" "eurosign:e" "caps:escape_shifted_capslock" "terminate:ctrl_alt_bksp" ];
+      options = ["grp:ctrls_toggle" "eurosign:e" "caps:escape_shifted_capslock" "terminate:ctrl_alt_bksp"];
     };
 
     packages = with pkgs; [
@@ -174,7 +203,6 @@ in
       DEFAULT_BROWSER = "brave";
       DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
     };
-
   };
 
   inherit imports;
@@ -253,7 +281,6 @@ in
     zoxide = {
       enable = true;
     };
-
   };
 
   services = {
@@ -280,6 +307,4 @@ in
 
     unclutter.enable = true;
   };
-
-
 }

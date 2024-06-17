@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   neotest = pkgs.vimUtils.buildVimPlugin {
     name = "neotest";
     src = pkgs.fetchFromGitHub {
@@ -29,8 +28,7 @@ let
       sha256 = "fFm5Yt2Sus5jLSapHUtLlDkBWPLLKfWsj2NSXD8NPYo=";
     };
   };
-in
-{
+in {
   programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
     {
       plugin = FixCursorHold-nvim;
