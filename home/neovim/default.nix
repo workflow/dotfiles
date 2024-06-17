@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
-let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   nixpkgs-unstable = pkgs.unstable;
 
   bookmarks-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -21,8 +24,7 @@ let
       sha256 = "ys3kgXtgaE5OGyNYZ2PuqM9FDGjxfIjRgXBUDBVIjUM=";
     };
   };
-in
-{
+in {
   imports = [
     ./carbon
     ./cmp
@@ -201,11 +203,11 @@ in
       vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { silent = true })
     '';
 
-    extraPackages = [
-      pkgs.shellcheck
-      pkgs.shfmt
-      pkgs.nixd # Nix Language Server
-      pkgs.nixpkgs-fmt
+    extraPackages = with pkgs.unstable; [
+      nixd # Nix Language Server
+      prettierd # For yaml, html, json, markdown
+      shellcheck
+      shfmt
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -220,7 +222,7 @@ in
               e = { require("b64").encode, "Base64 [E]ncode" },
               d = { require("b64").decode, "Base64 [D]ecode" },
             },
-          }, { 
+          }, {
             prefix = "<leader>",
             mode = "v",
           })
@@ -321,7 +323,7 @@ in
       {
         plugin = dressing-nvim; # Better UI for codeactions, code input etc...
         config = ''
-          
+
         '';
         type = "lua";
       }
