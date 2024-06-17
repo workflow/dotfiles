@@ -204,8 +204,8 @@ in
     extraPackages = [
       pkgs.shellcheck
       pkgs.shfmt
+      pkgs.nixd # Nix Language Server
       pkgs.nixpkgs-fmt
-      inputs.nil.packages.x86_64-linux.default # Nix Language Server by Oxalica
     ];
 
     plugins = with pkgs.vimPlugins; [

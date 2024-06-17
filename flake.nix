@@ -6,7 +6,6 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nil.url = "github:oxalica/nil";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +22,7 @@
     };
   };
 
-  outputs = { self, nil, nix-index-database, nixpkgs, nixpkgs-2311, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
+  outputs = { self, nix-index-database, nixpkgs, nixpkgs-2311, nixpkgs-unstable, nixos-hardware, home-manager, secrets, ... }@inputs:
     let
       overlays = {
         unstable = import nixpkgs-unstable {

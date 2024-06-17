@@ -162,16 +162,15 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-local lsp_path = 'LSP_PATH'
-require('lspconfig').nil_ls.setup {
-  autostart = true,
+-- Nixd
+require('lspconfig').nixd.setup({
   capabilities = capabilities,
-  cmd = { lsp_path },
+  on_attach = shared_lsp_config.on_attach,
   settings = {
-    ['nil'] = {
+    nixd = {
       formatting = {
-        command = { "nixpkgs-fmt" },
+        command = { "alejandra" },
       },
     },
   },
-}
+})

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
   mason-nvim-dap = pkgs.vimUtils.buildVimPlugin {
     name = "mason-nvim-dap";
@@ -14,7 +14,7 @@ in
   programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
     {
       plugin = mason-nvim; # Automatically install LSP servers
-      config = builtins.replaceStrings [ "LSP_PATH" ] [ "${inputs.nil.packages.x86_64-linux.default}/bin/nil" ] (builtins.readFile ./mason.lua);
+      config = builtins.readFile ./mason.lua;
       runtime = {
         "lua/shared_lsp_config.lua".source = ./shared_lsp_config.lua;
       };

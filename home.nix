@@ -152,6 +152,7 @@ in
 
     packages = with pkgs; [
       unstable.aichat
+      alejandra # nix formatter
       bluetuith
       find-cursor
       twentythreeeleven.galaxy-buds-client
