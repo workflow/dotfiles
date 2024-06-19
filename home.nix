@@ -12,6 +12,7 @@
     [
       ./home/alacritty.nix
       ./home/autorandr.nix
+      ./home/bash
       ./home/broot.nix
       ./home/email.nix
       ./home/fish.nix
