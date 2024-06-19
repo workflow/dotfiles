@@ -28,7 +28,7 @@
       ./home/obs
       ./home/picom.nix
       ./home/redshift.nix
-      ./home/starship.nix
+      ./home/starship
       ./home/syncthing
       ./home/urxvt.nix
       ./home/xdg.nix

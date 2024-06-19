@@ -103,6 +103,10 @@
         };
       };
 
+      shell = {
+        disabled = false;
+      };
+
       status = {
         disabled = false;
         symbol = "🔴 ";
