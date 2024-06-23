@@ -43,16 +43,16 @@ jobs:
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install Nix ❄️"
-        uses: cachix/install-nix-action@v20
+        uses: cachix/install-nix-action@v27
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install Cachix ❄️"
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v15
         with:
           name: workflow-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -96,16 +96,16 @@ jobs:
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Install Nix ❄️"
-        uses: cachix/install-nix-action@v20
+        uses: cachix/install-nix-action@v27
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install Cachix ❄️"
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v15
         with:
           name: workflow-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
