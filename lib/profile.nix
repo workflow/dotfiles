@@ -46,6 +46,11 @@
     ghpa = "gh pr review --approve";
     ghmr = "gh pr merge -r";
 
+    k9s-kind = "k9s --context kind-kind";
+    k9s-dlh = "k9s --context dlh-context";
+    k9s-test = "k9s --context datamesh-test-cluster";
+    k9s-prod = "k9s --context datamesh-prod-cluster";
+
     lh = "/run/current-system/sw/bin/ls -ah";
 
     macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
