@@ -72,6 +72,10 @@
     rm = "trash-put";
 
     soul = "nmcli c up 'Soul'";
+    stern-kind = "stern --context kind-kind";
+    stern-dlh = "stern --context dlh-context";
+    stern-test = "stern --context datamesh-test-cluster";
+    stern-prod = "stern --context datamesh-prod-cluster";
 
     tailup = "sudo tailscale up --accept-routes --accept-dns=false";
     taildown = "sudo tailscale down";
