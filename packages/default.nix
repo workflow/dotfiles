@@ -164,7 +164,7 @@
     pkgs.xournal # PFD Annotations, useful for saving Okular annotations as well
     pkgs.xrandr-invert-colors
     pkgs.xss-lock
-    nixpkgs-unstable.youtube-dl
+    nixpkgs-unstable.yt-dlp
     pkgs.youtube-music
     pkgs.yq
     nixpkgs-unstable.zoom-us
