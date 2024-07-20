@@ -1,30 +1,6 @@
-{
-  pkgs,
-  nixpkgs-unstable,
-}: let
+{pkgs}: let
   shebang = "#!${pkgs.bash}/bin/bash";
 in {
-  gen-gitignore = ''
-    ${shebang}
-    set -e
-
-    comma-sep() {
-        local IFS=","
-        echo "$*"
-    }
-
-    main() {
-        if [ $# -eq 0 ]; then
-            echo "No languages specified"
-            exit 1
-        fi
-        languages="$(comma-sep $@)"
-        ${pkgs.wget}/bin/wget -O- "http://gitignore.io/api/$languages" 2> /dev/null
-    }
-
-    main "$@"
-  '';
-
   dlfile = ''
     ${shebang}
     # Provides the ability to download a file by dropping it into a window
