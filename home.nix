@@ -23,9 +23,12 @@
   ];
 
   homeScripts = with scripts; [
+    cloaking-rules-from-hosts
     dlfile
     font-smoke-test
     macgyver-status
+    obs-mic
+    sound-switcher
     tailscale-ip
   ];
 
@@ -73,7 +76,7 @@
 
   profile = pkgs.callPackage ./lib/profile.nix {};
 
-  scripts = pkgs.callPackage ./lib/scripts.nix {inherit nixpkgs-unstable;};
+  scripts = pkgs.callPackage ./home/scripts {};
 
   secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
 in {
@@ -99,12 +102,6 @@ in {
         source = secrets.cargoMoldConfig;
       };
 
-      # dnscrypt cloaking rules from /etc/hosts
-      "bin/cloaking-rules-from-hosts" = {
-        source = ./home/scripts/cloaking-rules-from-hosts.sh;
-        executable = true;
-      };
-
       # Duplicati
       ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
         source = lib.attrsets.attrByPath ["${hostName}"] {} secrets.duplicatiConfig;
@@ -115,12 +112,6 @@ in {
 
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
-
-      # Obs Virtual Mic
-      "bin/obs-mic" = {
-        source = ./home/scripts/obs-mic.sh;
-        executable = true;
-      };
 
       # Parcellite
       ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
@@ -144,12 +135,6 @@ in {
 
       # Rmview (Remarkable II screensharing) config
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
-
-      # Sound Switcher
-      "bin/sound-switcher" = {
-        source = ./home/scripts/sound-switcher.sh;
-        executable = true;
-      };
 
       # Syncthing
       ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {

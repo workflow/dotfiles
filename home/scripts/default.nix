@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  # Set dnscrypt-proxy2 cloaking rules from /etc/hosts file
+  cloaking-rules-from-hosts = pkgs.writers.writeBashBin "cloaking-rules-from-hosts" (builtins.readFile ./scripts/cloaking-rules-from-hosts.sh);
+
   # Provides the ability to download a file by dropping it into a window
   dlfile = pkgs.writers.writeBashBin "dlfile" ''
     url=$(dragon -t -x)
@@ -41,19 +44,6 @@
     printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
   '';
 
-  # Get the current tailscale ip if tailscale is up
-  tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''
-    set -euo pipefail
-
-    isOnline=$(tailscale status --json | jq -r '.Self.Online')
-    if [[ "$isOnline" == "true" ]]; then
-      tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
-      echo "{\"icon\": \"tailscale_up\", \"text\": \"$tailscaleIp\", \"state\": \"Good\"}"
-    else
-      echo "{\"icon\": \"tailscale_down\", \"text\": \"\", \"state\": \"Idle\"}"
-    fi
-  '';
-
   # Get the current macgyver status
   macgyver-status = pkgs.writers.writeBashBin "macgyver-status" ''
     output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
@@ -64,6 +54,25 @@
       echo "{\"icon\": \"macgyver_down\", \"text\": \"down\", \"state\": \"Idle\"}"
     else
       echo "{\"icon\": \"macgyver_up\", \"text\": \"$output\", \"state\": \"Warning\"}"
+    fi
+  '';
+
+  # Activate virtual OBS mic
+  obs-mic = pkgs.writers.writeBashBin "obs-mic" (builtins.readFile ./scripts/obs-mic.sh);
+
+  # Rofi Audio Source/Sink Switcher Menu
+  sound-switcher = pkgs.writers.writeBashBin "sound-switcher" (builtins.readFile ./scripts/sound-switcher.sh);
+
+  # Get the current tailscale ip if tailscale is up
+  tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''
+    set -euo pipefail
+
+    isOnline=$(tailscale status --json | jq -r '.Self.Online')
+    if [[ "$isOnline" == "true" ]]; then
+      tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
+      echo "{\"icon\": \"tailscale_up\", \"text\": \"$tailscaleIp\", \"state\": \"Good\"}"
+    else
+      echo "{\"icon\": \"tailscale_down\", \"text\": \"\", \"state\": \"Idle\"}"
     fi
   '';
 }

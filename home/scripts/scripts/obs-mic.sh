@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 set -euo pipefail
 
 # Create a virtual sink that can be set as a monitor in OBS
