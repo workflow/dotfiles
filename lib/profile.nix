@@ -1,4 +1,4 @@
-{pkgs}: {
+{...}: {
   path = ["$HOME/bin"];
 
   aliases = {
