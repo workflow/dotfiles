@@ -444,6 +444,9 @@ in {
         '';
       }
       vim-surround
+      {
+        plugin = vim-suda; # Sudo support via :SudaRead and :SudaWrite
+      }
       vim-test
       {
         plugin = text-case-nvim;
