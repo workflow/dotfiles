@@ -1,11 +1,34 @@
 {
-  inputs,
   lib,
   pkgs,
   secrets,
   osConfig,
   ...
 }: let
+  homePackages = with pkgs; [
+    unstable.aichat
+    alejandra # nix formatter
+    bluetuith
+    find-cursor
+    twentythreeeleven.galaxy-buds-client
+    helvum # GTK patchbay for Pipewire
+    unstable.hoppscotch # Open-Source Postman
+    twentythreeeleven.jetbrains.idea-ultimate
+    lolcat
+    neo-cowsay
+    networkmanager_dmenu
+    nix-tree
+    rclone
+    restic
+  ];
+
+  homeScripts = with scripts; [
+    dlfile
+    font-smoke-test
+    macgyver-status
+    tailscale-ip
+  ];
+
   hostName = osConfig.networking.hostName;
 
   imports =
@@ -82,27 +105,9 @@ in {
         executable = true;
       };
 
-      # Dlfile (reverse drag-and-drop with dragon)
-      "bin/dlfile" = {
-        text = scripts.dlfile;
-        executable = true;
-      };
-
       # Duplicati
       ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
         source = lib.attrsets.attrByPath ["${hostName}"] {} secrets.duplicatiConfig;
-      };
-
-      # Font smoke-test
-      "bin/font-smoke-test" = {
-        text = scripts.font-smoke-test;
-        executable = true;
-      };
-
-      # Generate gitignores
-      "bin/gen-gitignore" = {
-        text = scripts.gen-gitignore;
-        executable = true;
       };
 
       # gh (Github CLI)
@@ -114,12 +119,6 @@ in {
       # Obs Virtual Mic
       "bin/obs-mic" = {
         source = ./home/scripts/obs-mic.sh;
-        executable = true;
-      };
-
-      # Get Macgyver status
-      "bin/macgyver-status" = {
-        text = scripts.macgyver-status;
         executable = true;
       };
 
@@ -165,12 +164,6 @@ in {
       # Syncthing tray
       ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
 
-      # Get tailscale IP if online
-      "bin/tailscale-ip" = {
-        text = scripts.tailscale-ip;
-        executable = true;
-      };
-
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };
@@ -180,22 +173,7 @@ in {
       options = ["grp:ctrls_toggle" "eurosign:e" "caps:escape_shifted_capslock" "terminate:ctrl_alt_bksp"];
     };
 
-    packages = with pkgs; [
-      unstable.aichat
-      alejandra # nix formatter
-      bluetuith
-      find-cursor
-      twentythreeeleven.galaxy-buds-client
-      helvum # GTK patchbay for Pipewire
-      unstable.hoppscotch # Open-Source Postman
-      twentythreeeleven.jetbrains.idea-ultimate
-      lolcat
-      neo-cowsay
-      networkmanager_dmenu
-      nix-tree
-      rclone
-      restic
-    ];
+    packages = homePackages ++ homeScripts;
 
     sessionVariables = {
       PATH = "$HOME/bin:$PATH";

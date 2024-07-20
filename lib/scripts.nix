@@ -1,10 +1,6 @@
-{pkgs}: let
-  shebang = "#!${pkgs.bash}/bin/bash";
-in {
-  dlfile = ''
-    ${shebang}
-    # Provides the ability to download a file by dropping it into a window
-
+{pkgs, ...}: {
+  # Provides the ability to download a file by dropping it into a window
+  dlfile = pkgs.writers.writeBashBin "dlfile" ''
     url=$(dragon -t -x)
 
     if [ -n "$url" ]; then
@@ -33,8 +29,7 @@ in {
   '';
 
   # Looted from https://gist.github.com/elijahmanor/c10e5787bf9ac6b8c276e47e6745826c, much obliged
-  font-smoke-test = ''
-    ${shebang}
+  font-smoke-test = pkgs.writers.writeBashBin "font-smoke-test" ''
     set -e
 
     printf "%b\n" "Normal"
@@ -47,8 +42,7 @@ in {
   '';
 
   # Get the current tailscale ip if tailscale is up
-  tailscale-ip = ''
-    ${shebang}
+  tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''
     set -euo pipefail
 
     isOnline=$(tailscale status --json | jq -r '.Self.Online')
@@ -61,8 +55,7 @@ in {
   '';
 
   # Get the current macgyver status
-  macgyver-status = ''
-    ${shebang}
+  macgyver-status = pkgs.writers.writeBashBin "macgyver-status" ''
     output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
 
     if [ "$output" = "active" ]; then
