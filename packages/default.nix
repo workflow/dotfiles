@@ -36,7 +36,6 @@
     pkgs.distrobox
     pkgs.dnstracer
     pkgs.docker-compose
-    pkgs.duplicati
     pkgs.dunst
     pkgs.element-desktop
     pkgs.efivar

@@ -102,11 +102,6 @@ in {
         source = secrets.cargoMoldConfig;
       };
 
-      # Duplicati
-      ".backup/duplicati-config-nix/${hostName}+Full+Backup-duplicati-config.json.aes" = lib.mkIf (secrets ? duplicatiConfig) {
-        source = lib.attrsets.attrByPath ["${hostName}"] {} secrets.duplicatiConfig;
-      };
-
       # gh (Github CLI)
       ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
 
