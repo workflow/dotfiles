@@ -145,7 +145,7 @@ in {
           ++ [
             {
               block = "custom";
-              command = "/home/farlion/bin/macgyver-status";
+              command = "macgyver-status";
               json = true;
               icons_overrides = {
                 "macgyver_up" = "";
@@ -168,7 +168,7 @@ in {
           ++ [
             {
               block = "custom";
-              command = "/home/farlion/bin/tailscale-ip";
+              command = "tailscale-ip";
               format = "$icon $text";
               icons_overrides = {
                 "tailscale_up" = "";
