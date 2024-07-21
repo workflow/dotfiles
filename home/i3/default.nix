@@ -371,6 +371,12 @@ in {
             notification = false;
           }
 
+          # Launch blueman-applet
+          {
+            command = "sleep 10s && blueman-applet";
+            notification = false;
+          }
+
           # Autotiling
           {
             command = "autotiling &";
