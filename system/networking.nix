@@ -4,9 +4,6 @@
     logReversePathDrops = true;
   };
 
-  networking.extraHosts = ''
-  '';
-
   # Tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
@@ -26,14 +23,18 @@
 
   networking.networkmanager = {
     enable = true;
-    plugins = [pkgs.networkmanager-l2tp];
-    dns = "none"; # Make sure networkmanager doesn't override our DNS settings
+    dns = "systemd-resolved"; # Make sure networkmanager doesn't override our DNS settings
   };
 
+  # DNS Config
   networking.nameservers = [
     "127.0.0.1"
-    "1.1.1.1"
   ];
+  services.resolved = {
+    enable = true;
+    dnsovertls = true;
+    fallbackDns = []; # Ensure we always go through dnscrypt-proxy
+  };
 
   # Prevent IPv6 leaks when using VPNs
   networking.enableIPv6 = false;
@@ -68,6 +69,9 @@
       # server_names = [ ... ];
     };
   };
+  systemd.services.dnscrypt-proxy2.serviceConfig = {
+    StateDirectory = "dnscrypt-proxy";
+  };
 
   # MacGyver
   systemd.services.macgyver = {
@@ -82,10 +86,6 @@
       Group = "root";
       KillSignal = "SIGINT";
     };
-  };
-
-  systemd.services.dnscrypt-proxy2.serviceConfig = {
-    StateDirectory = "dnscrypt-proxy";
   };
 
   programs.wireshark.enable = true;
