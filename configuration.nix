@@ -14,6 +14,7 @@ in {
       ./system
       ./system/audio.nix
       ./system/desktop.nix
+      ./system/dns.nix
       ./system/fonts.nix
       ./system/gpu.nix
       ./system/io
