@@ -5,7 +5,10 @@
 
   services.resolved = {
     enable = true;
-    # dnsovertls = true;
+    # DNSSEC is provided by dnscrypt-proxy2 and the wrapper doesn't work, but it still works
+    # dnssec = "true";
+    # Not currently sure about dnsovertls
+    # dnsovertls = "true";
     fallbackDns = []; # Ensure we always go through dnscrypt-proxy
   };
   networking.networkmanager.dns = "systemd-resolved";
@@ -14,6 +17,7 @@
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
+      block_ipv6 = true; # Better performance, see https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Performance
       require_dnssec = true;
       ipv4_servers = true;
       ipv6_servers = false;
