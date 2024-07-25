@@ -30,7 +30,12 @@
 
   # https://devenv.sh/pre-commit-hooks/
   pre-commit.hooks = {
-    alejandra.enable = true;
+    alejandra = {
+      enable = true;
+      settings = {
+        check = true;
+      };
+    };
     shellcheck.enable = true;
   };
 
