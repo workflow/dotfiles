@@ -2,7 +2,6 @@
   lib,
   pkgs,
   secrets,
-  osConfig,
   ...
 }: let
   homePackages = with pkgs; [
@@ -30,8 +29,6 @@
     sound-switcher
     tailscale-ip
   ];
-
-  hostName = osConfig.networking.hostName;
 
   imports =
     [
