@@ -11,7 +11,6 @@
     bluetuith
     find-cursor
     twentythreeeleven.galaxy-buds-client
-    helvum # GTK patchbay for Pipewire
     unstable.hoppscotch # Open-Source Postman
     twentythreeeleven.jetbrains.idea-ultimate
     lolcat

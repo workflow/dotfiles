@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     alsa-utils
+    helvum # Simple GTK patchbay for Pipewire
     pulseaudioFull
     pulsemixer
+    qpwgraph # More extensive patchbay for Pipewire
   ];
 
   # PipeWire!
