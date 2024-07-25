@@ -36,7 +36,10 @@
         check = true;
       };
     };
-    shellcheck.enable = true;
+    shellcheck = {
+      enable = true;
+      entry = "shellcheck -s bash";
+    };
   };
 
   # https://devenv.sh/processes/
