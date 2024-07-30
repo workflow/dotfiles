@@ -41,6 +41,13 @@
         "x-scheme-handler/slack" = ["slack.desktop"];
         "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
         "x-scheme-handler/webcal" = ["brave-browser.desktop"];
+        "image/jpeg" = ["oculante.desktop"];
+        "image/png" = ["oculante.desktop"];
+        "image/gif" = ["oculante.desktop"];
+        "image/bmp" = ["oculante.desktop"];
+        "image/tiff" = ["oculante.desktop"];
+        "image/svg+xml" = ["oculante.desktop"];
+        "image/webp" = ["oculante.desktop"];
       };
     };
   };

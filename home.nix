@@ -16,6 +16,7 @@
     neo-cowsay
     networkmanager_dmenu
     nix-tree
+    oculante # img viewer written in Rust
     rclone
     restic
   ];
