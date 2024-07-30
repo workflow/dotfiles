@@ -36,6 +36,7 @@
       ./home/autorandr.nix
       ./home/bash
       ./home/broot.nix
+      ./home/btop
       ./home/email.nix
       ./home/fish.nix
       ./home/fzf.nix

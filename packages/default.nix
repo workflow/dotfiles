@@ -20,7 +20,6 @@
     pkgs.bluez-tools
     nixpkgs-unstable.brave
     pkgs.brightnessctl
-    pkgs.btop
     pkgs.cachix
     pkgs.cargo-edit
     pkgs.cargo-nextest
