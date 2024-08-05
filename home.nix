@@ -19,6 +19,7 @@
     oculante # img viewer written in Rust
     rclone
     restic
+    unstable.ytmdesktop
   ];
 
   homeScripts = with scripts; [

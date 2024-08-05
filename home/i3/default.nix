@@ -69,7 +69,7 @@ in {
           {class = "^Element$";}
         ];
         "${ws9}" = [
-          {class = "^Google-chrome$";}
+          {class = "^YouTube Music$";}
           {class = "^Todoist$";}
         ];
         "${ws19}" = [
@@ -344,7 +344,7 @@ in {
           } # start clipcatd at startup
 
           {
-            command = "google-chrome-stable music.youtube.com";
+            command = "youtube-music";
             notification = false;
           }
           {
