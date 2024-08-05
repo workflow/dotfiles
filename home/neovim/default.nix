@@ -150,9 +150,6 @@ in {
       let g:VM_custom_motions = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
       let g:VM_mouse_mappings = 1
 
-      " Leap
-      lua require('leap').add_default_mappings()
-
       " Vim-test
       let test#strategy = "toggleterm"
       let g:test#rust#runner = 'cargonextest'
@@ -367,7 +364,6 @@ in {
         '';
         type = "lua";
       }
-      nixos-unstable.vimPlugins.leap-nvim
       {
         plugin = lf-nvim;
         config = ''
