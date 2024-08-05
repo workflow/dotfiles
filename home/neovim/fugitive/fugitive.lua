@@ -49,9 +49,6 @@ wk.register({
 			s = { function() vim.cmd('TermExec cmd="git push" | call fugitive#ReloadStatus()') end, "Pu[s]h" },
 		}
 	},
-	-- TODO: provide these to Fugitive diff buffers only
-	-- nnoremap gj :diffget //2<CR>
-	-- nnoremap gl :diffget //3<CR>
 }, { prefix = "<leader>", silent = false })
 
 wk.register({
@@ -60,3 +57,20 @@ wk.register({
 		h = { ":Gclog<CR>", "[H]istory for selection" },
 	},
 }, { prefix = "<leader>", mode = "v" })
+
+
+-- Fugitive only mappings
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		local bufnr = vim.api.nvim_get_current_buf()
+		local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+		if string.match(bufname, "^fugitive://") then
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "gj", ":diffget //2<CR>",
+				{ noremap = true, silent = false })
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "g;", ":diffget //3<CR>",
+				{ noremap = true, silent = false })
+		end
+	end,
+})
