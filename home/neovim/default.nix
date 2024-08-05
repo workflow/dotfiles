@@ -581,7 +581,6 @@ in {
       dart-vim-plugin
       elm-vim
       vim-graphql
-      julia-vim
       vim-jsonnet
       {
         plugin = neodev-nvim; # Nvim LUA development
