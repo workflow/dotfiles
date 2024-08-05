@@ -35,6 +35,7 @@
   imports =
     [
       ./home/alacritty.nix
+      ./home/aliases.nix
       ./home/autorandr.nix
       ./home/bash
       ./home/broot.nix
@@ -71,14 +72,10 @@
     ]
     ++ secretImports;
 
-  profile = pkgs.callPackage ./lib/profile.nix {};
-
   scripts = pkgs.callPackage ./home/scripts {};
 
   secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
 in {
-  _module.args = {inherit profile;};
-
   home = {
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage

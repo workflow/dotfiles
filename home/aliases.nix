@@ -1,7 +1,5 @@
 {...}: {
-  path = ["$HOME/bin"];
-
-  aliases = {
+  home.shellAliases = {
     ".." = "cd ..";
     "..." = "cd ../..";
     "...." = "cd ../../..";

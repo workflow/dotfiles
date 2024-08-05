@@ -1,7 +1,7 @@
 {
+  config,
   lib,
   pkgs,
-  profile,
   ...
 }: let
   functions = {
@@ -92,8 +92,6 @@
       '';
   };
 
-  path = lib.concatStringsSep " " profile.path;
-
   plugins = [
     {
       name = "bang-bang";
@@ -111,7 +109,6 @@
       source $HOME/.local-fishrc
     end
 
-    set PATH ${path} $PATH
     thefuck --alias | source
 
     ${variables}
@@ -164,6 +161,6 @@ in {
     enable = true;
     interactiveShellInit = shellInit;
     inherit functions plugins;
-    shellAbbrs = profile.aliases;
+    shellAbbrs = config.home.shellAliases;
   };
 }
