@@ -2,170 +2,168 @@
   pkgs,
   inputs,
   ...
-}: let
-  nixpkgs-unstable = pkgs.unstable;
-
-  packages = [
-    pkgs.arandr
-    pkgs.asciinema
-    pkgs.audio-recorder
-    nixpkgs-unstable.autotiling # autotiling script for i3
-    pkgs.awscli2
-    pkgs.bc
-    pkgs.bind # Provides dig
-    pkgs.binutils
-    pkgs.bitwarden
-    pkgs.bitwarden-cli
-    pkgs.bluez
-    pkgs.bluez-tools
-    nixpkgs-unstable.brave
-    pkgs.brightnessctl
-    pkgs.cachix
-    pkgs.cargo-edit
-    pkgs.cargo-nextest
-    pkgs.chafa # Images to terminal pixels
-    pkgs.cht-sh
-    pkgs.cntr # for Nix sandbox breakpointHook debugging
-    pkgs.dconf
-    pkgs.ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
-    pkgs.delta # Syntax highlighter for git
-    nixpkgs-unstable.devenv
-    pkgs.difftastic
-    nixpkgs-unstable.discord
-    pkgs.distrobox
-    pkgs.dnstracer
-    pkgs.docker-compose
-    pkgs.dunst
-    pkgs.element-desktop
-    pkgs.efivar
-    pkgs.exercism
-    pkgs.fd
-    pkgs.feh
-    pkgs.ffmpeg-full
-    pkgs.file
-    pkgs.fortune
-    pkgs.gcr # Gnome crypto stuff for gnome-keyring
-    pkgs.gimp
-    pkgs.git-crypt
-    pkgs.github-cli
-    pkgs.glab
-    pkgs.gmailctl
-    pkgs.gomatrix # The Matrix
-    pkgs.google-chrome
-    pkgs.gparted
-    pkgs.gptfdisk # gdisk
-    pkgs.gucharmap # Unicode Character Map
-    pkgs.hardinfo # Hardware/System Info
-    pkgs.hicolor-icon-theme # Needed for solaar
-    pkgs.hplip
-    pkgs.httpie
-    pkgs.i3lock-pixeled
-    pkgs.iftop
-    pkgs.iotop-c
-    pkgs.imagemagick
-    pkgs.inkscape
-    pkgs.iw # Wifi connection strength indicator
-    pkgs.jq
-    pkgs.jsonnet
-    pkgs.k9s
-    pkgs.kbdd # XKB Daemon
-    pkgs.kind
-    pkgs.plasma5Packages.kruler
-    pkgs.kubectl
-    pkgs.kubectx
-    pkgs.lame
-    pkgs.lazydocker
-    nixpkgs-unstable.ledger-live-desktop
-    pkgs.libnotify # Provides notify-send
-    pkgs.libreoffice
-    pkgs.lm_sensors
-    pkgs.localsend
-    pkgs.lsof
-    pkgs.lz4 # compression
-    pkgs.megacmd
-    pkgs.microsoft-edge # For teams 😭
-    pkgs.mpv # video player
-    pkgs.gnome.nautilus
-    pkgs.ncdu # Disk Space Visualization
-    pkgs.nmap
-    pkgs.neofetch
-    pkgs.nethogs
-    pkgs.nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
-    pkgs.nodejs # For coc.nvim
-    pkgs.obsidian
-    pkgs.okular
-    pkgs.onboard # On screen keyboard
-    pkgs.openssl
-    pkgs.p7zip
-    pkgs.papirus-icon-theme
-    pkgs.parted
-    pkgs.patchelf
-    pkgs.pavucontrol
-    pkgs.pciutils
-    pkgs.pdftk # PDF Manipulation Toolkit
-    pkgs.piper # GUI for configuring Logitech mice
-    pkgs.playerctl
-    pkgs.postgresql
-    pkgs.pstree
-    (pkgs.python3.withPackages
-      (ps:
-        with ps; [
-          json5 # For Macgyver
-        ]))
-    pkgs.qalculate-gtk # Calculator
-    pkgs.q-text-as-data # https://github.com/harelba/q
-    pkgs.remmina
-    pkgs.ripdrag
-    pkgs.ripgrep
-    inputs.rmob.defaultPackage.x86_64-linux
-    nixpkgs-unstable.rmview # Remarkable Screen Sharing
-    pkgs.screenkey
-    pkgs.scrcpy
-    pkgs.selectdefaultapplication # XDG Default Application Chooser
-    nixpkgs-unstable.signal-desktop
-    nixpkgs-unstable.skaffold
-    pkgs.slack
-    pkgs.smartmontools
-    pkgs.solaar
-    pkgs.sparrow
-    pkgs.stern
-    pkgs.s-tui # processor monitor/stress test
-    pkgs.stress
-    nixpkgs-unstable.tdesktop # Telegram
-    pkgs.teams-for-linux # Unofficial Msft Teams App
-    pkgs.thefuck
-    pkgs.todoist-electron
-    pkgs.traceroute
-    pkgs.trash-cli
-    pkgs.tree
-    pkgs.trezor-suite
-    pkgs.trezor-udev-rules
-    pkgs.tzupdate
-    pkgs.unzip
-    pkgs.usbutils # Provides lsusb
-    pkgs.variety
-    pkgs.virt-manager
-    pkgs.vlc
-    pkgs.vnstat # Network Traffic Monitor
-    pkgs.wget
-    pkgs.wgetpaste # CLI interface to various pastebins
-    pkgs.wireguard-tools
-    pkgs.wireshark
-    pkgs.whois
-    pkgs.woeusb # Create bootable disks from Windows ISOs
-    pkgs.xclip
-    pkgs.xdg-desktop-portal
-    pkgs.xdragon # drag n drop support
-    pkgs.xidlehook
-    pkgs.xkb-switch-i3
-    pkgs.xorg.xkill
-    pkgs.xournal # PFD Annotations, useful for saving Okular annotations as well
-    pkgs.xrandr-invert-colors
-    pkgs.xss-lock
-    nixpkgs-unstable.yt-dlp
-    pkgs.youtube-music
-    pkgs.yq
-    nixpkgs-unstable.zoom-us
-  ];
-in
-  packages
+}:
+(with pkgs; [
+  arandr
+  asciinema
+  audio-recorder
+  unstable.autotiling # autotiling script for i3
+  awscli2
+  bc
+  bind # Provides dig
+  binutils
+  bitwarden
+  bitwarden-cli
+  bluez
+  bluez-tools
+  unstable.brave
+  brightnessctl
+  cachix
+  cargo-edit
+  cargo-nextest
+  chafa # Images to terminal pixels
+  cht-sh
+  cntr # for Nix sandbox breakpointHook debugging
+  dconf
+  ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
+  delta # Syntax highlighter for git
+  unstable.devenv
+  difftastic
+  unstable.discord
+  distrobox
+  dnstracer
+  docker-compose
+  dunst
+  element-desktop
+  efivar
+  exercism
+  fd
+  feh
+  ffmpeg-full
+  file
+  fortune
+  gcr # Gnome crypto stuff for gnome-keyring
+  gimp
+  git-crypt
+  github-cli
+  glab
+  gmailctl
+  gomatrix # The Matrix
+  google-chrome
+  gparted
+  gptfdisk # gdisk
+  gucharmap # Unicode Character Map
+  hardinfo # Hardware/System Info
+  hicolor-icon-theme # Needed for solaar
+  hplip
+  httpie
+  i3lock-pixeled
+  iftop
+  iotop-c
+  imagemagick
+  inkscape
+  iw # Wifi connection strength indicator
+  jq
+  jsonnet
+  k9s
+  kbdd # XKB Daemon
+  kind
+  plasma5Packages.kruler
+  kubectl
+  kubectx
+  lame
+  lazydocker
+  unstable.ledger-live-desktop
+  libnotify # Provides notify-send
+  libreoffice
+  lm_sensors
+  localsend
+  lsof
+  lz4 # compression
+  megacmd
+  microsoft-edge # For teams 😭
+  mpv # video player
+  gnome.nautilus
+  ncdu # Disk Space Visualization
+  nmap
+  neofetch
+  nethogs
+  nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
+  nodejs # For coc.nvim
+  obsidian
+  okular
+  onboard # On screen keyboard
+  openssl
+  p7zip
+  papirus-icon-theme
+  parted
+  patchelf
+  pavucontrol
+  pciutils
+  pdftk # PDF Manipulation Toolkit
+  piper # GUI for configuring Logitech mice
+  playerctl
+  postgresql
+  pstree
+  (python3.withPackages
+    (ps:
+      with ps; [
+        json5 # For Macgyver
+      ]))
+  qalculate-gtk # Calculator
+  q-text-as-data # https://github.com/harelba/q
+  remmina
+  ripdrag
+  ripgrep
+  unstable.rmview # Remarkable Screen Sharing
+  screenkey
+  scrcpy
+  selectdefaultapplication # XDG Default Application Chooser
+  unstable.signal-desktop
+  unstable.skaffold
+  slack
+  smartmontools
+  solaar
+  sparrow
+  stern
+  s-tui # processor monitor/stress test
+  stress
+  unstable.tdesktop # Telegram
+  teams-for-linux # Unofficial Msft Teams App
+  thefuck
+  todoist-electron
+  traceroute
+  trash-cli
+  tree
+  trezor-suite
+  trezor-udev-rules
+  tzupdate
+  unzip
+  usbutils # Provides lsusb
+  variety
+  virt-manager
+  vlc
+  vnstat # Network Traffic Monitor
+  wget
+  wgetpaste # CLI interface to various pastebins
+  wireguard-tools
+  wireshark
+  whois
+  woeusb # Create bootable disks from Windows ISOs
+  xclip
+  xdg-desktop-portal
+  xdragon # drag n drop support
+  xidlehook
+  xkb-switch-i3
+  xorg.xkill
+  xournal # PFD Annotations, useful for saving Okular annotations as well
+  xrandr-invert-colors
+  xss-lock
+  unstable.yt-dlp
+  youtube-music
+  yq
+  unstable.zoom-us
+])
+++ [
+  inputs.rmob.defaultPackage.x86_64-linux
+]

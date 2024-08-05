@@ -8,8 +8,6 @@
   pkgs,
   ...
 }: let
-  nixpkgs-unstable = pkgs.unstable;
-
   baseHook = ''
     pkill -9 variety 2> /dev/null
     variety &>/dev/null &
@@ -28,7 +26,7 @@ in {
           if isHidpi
           then hidpiHook
           else baseHook;
-        notify-i3 = "${nixpkgs-unstable.i3-gaps}/bin/i3-msg restart";
+        notify-i3 = "${pkgs.unstable.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
             movie)

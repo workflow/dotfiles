@@ -18,7 +18,7 @@
 
     nixPath = [
       "nixpkgs=${pkgs.path}"
-      "nixpkgs-unstable=${pkgs.unstable.path}"
+      "nixos-unstable=${pkgs.unstable.path}"
     ];
   };
 

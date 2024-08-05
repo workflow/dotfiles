@@ -1,9 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  nixpkgs-unstable = pkgs.unstable;
+{pkgs, ...}: let
+  nixos-unstable = pkgs.unstable;
 
   bookmarks-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "bookmarks-nvim";
@@ -255,7 +251,7 @@ in {
         type = "lua";
       }
       {
-        plugin = nixpkgs-unstable.vimPlugins.ChatGPT-nvim;
+        plugin = nixos-unstable.vimPlugins.ChatGPT-nvim;
         config = ''
           require("chatgpt").setup({
             openai_params = {
@@ -313,7 +309,7 @@ in {
         '';
         type = "lua";
       }
-      nixpkgs-unstable.vimPlugins.copilot-vim
+      nixos-unstable.vimPlugins.copilot-vim
       {
         plugin = nvim-web-devicons;
         config = ''
@@ -371,7 +367,7 @@ in {
         '';
         type = "lua";
       }
-      nixpkgs-unstable.vimPlugins.leap-nvim
+      nixos-unstable.vimPlugins.leap-nvim
       {
         plugin = lf-nvim;
         config = ''

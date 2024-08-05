@@ -1,13 +1,11 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{pkgs, ...}: let
-  nixpkgs-unstable = pkgs.unstable;
-in {
+{pkgs, ...}: {
   services.dunst = {
     enable = true;
 
     iconTheme = {
       name = "Pop";
-      package = nixpkgs-unstable.pop-icon-theme;
+      package = pkgs.unstable.pop-icon-theme;
       size = "16x16";
     };
 

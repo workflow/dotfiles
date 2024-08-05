@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  nixpkgs-unstable = pkgs.unstable;
-in {
+{pkgs, ...}: {
   gtk = {
     enable = true;
     font = {
@@ -9,7 +7,7 @@ in {
     };
     iconTheme = {
       name = "Pop";
-      package = nixpkgs-unstable.pop-icon-theme;
+      package = pkgs.unstable.pop-icon-theme;
     };
     theme = {
       name = "Pop";

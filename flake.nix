@@ -12,7 +12,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     rmob = {
       url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
@@ -23,18 +23,15 @@
   };
 
   outputs = {
-    self,
-    nix-index-database,
     nixpkgs,
     nixpkgs-2311,
-    nixpkgs-unstable,
-    nixos-hardware,
+    nixos-unstable,
     home-manager,
     secrets,
     ...
   } @ inputs: let
     overlays = {
-      unstable = import nixpkgs-unstable {
+      unstable = import nixos-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
@@ -55,7 +52,7 @@
           nix = {
             registry = {
               nixpkgs-local.flake = nixpkgs;
-              nixpkgs-unstable-local.flake = nixpkgs-unstable;
+              nixos-unstable-local.flake = nixos-unstable;
             };
           };
 
@@ -97,7 +94,7 @@
           nix = {
             registry = {
               nixpkgs-local.flake = nixpkgs;
-              nixpkgs-unstable-local.flake = nixpkgs-unstable;
+              nixos-unstable-local.flake = nixos-unstable;
             };
           };
 

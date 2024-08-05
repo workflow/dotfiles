@@ -70,8 +70,6 @@
     ]
     ++ secretImports;
 
-  nixpkgs-unstable = pkgs.unstable;
-
   profile = pkgs.callPackage ./lib/profile.nix {};
 
   scripts = pkgs.callPackage ./home/scripts {};
@@ -244,7 +242,7 @@ in {
     lorri.enable = true;
 
     flameshot = {
-      package = nixpkgs-unstable.flameshot;
+      package = pkgs.unstable.flameshot;
       enable = true;
       settings = {
         General = {

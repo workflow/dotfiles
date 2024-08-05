@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  nixpkgs-unstable = pkgs.unstable;
-in {
+{pkgs, ...}: {
   programs.lf = {
     enable = true;
 
@@ -148,7 +146,7 @@ in {
 
     previewer = {
       keybinding = "i";
-      source = "${nixpkgs-unstable.pistol}/bin/pistol";
+      source = "${pkgs.unstable.pistol}/bin/pistol";
     };
 
     settings = {
