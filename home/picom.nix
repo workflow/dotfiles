@@ -17,8 +17,8 @@
         method = "dual_kawase";
         strength = 2;
       };
-      no-fading-openclose = true;
       invert-color-include = ["TAG_INVERT@:8c = 1"];
+      no-fading-openclose = true;
     };
 
     fade = true;
@@ -39,11 +39,13 @@
     shadowOpacity = 0.7;
 
     opacityRules = [
+      "100:_NET_WM_STATE@[0]:32a = '_NET_WM_STATE_FULLSCREEN'" # Exclude fullscreen windows from being transparent on focus
+      "100:_NET_WM_STATE@[1]:32a = '_NET_WM_STATE_FULLSCREEN'" # From https://github.com/yshui/picom/issues/675
+      "100:_NET_WM_STATE@[2]:32a = '_NET_WM_STATE_FULLSCREEN'"
+      "100:_NET_WM_STATE@[3]:32a = '_NET_WM_STATE_FULLSCREEN'"
+      "100:_NET_WM_STATE@[4]:32a = '_NET_WM_STATE_FULLSCREEN'"
       "80:class_i ?= 'rofi'"
       "80:class_g ?= 'i3bar'"
-      "100:class_g ?= 'firefox'"
-      "100:class_i ?= 'firefox'"
-      "100:class_g ?= 'mpv'"
     ];
   };
 }
