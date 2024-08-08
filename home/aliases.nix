@@ -49,6 +49,12 @@
     k9s-test = "k9s --context datamesh-test-cluster";
     k9s-prod = "k9s --context datamesh-prod-cluster";
 
+    kc = "kubectl";
+    kc-kind = "kubectl --context kind-kind";
+    kc-dlh = "kubectl --context dlh-context";
+    kc-test = "kubectl --context datamesh-test-cluster";
+    kc-prod = "kubectl --context datamesh-prod-cluster";
+
     lh = "/run/current-system/sw/bin/ls -ah";
 
     macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
