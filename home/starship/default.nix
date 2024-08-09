@@ -1,13 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   programs.starship = {
     enable = true;
 
-    enableFishIntegration = true;
+    enableTransience = true;
 
     settings = {
       format = lib.concatStrings [
@@ -97,10 +92,12 @@
       kubernetes = {
         disabled = false;
         style = "green";
-        context_aliases = {
-          "gke_northbound-staging_southamerica-east1-c_cluster-1" = "staging";
-          "gke_northbound-prod_southamerica-east1-c_cluster-1" = "prod";
-        };
+        contexts = [
+          {
+            "context_pattern" = "kind-kind";
+            "context_alias" = "kind";
+          }
+        ];
       };
 
       shell = {
