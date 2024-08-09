@@ -86,6 +86,7 @@
       };
 
       gcloud = {
+        disabled = true;
         format = "on [$symbol$account(@$domain)|($project)](green) ";
       };
 
@@ -111,6 +112,7 @@
       };
 
       nix_shell = {
+        disabled = true;
         format = "via [$symbol$state]($style) ";
         impure_msg = "";
       };
