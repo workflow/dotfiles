@@ -103,6 +103,9 @@
 
       shell = {
         disabled = false;
+        fish_indicator = "🐟";
+        bash_indicator = "💩";
+        nu_indicator = "🦀";
       };
 
       status = {
