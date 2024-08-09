@@ -106,7 +106,8 @@
 
       status = {
         disabled = false;
-        symbol = "🔴 ";
+        map_symbol = true;
+        pipestatus = true;
       };
 
       nix_shell = {
