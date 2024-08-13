@@ -109,7 +109,6 @@
     end
 
     thefuck --alias | source
-    enable_transience # https://starship.rs/advanced-config/#transientprompt-and-transientrightprompt-in-fish
 
     ${variables}
     ${theme}
