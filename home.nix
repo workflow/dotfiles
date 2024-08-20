@@ -17,6 +17,7 @@
     networkmanager_dmenu
     nix-tree
     oculante # img viewer written in Rust
+    portfolio
     rclone
     restic
     unstable.ytmdesktop
