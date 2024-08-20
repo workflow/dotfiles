@@ -6,6 +6,7 @@ require('overseer').setup({
     "user.java_gradle",
     "user.java_maven",
     "user.nixos_rebuild_switch",
+    "user.nixos_rebuild_boot",
     "user.nixos_update_secrets",
     "user.skaffold_dev",
   },

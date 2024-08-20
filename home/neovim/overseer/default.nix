@@ -14,6 +14,7 @@
     ".config/nvim/lua/overseer/template/user/java_maven/test.lua".source = ./templates/java_maven/test.lua;
 
     ".config/nvim/lua/overseer/template/user/nixos_rebuild_switch.lua".source = ./templates/nixos_rebuild_switch.lua;
+    ".config/nvim/lua/overseer/template/user/nixos_rebuild_boot.lua".source = ./templates/nixos_rebuild_boot.lua;
     ".config/nvim/lua/overseer/template/user/nixos_update_secrets.lua".source = ./templates/nixos_update_secrets.lua;
     ".config/nvim/lua/overseer/template/user/skaffold_dev.lua".source = ./templates/skaffold_dev.lua;
   };
