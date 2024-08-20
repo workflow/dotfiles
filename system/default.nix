@@ -45,12 +45,6 @@
 
   services.hardware.bolt.enable = true;
 
-  services.printing.enable = true;
-  services.printing.drivers = [
-    pkgs.gutenprint
-    pkgs.hplip
-  ];
-
   # limit the amount of logs stored in /var/log/journal
   # writes to /etc/systemd/journald.conf
   services.journald.extraConfig = ''
