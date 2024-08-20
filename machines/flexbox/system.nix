@@ -18,6 +18,38 @@ in {
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
   boot.kernelParams = ["nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1"];
 
+  # Temporary Audio fix on Kernel 6.6.37+
+  # See https://github.com/NixOS/nixpkgs/issues/330685
+  # boot.extraModprobeConfig = ''
+  #   options snd-hda-intel dmic_detect=0
+  # '';
+  # boot.kernelPatches = [
+  #   {
+  #     name = "fix-1";
+  #     patch = builtins.fetchurl {
+  #       url = "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/sound/soc/soc-topology.c?id=e0e7bc2cbee93778c4ad7d9a792d425ffb5af6f7";
+  #       sha256 = "sha256:1y5nv1vgk73aa9hkjjd94wyd4akf07jv2znhw8jw29rj25dbab0q";
+  #     };
+  #   }
+  #   {
+  #     name = "fix-2";
+  #     patch = builtins.fetchurl {
+  #       url = "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/sound/soc/soc-topology.c?id=0298f51652be47b79780833e0b63194e1231fa34";
+  #       sha256 = "sha256:14xb6nmsyxap899mg9ck65zlbkvhyi8xkq7h8bfrv4052vi414yb";
+  #     };
+  #   }
+  # ];
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+        sha256 = "sha256-85dud3CGlP5KH40TB8MVyKNsvFjwOKOOAGuR4pofMhQ=";
+      };
+      version = "6.6.37";
+      modDirVersion = "6.6.37";
+    };
+  });
+
   # GPU
   environment.systemPackages = [nvidia-offload];
   services.xserver.videoDrivers = ["nvidia"];
