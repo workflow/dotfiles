@@ -9,6 +9,10 @@
     # dnssec = "true";
     # Not currently sure about dnsovertls
     # dnsovertls = "true";
+    llmnr = "false"; # https://www.blackhillsinfosec.com/how-to-disable-llmnr-why-you-want-to/
+    extraConfig = ''
+      MulticastDNS=false
+    '';
     fallbackDns = []; # Ensure we always go through dnscrypt-proxy
   };
   networking.networkmanager.dns = "systemd-resolved";
