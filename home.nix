@@ -8,6 +8,7 @@
     unstable.aichat
     alejandra # nix formatter
     bluetuith
+    dive # Analyze docker images
     find-cursor
     twentythreeeleven.galaxy-buds-client
     unstable.hoppscotch # Open-Source Postman

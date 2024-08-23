@@ -171,8 +171,8 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1724148084,
-        "narHash": "sha256-ewDrAFv3NCnuKh7mQQJ4VKZ7P7ov+yaCw/QelxmkPWU=",
+        "lastModified": 1724400947,
+        "narHash": "sha256-YgD/SN3OQJCIp0PPVMzJSaXuwd/eMNFNvnSqSeXgl1E=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
