@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = [
+    pkgs.pwru # eBPF-based linux kernel networking debugger
+  ];
+
   networking.firewall = {
     # if packets are dropped, they will show up in dmesg
     logReversePathDrops = true;
