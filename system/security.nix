@@ -6,22 +6,6 @@
     Defaults:root,%wheel timestamp_timeout=30
   '';
 
-  security.sudo.extraRules = [
-    {
-      users = ["farlion"];
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/tailscale up --accept-routes --accept-dns=true";
-          options = ["NOPASSWD" "SETENV"];
-        }
-        {
-          command = "/run/current-system/sw/bin/tailscale down";
-          options = ["NOPASSWD" "SETENV"];
-        }
-      ];
-    }
-  ];
-
   services.fwupd.enable = true;
 
   services.trezord.enable = true;
