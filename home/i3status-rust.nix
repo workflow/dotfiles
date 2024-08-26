@@ -179,7 +179,7 @@ in {
               click = [
                 {
                   button = "left";
-                  cmd = "sudo tailscale up --accept-routes --accept-dns=true";
+                  cmd = "sudo tailscale up --accept-routes --accept-dns=true --ssh";
                 }
                 {
                   button = "right";
