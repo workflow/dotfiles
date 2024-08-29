@@ -1,13 +1,4 @@
-{
-  isHidpi,
-  pkgs,
-  ...
-}: let
-  fontSize =
-    if isHidpi
-    then 24
-    else 12;
-in {
+{pkgs, ...}: {
   programs.rofi = {
     enable = true;
 
@@ -17,13 +8,6 @@ in {
       icon-theme = "Papirus-Dark";
       modi = "run,calc,window";
     };
-
-    theme =
-      if isHidpi
-      then ./hidpi-theme.rasi
-      else "gruvbox-dark-soft";
-
-    font = "Fira Code ${toString fontSize}";
 
     plugins = with pkgs; [rofi-calc];
 

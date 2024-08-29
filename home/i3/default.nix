@@ -94,37 +94,10 @@ in {
             };
           };
           command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
-          fonts = {
-            names = ["Fira Code" "Font Awesome 6 Free"];
-            size = 9.0;
-          };
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
         }
       ];
-
-      # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
-      # <border> <background> <text> <indicator> <child_border>
-      colors = rec {
-        background = color_bg;
-        focused = {
-          border = color_txt;
-          background = color_bg;
-          text = color_txt;
-          indicator = "#9D6A47";
-          childBorder = "#9D6A47";
-        };
-        focusedInactive = {
-          border = color_txt;
-          background = color_bg;
-          text = color_txt;
-          indicator = "#78824B";
-          childBorder = "#78824B";
-        };
-        placeholder = focusedInactive;
-        unfocused = focusedInactive;
-        urgent = focusedInactive;
-      };
 
       floating = {
         border = 0;
@@ -132,11 +105,6 @@ in {
           {class = "Pavucontrol";}
           {class = "zoom";}
         ];
-      };
-
-      fonts = {
-        names = ["Fira Code" "Font Awesome 6 Free"];
-        size = 9.0;
       };
 
       gaps = {

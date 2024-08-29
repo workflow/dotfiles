@@ -173,9 +173,6 @@ in {
 
   programs = {
     bat = {
-      config = {
-        theme = "ansi";
-      };
       enable = true;
     };
 

@@ -1,20 +1,9 @@
 # Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
-{pkgs, ...}: {
+{...}: {
   services.dunst = {
     enable = true;
 
-    iconTheme = {
-      name = "Pop";
-      package = pkgs.unstable.pop-icon-theme;
-      size = "16x16";
-    };
-
     settings = rec {
-      # frame = {
-      #   k
-
-      # };
-
       global = {
         # Alignment of message text.
         # Possible values are "left", "center" and "right".
@@ -45,8 +34,6 @@
         # If this option is set to mouse or keyboard, the monitor option
         # will be ignored.
         follow = "keyboard";
-
-        font = "Fira Code 10";
 
         # The format of the message.  Possible variables are:
         #   %a  appname
@@ -108,14 +95,6 @@
         # Padding between text and separator.
         padding = 8;
 
-        # Define a color for the separator.
-        # possible values are:
-        #  * auto: dunst tries to find a color fitting to the background;
-        #  * foreground: use the same color as the foreground;
-        #  * frame: use the same color as the frame;
-        #  * anything else will be interpreted as a X color.
-        separator_color = "#454947";
-
         # Draw a line of "separator_height" pixel height between two
         # notifications.
         # Set to 0 to disable.
@@ -156,16 +135,10 @@
       };
 
       urgency_critical = {
-        background = urgency_normal.background;
-        foreground = urgency_normal.foreground;
-
         timeout = 0;
       };
 
       urgency_low = {
-        background = "#162025";
-        foreground = "#bfbfbf";
-
         timeout = 10;
       };
 

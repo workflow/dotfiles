@@ -3,6 +3,7 @@
   lib,
   secrets,
   inputs,
+  isHidpi,
   ...
 }: let
   packages = pkgs.callPackage ./packages {inherit inputs;};
@@ -27,6 +28,7 @@ in {
       ./system/screens.nix
       ./system/security.nix
       ./system/steam.nix
+      ./system/stylix
       ./system/video
       ./system/virtualisation.nix
     ]

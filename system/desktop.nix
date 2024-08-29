@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   xsession-name = "i3";
 in {
   services.displayManager = {

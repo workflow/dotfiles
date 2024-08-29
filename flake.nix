@@ -14,12 +14,9 @@
     nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    rmob = {
-      url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
-    };
-    secrets = {
-      url = "path:/home/farlion/code/nixos-secrets";
-    };
+    rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
+    secrets.url = "path:/home/farlion/code/nixos-secrets";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -28,6 +25,7 @@
     nixos-unstable,
     home-manager,
     secrets,
+    stylix,
     ...
   } @ inputs: let
     overlays = {
@@ -46,6 +44,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
+        isHidpi = false;
       };
       modules = [
         {
@@ -55,16 +54,12 @@
               nixos-unstable-local.flake = nixos-unstable;
             };
           };
-
           nixpkgs.overlays = [(_: _: overlays)];
         }
         nixpkgs.nixosModules.notDetected
-
         ./machines/boar/hardware-scan.nix
         ./machines/boar/system.nix
-
         ./configuration.nix
-
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -80,6 +75,7 @@
             };
           };
         }
+        stylix.nixosModules.stylix
       ];
     };
 
@@ -88,6 +84,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
+        isHidpi = true;
       };
       modules = [
         {
@@ -97,17 +94,12 @@
               nixos-unstable-local.flake = nixos-unstable;
             };
           };
-
           nixpkgs.overlays = [(_: _: overlays)];
         }
-
         nixpkgs.nixosModules.notDetected
-
         ./machines/flexbox/hardware-scan.nix
         ./machines/flexbox/system.nix
-
         ./configuration.nix
-
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -123,6 +115,7 @@
             };
           };
         }
+        stylix.nixosModules.stylix
       ];
     };
   };

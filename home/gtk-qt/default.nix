@@ -1,18 +1,6 @@
 {pkgs, ...}: {
   gtk = {
     enable = true;
-    font = {
-      name = "Fira Code";
-      size = 9;
-    };
-    iconTheme = {
-      name = "Pop";
-      package = pkgs.unstable.pop-icon-theme;
-    };
-    theme = {
-      name = "Pop";
-      package = pkgs.pop-gtk-theme;
-    };
     gtk3 = {
       extraConfig = {
         gtk-application-prefer-dark-theme = true;
