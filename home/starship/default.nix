@@ -111,7 +111,7 @@
       status = {
         disabled = false;
         map_symbol = true;
-        pipestatus = true;
+        pipestatus = false;
       };
 
       nix_shell = {
