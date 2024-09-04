@@ -1,7 +1,7 @@
 {...}: {
   stylix = {
     targets = {
-      rofi.enable = true;
+      rofi.enable = false;
     };
   };
 }
