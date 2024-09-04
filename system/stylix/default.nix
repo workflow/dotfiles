@@ -35,7 +35,7 @@
         applications = 9;
         desktop = 9;
         terminal = 8;
-        popups = 12;
+        popups = 9;
       };
     };
     image = /home/farlion/Pictures/Backgrounds/costa_9_mountain_desk.jpg;
