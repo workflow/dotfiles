@@ -31,6 +31,12 @@
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
       };
+      sizes = {
+        applications = 9;
+        desktop = 9;
+        terminal = 8;
+        popups = 12;
+      };
     };
     image = /home/farlion/Pictures/Backgrounds/costa_9_mountain_desk.jpg;
   };
