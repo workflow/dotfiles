@@ -48,6 +48,7 @@
       ./home/fzf.nix
       ./home/git.nix
       ./home/gpg.nix
+      ./home/gtk-qt
       ./home/i3
       ./home/i3status-rust.nix
       ./home/lf.nix
@@ -58,12 +59,11 @@
       ./home/picom.nix
       ./home/redshift.nix
       ./home/starship
+      ./home/stylix
       ./home/syncthing
       ./home/urxvt.nix
       ./home/xdg.nix
       ./home/xsession
-
-      ./home/gtk-qt
 
       ./home/programs/networkmanager-dmenu
       ./home/programs/nh
