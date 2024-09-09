@@ -94,6 +94,10 @@ in {
             };
           };
           command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+          fonts = {
+            names = ["Fira Code" "Font Awesome 6 Free"];
+            size = 9.0;
+          };
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
         }
