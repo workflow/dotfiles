@@ -12,6 +12,7 @@
     cdc = "cd ~/code";
 
     da = "direnv allow";
+    dark-theme = "nh os test --no-specialisation";
     dr = "direnv reload";
 
     ga = "git add -p";
@@ -56,6 +57,7 @@
     kc-prod = "kubectl --context datamesh-prod-cluster";
 
     lh = "/run/current-system/sw/bin/ls -ah";
+    light-theme = "nh os test --specialisation light";
 
     macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";

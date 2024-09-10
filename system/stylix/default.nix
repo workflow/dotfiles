@@ -39,5 +39,6 @@
       };
     };
     image = /home/farlion/Pictures/Backgrounds/costa_9_mountain_desk.jpg;
+    polarity = "dark";
   };
 }
