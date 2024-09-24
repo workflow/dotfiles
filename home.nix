@@ -13,6 +13,7 @@
     twentythreeeleven.galaxy-buds-client
     unstable.hoppscotch # Open-Source Postman
     twentythreeeleven.jetbrains.idea-ultimate
+    libation
     lolcat
     neo-cowsay
     networkmanager_dmenu
