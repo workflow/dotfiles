@@ -44,6 +44,7 @@
       ./home/broot.nix
       ./home/btop
       ./home/email.nix
+      ./home/firefox
       ./home/fish.nix
       ./home/fzf.nix
       ./home/git.nix
@@ -180,16 +181,6 @@ in {
       enable = true;
       nix-direnv.enable = true;
       config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
-    };
-
-    firefox = {
-      enable = true;
-      profiles = {
-        main = {
-          id = 0;
-          isDefault = true;
-        };
-      };
     };
 
     htop.enable = true;
