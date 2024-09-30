@@ -189,14 +189,6 @@ in {
           id = 0;
           isDefault = true;
         };
-        mul = {
-          id = 1;
-          isDefault = false;
-        };
-        tom = {
-          id = 2;
-          isDefault = false;
-        };
       };
     };
 
