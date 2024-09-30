@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   nixos-unstable = pkgs.unstable;
 
   bookmarks-nvim = pkgs.vimUtils.buildVimPlugin {
@@ -10,6 +14,8 @@
       sha256 = "DWtYdAioIrNLZg3nnkAXDo1MPZDbpA2F/KlKjS8kVls=";
     };
   };
+
+  isLightTheme = config.specialisation != {};
 
   lf-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "lf-nvim";
@@ -29,6 +35,7 @@ in {
     ./jdtls
     ./folds
     ./fugitive
+    ./gruvbox
     ./mini-operators
     ./mason-lsp
     ./none-ls
@@ -112,16 +119,6 @@ in {
 
       " https://github.com/Saecki/crates.nvim
       lua require('crates').setup()
-
-      " Colorscheme
-      autocmd vimenter * ++nested colorscheme gruvbox
-      nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
-      nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
-      nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
-
-      nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-      nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-      nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
       " Fugitive
       " See https://github.com/tpope/vim-fugitive/issues/1510#issuecomment-660837020
@@ -340,7 +337,6 @@ in {
         '';
         type = "lua";
       }
-      gruvbox
       vim-highlightedyank
       {
         plugin = indent-blankline-nvim; # Indentation guides
