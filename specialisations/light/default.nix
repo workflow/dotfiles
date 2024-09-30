@@ -18,7 +18,7 @@
       qt.enable = lib.mkForce false;
 
       # i3
-      xsession.windowManager.i3.config.bars = [
+      xsession.windowManager.i3.config.bars = lib.mkForce [
         (
           {
             command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
