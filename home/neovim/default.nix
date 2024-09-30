@@ -1,5 +1,6 @@
 {
-  config,
+  osConfig,
+  lib,
   pkgs,
   ...
 }: let
@@ -15,7 +16,7 @@
     };
   };
 
-  isLightTheme = config.specialisation != {};
+  isLightTheme = osConfig.specialisation != {};
 
   lf-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "lf-nvim";
@@ -27,24 +28,27 @@
     };
   };
 in {
-  imports = [
-    ./carbon
-    ./cmp
-    ./dadbod
-    ./dap
-    ./jdtls
-    ./folds
-    ./fugitive
-    ./gruvbox
-    ./mini-operators
-    ./mason-lsp
-    ./none-ls
-    ./neotest
-    ./oil
-    ./telescope
-    ./treesitter
-    ./overseer
-  ];
+  imports =
+    [
+      ./carbon
+      ./cmp
+      ./dadbod
+      ./dap
+      ./jdtls
+      ./folds
+      ./fugitive
+      ./mini-operators
+      ./mason-lsp
+      ./none-ls
+      ./neotest
+      ./oil
+      ./telescope
+      ./treesitter
+      ./overseer
+    ]
+    ++ lib.optionals isLightTheme [
+      ./gruvbox
+    ];
 
   programs.neovim = {
     enable = true;
