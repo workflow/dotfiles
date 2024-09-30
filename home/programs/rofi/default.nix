@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   isHidpi,
@@ -24,7 +25,7 @@ in {
       then ./hidpi-theme.rasi
       else "gruvbox-dark-soft";
 
-    font = "${config.stylix.fonts.monospace.name} ${toString fontSize}";
+    font = lib.mkForce "${config.stylix.fonts.monospace.name} ${toString fontSize}";
 
     plugins = with pkgs; [rofi-calc];
 

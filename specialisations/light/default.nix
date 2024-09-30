@@ -35,6 +35,19 @@
       programs.i3status-rust.bars.default = {
         theme = lib.mkForce "ctp-latte";
       };
+
+      # Rofi
+      programs.rofi = {
+        theme = lib.mkForce null;
+      };
+
+      stylix.targets = {
+        # Neovim
+        neovim.enable = lib.mkForce true;
+
+        # Rofi
+        rofi.enable = lib.mkForce true;
+      };
     };
   };
 }
