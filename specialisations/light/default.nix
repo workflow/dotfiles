@@ -11,6 +11,7 @@
     };
     home-manager.users.farlion = {
       gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce false;
+      qt.enable = lib.mkForce false;
     };
   };
 }
