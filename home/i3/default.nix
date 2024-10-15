@@ -240,10 +240,8 @@ in {
         "${mod}+Ctrl+h" = "exec --no-startup-id dunstctl history-pop";
 
         # Launch Browser
-        # "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
-        # "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
-        "${mod}+b" = "exec \"brave --profile-directory='Default' --disable-accelerated-video-decode --password-store=seahorse\"";
-        "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --disable-accelerated-video-decode --password-store=seahorse\"";
+        "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
+        "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
 
         # File Manager ("navigate")
         "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
