@@ -59,6 +59,7 @@
         nixpkgs.nixosModules.notDetected
         ./machines/boar/hardware-scan.nix
         ./machines/boar/system.nix
+        ./system/amd
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
@@ -68,6 +69,7 @@
             backupFileExtension = "home-manager-backup";
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
+              isAmd = true;
               isNvidia = false;
               isHidpi = false;
               inherit inputs;
@@ -109,6 +111,7 @@
             backupFileExtension = "home-manager-backup";
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
+              isAmd = false;
               isNvidia = true;
               isHidpi = true;
               inherit inputs;

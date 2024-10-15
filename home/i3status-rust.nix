@@ -2,6 +2,7 @@
 {
   lib,
   osConfig,
+  isAmd,
   isNvidia,
   ...
 }: let
@@ -123,6 +124,17 @@ in {
               format = " $icon ";
               format_alt = " $icon $average avg, $max max ";
               chip = "*-isa-*";
+            }
+          ]
+          ++ lib.lists.optionals isAmd [
+            {
+              block = "amd_gpu";
+              click = [
+                {
+                  button = "right";
+                  cmd = "alacritty -e fish -c 'nvtop; exec fish'";
+                }
+              ];
             }
           ]
           ++ lib.lists.optionals isNvidia [
@@ -273,21 +285,6 @@ in {
               mappings = lib.attrsets.attrByPath ["${hostName}"] {} soundBlockMappings;
               headphones_indicator = true;
             }
-            # {
-            #   block = "music";
-            #   player = "spotify";
-            #   buttons = [ "play" "prev" "next" ];
-            #   click = [
-            #     {
-            #       button = "left";
-            #       cmd = "i3-msg '[class=Spotify] focus'";
-            #     }
-            #     {
-            #       button = "right";
-            #       cmd = "i3-msg '[class=Spotify] focus'";
-            #     }
-            #   ];
-            # }
             {
               block = "keyboard_layout";
               driver = "kbddbus";
@@ -320,19 +317,6 @@ in {
                 }
               ];
             }
-            # {
-            #   block = "speedtest";
-            #   click = [
-            #     {
-            #       button = "left";
-            #       cmd = "brave fast.com";
-            #     }
-            #     {
-            #       button = "right";
-            #       cmd = "brave fast.com";
-            #     }
-            #   ];
-            # }
             {
               block = "notify";
             }
