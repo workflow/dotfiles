@@ -59,7 +59,6 @@
         nixpkgs.nixosModules.notDetected
         ./machines/boar/hardware-scan.nix
         ./machines/boar/system.nix
-        ./system/nvidia
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
@@ -69,7 +68,7 @@
             backupFileExtension = "home-manager-backup";
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
-              isNvidia = true;
+              isNvidia = false;
               isHidpi = false;
               inherit inputs;
               inherit secrets;
