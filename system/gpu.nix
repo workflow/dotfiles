@@ -1,3 +1,0 @@
-{pkgs, ...}: {
-  boot.blacklistedKernelModules = ["nouveau"];
-}

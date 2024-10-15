@@ -5,11 +5,6 @@
 
     enable = true;
 
-    # For NVIDIA, we can run with the simpler xrender backend,
-    # which does not do vsync
-    # Note: This may also need ForceFullCompositionPipeline in xorg.conf
-    # See: https://github.com/chjj/compton/issues/227
-    # backend = if isNvidia then "xrender" else "glx";
     backend = "glx";
 
     settings = {

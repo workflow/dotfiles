@@ -30,9 +30,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
-  # GPU
-  services.xserver.videoDrivers = ["nvidia"];
-
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {

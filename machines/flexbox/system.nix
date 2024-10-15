@@ -20,7 +20,6 @@ in {
 
   # GPU
   environment.systemPackages = [nvidia-offload];
-  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.prime = {
     offload.enable = true;
     intelBusId = "PCI:0:2:0";

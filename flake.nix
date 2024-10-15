@@ -59,6 +59,7 @@
         nixpkgs.nixosModules.notDetected
         ./machines/boar/hardware-scan.nix
         ./machines/boar/system.nix
+        ./system/nvidia
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
@@ -99,6 +100,7 @@
         nixpkgs.nixosModules.notDetected
         ./machines/flexbox/hardware-scan.nix
         ./machines/flexbox/system.nix
+        ./system/nvidia
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
