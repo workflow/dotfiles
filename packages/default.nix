@@ -65,7 +65,6 @@
   iw # Wifi connection strength indicator
   jq
   jsonnet
-  k9s
   kbdd # XKB Daemon
   kind
   plasma5Packages.kruler

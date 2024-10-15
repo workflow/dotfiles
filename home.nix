@@ -52,6 +52,7 @@
       ./home/gtk-qt
       ./home/i3
       ./home/i3status-rust.nix
+      ./home/k9s
       ./home/lf.nix
       ./home/neovim
       ./home/nix-index
