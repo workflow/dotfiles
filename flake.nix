@@ -44,7 +44,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isHidpi = false;
+        isHidpi = true;
       };
       modules = [
         {
@@ -71,7 +71,7 @@
             extraSpecialArgs = {
               isAmd = true;
               isNvidia = false;
-              isHidpi = false;
+              isHidpi = true;
               inherit inputs;
               inherit secrets;
             };
