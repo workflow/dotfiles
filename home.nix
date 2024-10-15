@@ -8,6 +8,7 @@
     unstable.aichat
     alejandra # nix formatter
     bluetuith
+    brave
     dive # Analyze docker images
     find-cursor
     twentythreeeleven.galaxy-buds-client

@@ -16,7 +16,6 @@
   bitwarden-cli
   bluez
   bluez-tools
-  unstable.brave
   brightnessctl
   cachix
   cargo-edit
