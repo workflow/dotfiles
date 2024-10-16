@@ -24,7 +24,6 @@
   cht-sh
   cntr # for Nix sandbox breakpointHook debugging
   dconf
-  ddcutil # For external monitor management, used by home/xsession/boar_ddc_fix.sh
   delta # Syntax highlighter for git
   unstable.devenv
   difftastic

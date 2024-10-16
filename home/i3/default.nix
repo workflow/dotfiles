@@ -378,7 +378,7 @@ in {
           # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/10
           # For some reason this has to run from userland, after the xSession is started
           {
-            command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddc_fix.sh";
+            command = "sudo /home/farlion/code/nixos-config/home/xsession/boar_ddcci_fix.sh";
             notification = false;
           }
         ];

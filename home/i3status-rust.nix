@@ -243,7 +243,7 @@ in {
             # }
             {
               block = "backlight";
-              device = "ddcci5";
+              device = "ddcci0";
               click = [
                 {
                   button = "left";
