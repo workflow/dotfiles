@@ -3,11 +3,14 @@
   pkgs,
   config,
   isHidpi,
+  isPpiScaledOnePointFive,
   ...
 }: let
   fontSize =
     if isHidpi
     then 24
+    else if isPpiScaledOnePointFive
+    then 18
     else 12;
 in {
   programs.rofi = {
@@ -23,6 +26,8 @@ in {
     theme =
       if isHidpi
       then ./hidpi-theme.rasi
+      else if isPpiScaledOnePointFive
+      then ./one-point-five-scaled-theme.rasi
       else "gruvbox-dark-soft";
 
     font = lib.mkForce "${config.stylix.fonts.monospace.name} ${toString fontSize}";

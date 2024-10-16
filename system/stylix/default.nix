@@ -1,5 +1,6 @@
 {
   isHidpi,
+  isPpiScaledOnePointFive,
   pkgs,
   ...
 }: {
@@ -12,6 +13,8 @@
       size =
         if isHidpi
         then 48
+        else if isPpiScaledOnePointFive
+        then 36
         else 24;
     };
     fonts = {

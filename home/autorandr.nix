@@ -3,6 +3,7 @@
 # 34'' LG 32GR93U-B @ 3840x2160 ~ 140 PPI
 {
   isHidpi,
+  isPpiScaledOnePointFive,
   pkgs,
   ...
 }: let
@@ -21,7 +22,7 @@ in {
     hooks = {
       postswitch = {
         background =
-          if isHidpi
+          if isHidpi || isPpiScaledOnePointFive
           then hidpiHook
           else baseHook;
         notify-i3 = "${pkgs.unstable.i3-gaps}/bin/i3-msg restart";

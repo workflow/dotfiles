@@ -44,7 +44,8 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isHidpi = true;
+        isHidpi = false;
+        isPpiScaledOnePointFive = true;
       };
       modules = [
         {
@@ -71,7 +72,8 @@
             extraSpecialArgs = {
               isAmd = true;
               isNvidia = false;
-              isHidpi = true;
+              isHidpi = false;
+              isPpiScaledOnePointFive = true;
               inherit inputs;
               inherit secrets;
             };
@@ -87,6 +89,7 @@
         inherit inputs;
         inherit secrets;
         isHidpi = true;
+        isPpiScaledOnePointFive = false;
       };
       modules = [
         {
@@ -114,6 +117,7 @@
               isAmd = false;
               isNvidia = true;
               isHidpi = true;
+              isPpiScaledOnePointFive = false;
               inherit inputs;
               inherit secrets;
             };
