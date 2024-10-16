@@ -64,12 +64,13 @@ function d {
 }
 
 function localspeaker {
-	LOCALSPEAKER1="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER2="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER3="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER4="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
-	LOCALSPEAKER5="alsa_output.pci-0000_00_1f.3.analog-stereo"
-	LOCALSPEAKER6="alsa_output.pci-0000_00_1f.3.analog-stereo.2"
+	LOCALSPEAKER1="alsa_output.pci-0000_51_00.1.hdmi-stereo"
+	LOCALSPEAKER2="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
+	LOCALSPEAKER3="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
+	LOCALSPEAKER4="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
+	LOCALSPEAKER5="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
+	LOCALSPEAKER6="alsa_output.pci-0000_00_1f.3.analog-stereo"
+	LOCALSPEAKER7="alsa_output.pci-0000_00_1f.3.analog-stereo.2"
 	SINKS=$(pactl list sinks)
 
 	case $SINKS in
@@ -79,6 +80,7 @@ function localspeaker {
 	*"$LOCALSPEAKER4"*) LOCALSPEAKER=$LOCALSPEAKER4 ;;
 	*"$LOCALSPEAKER5"*) LOCALSPEAKER=$LOCALSPEAKER5 ;;
 	*"$LOCALSPEAKER6"*) LOCALSPEAKER=$LOCALSPEAKER6 ;;
+	*"$LOCALSPEAKER7"*) LOCALSPEAKER=$LOCALSPEAKER7 ;;
 	*) echo "Local speaker not found" ;;
 	esac
 
