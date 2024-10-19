@@ -23,7 +23,6 @@ in {
       ./system/performance.nix
       ./system/power.nix
       ./system/printing.nix
-      ./system/screens.nix
       ./system/security.nix
       ./system/steam.nix
       ./system/stylix
