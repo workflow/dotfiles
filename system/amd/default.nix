@@ -1,6 +1,9 @@
+# See: https://wiki.nixos.org/wiki/AMD_GPU
+# Also see: https://wiki.archlinux.org/title/Hardware_video_acceleration
 {pkgs, ...}: {
   boot.initrd.kernelModules = ["amdgpu"];
   environment.systemPackages = [
+    pkgs.libva-utils
     pkgs.mesa-demos
     pkgs.nvtopPackages.full # nvtop
     pkgs.vulkan-tools
