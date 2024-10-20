@@ -1,5 +1,6 @@
 {
   lib,
+  isNvidia,
   pkgs,
   secrets,
   ...
@@ -161,6 +162,10 @@ in {
       BROWSER = "brave";
       DEFAULT_BROWSER = "brave";
       DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
+      LIBVA_DRIVER_NAME =
+        if isNvidia
+        then "nvidia"
+        else null;
     };
   };
 
