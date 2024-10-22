@@ -225,38 +225,38 @@ in {
               ];
             }
           ]
-          ++ lib.lists.optionals isBoar [
-            # {
-            #   block = "backlight";
-            #   device = "ddcci4";
-            #   format = "$icon $brightness";
-            #   click = [
-            #     {
-            #       button = "left";
-            #       cmd = "arandr";
-            #     }
-            #     {
-            #       button = "right";
-            #       cmd = "arandr";
-            #     }
-            #   ];
-            #   merge_with_next = true;
-            # }
-            {
-              block = "backlight";
-              device = "ddcci0";
-              click = [
-                {
-                  button = "left";
-                  cmd = "arandr";
-                }
-                {
-                  button = "right";
-                  cmd = "arandr";
-                }
-              ];
-            }
-          ]
+          # ++ lib.lists.optionals isBoar [
+          #   {
+          #     block = "backlight";
+          #     device = "ddcci4";
+          #     format = "$icon $brightness";
+          #     click = [
+          #       {
+          #         button = "left";
+          #         cmd = "arandr";
+          #       }
+          #       {
+          #         button = "right";
+          #         cmd = "arandr";
+          #       }
+          #     ];
+          #     merge_with_next = true;
+          #   }
+          #   {
+          #     block = "backlight";
+          #     device = "ddcci5";
+          #     click = [
+          #       {
+          #         button = "left";
+          #         cmd = "arandr";
+          #       }
+          #       {
+          #         button = "right";
+          #         cmd = "arandr";
+          #       }
+          #     ];
+          #   }
+          # ]
           ++ [
             {
               block = "sound";
