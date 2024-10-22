@@ -99,6 +99,7 @@ in {
             size = 9.0;
           };
           position = "bottom";
+          trayOutput = "primary";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
         }
       ];
