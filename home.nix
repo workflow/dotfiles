@@ -156,17 +156,17 @@ in {
 
     packages = homePackages ++ homeScripts;
 
-    sessionVariables = {
-      PATH = "$HOME/bin:$PATH";
-      NIXOS_CONFIG = "$HOME/code/nixos-config/";
-      BROWSER = "brave";
-      DEFAULT_BROWSER = "brave";
-      DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
-      LIBVA_DRIVER_NAME =
-        if isNvidia
-        then "nvidia"
-        else null;
-    };
+    sessionVariables =
+      {
+        PATH = "$HOME/bin:$PATH";
+        NIXOS_CONFIG = "$HOME/code/nixos-config/";
+        BROWSER = "brave";
+        DEFAULT_BROWSER = "brave";
+        DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
+      }
+      // lib.optionalAttrs isNvidia {
+        LIBVA_DRIVER_NAME = "nvidia";
+      };
   };
 
   inherit imports;
