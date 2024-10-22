@@ -6,16 +6,25 @@
 }: {
   specialisation.light.configuration = {
     environment.etc."specialisation".text = "light"; # this is for 'nh' to correctly recognise the specialisation
+
+    # System
     stylix = {
       base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
       polarity = lib.mkForce "light";
     };
+
+    # Home Manager
     home-manager.users.farlion = {
       # GTK
       gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce false;
 
       # QT
       qt.enable = lib.mkForce false;
+
+      # Aichat Light Theme
+      home.sessionVariables = {
+        AICHAT_LIGHT_THEME = 1;
+      };
 
       # i3
       xsession.windowManager.i3.config.bars = lib.mkForce [
