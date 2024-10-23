@@ -10,7 +10,7 @@
     settings = {
       blur = {
         method = "dual_kawase";
-        strength = 2;
+        strength = 4;
       };
       invert-color-include = ["TAG_INVERT@:8c = 1"];
       no-fading-openclose = true;
