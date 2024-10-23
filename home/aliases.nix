@@ -11,7 +11,9 @@
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
 
-    da = "direnv allow";
+    dira = "direnv allow";
+    dird = "direnv deny";
+    dirr = "direnv reload";
     dark-theme = "nh os test --no-specialisation";
     dr = "direnv reload";
 
