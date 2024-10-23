@@ -77,32 +77,90 @@ in {
         ];
       };
 
-      bars = [
-        {
-          colors = rec {
-            activeWorkspace = {
-              background = color_bg;
-              border = color_txt;
-              text = color_txt;
-            };
-            background = "#282828"; # To match i3status_rust theme
-            focusedWorkspace = activeWorkspace;
-            inactiveWorkspace = {
+      bars =
+        [
+          {
+            colors = rec {
+              activeWorkspace = {
+                background = color_bg;
+                border = color_txt;
+                text = color_txt;
+              };
               background = "#282828"; # To match i3status_rust theme
-              border = "#282828"; # To match i3status_rust theme
-              text = "#ebdbb2"; # To match i3status_rust theme
+              focusedWorkspace = activeWorkspace;
+              inactiveWorkspace = {
+                background = "#282828"; # To match i3status_rust theme
+                border = "#282828"; # To match i3status_rust theme
+                text = "#ebdbb2"; # To match i3status_rust theme
+              };
             };
-          };
-          command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
-          fonts = {
-            names = ["Fira Code" "Font Awesome 6 Free"];
-            size = 9.0;
-          };
-          position = "bottom";
-          trayOutput = "primary";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-        }
-      ];
+            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            extraConfig = ''
+              output primary
+            '';
+            fonts = {
+              names = ["Fira Code" "Font Awesome 6 Free"];
+              size = 9.0;
+            };
+            position = "bottom";
+            trayOutput = "primary";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          }
+        ]
+        ++ lib.lists.optionals isBoar [
+          {
+            colors = rec {
+              activeWorkspace = {
+                background = color_bg;
+                border = color_txt;
+                text = color_txt;
+              };
+              background = "#282828"; # To match i3status_rust theme
+              focusedWorkspace = activeWorkspace;
+              inactiveWorkspace = {
+                background = "#282828"; # To match i3status_rust theme
+                border = "#282828"; # To match i3status_rust theme
+                text = "#ebdbb2"; # To match i3status_rust theme
+              };
+            };
+            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            extraConfig = ''
+              output HDMI-A-1
+            '';
+            fonts = {
+              names = ["Fira Code" "Font Awesome 6 Free"];
+              size = 9.0;
+            };
+            position = "bottom";
+            trayOutput = "none";
+          }
+          {
+            colors = rec {
+              activeWorkspace = {
+                background = color_bg;
+                border = color_txt;
+                text = color_txt;
+              };
+              background = "#282828"; # To match i3status_rust theme
+              focusedWorkspace = activeWorkspace;
+              inactiveWorkspace = {
+                background = "#282828"; # To match i3status_rust theme
+                border = "#282828"; # To match i3status_rust theme
+                text = "#ebdbb2"; # To match i3status_rust theme
+              };
+            };
+            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            extraConfig = ''
+              output HDMI-A-0
+            '';
+            fonts = {
+              names = ["Fira Code" "Font Awesome 6 Free"];
+              size = 9.0;
+            };
+            position = "bottom";
+            trayOutput = "none";
+          }
+        ];
 
       floating = {
         border = 0;
