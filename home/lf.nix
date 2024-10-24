@@ -108,6 +108,12 @@
         }}
       '';
 
+      yank-file = ''$printf '%s' "$f" | xclip -i -selection clipboard'';
+      yank-paths = ''$printf '%s' "$fx" | xclip -i -selection clipboard'';
+      yank-dirname = ''&printf '%s' "$PWD" | xclip -i -selection clipboard'';
+      yank-basename = ''&basename -a -- $fx | head -c-1 | xclip -i -selection clipboard'';
+      yank-basename-without-extension = ''&basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | xclip -i -selection clipboard'';
+
       z = ''
         %{{
           result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
@@ -142,6 +148,7 @@
       Q = "quit-and-cd";
       u = "unarchive";
       x = "cut";
+      y = "yank-file";
     };
 
     previewer = {
