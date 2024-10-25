@@ -131,6 +131,7 @@
 
     keybindings = {
       "." = "set hidden!";
+      c = "yank-file";
       d = null;
       dd = "trash";
       dl = "dlfile";
@@ -148,7 +149,6 @@
       Q = "quit-and-cd";
       u = "unarchive";
       x = "cut";
-      y = "yank-file";
     };
 
     previewer = {
