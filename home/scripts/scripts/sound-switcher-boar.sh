@@ -8,79 +8,80 @@ chosen="$(echo -e "🎧oh\n\
 📢boombox\n\
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
-function oh {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"51_00\" | get id  | get 0" || true)
-	OPENHEADSET="alsa_output.pci-0000_51_00.1.hdmi-stereo.2"
+oh() {
+	local card_name_pattern="51_00"
+	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo.2"
+	local card_profile="output:hdmi-stereo"
 
-	pactl set-card-profile "$CARD_ID" output:hdmi-stereo
-	pactl set-default-sink $OPENHEADSET
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" $OPENHEADSET
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
 
-function creative {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"51_00\" | get id  | get 0" || true)
-	OPENHEADSET="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1"
+creative() {
+	local card_name_pattern="51_00"
+	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1"
+	local card_profile="output:hdmi-stereo-extra1"
 
-	pactl set-card-profile "$CARD_ID" output:hdmi-stereo-extra1
-	pactl set-default-sink $OPENHEADSET
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" $OPENHEADSET
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
 
-function boombox {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"04_21\" | get id  | get 0" || true)
-	BOOMBOX="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl
-		sleep 10
+boombox() {
+	local card_name_pattern="04_21"
+	local sink="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
+	local card_profile="?"
+
+	local bd_address="04:21:44:B6:92:39"
+	local card_id
+	if [[ -z $card_id ]]; then
+		connect_bluetooth "$bd_address"
 	fi
-	pactl set-default-sink "$BOOMBOX"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$BOOMBOX"
-	done
-}
 
-function budslisten {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
-	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
-
-	pactl set-card-profile "$CARD_ID" a2dp-sink-sbc
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
 
-function budstalk {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
-	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
+budslisten() {
+	local card_name_pattern="DC_69"
+	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
+	local card_profile="a2dp-sink-sbc"
 
-	pactl set-card-profile "$CARD_ID" headset-head-unit-msbc
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+budstalk() {
+	local card_name_pattern="DC_69"
+	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
+	local card_profile="headset-head-unit-msbc"
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	budsmike
 }
 
-function localmike {
+sony() {
+	local card_name_pattern="14_3F"
+	local sink="bluez_output.14_3F_A6_28_DC_51.1"
+	local card_profile="a2dp-sink-sbc"
+
+	local bd_address="14:3F:A6:28:DC:51"
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
+	if [[ -z $card_id ]]; then
+		connect_bluetooth "$bd_address"
+	fi
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+localmike() {
 	LOCALMIKE1="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
 	LOCALMIKE2="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
 	LOCALMIKE3="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
@@ -106,7 +107,7 @@ function localmike {
 	done
 }
 
-function budsmike {
+budsmike() {
 	BUDSMIKE="bluez_input.DC:69:E2:9A:6E:30"
 	SOURCES=$(pactl list sources)
 
@@ -117,24 +118,35 @@ function budsmike {
 	done
 }
 
-function sony {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"14_3F\" | get id  | get 0" || true)
-	HEADSET="bluez_output.14_3F_A6_28_DC_51.1"
+get_card_id() {
+	local card_name_pattern="$1"
+	nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"$card_name_pattern\" | get id  | get 0" || true
+}
 
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl
-		sleep 5
-	fi
+set_default_sink_and_move_inputs() {
+	local card_name_pattern="$1"
+	local sink="$2"
+	local card_profile="$3"
 
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
+
+	pactl set-card-profile "$card_id" "$card_profile"
+	pactl set-default-sink "$sink"
+	local inputs
+	inputs=$(pactl list sink-inputs short | cut -f 1)
+	for i in $inputs; do
+		pactl move-sink-input "$i" "$sink"
 	done
+}
 
-	localmike
+connect_bluetooth() {
+	local bd_address="$1"
+
+	echo -e 'power on\nquit' | bluetoothctl
+	sleep 2
+	echo -e "connect $bd_address\nquit" | bluetoothctl
+	sleep 10
 }
 
 case "$chosen" in
