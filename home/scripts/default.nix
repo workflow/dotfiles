@@ -61,7 +61,8 @@
   obs-mic = pkgs.writers.writeBashBin "obs-mic" (builtins.readFile ./scripts/obs-mic.sh);
 
   # Rofi Audio Source/Sink Switcher Menu
-  sound-switcher = pkgs.writers.writeBashBin "sound-switcher" (builtins.readFile ./scripts/sound-switcher.sh);
+  sound-switcher-boar = pkgs.writers.writeBashBin "sound-switcher-boar" (builtins.readFile ./scripts/sound-switcher-boar.sh);
+  sound-switcher-flexbox = pkgs.writers.writeBashBin "sound-switcher-flexbox" (builtins.readFile ./scripts/sound-switcher-flexbox.sh);
 
   # Get the current tailscale ip if tailscale is up
   tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''

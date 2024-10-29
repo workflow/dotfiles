@@ -33,7 +33,8 @@
     font-smoke-test
     macgyver-status
     obs-mic
-    sound-switcher
+    sound-switcher-boar
+    sound-switcher-flexbox
     tailscale-ip
   ];
 
