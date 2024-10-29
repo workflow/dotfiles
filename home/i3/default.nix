@@ -179,8 +179,7 @@ in {
         outer = -2;
       };
 
-      keybindings =
-        lib.mkOptionDefault {
+      keybindings = lib.mkOptionDefault ({
           # Split
           "${mod}+v" = "split v";
           "${mod}+s" = "split h";
@@ -316,14 +315,14 @@ in {
           # Rofimoji
           "${mod}+e" = "exec rofimoji";
         }
-        // lib.attrsets.optionalAttrs isBoar {
+        // lib.optionalAttrs true {
           # Sound Switcher
           "${mod}+m" = "exec --no-startup-id sound-switcher-boar";
         }
-        // lib.attrsets.optionalAttrs isFlexbox {
+        // lib.optionalAttrs isFlexbox {
           # Sound Switcher
           "${mod}+m" = "exec --no-startup-id sound-switcher-flexbox";
-        };
+        });
 
       menu = "rofi -modi run#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
