@@ -8,10 +8,8 @@
 }: let
   soundBlockMappings = {
     "boar" = {
-      "alsa_output.pci-0000_51_00.1.hdmi-stereo" = "";
-      "alsa_output.pci-0000_00_1f.3.analog-stereo" = "";
-      "alsa_output.pci-0000_00_1f.3.analog-stereo.2" = "";
-      "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
+      "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1" = "🔊";
+      "alsa_output.pci-0000_51_00.1.hdmi-stereo.2" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
       "bluez_input.DC:69:E2:9A:6E:30" = "";
       "alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback" = "";
@@ -284,6 +282,7 @@ in {
                 }
               ];
               mappings = lib.attrsets.attrByPath ["${hostName}"] {} soundBlockMappings;
+              mappings_use_regex = false;
               headphones_indicator = true;
             }
             {
