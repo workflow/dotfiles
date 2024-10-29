@@ -1,180 +1,219 @@
 set -euo pipefail
 
 chosen="$(echo -e "🔌local\n\
-🔊dock\n\
+🎧oh(localmic)
+🎧🎙️oh(ohmic)
 🎧sony\n\
  buds(listen)\n\
  buds(talk)\n\
 📢boombox\n\
-🎧openheadphones(laptop)
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
-function b {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"04_21\" | get id  | get 0" || true)
-	BOOMBOX="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect 04:21:44:B6:92:39\nquit' | bluetoothctl
-		sleep 10
+localspeaker() {
+	local card_name_pattern="00_1f"
+	local potential_sinks=(
+		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
+		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
+		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
+		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
+		"alsa_output.pci-0000_00_1f.3.analog-stereo"
+		"alsa_output.pci-0000_00_1f.3.analog-stereo.2"
+	)
+	local actual_sinks
+	local selected_sink
+	local card_profile="?"
+
+	actual_sinks=$(pactl list sinks)
+	for source in "${potential_sinks[@]}"; do
+		if [[ "$actual_sinks" == *"$source"* ]]; then
+			selected_sink=$source
+			break
+		fi
+	done
+
+	if [ -z "$selected_sink" ]; then
+		echo "Local speaker not found"
+		return 1
 	fi
-	pactl set-default-sink "$BOOMBOX"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$BOOMBOX"
-	done
-}
 
-function budslisten {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
-	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
-
-	pactl set-card-profile "$CARD_ID" a2dp-sink-sbc
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$selected_sink" "$card_profile"
 
 	localmike
 }
 
-function budstalk {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"DC_69\" | get id  | get 0" || true)
-	HEADSET="bluez_output.DC_69_E2_9A_6E_30.1"
+ohlocalmic() {
+	local card_name_pattern="Apple"
+	local sink="alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
+	local card_profile="?"
 
-	pactl set-card-profile "$CARD_ID" headset-head-unit-msbc
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+ohohmic() {
+	local card_name_pattern="Apple"
+	local sink="alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
+	local card_profile="?"
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	ohmike
+}
+
+boombox() {
+	local card_name_pattern="04_21"
+	local sink="bluez_sink.04_21_44_B6_92_39.a2dp_sink"
+	local card_profile="?"
+
+	local bd_address="04:21:44:B6:92:39"
+	local card_id
+	if [[ -z $card_id ]]; then
+		connect_bluetooth "$bd_address"
+	fi
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+budslisten() {
+	local card_name_pattern="DC_69"
+	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
+	local card_profile="a2dp-sink-sbc"
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+budstalk() {
+	local card_name_pattern="DC_69"
+	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
+	local card_profile="headset-head-unit-msbc"
+
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	budsmike
 }
 
-function d {
-	DOCK="alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo"
+sony() {
+	local card_name_pattern="14_3F"
+	local sink="bluez_output.14_3F_A6_28_DC_51.1"
+	local card_profile="a2dp-sink-sbc"
 
-	pactl set-default-sink "$DOCK"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$DOCK"
-	done
-}
+	local bd_address="14:3F:A6:28:DC:51"
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
+	if [[ -z $card_id ]]; then
+		connect_bluetooth "$bd_address"
+	fi
 
-function localspeaker {
-	LOCALSPEAKER1="alsa_output.pci-0000_51_00.1.hdmi-stereo"
-	LOCALSPEAKER2="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER3="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER4="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
-	LOCALSPEAKER5="alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
-	LOCALSPEAKER6="alsa_output.pci-0000_00_1f.3.analog-stereo"
-	LOCALSPEAKER7="alsa_output.pci-0000_00_1f.3.analog-stereo.2"
-	SINKS=$(pactl list sinks)
-
-	case $SINKS in
-	*"$LOCALSPEAKER1"*) LOCALSPEAKER=$LOCALSPEAKER1 ;;
-	*"$LOCALSPEAKER2"*) LOCALSPEAKER=$LOCALSPEAKER2 ;;
-	*"$LOCALSPEAKER3"*) LOCALSPEAKER=$LOCALSPEAKER3 ;;
-	*"$LOCALSPEAKER4"*) LOCALSPEAKER=$LOCALSPEAKER4 ;;
-	*"$LOCALSPEAKER5"*) LOCALSPEAKER=$LOCALSPEAKER5 ;;
-	*"$LOCALSPEAKER6"*) LOCALSPEAKER=$LOCALSPEAKER6 ;;
-	*"$LOCALSPEAKER7"*) LOCALSPEAKER=$LOCALSPEAKER7 ;;
-	*) echo "Local speaker not found" ;;
-	esac
-
-	pactl set-default-sink "$LOCALSPEAKER"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$LOCALSPEAKER"
-	done
+	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
 
-function localmike {
-	LOCALMIKE1="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
-	LOCALMIKE2="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
-	LOCALMIKE3="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
-	LOCALMIKE4="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
-	LOCALMIKE5="alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback"
-	LOCALMIKE6="alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
-	SOURCES=$(pactl list sources)
+localmike() {
+	local card_name_pattern="00_1f"
+	local potential_sources=(
+		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
+		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
+		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
+		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
+		"alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback"
+	)
+	local actual_sources
+	local selected_source
+	local card_profile="?"
 
-	case $SOURCES in
-	*"$LOCALMIKE1"*) LOCALMIKE=$LOCALMIKE1 ;;
-	*"$LOCALMIKE2"*) LOCALMIKE=$LOCALMIKE2 ;;
-	*"$LOCALMIKE3"*) LOCALMIKE=$LOCALMIKE3 ;;
-	*"$LOCALMIKE4"*) LOCALMIKE=$LOCALMIKE4 ;;
-	*"$LOCALMIKE5"*) LOCALMIKE=$LOCALMIKE5 ;;
-	*"$LOCALMIKE6"*) LOCALMIKE=$LOCALMIKE6 ;;
-	*) echo "Local mike not found" ;;
-	esac
-
-	pactl set-default-source "$LOCALMIKE"
-	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
-	for i in $OUTPUTS; do
-		pactl move-source-output "$i" "$LOCALMIKE"
+	actual_sources=$(pactl list sources)
+	for source in "${potential_sources[@]}"; do
+		if [[ "$actual_sources" == *"$source"* ]]; then
+			selected_source=$source
+			break
+		fi
 	done
-}
 
-function budsmike {
-	BUDSMIKE="bluez_input.DC:69:E2:9A:6E:30"
-	SOURCES=$(pactl list sources)
-
-	pactl set-default-source "$BUDSMIKE"
-	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
-	for i in $OUTPUTS; do
-		pactl move-source-output "$i" "$BUDSMIKE"
-	done
-}
-
-function sony {
-	CARD_ID=$(nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"14_3F\" | get id  | get 0" || true)
-	HEADSET="bluez_output.14_3F_A6_28_DC_51.1"
-
-	if [[ -z $CARD_ID ]]; then
-		echo -e 'power on\nquit' | bluetoothctl
-		sleep 2
-		echo -e 'connect 14:3F:A6:28:DC:51\nquit' | bluetoothctl
-		sleep 5
+	if [ -z "$selected_source" ]; then
+		echo "Local mike not found"
+		return 1
 	fi
 
-	pactl set-default-sink "$HEADSET"
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" "$HEADSET"
+	set_default_source_and_move_outputs "$card_name_pattern" "$selected_source" "$card_profile"
+}
+
+ohmike() {
+	local card_name_pattern="Apple"
+	local source="alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback"
+	local card_profile="?"
+
+	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
+}
+
+budsmike() {
+	local card_name_pattern="DC_69"
+	local source="bluez_input.DC:69:E2:9A:6E:30"
+	local card_profile="headset-head-unit-msbc"
+
+	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
+}
+
+get_card_id() {
+	local card_name_pattern="$1"
+	nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"$card_name_pattern\" | get id  | get 0" || true
+}
+
+set_default_sink_and_move_inputs() {
+	local card_name_pattern="$1"
+	local sink="$2"
+	local card_profile="$3"
+
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
+
+	pactl set-card-profile "$card_id" "$card_profile"
+	pactl set-default-sink "$sink"
+	local inputs
+	inputs=$(pactl list sink-inputs short | cut -f 1)
+	for i in $inputs; do
+		pactl move-sink-input "$i" "$sink"
 	done
 }
 
-function o {
-	OPENHEADSET="alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
-	SINKS=$(pactl list sinks)
+set_default_source_and_move_outputs() {
+	local card_name_pattern="$1"
+	local source="$2"
+	local card_profile="$3"
 
-	OPENHEADSETMIKE="alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback"
-	SOURCES=$(pactl list sources)
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
 
-	pactl set-default-sink $OPENHEADSET
-	INPUTS=$(pactl list sink-inputs short | cut -f 1)
-	for i in $INPUTS; do
-		pactl move-sink-input "$i" $OPENHEADSET
+	pactl set-card-profile "$card_id" "$card_profile"
+	pactl set-default-source "$source"
+	local outputs
+	outputs=$(pactl list source-outputs short | cut -f 1)
+	for i in $outputs; do
+		pactl move-source-output "$i" "$source"
 	done
+}
 
-	pactl set-default-source $OPENHEADSETMIKE
-	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
-	for i in $OUTPUTS; do
-		pactl move-source-output "$i" $OPENHEADSETMIKE
-	done
+connect_bluetooth() {
+	local bd_address="$1"
+
+	echo -e 'power on\nquit' | bluetoothctl
+	sleep 2
+	echo -e "connect $bd_address\nquit" | bluetoothctl
+	sleep 10
 }
 
 case "$chosen" in
 🔌local) localspeaker ;;
-🔊dock) d ;;
-🎧sony) sony ;;
+"🎧oh(localmic)") ohlocalmic ;;
+"🎧🎙️oh(ohmic)") ohohmic ;;
+🎧sony) ohohmic ;;
 " buds(listen)") budslisten ;;
 " buds(talk)") budstalk ;;
-📢boombox) b ;;
-"🎧openheadphones(laptop)") o ;;
+📢boombox) boombox ;;
 *) exit 1 ;;
 esac
