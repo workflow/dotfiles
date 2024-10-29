@@ -82,40 +82,19 @@ sony() {
 }
 
 localmike() {
-	LOCALMIKE1="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_4__source"
-	LOCALMIKE2="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_4__source"
-	LOCALMIKE3="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
-	LOCALMIKE4="alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
-	LOCALMIKE5="alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback"
-	LOCALMIKE6="alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
-	SOURCES=$(pactl list sources)
+	local card_name_pattern="Blue_Microphones"
+	local source="alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
+	local card_profile="input:analog-stereo"
 
-	case $SOURCES in
-	*"$LOCALMIKE1"*) LOCALMIKE=$LOCALMIKE1 ;;
-	*"$LOCALMIKE2"*) LOCALMIKE=$LOCALMIKE2 ;;
-	*"$LOCALMIKE3"*) LOCALMIKE=$LOCALMIKE3 ;;
-	*"$LOCALMIKE4"*) LOCALMIKE=$LOCALMIKE4 ;;
-	*"$LOCALMIKE5"*) LOCALMIKE=$LOCALMIKE5 ;;
-	*"$LOCALMIKE6"*) LOCALMIKE=$LOCALMIKE6 ;;
-	*) echo "Local mike not found" ;;
-	esac
-
-	pactl set-default-source "$LOCALMIKE"
-	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
-	for i in $OUTPUTS; do
-		pactl move-source-output "$i" "$LOCALMIKE"
-	done
+	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
 }
 
 budsmike() {
-	BUDSMIKE="bluez_input.DC:69:E2:9A:6E:30"
-	SOURCES=$(pactl list sources)
+	local card_name_pattern="DC_69"
+	local source="bluez_input.DC:69:E2:9A:6E:30"
+	local card_profile="headset-head-unit-msbc"
 
-	pactl set-default-source "$BUDSMIKE"
-	OUTPUTS=$(pactl list source-outputs short | cut -f 1)
-	for i in $OUTPUTS; do
-		pactl move-source-output "$i" "$BUDSMIKE"
-	done
+	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
 }
 
 get_card_id() {
@@ -137,6 +116,23 @@ set_default_sink_and_move_inputs() {
 	inputs=$(pactl list sink-inputs short | cut -f 1)
 	for i in $inputs; do
 		pactl move-sink-input "$i" "$sink"
+	done
+}
+
+set_default_source_and_move_outputs() {
+	local card_name_pattern="$1"
+	local source="$2"
+	local card_profile="$3"
+
+	local card_id
+	card_id=$(get_card_id "$card_name_pattern")
+
+	pactl set-card-profile "$card_id" "$card_profile"
+	pactl set-default-source "$source"
+	local outputs
+	outputs=$(pactl list source-outputs short | cut -f 1)
+	for i in $outputs; do
+		pactl move-source-output "$i" "$source"
 	done
 }
 

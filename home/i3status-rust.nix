@@ -11,6 +11,8 @@
       "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1" = "🔊";
       "alsa_output.pci-0000_51_00.1.hdmi-stereo.2" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
+      "bluez_output.DC_69_E2_9A_6E_30.1" = "";
+      "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
       "bluez_input.DC:69:E2:9A:6E:30" = "";
       "alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback" = "";
       "alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo" = "";
