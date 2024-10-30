@@ -9,6 +9,7 @@
   soundBlockMappings = {
     "boar" = {
       "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1" = "🔊";
+      "alsa_output.pci-0000_51_00.1.hdmi-stereo" = "";
       "alsa_output.pci-0000_51_00.1.hdmi-stereo.2" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
       "bluez_output.DC_69_E2_9A_6E_30.1" = "";
