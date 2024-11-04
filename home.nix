@@ -24,6 +24,7 @@
     portfolio
     rclone
     restic
+    unstable.wealthfolio
     unstable.ytmdesktop
   ];
 
