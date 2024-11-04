@@ -1,7 +1,7 @@
 # Some settings from https://pastebin.com/S8m1jnY3
 {...}: {
   services.picom = {
-    activeOpacity = 0.90;
+    activeOpacity = 0.95;
 
     enable = true;
 
