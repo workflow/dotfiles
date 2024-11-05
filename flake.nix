@@ -14,6 +14,7 @@
     nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nur.url = "github:nix-community/nur";
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets.url = "path:/home/farlion/code/nixos-secrets";
     stylix.url = "github:danth/stylix/993fcabd83d1e0ee5ea038b87041593cc73c1ebe";
@@ -24,6 +25,7 @@
     nixpkgs-2311,
     nixos-unstable,
     home-manager,
+    nur,
     secrets,
     stylix,
     ...
@@ -62,6 +64,7 @@
         ./machines/boar/system.nix
         ./system/amd
         ./configuration.nix
+        nur.nixosModules.nur
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -106,6 +109,7 @@
         ./machines/flexbox/system.nix
         ./system/nvidia
         ./configuration.nix
+        nur.nixosModules.nur
         home-manager.nixosModules.home-manager
         {
           home-manager = {

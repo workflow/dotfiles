@@ -312,6 +312,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1730832632,
+        "narHash": "sha256-S4drRHRb42uqXfYLHl+oZsvFdo2LSJFXFhNtqGfumDI=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "c68e686c8d16ab2e89996f3cac9b3a14b52aa342",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "rmob": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -338,6 +353,7 @@
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs",
         "nixpkgs-2311": "nixpkgs-2311",
+        "nur": "nur",
         "rmob": "rmob",
         "secrets": "secrets",
         "stylix": "stylix"
