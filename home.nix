@@ -163,8 +163,8 @@ in {
       {
         PATH = "$HOME/bin:$PATH";
         NIXOS_CONFIG = "$HOME/code/nixos-config/";
-        BROWSER = "brave";
-        DEFAULT_BROWSER = "brave";
+        BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
+        DEFAULT_BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
         DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
       }
       // lib.optionalAttrs isNvidia {
