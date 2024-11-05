@@ -24,6 +24,7 @@
     portfolio
     rclone
     restic
+    teams-for-linux # Unofficial Msft Teams App
     unstable.wealthfolio
     unstable.ytmdesktop
   ];

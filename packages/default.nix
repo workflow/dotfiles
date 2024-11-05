@@ -78,7 +78,6 @@
   lsof
   lz4 # compression
   megacmd
-  microsoft-edge # For teams 😭
   mpv # video player
   gnome.nautilus
   ncdu # Disk Space Visualization
@@ -126,7 +125,6 @@
   s-tui # processor monitor/stress test
   stress
   unstable.tdesktop # Telegram
-  teams-for-linux # Unofficial Msft Teams App
   thefuck
   todoist-electron
   traceroute
