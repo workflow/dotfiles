@@ -324,7 +324,7 @@ in {
           "${mod}+m" = "exec --no-startup-id sound-switcher-flexbox";
         });
 
-      menu = "rofi -modi combi#drun#calc -show combi -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+      menu = "rofi -modi drun#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
       # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
       # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
