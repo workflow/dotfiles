@@ -24,6 +24,7 @@
     gca = "git commit --amend";
     gcb = "git checkout -b";
     gcf = "git commit --fixup";
+    gcm = "git commit -m";
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
