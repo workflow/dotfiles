@@ -13,7 +13,7 @@ oh() {
 	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo.2"
 	local card_profile="output:hdmi-stereo"
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
@@ -23,7 +23,7 @@ creative() {
 	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1"
 	local card_profile="output:hdmi-stereo-extra1"
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
@@ -39,7 +39,7 @@ boombox() {
 		connect_bluetooth "$bd_address"
 	fi
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
@@ -49,7 +49,7 @@ budslisten() {
 	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
 	local card_profile="a2dp-sink-sbc"
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
@@ -59,7 +59,7 @@ budstalk() {
 	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
 	local card_profile="headset-head-unit-msbc"
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	budsmike
 }
@@ -76,7 +76,7 @@ sony() {
 		connect_bluetooth "$bd_address"
 	fi
 
-	set_default_sink_and_move_inputs "$card_name_pattern" "$sink" "$card_profile"
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
 }
@@ -86,7 +86,7 @@ localmike() {
 	local source="alsa_input.usb-Generic_Blue_Microphones_LT_221104181411AD020101_111000-00.analog-stereo"
 	local card_profile="input:analog-stereo"
 
-	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
+	set_default_source "$card_name_pattern" "$source" "$card_profile"
 }
 
 budsmike() {
@@ -94,7 +94,7 @@ budsmike() {
 	local source="bluez_input.DC:69:E2:9A:6E:30"
 	local card_profile="headset-head-unit-msbc"
 
-	set_default_source_and_move_outputs "$card_name_pattern" "$source" "$card_profile"
+	set_default_source "$card_name_pattern" "$source" "$card_profile"
 }
 
 get_card_id() {
@@ -102,7 +102,7 @@ get_card_id() {
 	nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"$card_name_pattern\" | get id  | get 0" || true
 }
 
-set_default_sink_and_move_inputs() {
+set_default_sink() {
 	local card_name_pattern="$1"
 	local sink="$2"
 	local card_profile="$3"
@@ -112,14 +112,9 @@ set_default_sink_and_move_inputs() {
 
 	pactl set-card-profile "$card_id" "$card_profile"
 	pactl set-default-sink "$sink"
-	local inputs
-	inputs=$(pactl list sink-inputs short | cut -f 1)
-	for i in $inputs; do
-		pactl move-sink-input "$i" "$sink"
-	done
 }
 
-set_default_source_and_move_outputs() {
+set_default_source() {
 	local card_name_pattern="$1"
 	local source="$2"
 	local card_profile="$3"
@@ -129,11 +124,6 @@ set_default_source_and_move_outputs() {
 
 	pactl set-card-profile "$card_id" "$card_profile"
 	pactl set-default-source "$source"
-	local outputs
-	outputs=$(pactl list source-outputs short | cut -f 1)
-	for i in $outputs; do
-		pactl move-source-output "$i" "$source"
-	done
 }
 
 connect_bluetooth() {
