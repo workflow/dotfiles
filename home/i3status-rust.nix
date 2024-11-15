@@ -12,6 +12,7 @@
       "alsa_output.pci-0000_51_00.1.hdmi-stereo" = "";
       "alsa_output.pci-0000_51_00.1.hdmi-stereo.2" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
+      "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra3" = "🍿";
       "bluez_output.DC_69_E2_9A_6E_30.1" = "";
       "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
       "bluez_input.DC:69:E2:9A:6E:30" = "";

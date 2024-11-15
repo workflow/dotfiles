@@ -3,6 +3,7 @@ set -euo pipefail
 chosen="$(echo -e "🎧oh\n\
 🔊creative\n\
 🎧sony\n\
+🍿movie\n\
  buds(listen)\n\
  buds(talk)\n\
 📢boombox\n\
@@ -22,6 +23,16 @@ creative() {
 	local card_name_pattern="51_00"
 	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1"
 	local card_profile="output:hdmi-stereo-extra1"
+
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+movie() {
+	local card_name_pattern="51_00"
+	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra3"
+	local card_profile="output:hdmi-stereo-extra3"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
@@ -139,6 +150,7 @@ case "$chosen" in
 🎧oh) oh ;;
 🔊creative) creative ;;
 🎧sony) sony ;;
+🍿movie) movie ;;
 " buds(listen)") budslisten ;;
 " buds(talk)") budstalk ;;
 📢boombox) boombox ;;
