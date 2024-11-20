@@ -34,7 +34,6 @@
     dlfile
     font-smoke-test
     macgyver-status
-    obs-mic
     sound-switcher-boar
     sound-switcher-flexbox
     tailscale-ip
@@ -70,6 +69,7 @@
       ./home/stylix
       ./home/syncthing
       ./home/urxvt.nix
+      ./home/virtual-cable
       ./home/xdg.nix
       ./home/xsession
 
