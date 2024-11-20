@@ -65,6 +65,7 @@
       ./home/obs
       ./home/picom.nix
       ./home/redshift.nix
+      ./home/sound-levels-maintainer
       ./home/starship
       ./home/stylix
       ./home/syncthing
