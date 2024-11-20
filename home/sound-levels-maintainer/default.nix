@@ -12,4 +12,16 @@
   );
 in {
   home.packages = [sound-levels-maintainer];
+
+  systemd.user.services.sound-levels-maintainer = {
+    Unit = {
+      Description = "Maintain input/output gain/volume levels";
+    };
+    Install.WantedBy = ["default.target"];
+    Service = {
+      Environment = "PATH=$PATH:/run/current-system/sw/bin";
+      ExecStart = "${sound-levels-maintainer}/bin/sound-levels-maintainer";
+      Restart = "always";
+    };
+  };
 }
