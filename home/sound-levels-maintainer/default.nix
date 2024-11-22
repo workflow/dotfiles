@@ -15,7 +15,9 @@ in {
 
   systemd.user.services.sound-levels-maintainer = {
     Unit = {
+      After = ["obs-mic.service"];
       Description = "Maintain input/output gain/volume levels";
+      Requires = ["obs-mic.service"];
     };
     Install.WantedBy = ["default.target"];
     Service = {
