@@ -19,7 +19,7 @@ in {
       Description = "Maintain input/output gain/volume levels";
       Requires = ["obs-mic.service"];
     };
-    Install.WantedBy = ["default.target"];
+    Install.WantedBy = ["obs-mic.service"];
     Service = {
       Environment = "PATH=$PATH:/run/current-system/sw/bin";
       ExecStart = "${sound-levels-maintainer}/bin/sound-levels-maintainer";

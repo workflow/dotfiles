@@ -10,7 +10,7 @@ in {
       Description = "Set up virtualMic and virtualSpeaker for OBS";
       Requires = ["wireplumber.service"];
     };
-    Install.WantedBy = ["default.target"];
+    Install.WantedBy = ["wireplumber.service"];
     Service = {
       Environment = "PATH=$PATH:/run/current-system/sw/bin";
       ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; # TODO: Find a better way to wait for WirePlumber to fully start
