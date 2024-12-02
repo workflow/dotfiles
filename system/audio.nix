@@ -27,42 +27,42 @@
       # Disable unused sinks and sources
       "disable-unused-nodes" = {
         "monitor.alsa.rules" = [
-          {
-            matches = [
-              {
-                "node.nick" = "HDMI / DisplayPort 1 Output";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.disabled" = true;
-              };
-            };
-          }
-          {
-            matches = [
-              {
-                "node.nick" = "HDMI / DisplayPort 2 Output";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.disabled" = true;
-              };
-            };
-          }
-          {
-            matches = [
-              {
-                "node.nick" = "HDMI / DisplayPort 3 Output";
-              }
-            ];
-            actions = {
-              update-props = {
-                "node.disabled" = true;
-              };
-            };
-          }
+          # {
+          #   matches = [
+          #     {
+          #       "node.nick" = "HDMI / DisplayPort 1 Output";
+          #     }
+          #   ];
+          #   actions = {
+          #     update-props = {
+          #       "node.disabled" = true;
+          #     };
+          #   };
+          # }
+          # {
+          #   matches = [
+          #     {
+          #       "node.nick" = "HDMI / DisplayPort 2 Output";
+          #     }
+          #   ];
+          #   actions = {
+          #     update-props = {
+          #       "node.disabled" = true;
+          #     };
+          #   };
+          # }
+          # {
+          #   matches = [
+          #     {
+          #       "node.nick" = "HDMI / DisplayPort 3 Output";
+          #     }
+          #   ];
+          #   actions = {
+          #     update-props = {
+          #       "node.disabled" = true;
+          #     };
+          #   };
+          # }
           {
             matches = [
               {
