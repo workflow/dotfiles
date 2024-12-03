@@ -10,6 +10,7 @@
     alejandra # nix formatter
     bluetuith
     brave
+    calibre # Ebook reader
     dive # Analyze docker images
     find-cursor
     twentythreeeleven.galaxy-buds-client
