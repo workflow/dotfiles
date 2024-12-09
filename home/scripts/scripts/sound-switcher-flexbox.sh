@@ -4,6 +4,8 @@ chosen="$(echo -e "🔌local\n\
 🎧oh(localmic)
 🎧🎙️oh(ohmic)
 🎧sony\n\
+ budsFE(listen)\n\
+ budsFE(talk)\n\
  buds(listen)\n\
  buds(talk)\n\
 📢boombox\n\
@@ -75,6 +77,26 @@ boombox() {
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
+}
+
+budsfelisten() {
+	local card_name_pattern="34_E3"
+	local sink="bluez_output.34_E3_FB_C5_01_E0.1"
+	local card_profile="a2dp-sink-sbc"
+
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
+
+	localmike
+}
+
+budsfetalk() {
+	local card_name_pattern="34_E3"
+	local sink="bluez_output.34_E3_FB_C5_01_E0.1"
+	local card_profile="headset-head-unit-msbc"
+
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
+
+	budsfemike
 }
 
 budslisten() {
@@ -151,6 +173,14 @@ ohmike() {
 	set_default_source "$card_name_pattern" "$source" "$card_profile"
 }
 
+budsfemike() {
+	local card_name_pattern="34_E3"
+	local source="bluez_input_internal.34_E3_FB_C5_01_E0.0"
+	local card_profile="headset-head-unit-msbc"
+
+	set_default_source "$card_name_pattern" "$source" "$card_profile"
+}
+
 budsmike() {
 	local card_name_pattern="DC_69"
 	local source="bluez_input.DC:69:E2:9A:6E:30"
@@ -202,6 +232,8 @@ case "$chosen" in
 "🎧oh(localmic)") ohlocalmic ;;
 "🎧🎙️oh(ohmic)") ohohmic ;;
 🎧sony) ohohmic ;;
+" budsFE(listen)") budsfelisten ;;
+" budsFE(talk)") budsfetalk ;;
 " buds(listen)") budslisten ;;
 " buds(talk)") budstalk ;;
 📢boombox) boombox ;;
