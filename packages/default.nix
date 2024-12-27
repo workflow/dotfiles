@@ -130,8 +130,6 @@
   traceroute
   trash-cli
   tree
-  trezor-suite
-  trezor-udev-rules
   tzupdate
   unzip
   usbutils # Provides lsusb
