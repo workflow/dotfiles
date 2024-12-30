@@ -58,6 +58,7 @@
       ./home/i3
       ./home/i3status-rust.nix
       ./home/k9s
+      ./home/kind-with-local-registry
       ./home/lf.nix
       ./home/neovim
       ./home/nix-index
