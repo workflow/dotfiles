@@ -12,6 +12,7 @@
     llmnr = "false"; # https://www.blackhillsinfosec.com/how-to-disable-llmnr-why-you-want-to/
     extraConfig = ''
       MulticastDNS=false
+      # DNSStubListenerExtra=172.17.0.1
     '';
     fallbackDns = []; # Ensure we always go through dnscrypt-proxy
   };

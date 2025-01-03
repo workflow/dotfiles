@@ -1,6 +1,10 @@
 {...}: {
   virtualisation.docker = {
     enable = true;
+    # daemon.settings = {
+    # Attach to resolved instead of using default servers
+    # dns = ["172.17.0.1"];
+    # };
   };
 
   # https://rootlesscontaine.rs/getting-started/common/cgroup2/#enabling-cpu-cpuset-and-io-delegation
