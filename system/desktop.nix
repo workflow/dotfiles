@@ -2,9 +2,6 @@
   xsession-name = "i3";
 in {
   services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = "farlion";
-
     defaultSession = xsession-name;
   };
 
@@ -14,7 +11,6 @@ in {
     displayManager = {
       lightdm = {
         enable = true;
-        greeter.enable = false;
       };
     };
 
