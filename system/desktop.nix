@@ -3,14 +3,23 @@
 in {
   services.displayManager = {
     defaultSession = xsession-name;
+    # ly = {
+    #   enable = true;
+    #   defaultUser = "farlion";
+    # };
   };
 
   services.xserver = {
     enable = true;
 
     displayManager = {
-      lightdm = {
+      gdm = {
         enable = true;
+        settings = {
+          greeter = {
+            Include = "farlion";
+          };
+        };
       };
     };
 
