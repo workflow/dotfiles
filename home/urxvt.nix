@@ -7,7 +7,7 @@
       perl-ext-common = "default,matcher,resize-font,vtwheel,keyboard-select,-searchable-scrollback";
 
       # Matcher (clickable URLs)
-      url-launcher = "${pkgs.xdg_utils}/bin/xdg-open";
+      url-launcher = "${pkgs.xdg-utils}/bin/xdg-open";
       "matcher.button" = 1;
 
       # Messes with CTRL+SHIFT Keybindings, see https://wiki.archlinux.org/index.php/Rxvt-unicode#Perl_extensions
@@ -31,7 +31,7 @@
       "Meta-Shift-S" = "perl:keyboard-select:search";
     };
 
-    package = pkgs.rxvt_unicode-with-plugins;
+    package = pkgs.rxvt-unicode;
 
     scroll.bar.enable = false;
   };

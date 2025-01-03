@@ -11,7 +11,7 @@
   };
 
   xsession.profileExtra = ''
-    eval $(${pkgs.gnome3.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=secrets,ssh,pkcs11)
+    eval $(${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --daemonize --components=secrets,ssh,pkcs11)
     export SSH_AUTH_SOCK
   '';
 

@@ -79,7 +79,4 @@
       };
     };
   };
-
-  # Enable sound.enable to persist the ALSA store, see https://github.com/NixOS/nixpkgs/issues/130882#issuecomment-2137339830
-  sound.enable = true;
 }

@@ -21,7 +21,7 @@
 
   home.packages = with pkgs; [
     lxappearance # GTK Theme testing + tweaking
-    qt5ct # Qt 5 Theme testing + tweaking
+    libsForQt5.qt5ct # Qt 5 Theme testing + tweaking
     qt6ct # Qt 6 Theme testing + tweaking
   ];
 

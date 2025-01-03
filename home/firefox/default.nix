@@ -1,9 +1,9 @@
-{osConfig, ...}: {
+{pkgs, ...}: {
   programs.firefox = {
     enable = true;
     profiles = {
       main = {
-        extensions = with osConfig.nur.repos.rycee.firefox-addons; [
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           bitwarden
         ];
         id = 0;

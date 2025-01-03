@@ -79,7 +79,7 @@
   lz4 # compression
   megacmd
   mpv # video player
-  gnome.nautilus
+  nautilus
   ncdu # Disk Space Visualization
   nmap
   neofetch

@@ -3,14 +3,14 @@
 
   inputs = {
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -64,7 +64,7 @@
         ./machines/boar/system.nix
         ./system/amd
         ./configuration.nix
-        nur.nixosModules.nur
+        nur.modules.nixos.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -109,7 +109,7 @@
         ./machines/flexbox/system.nix
         ./system/nvidia
         ./configuration.nix
-        nur.nixosModules.nur
+        nur.modules.nixos.default
         home-manager.nixosModules.home-manager
         {
           home-manager = {

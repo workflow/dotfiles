@@ -52,7 +52,10 @@
   '';
 
   # Default editor for root
-  programs.vim.defaultEditor = true;
+  programs.vim = {
+    defaultEditor = true;
+    enable = true;
+  };
 
   # Enable system-wide Yubikey Support
   services.udev.packages = [pkgs.yubikey-personalization];
