@@ -18,12 +18,13 @@ localspeaker() {
 		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink"
 		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink"
 		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink"
+		"alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink"
 		"alsa_output.pci-0000_00_1f.3.analog-stereo"
 		"alsa_output.pci-0000_00_1f.3.analog-stereo.2"
 	)
 	local actual_sinks
 	local selected_sink
-	local card_profile="?"
+	local card_profile="HiFi"
 
 	actual_sinks=$(pactl list sinks)
 	for source in "${potential_sinks[@]}"; do
@@ -46,7 +47,7 @@ localspeaker() {
 ohlocalmic() {
 	local card_name_pattern="Apple"
 	local sink="alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo"
-	local card_profile="?"
+	local card_profile="HiFi"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
@@ -144,10 +145,11 @@ localmike() {
 		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_4__source"
 		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_4__source"
 		"alsa_input.usb-C-Media_Electronics_Inc._USB_PnP_Audio_Device-00.mono-fallback"
+		"alsa_input.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Mic__source"
 	)
 	local actual_sources
 	local selected_source
-	local card_profile="?"
+	local card_profile="HiFi"
 
 	actual_sources=$(pactl list sources)
 	for source in "${potential_sources[@]}"; do
