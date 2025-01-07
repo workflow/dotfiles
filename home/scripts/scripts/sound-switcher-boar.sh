@@ -68,7 +68,7 @@ budslisten() {
 budstalk() {
 	local card_name_pattern="DC_69"
 	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
-	local card_profile="headset-head-unit-msbc"
+	local card_profile="headset-head-unit"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
@@ -103,7 +103,7 @@ localmike() {
 budsmike() {
 	local card_name_pattern="DC_69"
 	local source="bluez_input.DC:69:E2:9A:6E:30"
-	local card_profile="headset-head-unit-msbc"
+	local card_profile="headset-head-unit"
 
 	set_default_source "$card_name_pattern" "$source" "$card_profile"
 }

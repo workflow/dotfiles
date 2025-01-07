@@ -32,7 +32,7 @@
       "bluez_output.34_E3_FB_C5_01_E0.1" = "";
       "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
       "bluez_sink.34_E3_FB_C5_01_E0.handsfree_head_unit" = "";
-      "bluez_input.DC_69_E2_9A_6E_30" = "";
+      "bluez_input.DC:69:E2:9A:6E:30" = "";
       "bluez_input_internal.34_E3_FB_C5_01_E0.0" = "";
       "bluez_sink.04_21_44_B6_92_39.a2dp_sink" = "";
       "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
