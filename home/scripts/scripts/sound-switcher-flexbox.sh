@@ -233,7 +233,7 @@ case "$chosen" in
 🔌local) localspeaker ;;
 "🎧oh(localmic)") ohlocalmic ;;
 "🎧🎙️oh(ohmic)") ohohmic ;;
-🎧sony) ohohmic ;;
+🎧sony) sony ;;
 " budsFE(listen)") budsfelisten ;;
 " budsFE(talk)") budsfetalk ;;
 " buds(listen)") budslisten ;;
