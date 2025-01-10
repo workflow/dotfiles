@@ -7,6 +7,9 @@
     qpwgraph # More extensive patchbay for Pipewire
   ];
 
+  # Persist ALSA changes, such as the one needed for the microphone on flexbox, see https://github.com/workflow/dotfiles/blob/main/doc/upgrades/2411/NixOS-24.11.md
+  hardware.alsa.enablePersistence = true;
+
   # PipeWire!
   security.rtkit.enable = true;
   services.pipewire = {
@@ -14,9 +17,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
-    # Persist ALSA changes, such as the one needed for the microphone on flexbox, see https://github.com/workflow/dotfiles/blob/main/doc/upgrades/2411/NixOS-24.11.md
-    hardware.alsa.enablePersistence = true;
 
     wireplumber.extraConfig = {
       # Enable Fancy Blueooth Codecs
