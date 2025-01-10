@@ -63,5 +63,5 @@
   programs.fish.enable = true;
 
   # Sysdig + kernel module
-  programs.sysdig.enable = true;
+  # programs.sysdig.enable = true;
 }
