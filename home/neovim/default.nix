@@ -163,6 +163,9 @@ in {
 
       " Background light/dark toggling
       nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
+
+      " Sudo powers with :w!!
+      cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
     '';
 
     extraLuaConfig = ''
