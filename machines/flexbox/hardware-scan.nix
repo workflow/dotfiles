@@ -18,6 +18,11 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
+  fileSystems."/var/lib/docker/overlay2/a87341b29bfa0cced00827b27863d3ba617a6a36b4fe6bc8bee836978a8b2d80/merged" = {
+    device = "overlay";
+    fsType = "overlay";
+  };
+
   hardware.cpu.intel.updateMicrocode = true;
 
   swapDevices = [{device = "/dev/disk/by-uuid/0fb837c4-ba4e-437d-a54c-ff25312af20c";}];
