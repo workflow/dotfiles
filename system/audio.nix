@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  isFlexbox = config.networking.hostName == "flexbox";
+in {
   environment.systemPackages = with pkgs; [
     alsa-utils
     helvum # Simple GTK patchbay for Pipewire
@@ -7,8 +14,18 @@
     qpwgraph # More extensive patchbay for Pipewire
   ];
 
-  # Persist ALSA changes, such as the one needed for the microphone on flexbox, see https://github.com/workflow/dotfiles/blob/main/doc/upgrades/2411/NixOS-24.11.md
-  hardware.alsa.enablePersistence = true;
+  # Fix ALSA not detecting microphone on XPS 9700, see https://github.com/NixOS/nixpkgs/issues/130882#issuecomment-2584286824
+  systemd.services.fixXPS9700Mike = lib.mkIf isFlexbox {
+    description = "Set rt715 ADC 24 Mux to DMIC3";
+    wantedBy = ["multi-user.target"];
+    unitConfig.requiresMountsFor = "/var/lib/alsa";
+
+    serviceConfig = {
+      ExecStart = "${pkgs.alsa-utils}/bin/amixer --card 1 set 'rt715 ADC 24 Mux' 'DMIC3'";
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+  };
 
   # PipeWire!
   security.rtkit.enable = true;
