@@ -13,13 +13,8 @@ in {
     enable = true;
 
     displayManager = {
-      gdm = {
+      lightdm = {
         enable = true;
-        settings = {
-          greeter = {
-            Include = "farlion";
-          };
-        };
       };
     };
 
