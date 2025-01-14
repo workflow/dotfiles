@@ -237,6 +237,8 @@ Now available as HM module: `services.podman`
 
 Also availabe in HM now!
 
+![Toillama](assets/Toillama.png)
+
 # Links
 
 - [NixOS 24.05 Upgrade Adventures](doc/upgrades/2405/NixOS-24.05.md)
