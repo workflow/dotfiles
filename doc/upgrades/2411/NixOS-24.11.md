@@ -1,6 +1,6 @@
 # NixOS 24.11 Upgrade Adventures
 
-![Toillama](assets/Toillama.png)
+![Uakavolution](assets/uakavolution.webp)
 
 # LLama Not-So-Drama Breakages
 
