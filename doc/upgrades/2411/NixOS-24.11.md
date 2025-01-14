@@ -82,7 +82,7 @@ error:
        error: access to absolute path '/home' is forbidden in pure evaluation mode (use '--impure' to override)
 ```
 
-This seemed to have been caused by [Stylix](https://github.com/danth/stylix) doing some assertions in the swaylock module 👀 but it was just a red herring. The actual culprit was that Stylix's `image` option, which is still mandatory (see https://github.com/danth/stylix/issues/200) apparently stopped being pured when fed an absolute path.
+This seemed to have been caused by [Stylix](https://github.com/danth/stylix) doing some assertions in the swaylock module 👀 but it was just a red herring. The actual culprit was that Stylix's `image` option, which is still mandatory (see https://github.com/danth/stylix/issues/200) apparently stopped being pure when fed an absolute path.
 Fix: https://github.com/workflow/dotfiles/commit/c9a13ffeaf7f5e81012c3751426a797ef4d90a16
 
 # Intriguing Changes
