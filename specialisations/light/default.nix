@@ -10,6 +10,7 @@
     # System
     stylix = {
       base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
+      image = lib.mkForce ../../system/stylix/gruvbox-light-rainbow.png;
       polarity = lib.mkForce "light";
     };
 

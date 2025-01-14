@@ -41,7 +41,7 @@
         popups = 9;
       };
     };
-    image = /home/farlion/Pictures/Backgrounds/costa_9_mountain_desk.jpg;
+    image = ./gruvbox-dark-rainbow.png;
     polarity = "dark";
   };
 }
