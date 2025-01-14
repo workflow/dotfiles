@@ -17,7 +17,7 @@
     nur.url = "github:nix-community/nur";
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets.url = "path:/home/farlion/code/nixos-secrets";
-    stylix.url = "github:danth/stylix/993fcabd83d1e0ee5ea038b87041593cc73c1ebe";
+    stylix.url = "github:danth/stylix/release-24.11";
   };
 
   outputs = {
