@@ -29,7 +29,7 @@
     };
   };
 in {
-  programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
+  programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = FixCursorHold-nvim;
     }

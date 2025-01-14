@@ -6,16 +6,16 @@
   ...
 }: let
   homePackages = with pkgs; [
-    unstable.aichat
+    aichat
     alejandra # nix formatter
     bluetuith
     brave
     calibre # Ebook reader
     dive # Analyze docker images
     find-cursor
-    twentythreeeleven.galaxy-buds-client
-    unstable.hoppscotch # Open-Source Postman
-    twentythreeeleven.jetbrains.idea-ultimate
+    galaxy-buds-client
+    hoppscotch # Open-Source Postman
+    jetbrains.idea-ultimate
     libation
     lolcat
     neo-cowsay
@@ -26,8 +26,8 @@
     rclone
     restic
     teams-for-linux # Unofficial Msft Teams App
-    unstable.wealthfolio
-    unstable.ytmdesktop
+    wealthfolio
+    ytmdesktop
   ];
 
   homeScripts = with scripts; [
@@ -236,7 +236,6 @@ in {
     lorri.enable = true;
 
     flameshot = {
-      package = pkgs.unstable.flameshot;
       enable = true;
       settings = {
         General = {

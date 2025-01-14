@@ -6,7 +6,7 @@
   xdg = {
     desktopEntries = {
       brave-browser = {
-        exec = "${pkgs.unstable.brave}/bin/brave --enable-features=\"VaapiVideoDecoder,VaapiVideoEncoder\" --enable-raw-draw %U";
+        exec = "${pkgs.brave}/bin/brave --enable-features=\"VaapiVideoDecoder,VaapiVideoEncoder\" --enable-raw-draw %U";
         name = "Brave Browser";
         comment = "Access the Internet";
         genericName = "Web Browser";

@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  programs.neovim.extraPackages = [pkgs.unstable.gcc];
+  programs.neovim.extraPackages = [pkgs.gcc];
 
-  programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
+  programs.neovim.plugins = with pkgs.vimPlugins; [
     # TODO: This is Neovim-Native after 0.10, see https://github.com/nvim-treesitter/playground
     {
       plugin = playground;

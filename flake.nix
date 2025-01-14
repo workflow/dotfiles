@@ -11,7 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-2311.url = "github:nixos/nixpkgs/nixos-23.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
@@ -22,7 +21,6 @@
 
   outputs = {
     nixpkgs,
-    nixpkgs-2311,
     nixos-unstable,
     home-manager,
     nur,
@@ -32,10 +30,6 @@
   } @ inputs: let
     overlays = {
       unstable = import nixos-unstable {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
-      twentythreeeleven = import nixpkgs-2311 {
         system = "x86_64-linux";
         config.allowUnfree = true;
       };

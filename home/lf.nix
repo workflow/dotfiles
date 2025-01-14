@@ -153,7 +153,7 @@
 
     previewer = {
       keybinding = "i";
-      source = "${pkgs.unstable.pistol}/bin/pistol";
+      source = "${pkgs.pistol}/bin/pistol";
     };
 
     settings = {

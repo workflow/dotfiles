@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.unstable.nh];
+  home.packages = [pkgs.nh];
 
   home.sessionVariables = {
     FLAKE = "/home/farlion/code/nixos-config";

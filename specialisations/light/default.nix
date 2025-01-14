@@ -30,7 +30,7 @@
       xsession.windowManager.i3.config.bars = lib.mkForce [
         (
           {
-            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            command = "${pkgs.i3-gaps}/bin/i3bar";
             fonts = {
               names = ["Fira Code" "Font Awesome 6 Free"];
               size = 9.0;

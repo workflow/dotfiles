@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: let
-  nixos-unstable = pkgs.unstable;
-
   bookmarks-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "bookmarks-nvim";
     src = pkgs.fetchFromGitHub {
@@ -202,7 +200,7 @@ in {
       vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], { silent = true })
     '';
 
-    extraPackages = with pkgs.unstable; [
+    extraPackages = with pkgs; [
       nixd # Nix Language Server
       prettierd # For yaml, html, json, markdown
       shellcheck
@@ -260,7 +258,7 @@ in {
         '';
         type = "lua";
       }
-      nixos-unstable.vimPlugins.copilot-vim
+      copilot-vim
       {
         plugin = nvim-web-devicons;
         config = ''

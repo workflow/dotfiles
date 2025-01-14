@@ -25,7 +25,7 @@ in {
           if isHidpi || isPpiScaledOnePointFive
           then hidpiHook
           else baseHook;
-        notify-i3 = "${pkgs.unstable.i3-gaps}/bin/i3-msg restart";
+        notify-i3 = "${pkgs.i3-gaps}/bin/i3-msg restart";
         change-dpi = ''
           case "$AUTORANDR_CURRENT_PROFILE" in
             movie)

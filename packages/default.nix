@@ -7,7 +7,7 @@
   arandr
   asciinema
   audio-recorder
-  unstable.autotiling # autotiling script for i3
+  autotiling # autotiling script for i3
   awscli2
   bc
   bind # Provides dig
@@ -25,9 +25,9 @@
   cntr # for Nix sandbox breakpointHook debugging
   dconf
   delta # Syntax highlighter for git
-  unstable.devenv
+  devenv
   difftastic
-  unstable.discord
+  discord
   distrobox
   dnstracer
   docker-compose
@@ -70,7 +70,7 @@
   kubectx
   lame
   lazydocker
-  unstable.ledger-live-desktop
+  ledger-live-desktop
   libnotify # Provides notify-send
   libreoffice
   lm_sensors
@@ -111,12 +111,12 @@
   remmina
   ripdrag
   ripgrep
-  unstable.rmview # Remarkable Screen Sharing
+  rmview # Remarkable Screen Sharing
   screenkey
   scrcpy
   selectdefaultapplication # XDG Default Application Chooser
-  unstable.signal-desktop
-  unstable.skaffold
+  signal-desktop
+  skaffold
   slack
   smartmontools
   solaar
@@ -124,7 +124,7 @@
   stern
   s-tui # processor monitor/stress test
   stress
-  unstable.tdesktop # Telegram
+  tdesktop # Telegram
   thefuck
   todoist-electron
   traceroute
@@ -152,10 +152,10 @@
   xournal # PFD Annotations, useful for saving Okular annotations as well
   xrandr-invert-colors
   xss-lock
-  unstable.yt-dlp
+  yt-dlp
   youtube-music
   yq
-  unstable.zoom-us
+  zoom-us
 ])
 ++ [
   inputs.rmob.defaultPackage.x86_64-linux

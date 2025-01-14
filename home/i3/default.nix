@@ -94,7 +94,7 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output primary
             '';
@@ -123,7 +123,7 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output HDMI-A-1
             '';
@@ -149,7 +149,7 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.unstable.i3-gaps}/bin/i3bar";
+            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output HDMI-A-0
             '';
@@ -511,6 +511,6 @@ in {
       }
     '';
 
-    package = pkgs.unstable.i3-gaps;
+    package = pkgs.i3-gaps;
   };
 }

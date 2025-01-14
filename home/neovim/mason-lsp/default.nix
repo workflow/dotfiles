@@ -9,7 +9,7 @@
     };
   };
 in {
-  programs.neovim.plugins = with pkgs.unstable.vimPlugins; [
+  programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = mason-nvim; # Automatically install LSP servers
       config = builtins.readFile ./mason.lua;
