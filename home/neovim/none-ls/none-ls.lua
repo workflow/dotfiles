@@ -5,5 +5,6 @@ null_ls.setup({
     null_ls.builtins.formatting.prettierd.with({
       filetypes = { "html", "json", "yaml", "markdown" },
     }),
+    null_ls.builtins.formatting.yapf,
   }
 })
