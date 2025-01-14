@@ -241,5 +241,5 @@ Also availabe in HM now!
 
 # Links
 
-- [NixOS 24.05 Upgrade Adventures](doc/upgrades/2405/NixOS-24.05.md)
-- [NixOS Upgrade Checklist](doc/upgrades/Checklist.md)
+- [NixOS 24.05 Upgrade Adventures](/doc/upgrades/2405/NixOS-24.05.md)
+- [NixOS Upgrade Checklist](/doc/upgrades/Checklist.md)
