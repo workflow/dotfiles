@@ -106,7 +106,7 @@ local servers = {
   },
   julials = {},
   pyright = {},
-  ruff_lsp = {},
+  ruff = {},
   rust_analyzer = {
     checkOnSave = {
       command = 'clippy',
