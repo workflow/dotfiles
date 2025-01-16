@@ -37,6 +37,7 @@ in {
       ./folds
       ./fugitive
       ./mini-operators
+      ./mini-icons
       ./mason-lsp
       ./none-ls
       ./neotest
