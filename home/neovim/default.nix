@@ -214,16 +214,16 @@ in {
         plugin = b64-nvim; # Base64 encoding/decoding
         config = ''
           local wk = require("which-key")
-          wk.register({
-            b = {
-              name = "[B]ase64",
-              e = { require("b64").encode, "Base64 [E]ncode" },
-              d = { require("b64").decode, "Base64 [D]ecode" },
-            },
-          }, {
-            prefix = "<leader>",
-            mode = "v",
-          })
+          wk.add(
+            {
+              {
+                mode = { "v" },
+                { "<leader>b", group = "[B]ase64" },
+                { "<leader>bd", require("b64").decode, desc = "Base64 [D]ecode" },
+                { "<leader>be", require("b64").decode, desc = "Base64 [E]ncode" },
+              },
+            }
+          )
         '';
         type = "lua";
       }
@@ -235,17 +235,17 @@ in {
             on_attach = function(bufnr)
               local bm = require("bookmarks")
               local wk = require("which-key")
-              wk.register({
-                ["m"] = {
-                  name = "Book[m]arks",
-                    a = { bm.bookmark_ann, "Toggle [a]nnotation at current line" },
-                    c = { bm.bookmark_clean, "Clean all marks in local buffer" },
-                    l = { bm.bookmark_list, "Show marked file list in quickfix list" },
-                    m = { bm.bookmark_toggle, "Toggle [m]ark at current line" },
-                    n = { bm.bookmark_next, "Jump to next mark in local buffer" },
-                    p = { bm.bookmark_prev, "Jump to previous mark in local buffer" },
-                  },
-                }, { prefix = "<leader>" })
+              wk.add(
+                {
+                  { "<leader>m", group = "Book[m]arks" },
+                  { "<leader>ma", bm.bookmark_ann, desc = "Toggle [a]nnotation at current line" },
+                  { "<leader>mc", bm.bookmark_clean, desc = "Clean all marks in local buffer" },
+                  { "<leader>ml", bm.bookmark_list, desc = "Show marked file list in quickfix list" },
+                  { "<leader>mm", bm.bookmark_toggle, desc = "Toggle [m]ark at current line" },
+                  { "<leader>mn", bm.bookmark_next, desc = "Jump to next mark in local buffer" },
+                  { "<leader>mp", bm.bookmark_prev, desc = "Jump to previous mark in local buffer" },
+                }
+              )
               require('telescope').load_extension('bookmarks')
             end
           })
@@ -286,8 +286,10 @@ in {
       {
         plugin = gitgutter; # Git diff in the gutter
         config = ''
-          require('which-key').register {
-            ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+          require('which-key').add
+          {
+            { "<leader>h", group = "Git [H]unk" },
+            { "<leader>h_", hidden = true },
           }
         '';
         type = "lua";
@@ -309,9 +311,9 @@ in {
               )
           end)
           local wk = require("which-key")
-          wk.register({
-            ["[i"] = { function() require("ibl").setup_buffer(0, {enabled = true}) end, "Indentation Guides ON" },
-            ["]i"] = { function() require("ibl").setup_buffer(0, {enabled = false}) end, "Indentation Guides OFF" },
+          wk.add({
+            { "[i", function() require("ibl").setup_buffer(0, {enabled = true}) end, desc = "Indentation Guides ON" },
+            { "]i", function() require("ibl").setup_buffer(0, {enabled = false}) end, desc = "Indentation Guides OFF" },
           })
         '';
         type = "lua";
@@ -323,8 +325,8 @@ in {
             border = "rounded",
           })
           local wk = require("which-key")
-          wk.register({
-            ["<leader>fl"] = {"<cmd>Lf<cr>" , "[L]f" },
+          wk.add({
+            {"<leader>fl", "<cmd>Lf<cr>" , desc = "[L]f" },
           })
         '';
         type = "lua";
@@ -358,8 +360,8 @@ in {
         plugin = markdown-preview-nvim;
         config = ''
           local wk = require("which-key")
-          wk.register({
-            ["<leader>p"] = { "<Plug>MarkdownPreviewToggle", "Toggle Markdown [P]review" },
+          wk.add({
+            { "<leader>p", "<Plug>MarkdownPreviewToggle", desc = "Toggle Markdown [P]review" },
           })
         '';
         type = "lua";
@@ -400,8 +402,8 @@ in {
           })
           require("telescope").load_extension("textcase")
           local wk = require("which-key")
-          wk.register({
-            ["ga."] = { "<Cmd>TextCaseOpenTelescope<CR>", "Telescope" },
+          wk.add({
+            { "ga.", "<Cmd>TextCaseOpenTelescope<CR>", desc = "Telescope" },
           })
         '';
         type = "lua";
@@ -438,14 +440,14 @@ in {
             hijack_netrw = true, -- once no longer needed, check :he nvim-tree-netrw
           })
           local wk = require("which-key")
-          wk.register({
-            f = {
-              name = "[F]iles(NvimTree)",
-                c = { "<cmd>NvimTreeCollapse<CR>", "Collapse NVimTree Node Recursively" },
-                f = { "<cmd>NvimTreeFindFile<CR>", "Move the cursor in the tree for the current buffer, opening folders if needed." },
-                t = { "<cmd>NvimTreeToggle<CR>", "Toggle NvimTree Open/Close" },
-              },
-          }, { prefix = "<leader>" })
+          wk.add(
+            {
+              { "<leader>f", group = "[F]iles(NvimTree)" },
+              { "<leader>fc", "<cmd>NvimTreeCollapse<CR>", desc = "Collapse NVimTree Node Recursively" },
+              { "<leader>ff", "<cmd>NvimTreeFindFile<CR>", desc = "Move the cursor in the tree for the current buffer, opening folders if needed." },
+              { "<leader>ft", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree Open/Close" },
+            }
+          )
           -- Autoclose, see https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close
           local function tab_win_closed(winnr)
             local api = require"nvim-tree.api"
@@ -488,16 +490,16 @@ in {
         plugin = trouble-nvim;
         config = ''
           local wk = require("which-key")
-          wk.register({
-            x = {
-              name = "Trouble",
-              x = { "<cmd>Trouble<cr>", "Toggle Trouble" },
-              w = { "<cmd>Trouble workspace_diagnostics<cr>", "[W]orkspace Diagnostics" },
-              d = { "<cmd>Trouble document_diagnostics<cr>", "[D]ocument Diagnostics" },
-              q = { "<cmd>Trouble quickfix<cr>", "[Q]uickfix" },
-              l = { "<cmd>Trouble loclist<cr>", "[L]ocation List" },
-            },
-          }, { prefix = "<leader>" })
+          wk.add(
+            {
+              { "<leader>x", group = "Trouble" },
+              { "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", desc = "[D]ocument Diagnostics" },
+              { "<leader>xl", "<cmd>Trouble loclist<cr>", desc = "[L]ocation List" },
+              { "<leader>xq", "<cmd>Trouble quickfix<cr>", desc = "[Q]uickfix" },
+              { "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "[W]orkspace Diagnostics" },
+              { "<leader>xx", "<cmd>Trouble<cr>", desc = "Toggle Trouble" },
+            }
+          )
           require("trouble").setup({
             action_keys = { -- key mappings for actions in the trouble list
               open_split = { "<c-s>" }, -- open buffer in new split

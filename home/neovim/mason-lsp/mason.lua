@@ -2,13 +2,15 @@ local shared_lsp_config = require('shared_lsp_config')
 
 -- General Diagnostic keymaps
 local wk = require("which-key")
-wk.register({
-  ["[d"] = { vim.diagnostic.goto_prev, "Prev [D]iagnostic" },
-  ["]d"] = { vim.diagnostic.goto_next, "Next [D]iagnostic" },
-  ["<localleader>d"] = { vim.diagnostic.open_float, "Open Floating [D]iagnostics" },
-  ["<localleader>l"] = { vim.diagnostic.setloclist, "Open Diagnostics in [L]ocation List" },
-  ["<localleader>q"] = { vim.diagnostic.setqflist, "Open Diagnostics in [Q]uickfix List" },
-})
+wk.add(
+  {
+    { "<localleader>d", vim.diagnostic.goto_prev,  desc = "Open Floating [D]iagnostics" },
+    { "<localleader>l", vim.diagnostic.goto_next,  desc = "Open Diagnostics in [L]ocation List" },
+    { "<localleader>q", vim.diagnostic.open_float, desc = "Open Diagnostics in [Q]uickfix List" },
+    { "[d",             vim.diagnostic.setloclist, desc = "Prev [D]iagnostic" },
+    { "]d",             vim.diagnostic.setqflist,  desc = "Next [D]iagnostic" },
+  }
+)
 
 -- Autoformat, from https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/plugins/autoformat.lua
 -- Switch for controlling whether you want autoformatting.
@@ -77,9 +79,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Document workspace keymap
-require('which-key').register {
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+require('which-key').add(
+  {
+    { "<leader>w",  group = "[W]orkspace" },
+    { "<leader>w_", hidden = true },
+  }
+)
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the LSP servers.

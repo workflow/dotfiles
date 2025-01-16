@@ -34,13 +34,11 @@ in {
 
         vim.keymap.set("v", "<leader>s", ":CarbonNow<CR>", { silent = true })
         local wk = require("which-key")
-        wk.register({
-            s = "[S]creenshot",
-          },
+        wk.add(
           {
-            prefix = "<leader>",
-            mode = "v"
-          })
+            { "<leader>s", desc = "[S]creenshot", mode = "v" },
+          }
+        )
       '';
       type = "lua";
     }

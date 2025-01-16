@@ -1,11 +1,11 @@
 local wk = require("which-key")
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup({
-  wk.register({
-    d = {
-      t = { require('dapui').toggle, "[T]oggle UI" },
-    },
-  }, { prefix = "<leader>" })
+  wk.add(
+    {
+      { "<leader>dt", require('dapui').toggle, desc = "[T]oggle UI" },
+    }
+  )
 })
 
 -- Events to auto-open/close the UI

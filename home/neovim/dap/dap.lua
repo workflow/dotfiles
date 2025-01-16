@@ -1,17 +1,17 @@
 local wk = require("which-key")
 local dap = require("dap")
-wk.register({
-  d = {
-    name = "[D]ebug",
-    b = { function() dap.toggle_breakpoint() end, "Toggle [B]reakpoint" },
-    B = { function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Set conditional [B]reakpoint" },
-    c = { function() dap.continue() end, "[C]ontinue" },
-    i = { function() dap.step_into() end, "Step [I]nto" },
-    o = { function() dap.step_over() end, "Step [O]ver" },
-    u = { function() dap.step_out() end, "Step O[u]t" },
-    q = { function() dap.close() end, "[Q]uit/Close dap" },
-  },
-}, { prefix = "<leader>" })
+wk.add(
+  {
+    { "<leader>d",  group = "[D]ebug" },
+    { "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Set conditional [B]reakpoint" },
+    { "<leader>db", function() dap.toggle_breakpoint() end,                                    desc = "Toggle [B]reakpoint" },
+    { "<leader>dc", function() dap.continue() end,                                             desc = "[C]ontinue" },
+    { "<leader>di", function() dap.step_into() end,                                            desc = "Step [I]nto" },
+    { "<leader>do", function() dap.step_over() end,                                            desc = "Step [O]ver" },
+    { "<leader>dq", function() dap.close() end,                                                desc = "[Q]uit/Close dap" },
+    { "<leader>du", function() dap.step_out() end,                                             desc = "Step O[u]t" },
+  }
+)
 
 dap.adapters.lldb = {
   type = "executable",

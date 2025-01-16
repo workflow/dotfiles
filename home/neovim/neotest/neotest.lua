@@ -8,15 +8,13 @@ require("neotest").setup({
 })
 
 local wk = require("which-key")
-wk.register({
-  n = {
-    name = "[N]eotest",
-    a = { require("neotest").run.attach, "[A]ttach to nearest" },
-    d = { function() require("neotest").run.run({ strategy = "dap" }) end, "[D]ebug nearest" },
-    f = { function() require("neotest").run.run(vim.fn.expand("%")) end, "[F]ile" },
-    n = { require("neotest").run.run, "[N]earest" },
-    s = { require("neotest").run.stop, "[S]top nearest" },
-  },
-}, {
-  prefix = "<leader>",
-})
+wk.add(
+  {
+    { "<leader>n",  group = "[N]eotest" },
+    { "<leader>na", require("neotest").run.attach,                                   desc = "[A]ttach to nearest" },
+    { "<leader>nd", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "[D]ebug nearest" },
+    { "<leader>nf", function() require("neotest").run.run(vim.fn.expand("%")) end,   desc = "[F]ile" },
+    { "<leader>nn", require("neotest").run.run,                                      desc = "[N]earest" },
+    { "<leader>ns", require("neotest").run.stop,                                     desc = "[S]top nearest" },
+  }
+)

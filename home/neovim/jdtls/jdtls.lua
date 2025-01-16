@@ -28,10 +28,10 @@ local on_attach = function(_, bufnr)
   end
 
   local wk = require("which-key")
-  wk.register({
-    e = "[E]xtract",
-    t = "[T]est",
-  }, { prefix = "<localleader>" })
+  wk.add({
+    { "<localleader>e", group = "[E]xtract" }
+    { "<localleader>t", group = "[T]est" }
+  })
   nmap('<localleader>o', require('jdtls').organize_imports, '[O]rganize Imports')
   nmap('<localleader>ev', require('jdtls').extract_variable, '[V]ariable')
   nmap('<localleader>ec', require('jdtls').extract_constant, '[C]onstant')

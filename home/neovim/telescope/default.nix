@@ -24,19 +24,19 @@
         })
         require("telescope").load_extension("fzf")
         local wk = require("which-key")
-        wk.register({
-          ["<space>"] = {
-            name = "Find[ ](Telescope)",
-              ["<space>"] = { "<cmd>Telescope git_files<CR>", "Version Controlled Files" },
-              b = { "<cmd>Telescope buffers<CR>", "[B]uffers" },
-              e = { "<cmd>Telescope help_tags<CR>", "H[e]lp Tags" },
-              f = { "<cmd>Telescope find_files<CR>", "All [F]iles" },
-              g = { "<cmd>Telescope live_grep<CR>", "[G]rep" },
-              m = { "<cmd>Telescope bookmarks list<CR>", "Book[m]arks" },
-              ["?"] = { "<cmd>Telescope keymaps<CR>", "Vim Keymap Cheatsheet" },
-              ["."] = { function() builtin.find_files({ cwd = utils.buffer_dir() }) end, "Files in CWD" },
-            },
-        }, { prefix = "<leader>" })
+        wk.add(
+          {
+            { "<leader><space>", group = "Find[ ](Telescope)" },
+            { "<leader><space>.", function() builtin.find_files({ cwd = utils.buffer_dir() }) end, desc = "Files in CWD" },
+            { "<leader><space><space>", "<cmd>Telescope git_files<CR>", desc = "Version Controlled Files" },
+            { "<leader><space>?", "<cmd>Telescope keymaps<CR>", desc = "Vim Keymap Cheatsheet" },
+            { "<leader><space>b", "<cmd>Telescope buffers<CR>", desc = "[B]uffers" },
+            { "<leader><space>e", "<cmd>Telescope help_tags<CR>", desc = "H[e]lp Tags" },
+            { "<leader><space>f", "<cmd>Telescope find_files<CR>", desc = "All [F]iles" },
+            { "<leader><space>g", "<cmd>Telescope live_grep<CR>", desc = "[G]rep" },
+            { "<leader><space>m", "<cmd>Telescope bookmarks list<CR>", desc = "Book[m]arks" },
+          }
+        )
       '';
       type = "lua";
     }
@@ -56,12 +56,11 @@
         })
         require("telescope").load_extension("frecency")
         local wk = require("which-key")
-        wk.register({
-          ["<space>"] = {
-            name = "Find[ ](Telescope)",
-              h = { "<Cmd>Telescope frecency workspace=CWD<CR>", "History (Frecency)" },
-            },
-        }, { prefix = "<leader>" })
+        wk.add(
+          {
+            { "<leader><space>h", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "History (Frecency)" },
+          }
+        )
       '';
       type = "lua";
     }

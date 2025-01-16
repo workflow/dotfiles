@@ -12,10 +12,10 @@ require('overseer').setup({
   },
 })
 local wk = require("which-key")
-wk.register({
-  o = {
-    name = "[O]verseer",
-    r = { "<cmd>OverseerRun<CR>", "[R]un" },
-    t = { "<cmd>OverseerToggle<CR>", "[T]oggle List" },
-  },
-}, { prefix = "<leader>" })
+wk.add(
+  {
+    { "<leader>o",  group = "[O]verseer" },
+    { "<leader>or", "<cmd>OverseerRun<CR>",    desc = "[R]un" },
+    { "<leader>ot", "<cmd>OverseerToggle<CR>", desc = "[T]oggle List" },
+  }
+)
