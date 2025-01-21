@@ -1,11 +1,19 @@
 {...}: {
   virtualisation.docker = {
     enable = true;
-    # daemon.settings = {
-    # Attach to resolved instead of using default servers
-    # dns = ["172.17.0.1"];
-    # };
+    daemon.settings = {
+      # Attach to resolved instead of using default Docker DNS servers
+      dns = ["172.17.0.1"];
+      # Have containers listen on localhost instead of 0.0.0.0,
+      # see https://github.com/NixOS/nixpkgs/issues/111852#issuecomment-1954656069
+      ip = "127.0.0.1";
+    };
   };
+  # Allow connecting to resolved DNS from inside Docker containers
+  networking.firewall.interfaces.docker0.allowedTCPPorts = [53];
+  networking.firewall.interfaces.docker0.allowedUDPPorts = [53];
+  networking.firewall.interfaces.br-19583dda413b.allowedTCPPorts = [53];
+  networking.firewall.interfaces.br-19583dda413b.allowedUDPPorts = [53];
 
   # https://rootlesscontaine.rs/getting-started/common/cgroup2/#enabling-cpu-cpuset-and-io-delegation
   # For minikube
