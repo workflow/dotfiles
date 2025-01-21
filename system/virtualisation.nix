@@ -12,6 +12,7 @@
   # Allow connecting to resolved DNS from inside Docker containers
   networking.firewall.interfaces.docker0.allowedTCPPorts = [53];
   networking.firewall.interfaces.docker0.allowedUDPPorts = [53];
+  # Kind
   networking.firewall.interfaces.br-19583dda413b.allowedTCPPorts = [53];
   networking.firewall.interfaces.br-19583dda413b.allowedUDPPorts = [53];
 
