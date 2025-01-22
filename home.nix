@@ -16,6 +16,7 @@
     galaxy-buds-client
     hoppscotch # Open-Source Postman
     jetbrains.idea-ultimate
+    kind
     libation
     lolcat
     neo-cowsay

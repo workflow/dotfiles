@@ -64,7 +64,6 @@
   jq
   jsonnet
   kbdd # XKB Daemon
-  kind
   plasma5Packages.kruler
   kubectl
   kubectx
