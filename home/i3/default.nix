@@ -9,7 +9,6 @@
   color_txt = "#EAD49B";
 
   clipboardInserter = "${pkgs.clipcat}/bin/clipcat-menu insert";
-  clipboardRemover = "${pkgs.clipcat}/bin/clipcat-menu remove";
 
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
 
@@ -259,9 +258,11 @@ in {
           # If there are multiple scratchpad windows, this command cycles through them.
           "${mod}+minus" = "scratchpad show";
 
+          # Rofi Run Mode (nvidia-offload)
+          "${mod}+o" = "exec --no-startup-id rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+
           # Clipcat
           "${mod}+p" = "exec ${clipboardInserter}";
-          "${mod}+o" = "exec ${clipboardRemover}";
 
           # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
           # Pulse Audio controls
@@ -324,7 +325,7 @@ in {
           "${mod}+m" = "exec --no-startup-id sound-switcher-flexbox";
         });
 
-      menu = "rofi -modi drun#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+      menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
       # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
       # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
