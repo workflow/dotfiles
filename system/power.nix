@@ -23,6 +23,8 @@ in {
     '';
   };
 
+  services.cpupower-gui.enable = true;
+
   services.tlp = lib.mkIf isFlexbox {
     enable = true;
     settings = {

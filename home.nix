@@ -49,6 +49,7 @@
       ./home/bash
       ./home/broot.nix
       ./home/btop
+      ./home/cpu-profile-toggler
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix

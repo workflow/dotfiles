@@ -112,6 +112,27 @@ in {
                 }
               ];
             }
+          ]
+          ++ lib.lists.optionals isFlexbox [
+            {
+              block = "custom";
+              command = "cpu-profile-toggler";
+              json = true;
+              icons_overrides = {
+                "performance" = "🐰";
+                "powersave" = "🔋";
+              };
+              interval = 1;
+              format = " $icon";
+              click = [
+                {
+                  button = "left";
+                  cmd = "cpu-profile-toggler --toggle";
+                }
+              ];
+            }
+          ]
+          ++ [
             {
               block = "load";
               interval = 1;
