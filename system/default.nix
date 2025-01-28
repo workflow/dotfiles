@@ -11,6 +11,8 @@
     "vm.swappiness" = 0;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
+
   boot.supportedFilesystems = ["ntfs"];
 
   # https://github.com/NixOS/nixpkgs/issues/64965
