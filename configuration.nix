@@ -17,6 +17,7 @@ in {
       ./system/dns.nix
       ./system/fonts.nix
       ./system/io
+      ./system/kind-killer
       ./system/ledgerlive.nix
       ./system/networking.nix
       ./system/nix-ld.nix
