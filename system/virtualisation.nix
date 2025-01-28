@@ -1,4 +1,11 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: let
+  isFlexbox = config.networking.hostName == "flexbox";
+  isBoar = config.networking.hostName == "boar";
+in {
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
@@ -13,8 +20,14 @@
   networking.firewall.interfaces.docker0.allowedTCPPorts = [53];
   networking.firewall.interfaces.docker0.allowedUDPPorts = [53];
   # Kind
-  networking.firewall.interfaces.br-19583dda413b.allowedTCPPorts = [53];
-  networking.firewall.interfaces.br-19583dda413b.allowedUDPPorts = [53];
+  networking.firewall.interfaces.br-19583dda413b = lib.mkIf isFlexbox {
+    allowedTCPPorts = [53];
+    allowedUDPPorts = [53];
+  };
+  networking.firewall.interfaces.br-5e5007921f27 = lib.mkIf isBoar {
+    allowedTCPPorts = [53];
+    allowedUDPPorts = [53];
+  };
 
   # https://rootlesscontaine.rs/getting-started/common/cgroup2/#enabling-cpu-cpuset-and-io-delegation
   # For minikube
