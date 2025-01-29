@@ -12,6 +12,9 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
+  environment.systemPackages = with pkgs; [
+    linuxKernel.packages.linux_zen.perf
+  ];
 
   boot.supportedFilesystems = ["ntfs"];
 
