@@ -23,7 +23,9 @@ in {
     '';
   };
 
-  services.cpupower-gui.enable = true;
+  services.cpupower-gui = lib.mkIf isFlexbox {
+    enable = true;
+  };
 
   services.tlp = lib.mkIf isFlexbox {
     enable = true;
