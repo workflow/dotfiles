@@ -47,6 +47,7 @@ in {
       ./notify # Pluggable Notifications
       ./oil
       ./plenary # LUA Functions
+      ./rainbow-csv
       ./telescope
       ./treesitter
       ./overseer

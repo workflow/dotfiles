@@ -3,6 +3,7 @@ local function ts_disable_long_files(_, bufnr)
 end
 
 local disabled_languages = {
+  "csv", -- In favor of rainbow-csv-nvim
 }
 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
