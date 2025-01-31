@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   isFlexbox = config.networking.hostName == "flexbox";
@@ -12,6 +13,11 @@ in {
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h
   '';
+
+  # Dell-specific power management
+  environment.systemPackages = lib.mkIf isFlexbox [
+    pkgs.libsmbios
+  ];
 
   services.xserver = {
     # Set DPMS timeouts to zero (any timeouts managed by xidlehook)
@@ -35,10 +41,6 @@ in {
 
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
       CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      # Battery charge thresholds - should help to prolong battery life
-      START_CHARGE_THRESH_BAT0 = 40; # 40 and below start to charge
-      STOP_CHARGE_THRESH_BAT0 = 85; # 85 and above stop charging
     };
   };
 }
