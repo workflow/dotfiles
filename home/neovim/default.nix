@@ -37,6 +37,7 @@ in {
       ./fidget # Sidebar notifications for LSP
       ./folds
       ./fugitive
+      ./lspsaga
       ./mini-operators
       ./mini-icons
       ./mason-lsp
