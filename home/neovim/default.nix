@@ -28,6 +28,7 @@
 in {
   imports =
     [
+      ./avante # Cursor style AI IDE
       ./carbon
       ./chatgpt-nvim
       ./cmp
