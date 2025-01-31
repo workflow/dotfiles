@@ -34,6 +34,7 @@ in {
       ./dadbod
       ./dap
       ./jdtls
+      ./fidget # Sidebar notifications for LSP
       ./folds
       ./fugitive
       ./mini-operators
@@ -273,13 +274,6 @@ in {
         plugin = dressing-nvim; # Better UI for codeactions, code input etc...
         config = ''
 
-        '';
-        type = "lua";
-      }
-      {
-        plugin = fidget-nvim; # Status notifications for LSP
-        config = ''
-          require('fidget').setup()
         '';
         type = "lua";
       }
