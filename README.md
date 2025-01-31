@@ -17,23 +17,24 @@ Used as daily driver since 2020. 😎
 
 Checkout the `home` directory for an up-to-date list of installed goodies. Here's a few shoutouts:
 
-| Type            |                                 Program                                 |
-| :-------------- | :---------------------------------------------------------------------: |
-| Backups         |               [Restic](https://github.com/restic/restic)                |
-| Editor          |                      [NeoVim](https://neovim.io/)                       |
-| File Manager    |                  [Lf](https://github.com/gokcehan/lf)                   |
-| File Syncing    |           [Syncthing](https://github.com/syncthing/syncthing)           |
-| Launcher        |               [Rofi](https://github.com/davatorium/rofi)                |
-| Nix Builds      |                   [Nh](https://github.com/viperML/nh)                   |
-| Notifications   |             [Dunst](https://github.com/dunst-project/dunst)             |
-| Prompt          |            [Starship](https://github.com/starship/starship)             |
-| Shell           |                     [Fish](https://fishshell.com/)                      |
-| Shell when data |                   [Nushell](https://www.nushell.sh/)                    |
-| Status Bar      |       [i3status-rust](https://github.com/greshake/i3status-rust)        |
-| Style Manager   |                [stylix](https://github.com/danth/stylix)                |
-| Terminal        |           [Alacritty](https://github.com/alacritty/alacritty)           |
-| Animal          | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
-| Window Manager  |                     [i3](https://github.com/i3/i3)                      |
+| Type             |                                 Program                                 |
+| :--------------- | :---------------------------------------------------------------------: |
+| Backups          |               [Restic](https://github.com/restic/restic)                |
+| Editor           |                      [NeoVim](https://neovim.io/)                       |
+| File Manager     |                  [Lf](https://github.com/gokcehan/lf)                   |
+| File Syncing     |           [Syncthing](https://github.com/syncthing/syncthing)           |
+| Launcher         |               [Rofi](https://github.com/davatorium/rofi)                |
+| Nix Builds       |                   [Nh](https://github.com/viperML/nh)                   |
+| Notifications    |             [Dunst](https://github.com/dunst-project/dunst)             |
+| Prompt           |            [Starship](https://github.com/starship/starship)             |
+| Power Management |       [Auto-Cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)       |
+| Shell            |                     [Fish](https://fishshell.com/)                      |
+| Shell when data  |                   [Nushell](https://www.nushell.sh/)                    |
+| Status Bar       |       [i3status-rust](https://github.com/greshake/i3status-rust)        |
+| Style Manager    |                [stylix](https://github.com/danth/stylix)                |
+| Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
+| Animal           | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
+| Window Manager   |                     [i3](https://github.com/i3/i3)                      |
 
 ## Lack of Aesthetics
 

@@ -29,18 +29,27 @@ in {
     '';
   };
 
-  services.cpupower-gui = lib.mkIf isFlexbox {
+  services.auto-cpufreq = {
     enable = true;
+    settings = {};
   };
-
-  services.tlp = lib.mkIf isFlexbox {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-    };
-  };
+  security.sudo.extraRules = [
+    {
+      users = ["farlion"];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/auto-cpufreq --force performance";
+          options = ["NOPASSWD" "SETENV"];
+        }
+        {
+          command = "/run/current-system/sw/bin/auto-cpufreq --force powersave";
+          options = ["NOPASSWD" "SETENV"];
+        }
+        {
+          command = "/run/current-system/sw/bin/auto-cpufreq --force reset";
+          options = ["NOPASSWD" "SETENV"];
+        }
+      ];
+    }
+  ];
 }

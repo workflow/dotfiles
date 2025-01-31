@@ -4,10 +4,10 @@ current_mode=$(cpupower frequency-info | grep -oP '(?<= governor ").*(?=")')
 
 if [[ "${1:-}" == "--toggle" ]]; then
 	if [ "$current_mode" == "powersave" ]; then
-		cpupower-gui --performance
+		sudo auto-cpufreq --force performance >/dev/null 2>&1
 		echo "{\"icon\": \"performance\", \"text\": \"\", \"state\": \"Good\"}"
 	elif [ "$current_mode" == "performance" ]; then
-		cpupower-gui --balanced
+		sudo auto-cpufreq --force powersave >/dev/null 2>&1
 		echo "{\"icon\": \"powersave\", \"text\": \"\", \"state\": \"Good\"}"
 	fi
 else

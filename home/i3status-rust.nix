@@ -112,8 +112,6 @@ in {
                 }
               ];
             }
-          ]
-          ++ lib.lists.optionals isFlexbox [
             {
               block = "custom";
               command = "cpu-profile-toggler";
@@ -129,10 +127,12 @@ in {
                   button = "left";
                   cmd = "cpu-profile-toggler --toggle";
                 }
+                {
+                  button = "right";
+                  cmd = "sudo auto-cpufreq --force reset";
+                }
               ];
             }
-          ]
-          ++ [
             {
               block = "load";
               interval = 1;

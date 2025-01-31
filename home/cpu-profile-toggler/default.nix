@@ -2,7 +2,7 @@
 {pkgs, ...}: let
   cpu-profile-toggler = pkgs.writeShellApplication {
     name = "cpu-profile-toggler";
-    runtimeInputs = [pkgs.cpupower-gui];
+    runtimeInputs = [];
     text = builtins.readFile ./scripts/cpu-profile-toggler.sh;
   };
 in {
