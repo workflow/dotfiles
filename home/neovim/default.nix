@@ -31,6 +31,7 @@ in {
       ./carbon
       ./chatgpt-nvim
       ./cmp
+      ./copilot
       ./dadbod
       ./dap
       ./jdtls
@@ -265,7 +266,6 @@ in {
         '';
         type = "lua";
       }
-      copilot-vim
       {
         plugin = nvim-web-devicons;
         config = ''
