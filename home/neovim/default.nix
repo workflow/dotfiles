@@ -39,9 +39,12 @@ in {
       ./mini-operators
       ./mini-icons
       ./mason-lsp
+      ./nui # UI Components
       ./none-ls
       ./neotest
+      ./notify # Pluggable Notifications
       ./oil
+      ./plenary # LUA Functions
       ./telescope
       ./treesitter
       ./overseer
@@ -363,13 +366,6 @@ in {
           wk.add({
             { "<leader>p", "<Plug>MarkdownPreviewToggle", desc = "Toggle Markdown [P]review" },
           })
-        '';
-        type = "lua";
-      }
-      {
-        plugin = nvim-notify;
-        config = ''
-          require('notify').setup()
         '';
         type = "lua";
       }
