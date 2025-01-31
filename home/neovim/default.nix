@@ -38,6 +38,7 @@ in {
       ./fidget # Sidebar notifications for LSP
       ./folds
       ./fugitive
+      ./git-conflict-nvim
       ./lspsaga
       ./mini-operators
       ./mini-icons
