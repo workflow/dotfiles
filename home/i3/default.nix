@@ -8,8 +8,6 @@
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
 
-  clipboardInserter = "${pkgs.clipcat}/bin/clipcat-menu insert";
-
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
 
   isBoar = osConfig.networking.hostName == "boar";
@@ -261,9 +259,6 @@ in {
           # Rofi Run Mode (nvidia-offload)
           "${mod}+o" = "exec --no-startup-id rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
-          # Clipcat
-          "${mod}+p" = "exec ${clipboardInserter}";
-
           # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
           # Pulse Audio controls
           "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+"; #increase sound volume
@@ -372,13 +367,6 @@ in {
             command = "~/nixos-config/home/xsession/autorandr.sh";
             notification = false;
           }
-
-          # Clipcat
-          {
-            command = "clipcatd";
-            notification = false;
-            always = true;
-          } # start clipcatd at startup
 
           {
             command = "youtube-music";

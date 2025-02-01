@@ -82,7 +82,6 @@
       ./home/programs/rofi
       ./home/programs/rofimoji
 
-      ./home/services/clipcat
       ./home/services/dunst
     ]
     ++ secretImports;
