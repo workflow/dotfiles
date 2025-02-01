@@ -51,6 +51,7 @@ in {
       ./oil
       ./plenary # LUA Functions
       ./rainbow-csv
+      ./render-markdown
       ./telescope
       ./treesitter
       ./overseer
