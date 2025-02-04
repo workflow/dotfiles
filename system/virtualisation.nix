@@ -28,6 +28,11 @@ in {
     allowedTCPPorts = [53];
     allowedUDPPorts = [53];
   };
+  # Ad-hoc (Docker Compose)
+  networking.firewall.interfaces.br-1a132ab74d09 = lib.mkIf isBoar {
+    allowedTCPPorts = [53];
+    allowedUDPPorts = [53];
+  };
 
   # https://rootlesscontaine.rs/getting-started/common/cgroup2/#enabling-cpu-cpuset-and-io-delegation
   # For minikube
