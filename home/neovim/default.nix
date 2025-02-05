@@ -53,6 +53,7 @@ in {
       ./rainbow-csv
       ./render-markdown
       ./telescope
+      ./toggleterm
       ./treesitter
       ./overseer
     ]
@@ -404,16 +405,6 @@ in {
         type = "lua";
       }
       vim-textobj-entire
-      {
-        plugin = toggleterm-nvim;
-        config = ''
-          require("toggleterm").setup({
-            open_mapping = [[<c-\>]],
-            direction = 'float',
-          })
-        '';
-        type = "lua";
-      }
       vim-toml
       {
         plugin = nvim-tree-lua;
