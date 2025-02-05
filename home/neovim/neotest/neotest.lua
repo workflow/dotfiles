@@ -1,6 +1,7 @@
 require("neotest").setup({
   adapters = {
-    -- require("neotest-java"),
+    require("neotest-rust") {
+    },
     require("neotest-vim-test")({
       -- ignore_file_types = { "java" },
     }),
@@ -15,6 +16,7 @@ wk.add(
     { "<leader>nd", function() require("neotest").run.run({ strategy = "dap" }) end, desc = "[D]ebug nearest" },
     { "<leader>nf", function() require("neotest").run.run(vim.fn.expand("%")) end,   desc = "[F]ile" },
     { "<leader>nn", require("neotest").run.run,                                      desc = "[N]earest" },
-    { "<leader>ns", require("neotest").run.stop,                                     desc = "[S]top nearest" },
+    { "<leader>no", require("neotest").output_panel.toggle,                          desc = "Toggle [O]utput Panel" },
+    { "<leader>ns", require("neotest").summary.toggle,                               desc = "Toggle [S]ummary" },
   }
 )
