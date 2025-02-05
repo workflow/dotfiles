@@ -2,13 +2,14 @@ local shared_lsp_config = require('shared_lsp_config')
 
 -- General Diagnostic keymaps
 local wk = require("which-key")
+local lspsaga = require("lspsaga")
 wk.add(
   {
-    { "<localleader>d", vim.diagnostic.goto_prev,  desc = "Open Floating [D]iagnostics" },
-    { "<localleader>l", vim.diagnostic.goto_next,  desc = "Open Diagnostics in [L]ocation List" },
-    { "<localleader>q", vim.diagnostic.open_float, desc = "Open Diagnostics in [Q]uickfix List" },
-    { "[d",             vim.diagnostic.setloclist, desc = "Prev [D]iagnostic" },
-    { "]d",             vim.diagnostic.setqflist,  desc = "Next [D]iagnostic" },
+    { "<localleader>d", vim.diagnostic.open_float,               desc = "Open Floating [D]iagnostics" },
+    { "<localleader>l", vim.diagnostic.setloclist,               desc = "Open Diagnostics in [L]ocation List" },
+    { "<localleader>q", vim.diagnostic.setqflist,                desc = "Open Diagnostics in [Q]uickfix List" },
+    { "[d",             "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Prev [D]iagnostic" },
+    { "]d",             "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Next [D]iagnostic" },
   }
 )
 
