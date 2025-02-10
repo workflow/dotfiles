@@ -6,6 +6,8 @@
   networking.firewall = {
     # if packets are dropped, they will show up in dmesg
     logReversePathDrops = true;
+    logRefusedPackets = true;
+    # logRefusedUnicastsOnly = false;
   };
 
   # Tailscale
