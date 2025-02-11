@@ -3,20 +3,6 @@
     enable = true;
 
     commands = {
-      broot_jump = ''
-        ''${{
-          f=$(mktemp)
-          res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
-          rm -f "$f"
-          if [ -f "$res" ]; then
-            cmd="select"
-          elif [ -d "$res" ]; then
-            cmd="cd"
-          fi
-          lf -remote "send $id $cmd \"$res\""
-        }}
-      '';
-
       chmod = ''
         ''${{
             printf "Mode Bits: "
@@ -131,12 +117,11 @@
 
     keybindings = {
       "." = "set hidden!";
-      c = "yank-file";
       d = null;
       dd = "trash";
       dl = "dlfile";
       dr = "dragon";
-      f = "broot_jump";
+      f = "zi";
       h = "chmod";
       k = "down";
       l = "up";
@@ -147,7 +132,6 @@
       mf = "mkfile";
       mr = "sudomkfile";
       Q = "quit-and-cd";
-      u = "unarchive";
       x = "cut";
     };
 
