@@ -41,6 +41,7 @@ in {
       ./fugitive
       ./git-conflict-nvim
       ./lspsaga
+      ./lualine
       ./mini-operators
       ./mini-icons
       ./mason-lsp
@@ -336,25 +337,6 @@ in {
       }
       {
         plugin = nvim-lspconfig; # Defaults for loads of LSP languages
-      }
-      {
-        plugin = lualine-nvim;
-        config = ''
-          require('lualine').setup {
-            options = {
-              theme = 'gruvbox',
-            },
-            extensions = {
-              'fugitive',
-              'mason',
-              'nvim-tree',
-              'toggleterm',
-              'overseer',
-              'trouble',
-            }
-          }
-        '';
-        type = "lua";
       }
       {
         plugin = luasnip; # Snippet engine
