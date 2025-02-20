@@ -244,7 +244,7 @@ in {
           "${mod}+Control+semicolon" = "move workspace to output right";
 
           # lock screen
-          "${mod}+Shift+x" = "exec --no-startup-id ${screenShutter}";
+          "${mod}+Shift+x" = "exec --no-startup-id xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
 
           # toggle tiling / floating
           "${mod}+Shift+space" = "floating toggle";
