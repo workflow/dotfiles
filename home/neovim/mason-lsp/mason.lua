@@ -94,6 +94,7 @@ require('mason-lspconfig').setup()
 require("mason-nvim-dap").setup({
   -- automatic_installation = true,
   ensure_installed = {
+    "codelldb",
     "javadbg",
     "javatest",
   },
