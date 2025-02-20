@@ -11,7 +11,7 @@
       type = "lua";
     }
     {
-      plugin = nvim-dap-virtual-text; # Highlighting
+      plugin = nvim-dap-virtual-text; # Virtual text showing values using Treesitter
       config = ''
         require("nvim-dap-virtual-text").setup()
       '';
