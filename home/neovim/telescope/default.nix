@@ -31,6 +31,8 @@
             { "<leader><space><space>", "<cmd>Telescope git_files<CR>", desc = "Version Controlled Files" },
             { "<leader><space>?", "<cmd>Telescope keymaps<CR>", desc = "Vim Keymap Cheatsheet" },
             { "<leader><space>b", "<cmd>Telescope buffers<CR>", desc = "[B]uffers" },
+            { "<leader><space>c", "<cmd>Telescope commands<CR>", desc = "[C]ommands" },
+            { "<leader><space>d", "<cmd>Telescope command_history<CR>", desc = "Comman[d] History" },
             { "<leader><space>e", "<cmd>Telescope help_tags<CR>", desc = "H[e]lp Tags" },
             { "<leader><space>f", "<cmd>Telescope find_files<CR>", desc = "All [F]iles" },
             { "<leader><space>g", "<cmd>Telescope live_grep<CR>", desc = "[G]rep" },
