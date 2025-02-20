@@ -163,15 +163,6 @@ in {
       let g:VM_custom_motions = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
       let g:VM_mouse_mappings = 1
 
-      " Vim-test
-      let test#strategy = "toggleterm"
-      let g:test#rust#runner = 'cargonextest'
-      nmap <silent> <leader>tt :TestNearest<CR>
-      nmap <silent> <leader>tT :TestFile<CR>
-      nmap <silent> <leader>ta :TestSuite<CR>
-      nmap <silent> <leader>tl :TestLast<CR>
-      nmap <silent> <leader>tg :TestVisit<CR>
-
       " Background light/dark toggling
       nmap <silent> <leader>i  :let &bg=(&bg=='light'?'dark':'light')<CR>
 
@@ -371,7 +362,6 @@ in {
       {
         plugin = vim-suda; # Sudo support via :SudaRead and :SudaWrite
       }
-      vim-test
       {
         plugin = text-case-nvim;
         config = ''
