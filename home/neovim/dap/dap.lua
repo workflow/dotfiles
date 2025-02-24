@@ -15,7 +15,7 @@ wk.add(
     { "<F4>",       function() dap.close() end,                                                desc = "[Q]uit/Close dap" },
     { "<leader>dr", function() dap.repl.open() end,                                            desc = "Open [R]epl" },
     { "<leader>du", function() dap.step_out() end,                                             desc = "Step O[u]t" },
-    { "<F3>",       function() dap.step_out() end,                                             desc = "Step O[u]t" },
+    { "<F6>",       function() dap.step_out() end,                                             desc = "Step O[u]t" },
   }
 )
 
