@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -12,25 +11,9 @@
   boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
 
   # External monitors brightness control
-  # See https://discourse.nixos.org/t/brightness-control-of-external-monitors-with-ddcci-backlight/8639/11
-  boot.extraModulePackages = with config.boot.kernelPackages; [ddcci-driver];
-  boot.initrd.kernelModules = ["ddcci_backlight"];
   environment.systemPackages = [pkgs.ddcutil];
-  services.ddccontrol.enable = true;
   hardware.i2c.enable = true;
   users.users.farlion.extraGroups = ["i2c"];
-
-  security.sudo.extraRules = [
-    {
-      users = ["farlion"];
-      commands = [
-        {
-          command = "/home/farlion/code/nixos-config/home/xsession/boar_ddcci_fix.sh";
-          options = ["NOPASSWD" "SETENV"];
-        }
-      ];
-    }
-  ];
 
   # Plenty of RAM so...
   boot.tmp.useTmpfs = true;

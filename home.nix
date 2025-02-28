@@ -50,6 +50,7 @@
       ./home/broot.nix
       ./home/btop
       ./home/cpu-profile-toggler
+      ./home/ddc-backlight
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix
