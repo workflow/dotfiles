@@ -265,7 +265,7 @@ in {
                 "moon_3" = "🌖";
                 "moon_full" = "🌕";
               };
-              interval = 1;
+              interval = 10;
               click = [
                 {
                   button = "up";
@@ -290,7 +290,7 @@ in {
                 "moon_3" = "🌖";
                 "moon_full" = "🌕";
               };
-              interval = 1;
+              interval = 10;
               click = [
                 {
                   button = "up";
@@ -315,7 +315,7 @@ in {
                 "moon_3" = "🌖";
                 "moon_full" = "🌕";
               };
-              interval = 1;
+              interval = 10;
               click = [
                 {
                   button = "up";
