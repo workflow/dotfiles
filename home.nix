@@ -18,6 +18,7 @@
     jetbrains.idea-ultimate
     kind
     libation
+    lnav # Log File Navigator
     lolcat
     neo-cowsay
     networkmanager_dmenu
