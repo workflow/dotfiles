@@ -238,8 +238,6 @@ in {
   };
 
   services = {
-    lorri.enable = true;
-
     flameshot = {
       enable = true;
       settings = {
