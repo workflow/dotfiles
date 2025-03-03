@@ -73,6 +73,7 @@
       ./home/starship
       ./home/stylix
       ./home/syncthing
+      ./home/systemd-errors-and-warnings-counter
       ./home/urxvt.nix
       ./home/virtual-cable
       ./home/xdg.nix

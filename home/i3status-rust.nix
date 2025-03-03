@@ -81,6 +81,22 @@ in {
         blocks =
           [
             {
+              block = "custom";
+              command = "systemd-errors-and-warnings-counter";
+              json = true;
+              interval = 30;
+              click = [
+                {
+                  button = "left";
+                  cmd = "alacritty -e fish -c 'journalctl -x --boot --priority 3 --follow'";
+                }
+                {
+                  button = "right";
+                  cmd = "alacritty -e fish -c 'journalctl -x --boot --priority 4 --follow'";
+                }
+              ];
+            }
+            {
               block = "disk_space";
               click = [
                 {
