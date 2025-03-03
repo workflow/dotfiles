@@ -15,6 +15,7 @@
     find-cursor
     galaxy-buds-client
     hoppscotch # Open-Source Postman
+    unstable.isd # Interactive Systemd TUI in Python
     jetbrains.idea-ultimate
     kind
     libation
