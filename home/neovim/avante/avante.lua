@@ -9,6 +9,12 @@ require('avante').setup({
 		enabled = true,
 		first_provider = "azure",
 	},
+	claude = {
+		endpoint = "https://api.anthropic.com",
+		model = "claude-3-7-sonnet-20250219",
+		temperature = 0,
+		max_tokens = 8192,
+	},
 	hints = { enabled = false }
 })
 local wk = require("which-key")
