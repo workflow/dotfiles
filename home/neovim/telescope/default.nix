@@ -66,5 +66,23 @@
       '';
       type = "lua";
     }
+    {
+      plugin = telescope-undo-nvim;
+      config = ''
+        require("telescope").setup({
+          extensions = {
+            undo = {};
+          },
+        })
+        require("telescope").load_extension("undo")
+        local wk = require("which-key")
+        wk.add(
+          {
+            { "<leader>u", "<cmd>Telescope undo<cr>", desc = "[U]ndo Tree" },
+          }
+        )
+      '';
+      type = "lua";
+    }
   ];
 }
