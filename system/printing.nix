@@ -1,9 +1,12 @@
 {pkgs, ...}: {
-  services.printing.enable = true;
-  services.printing.drivers = [
-    pkgs.gutenprint
-    pkgs.hplip
-  ];
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.gutenprint
+      pkgs.hplip
+    ];
+    listenAddresses = ["127.0.0.1:631"];
+  };
 
   services.avahi = {
     enable = true;
