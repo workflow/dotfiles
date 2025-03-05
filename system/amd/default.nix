@@ -10,6 +10,11 @@
     };
   };
 
+  # Disable AMD GPU power management to see if it prevents feezes on S3/s2idle
+  boot.kernelParams = [
+    "amdgpu.runpm=0"
+  ];
+
   environment.systemPackages = with pkgs; [
     lact # GUI for overclocking, undervolting, setting fan curves, etc.
     libva-utils
