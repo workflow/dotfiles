@@ -5,6 +5,7 @@ ICONS=("moon_empty" "moon_1" "moon_2" "moon_3" "moon_full")
 # Check if monitor is connected and turned on
 # 1. Attempt to read the power state of the monitor using VCP code 0xD6 (Power Mode).
 #    If this fails, we assume there's no connected monitor on this bus, or it won't respond to DDC.
+set +e
 power_output=$(timeout 2 ddcutil getvcp D6 -b "$BUS" --noverify --sleep-multiplier 2.0 2>&1)
 power_status=$?
 if [ $power_status -ne 0 ]; then
@@ -22,6 +23,7 @@ fi
 # 3. Otherwise, we can safely get brightness value without overloading the kernel...
 output=$(timeout 2 ddcutil getvcp 10 -b "$BUS" --noverify --sleep-multiplier 2.0 2>&1)
 status=$?
+set -e
 
 if [ $status -ne 0 ]; then
 	echo "{\"full_text\":\"DDC Error\",\"color\":\"#ff0000\"}"
