@@ -8,6 +8,10 @@ require('avante').setup({
 	dual_boost = {
 		enabled = true,
 		first_provider = "azure",
+		second_provider = "claude",
+		prompt =
+		"Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Do not provide any explanation, just give the response directly. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]",
+		timeout = 60000, -- Timeout in milliseconds
 	},
 	claude = {
 		endpoint = "https://api.anthropic.com",
