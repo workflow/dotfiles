@@ -22,6 +22,7 @@ wk.add(
 	{
 		{
 			{ "<leader>a", group = "[A]vante" },
+			{ "<F1>",      "<cmd>AvanteToggle<cr>", desc = "Toggle Avante" },
 		},
 	}
 )

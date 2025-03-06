@@ -4,7 +4,7 @@ dapui.setup({
   wk.add(
     {
       { "<leader>dt", require('dapui').toggle, desc = "[T]oggle UI" },
-      { "<F6>",       require('dapui').toggle, desc = "[T]oggle UI" },
+      { "<F9>",       require('dapui').toggle, desc = "[T]oggle UI" },
     }
   )
 })

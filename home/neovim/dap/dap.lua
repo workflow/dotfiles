@@ -6,16 +6,16 @@ wk.add(
     { "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Set conditional [B]reakpoint" },
     { "<leader>db", function() dap.toggle_breakpoint() end,                                    desc = "Toggle [B]reakpoint" },
     { "<leader>dc", function() dap.continue() end,                                             desc = "[C]ontinue" },
-    { "<F5>",       function() dap.continue() end,                                             desc = "[C]ontinue" },
+    { "<F5>",       function() dap.continue() end,                                             desc = "Continue" },
     { "<leader>di", function() dap.step_into() end,                                            desc = "Step [I]nto" },
-    { "<F1>",       function() dap.step_into() end,                                            desc = "Step [I]nto" },
+    { "<F6>",       function() dap.step_into() end,                                            desc = "Step Into" },
     { "<leader>do", function() dap.step_over() end,                                            desc = "Step [O]ver" },
-    { "<F2>",       function() dap.step_over() end,                                            desc = "Step [O]ver" },
+    { "<F7>",       function() dap.step_over() end,                                            desc = "Step Over" },
     { "<leader>dq", function() dap.close() end,                                                desc = "[Q]uit/Close dap" },
-    { "<F4>",       function() dap.close() end,                                                desc = "[Q]uit/Close dap" },
+    { "<F4>",       function() dap.close() end,                                                desc = "Quit/Close dap" },
     { "<leader>dr", function() dap.repl.open() end,                                            desc = "Open [R]epl" },
     { "<leader>du", function() dap.step_out() end,                                             desc = "Step O[u]t" },
-    { "<F6>",       function() dap.step_out() end,                                             desc = "Step O[u]t" },
+    { "<F8>",       function() dap.step_out() end,                                             desc = "Step Out" },
   }
 )
 
