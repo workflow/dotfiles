@@ -65,6 +65,9 @@
       ./home/k9s
       ./home/kind-with-local-registry
       ./home/lf.nix
+
+      ./home/modules/yubikey-touch-detector
+
       ./home/neovim
       ./home/nix-index
       ./home/nushell
@@ -257,5 +260,7 @@ in {
     };
 
     unclutter.enable = true;
+
+    yubikey-touch-detector.enable = true;
   };
 }
