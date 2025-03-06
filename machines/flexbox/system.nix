@@ -24,6 +24,11 @@
     Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
   '';
 
+  # Disable power saving for fixing Comet Lake Audio Card (SOF) breaking after suspend
+  services.udev.extraRules = ''
+    ACTION=="add|change", SUBSYSTEM=="pci", KERNELS=="0000:00:1f.3", ATTR{power/control}="on"
+  '';
+
   # LVM on LUKS
   boot.initrd.luks.devices = {
     root = {
