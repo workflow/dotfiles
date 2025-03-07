@@ -19,10 +19,6 @@
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
   };
-  # Better performance according to https://github.com/chjj/compton/issues/227
-  services.xserver.screenSection = ''
-    Option "metamodes" "nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
-  '';
 
   # Disable power saving for fixing Comet Lake Audio Card (SOF) breaking after suspend
   services.udev.extraRules = ''
