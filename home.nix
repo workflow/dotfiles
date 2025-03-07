@@ -20,6 +20,7 @@
     jetbrains.idea-ultimate
     kind
     libation
+    libsecret # `secret-tool` for interacting with gnome-keyring
     lnav # Log File Navigator
     lolcat
     neo-cowsay
