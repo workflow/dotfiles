@@ -246,8 +246,15 @@ in {
           # lock screen
           "${mod}+Shift+x" = "exec --no-startup-id xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
 
+          # Layout
           # toggle tiling / floating
           "${mod}+Shift+space" = "floating toggle";
+          # Toggle split
+          "${mod}+Shift+e" = "layout toggle split";
+          # Stacking
+          "${mod}+Shift+s" = "layout stacking";
+          # Tabbed
+          "${mod}+Shift+w" = "layout tabbed";
 
           # move the currently focused window to the scratchpad
           "${mod}+Shift+minus" = "move scratchpad";
