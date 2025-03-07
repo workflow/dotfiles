@@ -421,6 +421,12 @@ in {
             command = "sudo tailscale down";
             notification = false;
           }
+
+          # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
+          {
+            command = "seahorse";
+            notification = false;
+          }
         ]
         ++ lib.lists.optionals isFlexbox
         [
