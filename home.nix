@@ -8,6 +8,7 @@
   homePackages = with pkgs; [
     aichat
     alejandra # nix formatter
+    autotiling # autotiling script for i3
     bluetuith
     brave
     calibre # Ebook reader

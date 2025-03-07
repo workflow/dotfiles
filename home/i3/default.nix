@@ -188,10 +188,10 @@ in {
           "${mod}+semicolon" = "focus right";
 
           # Move
-          "${mod}+Shift+j" = "exec --no-startup-id pkill -f .autotiling-wrapped; move left; exec --no-startup-id autotiling &";
-          "${mod}+Shift+k" = "exec --no-startup-id pkill -f .autotiling-wrapped; move down; exec --no-startup-id autotiling &";
-          "${mod}+Shift+l" = "exec --no-startup-id pkill -f .autotiling-wrapped; move up; exec --no-startup-id autotiling &";
-          "${mod}+Shift+semicolon" = "exec --no-startup-id pkill -f .autotiling-wrapped; move right; exec --no-startup-id autotiling &";
+          "${mod}+Shift+j" = "move left";
+          "${mod}+Shift+k" = "move down";
+          "${mod}+Shift+l" = "move up";
+          "${mod}+Shift+semicolon" = "move right";
 
           # Move to workspace
           "${mod}+1" = "workspace ${ws1}";

@@ -7,7 +7,6 @@
   arandr
   asciinema
   audio-recorder
-  autotiling # autotiling script for i3
   awscli2
   bc
   bind # Provides dig
