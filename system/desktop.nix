@@ -3,20 +3,17 @@
 in {
   services.displayManager = {
     defaultSession = xsession-name;
-    # ly = {
-    #   enable = true;
-    #   defaultUser = "farlion";
-    # };
+    ly = {
+      enable = true;
+      settings = {
+        animation = "doom";
+        hide_borders = true;
+      };
+    };
   };
 
   services.xserver = {
     enable = true;
-
-    displayManager = {
-      lightdm = {
-        enable = true;
-      };
-    };
 
     desktopManager = {
       # Delegate xsession to home-manager

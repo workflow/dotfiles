@@ -20,6 +20,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Type             |                                 Program                                 |
 | :--------------- | :---------------------------------------------------------------------: |
 | Backups          |               [Restic](https://github.com/restic/restic)                |
+| Display Manager  |                [Ly](https://codeberg.org/AnErrupTion/ly)                |
 | Editor           |                      [NeoVim](https://neovim.io/)                       |
 | File Manager     |                  [Lf](https://github.com/gokcehan/lf)                   |
 | File Syncing     |           [Syncthing](https://github.com/syncthing/syncthing)           |
