@@ -19,6 +19,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 
 | Type             |                                 Program                                 |
 | :--------------- | :---------------------------------------------------------------------: |
+| AI IDE           |             [Avante](https://github.com/yetone/avante.nvim)             |
 | Backups          |               [Restic](https://github.com/restic/restic)                |
 | Display Manager  |                [Ly](https://codeberg.org/AnErrupTion/ly)                |
 | Editor           |                      [NeoVim](https://neovim.io/)                       |
