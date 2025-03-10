@@ -9,10 +9,10 @@ in {
   # This will save you money and possibly your life!
   services.thermald.enable = true;
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
+  # services.logind.lidSwitch = "suspend-then-hibernate";
+  # systemd.sleep.extraConfig = ''
+  #   HibernateDelaySec=1h
+  # '';
 
   # Dell-specific power management
   environment.systemPackages = lib.mkIf isFlexbox [

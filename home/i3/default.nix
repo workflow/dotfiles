@@ -428,13 +428,13 @@ in {
             notification = false;
           }
         ]
-        ++ lib.lists.optionals isFlexbox
-        [
-          {
-            command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""'';
-            notification = false;
-          }
-        ]
+        # ++ lib.lists.optionals isFlexbox
+        # [
+        #   {
+        #     command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""'';
+        #     notification = false;
+        #   }
+        # ]
         ++ lib.lists.optionals isBoar
         [
           {
