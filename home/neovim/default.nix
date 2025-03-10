@@ -50,6 +50,7 @@ in {
       ./neotest
       ./notify # Pluggable Notifications
       ./nvim-tree-lua # File Tree
+      ./obsidian-nvim
       ./oil
       ./plenary # LUA Functions
       ./rainbow-csv
