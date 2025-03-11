@@ -422,6 +422,12 @@ in {
             notification = false;
           }
 
+          # Variety
+          {
+            command = "/bin/bash -c 'sleep 20 && ${pkgs.variety}/bin/variety --profile /home/farlion/.config/variety/";
+            notification = false;
+          }
+
           # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
           {
             command = "seahorse";
