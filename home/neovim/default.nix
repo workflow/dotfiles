@@ -35,30 +35,31 @@ in {
       ./copilot
       ./dadbod
       ./dap
-      ./jdtls
       ./fidget # Sidebar notifications for LSP
       ./folds
       ./fugitive
       ./git-conflict-nvim
+      ./jdtls
       ./lspsaga
       ./lualine
-      ./mini-operators
-      ./mini-icons
       ./mason-lsp
-      ./nui # UI Components
-      ./none-ls
+      ./mini-icons
+      ./mini-operators
       ./neotest
+      ./noice # UI for commandline, messages and popupmenu
+      ./none-ls
       ./notify # Pluggable Notifications
+      ./nui # UI Components
       ./nvim-tree-lua # File Tree
       ./obsidian-nvim
       ./oil
+      ./overseer
       ./plenary # LUA Functions
       ./rainbow-csv
       ./render-markdown
       ./telescope
       ./toggleterm
       ./treesitter
-      ./overseer
       ./vim-visual-multi
     ]
     ++ lib.optionals isLightTheme [
