@@ -59,6 +59,7 @@ in {
       ./toggleterm
       ./treesitter
       ./overseer
+      ./vim-visual-multi
     ]
     ++ lib.optionals isLightTheme [
       ./gruvbox
@@ -406,7 +407,6 @@ in {
         type = "lua";
       }
       vim-unimpaired
-      vim-visual-multi
       {
         plugin = which-key-nvim;
         config = ''
