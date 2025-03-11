@@ -11,6 +11,11 @@
             }
           },
         })
+
+        local wk = require("which-key")
+        wk.add({
+          { "<leader><leader>o", "<cmd>ObsidianSearch<cr>", desc = "Search [O]bsidian" },
+        })
       '';
       type = "lua";
     }
