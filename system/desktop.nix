@@ -8,7 +8,7 @@ in {
       settings = {
         animation = "doom";
         hide_borders = true;
-        tty = 9; # Hopefully less logs flowing into the login screen, see https://codeberg.org/AnErrupTion/ly/issues/537
+        tty = 7; # Hopefully less logs flowing into the login screen, see https://codeberg.org/AnErrupTion/ly/issues/537
       };
     };
   };
