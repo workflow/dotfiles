@@ -20,7 +20,12 @@ cmp.setup {
 
     -- Scroll the documentation window [b]ack / [f]orward
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-u>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
+    -- Exit completion
+    ['<C-e>'] = cmp.mapping.abort(),
 
     -- Accept ([y]es) the completion.
     --  This will auto-import if your LSP supports it.
@@ -47,15 +52,15 @@ cmp.setup.cmdline({ '/', '?' }, {
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' }
---   }, {
---     { name = 'cmdline' }
---   }),
---   matching = { disallow_symbol_nonprefix_matching = false }
--- })
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  }),
+  matching = { disallow_symbol_nonprefix_matching = false }
+})
 
 local lspkind = require('lspkind')
 cmp.setup {

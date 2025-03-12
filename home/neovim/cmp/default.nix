@@ -18,6 +18,9 @@
       plugin = cmp-buffer; # Buffer completions
     }
     {
+      plugin = cmp-cmdline; # Commandline completions
+    }
+    {
       plugin = lspkind-nvim; # VSCode-like pictograms for LSP completions
     }
   ];
