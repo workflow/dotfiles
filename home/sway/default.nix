@@ -52,7 +52,7 @@
 
   wsc = "c";
 in {
-  xsession.windowManager.i3 = {
+  wayland.windowManager.sway = {
     enable = true;
 
     config = {
@@ -91,7 +91,6 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output primary
             '';
@@ -120,7 +119,6 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output HDMI-A-1
             '';
@@ -146,7 +144,6 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            command = "${pkgs.i3-gaps}/bin/i3bar";
             extraConfig = ''
               output HDMI-A-0
             '';
@@ -370,121 +367,51 @@ in {
       startup =
         [
           # Detect and apply screen layout + wallpaper
-          {
-            command = "~/nixos-config/home/xsession/autorandr.sh";
-            notification = false;
-          }
+          {command = "~/nixos-config/home/xsession/autorandr.sh";}
 
-          {
-            command = "youtube-music";
-            notification = false;
-          }
-          {
-            command = "todoist";
-            notification = false;
-          }
+          {command = "youtube-music";}
+          {command = "todoist";}
 
           # Auto lock screen on screen off, suspend, etc...
-          {
-            command = ''xss-lock -- "${locker}"'';
-            notification = false;
-          }
+          {command = ''xss-lock -- "${locker}"'';}
 
           # Run KBDD (XKB Daemon for per-window keyboard layout switching)
           {
             command = "kbdd";
-            notification = false;
             always = true;
           }
 
           # Launch syncthingtray
-          {
-            command = "sleep 10s && syncthingtray --wait";
-            notification = false;
-          }
+          {command = "sleep 10s && syncthingtray --wait";}
 
           # Launch blueman-applet
-          {
-            command = "sleep 10s && blueman-applet";
-            notification = false;
-          }
+          {command = "sleep 10s && blueman-applet";}
 
           # Autotiling
           {
             command = "autotiling &";
-            notification = false;
             always = true;
           }
 
           # Disconnect tailscale
-          {
-            command = "sudo tailscale down";
-            notification = false;
-          }
+          {command = "sudo tailscale down";}
 
           # Variety
-          {
-            command = "/bin/bash -c 'sleep 20 && ${pkgs.variety}/bin/variety --profile /home/farlion/.config/variety/";
-            notification = false;
-          }
+          {command = "/bin/bash -c 'sleep 20 && ${pkgs.variety}/bin/variety --profile /home/farlion/.config/variety/";}
 
           # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
-          {
-            command = "seahorse";
-            notification = false;
-          }
+          {command = "seahorse";}
         ]
         # ++ lib.lists.optionals isFlexbox
         # [
-        #   {
-        #     command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""'';
-        #     notification = false;
-        #   }
+        #   { command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""''; }
         # ]
         ++ lib.lists.optionals isBoar
         [
-          {
-            command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""'';
-            notification = false;
-          }
+          {command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""'';}
         ];
 
       terminal = "alacritty";
-
-      window = {
-        commands = [
-          # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-          {
-            command = "kill";
-            criteria = {title = "Desktop - Plasma";};
-          }
-          {
-            command = "floating disable";
-            criteria = {class = "(?i)*nextcloud*";};
-          }
-          {
-            command = "border none";
-            criteria = {
-              class = "plasmashell";
-              window_type = "notification";
-            };
-          }
-          {
-            command = "move right 700px";
-            criteria = {
-              class = "plasmashell";
-              window_type = "notification";
-            };
-          }
-          {
-            command = "move down 450px";
-            criteria = {
-              class = "plasmashell";
-              window_type = "notification";
-            };
-          }
-        ];
-      };
 
       workspaceAutoBackAndForth = false;
     };
@@ -494,9 +421,6 @@ in {
       for_window [class="^.*"] border pixel 1
 
       bindsym ${mod}+Ctrl+x --release exec --no-startup-id xkill
-
-      # i3 + plasma5 tipps from https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-      no_focus [class="plasmashell" window_type="notification"]
 
       # System mode. Can't be put into config.modes because of chained commands.
       mode "${mode_system}" {
@@ -513,6 +437,10 @@ in {
       }
     '';
 
-    package = pkgs.i3-gaps;
+    extraOptions = [
+      "--verbose"
+      "--debug"
+      "--unsupported-gpu"
+    ];
   };
 }

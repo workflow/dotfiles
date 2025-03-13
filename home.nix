@@ -62,7 +62,7 @@
       ./home/git.nix
       ./home/gpg.nix
       ./home/gtk-qt
-      ./home/i3
+      ./home/sway
       ./home/i3status-rust.nix
       ./home/k9s
       ./home/kind-with-local-registry
