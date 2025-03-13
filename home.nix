@@ -127,9 +127,6 @@ in {
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
-      # Parcellite
-      ".config/parcellite/parcelliterc".source = ./dotfiles/parcelliterc;
-
       # Patch Minikube kvm2 driver, see https://github.com/NixOS/nixpkgs/issues/115878
       ".minikube/bin/docker-machine-driver-kvm2".source = "${pkgs.docker-machine-kvm2}/bin/docker-machine-driver-kvm2";
 
@@ -241,8 +238,6 @@ in {
   };
 
   services = {
-    parcellite.enable = true;
-
     udiskie = {
       enable = true;
       automount = false;
