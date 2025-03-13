@@ -1,8 +1,10 @@
-{pkgs, ...}: {
+{...}: {
   programs.git = {
     aliases = {
       c = "commit";
       p = "push";
+      rim = "rebase -i main";
+      rimm = "rebase -i master";
     };
 
     difftastic = {
