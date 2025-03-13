@@ -426,6 +426,10 @@ in {
       workspaceAutoBackAndForth = false;
     };
 
+    systemd = {
+      enable = true; # Enables sway-session.target, see home-manager manual
+    };
+
     extraConfig = ''
       default_border pixel 1
       for_window [class="^.*"] border pixel 1
