@@ -32,6 +32,7 @@
     restic
     teams-for-linux # Unofficial Msft Teams App
     wealthfolio
+    wl-clipboard-rs
     ytmdesktop
     xdg-desktop-portal
   ];
@@ -54,6 +55,7 @@
       ./home/bash
       ./home/broot.nix
       ./home/btop
+      ./home/cliphist
       ./home/cpu-profile-toggler
       ./home/ddc-backlight
       ./home/email.nix

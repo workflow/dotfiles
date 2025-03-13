@@ -5,8 +5,8 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
 
-    c = "xclip -selection clipboard";
-    cc = "tee /dev/tty | xclip -selection clipboard";
+    c = "wl-clip -selection clipboard";
+    cc = "tee /dev/tty | wl-clip -selection clipboard";
 
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
@@ -30,7 +30,7 @@
     gf = "git fetch --prune";
     gfo = "git fetch origin main:main || git fetch origin master:master";
     gl = "git log";
-    glcs = "git rev-parse HEAD | xclip -selection clipboard"; # Get Latest Commit SHA
+    glcs = "git rev-parse HEAD | wl-clip -selection clipboard"; # Get Latest Commit SHA
     gm = "git checkout main || git checkout master";
     gp = "git pull --prune";
     gpf = "git push --force-with-lease";
@@ -73,7 +73,7 @@
 
     pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
 
-    paste = "xclip -selection c -o";
+    paste = "wl-clip -selection c -o";
 
     ra = "systemctl restart --user pipewire";
 

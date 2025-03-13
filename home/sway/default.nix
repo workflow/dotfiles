@@ -272,7 +272,12 @@ in {
           "${mod}+minus" = "scratchpad show";
 
           # Rofi Run Mode (nvidia-offload)
-          "${mod}+o" = "exec  rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+          "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+
+          # Cliphist via rofi
+          "${mod}+p" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+          # Single item clearing
+          "${mod}+Shift+p" = "exec cliphist list | rofi -dmenu | cliphist delete";
 
           # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
           # Pulse Audio controls
