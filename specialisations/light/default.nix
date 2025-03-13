@@ -31,7 +31,6 @@
       xsession.windowManager.i3.config.bars = lib.mkForce [
         (
           {
-            command = "${pkgs.i3-gaps}/bin/i3bar";
             fonts = {
               names = ["Fira Code" "Font Awesome 6 Free"];
               size = 9.0;
@@ -48,15 +47,12 @@
 
       # Rofi
       programs.rofi = {
-        theme = lib.mkForce null;
+        theme = lib.mkOverride 49 "gruvbox-light-soft";
       };
 
       stylix.targets = {
         # Neovim
         neovim.enable = lib.mkForce true;
-
-        # Rofi
-        rofi.enable = lib.mkForce true;
       };
     };
   };

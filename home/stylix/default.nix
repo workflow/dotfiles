@@ -5,7 +5,6 @@
         profileNames = ["main"];
       };
       neovim.enable = false;
-      rofi.enable = false;
     };
   };
 }

@@ -1,18 +1,8 @@
 {
   lib,
   pkgs,
-  config,
-  isHidpi,
-  isPpiScaledOnePointFive,
   ...
-}: let
-  fontSize =
-    if isHidpi
-    then 24
-    else if isPpiScaledOnePointFive
-    then 18
-    else 12;
-in {
+}: {
   programs.rofi = {
     enable = true;
 
@@ -23,14 +13,7 @@ in {
       modi = "run,calc,window";
     };
 
-    theme =
-      if isHidpi
-      then ./hidpi-theme.rasi
-      else if isPpiScaledOnePointFive
-      then ./one-point-five-scaled-theme.rasi
-      else "gruvbox-dark-soft";
-
-    font = lib.mkForce "${config.stylix.fonts.monospace.name} ${toString fontSize}";
+    theme = lib.mkForce "gruvbox-dark-soft";
 
     plugins = with pkgs; [rofi-calc];
 
