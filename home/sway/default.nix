@@ -252,7 +252,7 @@ in {
           "${mod}+Control+semicolon" = "move workspace to output right";
 
           # lock screen
-          "${mod}+Shift+x" = "exec --no-startup-id xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
+          "${mod}+Shift+x" = "exec xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
 
           # Layout
           # toggle tiling / floating
@@ -272,13 +272,13 @@ in {
           "${mod}+minus" = "scratchpad show";
 
           # Rofi Run Mode (nvidia-offload)
-          "${mod}+o" = "exec --no-startup-id rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+          "${mod}+o" = "exec  rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
           # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
           # Pulse Audio controls
-          "XF86AudioRaiseVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+"; #increase sound volume
-          "XF86AudioLowerVolume" = "exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%-"; #decrease sound volume
-          "XF86AudioMute" = "exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle"; # mute sound
+          "XF86AudioRaiseVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%+"; #increase sound volume
+          "XF86AudioLowerVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%-"; #decrease sound volume
+          "XF86AudioMute" = "exec  wpctl set-mute @DEFAULT_SINK@ toggle"; # mute sound
 
           # Screen brightness controls
           "XF86MonBrightnessUp" = "exec brightnessctl set +50"; # increase screen brightness
@@ -290,8 +290,8 @@ in {
           "XF86AudioPrev" = "exec playerctl previous";
 
           # Screenshots
-          "Print" = "exec --no-startup-id flameshot gui";
-          "Shift+Print" = "exec --no-startup-id flameshot full --clipboard --path ~/Pictures/Flameshot/";
+          "Print" = "exec  flameshot gui";
+          "Shift+Print" = "exec  flameshot full --clipboard --path ~/Pictures/Flameshot/";
 
           # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
           # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
@@ -302,9 +302,9 @@ in {
           "${mod}+Shift+d" = ''exec "rofi -show window -matching fuzzy"'';
 
           # Dunst shortcuts via dunstctl
-          "${mod}+Ctrl+space" = "exec --no-startup-id dunstctl close-all";
-          "${mod}+Ctrl+c" = "exec --no-startup-id dunstctl context";
-          "${mod}+Ctrl+h" = "exec --no-startup-id dunstctl history-pop";
+          "${mod}+Ctrl+space" = "exec  dunstctl close-all";
+          "${mod}+Ctrl+c" = "exec  dunstctl context";
+          "${mod}+Ctrl+h" = "exec  dunstctl history-pop";
 
           # Launch Browser
           "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
@@ -317,8 +317,8 @@ in {
           "${mod}+Pause" = "mode \"${mode_system}\"";
 
           # Invert Colors
-          "${mod}+i" = "exec --no-startup-id ~/nixos-config/home/xsession/per_window_color_invert.sh";
-          "${mod}+Shift+i" = "exec --no-startup-id xrandr-invert-colors";
+          "${mod}+i" = "exec  ~/nixos-config/home/xsession/per_window_color_invert.sh";
+          "${mod}+Shift+i" = "exec  xrandr-invert-colors";
 
           # Net[w]orkmanager
           "${mod}+w" = "exec ${networkManager}";
@@ -328,11 +328,11 @@ in {
         }
         // lib.optionalAttrs true {
           # Sound Switcher
-          "${mod}+m" = "exec --no-startup-id sound-switcher-boar";
+          "${mod}+m" = "exec  sound-switcher-boar";
         }
         // lib.optionalAttrs isFlexbox {
           # Sound Switcher
-          "${mod}+m" = "exec --no-startup-id sound-switcher-flexbox";
+          "${mod}+m" = "exec  sound-switcher-flexbox";
         });
 
       menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
@@ -425,16 +425,16 @@ in {
       default_border pixel 1
       for_window [class="^.*"] border pixel 1
 
-      bindsym ${mod}+Ctrl+x --release exec --no-startup-id xkill
+      bindsym ${mod}+Ctrl+x --release exec  xkill
 
       # System mode. Can't be put into config.modes because of chained commands.
       mode "${mode_system}" {
-        bindsym l exec --no-startup-id ${screenShutter}, mode "default"
-        bindsym e exec --no-startup-id i3-msg exit, mode "default"
-        bindsym s exec --no-startup-id systemctl suspend, mode "default"
-        bindsym h exec --no-startup-id systemctl hibernate, mode "default"
-        bindsym r exec --no-startup-id systemctl reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+        bindsym l exec  ${screenShutter}, mode "default"
+        bindsym e exec  i3-msg exit, mode "default"
+        bindsym s exec  systemctl suspend, mode "default"
+        bindsym h exec  systemctl hibernate, mode "default"
+        bindsym r exec  systemctl reboot, mode "default"
+        bindsym Shift+s exec  systemctl poweroff -i, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
