@@ -33,6 +33,7 @@
     teams-for-linux # Unofficial Msft Teams App
     wealthfolio
     ytmdesktop
+    xdg-desktop-portal
   ];
 
   homeScripts = with scripts; [

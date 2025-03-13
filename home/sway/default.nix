@@ -443,8 +443,6 @@ in {
     '';
 
     extraOptions = [
-      "--verbose"
-      "--debug"
       "--unsupported-gpu"
     ];
   };
