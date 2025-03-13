@@ -65,7 +65,7 @@
       ./home/gpg.nix
       ./home/gtk-qt
       ./home/sway
-      ./home/i3status-rust.nix
+      ./home/i3status-rust
       ./home/k9s
       ./home/kind-with-local-registry
       ./home/lf.nix
