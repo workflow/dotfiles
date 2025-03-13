@@ -59,6 +59,7 @@
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix
+      ./home/flameshot
       ./home/fzf.nix
       ./home/git.nix
       ./home/gpg.nix
@@ -239,17 +240,6 @@ in {
   };
 
   services = {
-    flameshot = {
-      enable = true;
-      settings = {
-        General = {
-          copyPathAfterSave = true;
-          disabledTrayIcon = true;
-          showStartupLaunchMessage = false;
-        };
-      };
-    };
-
     parcellite.enable = true;
 
     udiskie = {
