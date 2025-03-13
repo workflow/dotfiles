@@ -377,16 +377,16 @@ in {
             }
             {
               block = "keyboard_layout";
-              driver = "kbddbus";
+              driver = "sway";
               format = "$layout.str(width:3)";
               click = [
                 {
                   button = "left";
-                  cmd = "xkb-switch --next";
+                  cmd = "swaymsg input type:keyboard xkb_switch_layout next";
                 }
                 {
                   button = "right";
-                  cmd = "xkb-switch --next";
+                  cmd = "swaymsg input type:keyboard xkb_switch_layout prev";
                 }
               ];
             }

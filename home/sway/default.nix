@@ -387,12 +387,6 @@ in {
           # Auto lock screen on screen off, suspend, etc...
           {command = ''xss-lock -- "${locker}"'';}
 
-          # Run KBDD (XKB Daemon for per-window keyboard layout switching)
-          {
-            command = "kbdd";
-            always = true;
-          }
-
           # Launch syncthingtray
           {command = "sleep 10s && syncthingtray --wait";}
 

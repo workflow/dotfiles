@@ -62,7 +62,6 @@
   iw # Wifi connection strength indicator
   jq
   jsonnet
-  kbdd # XKB Daemon
   plasma5Packages.kruler
   kubectl
   kubectx
@@ -145,7 +144,6 @@
   xdg-desktop-portal
   xdragon # drag n drop support
   xidlehook
-  xkb-switch-i3
   xorg.xkill
   xournal # PFD Annotations, useful for saving Okular annotations as well
   xrandr-invert-colors
