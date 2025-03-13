@@ -165,11 +165,6 @@ in {
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };
 
-    keyboard = {
-      layout = "us,de,ua,pt";
-      options = ["grp:ctrls_toggle" "eurosign:e" "caps:escape_shifted_capslock" "terminate:ctrl_alt_bksp"];
-    };
-
     packages = homePackages ++ homeScripts;
 
     sessionVariables =

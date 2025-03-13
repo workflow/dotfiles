@@ -178,6 +178,13 @@ in {
         outer = -2;
       };
 
+      input = {
+        "*" = {
+          xkb_layout = "us,de,ua,pt";
+          xkb_options = "grp:ctrls_toggle,eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
+        };
+      };
+
       keybindings = lib.mkOptionDefault ({
           # Split
           "${mod}+v" = "split v";
