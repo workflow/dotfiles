@@ -91,8 +91,13 @@ in {
                 text = "#ebdbb2"; # To match i3status_rust theme
               };
             };
-            extraConfig = ''
-              output primary
+            extraConfig = let
+              primaryOutput =
+                if isFlexbox
+                then "eDP-1"
+                else "DP-0-0";
+            in ''
+              output ${primaryOutput}
             '';
             fonts = {
               names = ["Fira Code" "Font Awesome 6 Free"];
