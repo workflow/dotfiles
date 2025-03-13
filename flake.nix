@@ -40,8 +40,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isHidpi = false;
-        isPpiScaledOnePointFive = true;
+        waylandScaleFactor = 1.5;
       };
       modules = [
         {
@@ -69,8 +68,7 @@
             extraSpecialArgs = {
               isAmd = true;
               isNvidia = false;
-              isHidpi = false;
-              isPpiScaledOnePointFive = true;
+              waylandScaleFactor = 1.5;
               inherit inputs;
               inherit secrets;
             };
@@ -85,8 +83,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isHidpi = true;
-        isPpiScaledOnePointFive = false;
+        waylandScaleFactor = 2.0;
       };
       modules = [
         {
@@ -114,8 +111,7 @@
             extraSpecialArgs = {
               isAmd = false;
               isNvidia = true;
-              isHidpi = true;
-              isPpiScaledOnePointFive = false;
+              waylandScaleFactor = 2.0;
               inherit inputs;
               inherit secrets;
             };
