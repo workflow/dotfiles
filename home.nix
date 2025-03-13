@@ -176,6 +176,7 @@ in {
         BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
         DEFAULT_BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
         DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
+        QT_QPA_PLATFORM = "wayland";
       }
       // lib.optionalAttrs isNvidia {
         LIBVA_DRIVER_NAME = "nvidia";
