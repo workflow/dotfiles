@@ -140,7 +140,6 @@
   wireshark
   whois
   woeusb # Create bootable disks from Windows ISOs
-  xclip
   xdragon # drag n drop support
   xidlehook
   xorg.xkill
