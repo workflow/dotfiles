@@ -36,7 +36,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Style Manager    |                [stylix](https://github.com/danth/stylix)                |
 | Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
 | Animal           | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
-| Window Manager   |                     [i3](https://github.com/i3/i3)                      |
+| Window Manager   |                 [Sway](https://github.com/swaywm/sway)                  |
 
 ## Lack of Aesthetics
 
