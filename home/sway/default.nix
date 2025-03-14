@@ -330,14 +330,17 @@ in {
 
           # Rofimoji
           "${mod}+e" = "exec rofimoji";
+
+          # Reload Sway Config
+          "${mod}+Shift+r" = "reload";
         }
         // lib.optionalAttrs true {
           # Sound Switcher
-          "${mod}+m" = "exec  sound-switcher-boar";
+          "${mod}+m" = "exec sound-switcher-boar";
         }
         // lib.optionalAttrs isFlexbox {
           # Sound Switcher
-          "${mod}+m" = "exec  sound-switcher-flexbox";
+          "${mod}+m" = "exec sound-switcher-flexbox";
         });
 
       menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
@@ -439,7 +442,7 @@ in {
       # System mode. Can't be put into config.modes because of chained commands.
       mode "${mode_system}" {
         bindsym l exec  ${screenShutter}, mode "default"
-        bindsym e exec  i3-msg exit, mode "default"
+        bindsym e exec  swaymsg exit, mode "default"
         bindsym s exec  systemctl suspend, mode "default"
         bindsym h exec  systemctl hibernate, mode "default"
         bindsym r exec  systemctl reboot, mode "default"
