@@ -7,6 +7,12 @@
         browser = "brave";
         dmenu = "rofi -dmenu -i -p ''";
       };
+
+      ignore_flameshot_warning = {
+        appname = "flameshot";
+        message = "flameshot: Flameshot Warning \ngrim's screenshot component is implemented based on wlroots, it may not be used in GNOME or similar desktop environments";
+        skip_display = true;
+      };
     };
   };
 }
