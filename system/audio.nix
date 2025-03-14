@@ -18,7 +18,7 @@ in {
   systemd.services.fixXPS9700Mike = lib.mkIf isFlexbox {
     description = "Set rt715 ADC 24 Mux to DMIC3";
     wantedBy = ["multi-user.target"];
-    unitConfig.requiresMountsFor = "/var/lib/alsa";
+    unitConfig.RequiresMountsFor = "/var/lib/alsa";
 
     serviceConfig = {
       ExecStart = "${pkgs.alsa-utils}/bin/amixer --card 1 set 'rt715 ADC 24 Mux' 'DMIC3'";
