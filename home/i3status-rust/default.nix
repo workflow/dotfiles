@@ -88,11 +88,11 @@ in {
               click = [
                 {
                   button = "left";
-                  cmd = "alacritty -e fish -c 'journalctl -x --boot --priority 3 --follow | lnav'";
+                  cmd = "alacritty -e fish -c 'journalctl -ex --boot --priority 3 | lnav'";
                 }
                 {
                   button = "right";
-                  cmd = "alacritty -e fish -c 'journalctl -x --boot --priority 4 --follow | lnav'";
+                  cmd = "alacritty -e fish -c 'journalctl -ex --boot --priority 4| lnav'";
                 }
               ];
             }
