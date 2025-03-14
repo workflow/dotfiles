@@ -84,6 +84,7 @@
       ./home/stylix
       ./home/syncthing
       ./home/systemd-errors-and-warnings-counter
+      ./home/udiskie
       ./home/urxvt.nix
       ./home/virtual-cable
       ./home/xdg.nix
@@ -157,9 +158,6 @@ in {
         source = ./dotfiles/stignore_code;
       };
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
-
-      # Syncthing tray
-      ".config/syncthingtray.ini".source = ./dotfiles/syncthingtray.ini;
 
       # Variety
       ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
@@ -239,11 +237,6 @@ in {
   };
 
   services = {
-    udiskie = {
-      enable = true;
-      automount = false;
-    };
-
     unclutter.enable = true;
 
     yubikey-touch-detector.enable = true;

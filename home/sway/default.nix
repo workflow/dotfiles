@@ -394,12 +394,6 @@ in {
           # Auto lock screen on screen off, suspend, etc...
           {command = ''xss-lock -- "${locker}"'';}
 
-          # Launch syncthingtray
-          {command = "sleep 10s && syncthingtray --wait";}
-
-          # Launch blueman-applet
-          {command = "sleep 10s && blueman-applet";}
-
           # Autotiling
           {
             command = "autotiling &";
