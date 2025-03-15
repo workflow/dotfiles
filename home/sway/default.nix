@@ -67,21 +67,21 @@ in {
     ];
     systemdTarget = "sway-session.target";
     timeouts =
-      if isLaptop
-      then [
+      [
         {
           timeout = 360;
           command = "${locker}";
         }
+        {
+          timeout = 370;
+          command = "swaymsg 'output * dpms off'";
+          resumeCommand = "swaymsg 'output * dpms on'";
+        }
+      ]
+      ++ lib.optionals isLaptop [
         {
           timeout = 1800;
           command = "${suspender}";
-        }
-      ]
-      else [
-        {
-          timeout = 360;
-          command = "${locker}";
         }
       ];
   };
