@@ -5,6 +5,9 @@
     "...." = "cd ../../..";
     "....." = "cd ../../../..";
 
+    caffeinate = "systemctl --user stop swayidle";
+    decaffeinate = "systemctl --user start swayidle";
+
     c = "wl-clip -selection clipboard";
     cc = "tee /dev/tty | wl-clip -selection clipboard";
 
