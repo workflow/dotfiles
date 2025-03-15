@@ -56,6 +56,11 @@ in {
     enable = true;
 
     config = {
+      left = "j";
+      right = "semicolon";
+      down = "k";
+      up = "l";
+
       assigns = {
         "${ws8}" = [
           {class = "^Slack$";}
@@ -190,17 +195,6 @@ in {
           "${mod}+s" = "split h";
 
           # Focus
-          "${mod}+j" = "focus left";
-          "${mod}+k" = "focus down";
-          "${mod}+l" = "focus up";
-          "${mod}+semicolon" = "focus right";
-
-          # Move
-          "${mod}+Shift+j" = "move left";
-          "${mod}+Shift+k" = "move down";
-          "${mod}+Shift+l" = "move up";
-          "${mod}+Shift+semicolon" = "move right";
-
           # Move to workspace
           "${mod}+1" = "workspace ${ws1}";
           "${mod}+2" = "workspace ${ws2}";
