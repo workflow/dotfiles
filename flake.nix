@@ -67,6 +67,7 @@
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
               isAmd = true;
+              isLaptop = false;
               isNvidia = false;
               waylandScaleFactor = 1.5;
               inherit inputs;
@@ -110,6 +111,7 @@
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
               isAmd = false;
+              isLaptop = true;
               isNvidia = true;
               waylandScaleFactor = 2.0;
               inherit inputs;

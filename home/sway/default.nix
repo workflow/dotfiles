@@ -2,6 +2,7 @@
   lib,
   pkgs,
   osConfig,
+  isLaptop,
   ...
 }: let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
@@ -13,9 +14,8 @@
   isBoar = osConfig.networking.hostName == "boar";
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
-  locker = "${pkgs.swaylock-effects}/bin/swaylock";
-  screenShutter = "xset dpms force off";
-  suspender = "systemctl suspend-then-hibernate";
+  locker = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+  suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
   mod = "Mod4";
 
@@ -55,6 +55,35 @@ in {
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+        command = "${locker}";
+      }
+    ];
+    systemdTarget = "sway-session.target";
+    timeouts =
+      if isLaptop
+      then [
+        {
+          timeout = 360;
+          command = "${locker}";
+        }
+        {
+          timeout = 1800;
+          command = "${suspender}";
+        }
+      ]
+      else [
+        {
+          timeout = 360;
+          command = "${locker}";
+        }
+      ];
   };
 
   wayland.windowManager.sway = {
@@ -251,7 +280,7 @@ in {
           "${mod}+Control+semicolon" = "move workspace to output right";
 
           # lock screen
-          "${mod}+Shift+x" = "exec xidlehook-client --socket /tmp/xidlehook.sock control --action trigger --timer 0";
+          "${mod}+Shift+x" = "lock";
 
           # Layout
           # toggle tiling / floating
@@ -306,9 +335,9 @@ in {
           "${mod}+Shift+d" = ''exec "rofi -show window -matching fuzzy"'';
 
           # Dunst shortcuts via dunstctl
-          "${mod}+Ctrl+space" = "exec  dunstctl close-all";
-          "${mod}+Ctrl+c" = "exec  dunstctl context";
-          "${mod}+Ctrl+h" = "exec  dunstctl history-pop";
+          "${mod}+Ctrl+space" = "exec dunstctl close-all";
+          "${mod}+Ctrl+c" = "exec dunstctl context";
+          "${mod}+Ctrl+h" = "exec dunstctl history-pop";
 
           # Launch Browser
           "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
@@ -384,37 +413,25 @@ in {
         };
       };
 
-      startup =
-        [
-          {command = "youtube-music";}
-          {command = "todoist-electron";}
+      startup = [
+        {command = "youtube-music";}
+        {command = "todoist-electron";}
 
-          # Auto lock screen on screen off, suspend, etc...
-          {command = ''xss-lock -- "${locker}"'';}
+        # Autotiling
+        {
+          command = "autotiling &";
+          always = true;
+        }
 
-          # Autotiling
-          {
-            command = "autotiling &";
-            always = true;
-          }
+        # Disconnect tailscale
+        {command = "sudo tailscale down";}
 
-          # Disconnect tailscale
-          {command = "sudo tailscale down";}
+        # Variety
+        {command = "/bin/bash -c 'sleep 20 && ${pkgs.variety}/bin/variety --profile /home/farlion/.config/variety/";}
 
-          # Variety
-          {command = "/bin/bash -c 'sleep 20 && ${pkgs.variety}/bin/variety --profile /home/farlion/.config/variety/";}
-
-          # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
-          {command = "seahorse";}
-        ]
-        # ++ lib.lists.optionals isFlexbox
-        # [
-        #   { command = ''xidlehook --socket /tmp/xidlehook.sock --detect-sleep --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" "" --timer 1800 "${suspender}" ""''; }
-        # ]
-        ++ lib.lists.optionals isBoar
-        [
-          {command = ''xidlehook --socket /tmp/xidlehook.sock --not-when-audio --not-when-fullscreen --timer 360 "${screenShutter}" ""'';}
-        ];
+        # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
+        {command = "seahorse";}
+      ];
 
       terminal = "alacritty";
 
@@ -429,16 +446,14 @@ in {
       default_border pixel 1
       for_window [class="^.*"] border pixel 1
 
-      bindsym ${mod}+Ctrl+x --release exec  xkill
-
       # System mode. Can't be put into config.modes because of chained commands.
       mode "${mode_system}" {
-        bindsym l exec  ${screenShutter}, mode "default"
-        bindsym e exec  swaymsg exit, mode "default"
-        bindsym s exec  systemctl suspend, mode "default"
-        bindsym h exec  systemctl hibernate, mode "default"
-        bindsym r exec  systemctl reboot, mode "default"
-        bindsym Shift+s exec  systemctl poweroff -i, mode "default"
+        bindsym l exec ${locker}, mode "default"
+        bindsym e exec swaymsg exit, mode "default"
+        bindsym s exec systemctl suspend, mode "default"
+        bindsym h exec systemctl hibernate, mode "default"
+        bindsym r exec systemctl reboot, mode "default"
+        bindsym Shift+s exec systemctl poweroff -i, mode "default"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"

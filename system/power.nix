@@ -19,16 +19,6 @@ in {
     pkgs.libsmbios
   ];
 
-  services.xserver = {
-    # Set DPMS timeouts to zero (any timeouts managed by xidlehook)
-    serverFlagsSection = ''
-      Option "BlankTime" "0"
-      Option "StandbyTime" "0"
-      Option "SuspendTime" "0"
-      Option "OffTime" "0"
-    '';
-  };
-
   services.auto-cpufreq = {
     enable = true;
     settings = {};

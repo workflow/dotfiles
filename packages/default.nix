@@ -139,10 +139,8 @@
   whois
   woeusb # Create bootable disks from Windows ISOs
   xdragon # drag n drop support
-  xidlehook
   xorg.xkill
   xournal # PFD Annotations, useful for saving Okular annotations as well
-  xss-lock
   yt-dlp
   youtube-music
   yq
