@@ -27,8 +27,8 @@
         AICHAT_LIGHT_THEME = 1;
       };
 
-      # i3
-      xsession.windowManager.i3.config.bars = lib.mkForce [
+      # Sway
+      wayland.windowManager.sway.config.bars = lib.mkForce [
         (
           {
             fonts = {
@@ -38,7 +38,7 @@
             position = "bottom";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
           }
-          // config.specialisation.light.configuration.home-manager.users.farlion.lib.stylix.i3.bar
+          // config.specialisation.light.configuration.home-manager.users.farlion.lib.stylix.sway.bar
         )
       ];
       programs.i3status-rust.bars.default = {
