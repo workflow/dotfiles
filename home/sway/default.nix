@@ -52,6 +52,11 @@
 
   wsc = "c";
 in {
+  home.packages = with pkgs; [
+    wlprop # Xprop clone for Wayland
+    xorg.xkill # For murdering XWayland windows
+    xorg.xprop # For checking whether a window is XWayland or not
+  ];
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
