@@ -58,6 +58,7 @@
       ./home/cliphist
       ./home/cpu-profile-toggler
       ./home/ddc-backlight
+      ./home/dunst
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix
@@ -94,8 +95,6 @@
       ./home/programs/nh
       ./home/programs/rofi
       ./home/programs/rofimoji
-
-      ./home/services/dunst
     ]
     ++ secretImports;
 
