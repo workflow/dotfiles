@@ -385,9 +385,6 @@ in {
 
       startup =
         [
-          # Detect and apply screen layout + wallpaper
-          {command = "~/nixos-config/home/xsession/autorandr.sh";}
-
           {command = "youtube-music";}
           {command = "todoist";}
 
