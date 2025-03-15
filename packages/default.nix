@@ -143,7 +143,6 @@
   xidlehook
   xorg.xkill
   xournal # PFD Annotations, useful for saving Okular annotations as well
-  xrandr-invert-colors
   xss-lock
   yt-dlp
   youtube-music

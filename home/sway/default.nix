@@ -315,10 +315,6 @@ in {
           # System Mode
           "${mod}+Pause" = "mode \"${mode_system}\"";
 
-          # Invert Colors
-          "${mod}+i" = "exec  ~/nixos-config/home/xsession/per_window_color_invert.sh";
-          "${mod}+Shift+i" = "exec  xrandr-invert-colors";
-
           # Net[w]orkmanager
           "${mod}+w" = "exec ${networkManager}";
 

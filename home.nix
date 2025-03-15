@@ -91,7 +91,6 @@
       ./home/virtual-cable
       ./home/wlsunset
       ./home/xdg.nix
-      ./home/xsession
 
       ./home/programs/networkmanager-dmenu
       ./home/programs/nh
