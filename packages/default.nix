@@ -53,7 +53,6 @@
   hicolor-icon-theme # Needed for solaar
   hplip
   httpie
-  i3lock-pixeled
   iftop
   iotop-c
   imagemagick

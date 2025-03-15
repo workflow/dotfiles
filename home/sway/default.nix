@@ -13,7 +13,7 @@
   isBoar = osConfig.networking.hostName == "boar";
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
-  locker = "${pkgs.i3lock-pixeled}/bin/i3lock-pixeled";
+  locker = "${pkgs.swaylock-effects}/bin/swaylock";
   screenShutter = "xset dpms force off";
   suspender = "systemctl suspend-then-hibernate";
 
@@ -52,6 +52,11 @@
 
   wsc = "c";
 in {
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+  };
+
   wayland.windowManager.sway = {
     enable = true;
 
