@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  isFlexbox = config.networking.hostName == "flexbox";
+{pkgs, ...}: let
 in {
   environment.systemPackages = with pkgs; [
     alsa-utils
