@@ -14,19 +14,6 @@ in {
     qpwgraph # More extensive patchbay for Pipewire
   ];
 
-  # Fix ALSA not detecting microphone on XPS 9700, see https://github.com/NixOS/nixpkgs/issues/130882#issuecomment-2584286824
-  systemd.services.fixXPS9700Mike = lib.mkIf isFlexbox {
-    description = "Set rt715 ADC 24 Mux to DMIC3";
-    wantedBy = ["sound.target"];
-    unitConfig.RequiresMountsFor = "/var/lib/alsa";
-
-    serviceConfig = {
-      ExecStart = "${pkgs.alsa-utils}/bin/amixer --card 1 set 'rt715 ADC 24 Mux' 'DMIC3'";
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-  };
-
   # PipeWire!
   security.rtkit.enable = true;
   services.pipewire = {

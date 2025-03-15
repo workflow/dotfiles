@@ -64,6 +64,7 @@
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix
+      ./home/fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
       ./home/flameshot
       ./home/fzf.nix
       ./home/git.nix
