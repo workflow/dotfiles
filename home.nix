@@ -80,7 +80,6 @@
       ./home/nix-index
       ./home/nushell
       ./home/obs
-      ./home/picom.nix
       ./home/sound-levels-maintainer
       ./home/starship
       ./home/stylix
