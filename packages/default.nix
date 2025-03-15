@@ -4,7 +4,6 @@
   ...
 }:
 (with pkgs; [
-  arandr
   asciinema
   audio-recorder
   awscli2

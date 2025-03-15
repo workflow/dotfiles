@@ -32,6 +32,7 @@
     restic
     teams-for-linux # Unofficial Msft Teams App
     wealthfolio
+    wdisplays # arandr for wayland - external display/screen GUI
     wl-clipboard-rs
     ytmdesktop
     xdg-desktop-portal
