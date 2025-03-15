@@ -386,7 +386,7 @@ in {
       startup =
         [
           {command = "youtube-music";}
-          {command = "todoist";}
+          {command = "todoist-electron";}
 
           # Auto lock screen on screen off, suspend, etc...
           {command = ''xss-lock -- "${locker}"'';}
