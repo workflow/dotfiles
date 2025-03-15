@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home.file = {
     "bin/caffeinate" = {
       source = ./caffeinate.sh;
@@ -8,17 +8,5 @@
       source = ./decaffeinate.sh;
       executable = true;
     };
-  };
-
-  xsession = {
-    enable = true;
-    initExtra = ''
-      # Needed for things like seahorse/gnome-keyring to find the correct display
-      ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY
-    '';
-    profileExtra = ''
-      export SSH_AUTH_SOCK
-    '';
-    scriptPath = ".hm-xsession"; # Ref: https://discourse.nixos.org/t/opening-i3-from-home-manager-automatically/4849/8
   };
 }
