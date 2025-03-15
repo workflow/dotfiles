@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   services.syncthing = {
     enable = true;
     tray = {
@@ -8,6 +8,9 @@
   };
 
   systemd.user.services.syncthingtray = {
-    Install.WantedBy = ["sway-session.target"];
+    # Remove existing graphical-session.target
+    Install = lib.mkForce {
+      WantedBy = ["sway-session.target"];
+    };
   };
 }
