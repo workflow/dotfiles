@@ -383,6 +383,12 @@ in {
 
       modifier = mod;
 
+      seat = {
+        "*" = {
+          hide_cursor = "3000"; # Similar to unlutter on X, hide mouse cursor after 3 seconds of inactivity
+        };
+      };
+
       startup =
         [
           {command = "youtube-music";}
@@ -442,6 +448,11 @@ in {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+      }
+
+      # Hide cursor when typing, cannot be set via explciti home-manager "seat" setting since the type system conflicts
+      seat "*" {
+        hide_cursor when-typing enable
       }
     '';
 

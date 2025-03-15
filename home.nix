@@ -236,8 +236,6 @@ in {
   };
 
   services = {
-    unclutter.enable = true;
-
     yubikey-touch-detector.enable = true;
   };
 }
