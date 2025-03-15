@@ -10,7 +10,7 @@
 
       ignore_flameshot_warning = {
         appname = "flameshot";
-        body = "ngrim's screenshot component is implemented based on wlroots, it may not be used in GNOME or similar desktop environments";
+        body = "*implemented based on wlroots*";
         skip_display = true;
       };
     };
