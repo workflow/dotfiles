@@ -50,6 +50,8 @@
 
   imports =
     [
+      ./home/modules/yubikey-touch-detector
+
       ./home/alacritty.nix
       ./home/aliases.nix
       ./home/bash
@@ -73,7 +75,6 @@
       ./home/kanshi # Wayland autorandr
       ./home/kind-with-local-registry
       ./home/lf.nix
-      ./home/modules/yubikey-touch-detector
       ./home/neovim
       ./home/nix-index
       ./home/nushell
