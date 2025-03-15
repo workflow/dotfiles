@@ -87,6 +87,7 @@
       ./home/udiskie
       ./home/urxvt.nix
       ./home/virtual-cable
+      ./home/wlsunset
       ./home/xdg.nix
       ./home/xsession
 
