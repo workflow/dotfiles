@@ -420,7 +420,7 @@ in {
 
       startup = [
         {command = "youtube-music";}
-        {command = "todoist-electron";}
+        {command = "todoist-electron --ozone-platform-hint=auto";}
 
         # Autotiling
         {

@@ -121,7 +121,6 @@
   stress
   tdesktop # Telegram
   thefuck
-  todoist-electron
   traceroute
   trash-cli
   tree
