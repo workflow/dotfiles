@@ -1,5 +1,5 @@
-WARNINGS=$(journalctl -p 4 --since "10 minutes ago" --boot --output json | wc -l)
-ERRORS=$(journalctl -p 3 --since "10 minutes ago" --boot --output json | wc -l)
+WARNINGS=$(journalctl -p 4..4 --since "10 minutes ago" --boot --output json | wc -l)
+ERRORS=$(journalctl -p 3..3 --since "10 minutes ago" --boot --output json | wc -l)
 
 WARNING_ICON="⚠️"
 ERROR_ICON="❗"
