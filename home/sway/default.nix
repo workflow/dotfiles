@@ -144,6 +144,7 @@ in {
           # '';
           fonts = {
             names = ["Fira Code" "Font Awesome 6 Free"];
+            size = 8.5; # Aligns separators properly, see https://github.com/greshake/i3status-rust/issues/246k
           };
           position = "bottom";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
