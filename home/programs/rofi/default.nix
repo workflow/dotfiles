@@ -13,13 +13,13 @@
       modi = "run,calc,window";
     };
 
-    theme = lib.mkForce "gruvbox-dark-soft";
-
     plugins = with pkgs; [rofi-calc];
 
     terminal = "${pkgs.alacritty}/bin/alacritty";
+
+    theme = lib.mkForce "gruvbox-dark-soft";
   };
 
   # for rofi-emoji to insert emojis directly
-  home.packages = [pkgs.xdotool];
+  home.packages = with pkgs; [wtype xdotool];
 }
