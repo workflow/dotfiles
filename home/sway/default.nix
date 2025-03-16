@@ -118,91 +118,90 @@ in {
         ];
       };
 
-      bars =
-        [
-          {
-            colors = rec {
-              activeWorkspace = {
-                background = color_bg;
-                border = color_txt;
-                text = color_txt;
-              };
+      bars = [
+        {
+          colors = rec {
+            activeWorkspace = {
+              background = color_bg;
+              border = color_txt;
+              text = color_txt;
+            };
+            background = "#282828"; # To match i3status_rust theme
+            focusedWorkspace = activeWorkspace;
+            inactiveWorkspace = {
               background = "#282828"; # To match i3status_rust theme
-              focusedWorkspace = activeWorkspace;
-              inactiveWorkspace = {
-                background = "#282828"; # To match i3status_rust theme
-                border = "#282828"; # To match i3status_rust theme
-                text = "#ebdbb2"; # To match i3status_rust theme
-              };
+              border = "#282828"; # To match i3status_rust theme
+              text = "#ebdbb2"; # To match i3status_rust theme
             };
-            extraConfig = let
-              primaryOutput =
-                if isFlexbox
-                then "eDP-1"
-                else "DP-0-0";
-            in ''
-              output ${primaryOutput}
-            '';
-            fonts = {
-              names = ["Fira Code" "Font Awesome 6 Free"];
-              size = 9.0;
-            };
-            position = "bottom";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-          }
-        ]
-        ++ lib.lists.optionals isBoar [
-          {
-            colors = rec {
-              activeWorkspace = {
-                background = color_bg;
-                border = color_txt;
-                text = color_txt;
-              };
-              background = "#282828"; # To match i3status_rust theme
-              focusedWorkspace = activeWorkspace;
-              inactiveWorkspace = {
-                background = "#282828"; # To match i3status_rust theme
-                border = "#282828"; # To match i3status_rust theme
-                text = "#ebdbb2"; # To match i3status_rust theme
-              };
-            };
-            extraConfig = ''
-              output HDMI-A-1
-            '';
-            fonts = {
-              names = ["Fira Code" "Font Awesome 6 Free"];
-              size = 9.0;
-            };
-            position = "bottom";
-            trayOutput = null;
-          }
-          {
-            colors = rec {
-              activeWorkspace = {
-                background = color_bg;
-                border = color_txt;
-                text = color_txt;
-              };
-              background = "#282828"; # To match i3status_rust theme
-              focusedWorkspace = activeWorkspace;
-              inactiveWorkspace = {
-                background = "#282828"; # To match i3status_rust theme
-                border = "#282828"; # To match i3status_rust theme
-                text = "#ebdbb2"; # To match i3status_rust theme
-              };
-            };
-            extraConfig = ''
-              output HDMI-A-0
-            '';
-            fonts = {
-              names = ["Fira Code" "Font Awesome 6 Free"];
-              size = 9.0;
-            };
-            position = "bottom";
-            trayOutput = null;
-          }
-        ];
+          };
+          # extraConfig = let
+          #   primaryOutput =
+          #     if isFlexbox
+          #     then "eDP-1"
+          #     else "DP-0-0";
+          # in ''
+          #   output ${primaryOutput}
+          # '';
+          fonts = {
+            names = ["Fira Code" "Font Awesome 6 Free"];
+            size = 9.0;
+          };
+          position = "bottom";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+        }
+      ];
+      # ++ lib.lists.optionals isBoar [
+      #   {
+      #     colors = rec {
+      #       activeWorkspace = {
+      #         background = color_bg;
+      #         border = color_txt;
+      #         text = color_txt;
+      #       };
+      #       background = "#282828"; # To match i3status_rust theme
+      #       focusedWorkspace = activeWorkspace;
+      #       inactiveWorkspace = {
+      #         background = "#282828"; # To match i3status_rust theme
+      #         border = "#282828"; # To match i3status_rust theme
+      #         text = "#ebdbb2"; # To match i3status_rust theme
+      #       };
+      #     };
+      #     extraConfig = ''
+      #       output HDMI-A-1
+      #     '';
+      #     fonts = {
+      #       names = ["Fira Code" "Font Awesome 6 Free"];
+      #       size = 9.0;
+      #     };
+      #     position = "bottom";
+      #     trayOutput = null;
+      #   }
+      #   {
+      #     colors = rec {
+      #       activeWorkspace = {
+      #         background = color_bg;
+      #         border = color_txt;
+      #         text = color_txt;
+      #       };
+      #       background = "#282828"; # To match i3status_rust theme
+      #       focusedWorkspace = activeWorkspace;
+      #       inactiveWorkspace = {
+      #         background = "#282828"; # To match i3status_rust theme
+      #         border = "#282828"; # To match i3status_rust theme
+      #         text = "#ebdbb2"; # To match i3status_rust theme
+      #       };
+      #     };
+      #     extraConfig = ''
+      #       output HDMI-A-0
+      #     '';
+      #     fonts = {
+      #       names = ["Fira Code" "Font Awesome 6 Free"];
+      #       size = 9.0;
+      #     };
+      #     position = "bottom";
+      #     trayOutput = null;
+      #   }
+      # ];
 
       floating = {
         border = 0;
