@@ -307,7 +307,7 @@ in {
           "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
           # Cliphist via rofi
-          "${mod}+p" = "exec cliphist list | rofi -dmenu | cliphist decode | wl-copy";
+          "${mod}+p" = "exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
           # Single item clearing
           "${mod}+Shift+p" = "exec cliphist list | rofi -dmenu | cliphist delete";
 
