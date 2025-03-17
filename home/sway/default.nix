@@ -102,19 +102,46 @@ in {
 
       assigns = {
         "${ws8}" = [
-          {class = "^Slack$";}
-          {class = "^Signal$";}
-          {class = "^TelegramDesktop$";}
-          {class = "^Skype$";}
-          {class = "^Discord$";}
-          {class = "^Element$";}
+          {
+            app_id = "^Slack$";
+            class = "^Slack$";
+          }
+          {
+            app_id = "^Signal$";
+            class = "^Signal$";
+          }
+          {
+            app_id = "^telegramdesktop$";
+            class = "^TelegramDesktop$";
+          }
+          {
+            app_id = "^skype$";
+            class = "^Skype$";
+          }
+          {
+            app_id = "^discord$";
+            class = "^Discord$";
+          }
+          {
+            app_id = "^element$";
+            class = "^Element$";
+          }
         ];
         "${ws9}" = [
-          {class = "^YouTube Music$";}
-          {class = "^Todoist$";}
+          {
+            app_id = "^youtube-music$";
+            class = "^YouTube Music$";
+          }
+          {
+            app_id = "^Todoist$";
+            class = "^Todoist$";
+          }
         ];
         "${ws19}" = [
-          {class = "^obsidian$";}
+          {
+            app_id = "^obsidian$";
+            class = "^obsidian$";
+          }
         ];
       };
 
