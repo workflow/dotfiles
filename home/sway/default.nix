@@ -252,6 +252,13 @@ in {
           xkb_layout = "us,de,ua,pt";
           xkb_options = "grp:ctrls_toggle,eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
         };
+        "type:touchpad" = {
+          tap = "enabled";
+          #   - one-finger tap = left click
+          #   - two-finger tap = right click
+          #   - three-finger tap = middle click
+          tap_button_map = "lrm";
+        };
       };
 
       keybindings = lib.mkOptionDefault ({
