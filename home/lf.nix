@@ -94,11 +94,11 @@
         }}
       '';
 
-      yank-file = ''$printf '%s' "$f" | wl-clip -i -selection clipboard'';
-      yank-paths = ''$printf '%s' "$fx" | wl-clip -i -selection clipboard'';
-      yank-dirname = ''&printf '%s' "$PWD" | wl-clip -i -selection clipboard'';
-      yank-basename = ''&basename -a -- $fx | head -c-1 | wl-clip -i -selection clipboard'';
-      yank-basename-without-extension = ''&basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | wl-clip -i -selection clipboard'';
+      yank-file = ''$printf '%s' "$f" | wl-copy'';
+      yank-paths = ''$printf '%s' "$fx" | wl-copy'';
+      yank-dirname = ''&printf '%s' "$PWD" | wl-copy'';
+      yank-basename = ''&basename -a -- $fx | head -c-1 | wl-copy'';
+      yank-basename-without-extension = ''&basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | wl-copy'';
 
       z = ''
         %{{
