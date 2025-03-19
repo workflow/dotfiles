@@ -3,6 +3,8 @@
     XDG_CONFIG_HOME = "/home/farlion/.config";
   };
 
+  home.preferXdgDirectories = true;
+
   xdg = {
     desktopEntries = {
       brave-browser = {
