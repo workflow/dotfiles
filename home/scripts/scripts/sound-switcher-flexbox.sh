@@ -1,14 +1,14 @@
 set -euo pipefail
 
 chosen="$(echo -e "🔌local\n\
-🎧oh(localmic)
-🎧🎙️oh(ohmic)
-🎧sony\n\
- budsFE(listen)\n\
- budsFE(talk)\n\
  buds(listen)\n\
  buds(talk)\n\
+🎧sony\n\
+🎧oh(localmic)
+🎧🎙️oh(ohmic)
 📢boombox\n\
+ budsFE(listen)\n\
+ budsFE(talk)\n\
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
 localspeaker() {
