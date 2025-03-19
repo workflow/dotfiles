@@ -34,7 +34,7 @@
     todoist-electron # Official Todoist app
     wealthfolio
     wdisplays # arandr for wayland - external display/screen GUI
-    wl-clipboard-rs
+    wl-clipboard
     ytmdesktop
     xdg-desktop-portal
   ];
