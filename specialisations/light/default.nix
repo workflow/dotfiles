@@ -27,6 +27,9 @@
         AICHAT_LIGHT_THEME = 1;
       };
 
+      # Dunst
+      services.dunst.iconTheme.name = lib.mkForce "Papirus-Light";
+
       # Sway
       wayland.windowManager.sway.config.bars = lib.mkForce [
         (
