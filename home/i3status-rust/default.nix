@@ -386,7 +386,7 @@ in {
                 }
                 {
                   button = "right";
-                  cmd = "swaymsg input type:keyboard xkb_switch_layout prev";
+                  cmd = "swaymsg input type:keyboard xkb_switch_layout 0";
                 }
               ];
             }
