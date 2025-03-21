@@ -16,12 +16,6 @@
 
     # Home Manager
     home-manager.users.farlion = {
-      # GTK
-      gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce false;
-
-      # QT
-      qt.enable = lib.mkForce false;
-
       # Aichat Light Theme
       home.sessionVariables = {
         AICHAT_LIGHT_THEME = 1;
@@ -29,6 +23,29 @@
 
       # Dunst
       services.dunst.iconTheme.name = lib.mkForce "Papirus-Light";
+
+      # GTK
+      gtk.gtk3.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce false;
+
+      # QT
+      qt.enable = lib.mkForce false;
+
+      # Neovim
+      programs.neovim = {
+        extraLuaConfig = ''
+          -- Override lualine theme for light mode
+          if require('lualine') then
+            local lualine_config = require('lualine').get_config()
+            lualine_config.options.theme = 'gruvbox-light'
+            require('lualine').setup(lualine_config)
+          end
+        '';
+      };
+
+      # Rofi
+      programs.rofi = {
+        theme = lib.mkOverride 49 "gruvbox-light-soft";
+      };
 
       # Sway
       wayland.windowManager.sway.config.bars = lib.mkForce [
@@ -46,11 +63,6 @@
       ];
       programs.i3status-rust.bars.default = {
         theme = lib.mkForce "ctp-latte";
-      };
-
-      # Rofi
-      programs.rofi = {
-        theme = lib.mkOverride 49 "gruvbox-light-soft";
       };
 
       stylix.targets = {
