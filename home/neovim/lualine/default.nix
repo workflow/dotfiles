@@ -12,13 +12,15 @@
             'fugitive',
             'mason',
             'nvim-tree',
-            'toggleterm',
+            'oil',
             'overseer',
+            'quickfix',
+            'toggleterm',
             'trouble',
           },
           sections = {
             lualine_a = {'mode'},
-            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_b = {'branch', 'diff', 'fugitive_branch', 'diagnostics'},
             lualine_c = {'filename'},
             lualine_x = {
               {
