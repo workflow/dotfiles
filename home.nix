@@ -37,6 +37,7 @@
     wl-clipboard
     ytmdesktop
     xdg-desktop-portal
+    zip
   ];
 
   homeScripts = with scripts; [
