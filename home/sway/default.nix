@@ -239,7 +239,7 @@ in {
           "${mod}+Control+semicolon" = "move workspace to output right";
 
           # lock screen
-          "${mod}+Shift+x" = "lock";
+          "${mod}+Shift+x" = "exec ${locker}";
 
           # Layout
           # toggle tiling / floating
