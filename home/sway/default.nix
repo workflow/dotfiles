@@ -14,7 +14,7 @@
   isBoar = osConfig.networking.hostName == "boar";
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
-  locker = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+  locker = "${pkgs.bash}/bin/bash -c 'pgrep -x swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize'";
   suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
   mod = "Mod4";
