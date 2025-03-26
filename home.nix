@@ -36,7 +36,6 @@
     wdisplays # arandr for wayland - external display/screen GUI
     wl-clipboard
     ytmdesktop
-    xdg-desktop-portal
     zip
   ];
 
