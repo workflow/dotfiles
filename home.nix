@@ -34,6 +34,7 @@
     todoist-electron # Official Todoist app
     wealthfolio
     wdisplays # arandr for wayland - external display/screen GUI
+    wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
     wl-clipboard
     ytmdesktop
     zip
