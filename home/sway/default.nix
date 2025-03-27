@@ -53,10 +53,12 @@
   wsc = "c";
 in {
   home.packages = with pkgs; [
+    qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     wlprop # Xprop clone for Wayland
     xorg.xkill # For murdering XWayland windows
     xorg.xprop # For checking whether a window is XWayland or not
   ];
+
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
@@ -411,6 +413,9 @@ in {
       default_border pixel 1
       for_window [class="^.*"] border pixel 1
 
+      # Flameshot fixes from https://www.youtube.com/watch?v=6O6WBtchg_c
+      for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
+
       # System mode. Can't be put into config.modes because of chained commands.
       mode "${mode_system}" {
         bindsym l exec ${locker}, mode "default"
@@ -434,5 +439,12 @@ in {
     extraOptions = [
       "--unsupported-gpu"
     ];
+
+    extraSessionCommands = ''
+      export QT_QPA_PLATFORM="wayland"
+      export NIXOS_OZONE_WL=1 # Enable Ozone-Wayland for Electron apps and Chromium, see https://nixos.wiki/wiki/Wayland
+      export SDL_VIDEODRIVER="wayland"
+      export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for some Java AWT applications (e.g. Android Studio)
+    '';
   };
 }

@@ -173,8 +173,6 @@ in {
         BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
         DEFAULT_BROWSER = "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse";
         DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
-        QT_QPA_PLATFORM = "wayland";
-        NIXOS_OZONE_WL = 1; # Enable Ozone-Wayland for Electron apps and Chromium, see https://nixos.wiki/wiki/Wayland
       }
       // lib.optionalAttrs isNvidia {
         LIBVA_DRIVER_NAME = "nvidia";
