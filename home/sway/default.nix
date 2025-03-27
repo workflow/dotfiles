@@ -390,6 +390,12 @@ in {
 
         # Seahorse for keyring unlocking (still haven't manage to pop that GUI unlock prompt open programatically...)
         {command = "seahorse";}
+
+        # Restart kanshi on sway reload
+        {
+          command = "systemctl --user restart kanshi";
+          always = true;
+        }
       ];
 
       terminal = "alacritty";
