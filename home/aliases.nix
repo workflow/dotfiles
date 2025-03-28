@@ -51,15 +51,9 @@
     ghmr = "gh pr merge -r";
 
     k9s-kind = "k9s --context kind-kind";
-    k9s-dlh = "k9s --context dlh-context";
-    k9s-test = "k9s --context datamesh-test-cluster";
-    k9s-prod = "k9s --context datamesh-prod-cluster";
 
     kc = "kubectl";
     kc-kind = "kubectl --context kind-kind";
-    kc-dlh = "kubectl --context dlh-context";
-    kc-test = "kubectl --context datamesh-test-cluster";
-    kc-prod = "kubectl --context datamesh-prod-cluster";
 
     lh = "/run/current-system/sw/bin/ls -ah";
     light-theme = "nh os test --specialisation light";
@@ -82,11 +76,7 @@
 
     rm = "trash-put";
 
-    soul = "nmcli c up 'Soul'";
     stern-kind = "stern --context kind-kind";
-    stern-dlh = "stern --context dlh-context";
-    stern-test = "stern --context datamesh-test-cluster";
-    stern-prod = "stern --context datamesh-prod-cluster";
 
     tailup = "sudo tailscale up --accept-routes --accept-dns=false";
     taildown = "sudo tailscale down";
