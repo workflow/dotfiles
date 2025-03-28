@@ -2,8 +2,8 @@
 {...}: {
   services.wlsunset = {
     enable = true;
-    latitude = 47.2;
-    longitude = 11.3;
+    latitude = 38.7;
+    longitude = -9.1;
     systemdTarget = "sway-session.target";
   };
 }
