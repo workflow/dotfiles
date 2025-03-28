@@ -10,10 +10,12 @@
       bw = 1;
       columns = 2;
       icon-theme = "Papirus-Dark";
-      modi = "run,calc,window";
+      # modi = "run,calc,window";
+      modi = "run,window";
     };
 
-    plugins = with pkgs; [rofi-calc];
+    package = pkgs.rofi-wayland;
+    # plugins = with pkgs; [rofi-calc];
 
     terminal = "${pkgs.alacritty}/bin/alacritty";
 

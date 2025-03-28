@@ -261,7 +261,8 @@ in {
           "${mod}+minus" = "scratchpad show";
 
           # Rofi Run Mode (nvidia-offload)
-          "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+          # "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+          "${mod}+o" = "exec rofi -modi drun#run#combi -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
           # Cliphist via rofi
           "${mod}+p" = "exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
@@ -318,6 +319,9 @@ in {
 
           # Reload Sway Config
           "${mod}+Shift+r" = "reload";
+
+          # Global Shortcuts (OBS etc...)
+          "Mod1+F4" = "exec ydotool key alt+F4";
         }
         // lib.optionalAttrs isBoar {
           # Sound Switcher
@@ -328,7 +332,8 @@ in {
           "${mod}+m" = "exec sound-switcher-flexbox";
         });
 
-      menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+      # menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+      menu = "rofi -modi drun#run#combi -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
       # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
       # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
