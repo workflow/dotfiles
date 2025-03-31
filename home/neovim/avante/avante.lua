@@ -15,7 +15,10 @@ require('avante').setup({
 		temperature = 0,
 		max_tokens = 8192,
 	},
-	hints = { enabled = false }
+	hints = { enabled = false },
+	web_search_engine = {
+		provider = "kagi",
+	},
 })
 local wk = require("which-key")
 wk.add(
