@@ -206,6 +206,9 @@ in {
       -- Terminal Mode shortcuts
       vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { silent = true })
       vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], { silent = true })
+
+      -- Disable F1 as help shortcut
+      vim.keymap.set({'n', 'i'}, '<F1>', '<Nop>', { noremap = true, silent = true })
     '';
 
     extraPackages = with pkgs; [

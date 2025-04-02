@@ -29,3 +29,5 @@ wk.add(
 		},
 	}
 )
+vim.api.nvim_set_keymap('i', '<F1>', '<Esc><cmd>AvanteToggle<cr>',
+	{ noremap = true, silent = true, desc = "Toggle Avante" })
