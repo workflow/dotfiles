@@ -121,6 +121,7 @@ local servers = {
   },
   terraformls = {},
   tflint = {},
+  ts_ls = {},
   yamlls = {
     schemas = {
       kubernetes = "*.yaml",
