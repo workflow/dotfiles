@@ -6,5 +6,6 @@ null_ls.setup({
       filetypes = { "html", "json", "yaml", "markdown" },
     }),
     null_ls.builtins.formatting.yapf,
+    require("none-ls.diagnostics.eslint")
   }
 })
