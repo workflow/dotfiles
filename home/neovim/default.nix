@@ -60,6 +60,7 @@ in {
       ./telescope
       ./toggleterm
       ./treesitter
+      ./trouble
       ./vim-visual-multi
     ]
     ++ lib.optionals isLightTheme [
@@ -385,31 +386,6 @@ in {
       }
       vim-textobj-entire
       vim-toml
-      {
-        plugin = trouble-nvim;
-        config = ''
-          local wk = require("which-key")
-          wk.add(
-            {
-              { "<leader>x", group = "Trouble" },
-              { "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", desc = "[D]ocument Diagnostics" },
-              { "<leader>xl", "<cmd>Trouble loclist<cr>", desc = "[L]ocation List" },
-              { "<leader>xq", "<cmd>Trouble quickfix<cr>", desc = "[Q]uickfix" },
-              { "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "[W]orkspace Diagnostics" },
-              { "<leader>xx", "<cmd>Trouble<cr>", desc = "Toggle Trouble" },
-            }
-          )
-          require("trouble").setup({
-            action_keys = { -- key mappings for actions in the trouble list
-              open_split = { "<c-s>" }, -- open buffer in new split
-              open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
-              previous = "l", -- previous item
-              next = "k" -- next item
-            },
-          })
-        '';
-        type = "lua";
-      }
       vim-unimpaired
       {
         plugin = which-key-nvim;
