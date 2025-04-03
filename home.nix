@@ -30,6 +30,7 @@
     portfolio
     rclone
     restic
+    tcpdump
     teams-for-linux # Unofficial Msft Teams App
     todoist-electron # Official Todoist app
     wealthfolio
