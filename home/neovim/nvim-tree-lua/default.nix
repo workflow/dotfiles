@@ -26,7 +26,8 @@
             { "<leader>fc", "<cmd>NvimTreeCollapse<CR>", desc = "[C]ollapse NVimTree Node Recursively" },
             { "<leader>ff", "<cmd>NvimTreeFindFile<CR>", desc = "Move the cursor in the tree for the current buffer, opening [f]olders if needed." },
             { "<leader>ft", "<cmd>NvimTreeToggle<CR>", desc = "[T]oggle NvimTree" },
-            { "<F2>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+            { "<F2>", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree", mode = { "n", "v" } },
+            { "<F2>", "<esc><cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree", mode = { "i" } },
           }
         )
         -- Autoclose, see https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close

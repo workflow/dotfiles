@@ -25,9 +25,8 @@ wk.add(
 	{
 		{
 			{ "<leader>a", group = "[A]vante" },
-			{ "<F1>",      "<cmd>AvanteToggle<cr>", desc = "Toggle Avante" },
+			{ "<F1>",      "<cmd>AvanteToggle<cr>",      desc = "Toggle Avante", mode = { "n", "v" } },
+			{ "<F1>",      "<esc><cmd>AvanteToggle<cr>", desc = "Toggle Avante", mode = { "i" } },
 		},
 	}
 )
-vim.api.nvim_set_keymap('i', '<F1>', '<Esc><cmd>AvanteToggle<cr>',
-	{ noremap = true, silent = true, desc = "Toggle Avante" })

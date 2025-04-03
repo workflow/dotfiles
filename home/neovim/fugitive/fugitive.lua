@@ -2,10 +2,6 @@ local function showFugitiveGit()
 	if vim.fn.FugitiveHead() ~= '' then
 		vim.cmd [[
             Git
-            " wincmd H  " Open Git window in vertical split
-            " setlocal winfixwidth
-            " vertical resize 31
-            " setlocal winfixwidth
             setlocal nonumber
             setlocal norelativenumber
             ]]
@@ -18,11 +14,17 @@ local function toggleFugitiveGit()
 		showFugitiveGit()
 	end
 end
-vim.keymap.set('n', '<F3>', toggleFugitiveGit)
+local function toggleFugitiveFromInsert()
+	vim.cmd.stopinsert()
+	toggleFugitiveGit()
+end
+
 
 local wk = require("which-key")
 wk.add(
 	{
+		{ "<F3>",        toggleFugitiveGit,         desc = "Toggle Fugitive",                mode = { "n", "v" } },
+		{ "<F3>",        toggleFugitiveFromInsert,  desc = "Toggle Fugitive",                mode = { "i" } },
 		{ "<leader>g",   group = "[G]it",           silent = false },
 		{ "<leader>gB",  ":Git blame<CR>",          desc = "[B]lame",                        silent = false },
 		{ "<leader>gb",  ":Git checkout -b<Space>", desc = "New [b]ranch",                   silent = false },
