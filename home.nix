@@ -6,7 +6,7 @@
   ...
 }: let
   homePackages = with pkgs; [
-    aichat
+    unstable.aichat
     alejandra # nix formatter
     autotiling # autotiling script for sway
     bluetuith
