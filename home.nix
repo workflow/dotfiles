@@ -8,6 +8,7 @@
   homePackages = with pkgs; [
     unstable.aichat
     alejandra # nix formatter
+    ast-grep
     autotiling # autotiling script for sway
     bluetuith
     brave
