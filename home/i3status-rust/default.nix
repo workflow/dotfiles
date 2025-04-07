@@ -270,31 +270,32 @@ in {
             }
           ]
           ++ lib.lists.optionals isBoar [
-            {
-              block = "custom";
-              command = "ddc-backlight 5"; # For i2c-5
-              format = "$icon$text";
-              icons_overrides = {
-                "moon_empty" = "🌑";
-                "moon_1" = "🌘";
-                "moon_2" = "🌗";
-                "moon_3" = "🌖";
-                "moon_full" = "🌕";
-              };
-              interval = 60;
-              click = [
-                {
-                  button = "up";
-                  cmd = "ddcutil setvcp 10 + 5 -b 5";
-                }
-                {
-                  button = "down";
-                  cmd = "ddcutil setvcp 10 - 5 -b 5";
-                }
-              ];
-              json = true;
-              merge_with_next = true;
-            }
+            # {
+            #   block = "custom";
+            #   command = "ddc-backlight 5"; # For i2c-5
+            #   format = "$icon$text";
+            #   icons_overrides = {
+            #     "moon_empty" = "🌑";
+            #     "moon_1" = "🌘";
+            #     "moon_2" = "🌗";
+            #     "moon_3" = "🌖";
+            #     "moon_full" = "🌕";
+            #   };
+            #   interval = 60;
+            #   error_interval = 60;
+            #   click = [
+            #     {
+            #       button = "up";
+            #       cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 5";
+            #     }
+            #     {
+            #       button = "down";
+            #       cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 5";
+            #     }
+            #   ];
+            #   json = true;
+            #   merge_with_next = true;
+            # }
             {
               block = "custom";
               command = "ddc-backlight 7"; # For i2c-7
@@ -307,43 +308,45 @@ in {
                 "moon_full" = "🌕";
               };
               interval = 60;
+              error_interval = 60;
               click = [
                 {
                   button = "up";
-                  cmd = "ddcutil setvcp 10 + 5 -b 7";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 7";
                 }
                 {
                   button = "down";
-                  cmd = "ddcutil setvcp 10 - 5 -b 7";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
                 }
               ];
               json = true;
               merge_with_next = true;
             }
-            {
-              block = "custom";
-              command = "ddc-backlight 4"; # For i2c-4
-              format = "$icon$text";
-              icons_overrides = {
-                "moon_empty" = "🌑";
-                "moon_1" = "🌘";
-                "moon_2" = "🌗";
-                "moon_3" = "🌖";
-                "moon_full" = "🌕";
-              };
-              interval = 60;
-              click = [
-                {
-                  button = "up";
-                  cmd = "ddcutil setvcp 10 + 5 -b 4";
-                }
-                {
-                  button = "down";
-                  cmd = "ddcutil setvcp 10 - 5 -b 4";
-                }
-              ];
-              json = true;
-            }
+            # {
+            #   block = "custom";
+            #   command = "ddc-backlight 4"; # For i2c-4
+            #   format = "$icon$text";
+            #   icons_overrides = {
+            #     "moon_empty" = "🌑";
+            #     "moon_1" = "🌘";
+            #     "moon_2" = "🌗";
+            #     "moon_3" = "🌖";
+            #     "moon_full" = "🌕";
+            #   };
+            #   interval = 60;
+            #   error_interval = 60;
+            #   click = [
+            #     {
+            #       button = "up";
+            #       cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 4";
+            #     }
+            #     {
+            #       button = "down";
+            #       cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 4";
+            #     }
+            #   ];
+            #   json = true;
+            # }
           ]
           ++ [
             {

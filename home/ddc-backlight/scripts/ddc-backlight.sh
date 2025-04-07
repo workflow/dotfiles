@@ -2,6 +2,23 @@
 BUS="$1"
 ICONS=("moon_empty" "moon_1" "moon_2" "moon_3" "moon_full")
 
+LOCK_FILE="/tmp/ddc_backlight.lock"
+
+# Deterministic delay based on bus number to stagger execution
+# Each bus will delay a different amount (0-59 seconds)
+DELAY=$((BUS * 7 % 60))
+# Sleep in the background to not delay the status bar
+(
+	sleep "$DELAY"
+) &
+
+# Prevent parallel execution, which can crash the kernel 
+if ! flock --nonblock 9; then
+	# Return a temporary placeholder instead of waiting
+	echo "{\"icon\":\"${ICONS[0]}\",\"text\":\"...\",\"short_text\":\"\"}"
+	exit 0
+fi 9>"$LOCK_FILE"
+
 # Check if monitor is connected and turned on - with better error handling
 # 1. Attempt to read the power state of the monitor using VCP code 0xD6 (Power Mode)
 {
