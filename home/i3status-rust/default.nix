@@ -281,8 +281,8 @@ in {
             #     "moon_3" = "🌖";
             #     "moon_full" = "🌕";
             #   };
-            #   interval = 60;
-            #   error_interval = 60;
+            #   interval = 300;
+            #   error_interval = 300;
             #   click = [
             #     {
             #       button = "up";
@@ -307,8 +307,8 @@ in {
                 "moon_3" = "🌖";
                 "moon_full" = "🌕";
               };
-              interval = 60;
-              error_interval = 60;
+              interval = 300;
+              error_interval = 300;
               click = [
                 {
                   button = "up";
@@ -333,8 +333,8 @@ in {
             #     "moon_3" = "🌖";
             #     "moon_full" = "🌕";
             #   };
-            #   interval = 60;
-            #   error_interval = 60;
+            #   interval = 300;
+            #   error_interval = 300;
             #   click = [
             #     {
             #       button = "up";

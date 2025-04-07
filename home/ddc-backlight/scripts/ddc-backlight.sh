@@ -7,10 +7,7 @@ LOCK_FILE="/tmp/ddc_backlight.lock"
 # Deterministic delay based on bus number to stagger execution
 # Each bus will delay a different amount (0-59 seconds)
 DELAY=$((BUS * 7 % 60))
-# Sleep in the background to not delay the status bar
-(
-	sleep "$DELAY"
-) &
+sleep "$DELAY"
 
 # Prevent parallel execution, which can crash the kernel 
 if ! flock --nonblock 9; then
