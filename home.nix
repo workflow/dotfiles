@@ -14,6 +14,7 @@
     brave
     calibre # Ebook reader
     dive # Analyze docker images
+    dmidecode # Hardware info read from Bios
     find-cursor
     galaxy-buds-client
     glow # Terminal markdown renderer
