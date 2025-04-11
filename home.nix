@@ -15,6 +15,7 @@
     calibre # Ebook reader
     dive # Analyze docker images
     dmidecode # Hardware info read from Bios
+    fast-cli # Fast.com CLI `fast`
     find-cursor
     galaxy-buds-client
     glow # Terminal markdown renderer
