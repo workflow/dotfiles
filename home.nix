@@ -22,7 +22,7 @@
     hoppscotch # Open-Source Postman
     unstable.isd # Interactive Systemd TUI in Python
     kind
-    libation
+    libation # Audible liberator
     libsecret # `secret-tool` for interacting with gnome-keyring
     lnav # Log File Navigator
     lolcat
