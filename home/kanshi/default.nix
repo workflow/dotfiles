@@ -15,7 +15,7 @@
       {
         output = {
           alias = "middleLG34";
-          criteria = "DP-2";
+          criteria = "DP-1";
           mode = "3840x2160@144.050Hz";
           position = "1080,208";
           scale = 1.5;
@@ -40,6 +40,17 @@
               criteria = "$leftLG27";
               status = "enable";
             }
+          ];
+        };
+      }
+      {
+        profile = {
+          name = "numenor";
+          outputs = [
+            # {
+            #   criteria = "$leftLG27";
+            #   status = "enable";
+            # }
             {
               criteria = "$middleLG34";
               status = "enable";
@@ -53,14 +64,14 @@
       }
       {
         profile = {
-          name = "boar-movie";
+          name = "numenor-movie";
           outputs = [
-            {
-              criteria = "$leftLG27";
-              status = "enable";
-              position = "0,272";
-              transform = "normal";
-            }
+            # {
+            #   criteria = "$leftLG27";
+            #   status = "enable";
+            #   position = "0,272";
+            #   transform = "normal";
+            # }
             {
               criteria = "$middleLG34";
               status = "enable";
