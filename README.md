@@ -20,11 +20,13 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Type             |                                 Program                                 |
 | :--------------- | :---------------------------------------------------------------------: |
 | AI IDE           |             [Avante](https://github.com/yetone/avante.nvim)             |
+| Animal           | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
 | Backups          |               [Restic](https://github.com/restic/restic)                |
 | Display Manager  |                [Ly](https://codeberg.org/AnErrupTion/ly)                |
 | Editor           |                      [NeoVim](https://neovim.io/)                       |
 | File Manager     |                  [Lf](https://github.com/gokcehan/lf)                   |
 | File Syncing     |           [Syncthing](https://github.com/syncthing/syncthing)           |
+| Impermanence     |      [Impermanence](https://github.com/nix-community/impermanence)      |
 | Launcher         |               [Rofi](https://github.com/davatorium/rofi)                |
 | Nix Builds       |                   [Nh](https://github.com/viperML/nh)                   |
 | Notifications    |             [Dunst](https://github.com/dunst-project/dunst)             |
@@ -35,7 +37,6 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Status Bar       |       [i3status-rust](https://github.com/greshake/i3status-rust)        |
 | Style Manager    |                [stylix](https://github.com/danth/stylix)                |
 | Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
-| Animal           | [Raccoon](https://duckduckgo.com/?hps=1&q=raccoon&iax=images&ia=images) |
 | Window Manager   |                 [Sway](https://github.com/swaywm/sway)                  |
 
 ## Lack of Aesthetics

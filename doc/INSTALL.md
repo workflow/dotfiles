@@ -2,10 +2,10 @@
 
 ## Create a bootable USB drive
 
-- Download NixOS to `$ISO_PATH`
+- Download Minimal NixOS to `$ISO_PATH`
 - insert drive
 - `lsblk` -> find out drive name (e.g. `/dev/sdb`) `$DRIVE`
-- run (as sudo) `dd bs=4M if=$ISO_PATH of=$DRIVE conv=fdatasync status=progress && sync`
+- run (as root) `dd bs=4M if=$ISO_PATH of=$DRIVE conv=fdatasync status=progress && sync`
 
 ## Optional: Installing dual-boot Windows 11 for driver checks etc...
 
@@ -17,66 +17,100 @@
 1. Clear secure boot keys
 1. Install NixOS as below, creating a new EFI boot partition separate from the windows one.
 
-### Actual installation
+## Actual installation using and Impermanence
 
-Roughly this https://qfpl.io/posts/installing-nixos/
+Fantastic Inspiration: https://www.youtube.com/watch?v=YPKwkWtK7l0
+NixOS Guide on using Btrfs: https://nixos.wiki/wiki/Btrfs
 
-- sudo -i
-- lsblk -> find out disk name (e.g. `/dev/sda`) `$DISK`
-- `export DISK=/dev/sda`
-- `gdisk $DISK`
-  - `p` (print)
-  - `d` (delete)
-  - `n` (new)
-    - number=1, begin=default, end=`+2G`, hex code=`ef00` (not needed if dual boot) (`$BOOT` from now on, or `/dev/sda1` etc)
-    - number=2, begin=default, end=default, hex code=`8e00` (`$MAIN` from now on)
-  - `w` (write)
-- `export BOOT=/dev/sda1`
-- `export MAIN=/dev/sda2`
-- encryption
-  - `cryptsetup luksFormat $MAIN`
-  - `cryptsetup luksOpen $MAIN nixos-enc`
-  - `pvcreate /dev/mapper/nixos-enc`
-  - `vgcreate nixos-vg /dev/mapper/nixos-enc`
-  - `lvcreate -L <swap size, e.g. 8G, usually pick 2xRAM for hibernation if space doesn't matter> -n swap nixos-vg`
-  - `lvcreate -l 100%FREE -n root nixos-vg`
-- create fs
-  - `mkfs.vfat -n boot $BOOT` (not needed if dual boot)
-  - `mkfs.ext4 -L nixos /dev/nixos-vg/root`
-  - `mkswap -L swap /dev/nixos-vg/swap`
-  - `swapon /dev/nixos-vg/swap`
-- mount
-  - `mount /dev/nixos-vg/root /mnt`
-  - `mkdir /mnt/boot`
-  - `mount $BOOT /mnt/boot`
-- generate config
-  - `nixos-generate-config --root /mnt`
-- add stuff to config
+Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booting just yet, so we're still doing it imperatively.
 
-required:
+1. Boot into Minimal NixOS
+1. `sudo su`
+1. `nix-shell -p neovim`
+1. `lsblk` -> find out disk name (e.g. `/dev/nvme0n1`) `$DISK`
+1. `export DISK=/dev/nvme0n1`
+1. `gdisk $DISK`
+   1. `p` (print)
+   1. `d` (delete)
+   1. `n` (new)
+      1. number=(1|5), begin=default, end=`+2G`, hex code=`ef00` (`$BOOT` from now on, or `/dev/nvme0n1p5` etc)
+      1. number=(2|6), begin=default, end=default, hex code=`8e00` (`$MAIN` from now on)
+   1. `w` (write)
+1. `export BOOT=/dev/nvme0n1p5`
+1. `export MAIN=/dev/nvme0n1p6`
+1. LVM on LUKS (BTRFS setup inspired by https://github.com/nix-community/disko/blob/master/example/luks-btrfs-subvolumes.nix)
 
-```nix
-boot.initrd.luks.devices = {
-  root = {
-    device = "$MAIN";
-    preLVM = true;
-  };
-};
+   1. `cryptsetup luksFormat $MAIN`
+   1. `cryptsetup luksOpen $MAIN nixos-enc`
+   1. `pvcreate /dev/mapper/nixos-enc`
+   1. `vgcreate nixos-vg /dev/mapper/nixos-enc`
+   1. `lvcreate --size <swap size, e.g. 8G, usually pick 2xRAM for hibernation if space doesn't matter> --name swap nixos-vg`
+   1. `lvcreate --size 100%FREE --name root nixos-vg`
 
-# If not dual-booting with GRUB
-boot.loader.systemd-boot.enable = true;
+1. Create Boot and Main FS
 
-networking.networkmanager.enable = true;
+   1. `mkfs.vfat -n boot $BOOT`
+   1. `nix-shell -p btrfs-progs`
+   1. `mkfs.btrfs --label nixos /dev/nixos-vg/root`
+      1. `mkdir -p /mnt`
+      1. `mount /dev/nixos-vg/root /mnt`
+      1. `btrfs subvolume create /mnt/root`
+      1. `btrfs subvolume create /mnt/nix`
+      1. `btrfs subvolume create /mnt/persist`
+      1. `btrfs subvolume create /mnt/home`
+      1. `umount /mnt`
 
-users.users.farlion = {
-  extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
-  isNormalUser = true;
-};
-```
+1. Create and Mount Swap
 
-- nixos go brrrr
-  - `nixos-install`
-  - `reboot`
+   1. `mkswap --label swap /dev/nixos-vg/swap`
+   1. `swapon /dev/nixos-vg/swap`
+
+1. Mount Everything
+
+   1. `mount -o compress=zstd,noatime,subvol=root /dev/nixos-vg/root /mnt`
+   1. `mkdir /mnt/{home,nix,persist}`
+   1. `mount -o compress=zstd,noatime,subvol=nix /dev/nixos-vg/root /mnt/nix`
+   1. `mount -o compress=zstd,noatime,subvol=persist /dev/nixos-vg/root /mnt/persist`
+   1. `mount -o compress=zstd,noatime,subvol=home /dev/nixos-vg/root /mnt/home`
+   1. `mkdir /mnt/boot`
+   1. `mount $BOOT /mnt/boot`
+
+1. Generate config
+   1. `nixos-generate-config --root /mnt`
+1. Add Btrfs mount options to hardware-config (since `nixos-generate-config` doesn't do that automatically yet):
+   `vim /mnt/etc/nixos/hardware-configuration.nix`
+   ```nix
+    fileSystems = {
+      "/".options = [ "compress=zstd" "noatime" ];
+      ...
+    };
+   ```
+1. Add minimum required stuff to config (`vim /mnt/etc/nixos/configuration.nix`)
+
+   ```nix
+   boot.initrd.luks.devices = {
+     root = {
+       device = "$MAIN";
+       preLVM = true;
+     };
+   };
+
+   # If not dual-booting with GRUB
+   boot.loader.systemd-boot.enable = true;
+
+   networking.networkmanager.enable = true;
+
+   users.users.farlion = {
+     extraGroups = ["wheel" "video" "audio" "disk" "networkmanager"];
+     isNormalUser = true;
+   };
+   ```
+
+1. Nixos go brrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+
+   `nixos-install`
+
+1. `reboot`
 
 ### Enable this setup
 
