@@ -125,5 +125,49 @@
         stylix.nixosModules.stylix
       ];
     };
+
+    nixosConfigurations.numenor = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        inherit secrets;
+        waylandScaleFactor = 1.5;
+      };
+      modules = [
+        {
+          nix = {
+            registry = {
+              nixpkgs-local.flake = nixpkgs;
+              nixos-unstable-local.flake = nixos-unstable;
+            };
+          };
+          nixpkgs.overlays = [(_: _: overlays)];
+        }
+        nixpkgs.nixosModules.notDetected
+        ./machines/numenor/hardware-scan.nix
+        ./machines/numenor/system.nix
+        ./system/amd
+        ./configuration.nix
+        nur.modules.nixos.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "home-manager-backup";
+            users.farlion = import ./home.nix;
+            extraSpecialArgs = {
+              isAmd = true;
+              isLaptop = false;
+              isNvidia = false;
+              waylandScaleFactor = 1.5;
+              inherit inputs;
+              inherit secrets;
+            };
+          };
+        }
+        stylix.nixosModules.stylix
+      ];
+    };
   };
 }
