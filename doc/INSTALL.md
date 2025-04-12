@@ -7,16 +7,15 @@
 - `lsblk` -> find out drive name (e.g. `/dev/sdb`) `$DRIVE`
 - run (as sudo) `dd bs=4M if=$ISO_PATH of=$DRIVE conv=fdatasync status=progress && sync`
 
-## Preparing Windows 10 to keep a Bootable Windows Partition
+## Optional: Installing dual-boot Windows 11 for driver checks etc...
 
-Roughly this https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md
-
-1. Install all updates
-1. Create a windows recovery USB Drive (Search for "Create Recovery Drive") [Fair warning: This is slooooooooow]
-1. Shrink main Windows partition using built-in Disk Management tool
-1. Use Macrorit Partition Expert to extend EFI partition to 1024MB
-1. (optional) Delete Recovery Partition(s)
-1  Install NixOS as below, re-using the existing EFI boot partition setup by Windows, and things should work with systemd-boot out of the box!
+1. Enable secure boot
+1. Install Windows 11. Windows 11 now lets you choose size of primary partition during install, I recommend 200GB on a 4TB drive, but lower (100GB) should be fine.
+1. Install all updates under Windows while we're at it.
+1. Optional: Create a windows recovery USB Drive (Search for "Create Recovery Drive") [Fair warning: This is slooooooooow].
+1. Disable secure boot
+1. Clear secure boot keys
+1. Install NixOS as below, creating a new EFI boot partition separate from the windows one.
 
 ### Actual installation
 
@@ -29,7 +28,7 @@ Roughly this https://qfpl.io/posts/installing-nixos/
   - `p` (print)
   - `d` (delete)
   - `n` (new)
-    - number=1, begin=default, end=`+1G`, hex code=`ef00` (not needed if dual boot) (`$BOOT` from now on, or `/dev/sda1` etc)
+    - number=1, begin=default, end=`+2G`, hex code=`ef00` (not needed if dual boot) (`$BOOT` from now on, or `/dev/sda1` etc)
     - number=2, begin=default, end=default, hex code=`8e00` (`$MAIN` from now on)
   - `w` (write)
 - `export BOOT=/dev/sda1`
@@ -55,6 +54,7 @@ Roughly this https://qfpl.io/posts/installing-nixos/
 - add stuff to config
 
 required:
+
 ```nix
 boot.initrd.luks.devices = {
   root = {
