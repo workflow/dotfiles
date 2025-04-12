@@ -78,14 +78,14 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. Generate config
    1. `nixos-generate-config --root /mnt`
 1. Add Btrfs mount options to hardware-config (since `nixos-generate-config` doesn't do that automatically yet):
-   `vim /mnt/etc/nixos/hardware-configuration.nix`
+   `nvim /mnt/etc/nixos/hardware-configuration.nix`
    ```nix
     fileSystems = {
       "/".options = [ "compress=zstd" "noatime" ];
       ...
     };
    ```
-1. Add minimum required stuff to config (`vim /mnt/etc/nixos/configuration.nix`)
+1. Add minimum required stuff to config (`nvim /mnt/etc/nixos/configuration.nix`)
 
    ```nix
    boot.initrd.luks.devices = {
@@ -114,22 +114,36 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 
 ### Enable this setup
 
-(`$NIXOS_CONFIG` is the location of this repo)
-
 1. change your name to `farlion` because it's hardcoded in the configurations
-1. `passwd farlion` and then `su`
-1. `git clone https://github.com/workflow/nixos-config.git $NIXOS_CONFIG`
-1. From`$NIXOS_CONFIG/machines/*/system.nix` as a template, set required settings like the `networking.hostname` and the correct networking interfaces to enable DHCP
-1. Update flake.nix with new machine (name = hostname)
-1. `nix shell nixpkgs#cachix -c cachix use workflow-nixos-config`
-1. `sudo nixos-rebuild switch --flake $NIXOS_CONFIG#<machine name, empty if hostname> --override-input secrets nixpkgs`
+1. `passwd farlion` and then `su farlion`
+1. `nix-shell -p git neovim`
+1. `export NIXOS_TMP_CONFIG=/home/farlion/nixos-tmp-config`
+1. `git clone https://github.com/workflow/nixos-config.git $NIXOS_TMP_CONFIG`
+1. `cd $NIXOS_TMP_CONFIG`
+1. Make a new `machines/<new_hostname>` from the base settings at `/etc/nixos/{hardware-}configuration`
+   1. `mkdir machines/<new_hostname>`
+   1. `cp /etc/nixos/hardware-configuration.nix machines/<new_hostname>/hardware-scan.nix`
+   1. `cp /etc/nixos/configuration.nix machines/<new_hostname>/system.nix`
+   1. Remove imports from `machines/<new_hostname>/hardware-scan.nix` and `machines/<new_hostname>/system.nix`
+   1. Set correct DHCP config in `machines/<new_hostname>/hardware-scan.nix`
+   1. Update `networking.hostname` in `machines/<new_hostname>/system.nix`
+   1. Check from other similar machines and copy any further settings that may be needed
+1. Update `flake.nix` with new machine
+1. `nix-shell -p cachix`
+1. `sudo nvim /etc/nixos/configuration.nix`
+1. Add `nix.settings.trusted-users = ["root" "farlion"]`
+1. `sudo nixos-rebuild switch`
+1. `cachix use workflow-nixos-config`
+1. `git add machines/<new_hostname>` (for flakes to pick up the changes)
+1. `sudo nixos-rebuild boot --flake .#<new hostname> --override-input secrets nixpkgs`
 1. Reboot
 
 ### Post-installation steps
 
-1. Push any local `$NIXOS_CONFIG` config changes to github
-1. Remove local `$NIXOS_CONFIG` and symlink it to `~/code/nixos-config`
-1. Go through secret setup instructions / customize system to your needs
+1. Push any local `$NIXOS_TMP_CONFIG` config changes to github
+1. Remove local `$NIXOS_TMP_CONFIG` and symlink it to `~/code/nixos-config`
+1. Go through secret setup instructions
+1. Customize `~/code/nixos-config/machines/<new_hostname>/{system.nix&&hardware-scan.nix}` while cleaning them up, taking inspiration from similar machines
 1. Change `root` passwd
-1. Rerun `nh os switch`
+1. `nh os boot`
 1. Reboot
