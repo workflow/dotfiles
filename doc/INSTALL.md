@@ -153,3 +153,4 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. Change `root` passwd
 1. `nh os boot`
 1. Reboot
+1. Add <new_hostname> to CI build
