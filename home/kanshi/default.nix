@@ -34,23 +34,12 @@
       }
       {
         profile = {
-          name = "boar";
+          name = "numenor";
           outputs = [
             {
               criteria = "$leftLG27";
               status = "enable";
             }
-          ];
-        };
-      }
-      {
-        profile = {
-          name = "numenor";
-          outputs = [
-            # {
-            #   criteria = "$leftLG27";
-            #   status = "enable";
-            # }
             {
               criteria = "$middleLG34";
               status = "enable";
@@ -66,12 +55,12 @@
         profile = {
           name = "numenor-movie";
           outputs = [
-            # {
-            #   criteria = "$leftLG27";
-            #   status = "enable";
-            #   position = "0,272";
-            #   transform = "normal";
-            # }
+            {
+              criteria = "$leftLG27";
+              status = "enable";
+              position = "0,272";
+              transform = "normal";
+            }
             {
               criteria = "$middleLG34";
               status = "enable";
