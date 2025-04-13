@@ -77,7 +77,6 @@
   nautilus
   ncdu # Disk Space Visualization
   nmap
-  neofetch
   nethogs
   nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
   nodejs # For coc.nvim

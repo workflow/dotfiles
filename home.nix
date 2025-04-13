@@ -16,6 +16,7 @@
     dive # Analyze docker images
     dmidecode # Hardware info read from Bios
     fast-cli # Fast.com CLI `fast`
+    fastfetch # neofetch sucessor, system information tool
     find-cursor
     galaxy-buds-client
     glow # Terminal markdown renderer
