@@ -1,5 +1,3 @@
-set -euo pipefail
-
 chosen="$(echo -e "🎧oh\n\
 🔊creative\n\
 🎧sony\n\
@@ -10,9 +8,9 @@ chosen="$(echo -e "🎧oh\n\
 " | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
 
 oh() {
-	local card_name_pattern="51_00"
-	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo.2"
-	local card_profile="output:hdmi-stereo"
+	local card_name_pattern="ThinkPad_Thunderbolt"
+	local sink="alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo"
+	local card_profile="output:analog-stereo"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
@@ -20,9 +18,9 @@ oh() {
 }
 
 creative() {
-	local card_name_pattern="51_00"
-	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1"
-	local card_profile="output:hdmi-stereo-extra1"
+	local card_name_pattern="usb-Generic_USB_Audio-00"
+	local sink="alsa_output.usb-Generic_USB_Audio-00.analog-stereo"
+	local card_profile="output:analog-stereo"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
@@ -30,8 +28,8 @@ creative() {
 }
 
 movie() {
-	local card_name_pattern="51_00"
-	local sink="alsa_output.pci-0000_51_00.1.hdmi-stereo-extra3"
+	local card_name_pattern="0000_03_00"
+	local sink="alsa_output.pci-0000_03_00.1.hdmi-stereo-extra3"
 	local card_profile="output:hdmi-stereo-extra3"
 
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"

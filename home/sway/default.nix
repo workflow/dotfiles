@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  osConfig,
   isLaptop,
   ...
 }: let
@@ -10,9 +9,6 @@
   color_txt = "#EAD49B";
 
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
-
-  isBoar = osConfig.networking.hostName == "boar";
-  isFlexbox = osConfig.networking.hostName == "flexbox";
 
   locker = "${pkgs.bash}/bin/bash -c 'pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
   suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
@@ -184,153 +180,148 @@ in {
         };
       };
 
-      keybindings = lib.mkOptionDefault ({
-          # Split
-          "${mod}+v" = "split v";
-          "${mod}+s" = "split h";
+      keybindings = lib.mkOptionDefault {
+        # Split
+        "${mod}+v" = "split v";
+        "${mod}+s" = "split h";
 
-          # Focus
-          # Move to workspace
-          "${mod}+1" = "workspace ${ws1}";
-          "${mod}+2" = "workspace ${ws2}";
-          "${mod}+3" = "workspace ${ws3}";
-          "${mod}+4" = "workspace ${ws4}";
-          "${mod}+5" = "workspace ${ws5}";
-          "${mod}+6" = "workspace ${ws6}";
-          "${mod}+7" = "workspace ${ws7}";
-          "${mod}+8" = "workspace ${ws8}";
-          "${mod}+9" = "workspace ${ws9}";
-          "${mod}+0" = "workspace ${ws10}";
-          "${mod}+Mod1+1" = "workspace ${ws11}";
-          "${mod}+Mod1+2" = "workspace ${ws12}";
-          "${mod}+Mod1+3" = "workspace ${ws13}";
-          "${mod}+Mod1+4" = "workspace ${ws14}";
-          "${mod}+Mod1+5" = "workspace ${ws15}";
-          "${mod}+Mod1+6" = "workspace ${ws16}";
-          "${mod}+Mod1+7" = "workspace ${ws17}";
-          "${mod}+Mod1+8" = "workspace ${ws18}";
-          "${mod}+Mod1+9" = "workspace ${ws19}";
-          "${mod}+Mod1+0" = "workspace ${ws20}";
-          "${mod}+c" = "workspace ${wsc}";
+        # Focus
+        # Move to workspace
+        "${mod}+1" = "workspace ${ws1}";
+        "${mod}+2" = "workspace ${ws2}";
+        "${mod}+3" = "workspace ${ws3}";
+        "${mod}+4" = "workspace ${ws4}";
+        "${mod}+5" = "workspace ${ws5}";
+        "${mod}+6" = "workspace ${ws6}";
+        "${mod}+7" = "workspace ${ws7}";
+        "${mod}+8" = "workspace ${ws8}";
+        "${mod}+9" = "workspace ${ws9}";
+        "${mod}+0" = "workspace ${ws10}";
+        "${mod}+Mod1+1" = "workspace ${ws11}";
+        "${mod}+Mod1+2" = "workspace ${ws12}";
+        "${mod}+Mod1+3" = "workspace ${ws13}";
+        "${mod}+Mod1+4" = "workspace ${ws14}";
+        "${mod}+Mod1+5" = "workspace ${ws15}";
+        "${mod}+Mod1+6" = "workspace ${ws16}";
+        "${mod}+Mod1+7" = "workspace ${ws17}";
+        "${mod}+Mod1+8" = "workspace ${ws18}";
+        "${mod}+Mod1+9" = "workspace ${ws19}";
+        "${mod}+Mod1+0" = "workspace ${ws20}";
+        "${mod}+c" = "workspace ${wsc}";
 
-          # Move container to workspace and focus
-          "${mod}+Shift+1" = "move container to workspace ${ws1}; workspace ${ws1}";
-          "${mod}+Shift+2" = "move container to workspace ${ws2}; workspace ${ws2}";
-          "${mod}+Shift+3" = "move container to workspace ${ws3}; workspace ${ws3}";
-          "${mod}+Shift+4" = "move container to workspace ${ws4}; workspace ${ws4}";
-          "${mod}+Shift+5" = "move container to workspace ${ws5}; workspace ${ws5}";
-          "${mod}+Shift+6" = "move container to workspace ${ws6}; workspace ${ws6}";
-          "${mod}+Shift+7" = "move container to workspace ${ws7}; workspace ${ws7}";
-          "${mod}+Shift+8" = "move container to workspace ${ws8}; workspace ${ws8}";
-          "${mod}+Shift+9" = "move container to workspace ${ws9}; workspace ${ws9}";
-          "${mod}+Shift+0" = "move container to workspace ${ws10}; workspace ${ws10}";
-          "${mod}+Shift+Mod1+1" = "move container to workspace ${ws11}; workspace ${ws11}";
-          "${mod}+Shift+Mod1+2" = "move container to workspace ${ws12}; workspace ${ws12}";
-          "${mod}+Shift+Mod1+3" = "move container to workspace ${ws13}; workspace ${ws13}";
-          "${mod}+Shift+Mod1+4" = "move container to workspace ${ws14}; workspace ${ws14}";
-          "${mod}+Shift+Mod1+5" = "move container to workspace ${ws15}; workspace ${ws15}";
-          "${mod}+Shift+Mod1+6" = "move container to workspace ${ws16}; workspace ${ws16}";
-          "${mod}+Shift+Mod1+7" = "move container to workspace ${ws17}; workspace ${ws17}";
-          "${mod}+Shift+Mod1+8" = "move container to workspace ${ws18}; workspace ${ws18}";
-          "${mod}+Shift+Mod1+9" = "move container to workspace ${ws19}; workspace ${ws19}";
-          "${mod}+Shift+Mod1+0" = "move container to workspace ${ws20}; workspace ${ws20}";
-          "${mod}+Shift+c" = "move container to workspace ${wsc}; workspace ${wsc}";
+        # Move container to workspace and focus
+        "${mod}+Shift+1" = "move container to workspace ${ws1}; workspace ${ws1}";
+        "${mod}+Shift+2" = "move container to workspace ${ws2}; workspace ${ws2}";
+        "${mod}+Shift+3" = "move container to workspace ${ws3}; workspace ${ws3}";
+        "${mod}+Shift+4" = "move container to workspace ${ws4}; workspace ${ws4}";
+        "${mod}+Shift+5" = "move container to workspace ${ws5}; workspace ${ws5}";
+        "${mod}+Shift+6" = "move container to workspace ${ws6}; workspace ${ws6}";
+        "${mod}+Shift+7" = "move container to workspace ${ws7}; workspace ${ws7}";
+        "${mod}+Shift+8" = "move container to workspace ${ws8}; workspace ${ws8}";
+        "${mod}+Shift+9" = "move container to workspace ${ws9}; workspace ${ws9}";
+        "${mod}+Shift+0" = "move container to workspace ${ws10}; workspace ${ws10}";
+        "${mod}+Shift+Mod1+1" = "move container to workspace ${ws11}; workspace ${ws11}";
+        "${mod}+Shift+Mod1+2" = "move container to workspace ${ws12}; workspace ${ws12}";
+        "${mod}+Shift+Mod1+3" = "move container to workspace ${ws13}; workspace ${ws13}";
+        "${mod}+Shift+Mod1+4" = "move container to workspace ${ws14}; workspace ${ws14}";
+        "${mod}+Shift+Mod1+5" = "move container to workspace ${ws15}; workspace ${ws15}";
+        "${mod}+Shift+Mod1+6" = "move container to workspace ${ws16}; workspace ${ws16}";
+        "${mod}+Shift+Mod1+7" = "move container to workspace ${ws17}; workspace ${ws17}";
+        "${mod}+Shift+Mod1+8" = "move container to workspace ${ws18}; workspace ${ws18}";
+        "${mod}+Shift+Mod1+9" = "move container to workspace ${ws19}; workspace ${ws19}";
+        "${mod}+Shift+Mod1+0" = "move container to workspace ${ws20}; workspace ${ws20}";
+        "${mod}+Shift+c" = "move container to workspace ${wsc}; workspace ${wsc}";
 
-          # Move workspace between screens
-          "${mod}+Control+j" = "move workspace to output left";
-          "${mod}+Control+semicolon" = "move workspace to output right";
+        # Move workspace between screens
+        "${mod}+Control+j" = "move workspace to output left";
+        "${mod}+Control+semicolon" = "move workspace to output right";
 
-          # lock screen
-          "${mod}+Shift+x" = "exec ${locker}";
+        # lock screen
+        "${mod}+Shift+x" = "exec ${locker}";
 
-          # Layout
-          # toggle tiling / floating
-          "${mod}+Shift+space" = "floating toggle";
-          # Toggle split
-          "${mod}+Shift+e" = "layout toggle split";
-          # Stacking
-          "${mod}+Shift+s" = "layout stacking";
-          # Tabbed
-          "${mod}+Shift+w" = "layout tabbed";
+        # Layout
+        # toggle tiling / floating
+        "${mod}+Shift+space" = "floating toggle";
+        # Toggle split
+        "${mod}+Shift+e" = "layout toggle split";
+        # Stacking
+        "${mod}+Shift+s" = "layout stacking";
+        # Tabbed
+        "${mod}+Shift+w" = "layout tabbed";
 
-          # move the currently focused window to the scratchpad
-          "${mod}+Shift+minus" = "move scratchpad";
+        # move the currently focused window to the scratchpad
+        "${mod}+Shift+minus" = "move scratchpad";
 
-          # Show the next scratchpad window or hide the focused scratchpad window.
-          # If there are multiple scratchpad windows, this command cycles through them.
-          "${mod}+minus" = "scratchpad show";
+        # Show the next scratchpad window or hide the focused scratchpad window.
+        # If there are multiple scratchpad windows, this command cycles through them.
+        "${mod}+minus" = "scratchpad show";
 
-          # Rofi Run Mode (nvidia-offload)
-          # "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
-          "${mod}+o" = "exec rofi -modi drun#run#combi -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+        # Rofi Run Mode (nvidia-offload)
+        # "${mod}+o" = "exec rofi -modi drun#run#combi#calc -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
+        "${mod}+o" = "exec rofi -modi drun#run#combi -show run -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
 
-          # Cliphist via rofi
-          "${mod}+p" = "exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
-          # Single item clearing
-          "${mod}+Shift+p" = "exec cliphist list | rofi -dmenu | cliphist delete";
+        # Cliphist via rofi
+        "${mod}+p" = "exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
+        # Single item clearing
+        "${mod}+Shift+p" = "exec cliphist list | rofi -dmenu | cliphist delete";
 
-          # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
-          # Pulse Audio controls
-          "XF86AudioRaiseVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%+"; #increase sound volume
-          "XF86AudioLowerVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%-"; #decrease sound volume
-          "XF86AudioMute" = "exec  wpctl set-mute @DEFAULT_SINK@ toggle"; # mute sound
+        # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
+        # Pulse Audio controls
+        "XF86AudioRaiseVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%+"; #increase sound volume
+        "XF86AudioLowerVolume" = "exec  wpctl set-volume @DEFAULT_SINK@ 5%-"; #decrease sound volume
+        "XF86AudioMute" = "exec  wpctl set-mute @DEFAULT_SINK@ toggle"; # mute sound
 
-          # Screen brightness controls
-          "XF86MonBrightnessUp" = "exec brightnessctl set +50"; # increase screen brightness
-          "XF86MonBrightnessDown" = "exec brightnessctl set 50-"; # decrease screen brightness
+        # Screen brightness controls
+        "XF86MonBrightnessUp" = "exec brightnessctl set +50"; # increase screen brightness
+        "XF86MonBrightnessDown" = "exec brightnessctl set 50-"; # decrease screen brightness
 
-          # Media player controls
-          "XF86AudioPlay" = "exec playerctl play-pause";
-          "XF86AudioNext" = "exec playerctl next";
-          "XF86AudioPrev" = "exec playerctl previous";
+        # Media player controls
+        "XF86AudioPlay" = "exec playerctl play-pause";
+        "XF86AudioNext" = "exec playerctl next";
+        "XF86AudioPrev" = "exec playerctl previous";
 
-          # Screenshots
-          "Print" = "exec QT_SCALE_FACTOR=0.5 flameshot gui";
-          "Shift+Print" = "exec QT_SCALE_FACTOR=0.5 flameshot full --clipboard --path ~/Pictures/Flameshot/";
+        # Screenshots
+        "Print" = "exec QT_SCALE_FACTOR=0.5 flameshot gui";
+        "Shift+Print" = "exec QT_SCALE_FACTOR=0.5 flameshot full --clipboard --path ~/Pictures/Flameshot/";
 
-          # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
-          # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
-          # If you also press Shift with these keys, the change will be global for all workspaces.
-          "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
+        # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps.
+        # Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace).
+        # If you also press Shift with these keys, the change will be global for all workspaces.
+        "${mod}+Shift+g" = "mode \"${mode_gaps}\"";
 
-          # Rofi window switcher
-          "${mod}+Shift+d" = ''exec "rofi -show window -matching fuzzy"'';
+        # Rofi window switcher
+        "${mod}+Shift+d" = ''exec "rofi -show window -matching fuzzy"'';
 
-          # Dunst shortcuts via dunstctl
-          "${mod}+Ctrl+space" = "exec dunstctl close-all";
-          "${mod}+Ctrl+c" = "exec dunstctl context";
-          "${mod}+Ctrl+h" = "exec dunstctl history-pop";
+        # Dunst shortcuts via dunstctl
+        "${mod}+Ctrl+space" = "exec dunstctl close-all";
+        "${mod}+Ctrl+c" = "exec dunstctl context";
+        "${mod}+Ctrl+h" = "exec dunstctl history-pop";
 
-          # Launch Browser
-          "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
-          "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
+        # Launch Browser
+        "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
+        "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
 
-          # File Manager ("navigate")
-          "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
+        # File Manager ("navigate")
+        "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
 
-          # System Mode
-          "${mod}+Pause" = "mode \"${mode_system}\"";
+        # System Mode
+        "${mod}+Pause" = "mode \"${mode_system}\"";
 
-          # Net[w]orkmanager
-          "${mod}+w" = "exec ${networkManager}";
+        # Net[w]orkmanager
+        "${mod}+w" = "exec ${networkManager}";
 
-          # Rofimoji
-          "${mod}+e" = "exec rofimoji";
+        # Rofimoji
+        "${mod}+e" = "exec rofimoji";
 
-          # Reload Sway Config
-          "${mod}+Shift+r" = "reload";
+        # Reload Sway Config
+        "${mod}+Shift+r" = "reload";
 
-          # Global Shortcuts (OBS etc...)
-          "Mod1+F4" = "exec ydotool key alt+F4";
-        }
-        // lib.optionalAttrs isBoar {
-          # Sound Switcher
-          "${mod}+m" = "exec sound-switcher-boar";
-        }
-        // lib.optionalAttrs isFlexbox {
-          # Sound Switcher
-          "${mod}+m" = "exec sound-switcher-flexbox";
-        });
+        # Global Shortcuts (OBS etc...)
+        "Mod1+F4" = "exec ydotool key alt+F4";
+
+        # Sound Switcher
+        "${mod}+m" = "exec sound-switcher";
+      };
 
       # menu = "rofi -modi drun#run#combi#calc -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";
       menu = "rofi -modi drun#run#combi -show drun -show-icons -run-shell-command '{terminal} -e fish -ic \"{cmd} && read\"' -matching fuzzy";

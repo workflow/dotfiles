@@ -50,8 +50,6 @@
     dlfile
     font-smoke-test
     macgyver-status
-    sound-switcher-boar
-    sound-switcher-flexbox
     tailscale-ip
   ];
 
@@ -89,6 +87,7 @@
       ./home/nushell
       ./home/obs
       ./home/sound-levels-maintainer
+      ./home/sound-switcher
       ./home/starship
       ./home/stylix
       ./home/syncthing

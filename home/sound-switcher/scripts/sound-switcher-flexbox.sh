@@ -1,5 +1,3 @@
-set -euo pipefail
-
 chosen="$(echo -e "🔌local\n\
  buds(listen)\n\
  buds(talk)\n\

@@ -57,10 +57,6 @@
     fi
   '';
 
-  # Rofi Audio Source/Sink Switcher Menu
-  sound-switcher-boar = pkgs.writers.writeBashBin "sound-switcher-boar" (builtins.readFile ./scripts/sound-switcher-boar.sh);
-  sound-switcher-flexbox = pkgs.writers.writeBashBin "sound-switcher-flexbox" (builtins.readFile ./scripts/sound-switcher-flexbox.sh);
-
   # Get the current tailscale ip if tailscale is up
   tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''
     set -euo pipefail
