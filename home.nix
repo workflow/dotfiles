@@ -86,7 +86,7 @@
       ./home/nix-index
       ./home/nushell
       ./home/obs
-      ./home/sound-levels-maintainer
+      ./home/mic-levels-maintainer
       ./home/sound-switcher
       ./home/starship
       ./home/stylix
