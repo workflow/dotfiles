@@ -7,10 +7,9 @@
   ...
 }: let
   soundBlockMappings = {
-    "boar" = {
-      "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra1" = "🔊";
-      "alsa_output.pci-0000_51_00.1.hdmi-stereo" = "";
-      "alsa_output.pci-0000_51_00.1.hdmi-stereo.2" = "";
+    "numenor" = {
+      "alsa_output.usb-Generic_USB_Audio-00.analog-stereo" = "🔊";
+      "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
       "bluez_output.14_3F_A6_28_DC_51.1" = "";
       "alsa_output.pci-0000_51_00.1.hdmi-stereo-extra3" = "🍿";
       "bluez_output.DC_69_E2_9A_6E_30.1" = "";
@@ -70,7 +69,7 @@
     }) ["eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" "veth0"];
 
   hostName = osConfig.networking.hostName;
-  isBoar = hostName == "boar";
+  isNumenor = hostName == "numenor";
   isFlexbox = hostName == "flexbox";
 in {
   programs.i3status-rust = {
@@ -269,7 +268,7 @@ in {
               ];
             }
           ]
-          ++ lib.lists.optionals isBoar [
+          ++ lib.lists.optionals false [
             {
               block = "custom";
               command = "ddc-backlight 5"; # For i2c-5
