@@ -68,6 +68,7 @@
       ./home/cpu-profile-toggler
       ./home/ddc-backlight
       ./home/dunst
+      ./home/easyeffects # GUI for Pipewire effects
       ./home/email.nix
       ./home/firefox
       ./home/fish.nix
