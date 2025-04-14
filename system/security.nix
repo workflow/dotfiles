@@ -1,5 +1,4 @@
 {...}: {
-  # Gnome Keyring
   services.gnome.gnome-keyring.enable = true;
 
   boot.loader.systemd-boot.editor = false;
