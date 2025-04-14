@@ -15,6 +15,7 @@ in {
       ./system/audio.nix
       ./system/desktop.nix
       ./system/dns.nix
+      ./system/firmware
       ./system/fonts.nix
       ./system/io
       ./system/kind-killer
