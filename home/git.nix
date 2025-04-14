@@ -2,6 +2,18 @@
   programs.git = {
     aliases = {
       c = "commit";
+
+      # Difftastic
+      dlog = "-c diff.external=difft log --ext-diff";
+      dshow = "-c diff.external=difft show --ext-diff";
+      ddiff = "-c diff.external=difft diff";
+      # `git log` with patches shown with difftastic.
+      dl = "-c diff.external=difft log -p --ext-diff";
+      # Show the most recent commit with difftastic.
+      ds = "-c diff.external=difft show --ext-diff";
+      # `git diff` with difftastic.
+      dft = "-c diff.external=difft diff";
+
       p = "push";
       rim = "rebase -i main";
       rimm = "rebase -i master";
