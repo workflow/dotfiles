@@ -12,7 +12,7 @@ on:
       - ".gitignore"
 
 jobs:
-  build-boar:
+  build-numenor:
     runs-on: ubuntu-latest
     steps:
       - name: "Create Dir for Mounting moar Disk Space ❄"
@@ -62,11 +62,11 @@ jobs:
 
       - name: "Build NixOS config ❄️"
         run: |
-          nix build .#nixosConfigurations.boar.config.system.build.toplevel --override-input secrets nixpkgs
+          nix build .#nixosConfigurations.numenor.config.system.build.toplevel --override-input secrets nixpkgs
 
   build-flexbox:
     runs-on: ubuntu-latest
-    needs: [build-boar]
+    needs: [build-numenor]
     steps:
       - name: "Create Dir for Mounting moar Disk Space ❄"
         run: |
