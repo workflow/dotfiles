@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  modulesPath,
-  ...
-}: {
+{lib, ...}: {
   boot.initrd.availableKernelModules = ["thunderbolt" "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-amd"];
