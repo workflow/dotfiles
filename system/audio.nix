@@ -16,6 +16,12 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
 
+    extraConfig.pipewire."92-adjust-max-quantum" = {
+      "context.properties" = {
+        "default.clock.max-quantum" = 8192; # Matches Windows Settings
+      };
+    };
+
     wireplumber.extraConfig = {
       # Enable Fancy Blueooth Codecs
       "monitor.bluez.properties" = {
