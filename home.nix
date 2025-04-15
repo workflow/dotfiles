@@ -20,7 +20,7 @@
     find-cursor
     galaxy-buds-client
     glow # Terminal markdown renderer
-    hoppscotch # Open-Source Postman
+    unstable.hoppscotch # Open-Source Postman
     unstable.isd # Interactive Systemd TUI in Python
     kind
     libation # Audible liberator
