@@ -188,11 +188,40 @@ in {
                 }
               ];
             }
+            # CPU temperature
             {
               block = "temperature";
-              format = " $icon ";
+              chip =
+                if isNumenor
+                then "k10temp-pci-00c3"
+                else "*";
+              format = {
+                short = "$icon";
+                full = "  $icon ";
+              };
               format_alt = " $icon $average avg, $max max ";
-              chip = "*-isa-*";
+              good =
+                if isNumenor
+                then 45
+                else 20;
+              idle =
+                if isNumenor
+                then 55
+                else 45;
+              info =
+                if isNumenor
+                then 85
+                else 60;
+              warning =
+                if isNumenor
+                then 90
+                else 80;
+              click = [
+                {
+                  button = "right";
+                  cmd = "alacritty -e btop";
+                }
+              ];
             }
           ]
           ++ lib.lists.optionals isAmd [
