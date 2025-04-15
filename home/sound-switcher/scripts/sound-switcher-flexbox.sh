@@ -121,7 +121,7 @@ budstalk() {
 sony() {
 	local card_name_pattern="14_3F"
 	local sink="bluez_output.14_3F_A6_28_DC_51.1"
-	local card_profile="a2dp-sink-sbc"
+	local card_profile="a2dp-sink"
 
 	local bd_address="14:3F:A6:28:DC:51"
 	local card_id
