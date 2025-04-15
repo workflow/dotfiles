@@ -147,6 +147,7 @@
         ./machines/numenor/hardware-scan.nix
         ./machines/numenor/system.nix
         ./system/amd
+        ./system/btrfs
         ./configuration.nix
         nur.modules.nixos.default
         home-manager.nixosModules.home-manager
