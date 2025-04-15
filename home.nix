@@ -74,7 +74,6 @@
       ./home/flameshot
       ./home/fzf.nix
       ./home/git.nix
-      ./home/gpg.nix
       ./home/gtk-qt
       ./home/sway
       ./home/i3status-rust
