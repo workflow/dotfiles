@@ -54,19 +54,18 @@
     if isFlexbox
     then ["wlp0s20f3" "tailscale0" "veth0" "wg0"]
     else if isNumenor
-    then []
+    then ["enp74s0" "wlp73s0" "tailscale0" "wg0"]
     else [];
   netBlocks =
     map
     (device: {
       block = "net";
       device = device;
-      # TODO: ACtivate as soon as `range` parameter is supported
       format = {
         short = "$icon {$speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)}";
-        full = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)";
+        full = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)";
       };
-      format_alt = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:1..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:1..)";
+      format_alt = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:1..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:1..)";
       click = [
         {
           button = "right";
@@ -75,6 +74,9 @@
       ];
       missing_format = "";
       inactive_format = "";
+      error_format = ""; # When blocks are outside of `range` they still error for some reason
+      error_interval = 10; # Recheck inactive net blocks every 10 seconds
+      interval = 10; # For less jumpiness with the inactive net block hiding
     })
     netDevices;
 
