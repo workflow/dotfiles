@@ -50,6 +50,7 @@
     }
   ];
 
+  minNetActivationSpeed = "1000"; # Minimum detected up/down speed in bytes to show a network connection
   netDevices =
     if isFlexbox
     then ["wlp0s20f3" "tailscale0" "veth0" "wg0"]
@@ -62,10 +63,10 @@
       block = "net";
       device = device;
       format = {
-        short = "$icon {$speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)}";
-        full = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}$speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)";
+        short = "$icon {$speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)/$speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)}";
+        full = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}$speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)/$speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)";
       };
-      format_alt = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}{$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:1..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:1..)";
+      format_alt = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}{$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)";
       click = [
         {
           button = "right";
