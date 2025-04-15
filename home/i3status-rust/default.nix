@@ -140,6 +140,10 @@ in {
               click = [
                 {
                   button = "left";
+                  cmd = "auto-cpufreq-gtk";
+                }
+                {
+                  button = "middle";
                   cmd = "cpu-profile-toggler --toggle";
                 }
                 {
