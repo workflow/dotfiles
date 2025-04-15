@@ -49,6 +49,12 @@
     }
   ];
 
+  netDevices =
+    if isFlexbox
+    then ["wlp0s20f3" "tailscale0" "veth0" "wg0"]
+    else if isNumenor
+    then []
+    else [];
   netBlocks =
     map
     (device: {
@@ -56,9 +62,9 @@
       device = device;
       format = {
         short = "$icon {$speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)}";
-        full = "$icon {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)";
+        full = "$icon {$device.str(max_w:3)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)";
       };
-      format_alt = "$icon{$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3) ^icon_net_up $speed_up.eng(prefix:K,w:3)";
+      format_alt = "$icon {$device.str(max_w:3)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3) ^icon_net_up $speed_up.eng(prefix:K,w:3)";
       click = [
         {
           button = "right";
@@ -66,7 +72,8 @@
         }
       ];
       missing_format = "";
-    }) ["eth0" "eno1" "wlp4s0" "enp164s0u1" "enp61s0u2u1u2" "enp61s0u1u1u2" "wlp0s20f3" "enp9s0u1u1u2" "tun0" "tailscale0" "veth0"];
+    })
+    netDevices;
 
   hostName = osConfig.networking.hostName;
   isNumenor = hostName == "numenor";
