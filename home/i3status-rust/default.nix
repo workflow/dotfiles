@@ -56,9 +56,9 @@
       device = device;
       format = {
         short = "$icon {$speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)}";
-        full = "$icon {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
+        full = "$icon {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)";
       };
-      format_alt = "$icon{$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
+      format_alt = "$icon{$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3) ^icon_net_up $speed_up.eng(prefix:K,w:3)";
       click = [
         {
           button = "right";
