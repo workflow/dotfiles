@@ -55,8 +55,8 @@
       block = "net";
       device = device;
       format = {
-        short = "$icon $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
-        full = "$icon{$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
+        short = "$icon {$speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)}";
+        full = "$icon {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K)/$speed_up.eng(prefix:K)";
       };
       format_alt = "$icon{$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)";
       click = [
@@ -118,8 +118,14 @@ in {
             {
               block = "cpu";
               interval = 1;
-              format = "$icon $barchart";
-              format_alt = "$icon $barchart $frequency{ $boost|}";
+              format = {
+                short = "$utilization";
+                full = "$icon $barchart";
+              };
+              format_alt = {
+                short = "$utilization $frequency{ $boost |}";
+                full = "$icon $barchart $frequency{ $boost |}";
+              };
               click = [
                 {
                   button = "right";
@@ -155,7 +161,10 @@ in {
             {
               block = "load";
               interval = 1;
-              format = "1m:$1m 5m:$5m";
+              format = {
+                full = "1:$1m 5:$5m";
+                short = "$1m";
+              };
               click = [
                 {
                   button = "left";
@@ -188,7 +197,10 @@ in {
           ++ lib.lists.optionals isNvidia [
             {
               block = "nvidia_gpu";
-              format = " ^icon_gpu $utilization $memory $temperature";
+              format = {
+                full = " ^icon_gpu $utilization $memory $temperature";
+                short = "$utilization $temperature";
+              };
               click = [
                 {
                   button = "left";
