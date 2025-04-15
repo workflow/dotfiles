@@ -69,24 +69,21 @@ in {
       }
     ];
     systemdTarget = "sway-session.target";
-    timeouts =
-      [
-        {
-          timeout = 360;
-          command = "${locker}";
-        }
-        {
-          timeout = 370;
-          command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-        }
-      ]
-      ++ lib.optionals isLaptop [
-        {
-          timeout = 1800;
-          command = "${suspender}";
-        }
-      ];
+    timeouts = [
+      {
+        timeout = 360;
+        command = "${locker}";
+      }
+      {
+        timeout = 370;
+        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+      }
+      {
+        timeout = 1800;
+        command = "${suspender}";
+      }
+    ];
   };
 
   wayland.windowManager.sway = {
