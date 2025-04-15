@@ -62,16 +62,11 @@
       block = "net";
       device = device;
       # TODO: ACtivate as soon as `range` parameter is supported
-      # format = {
-      #   short = "$icon {$speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)}";
-      #   full = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)";
-      # };
-      # format_alt = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:1..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:1..)";
       format = {
-        short = "$icon {$speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)}";
-        full = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3)/$speed_up.eng(prefix:K,w:3)";
+        short = "$icon {$speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)}";
+        full = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} $speed_down.eng(prefix:K,w:3,range:1..)/$speed_up.eng(prefix:K,w:3,range:1..)";
       };
-      format_alt = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3) ^icon_net_up $speed_up.eng(prefix:K,w:3)";
+      format_alt = "$icon {$device.str(max_w:3,rot_interval:3)} {$ssid $signal_strength $frequency|} {$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:1..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:1..)";
       click = [
         {
           button = "right";
