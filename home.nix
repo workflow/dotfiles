@@ -11,6 +11,7 @@
     unstable.aichat
     alejandra # nix formatter
     ast-grep
+    asciinema # Terminal recording fun
     autotiling # autotiling script for sway
     bluetuith
     brave
