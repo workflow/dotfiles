@@ -12,7 +12,6 @@ in {
     [
       ./nix
 
-      ./system
       ./system/audio.nix
       ./system/desktop.nix
       ./system/dns.nix
@@ -29,6 +28,7 @@ in {
       ./system/security.nix
       ./system/steam.nix
       ./system/stylix
+      ./system/various
       ./system/video
       ./system/virtualisation.nix
 
