@@ -4,8 +4,6 @@
   ...
 }:
 (with pkgs; [
-  asciinema
-  audio-recorder
   awscli2
   bc
   bind # Provides dig
