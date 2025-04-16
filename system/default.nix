@@ -57,7 +57,4 @@
   services.udev.packages = [pkgs.yubikey-personalization];
 
   programs.fish.enable = true;
-
-  # Sysdig + kernel module
-  # programs.sysdig.enable = true;
 }
