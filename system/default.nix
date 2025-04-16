@@ -19,13 +19,6 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
-  # https://github.com/NixOS/nixpkgs/issues/64965
-  environment = {
-    etc."ipsec.secrets".text = ''
-      include ipsec.d/ipsec.nm-l2tp.secrets
-    '';
-  };
-
   # Default SSD Optimizations
   fileSystems."/".options = ["noatime" "nodiratime"];
 
