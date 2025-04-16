@@ -1,8 +1,9 @@
 {
-  pkgs,
-  lib,
-  secrets,
   inputs,
+  isImpermanent,
+  lib,
+  pkgs,
+  secrets,
   ...
 }: let
   packages = pkgs.callPackage ./packages {inherit inputs;};
@@ -33,6 +34,7 @@ in {
 
       ./specialisations/light
     ]
+    ++ lib.lists.optionals isImpermanent [./system/impermanence]
     ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets;
 
   environment.systemPackages = packages;

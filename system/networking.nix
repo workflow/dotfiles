@@ -1,4 +1,17 @@
-{pkgs, ...}: {
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: {
+  environment.persistence."/persistent" = lib.mkIf isImpermanent {
+    directories = [
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/tailscale"
+      "/var/lib/NetworkManager"
+    ];
+  };
+
   environment.systemPackages = [
     pkgs.pwru # eBPF-based linux kernel networking debugger
   ];
