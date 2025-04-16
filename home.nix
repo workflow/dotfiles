@@ -1,5 +1,7 @@
 {
   lib,
+  impermanence,
+  isImpermanent,
   isNvidia,
   pkgs,
   secrets,
@@ -53,6 +55,11 @@
     tailscale-ip
   ];
 
+  impermanenceImports = lib.optionals isImpermanent [
+    impermanence.homeManagerModules.impermanence
+    ./home/impermanence
+  ];
+
   imports =
     [
       ./home/modules/yubikey-touch-detector
@@ -102,6 +109,7 @@
       ./home/programs/rofi
       ./home/programs/rofimoji
     ]
+    ++ impermanenceImports
     ++ secretImports;
 
   scripts = pkgs.callPackage ./home/scripts {};

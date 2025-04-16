@@ -6,6 +6,7 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +27,7 @@
     nixpkgs,
     nixos-unstable,
     home-manager,
+    impermanence,
     nur,
     secrets,
     stylix,
@@ -44,6 +46,7 @@
         inherit inputs;
         inherit secrets;
         waylandScaleFactor = 2.0;
+        isImpermanent = false;
       };
       modules = [
         {
@@ -61,6 +64,7 @@
         ./system/nvidia
         ./configuration.nix
         nur.modules.nixos.default
+        impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -70,6 +74,7 @@
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
               isAmd = false;
+              isImpermanent = false;
               isLaptop = true;
               isNvidia = true;
               waylandScaleFactor = 2.0;
@@ -87,6 +92,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
+        isImpermanent = false;
         waylandScaleFactor = 1.5;
       };
       modules = [
@@ -106,6 +112,7 @@
         ./system/btrfs
         ./configuration.nix
         nur.modules.nixos.default
+        impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -115,6 +122,7 @@
             users.farlion = import ./home.nix;
             extraSpecialArgs = {
               isAmd = true;
+              isImpermanent = false;
               isLaptop = false;
               isNvidia = false;
               waylandScaleFactor = 1.5;
