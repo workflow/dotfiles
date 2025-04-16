@@ -11,8 +11,6 @@
     };
 
     extraOptions = ''
-      # For private cachix caches
-      netrc-file = /home/farlion/.config/nix/netrc
       experimental-features = nix-command flakes
     '';
 
