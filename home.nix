@@ -1,8 +1,8 @@
 {
   lib,
-  impermanence,
   isImpermanent,
   isNvidia,
+  inputs,
   pkgs,
   secrets,
   ...
@@ -56,16 +56,20 @@
     tailscale-ip
   ];
 
-  impermanenceImports = lib.optionals isImpermanent [
-    impermanence.homeManagerModules.impermanence
-    ./home/impermanence
-  ];
+  impermanenceImports =
+    [
+      inputs.impermanence.homeManagerModules.impermanence
+    ]
+    ++ lib.optionals isImpermanent [
+      ./home/impermanence
+    ];
 
   imports =
     [
       ./home/modules/yubikey-touch-detector
 
       ./home/alacritty.nix
+      ./home/aws
       ./home/aliases.nix
       ./home/bash
       ./home/broot.nix
