@@ -21,7 +21,7 @@ in {
       ./system/io
       ./system/kind-killer
       ./system/ledgerlive.nix
-      ./system/networking.nix
+      ./system/networking
       ./system/nix-ld.nix
       ./system/performance.nix
       ./system/power.nix
