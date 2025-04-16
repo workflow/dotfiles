@@ -50,12 +50,6 @@
       };
       modules = [
         {
-          nix = {
-            registry = {
-              nixpkgs-local.flake = nixpkgs;
-              nixos-unstable-local.flake = nixos-unstable;
-            };
-          };
           nixpkgs.overlays = [(_: _: overlays)];
         }
         nixpkgs.nixosModules.notDetected
@@ -97,12 +91,6 @@
       };
       modules = [
         {
-          nix = {
-            registry = {
-              nixpkgs-local.flake = nixpkgs;
-              nixos-unstable-local.flake = nixos-unstable;
-            };
-          };
           nixpkgs.overlays = [(_: _: overlays)];
         }
         nixpkgs.nixosModules.notDetected
