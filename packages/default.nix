@@ -4,7 +4,6 @@
   ...
 }:
 (with pkgs; [
-  awscli2
   bc
   bind # Provides dig
   binutils
