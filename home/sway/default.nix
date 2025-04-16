@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  isLaptop,
   ...
 }: let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
