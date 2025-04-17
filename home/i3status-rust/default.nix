@@ -195,7 +195,7 @@ in {
               chip =
                 if isNumenor
                 then "k10temp-pci-00c3"
-                else "*";
+                else "coretemp-isa-0000";
               format = {
                 short = "$icon";
                 full = "  $icon ";
