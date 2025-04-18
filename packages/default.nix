@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  papirus-icon-theme # todo: move to icons module in HM
   (python3.withPackages
     (ps:
       with ps; [
