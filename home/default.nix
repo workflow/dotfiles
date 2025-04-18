@@ -149,7 +149,8 @@
       ./nh # https://github.com/nix-community/nh
       ./nix-index
       ./nushell
-      ./obs
+      ./obs # OBS Studio
+      ./obsidian
       ./portfolio-performance
       ./rofi
       ./rofimoji
