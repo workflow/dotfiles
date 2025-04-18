@@ -169,6 +169,7 @@
       ./urxvt
       ./variety # Wallpaper Switcher/Randomizer with Quotes
       ./virtual-cable
+      ./vlc
       ./wlsunset
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
