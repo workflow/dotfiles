@@ -66,7 +66,7 @@
     nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
-    nsn = "nix search nixpkgs";
+    nsn = "nh search";
 
     pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
 
