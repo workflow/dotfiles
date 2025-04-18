@@ -6,26 +6,26 @@
 }: {
   imports =
     [
-      ./audio.nix
+      ./audio
       ./cachix
-      ./desktop.nix
-      ./dns.nix
+      ./desktop
+      ./dns
       ./firmware
-      ./fonts.nix
+      ./fonts
       ./io
       ./kind-killer
-      ./ledgerlive.nix
+      ./ledgerlive
       ./networking
-      ./nix-ld.nix
-      ./performance.nix
-      ./power.nix
-      ./printing.nix
-      ./security.nix
-      ./steam.nix
+      ./nix-ld
+      ./performance
+      ./power
+      ./printing
+      ./security
+      ./steam
       ./stylix
       ./various
       ./video
-      ./virtualisation.nix
+      ./virtualisation
     ]
     ++ lib.lists.optionals isImpermanent [./impermanence]
     ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets;
