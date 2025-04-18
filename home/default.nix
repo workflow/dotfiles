@@ -71,71 +71,71 @@
       inputs.impermanence.homeManagerModules.impermanence
     ]
     ++ lib.optionals isImpermanent [
-      ./home/impermanence
+      ./impermanence
     ];
 
   imports =
     [
-      ./home/modules/yubikey-touch-detector
+      ./modules/yubikey-touch-detector
 
-      ./home/aichat
-      ./home/alacritty
-      ./home/aws
-      ./home/aliases
-      ./home/bash
-      ./home/bluetuith # Bluetooth TUI
-      ./home/brave-browser
-      ./home/broot
-      ./home/btop
-      ./home/calibre # Ebook reader
-      ./home/cliphist
-      ./home/cpu-profile-toggler
-      ./home/ddc-backlight
-      ./home/dunst
-      ./home/easyeffects # GUI for Pipewire effects
-      ./home/email
-      ./home/firefox
-      ./home/fish
-      ./home/fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
-      ./home/flameshot
-      ./home/fzf
-      ./home/galaxy-buds-client
-      ./home/git
-      ./home/gtk-qt
-      ./home/sway
-      ./home/i3status-rust
-      ./home/k9s
-      ./home/kanshi # Wayland autorandr
-      ./home/kind-with-local-registry
-      ./home/lf
-      ./home/libation # Audible liberator
-      ./home/neovim
-      ./home/nix-index
-      ./home/nushell
-      ./home/obs
-      ./home/portfolio-performance
-      ./home/mic-levels-maintainer
-      ./home/sound-switcher
-      ./home/starship
-      ./home/stylix
-      ./home/syncthing
-      ./home/systemd-errors-and-warnings-counter
-      ./home/todoist # Official Todoist app
-      ./home/udiskie
-      ./home/urxvt
-      ./home/virtual-cable
-      ./home/wlsunset
-      ./home/xdg
+      ./aichat
+      ./alacritty
+      ./aws
+      ./aliases
+      ./bash
+      ./bluetuith # Bluetooth TUI
+      ./brave-browser
+      ./broot
+      ./btop
+      ./calibre # Ebook reader
+      ./cliphist
+      ./cpu-profile-toggler
+      ./ddc-backlight
+      ./dunst
+      ./easyeffects # GUI for Pipewire effects
+      ./email
+      ./firefox
+      ./fish
+      ./fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
+      ./flameshot
+      ./fzf
+      ./galaxy-buds-client
+      ./git
+      ./gtk-qt
+      ./sway
+      ./i3status-rust
+      ./k9s
+      ./kanshi # Wayland autorandr
+      ./kind-with-local-registry
+      ./lf
+      ./libation # Audible liberator
+      ./neovim
+      ./nix-index
+      ./nushell
+      ./obs
+      ./portfolio-performance
+      ./mic-levels-maintainer
+      ./sound-switcher
+      ./starship
+      ./stylix
+      ./syncthing
+      ./systemd-errors-and-warnings-counter
+      ./todoist # Official Todoist app
+      ./udiskie
+      ./urxvt
+      ./virtual-cable
+      ./wlsunset
+      ./xdg
 
-      ./home/programs/networkmanager-dmenu
-      ./home/programs/nh
-      ./home/programs/rofi
-      ./home/programs/rofimoji
+      ./programs/networkmanager-dmenu
+      ./programs/nh
+      ./programs/rofi
+      ./programs/rofimoji
     ]
     ++ impermanenceImports
     ++ secretImports;
 
-  scripts = pkgs.callPackage ./home/scripts {};
+  scripts = pkgs.callPackage ./scripts {};
 
   secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
 in {

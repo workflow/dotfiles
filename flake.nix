@@ -65,7 +65,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "home-manager-backup";
-            users.farlion = import ./home.nix;
+            users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = false;
               isImpermanent = false;
@@ -107,7 +107,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "home-manager-backup";
-            users.farlion = import ./home.nix;
+            users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = true;
               isImpermanent = false;
