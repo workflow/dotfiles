@@ -45,12 +45,10 @@
     lazydocker # kind for vanilla Docker, kind of
     libsecret # `secret-tool` for interacting with gnome-keyring
     lnav # Log File Navigator
-    lolcat
+    lolcat # Pipe and See
     neo-cowsay
-    networkmanager_dmenu
     nix-tree
     oculante # img viewer written in Rust
-    portfolio
     rclone
     restic
     tcpdump
@@ -119,6 +117,7 @@
       ./home/nix-index
       ./home/nushell
       ./home/obs
+      ./home/portfolio-performance
       ./home/mic-levels-maintainer
       ./home/sound-switcher
       ./home/starship
