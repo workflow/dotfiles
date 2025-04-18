@@ -16,28 +16,14 @@
   kubectl
   kubectx
   ledger-live-desktop
-  libnotify # Provides notify-send
   libreoffice
-  lm_sensors
-  localsend
   lsof
-  lz4 # compression
+  localsend
   megacmd
-  mpv # video player
-  nautilus
-  ncdu # Disk Space Visualization
-  nmap
-  nethogs
-  nix-prefetch # nix-prefetch fetchFromGitHub --owner <owner> --repo <repo> --rev <rev>
-  nodejs # For coc.nvim
-  obsidian
-  okular
-  onboard # On screen keyboard
-  openssl
-  p7zip
-  papirus-icon-theme
-  parted
-  patchelf
+  mpv # todo: persistence
+  nautilus # todo: persistence
+  obsidian # todo: persistence
+  papirus-icon-theme # todo: move to icons module in HM
   pavucontrol
   pciutils
   pdftk # PDF Manipulation Toolkit
