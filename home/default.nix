@@ -110,6 +110,7 @@
       ./aliases
       ./aws
       ./bash
+      ./bitwarden
       ./bluetuith # Bluetooth TUI
       ./brave-browser
       ./broot
