@@ -143,6 +143,7 @@
       ./localsend
       ./mic-levels-maintainer
       ./mpv # Media Player
+      ./nautilus # Gnome File Manager
       ./neovim
       ./networkmanager-dmenu
       ./nh # https://github.com/nix-community/nh
