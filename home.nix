@@ -14,7 +14,6 @@
     autotiling # autotiling script for sway
     bc # calculator
     bind # Provides dig
-    brave
     calibre # Ebook reader
     devenv # devenv.sh
     difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
@@ -94,6 +93,7 @@
       ./home/aliases.nix
       ./home/bash
       ./home/bluetuith # Bluetooth TUI
+      ./home/brave-browser
       ./home/broot.nix
       ./home/btop
       ./home/cliphist
