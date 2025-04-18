@@ -1,7 +1,22 @@
-{pkgs, ...}: {
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".config/gh"
+      ".config/glab-cli"
+    ];
+  };
+
   home.packages = with pkgs; [
     delta # Syntax highlighter for git
+    github-cli
+    glab
   ];
+
   programs.git = {
     aliases = {
       c = "commit";
