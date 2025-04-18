@@ -49,8 +49,6 @@
     neo-cowsay
     nix-tree
     oculante # img viewer written in Rust
-    rclone
-    restic
     tcpdump
     teams-for-linux # Unofficial Msft Teams App
     todoist-electron # Official Todoist app
@@ -82,7 +80,7 @@
     [
       ./home/modules/yubikey-touch-detector
 
-      ./home/aichat.nix
+      ./home/aichat
       ./home/alacritty.nix
       ./home/aws
       ./home/aliases.nix
