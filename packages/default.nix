@@ -1,8 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  hicolor-icon-theme # Needed for solaar
-  kubectl
-  kubectx
   ledger-live-desktop
   libreoffice
   lsof

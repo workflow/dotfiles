@@ -64,7 +64,6 @@
     rmview # Remarkable Screen Sharing
     screenkey # Screencast tool to display your keys inspired by Screenflick
     smartmontools # Tools for monitoring the health of hard drives
-    stern # Multi pod and container log tailing for Kubernetes
     s-tui # Processor monitor/stress test
     stress # Simple workload generator for POSIX systems. It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system
     tcpdump
@@ -136,6 +135,7 @@
       ./k9s
       ./kanshi # Wayland autorandr
       ./kind-with-local-registry
+      ./kubernetes-tools
       ./lf
       ./libation # Audible liberator
       ./mic-levels-maintainer
