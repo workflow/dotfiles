@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    ripdrag
+  ];
   programs.lf = {
     enable = true;
 

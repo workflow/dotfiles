@@ -1,11 +1,15 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   isFlexbox = config.networking.hostName == "flexbox";
   isBoar = config.networking.hostName == "boar";
 in {
+  environment.systemPackages = [
+    pkgs.virt-manager # Desktop user interface for managing virtual machines
+  ];
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
