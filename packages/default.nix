@@ -1,7 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  bitwarden
-  bitwarden-cli
   cachix
   chafa # Images to terminal pixels
   discord
