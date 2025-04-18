@@ -167,6 +167,7 @@
       ./trash-cli
       ./udiskie
       ./urxvt
+      ./variety # Wallpaper Switcher/Randomizer with Quotes
       ./virtual-cable
       ./wlsunset
       ./xdg
@@ -231,9 +232,6 @@ in {
         source = ./dotfiles/stignore_code;
       };
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
-
-      # Variety
-      ".config/variety/variety.conf".source = ./dotfiles/variety.conf;
     };
 
     packages = homePackages ++ homeScripts;
