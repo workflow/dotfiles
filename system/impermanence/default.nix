@@ -1,7 +1,8 @@
 # General impermanence setup
 # Note: specifics should live with their respective modules, where possible!
 {}: {
-  environment.persistence."/persistent" = {
+  fileSystems."/persist/".neededForBoot = true;
+  environment.persistence."/persist" = {
     enable = true;
     hideMounts = true;
     directories = [
@@ -18,4 +19,6 @@
       "/etc/shadow"
     ];
   };
+
+  programs.fuse.userAllowOther = true; # Needed for home-manager's impermanence allowOther option to work
 }

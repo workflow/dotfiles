@@ -6,7 +6,7 @@
 }: {
   home.packages = [pkgs.awscli2];
 
-  home.persistence."/persistent/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
       ".aws"
     ];
