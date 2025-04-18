@@ -11,7 +11,6 @@
       ".backup"
       ".gnupg"
       ".ssh"
-      ".local/share/keyrings"
       ".local/share/direnv"
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`

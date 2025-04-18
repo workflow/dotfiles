@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
+    directories = [
+      "/home/farlion/.local/share/keyrings"
+    ];
+  };
+
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
     # TODO: still needed?
