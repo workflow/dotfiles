@@ -154,6 +154,7 @@
       ./portfolio-performance
       ./rofi
       ./rofimoji
+      ./signal
       ./solaar # Linux devices manager for the Logitech Unifying Receiver
       ./sound-switcher
       ./starship
