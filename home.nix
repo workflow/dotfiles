@@ -50,7 +50,6 @@
     nix-tree
     oculante # img viewer written in Rust
     tcpdump
-    todoist-electron # Official Todoist app
     wealthfolio
     wdisplays # arandr for wayland - external display/screen GUI
     wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
@@ -121,6 +120,7 @@
       ./home/stylix
       ./home/syncthing
       ./home/systemd-errors-and-warnings-counter
+      ./home/todoist # Official Todoist app
       ./home/udiskie
       ./home/urxvt.nix
       ./home/virtual-cable
