@@ -125,7 +125,7 @@
       ./home/urxvt.nix
       ./home/virtual-cable
       ./home/wlsunset
-      ./home/xdg.nix
+      ./home/xdg
 
       ./home/programs/networkmanager-dmenu
       ./home/programs/nh
