@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  discord
   gimp
   github-cli
   glab

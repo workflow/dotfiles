@@ -119,6 +119,7 @@
       ./cpu-profile-toggler
       ./ddc-backlight
       ./devenv # devenv.sh
+      ./discord
       ./dunst
       ./easyeffects # GUI for Pipewire effects
       ./email
@@ -200,9 +201,6 @@ in {
       ".m2/settings.xml" = lib.mkIf (secrets ? mavenConfig) {
         source = secrets.mavenConfig;
       };
-
-      # Pistol
-      ".config/pistol/pistol.conf".source = ./dotfiles/pistol.conf;
 
       # Pulsemixer
       ".config/pulsemixer.cfg".source = ./dotfiles/pulsemixer.cfg;
