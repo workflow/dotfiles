@@ -22,7 +22,6 @@
 
   networking.useDHCP = false;
   networking.interfaces.enp74s0.useDHCP = true;
-  networking.interfaces.wlp73s0.useDHCP = true;
 
   networking.hostName = "numenor";
 
