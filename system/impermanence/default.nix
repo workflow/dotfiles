@@ -18,6 +18,7 @@
       "/etc/machine-id"
       "/etc/passwd"
       "/etc/shadow"
+      "/etc/gshadow"
     ];
   };
 
