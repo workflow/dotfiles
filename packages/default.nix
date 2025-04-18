@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  libreoffice
   lsof
   localsend
   mpv # todo: persistence

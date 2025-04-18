@@ -138,6 +138,7 @@
       ./kubernetes-tools
       ./lf
       ./libation # Audible liberator
+      ./libreoffice
       ./mic-levels-maintainer
       ./neovim
       ./networkmanager-dmenu
