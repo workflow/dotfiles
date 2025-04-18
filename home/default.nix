@@ -54,10 +54,34 @@
     oculante # img viewer written in Rust
     okular # KDE document viewer
     openssl
+    pavucontrol # Pulse Audio Volume Control GUI
+    pdftk # PDF Manipulation Toolkit
+    pstree # Show the set of running processes as a tree
+    qalculate-gtk # Calculator
+    q-text-as-data # https://github.com/harelba/q
+    remmina # Remote Desktop Client
+    ripgrep # rg
+    inputs.rmob.defaultPackage.x86_64-linux
+    rmview # Remarkable Screen Sharing
+    screenkey # Screencast tool to display your keys inspired by Screenflick
+    smartmontools # Tools for monitoring the health of hard drives
+    stern # Multi pod and container log tailing for Kubernetes
+    s-tui # Processor monitor/stress test
+    stress # Simple workload generator for POSIX systems. It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system
     tcpdump
+    traceroute
+    thefuck
+    unzip
+    usbutils # Provides lsusb
     wdisplays # arandr for wayland - external display/screen GUI
     wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
+    wget
+    wireguard-tools
+    whois
     wl-clipboard
+    xournal # PFD Annotations, useful for saving Okular annotations as well
+    yq # Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents
+    yt-dlp
     zip
   ];
 

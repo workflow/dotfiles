@@ -10,6 +10,10 @@
     ];
   };
 
+  home.packages = [
+    pkgs.selectdefaultapplication # GUI XDG Default Application Chooser
+  ];
+
   home.sessionVariables = {
     XDG_CONFIG_HOME = "/home/farlion/.config";
   };
