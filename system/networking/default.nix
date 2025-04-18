@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  environment.persistence."/persistent" = lib.mkIf isImpermanent {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       "/etc/NetworkManager/system-connections"
       "/var/lib/tailscale"

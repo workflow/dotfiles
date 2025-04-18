@@ -1,7 +1,7 @@
 # General home-manager impermanence setup
 # Note: specifics should live with their respective modules, where possible!
 {
-  home.persistence."/persistent/home/farlion" = {
+  home.persistence."/persist/home/farlion" = {
     directories = [
       "Downloads"
       "Music"
@@ -14,6 +14,6 @@
       ".local/share/keyrings"
       ".local/share/direnv"
     ];
-    allowOther = true;
+    allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };
 }
