@@ -30,12 +30,10 @@
     glow # Terminal markdown renderer
     gomatrix # The Matrix
     google-chrome
-    gparted
-    gptfdisk # gdisk
     gucharmap # Unicode Character Map
     hardinfo # Hardware/System Info
     httpie
-    iftop # Network Interface top
+    iftop # Net top tool, see also nethogs
     imagemagick
     iotop-c
     unstable.isd # Interactive Systemd TUI in Python
@@ -43,12 +41,19 @@
     kind # Kubernetes In Docker
     plasma5Packages.kruler # Screen ruler
     lazydocker # kind for vanilla Docker, kind of
+    libnotify # Provides notify-send
     libsecret # `secret-tool` for interacting with gnome-keyring
+    lm_sensors # Tools for reading hardware sensors
     lnav # Log File Navigator
     lolcat # Pipe and See
+    ncdu # Disk Space Usage Visualization
+    nmap # Port Scanner
+    nethogs # Net top tool, see also iftop
     neo-cowsay
     nix-tree
     oculante # img viewer written in Rust
+    okular # KDE document viewer
+    openssl
     tcpdump
     wdisplays # arandr for wayland - external display/screen GUI
     wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
