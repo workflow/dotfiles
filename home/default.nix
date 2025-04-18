@@ -110,11 +110,14 @@
       ./libation # Audible liberator
       ./mic-levels-maintainer
       ./neovim
+      ./networkmanager-dmenu
+      ./nh # https://github.com/nix-community/nh
       ./nix-index
       ./nushell
       ./obs
       ./portfolio-performance
-      ./networkmanager-dmenu
+      ./rofi
+      ./rofimoji
       ./sound-switcher
       ./starship
       ./stylix
@@ -127,10 +130,6 @@
       ./virtual-cable
       ./wlsunset
       ./xdg
-
-      ./programs/nh
-      ./programs/rofi
-      ./programs/rofimoji
     ]
     ++ impermanenceImports
     ++ secretImports;
