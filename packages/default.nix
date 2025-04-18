@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  lsof
   localsend
   mpv # todo: persistence
   nautilus # todo: persistence
