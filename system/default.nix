@@ -7,6 +7,7 @@
   imports =
     [
       ./audio.nix
+      ./cachix
       ./desktop.nix
       ./dns.nix
       ./firmware

@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  cachix
   chafa # Images to terminal pixels
   discord
   gimp
