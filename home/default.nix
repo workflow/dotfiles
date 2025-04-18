@@ -162,6 +162,7 @@
       ./sway
       ./syncthing
       ./systemd-errors-and-warnings-counter
+      ./telegram
       ./todoist # Official Todoist app
       ./udiskie
       ./urxvt
