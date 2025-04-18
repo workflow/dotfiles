@@ -14,7 +14,6 @@
     autotiling # autotiling script for sway
     bc # calculator
     bind # Provides dig
-    calibre # Ebook reader
     devenv # devenv.sh
     difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
     dive # Analyze docker images
@@ -96,6 +95,7 @@
       ./home/brave-browser
       ./home/broot.nix
       ./home/btop
+      ./home/calibre # Ebook reader
       ./home/cliphist
       ./home/cpu-profile-toggler
       ./home/ddc-backlight
