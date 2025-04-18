@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/applications"
+    ];
+  };
+
   home.sessionVariables = {
     XDG_CONFIG_HOME = "/home/farlion/.config";
   };
