@@ -164,6 +164,7 @@
       ./systemd-errors-and-warnings-counter
       ./telegram
       ./todoist # Official Todoist app
+      ./trash-cli
       ./udiskie
       ./urxvt
       ./virtual-cable
