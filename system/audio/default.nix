@@ -15,7 +15,6 @@ in {
     alsa-utils
     helvum # Simple GTK patchbay for Pipewire
     pulseaudioFull
-    pulsemixer
     qpwgraph # More extensive patchbay for Pipewire
   ];
 

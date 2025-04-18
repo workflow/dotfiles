@@ -152,6 +152,7 @@
       ./obs # OBS Studio
       ./obsidian
       ./portfolio-performance
+      ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./rofi
       ./rofimoji
       ./signal
@@ -215,9 +216,6 @@ in {
       ".m2/settings.xml" = lib.mkIf (secrets ? mavenConfig) {
         source = secrets.mavenConfig;
       };
-
-      # Pulsemixer
-      ".config/pulsemixer.cfg".source = ./dotfiles/pulsemixer.cfg;
 
       # PSQL
       ".psqlrc".source = ./dotfiles/psqlrc;
