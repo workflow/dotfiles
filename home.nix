@@ -27,7 +27,6 @@
     file # CLI program to show the type of a file
     find-cursor
     fortune
-    galaxy-buds-client
     glow # Terminal markdown renderer
     gomatrix # The Matrix
     google-chrome
@@ -107,6 +106,7 @@
       ./home/fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
       ./home/flameshot
       ./home/fzf.nix
+      ./home/galaxy-buds-client
       ./home/git.nix
       ./home/gtk-qt
       ./home/sway
