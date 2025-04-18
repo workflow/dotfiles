@@ -80,8 +80,8 @@
 
       ./aichat
       ./alacritty
-      ./aws
       ./aliases
+      ./aws
       ./bash
       ./bluetuith # Bluetooth TUI
       ./brave-browser
@@ -102,22 +102,23 @@
       ./galaxy-buds-client
       ./git
       ./gtk-qt
-      ./sway
       ./i3status-rust
       ./k9s
       ./kanshi # Wayland autorandr
       ./kind-with-local-registry
       ./lf
       ./libation # Audible liberator
+      ./mic-levels-maintainer
       ./neovim
       ./nix-index
       ./nushell
       ./obs
       ./portfolio-performance
-      ./mic-levels-maintainer
+      ./networkmanager-dmenu
       ./sound-switcher
       ./starship
       ./stylix
+      ./sway
       ./syncthing
       ./systemd-errors-and-warnings-counter
       ./todoist # Official Todoist app
@@ -127,7 +128,6 @@
       ./wlsunset
       ./xdg
 
-      ./programs/networkmanager-dmenu
       ./programs/nh
       ./programs/rofi
       ./programs/rofimoji
