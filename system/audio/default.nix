@@ -7,13 +7,13 @@
 in {
   environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.local/state/wireplumber"
+      "/home/farlion/.local/state/wireplumber" # Wireplumber state
+      "/home/farlion/.config/rncbc.org/qpwgraph.conf" # qpwgraph config file
     ];
   };
 
   environment.systemPackages = with pkgs; [
     alsa-utils
-    helvum # Simple GTK patchbay for Pipewire
     pulseaudioFull
     qpwgraph # More extensive patchbay for Pipewire
   ];
