@@ -50,7 +50,6 @@
     nix-tree
     oculante # img viewer written in Rust
     tcpdump
-    teams-for-linux # Unofficial Msft Teams App
     todoist-electron # Official Todoist app
     wealthfolio
     wdisplays # arandr for wayland - external display/screen GUI
