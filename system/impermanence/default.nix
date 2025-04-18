@@ -10,6 +10,7 @@
       "/var/lib/docker"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
+      "/etc/nixos/secrets"
       "/var/log"
     ];
     files = [
