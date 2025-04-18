@@ -8,7 +8,6 @@
   ...
 }: let
   homePackages = with pkgs; [
-    unstable.aichat
     alejandra # nix formatter
     ast-grep
     asciinema # Terminal recording fun
@@ -90,6 +89,7 @@
     [
       ./home/modules/yubikey-touch-detector
 
+      ./home/aichat.nix
       ./home/alacritty.nix
       ./home/aws
       ./home/aliases.nix
