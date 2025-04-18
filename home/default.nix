@@ -50,11 +50,9 @@
     nix-tree
     oculante # img viewer written in Rust
     tcpdump
-    wealthfolio
     wdisplays # arandr for wayland - external display/screen GUI
     wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
     wl-clipboard
-    ytmdesktop
     zip
   ];
 
@@ -130,6 +128,7 @@
       ./virtual-cable
       ./wlsunset
       ./xdg
+      ./ytmdesktop # Youtube Music Desktop (unofficial)
     ]
     ++ impermanenceImports
     ++ secretImports;
