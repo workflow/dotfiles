@@ -129,6 +129,7 @@
       ./flameshot
       ./fzf
       ./galaxy-buds-client
+      ./gimp
       ./git
       ./gtk-qt
       ./i3status-rust

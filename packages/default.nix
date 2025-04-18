@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  gimp
   github-cli
   glab
   hicolor-icon-theme # Needed for solaar
