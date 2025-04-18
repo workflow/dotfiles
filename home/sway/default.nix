@@ -48,6 +48,7 @@
   wsc = "c";
 in {
   home.packages = with pkgs; [
+    brightnessctl # For brightness +/- keys
     qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     wlprop # Xprop clone for Wayland
     xorg.xkill # For murdering XWayland windows

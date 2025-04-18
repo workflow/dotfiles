@@ -13,19 +13,41 @@
     ast-grep
     asciinema # Terminal recording fun
     autotiling # autotiling script for sway
+    bc # calculator
+    bind # Provides dig
     bluetuith
     brave
     calibre # Ebook reader
+    devenv # devenv.sh
+    difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
     dive # Analyze docker images
     dmidecode # Hardware info read from Bios
+    dnstracer
+    efivar # Tools and Libraries to manipulate EFI variables
     fast-cli # Fast.com CLI `fast`
     fastfetch # neofetch sucessor, system information tool
+    fd # Better find, written in Rust
+    ffmpeg-full
+    file # CLI program to show the type of a file
     find-cursor
+    fortune
     galaxy-buds-client
     glow # Terminal markdown renderer
-    unstable.hoppscotch # Open-Source Postman
+    gomatrix # The Matrix
+    google-chrome
+    gparted
+    gptfdisk # gdisk
+    gucharmap # Unicode Character Map
+    hardinfo # Hardware/System Info
+    httpie
+    iftop # Network Interface top
+    imagemagick
+    iotop-c
     unstable.isd # Interactive Systemd TUI in Python
+    jq
     kind
+    plasma5Packages.kruler # Screen ruler
+    lazydocker # kind for vanilla Docker, kind of
     libation # Audible liberator
     libsecret # `secret-tool` for interacting with gnome-keyring
     lnav # Log File Navigator
