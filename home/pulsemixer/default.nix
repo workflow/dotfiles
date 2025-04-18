@@ -3,7 +3,7 @@
     pkgs.pulsemixer
   ];
 
-  home.files = {
+  home.file = {
     ".config/pulsemixer.cfg".source = ./pulsemixer.cfg;
   };
 }
