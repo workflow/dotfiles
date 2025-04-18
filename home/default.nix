@@ -173,6 +173,7 @@
       ./wlsunset
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
+      ./zoom
     ]
     ++ impermanenceImports
     ++ secretImports;
