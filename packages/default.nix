@@ -1,10 +1,8 @@
 {pkgs, ...}:
 with pkgs; [
-  ledger-live-desktop
   libreoffice
   lsof
   localsend
-  megacmd
   mpv # todo: persistence
   nautilus # todo: persistence
   obsidian # todo: persistence
@@ -16,8 +14,6 @@ with pkgs; [
       ]))
   signal-desktop
   skaffold
-  solaar
-  sparrow
   tdesktop # Telegram
   trash-cli
   variety
