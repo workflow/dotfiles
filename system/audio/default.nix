@@ -1,5 +1,16 @@
-{pkgs, ...}: let
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: let
 in {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
+    directories = [
+      "/home/farlion/.local/state/wireplumber"
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     alsa-utils
     helvum # Simple GTK patchbay for Pipewire
@@ -34,42 +45,6 @@ in {
       # Disable unused sinks and sources
       "disable-unused-nodes" = {
         "monitor.alsa.rules" = [
-          # {
-          #   matches = [
-          #     {
-          #       "node.nick" = "HDMI / DisplayPort 1 Output";
-          #     }
-          #   ];
-          #   actions = {
-          #     update-props = {
-          #       "node.disabled" = true;
-          #     };
-          #   };
-          # }
-          # {
-          #   matches = [
-          #     {
-          #       "node.nick" = "HDMI / DisplayPort 2 Output";
-          #     }
-          #   ];
-          #   actions = {
-          #     update-props = {
-          #       "node.disabled" = true;
-          #     };
-          #   };
-          # }
-          # {
-          #   matches = [
-          #     {
-          #       "node.nick" = "HDMI / DisplayPort 3 Output";
-          #     }
-          #   ];
-          #   actions = {
-          #     update-props = {
-          #       "node.disabled" = true;
-          #     };
-          #   };
-          # }
           {
             matches = [
               {
