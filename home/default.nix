@@ -14,7 +14,6 @@
     autotiling # autotiling script for sway
     bc # calculator
     bind # Provides dig
-    devenv # devenv.sh
     difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
     dive # Analyze docker images
     dmidecode # Hardware info read from Bios
@@ -119,6 +118,7 @@
       ./cliphist
       ./cpu-profile-toggler
       ./ddc-backlight
+      ./devenv # devenv.sh
       ./dunst
       ./easyeffects # GUI for Pipewire effects
       ./email
