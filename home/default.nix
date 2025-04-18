@@ -258,6 +258,7 @@ in {
     };
 
     direnv = {
+      # TODO: impermanence: .local/share/direnv (move from general home impermanence)
       enable = true;
       nix-direnv.enable = true;
       config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
