@@ -1,5 +1,9 @@
 {pkgs, ...}: {
   services.gnome.gnome-keyring.enable = true;
+  environment.systemPackages = with pkgs; [
+    # TODO: still needed?
+    gcr # Gnome crypto services for gnome-keyring
+  ];
 
   programs.gnupg.agent = {
     enable = true;

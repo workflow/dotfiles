@@ -4,64 +4,17 @@
   ...
 }:
 (with pkgs; [
-  bc
-  bind # Provides dig
-  binutils
   bitwarden
   bitwarden-cli
-  bluez
-  bluez-tools
-  brightnessctl
   cachix
-  cargo-edit
-  cargo-nextest
   chafa # Images to terminal pixels
-  cht-sh
-  cntr # for Nix sandbox breakpointHook debugging
-  dconf
-  delta # Syntax highlighter for git
-  devenv
-  difftastic
   discord
-  distrobox
-  dnstracer
-  docker-compose
-  dunst
-  element-desktop
-  efivar
-  exercism
-  fd
-  feh
-  ffmpeg-full
-  file
-  fortune
-  gcr # Gnome crypto stuff for gnome-keyring
   gimp
-  git-crypt
   github-cli
   glab
-  gmailctl
-  gomatrix # The Matrix
-  google-chrome
-  gparted
-  gptfdisk # gdisk
-  gucharmap # Unicode Character Map
-  hardinfo # Hardware/System Info
   hicolor-icon-theme # Needed for solaar
-  hplip
-  httpie
-  iftop
-  iotop-c
-  imagemagick
-  inkscape
-  iw # Wifi connection strength indicator
-  jq
-  jsonnet
-  plasma5Packages.kruler
   kubectl
   kubectx
-  lame
-  lazydocker
   ledger-live-desktop
   libnotify # Provides notify-send
   libreoffice

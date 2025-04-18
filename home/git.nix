@@ -1,4 +1,7 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    delta # Syntax highlighter for git
+  ];
   programs.git = {
     aliases = {
       c = "commit";
