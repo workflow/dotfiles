@@ -3,15 +3,23 @@
 {
   home.persistence."/persist/home/farlion" = {
     directories = [
+      # TODO: Move most to syncthing module
+      "Active Audiobooks"
+      "Books"
+      "Calibre Library"
+      "code"
+      "Desktop"
+      "Documents"
       "Downloads"
+      "nixos-config"
+      "nixos-secrets"
       "Music"
       "Pictures"
-      "Documents"
       "Videos"
       ".backup"
       ".gnupg"
       ".ssh"
-      ".local/share/direnv"
+      ".local/share/direnv" # TODO: move to direnv module
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };
