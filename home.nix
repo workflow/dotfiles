@@ -79,13 +79,13 @@
       ./home/modules/yubikey-touch-detector
 
       ./home/aichat
-      ./home/alacritty.nix
+      ./home/alacritty
       ./home/aws
-      ./home/aliases.nix
+      ./home/aliases
       ./home/bash
       ./home/bluetuith # Bluetooth TUI
       ./home/brave-browser
-      ./home/broot.nix
+      ./home/broot
       ./home/btop
       ./home/calibre # Ebook reader
       ./home/cliphist
@@ -93,21 +93,21 @@
       ./home/ddc-backlight
       ./home/dunst
       ./home/easyeffects # GUI for Pipewire effects
-      ./home/email.nix
+      ./home/email
       ./home/firefox
-      ./home/fish.nix
+      ./home/fish
       ./home/fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
       ./home/flameshot
-      ./home/fzf.nix
+      ./home/fzf
       ./home/galaxy-buds-client
-      ./home/git.nix
+      ./home/git
       ./home/gtk-qt
       ./home/sway
       ./home/i3status-rust
       ./home/k9s
       ./home/kanshi # Wayland autorandr
       ./home/kind-with-local-registry
-      ./home/lf.nix
+      ./home/lf
       ./home/libation # Audible liberator
       ./home/neovim
       ./home/nix-index
@@ -122,7 +122,7 @@
       ./home/systemd-errors-and-warnings-counter
       ./home/todoist # Official Todoist app
       ./home/udiskie
-      ./home/urxvt.nix
+      ./home/urxvt
       ./home/virtual-cable
       ./home/wlsunset
       ./home/xdg
