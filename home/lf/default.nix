@@ -1,7 +1,14 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    chafa # Images to terminal pixels, used by pistol
+    pistol # Image previewer
     ripdrag
   ];
+
+  home.file = {
+    ".config/pistol/pistol.conf".source = ./pistol/pistol.conf;
+  };
+
   programs.lf = {
     enable = true;
 

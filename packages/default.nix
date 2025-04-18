@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  chafa # Images to terminal pixels
   discord
   gimp
   github-cli
