@@ -45,6 +45,7 @@
     lm_sensors # Tools for reading hardware sensors
     lnav # Log File Navigator
     lolcat # Pipe and See
+    lsof # Tool to list open file
     ncdu # Disk Space Usage Visualization
     nmap # Port Scanner
     nethogs # Net top tool, see also iftop
