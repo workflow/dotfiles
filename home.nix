@@ -8,13 +8,12 @@
   ...
 }: let
   homePackages = with pkgs; [
-    alejandra # nix formatter
-    ast-grep
+    alejandra # Nix Formatter
+    ast-grep # Pure Magic
     asciinema # Terminal recording fun
     autotiling # autotiling script for sway
     bc # calculator
     bind # Provides dig
-    bluetuith
     brave
     calibre # Ebook reader
     devenv # devenv.sh
@@ -94,6 +93,7 @@
       ./home/aws
       ./home/aliases.nix
       ./home/bash
+      ./home/bluetuith # Bluetooth TUI
       ./home/broot.nix
       ./home/btop
       ./home/cliphist
