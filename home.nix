@@ -40,10 +40,9 @@
     iotop-c
     unstable.isd # Interactive Systemd TUI in Python
     jq
-    kind
+    kind # Kubernetes In Docker
     plasma5Packages.kruler # Screen ruler
     lazydocker # kind for vanilla Docker, kind of
-    libation # Audible liberator
     libsecret # `secret-tool` for interacting with gnome-keyring
     lnav # Log File Navigator
     lolcat
@@ -115,6 +114,7 @@
       ./home/kanshi # Wayland autorandr
       ./home/kind-with-local-registry
       ./home/lf.nix
+      ./home/libation # Audible liberator
       ./home/neovim
       ./home/nix-index
       ./home/nushell
