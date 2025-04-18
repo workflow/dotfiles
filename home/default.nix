@@ -140,6 +140,7 @@
       ./lf
       ./libation # Audible liberator
       ./libreoffice
+      ./localsend
       ./mic-levels-maintainer
       ./neovim
       ./networkmanager-dmenu
