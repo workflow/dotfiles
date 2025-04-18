@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  nautilus # todo: persistence
   obsidian # todo: persistence
   papirus-icon-theme # todo: move to icons module in HM
   (python3.withPackages
