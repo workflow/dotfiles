@@ -142,6 +142,7 @@
       ./libreoffice
       ./localsend
       ./mic-levels-maintainer
+      ./mpv # Media Player
       ./neovim
       ./networkmanager-dmenu
       ./nh # https://github.com/nix-community/nh

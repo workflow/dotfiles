@@ -1,6 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  mpv # todo: persistence
   nautilus # todo: persistence
   obsidian # todo: persistence
   papirus-icon-theme # todo: move to icons module in HM
