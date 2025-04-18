@@ -1,7 +1,5 @@
 {pkgs, ...}:
 with pkgs; [
-  github-cli
-  glab
   hicolor-icon-theme # Needed for solaar
   kubectl
   kubectx
