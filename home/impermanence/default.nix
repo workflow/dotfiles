@@ -17,7 +17,6 @@
       "Pictures"
       "Videos"
       ".backup"
-      ".gnupg"
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };
