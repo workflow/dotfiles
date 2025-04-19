@@ -22,6 +22,8 @@
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
+  programs.seahorse.enable = true;
+
   boot.loader.systemd-boot.editor = false;
 
   # Writes to /etc/sudoers
