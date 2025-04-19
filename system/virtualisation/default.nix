@@ -1,5 +1,6 @@
 {
   config,
+  isImpermanent,
   lib,
   pkgs,
   ...
@@ -7,6 +8,14 @@
   isFlexbox = config.networking.hostName == "flexbox";
   isBoar = config.networking.hostName == "boar";
 in {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
+    directories = [
+      "/var/lib/containers" # Podman
+      "/var/lib/docker"
+      "/var/lib/libvirt" # Virt-Manager
+    ];
+  };
+
   environment.systemPackages = [
     pkgs.virt-manager # Desktop user interface for managing virtual machines
   ];
