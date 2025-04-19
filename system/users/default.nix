@@ -1,4 +1,18 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
+    files = [
+      "/etc/group"
+      "/etc/passwd"
+      "/etc/shadow"
+      "/etc/gshadow"
+    ];
+  };
+
   users = {
     users.farlion = {
       description = "Florian Peter";

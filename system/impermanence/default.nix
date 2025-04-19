@@ -15,11 +15,7 @@
       "/var/log"
     ];
     files = [
-      "/etc/group"
       "/etc/machine-id"
-      "/etc/passwd"
-      "/etc/shadow"
-      "/etc/gshadow"
     ];
   };
 
