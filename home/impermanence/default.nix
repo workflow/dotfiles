@@ -2,21 +2,9 @@
 # Note: specifics should live with their respective modules, where possible!
 {
   home.persistence."/persist/home/farlion" = {
-    directories = [
-      # TODO: Move most to syncthing module
-      "Active Audiobooks"
-      "Books"
-      "Calibre Library"
-      "code"
-      "Desktop"
-      "Documents"
-      "Downloads"
+    files = [
       "nixos-config"
       "nixos-secrets"
-      "Music"
-      "Pictures"
-      "Videos"
-      ".backup"
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };
