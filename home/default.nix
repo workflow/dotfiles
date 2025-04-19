@@ -219,8 +219,6 @@ in {
       enable = true;
     };
 
-    htop.enable = true;
-
     less = {
       enable = true;
       keys = ''
