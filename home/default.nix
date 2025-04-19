@@ -15,6 +15,7 @@
     autotiling # autotiling script for sway
     bc # calculator
     bind # Provides dig
+    dconf # Gnome configuration database
     difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
     dive # Analyze docker images
     dmidecode # Hardware info read from Bios
