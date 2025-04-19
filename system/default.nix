@@ -4,7 +4,12 @@
   pkgs,
   secrets,
   ...
-}: {
+}: let
+  systemSecrets =
+    if secrets ? systemSecrets
+    then secrets.systemSecrets {inherit isImpermanent lib pkgs;}
+    else {};
+in {
   imports =
     [
       ./audio
@@ -30,5 +35,5 @@
       ./virtualisation
     ]
     ++ lib.lists.optionals isImpermanent [./impermanence]
-    ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets {inherit isImpermanent lib pkgs;};
+    ++ [systemSecrets];
 }

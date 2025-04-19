@@ -179,14 +179,17 @@
       ./zoom
     ]
     ++ impermanenceImports
-    ++ secretImports;
+    ++ [homeManagerSecrets];
 
   isFlexbox = osConfig.networking.hostName == "flexbox";
   isNumenor = osConfig.networking.hostName == "numenor";
 
   scripts = pkgs.callPackage ./scripts {};
 
-  secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets {inherit isImpermanent lib pkgs;};
+  homeManagerSecrets =
+    if secrets ? homeManagerSecrets
+    then secrets.homeManagerSecrets {inherit isImpermanent lib pkgs;}
+    else {};
 in {
   home = {
     # This value determines the Home Manager release that your
