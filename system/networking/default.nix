@@ -50,7 +50,6 @@ in {
   ];
 
   networking.firewall.allowedUDPPorts = [
-    5901 # RMview Remarkable 2 Screensharing
     22000 # Syncthing QUIC
     21027 # Syncthing discovery broadcasts on IPv4 and multicasts on IPv6
     53317 # Localsend
