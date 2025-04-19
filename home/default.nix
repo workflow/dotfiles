@@ -68,6 +68,7 @@
       ./obs # OBS Studio
       ./obsidian
       ./portfolio-performance
+      ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./rofi
       ./rofimoji
@@ -120,9 +121,6 @@ in {
       else "24.11";
 
     file = {
-      # PSQL
-      ".psqlrc".source = ./dotfiles/psqlrc;
-
       # Rmview (Remarkable II screensharing) config
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
 
