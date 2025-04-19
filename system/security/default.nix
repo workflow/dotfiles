@@ -6,9 +6,13 @@
 }: {
   environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.local/share/keyrings"
+      "/home/farlion/.local/share/keyrings" # Gnome Keyrings
+      "/var/lib/boltd" # Boltd state
     ];
   };
+
+  # Thunderbolt security daemon
+  services.hardware.bolt.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
