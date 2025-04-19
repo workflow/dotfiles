@@ -87,7 +87,6 @@
   ];
 
   homeScripts = with scripts; [
-    dlfile
     font-smoke-test
     tailscale-ip
   ];
