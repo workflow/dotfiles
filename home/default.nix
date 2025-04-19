@@ -52,6 +52,7 @@
       ./kanshi # Wayland autorandr
       ./kind-with-local-registry
       ./kubernetes-tools
+      ./less
       ./lf
       ./libation # Audible liberator
       ./libreoffice
@@ -217,14 +218,6 @@ in {
   programs = {
     bat = {
       enable = true;
-    };
-
-    less = {
-      enable = true;
-      keys = ''
-        k forw-line
-        l back-line
-      '';
     };
 
     man = {
