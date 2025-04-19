@@ -7,6 +7,7 @@
   imports =
     [
       ./audio
+      ./bluetooth
       ./cachix
       ./desktop
       ./dns

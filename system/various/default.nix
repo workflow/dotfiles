@@ -32,9 +32,6 @@
   services.tzupdate.enable = true; # Oneshot systemd service, run with `sudo systemctl start tzupdate`
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
-
   services.hardware.bolt.enable = true;
 
   # limit the amount of logs stored in /var/log/journal
