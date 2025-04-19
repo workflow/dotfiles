@@ -186,7 +186,7 @@
 
   scripts = pkgs.callPackage ./scripts {};
 
-  secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets;
+  secretImports = lib.optionals (secrets ? homeManagerSecrets) secrets.homeManagerSecrets {inherit isImpermanent lib pkgs;};
 in {
   home = {
     # This value determines the Home Manager release that your
@@ -222,21 +222,11 @@ in {
       # Patch Minikube kvm2 driver, see https://github.com/NixOS/nixpkgs/issues/115878
       ".minikube/bin/docker-machine-driver-kvm2".source = "${pkgs.docker-machine-kvm2}/bin/docker-machine-driver-kvm2";
 
-      # Maven
-      ".m2/settings.xml" = lib.mkIf (secrets ? mavenConfig) {
-        source = secrets.mavenConfig;
-      };
-
       # PSQL
       ".psqlrc".source = ./dotfiles/psqlrc;
 
       # Rmview (Remarkable II screensharing) config
       ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
-
-      # Syncthing
-      ".config/syncthing/config.xml" = lib.mkIf (secrets ? syncthingConfig) {
-        text = secrets.syncthingConfig;
-      };
 
       "code/.stignore" = {
         source = ./dotfiles/stignore_code;

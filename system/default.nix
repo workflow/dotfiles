@@ -1,6 +1,7 @@
 {
   lib,
   isImpermanent,
+  pkgs,
   secrets,
   ...
 }: {
@@ -29,5 +30,5 @@
       ./virtualisation
     ]
     ++ lib.lists.optionals isImpermanent [./impermanence]
-    ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets;
+    ++ lib.lists.optionals (secrets ? systemSecrets) secrets.systemSecrets {inherit isImpermanent lib pkgs;};
 }
