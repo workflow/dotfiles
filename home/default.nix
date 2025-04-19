@@ -80,6 +80,7 @@
       ./sway
       ./syncthing
       ./systemd-errors-and-warnings-counter
+      ./tealdeer
       ./telegram
       ./todoist # Official Todoist app
       ./trash-cli
@@ -223,15 +224,6 @@ in {
     man = {
       enable = true;
       generateCaches = false; # Speed up builds
-    };
-
-    tealdeer = {
-      enable = true;
-      settings = {
-        updates = {
-          auto_update = true;
-        };
-      };
     };
 
     vscode = {
