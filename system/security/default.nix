@@ -36,8 +36,11 @@
   '';
   users.users.farlion.extraGroups = ["wheel"];
 
+  # Yubikeys
   security.pam.yubico = {
     enable = true;
     mode = "challenge-response";
   };
+  # Enable system-wide Yubikey Support
+  services.udev.packages = [pkgs.yubikey-personalization];
 }

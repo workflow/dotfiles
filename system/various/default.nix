@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   services.atd.enable = true;
 
   boot.tmp.cleanOnBoot = true;
@@ -7,7 +7,4 @@
 
   services.tzupdate.enable = true; # Oneshot systemd service, run with `sudo systemctl start tzupdate`
   i18n.defaultLocale = "en_US.UTF-8";
-
-  # Enable system-wide Yubikey Support
-  services.udev.packages = [pkgs.yubikey-personalization];
 }
