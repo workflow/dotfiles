@@ -16,6 +16,4 @@ in {
   programs.sway = {
     enable = true;
   };
-
-  programs.seahorse.enable = true;
 }
