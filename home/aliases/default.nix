@@ -58,7 +58,6 @@
     lh = "/run/current-system/sw/bin/ls -ah";
     light-theme = "nh os test --specialisation light";
 
-    macgyver = "cd /home/farlion/code/dlh/common_scripts/setup_tools/sshforwarding; sudo python setup_forwarding.py";
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
     n = "nh os switch";
