@@ -33,6 +33,7 @@
       ./cpu-profile-toggler
       ./ddc-backlight
       ./devenv # devenv.sh
+      ./direnv
       ./discord
       ./dunst
       ./easyeffects # GUI for Pipewire effects
@@ -216,13 +217,6 @@ in {
   programs = {
     bat = {
       enable = true;
-    };
-
-    direnv = {
-      # TODO: impermanence: .local/share/direnv (move from general home impermanence)
-      enable = true;
-      nix-direnv.enable = true;
-      config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
     };
 
     htop.enable = true;

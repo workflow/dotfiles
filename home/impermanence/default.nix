@@ -19,7 +19,6 @@
       ".backup"
       ".gnupg"
       ".ssh"
-      ".local/share/direnv" # TODO: move to direnv module
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };
