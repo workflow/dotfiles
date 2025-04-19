@@ -94,6 +94,7 @@
       ./ytmdesktop # Youtube Music Desktop (unofficial)
       ./yubico # Yubikeys
       ./zoom
+      ./zoxide
     ]
     ++ impermanenceImports
     ++ [homeManagerSecrets];
@@ -227,10 +228,6 @@ in {
     };
 
     vscode = {
-      enable = true;
-    };
-
-    zoxide = {
       enable = true;
     };
   };
