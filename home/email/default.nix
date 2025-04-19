@@ -1,4 +1,15 @@
-{...}: {
+{
+  isImpermanent,
+  lib,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".thunderbird"
+      ".cache/thunderbird"
+    ];
+  };
+
   programs.thunderbird = {
     enable = true;
     profiles = {
