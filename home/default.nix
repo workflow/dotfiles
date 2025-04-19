@@ -120,16 +120,6 @@ in {
       then "24.11"
       else "24.11";
 
-    file = {
-      # Rmview (Remarkable II screensharing) config
-      ".config/rmview.json".source = ./dotfiles/rmviewconfig.json;
-
-      "code/.stignore" = {
-        source = ./dotfiles/stignore_code;
-      };
-      ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
-    };
-
     packages = with pkgs; [
       alejandra # Nix Formatter
       ast-grep # Pure Magic
@@ -186,7 +176,6 @@ in {
       remmina # Remote Desktop Client
       ripgrep # rg
       inputs.rmob.defaultPackage.x86_64-linux
-      rmview # Remarkable Screen Sharing
       screenkey # Screencast tool to display your keys inspired by Screenflick
       smartmontools # Tools for monitoring the health of hard drives
       s-tui # Processor monitor/stress test
