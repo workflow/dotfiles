@@ -1,5 +1,7 @@
 {
   config,
+  isImpermanent,
+  lib,
   pkgs,
   ...
 }: let
@@ -156,6 +158,15 @@
       set fish_greeting  # disable greeting
     '';
 in {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    files = [
+      ".config/fish/fish_variables"
+    ];
+    directories = [
+      ".local/share/fish_history" # Includes completions and history
+    ];
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = shellInit;
