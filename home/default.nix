@@ -120,17 +120,6 @@ in {
       else "24.11";
 
     file = {
-      # Cargo
-      ".cargo/config.toml" = lib.mkIf (secrets ? cargoConfig) {
-        source = secrets.cargoConfig;
-      };
-      ".cargo/config-mold.toml" = lib.mkIf (secrets ? cargoMoldConfig) {
-        source = secrets.cargoMoldConfig;
-      };
-
-      # gh (Github CLI)
-      ".config/gh/config.yml".source = ./dotfiles/gh.config.yml;
-
       # IdeaVIM
       ".ideavimrc".source = ./dotfiles/ideavimrc;
 
