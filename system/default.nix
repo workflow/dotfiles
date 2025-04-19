@@ -20,7 +20,6 @@
       ./power
       ./printing
       ./security
-      ./steam
       ./stylix
       ./various
       ./video
