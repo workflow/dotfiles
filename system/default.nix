@@ -23,6 +23,7 @@
       ./printing
       ./security
       ./stylix
+      ./users
       ./various
       ./video
       ./virtualisation
