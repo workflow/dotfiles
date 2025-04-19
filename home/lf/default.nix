@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: let
   # Provides the ability to download a file by dropping it into a window
   dlfile = pkgs.writers.writeBashBin "dlfile" ''
     url=$(dragon -t -x)
@@ -28,6 +33,12 @@
     fi
   '';
 in {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/lf"
+    ];
+  };
+
   home.packages = with pkgs; [
     chafa # Images to terminal pixels, used by pistol
     dlfile # Provides the ability to download a file by dropping it into a window

@@ -4,13 +4,13 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.galaxy-buds-client
-  ];
-
   home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
       ".local/share/GalaxyBudsClient"
     ];
   };
+
+  home.packages = [
+    pkgs.galaxy-buds-client
+  ];
 }
