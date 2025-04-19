@@ -1,7 +1,10 @@
 # General impermanence setup
 # Note: specifics should live with their respective modules, where possible!
 {}: {
+  boot.tmp.cleanOnBoot = true;
+
   fileSystems."/persist/".neededForBoot = true;
+
   environment.persistence."/persist" = {
     enable = true;
     hideMounts = true;
