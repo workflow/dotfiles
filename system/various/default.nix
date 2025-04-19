@@ -5,16 +5,6 @@
 
   boot.supportedFilesystems = ["ntfs"];
 
-  users = {
-    users.farlion = {
-      description = "Florian Peter";
-      extraGroups = ["video" "disk"];
-      isNormalUser = true;
-      group = "users";
-      shell = pkgs.fish;
-    };
-  };
-
   services.tzupdate.enable = true; # Oneshot systemd service, run with `sudo systemctl start tzupdate`
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -24,14 +14,6 @@
     SystemMaxUse=2G
   '';
 
-  # Default editor for root
-  programs.vim = {
-    defaultEditor = true;
-    enable = true;
-  };
-
   # Enable system-wide Yubikey Support
   services.udev.packages = [pkgs.yubikey-personalization];
-
-  programs.fish.enable = true;
 }
