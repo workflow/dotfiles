@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".config/obs-studio"
+    ];
+  };
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
