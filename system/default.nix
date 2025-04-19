@@ -14,7 +14,6 @@
       ./fonts
       ./io
       ./kind-killer
-      ./ledgerlive
       ./networking
       ./nix-ld
       ./performance
