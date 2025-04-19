@@ -1,6 +1,7 @@
 {
-  osConfig,
+  isImpermanent,
   lib,
+  osConfig,
   pkgs,
   ...
 }: let
@@ -26,6 +27,14 @@
     };
   };
 in {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/nvim" # Data
+      ".local/state/nvim" # state
+      ".cache/nvim"
+    ];
+  };
+
   imports =
     [
       ./avante # Cursor style AI IDE
