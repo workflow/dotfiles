@@ -1,4 +1,16 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".mozilla/firefox"
+      ".cache/mozilla/firefox"
+    ];
+  };
+
   programs.firefox = {
     enable = true;
     profiles = {
