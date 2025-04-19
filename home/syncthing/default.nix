@@ -1,4 +1,15 @@
-{lib, ...}: {
+{
+  isImpermanent,
+  lib,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/state/syncthing" # device keys and certificates
+      ".config/syncthing" # pre-v1.27.0 uses this instead of $XDG_STATE_HOME above, keeping for backward-compatibility
+    ];
+  };
+
   services.syncthing = {
     enable = false;
     tray = {
