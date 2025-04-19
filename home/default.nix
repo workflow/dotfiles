@@ -87,7 +87,7 @@
       ./variety # Wallpaper Switcher/Randomizer with Quotes
       ./virtual-cable
       ./vlc
-      ./wlsunset
+      ./wlsunset # Day/night gamma adjustments for Wayland
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
       ./zoom

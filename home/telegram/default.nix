@@ -4,13 +4,13 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.tdesktop
-  ];
-
   home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
       ".local/share/TelegramDesktop"
     ];
   };
+
+  home.packages = [
+    pkgs.tdesktop
+  ];
 }
