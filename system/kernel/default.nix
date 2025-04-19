@@ -3,7 +3,7 @@
   boot.kernel.sysctl = {
     # Enable all magic sysrq commands (NixOS sets this to 16, which enables sync only)
     "kernel.sysrq" = 1;
-    "vm.swappiness" = 0;
+    "vm.swappiness" = 20; # balanced setting favoring RAM usage, Default=60
   };
 
   boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
