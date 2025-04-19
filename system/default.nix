@@ -14,6 +14,7 @@
       ./firmware
       ./fonts
       ./io
+      ./kernel
       ./kind-killer
       ./networking
       ./nix-ld
