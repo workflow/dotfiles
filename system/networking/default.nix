@@ -3,7 +3,20 @@
   isImpermanent,
   pkgs,
   ...
-}: {
+}: let
+  # Get the current tailscale ip if tailscale is up
+  tailscale-ip = pkgs.writers.writeBashBin "tailscale-ip" ''
+    set -euo pipefail
+
+    isOnline=$(tailscale status --json | jq -r '.Self.Online')
+    if [[ "$isOnline" == "true" ]]; then
+      tailscaleIp=$(tailscale status --json | jq -r '.Self.TailscaleIPs[0]')
+      echo "{\"icon\": \"tailscale_up\", \"text\": \"$tailscaleIp\", \"state\": \"Good\"}"
+    else
+      echo "{\"icon\": \"tailscale_down\", \"text\": \"\", \"state\": \"Idle\"}"
+    fi
+  '';
+in {
   environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       "/etc/NetworkManager/system-connections"
@@ -14,6 +27,7 @@
 
   environment.systemPackages = [
     pkgs.pwru # eBPF-based linux kernel networking debugger
+    tailscale-ip # Get the current tailscale IP if tailscale is up
   ];
 
   networking.firewall = {

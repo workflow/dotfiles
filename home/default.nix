@@ -8,88 +8,6 @@
   secrets,
   ...
 }: let
-  homePackages = with pkgs; [
-    alejandra # Nix Formatter
-    ast-grep # Pure Magic
-    asciinema # Terminal recording fun
-    autotiling # autotiling script for sway
-    bc # calculator
-    bind # Provides dig
-    dconf # Gnome configuration database
-    difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
-    dive # Analyze docker images
-    dmidecode # Hardware info read from Bios
-    dnstracer
-    efivar # Tools and Libraries to manipulate EFI variables
-    fast-cli # Fast.com CLI `fast`
-    fastfetch # neofetch sucessor, system information tool
-    fd # Better find, written in Rust
-    ffmpeg-full
-    file # CLI program to show the type of a file
-    find-cursor
-    fortune
-    glow # Terminal markdown renderer
-    gomatrix # The Matrix
-    google-chrome
-    gucharmap # Unicode Character Map
-    hardinfo # Hardware/System Info
-    httpie
-    iftop # Net top tool, see also nethogs
-    imagemagick
-    iotop-c
-    unstable.isd # Interactive Systemd TUI in Python
-    jq
-    kind # Kubernetes In Docker
-    plasma5Packages.kruler # Screen ruler
-    lazydocker # kind for vanilla Docker, kind of
-    libnotify # Provides notify-send
-    libsecret # `secret-tool` for interacting with gnome-keyring
-    lm_sensors # Tools for reading hardware sensors
-    lnav # Log File Navigator
-    lolcat # Pipe and See
-    lsof # Tool to list open file
-    ncdu # Disk Space Usage Visualization
-    nmap # Port Scanner
-    nethogs # Net top tool, see also iftop
-    neo-cowsay
-    nix-tree
-    oculante # img viewer written in Rust
-    okular # KDE document viewer
-    openssl
-    pavucontrol # Pulse Audio Volume Control GUI
-    pdftk # PDF Manipulation Toolkit
-    pstree # Show the set of running processes as a tree
-    qalculate-gtk # Calculator
-    q-text-as-data # https://github.com/harelba/q
-    remmina # Remote Desktop Client
-    ripgrep # rg
-    inputs.rmob.defaultPackage.x86_64-linux
-    rmview # Remarkable Screen Sharing
-    screenkey # Screencast tool to display your keys inspired by Screenflick
-    smartmontools # Tools for monitoring the health of hard drives
-    s-tui # Processor monitor/stress test
-    stress # Simple workload generator for POSIX systems. It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system
-    tcpdump
-    traceroute
-    thefuck
-    unzip
-    usbutils # Provides lsusb
-    wdisplays # arandr for wayland - external display/screen GUI
-    wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
-    wget
-    wireguard-tools
-    whois
-    wl-clipboard
-    xournal # PFD Annotations, useful for saving Okular annotations as well
-    yq # Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents
-    yt-dlp
-    zip
-  ];
-
-  homeScripts = with scripts; [
-    tailscale-ip
-  ];
-
   impermanenceImports =
     [
       inputs.impermanence.homeManagerModules.impermanence
@@ -180,8 +98,6 @@
   isFlexbox = osConfig.networking.hostName == "flexbox";
   isNumenor = osConfig.networking.hostName == "numenor";
 
-  scripts = pkgs.callPackage ./scripts {};
-
   homeManagerSecrets =
     if secrets ? homeManagerSecrets
     then secrets.homeManagerSecrets {inherit isImpermanent lib pkgs;}
@@ -233,7 +149,83 @@ in {
       ".ssh/.stignore".source = ./dotfiles/stignore_ssh;
     };
 
-    packages = homePackages ++ homeScripts;
+    packages = with pkgs; [
+      alejandra # Nix Formatter
+      ast-grep # Pure Magic
+      asciinema # Terminal recording fun
+      autotiling # autotiling script for sway
+      bc # calculator
+      bind # Provides dig
+      dconf # Gnome configuration database
+      difftastic # structural diff difft, see https://github.com/Wilfred/difftastic
+      dive # Analyze docker images
+      dmidecode # Hardware info read from Bios
+      dnstracer
+      efivar # Tools and Libraries to manipulate EFI variables
+      fast-cli # Fast.com CLI `fast`
+      fastfetch # neofetch sucessor, system information tool
+      fd # Better find, written in Rust
+      ffmpeg-full
+      file # CLI program to show the type of a file
+      find-cursor
+      fortune
+      glow # Terminal markdown renderer
+      gomatrix # The Matrix
+      google-chrome
+      gucharmap # Unicode Character Map
+      hardinfo # Hardware/System Info
+      httpie
+      iftop # Net top tool, see also nethogs
+      imagemagick
+      iotop-c
+      unstable.isd # Interactive Systemd TUI in Python
+      jq
+      kind # Kubernetes In Docker
+      plasma5Packages.kruler # Screen ruler
+      lazydocker # kind for vanilla Docker, kind of
+      libnotify # Provides notify-send
+      libsecret # `secret-tool` for interacting with gnome-keyring
+      lm_sensors # Tools for reading hardware sensors
+      lnav # Log File Navigator
+      lolcat # Pipe and See
+      lsof # Tool to list open file
+      ncdu # Disk Space Usage Visualization
+      nmap # Port Scanner
+      nethogs # Net top tool, see also iftop
+      neo-cowsay
+      nix-tree
+      oculante # img viewer written in Rust
+      okular # KDE document viewer
+      openssl
+      pavucontrol # Pulse Audio Volume Control GUI
+      pdftk # PDF Manipulation Toolkit
+      pstree # Show the set of running processes as a tree
+      qalculate-gtk # Calculator
+      q-text-as-data # https://github.com/harelba/q
+      remmina # Remote Desktop Client
+      ripgrep # rg
+      inputs.rmob.defaultPackage.x86_64-linux
+      rmview # Remarkable Screen Sharing
+      screenkey # Screencast tool to display your keys inspired by Screenflick
+      smartmontools # Tools for monitoring the health of hard drives
+      s-tui # Processor monitor/stress test
+      stress # Simple workload generator for POSIX systems. It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system
+      tcpdump
+      traceroute
+      thefuck
+      unzip
+      usbutils # Provides lsusb
+      wdisplays # arandr for wayland - external display/screen GUI
+      wf-recorder # Screen recorder for Wayland, useful for quick testing screen stuff
+      wget
+      wireguard-tools
+      whois
+      wl-clipboard
+      xournal # PFD Annotations, useful for saving Okular annotations as well
+      yq # Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents
+      yt-dlp
+      zip
+    ];
 
     sessionVariables =
       {
