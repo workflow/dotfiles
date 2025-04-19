@@ -1,4 +1,14 @@
-{lib, ...}: {
+{
+  isImpermanent,
+  lib,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".cache/starship"
+    ];
+  };
+
   programs.starship = {
     enable = true;
 
