@@ -30,6 +30,7 @@
   security.sudo.extraConfig = ''
     Defaults:root,%wheel timestamp_timeout=30
   '';
+  users.users.farlion.extraGroups = ["wheel"];
 
   security.pam.yubico = {
     enable = true;
