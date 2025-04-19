@@ -18,8 +18,6 @@
 
   imports =
     [
-      ./modules/yubikey-touch-detector
-
       ./aichat
       ./alacritty
       ./aliases
@@ -91,6 +89,7 @@
       ./wlsunset # Day/night gamma adjustments for Wayland
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
+      ./yubico # Yubikeys
       ./zoom
     ]
     ++ impermanenceImports
@@ -214,10 +213,6 @@ in {
     allowUnfree = true;
   };
 
-  pam.yubico.authorizedYubiKeys.ids = [
-    "cccccchvrtfg"
-  ];
-
   programs = {
     bat = {
       enable = true;
@@ -269,9 +264,5 @@ in {
     zoxide = {
       enable = true;
     };
-  };
-
-  services = {
-    yubikey-touch-detector.enable = true;
   };
 }
