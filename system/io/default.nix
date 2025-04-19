@@ -1,6 +1,4 @@
 {...}: {
-  services.ratbagd.enable = true;
-
   # Writes to /etc/X11/xorg.conf.d
   services.libinput = {
     enable = true;
