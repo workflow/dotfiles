@@ -16,10 +16,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
-    secrets = {
-      url = "path:/home/farlion/code/nixos-secrets";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    secrets.url = "path:/home/farlion/code/nixos-secrets";
     stylix.url = "github:danth/stylix/release-24.11";
   };
 
