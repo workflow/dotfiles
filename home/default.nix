@@ -291,6 +291,11 @@ in {
       '';
     };
 
+    man = {
+      enable = true;
+      generateCaches = false; # Speed up builds
+    };
+
     ssh = {
       enable = true;
       extraConfig = ''
