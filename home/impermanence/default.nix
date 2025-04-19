@@ -18,7 +18,6 @@
       "Videos"
       ".backup"
       ".gnupg"
-      ".ssh"
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };

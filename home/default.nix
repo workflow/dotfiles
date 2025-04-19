@@ -232,14 +232,6 @@ in {
       generateCaches = false; # Speed up builds
     };
 
-    ssh = {
-      enable = true;
-      extraConfig = ''
-        PubkeyAcceptedKeyTypes +ssh-rsa
-        HostKeyAlgorithms +ssh-rsa
-      '';
-    };
-
     tealdeer = {
       enable = true;
       settings = {
