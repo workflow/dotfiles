@@ -87,10 +87,8 @@
   ];
 
   homeScripts = with scripts; [
-    cloaking-rules-from-hosts
     dlfile
     font-smoke-test
-    macgyver-status
     tailscale-ip
   ];
 

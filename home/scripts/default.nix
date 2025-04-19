@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  # Set dnscrypt-proxy2 cloaking rules from /etc/hosts file
-  cloaking-rules-from-hosts = pkgs.writers.writeBashBin "cloaking-rules-from-hosts" (builtins.readFile ./scripts/cloaking-rules-from-hosts.sh);
-
   # Provides the ability to download a file by dropping it into a window
   dlfile = pkgs.writers.writeBashBin "dlfile" ''
     url=$(dragon -t -x)
@@ -42,19 +39,6 @@
     printf "%b\n" "\033[4mUnderline\033[24m"
     printf "%b\n" "== === !== >= <= =>"
     printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
-  '';
-
-  # Get the current macgyver status
-  macgyver-status = pkgs.writers.writeBashBin "macgyver-status" ''
-    output=$(systemctl status macgyver | grep 'Active:' | awk '{print $2}')
-
-    if [ "$output" = "active" ]; then
-      echo "{\"icon\": \"macgyver_up\", \"text\": \"up\", \"state\": \"Good\"}"
-    elif [ "$output" = "inactive" ]; then
-      echo "{\"icon\": \"macgyver_down\", \"text\": \"down\", \"state\": \"Idle\"}"
-    else
-      echo "{\"icon\": \"macgyver_up\", \"text\": \"$output\", \"state\": \"Warning\"}"
-    fi
   '';
 
   # Get the current tailscale ip if tailscale is up
