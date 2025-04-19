@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    pkgs.calibre
-  ];
-
   home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
       "Calibre Library"
@@ -15,4 +11,8 @@
       ".cache/calibre"
     ];
   };
+
+  home.packages = [
+    pkgs.calibre
+  ];
 }
