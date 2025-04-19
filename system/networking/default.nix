@@ -45,6 +45,7 @@
   networking.networkmanager = {
     enable = true;
   };
+  users.users.farlion.extraGroups = ["networkmanager"];
 
   # Prevent IPv6 leaks when using VPNs
   networking.enableIPv6 = false;

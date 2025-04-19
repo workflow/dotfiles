@@ -18,6 +18,8 @@ in {
     qpwgraph # More extensive patchbay for Pipewire
   ];
 
+  users.users.farlion.extraGroups = ["audio"];
+
   # PipeWire!
   security.rtkit.enable = true;
   services.pipewire = {
