@@ -16,6 +16,8 @@
     glab
   ];
 
+  home.file.".config/gh/config.yml".source = ./github-cli/gh.config.yml;
+
   programs.git = {
     aliases = {
       c = "commit";
