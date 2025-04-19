@@ -9,7 +9,6 @@
     enable = true;
     hideMounts = true;
     directories = [
-      "/var/lib/docker"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/nixos/secrets"
