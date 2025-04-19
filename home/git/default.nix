@@ -6,7 +6,6 @@
 }: {
   home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
-      ".config/gh"
       ".config/glab-cli"
     ];
   };
