@@ -33,10 +33,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.blueman.enable = true;
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
   hardware.bluetooth.enable = true;
 
   services.hardware.bolt.enable = true;
