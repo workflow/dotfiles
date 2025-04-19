@@ -32,8 +32,6 @@
   services.tzupdate.enable = true; # Oneshot systemd service, run with `sudo systemctl start tzupdate`
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.hardware.bolt.enable = true;
-
   # limit the amount of logs stored in /var/log/journal
   # writes to /etc/systemd/journald.conf
   services.journald.extraConfig = ''
