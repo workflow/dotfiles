@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  isImpermanent,
+  pkgs,
+  ...
+}: {
+  environment.persistence."/persist" = lib.mkIf isImpermanent {
+    directories = [
+      "/home/farlion/.cache/fontconfig"
+    ];
+  };
+
   fonts = {
     enableDefaultPackages = false;
     packages = [
