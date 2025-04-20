@@ -21,6 +21,7 @@ in {
     directories = [
       "/etc/NetworkManager/system-connections"
       "/var/lib/tailscale"
+      "/home/farlion/.config/tailscale" # Tailscale known hosts
       "/var/lib/NetworkManager"
     ];
   };
