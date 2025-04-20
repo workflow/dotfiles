@@ -9,6 +9,7 @@ in {
     directories = [
       "/home/farlion/.local/state/wireplumber" # Wireplumber state
       "/home/farlion/.config/rncbc.org/qpwgraph.conf" # qpwgraph config file
+      "/home/farlion/.config/pulse" # pulseaudio cookie
     ];
   };
 
