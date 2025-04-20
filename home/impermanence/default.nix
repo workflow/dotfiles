@@ -3,6 +3,7 @@
 {
   home.persistence."/persist/home/farlion" = {
     files = [
+      ".config/helm" # Helm repositories
       "nixos-config"
       "nixos-secrets"
     ];
