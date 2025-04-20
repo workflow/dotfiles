@@ -69,6 +69,7 @@
       ./nushell
       ./obs # OBS Studio
       ./obsidian
+      ./pavucontrol # Pulse Audio Volume Control GUI
       ./portfolio-performance
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
@@ -174,7 +175,6 @@ in {
       oculante # img viewer written in Rust
       okular # KDE document viewer
       openssl
-      pavucontrol # Pulse Audio Volume Control GUI
       pdftk # PDF Manipulation Toolkit
       pstree # Show the set of running processes as a tree
       q-text-as-data # https://github.com/harelba/q
