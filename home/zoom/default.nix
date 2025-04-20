@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     files = [
       ".config/zoom.conf"
       ".config/zoomus.conf"

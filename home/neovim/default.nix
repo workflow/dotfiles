@@ -17,7 +17,7 @@
     };
   };
 in {
-  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".local/share/nvim" # Data
       ".local/state/nvim" # state

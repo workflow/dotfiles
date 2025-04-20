@@ -8,7 +8,7 @@
     enableWlrSupport = true;
   };
 in {
-  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".cache/flameshot"
     ];

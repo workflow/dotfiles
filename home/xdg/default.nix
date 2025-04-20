@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".local/share/recently-used.xbel" # Recently used files
       ".xournal" # Other recently used files

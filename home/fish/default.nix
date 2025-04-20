@@ -158,7 +158,7 @@
       set fish_greeting  # disable greeting
     '';
 in {
-  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     files = [
       ".config/fish/fish_variables"
     ];

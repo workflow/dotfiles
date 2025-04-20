@@ -1,6 +1,6 @@
 # General impermanence setup
 # Note: specifics should live with their respective modules, where possible!
-{lib}: {
+{lib, ...}: {
   # Explode / on every boot, see https://grahamc.com/blog/erase-your-darlings/
   boot.initrd.postResumeCommands = lib.mkAfter ''
     # Back up / with timestamp under /old_roots
@@ -32,7 +32,7 @@
 
   boot.tmp.cleanOnBoot = true;
 
-  fileSystems."/persist/".neededForBoot = true;
+  fileSystems."/persist".neededForBoot = true;
 
   environment.persistence."/persist" = {
     enable = true;
