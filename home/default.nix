@@ -71,6 +71,7 @@
       ./portfolio-performance
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
+      ./qalculate # Calculator
       ./rofi
       ./rofimoji
       ./signal
@@ -175,7 +176,6 @@ in {
       pavucontrol # Pulse Audio Volume Control GUI
       pdftk # PDF Manipulation Toolkit
       pstree # Show the set of running processes as a tree
-      qalculate-gtk # Calculator
       q-text-as-data # https://github.com/harelba/q
       remmina # Remote Desktop Client
       ripgrep # rg

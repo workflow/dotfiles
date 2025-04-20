@@ -6,11 +6,12 @@
 }: {
   home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
     directories = [
-      ".local/share/org.localsend.localsend_app"
+      ".config/qalculate"
+      ".local/share/qalculate"
     ];
   };
 
   home.packages = [
-    pkgs.localsend
+    pkgs.qalculate-gtk
   ];
 }
