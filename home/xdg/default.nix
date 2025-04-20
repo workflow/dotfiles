@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion/" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/recently-used.xbel" # Recently used files
+    ];
+  };
+
   home.packages = [
     pkgs.selectdefaultapplication # GUI XDG Default Application Chooser
   ];
