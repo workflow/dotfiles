@@ -19,7 +19,8 @@
 in {
   environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.cache/fontconfig"
+      "/home/farlion/.local/share/fonts" # Locally persisted fonts (not nixos-managed)
+      "/home/farlion/.cache/fontconfig" # Fontconfig cache
     ];
   };
 
