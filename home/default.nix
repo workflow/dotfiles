@@ -186,6 +186,7 @@ in {
       stress # Simple workload generator for POSIX systems. It imposes a configurable amount of CPU, memory, I/O, and disk stress on the system
       tcpdump
       traceroute
+      tree
       thefuck
       unzip
       usbutils # Provides lsusb
