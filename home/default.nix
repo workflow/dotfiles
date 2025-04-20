@@ -58,6 +58,7 @@
       ./libation # Audible liberator
       ./libreoffice
       ./localsend
+      ./lnav # Log File Navigator
       ./mic-levels-maintainer
       ./mpv # Media Player
       ./nautilus # Gnome File Manager
@@ -163,7 +164,6 @@ in {
       libnotify # Provides notify-send
       libsecret # `secret-tool` for interacting with gnome-keyring
       lm_sensors # Tools for reading hardware sensors
-      lnav # Log File Navigator
       lolcat # Pipe and See
       lsof # Tool to list open file
       ncdu # Disk Space Usage Visualization
