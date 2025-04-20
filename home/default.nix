@@ -48,6 +48,7 @@
       ./git
       ./gtk-qt
       ./i3status-rust
+      ./isd # Interactive Systemd TUI in Python
       ./k9s
       ./kanshi # Wayland autorandr
       ./kind-with-local-registry
@@ -153,7 +154,6 @@ in {
       iftop # Net top tool, see also nethogs
       imagemagick
       iotop-c
-      unstable.isd # Interactive Systemd TUI in Python
       jq
       kind # Kubernetes In Docker
       plasma5Packages.kruler # Screen ruler
