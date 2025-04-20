@@ -11,6 +11,8 @@
     directories = [
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
+      "/var/lib/systemd/timers" # Persistent Timers
+      "/var/lib/udisks2"
       "/etc/nixos/secrets"
       "/var/log"
     ];
