@@ -88,6 +88,7 @@
       ./systemd-errors-and-warnings-counter
       ./tealdeer
       ./telegram
+      ./thefuck
       ./todoist # Official Todoist app
       ./trash-cli
       ./udiskie
@@ -187,7 +188,6 @@ in {
       tcpdump
       traceroute
       tree
-      thefuck
       unzip
       usbutils # Provides lsusb
       wdisplays # arandr for wayland - external display/screen GUI
