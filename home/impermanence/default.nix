@@ -4,6 +4,7 @@
   home.persistence."/persist/home/farlion" = {
     files = [
       ".config/helm" # Helm repositories
+      ".config/nix" # cachix repositories and such
       "nixos-config"
       "nixos-secrets"
     ];
