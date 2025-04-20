@@ -11,6 +11,7 @@ in {
   environment.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       "/var/lib/containers" # Podman
+      "/home/farlion/.local/share/containers" # Podman (userspace)
       "/var/lib/docker"
       "/var/lib/libvirt" # Virt-Manager
     ];
