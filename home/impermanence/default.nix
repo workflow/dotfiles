@@ -5,6 +5,7 @@
     files = [
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
+      ".local/share/flatpak"
       "nixos-config"
       "nixos-secrets"
     ];
