@@ -9,7 +9,6 @@
       "/etc/group"
       "/etc/passwd"
       "/etc/shadow"
-      "/etc/gshadow"
     ];
   };
 
