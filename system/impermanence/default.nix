@@ -1,7 +1,7 @@
 # General impermanence setup
 # Note: specifics should live with their respective modules, where possible!
 {lib, ...}: {
-  # Explode / on every boot, see https://grahamc.com/blog/erase-your-darlings/
+  # Explode / on every boot and resume, see https://grahamc.com/blog/erase-your-darlings/
   boot.initrd.postResumeCommands = lib.mkAfter ''
     # Back up / with timestamp under /old_roots
     mkdir /btrfs_tmp
