@@ -5,11 +5,11 @@
   ...
 }: let
 in {
-  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.local/state/wireplumber" # Wireplumber state
-      "/home/farlion/.config/rncbc.org" # qpwgraph config file
-      "/home/farlion/.config/pulse" # pulseaudio cookie
+      ".local/state/wireplumber" # Wireplumber state
+      ".config/rncbc.org" # qpwgraph config file
+      ".config/pulse" # pulseaudio cookie
     ];
   };
 

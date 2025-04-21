@@ -21,8 +21,12 @@ in {
     directories = [
       "/etc/NetworkManager/system-connections"
       "/var/lib/tailscale"
-      "/home/farlion/.config/tailscale" # Tailscale known hosts
       "/var/lib/NetworkManager"
+    ];
+  };
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    directories = [
+      ".config/tailscale" # Tailscale known hosts
     ];
   };
 

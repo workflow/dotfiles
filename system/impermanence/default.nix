@@ -60,5 +60,12 @@
     ];
   };
 
+  # Somehow home-manager impermanence doesn't bootstrap these yet, so:
+  system.activationScripts.bootstrapPersistHome.text = ''
+    mkdir -p /persist/home/farlion
+    chown farlion:users /persist/home/farlion
+    chmod 0700 /persist/home/farlion
+  '';
+
   programs.fuse.userAllowOther = true; # Needed for home-manager's impermanence allowOther option to work
 }

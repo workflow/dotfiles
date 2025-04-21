@@ -17,10 +17,10 @@
     printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
   '';
 in {
-  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.local/share/fonts" # Locally persisted fonts (not nixos-managed)
-      "/home/farlion/.cache/fontconfig" # Fontconfig cache
+      ".local/share/fonts" # Locally persisted fonts (not nixos-managed)
+      ".cache/fontconfig" # Fontconfig cache
     ];
   };
 

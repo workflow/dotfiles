@@ -6,9 +6,13 @@
 }: {
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
-      "/home/farlion/.local/share/keyrings" # Gnome Keyrings
-      "/home/farlion/.gnupg" # PGP keys
       "/var/lib/boltd" # Boltd state
+    ];
+  };
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/keyrings" # Gnome Keyrings
+      ".gnupg" # PGP keys
     ];
   };
 
