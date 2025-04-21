@@ -2,6 +2,7 @@
 # Note: specifics should live with their respective modules, where possible!
 {
   home.persistence."/persist/home/farlion" = {
+    enable = true;
     files = [
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
