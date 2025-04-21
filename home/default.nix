@@ -130,6 +130,11 @@ in {
       then "24.11"
       else "24.11";
 
+    file."nixos-config" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/nixos-config";
+      target = "nixos-config";
+    };
+
     packages = with pkgs; [
       alejandra # Nix Formatter
       ast-grep # Pure Magic

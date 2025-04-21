@@ -7,8 +7,6 @@
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
       ".local/share/nix" # Nix Repl History
-      "nixos-config"
-      "nixos-secrets"
     ];
     allowOther = true; # For root (docker) and Docker to access bind-mounted `directories`
   };

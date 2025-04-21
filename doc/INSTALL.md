@@ -147,7 +147,6 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
    1. Add SSH key to github
    1. `GIT_SSH_COOMAND="ssh -i /home/farlion/.ssh/github" git push`
 1. `trash-put $NIXOS_TMP_CONFIG`
-1. `ln -s ~/code/nixos-config ~/nixos-config`
 1. Go through secret setup instructions
 1. Customize `~/code/nixos-config/machines/<new_hostname>/{system.nix&&hardware-scan.nix}` while cleaning them up, taking inspiration from similar machines
 1. Change `root` passwd
