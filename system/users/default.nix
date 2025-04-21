@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  environment.persistence."/persist" = lib.mkIf isImpermanent {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     files = [
       "/etc/group"
       "/etc/passwd"

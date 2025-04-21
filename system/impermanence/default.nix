@@ -34,7 +34,7 @@
 
   fileSystems."/persist".neededForBoot = true;
 
-  environment.persistence."/persist" = {
+  environment.persistence."/persist/system" = {
     enable = true;
     hideMounts = true;
     directories = [

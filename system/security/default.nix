@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  environment.persistence."/persist" = lib.mkIf isImpermanent {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/home/farlion/.local/share/keyrings" # Gnome Keyrings
       "/home/farlion/.gnupg" # PGP keys

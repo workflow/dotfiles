@@ -5,7 +5,7 @@
   ...
 }: let
 in {
-  environment.persistence."/persist" = lib.mkIf isImpermanent {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/home/farlion/.local/state/wireplumber" # Wireplumber state
       "/home/farlion/.config/rncbc.org" # qpwgraph config file

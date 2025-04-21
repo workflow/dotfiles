@@ -8,7 +8,7 @@
   isFlexbox = config.networking.hostName == "flexbox";
   isBoar = config.networking.hostName == "boar";
 in {
-  environment.persistence."/persist" = lib.mkIf isImpermanent {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/var/lib/containers" # Podman
       "/home/farlion/.local/share/containers" # Podman (userspace)

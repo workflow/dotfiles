@@ -3,7 +3,7 @@
   isImpermanent,
   ...
 }: {
-  environment.persistence."/persist" = lib.mkIf isImpermanent {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/var/lib/btrfs" # Scrub reports
     ];
