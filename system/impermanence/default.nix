@@ -7,7 +7,7 @@
     mkdir /btrfs_tmp
     mount /dev/mapper/nixos--vg-root /btrfs_tmp
     if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
+        mkdir -p /btrfs_tmp/persist/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
         if [[ ! -e /btrfs_tmp/persist/old_roots/$timestamp ]]; then
           mv /btrfs_tmp/root "/btrfs_tmp/persist/old_roots/$timestamp"
@@ -16,7 +16,7 @@
         fi
     fi
 
-    # 🧨
+    # Recursively Garbage Collect: old_roots older than 30 days
     delete_subvolume_recursively() {
         IFS=$'\n'
 
