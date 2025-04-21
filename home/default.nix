@@ -1,8 +1,9 @@
 {
-  lib,
+  config,
+  inputs,
   isImpermanent,
   isNvidia,
-  inputs,
+  lib,
   osConfig,
   pkgs,
   secrets,
