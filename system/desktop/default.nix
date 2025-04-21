@@ -1,6 +1,15 @@
-{...}: let
+{
+  isImpermanent,
+  lib,
+  ...
+}: let
   session = "sway";
 in {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
+    files = [
+      "/etc/ly/save.ini" # Selected user and session
+    ];
+  };
   services.displayManager = {
     defaultSession = session;
     ly = {
