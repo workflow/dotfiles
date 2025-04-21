@@ -9,7 +9,11 @@
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+        if [[ ! -e /btrfs_tmp/persist/old_roots/$timestamp ]]; then
+          mv /btrfs_tmp/root "/btrfs_tmp/persist/old_roots/$timestamp"
+        else
+          btrfs subvolume delete /btrfs_tmp/root
+        fi
     fi
 
     # 🧨
