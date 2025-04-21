@@ -31,11 +31,9 @@
         done
         btrfs subvolume delete "$1"
     }
-
-    # Garbage Collect: old_roots older than 30 days
-    for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
-        delete_subvolume_recursively "$i"
-    done
+    #for i in $(find /btrfs_tmp/persist/old_roots/ -mindepth 1 -maxdepth 1 -mtime +30); do
+    #    delete_subvolume_recursively "$i"
+    #done
 
     btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
