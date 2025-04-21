@@ -6,6 +6,8 @@
     # Back up / with timestamp under /old_roots
     mkdir /btrfs_tmp
     mount /dev/mapper/nixos--vg-root /btrfs_tmp
+
+    # root impermanence
     if [[ -e /btrfs_tmp/root ]]; then
         mkdir -p /btrfs_tmp/persist/old_roots
         timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
@@ -16,7 +18,18 @@
         fi
     fi
 
-    # Recursively Garbage Collect: old_roots older than 30 days
+    # home impermanence
+    # if [[ -e /btrfs_tmp/home ]]; then
+    #     mkdir -p /btrfs_tmp/persist/old_homes
+    #     timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/home)" "+%Y-%m-%-d_%H:%M:%S")
+    #     if [[ ! -e /btrfs_tmp/persist/old_homes/$timestamp ]]; then
+    #       mv /btrfs_tmp/home "/btrfs_tmp/persist/old_homes/$timestamp"
+    #     else
+    #       btrfs subvolume delete /btrfs_tmp/home
+    #     fi
+    # fi
+
+    # Recursively Garbage Collect: old_roots and old_homes older than 30 days
     delete_subvolume_recursively() {
         IFS=$'\n'
 
@@ -34,8 +47,12 @@
     #for i in $(find /btrfs_tmp/persist/old_roots/ -mindepth 1 -maxdepth 1 -mtime +30); do
     #    delete_subvolume_recursively "$i"
     #done
+    #for i in $(find /btrfs_tmp/persist/old_homes/ -mindepth 1 -maxdepth 1 -mtime +30); do
+    #    delete_subvolume_recursively "$i"
+    #done
 
     btrfs subvolume create /btrfs_tmp/root
+    # btrfs subvolume create /btrfs_tmp/home
     umount /btrfs_tmp
   '';
 
