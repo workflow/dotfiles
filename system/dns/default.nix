@@ -1,14 +1,4 @@
-{
-  lib,
-  isImpermanent,
-  ...
-}: {
-  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
-    directories = [
-      "/var/lib/dnscrypt-proxy"
-    ];
-  };
-
+{...}: {
   networking.nameservers = [
     "127.0.0.1" # dnscrypt-proxy2
   ];
