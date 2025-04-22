@@ -47,6 +47,10 @@
   flexboxExtraBlocks = [
     {
       block = "battery";
+      format = {
+        full = " $percentage {$time_remaining.dur(hms:true, min_unit:m) |}";
+        short = " $icon  $percentage ";
+      };
     }
   ];
 
