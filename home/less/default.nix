@@ -4,7 +4,7 @@
   ...
 }: {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
-    directories = [
+    files = [
       ".local/state/lesshst"
     ];
   };
