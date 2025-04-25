@@ -6,7 +6,7 @@
 }: {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     files = [
-      "pavucontrol.ini"
+      ".config/pavucontrol.ini"
     ];
   };
 
