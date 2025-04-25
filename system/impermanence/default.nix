@@ -43,7 +43,7 @@
     ];
   };
 
-  # Somehow home-manager impermanence doesn't bootstrap these yet, so:
+  # home-manager's impermanence module doesn't have permissions to bootstrap these dirs, so we do it here:
   system.activationScripts.bootstrapPersistHome.text = ''
     mkdir -p /persist/home/farlion
     chown farlion:users /persist/home/farlion
