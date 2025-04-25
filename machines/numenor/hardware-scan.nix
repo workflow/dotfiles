@@ -16,17 +16,11 @@
     options = ["subvol=nix" "compress=zstd" "noatime"];
   };
 
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-uuid/d601a8b7-17a4-46b5-a95e-ab29e94790ef";
-    fsType = "btrfs";
-    options = ["subvol=persist" "compress=zstd" "noatime"];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/d601a8b7-17a4-46b5-a95e-ab29e94790ef";
-    fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd" "noatime"];
-  };
+  # fileSystems."/persist" = {
+  #   device = "/dev/disk/by-uuid/d601a8b7-17a4-46b5-a95e-ab29e94790ef";
+  #   fsType = "btrfs";
+  #   options = ["subvol=persist" "compress=zstd" "noatime"];
+  # };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/12CE-A600";
