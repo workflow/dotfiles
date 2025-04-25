@@ -14,6 +14,7 @@ in {
     [
       ./audio
       ./bluetooth
+      ./boot
       ./cachix
       ./desktop
       ./dns

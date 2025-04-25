@@ -10,13 +10,6 @@
     };
   };
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot = {
-    enable = true;
-    memtest86.enable = true;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
-
   # Plenty of RAM so...
   boot.tmp.useTmpfs = true;
 
