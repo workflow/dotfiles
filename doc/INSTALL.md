@@ -57,7 +57,6 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
       1. `btrfs subvolume create /mnt/root`
       1. `btrfs subvolume create /mnt/nix`
       1. `btrfs subvolume create /mnt/persist`
-      1. `btrfs subvolume create /mnt/home`
       1. `umount /mnt`
 
 1. Create and Mount Swap
@@ -68,10 +67,9 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. Mount Everything
 
    1. `mount -o compress=zstd,noatime,subvol=root /dev/nixos-vg/root /mnt`
-   1. `mkdir /mnt/{home,nix,persist}`
+   1. `mkdir /mnt/{nix,persist}`
    1. `mount -o compress=zstd,noatime,subvol=nix /dev/nixos-vg/root /mnt/nix`
    1. `mount -o compress=zstd,noatime,subvol=persist /dev/nixos-vg/root /mnt/persist`
-   1. `mount -o compress=zstd,noatime,subvol=home /dev/nixos-vg/root /mnt/home`
    1. `mkdir /mnt/boot`
    1. `mount $BOOT /mnt/boot`
 
