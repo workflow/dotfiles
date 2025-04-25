@@ -1,23 +1,4 @@
-{
-  isImpermanent,
-  lib,
-  pkgs,
-  ...
-}: {
-  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
-    files = [
-      "/etc/group"
-      "/etc/passwd"
-      "/etc/shadow"
-    ];
-  };
-  # These three files create timing errors for some reason with impermanence, mounting them like this helps
-  environment.etc = lib.mkIf isImpermanent {
-    "group".source = "/persist/system/etc/group";
-    "passwd".source = "/persist/system/etc/passwd";
-    "shadow".source = "/persist/system/etc/shadow";
-  };
-
+{pkgs, ...}: {
   users.mutableUsers = false;
 
   users = {
