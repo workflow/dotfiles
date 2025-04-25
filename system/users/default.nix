@@ -18,6 +18,8 @@
     "shadow".source = "/persist/system/etc/shadow";
   };
 
+  users.mutableUsers = false;
+
   users = {
     users.farlion = {
       description = "Florian Peter";
