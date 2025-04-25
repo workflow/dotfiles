@@ -11,8 +11,8 @@
       "/etc/shadow"
     ];
   };
-  # These three files create timing errors for some reason, mounting them like this helps
-  environment.etc = {
+  # These three files create timing errors for some reason with impermanence, mounting them like this helps
+  environment.etc = lib.mkIf isImpermanent {
     "group".source = "/persist/system/etc/group";
     "passwd".source = "/persist/system/etc/passwd";
     "shadow".source = "/persist/system/etc/shadow";
