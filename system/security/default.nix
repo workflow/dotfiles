@@ -33,8 +33,6 @@
 
   programs.seahorse.enable = true;
 
-  boot.loader.systemd-boot.editor = false;
-
   # Writes to /etc/sudoers
   security.sudo.extraConfig = ''
     Defaults:root,%wheel timestamp_timeout=30
