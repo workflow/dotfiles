@@ -134,6 +134,7 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. `cachix use workflow-nixos-config`
 1. `git add machines/<new_hostname>` (for flakes to pick up the changes)
 1. In `machines/<new_hostname>/system.nix` Give farlion a temporary empty password: `users.users.farlion.password = ""`
+1. `cp /etc/machine-id /persist/system/etc/machine-id` to persist machine ID
 1. `sudo nixos-rebuild boot --flake .#<new hostname> --override-input secrets nixpkgs`
 1. Reboot
 
