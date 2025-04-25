@@ -7,5 +7,12 @@ in {
     };
     loader.efi.canTouchEfiVariables = true;
     consoleLogLevel = 7;
+
+    initrd = {
+      systemd = {
+        enable = true;
+        emergencyAccess = true;
+      };
+    };
   };
 }
