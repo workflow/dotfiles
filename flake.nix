@@ -83,7 +83,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isImpermanent = true;
+        isImpermanent = false;
         waylandScaleFactor = 1.5;
       };
       modules = [
@@ -107,7 +107,7 @@
             users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = true;
-              isImpermanent = true;
+              isImpermanent = false;
               isLaptop = false;
               isNvidia = false;
               waylandScaleFactor = 1.5;
