@@ -135,6 +135,7 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. `sudo nixos-rebuild switch`
 1. `cachix use workflow-nixos-config`
 1. `git add machines/<new_hostname>` (for flakes to pick up the changes)
+1. In `machines/<new_hostname>/system.nix` Give farlion a temporary empty password: `users.users.farlion.password = ""`
 1. `sudo nixos-rebuild boot --flake .#<new hostname> --override-input secrets nixpkgs`
 1. Reboot
 
@@ -149,7 +150,7 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. `trash-put $NIXOS_TMP_CONFIG`
 1. Go through secret setup instructions
 1. Customize `~/code/nixos-config/machines/<new_hostname>/{system.nix&&hardware-scan.nix}` while cleaning them up, taking inspiration from similar machines
-1. Change `root` passwd
+1. Remove temporary empty farlion password from `machines/<new_hostname>/system.nix` (will come from secrets)
 1. `nh os boot`
 1. Reboot
 1. Update firmware: `fwupdmgr regresh && fwupdmgr get-updates`
