@@ -83,7 +83,7 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        isImpermanent = false;
+        isImpermanent = true;
         waylandScaleFactor = 1.5;
       };
       modules = [

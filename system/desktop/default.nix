@@ -10,6 +10,7 @@ in {
       "/etc/ly/save.ini" # Selected user and session
     ];
   };
+
   services.displayManager = {
     defaultSession = session;
     ly = {
