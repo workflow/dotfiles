@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   users.mutableUsers = false;
 
   users = {
     users.farlion = {
       description = "Florian Peter";
       extraGroups = ["disk"];
+      hashedPassword = lib.mkDefault "";
       isNormalUser = true;
       group = "users";
       shell = pkgs.fish;
