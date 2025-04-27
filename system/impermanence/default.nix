@@ -96,7 +96,7 @@ in {
     ];
     files = [
       "/etc/machine-id"
-      # "/var/lib/logrotate.status" # TODO: doesn't play nicely with the service yet
+      # "/var/lib/logrotate.status" # TODO: https://github.com/nix-community/impermanence/issues/270
     ];
   };
 
