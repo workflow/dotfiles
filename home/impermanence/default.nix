@@ -3,7 +3,7 @@
 {
   home.persistence."/persist/home/farlion" = {
     enable = true;
-    files = [
+    directories = [
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
       ".local/share/nix" # Nix Repl History
