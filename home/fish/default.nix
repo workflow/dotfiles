@@ -161,9 +161,7 @@ in {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     files = [
       ".config/fish/fish_variables"
-    ];
-    directories = [
-      ".local/share/fish_history" # Includes completions and history
+      ".local/share/fish/fish_history"
     ];
   };
 
