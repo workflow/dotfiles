@@ -15,7 +15,7 @@ in {
       "/var/lib/libvirt" # Virt-Manager
     ];
   };
-  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
     directories = [
       ".local/share/containers" # Podman (userspace)
     ];

@@ -1,6 +1,6 @@
 {
+  config,
   lib,
-  isImpermanent,
   pkgs,
   ...
 }: let
@@ -17,7 +17,7 @@
     printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
   '';
 in {
-  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
     directories = [
       ".local/share/fonts" # Locally persisted fonts (not nixos-managed)
       ".cache/fontconfig" # Fontconfig cache
