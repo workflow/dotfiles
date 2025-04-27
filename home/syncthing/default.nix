@@ -14,7 +14,7 @@
   };
 
   services.syncthing = {
-    enable = false;
+    enable = true;
     tray = {
       enable = true;
       command = "syncthingtray --wait";
