@@ -3,21 +3,19 @@
 {pkgs, ...}: let
   rootExplosion = ''
     echo "Time to 🧨" >/dev/kmsg
-    # Back up / with timestamp under /old_roots
     mkdir /btrfs_tmp
     mount /dev/mapper/nixos--vg-root /btrfs_tmp
 
-    # TODO: uncomment for actual 🧨
     # Root impermanence
-    # if [[ -e /btrfs_tmp/root ]]; then
-    #     mkdir -p /btrfs_tmp/persist/old_roots
-    #     timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%d_%H:%M:%S")
-    #     if [[ ! -e /btrfs_tmp/persist/old_roots/$timestamp ]]; then
-    #       mv /btrfs_tmp/root "/btrfs_tmp/persist/old_roots/$timestamp"
-    #     else
-    #       btrfs subvolume delete /btrfs_tmp/root
-    #     fi
-    # fi
+    if [[ -e /btrfs_tmp/root ]]; then
+        mkdir -p /btrfs_tmp/persist/old_roots
+        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%d_%H:%M:%S")
+        if [[ ! -e /btrfs_tmp/persist/old_roots/$timestamp ]]; then
+          mv /btrfs_tmp/root "/btrfs_tmp/persist/old_roots/$timestamp"
+        else
+          btrfs subvolume delete /btrfs_tmp/root
+        fi
+    fi
 
     ###
     # GC
@@ -47,8 +45,7 @@
         done
     fi
 
-    # TODO: uncomment for actual 🧨
-    # btrfs subvolume create /btrfs_tmp/root
+    btrfs subvolume create /btrfs_tmp/root
     umount /btrfs_tmp
     echo "Done with 🧨. Au revoir!" >/dev/kmsg
   '';
