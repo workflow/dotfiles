@@ -107,7 +107,7 @@
             users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = true;
-              isImpermanent = false;
+              isImpermanent = true;
               isLaptop = false;
               isNvidia = false;
               waylandScaleFactor = 1.5;
