@@ -283,6 +283,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1737831083,
+        "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -440,6 +455,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "impermanence": "impermanence",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixos-unstable": "nixos-unstable",
@@ -451,14 +467,9 @@
       }
     },
     "secrets": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
       "locked": {
-        "lastModified": 1744830014,
-        "narHash": "sha256-DSnfw0WenfVRPc3BQBww8JYHkaJSt7OGTEHftultcmk=",
+        "lastModified": 1745796750,
+        "narHash": "sha256-kzRnFuUWa0s11YgJ32dm5qfmYcdRtflmDr0AQYL8Cjg=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },

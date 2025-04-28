@@ -128,7 +128,7 @@ in {
               click = [
                 {
                   button = "right";
-                  cmd = "alacritty -e htop";
+                  cmd = "alacritty -e btop";
                 }
               ];
             }
@@ -185,7 +185,7 @@ in {
               click = [
                 {
                   button = "left";
-                  cmd = "alacritty -e htop";
+                  cmd = "alacritty -e btop";
                 }
                 {
                   button = "right";

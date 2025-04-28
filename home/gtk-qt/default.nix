@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    files = [
+      ".config/QtProject.conf" # Stuff like history and lastVisited
+    ];
+  };
+
   gtk = {
     enable = true;
     gtk3 = {

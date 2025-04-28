@@ -57,7 +57,6 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
       1. `btrfs subvolume create /mnt/root`
       1. `btrfs subvolume create /mnt/nix`
       1. `btrfs subvolume create /mnt/persist`
-      1. `btrfs subvolume create /mnt/home`
       1. `umount /mnt`
 
 1. Create and Mount Swap
@@ -68,10 +67,9 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. Mount Everything
 
    1. `mount -o compress=zstd,noatime,subvol=root /dev/nixos-vg/root /mnt`
-   1. `mkdir /mnt/{home,nix,persist}`
+   1. `mkdir /mnt/{nix,persist}`
    1. `mount -o compress=zstd,noatime,subvol=nix /dev/nixos-vg/root /mnt/nix`
    1. `mount -o compress=zstd,noatime,subvol=persist /dev/nixos-vg/root /mnt/persist`
-   1. `mount -o compress=zstd,noatime,subvol=home /dev/nixos-vg/root /mnt/home`
    1. `mkdir /mnt/boot`
    1. `mount $BOOT /mnt/boot`
 
@@ -135,6 +133,8 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
 1. `sudo nixos-rebuild switch`
 1. `cachix use workflow-nixos-config`
 1. `git add machines/<new_hostname>` (for flakes to pick up the changes)
+1. In `machines/<new_hostname>/system.nix` Give farlion a temporary empty password: `users.users.farlion.password = ""`
+1. `cp /etc/machine-id /persist/system/etc/machine-id` to persist machine ID
 1. `sudo nixos-rebuild boot --flake .#<new hostname> --override-input secrets nixpkgs`
 1. Reboot
 
@@ -147,10 +147,9 @@ Note: [Disko](https://github.com/nix-community/disko) doesn't support dual-booti
    1. Add SSH key to github
    1. `GIT_SSH_COOMAND="ssh -i /home/farlion/.ssh/github" git push`
 1. `trash-put $NIXOS_TMP_CONFIG`
-1. `ln -s ~/code/nixos-config ~/nixos-config`
 1. Go through secret setup instructions
 1. Customize `~/code/nixos-config/machines/<new_hostname>/{system.nix&&hardware-scan.nix}` while cleaning them up, taking inspiration from similar machines
-1. Change `root` passwd
+1. Remove temporary empty farlion password from `machines/<new_hostname>/system.nix` (will come from secrets)
 1. `nh os boot`
 1. Reboot
 1. Update firmware: `fwupdmgr regresh && fwupdmgr get-updates`

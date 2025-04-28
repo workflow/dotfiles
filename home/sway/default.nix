@@ -48,7 +48,9 @@
   wsc = "c";
 in {
   home.packages = with pkgs; [
+    brightnessctl # For brightness +/- keys
     qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
+    playerctl # For play/pause etc... controlling media players that implement MPRIS
     wlprop # Xprop clone for Wayland
     xorg.xkill # For murdering XWayland windows
     xorg.xprop # For checking whether a window is XWayland or not

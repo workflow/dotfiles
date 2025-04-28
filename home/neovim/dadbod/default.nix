@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  isImpermanent,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    directories = [
+      ".local/share/db_ui"
+    ];
+  };
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = vim-dadbod; # SQL Fu

@@ -1,13 +1,6 @@
 {...}: {
-  services.ratbagd.enable = true;
-
-  # Writes to /etc/X11/xorg.conf.d
-  services.libinput = {
+  hardware.logitech.wireless = {
     enable = true;
-    touchpad = {
-      disableWhileTyping = true;
-      accelProfile = "adaptive";
-      accelSpeed = "0.2";
-    };
+    enableGraphical = true;
   };
 }

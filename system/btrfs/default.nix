@@ -1,4 +1,14 @@
-{...}: {
+{
+  lib,
+  isImpermanent,
+  ...
+}: {
+  environment.persistence."/persist/system" = lib.mkIf isImpermanent {
+    directories = [
+      "/var/lib/btrfs" # Scrub reports
+    ];
+  };
+
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";

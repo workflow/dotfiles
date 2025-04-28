@@ -1,0 +1,5 @@
+{...}: {
+  programs.broot = {
+    enable = true;
+  };
+}

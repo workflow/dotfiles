@@ -2,11 +2,6 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {...}: {
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false; # Disable this after first installation to not wear out EFI storage
-  boot.consoleLogLevel = 7;
-
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
   boot.kernelParams = ["nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1"];
 

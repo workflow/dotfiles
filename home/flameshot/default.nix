@@ -1,4 +1,5 @@
 {
+  isImpermanent,
   lib,
   pkgs,
   ...
@@ -7,6 +8,12 @@
     enableWlrSupport = true;
   };
 in {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    directories = [
+      ".cache/flameshot"
+    ];
+  };
+
   services.flameshot = {
     enable = true;
     package = flameshotWithWaylandSupport;

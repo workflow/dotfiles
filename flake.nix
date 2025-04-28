@@ -6,6 +6,7 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,10 +16,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
-    secrets = {
-      url = "path:/home/farlion/code/nixos-secrets";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    secrets.url = "path:/home/farlion/code/nixos-secrets";
     stylix.url = "github:danth/stylix/release-24.11";
   };
 
@@ -26,6 +24,7 @@
     nixpkgs,
     nixos-unstable,
     home-manager,
+    impermanence,
     nur,
     secrets,
     stylix,
@@ -44,15 +43,10 @@
         inherit inputs;
         inherit secrets;
         waylandScaleFactor = 2.0;
+        isImpermanent = false;
       };
       modules = [
         {
-          nix = {
-            registry = {
-              nixpkgs-local.flake = nixpkgs;
-              nixos-unstable-local.flake = nixos-unstable;
-            };
-          };
           nixpkgs.overlays = [(_: _: overlays)];
         }
         nixpkgs.nixosModules.notDetected
@@ -61,15 +55,17 @@
         ./system/nvidia
         ./configuration.nix
         nur.modules.nixos.default
+        impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "home-manager-backup";
-            users.farlion = import ./home.nix;
+            users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = false;
+              isImpermanent = false;
               isLaptop = true;
               isNvidia = true;
               waylandScaleFactor = 2.0;
@@ -87,16 +83,11 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
+        isImpermanent = true;
         waylandScaleFactor = 1.5;
       };
       modules = [
         {
-          nix = {
-            registry = {
-              nixpkgs-local.flake = nixpkgs;
-              nixos-unstable-local.flake = nixos-unstable;
-            };
-          };
           nixpkgs.overlays = [(_: _: overlays)];
         }
         nixpkgs.nixosModules.notDetected
@@ -106,15 +97,17 @@
         ./system/btrfs
         ./configuration.nix
         nur.modules.nixos.default
+        impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "home-manager-backup";
-            users.farlion = import ./home.nix;
+            users.farlion = import ./home;
             extraSpecialArgs = {
               isAmd = true;
+              isImpermanent = true;
               isLaptop = false;
               isNvidia = false;
               waylandScaleFactor = 1.5;

@@ -1,4 +1,14 @@
-{inputs, ...}: {
+{
+  inputs,
+  isImpermanent,
+  lib,
+  ...
+}: {
+  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+    files = [
+      ".local/state/comma-choices" # For ,
+    ];
+  };
   imports = [
     inputs.nix-index-database.hmModules.nix-index
   ];
