@@ -11,6 +11,6 @@
   };
 
   home.packages = [
-    pkgs.ytmdesktop
+    pkgs.unstable.ytmdesktop
   ];
 }

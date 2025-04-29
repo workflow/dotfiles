@@ -110,7 +110,7 @@ in {
         ];
         "${ws9}" = [
           {
-            app_id = "^YouTube Music$";
+            app_id = "^YouTube Music Desktop App$";
           }
           {
             app_id = "^Todoist$";
@@ -369,7 +369,7 @@ in {
       };
 
       startup = [
-        {command = "youtube-music";}
+        {command = "ytmdesktop";}
         {command = "todoist-electron --ozone-platform-hint=auto";}
 
         # Autotiling
