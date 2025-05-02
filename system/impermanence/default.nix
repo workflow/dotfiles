@@ -96,6 +96,11 @@ in {
       # "/var/lib/logrotate.status" # TODO: https://github.com/nix-community/impermanence/issues/270
     ];
   };
+  # Workaround for /etc/ file timings not working with impermanence
+  environment.etc = {
+    # Timezone data linked by tzupdate
+    "localtime".source = "/persist/system/etc/localtime";
+  };
 
   # home-manager's impermanence module doesn't have permissions to bootstrap these dirs, so we do it here:
   system.activationScripts.bootstrapPersistHome.text = ''
