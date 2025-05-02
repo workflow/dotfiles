@@ -11,7 +11,6 @@ in {
     initrd = {
       systemd = {
         enable = true;
-        emergencyAccess = true;
       };
     };
   };
