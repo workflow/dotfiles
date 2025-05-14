@@ -6,7 +6,7 @@
   ...
 }: let
   isFlexbox = config.networking.hostName == "flexbox";
-  isBoar = config.networking.hostName == "boar";
+  isNumenor = config.networking.hostName == "numenor";
 in {
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
@@ -42,12 +42,12 @@ in {
     allowedTCPPorts = [53];
     allowedUDPPorts = [53];
   };
-  networking.firewall.interfaces.br-5e5007921f27 = lib.mkIf isBoar {
+  networking.firewall.interfaces.br-3815f82c1c4c = lib.mkIf isNumenor {
     allowedTCPPorts = [53];
     allowedUDPPorts = [53];
   };
   # Ad-hoc (Docker Compose)
-  networking.firewall.interfaces.br-1a132ab74d09 = lib.mkIf isBoar {
+  networking.firewall.interfaces.br-1a132ab74d09 = lib.mkIf isNumenor {
     allowedTCPPorts = [53];
     allowedUDPPorts = [53];
   };
