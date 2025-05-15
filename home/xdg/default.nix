@@ -1,9 +1,12 @@
 {
   isImpermanent,
   lib,
+  osConfig,
   pkgs,
   ...
-}: {
+}: let
+  isFlexbox = osConfig.networking.hostName == "flexbox";
+in {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".xournal" # Other recently used files
@@ -26,7 +29,10 @@
   xdg = {
     desktopEntries = {
       brave-browser = {
-        exec = "${pkgs.brave}/bin/brave --enable-features=\"VaapiVideoDecoder,VaapiVideoEncoder\" --enable-raw-draw %U";
+        exec =
+          if isFlexbox
+          then "${pkgs.brave}/bin/brave --enable-features=\"VaapiVideoDecoder,VaapiVideoEncoder\" --enable-raw-draw %U"
+          else "${pkgs.brave}/bin/brave";
         name = "Brave Browser";
         comment = "Access the Internet";
         genericName = "Web Browser";

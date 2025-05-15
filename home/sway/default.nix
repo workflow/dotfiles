@@ -1,11 +1,14 @@
 {
   lib,
+  osConfig,
   pkgs,
   ...
 }: let
   # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
   color_bg = "#1E272B";
   color_txt = "#EAD49B";
+
+  isFlexbox = osConfig.networking.hostName == "flexbox";
 
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
 
@@ -296,8 +299,14 @@ in {
         "${mod}+Ctrl+h" = "exec dunstctl history-pop";
 
         # Launch Browser
-        "${mod}+b" = "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
-        "${mod}+h" = "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\"";
+        "${mod}+b" =
+          if isFlexbox
+          then "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\""
+          else "exec \"brave --profile-directory='Default'\"";
+        "${mod}+h" =
+          if isFlexbox
+          then "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\""
+          else "exec \"brave --profile-directory='Profile 1'\"";
 
         # File Manager ("navigate")
         "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
