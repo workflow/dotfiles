@@ -74,5 +74,6 @@
         };
       }
     ];
+    systemdTarget = "sway-session.target";
   };
 }
