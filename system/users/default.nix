@@ -9,9 +9,9 @@
     users.farlion = {
       description = "Florian Peter";
       extraGroups = ["disk"];
+      group = "users";
       hashedPassword = lib.mkDefault "";
       isNormalUser = true;
-      group = "users";
       shell = pkgs.fish;
     };
   };

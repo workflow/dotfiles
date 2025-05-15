@@ -30,6 +30,7 @@ in {
       ./printing
       ./security
       ./stylix
+      ./syncthing
       ./users
       ./various
       ./video

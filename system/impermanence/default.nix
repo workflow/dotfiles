@@ -102,6 +102,21 @@ in {
     "localtime".source = "/persist/system/etc/localtime";
   };
 
+  # Workaround for systemd 256 attempting to freeze user sessions, but failing due to impermanence FUSE mounts.
+  # Without this, recovering from sleep leads to GUI crashes.
+  systemd.services."systemd-suspend".environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
+  systemd.services."systemd-hibernate".environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
+  systemd.services."systemd-hybrid-sleep".environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
+  systemd.services."systemd-suspend-then-hibernate".environment = {
+    SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  };
+
   # home-manager's impermanence module doesn't have permissions to bootstrap these dirs, so we do it here:
   system.activationScripts.bootstrapPersistHome.text = ''
     mkdir -p /persist/home/farlion
