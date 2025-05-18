@@ -112,7 +112,6 @@ local servers = {
     },
   },
   julials = {},
-  pyright = {},
   ruff = {},
   rust_analyzer = {
     checkOnSave = {
@@ -179,6 +178,12 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- Language Servers managed outside of Mason
+-- Pyright
+require('lspconfig').pyright.setup {
+  capabilities = capabilities,
+  on_attach = shared_lsp_config.on_attach,
+}
 -- Nixd
 require('lspconfig').nixd.setup {
   capabilities = capabilities,

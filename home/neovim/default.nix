@@ -216,6 +216,7 @@ in {
       nixd # Nix Language Server
       nodejs # For vim to have npm for Mason etc...
       prettierd # For yaml, html, json, markdown
+      pyright
       shellcheck
       shfmt
     ];

@@ -9,6 +9,7 @@
     };
   };
 in {
+  # home.packages = [pkgs.nodejs]; # Pyright and other LSPs need a global npm :(
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = mason-nvim; # Automatically install LSP servers
