@@ -15,8 +15,8 @@
   };
 in {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
-    files = [
-      ".bookmarks/bookmarks.nvim"
+    directories = [
+      ".local/share/nvim-bookmarks"
     ];
   };
 
@@ -26,7 +26,7 @@ in {
         plugin = bookmarks-nvim;
         config = ''
           require("bookmarks").setup({
-            save_file = vim.fn.expand "$HOME/.bookmarks/bookmarks.nvim",
+            save_file = vim.fn.expand "$HOME/.local/share/nvim-bookmarks/bookmarks.nvim",
             on_attach = function(bufnr)
               local bm = require("bookmarks")
               local wk = require("which-key")
