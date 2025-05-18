@@ -8,6 +8,7 @@
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/var/lib/boltd" # Boltd state
+      "/run/sudo" # Sudo timestamp (to not show the lecture message)
     ];
   };
   home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
