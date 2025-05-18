@@ -32,7 +32,6 @@
       ./calibre # Ebook reader
       ./cliphist
       ./cpu-profile-toggler
-      ./ddc-backlight
       ./devenv # devenv.sh
       ./direnv
       ./discord
@@ -105,6 +104,7 @@
       ./zoxide
     ]
     ++ impermanenceImports
+    ++ numenorImports
     ++ [homeManagerSecrets];
 
   isFlexbox = osConfig.networking.hostName == "flexbox";
@@ -114,6 +114,10 @@
     if secrets ? homeManagerSecrets
     then secrets.homeManagerSecrets {inherit isImpermanent lib pkgs;}
     else {};
+
+  numenorImports = lib.optionals isNumenor [
+    ./ddc-backlight
+  ];
 in {
   home = {
     # This value determines the Home Manager release that your

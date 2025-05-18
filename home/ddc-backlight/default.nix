@@ -6,5 +6,5 @@
     text = builtins.readFile ./scripts/ddc-backlight.sh;
   };
 in {
-  home.packages = [ddc-backlight];
+  home.packages = [ddc-backlight pkgs.ddcutil];
 }
