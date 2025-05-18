@@ -18,6 +18,19 @@
 
   networking.hostName = "numenor";
 
+  # Disable Wifi at boot
+  systemd.services.disable-wifi = {
+    enable = true;
+    description = "Disable Wi-Fi at boot";
+    after = ["network.target" "NetworkManager.service"];
+    wantedBy = ["multi-user.target"];
+    path = with pkgs; [networkmanager];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.networkmanager}/bin/nmcli radio wifi off";
+    };
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
