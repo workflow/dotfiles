@@ -68,7 +68,7 @@
       device = device;
       format = {
         short = "$icon {$speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)/$speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)}";
-        full = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}$speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)/$speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)";
+        full = "$icon {$device.str(max_w:4)} $speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)/$speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)";
       };
       format_alt = "$icon {$device.str(max_w:4)} {$ssid $signal_strength $frequency |}{$ip|down} ^icon_net_down $speed_down.eng(prefix:K,w:3,range:${minNetActivationSpeed}..) ^icon_net_up $speed_up.eng(prefix:K,w:3,range:${minNetActivationSpeed}..)";
       click = [
