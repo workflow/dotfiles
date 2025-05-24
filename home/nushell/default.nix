@@ -1,6 +1,7 @@
 {
   isImpermanent,
   lib,
+  pkgs,
   ...
 }: {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
@@ -12,5 +13,6 @@
     enable = true;
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
+    package = pkgs.unstable.nushell;
   };
 }
