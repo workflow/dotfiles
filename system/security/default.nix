@@ -42,9 +42,21 @@
   users.users.farlion.extraGroups = ["wheel"];
 
   # Yubikeys
-  security.pam.yubico = {
-    enable = true;
-    mode = "challenge-response";
+  services.pcscd.enable = true; # Smartcard services for Yubikeys
+  # Sudo via U2F (Yubikey)
+  security.pam = {
+    u2f = {
+      enable = true;
+      settings = {
+        cue = false; # CLI message to show touch is needed, not needed since using system-wide notification
+      };
+    };
+    services = {
+      login.u2fAuth = true;
+      sudo = {
+        u2fAuth = true;
+      };
+    };
   };
   # Enable system-wide Yubikey Support
   services.udev.packages = [pkgs.yubikey-personalization];

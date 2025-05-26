@@ -1,20 +1,12 @@
-{
-  lib,
-  isImpermanent,
-  ...
-}: {
-  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
-    directories = [
-      ".yubico"
-    ];
-  };
-
+{pkgs, ...}: {
   imports = [
     ./modules/yubikey-touch-detector
   ];
 
-  pam.yubico.authorizedYubiKeys.ids = [
-    "cccccchvrtfg"
+  home.packages = with pkgs; [
+    pam_u2f # U2F (via yubikey) support for PAM
+    yubikey-manager # ykman
+    yubioath-flutter # Yubikey management GUI
   ];
 
   services = {
