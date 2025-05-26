@@ -52,10 +52,10 @@
       };
     };
     services = {
-      login.u2fAuth = true;
-      sudo = {
-        u2fAuth = true;
-      };
+      login.u2fAuth = false;
+      ly.u2fAuth = false;
+      sudo.u2fAuth = true;
+      swaylock.u2fAuth = true;
     };
   };
   # Enable system-wide Yubikey Support
