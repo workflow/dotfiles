@@ -10,7 +10,7 @@
     settings = {
       global = {
         browser = "brave";
-        dmenu = "rofi -dmenu -i -p ''";
+        dmenu = "fuzzel --dmenu";
       };
 
       ignore_flameshot_warning = {
