@@ -21,6 +21,16 @@
             lsp_doc_border = false, -- add a border to hover docs and signature help
           },
         })
+
+        local wk = require("which-key")
+        wk.add(
+          {
+            { "<leader>n",  group = "[N]oice" },
+            { "<leader>nd", "<cmd>NoiceDismiss<CR>",    desc = "[D]ismiss Notifications" },
+            { "<leader>nl", "<cmd>NoiceLast<CR>",    desc = "[L]ast Notifiation" },
+            { "<leader>nn", "<cmd>Noice<CR>",    desc = "Show all [N]otifications" },
+          }
+        )
       '';
       type = "lua";
     }
