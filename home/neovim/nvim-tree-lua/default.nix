@@ -18,6 +18,13 @@
           on_attach = my_on_attach,
           disable_netrw = false, -- keeping netrw for :GBrowse from fugitive to work
           hijack_netrw = true, -- once no longer needed, check :he nvim-tree-netrw
+          -- Dynamic width
+          view = {
+            width = {
+              min = 30,
+              max = -1,
+            },
+          },
         })
         local wk = require("which-key")
         wk.add(
