@@ -6,14 +6,20 @@
   ...
 }: let
   isFlexbox = osConfig.networking.hostName == "flexbox";
+  xps-9700-mic-fixer = pkgs.writeShellApplication {
+    name = "xps-9700-mic-fixer";
+    runtimeInputs = [pkgs.alsa-utils];
+    text = builtins.readFile ./scripts/xps-9700-mic-fixer.sh;
+  };
 in {
   systemd.user.services.fixXPS9700Mike = lib.mkIf isFlexbox {
     Unit = {
-      Description = "Set rt715 ADC 24 Mux to DMIC3";
+      Description = "Fix ALSA settings for internal mic on Dell XPS 9700";
     };
     Install.WantedBy = ["pipewire.service"];
     Service = {
-      ExecStart = "${pkgs.alsa-utils}/bin/amixer --card 1 set 'rt715 ADC 24 Mux' 'DMIC3'";
+      Environment = "PATH=$PATH:/run/current-system/sw/bin";
+      ExecStart = "${xps-9700-mic-fixer}/bin/xps-9700-mic-fixer";
       Type = "oneshot";
       RemainAfterExit = true;
     };

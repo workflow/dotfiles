@@ -29,9 +29,16 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
 
-    extraConfig.pipewire."92-adjust-max-quantum" = {
+    extraConfig.pipewire."92-adjust-clock-quantum" = {
       "context.properties" = {
+        "default.clock.quantum" = 2048; # Larger buffers should prevent xruns
+        "default.clock.min-quantum" = 512; # Larger buffers should prevent xruns
         "default.clock.max-quantum" = 8192; # Matches Windows Settings
+      };
+    };
+    extraConfig.pipewire."93-disable-autosuspend" = {
+      "context.properties" = {
+        "session.suspend-timeout-seconds" = 0; # Prevent autosuspend of ALSA nodes, causing xruns and crashes
       };
     };
 

@@ -3,7 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {...}: {
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
-  boot.kernelParams = ["nvme_core.default_ps_max_latency_us=0" "acpiphp.disable=1"];
+  boot.kernelParams = [
+    "nvme_core.default_ps_max_latency_us=0" # Stability probs
+    "acpiphp.disable=1" # NVME disk power management probs
+  ];
 
   # GPU
   hardware.nvidia.prime = {
