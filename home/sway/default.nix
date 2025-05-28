@@ -257,10 +257,10 @@ in {
         # If there are multiple scratchpad windows, this command cycles through them.
         "${mod}+minus" = "scratchpad show";
 
-        # Cliphist via rofi
-        "${mod}+p" = "exec rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons";
+        # Cliphist via fuzzel
+        "${mod}+p" = "exec cliphist-fuzzel-img";
         # Single item clearing
-        "${mod}+Shift+p" = "exec cliphist list | rofi -dmenu | cliphist delete";
+        "${mod}+Shift+p" = "exec cliphist list | fuzzel --dmenu | cliphist delete";
 
         # Multimedia Key Controls from https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
         # Pulse Audio controls
