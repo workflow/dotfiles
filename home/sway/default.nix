@@ -324,6 +324,9 @@ in {
 
         # Sound Switcher
         "${mod}+m" = "exec sound-switcher";
+
+        # Calculator
+        "${mod}+a" = "exec rofi -modi calc -show calc";
       };
 
       menu = "fuzzel";

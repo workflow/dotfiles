@@ -14,8 +14,8 @@
       modi = "run,window";
     };
 
-    package = pkgs.rofi-wayland;
-    # plugins = with pkgs; [rofi-calc];
+    # package = pkgs.rofi-wayland;
+    plugins = with pkgs; [rofi-calc];
 
     terminal = "${pkgs.alacritty}/bin/alacritty";
 
