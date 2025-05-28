@@ -7,7 +7,4 @@
 
     terminal = "${pkgs.alacritty}/bin/alacritty";
   };
-
-  # for rofi-emoji to insert emojis directly
-  home.packages = with pkgs; [wtype xdotool];
 }
