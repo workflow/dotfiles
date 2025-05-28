@@ -7,7 +7,7 @@ chosen="$(echo -e "🔌local\n\
 📢boombox\n\
  budsFE(listen)\n\
  budsFE(talk)\n\
-" | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
+" | fuzzel --dmenu --prompt "🎶 [M]usic and 🎤 Switch")"
 
 localspeaker() {
 	local card_name_pattern="00_1f"

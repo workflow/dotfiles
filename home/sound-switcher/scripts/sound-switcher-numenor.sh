@@ -5,7 +5,7 @@ chosen="$(echo -e "🎧oh\n\
  buds(listen)\n\
  buds(talk)\n\
 📢boombox\n\
-" | rofi -dmenu -p "🎶 [M]usic and 🎤 Switch")"
+" | fuzzel --dmenu --prompt "🎶 [M]usic and 🎤 Switch")"
 
 oh() {
 	local card_name_pattern="ThinkPad_Thunderbolt"
