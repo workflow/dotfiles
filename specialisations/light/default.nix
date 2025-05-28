@@ -42,11 +42,6 @@
         '';
       };
 
-      # Rofi
-      programs.rofi = {
-        theme = lib.mkOverride 49 "gruvbox-light-soft";
-      };
-
       # Sway
       wayland.windowManager.sway.config.bars = lib.mkForce [
         (
