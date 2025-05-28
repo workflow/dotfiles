@@ -27,7 +27,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | File Manager     |                  [Lf](https://github.com/gokcehan/lf)                   |
 | File Syncing     |           [Syncthing](https://github.com/syncthing/syncthing)           |
 | Impermanence     |      [Impermanence](https://github.com/nix-community/impermanence)      |
-| Launcher         |               [Rofi](https://github.com/davatorium/rofi)                |
+| Launcher         |               [Fuzzel](https://codeberg.org/dnkl/fuzzel)                |
 | Nix Builds       |                   [Nh](https://github.com/viperML/nh)                   |
 | Notifications    |             [Dunst](https://github.com/dunst-project/dunst)             |
 | Prompt           |            [Starship](https://github.com/starship/starship)             |
