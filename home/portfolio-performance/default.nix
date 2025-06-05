@@ -11,6 +11,6 @@
   };
 
   home.packages = [
-    pkgs.portfolio
+    pkgs.unstable.portfolio
   ];
 }
