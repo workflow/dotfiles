@@ -355,6 +355,31 @@ in {
                 }
               ];
               json = true;
+            }
+            {
+              block = "custom";
+              command = "ddc-backlight 8"; # For i2c-8
+              format = "$icon$text";
+              icons_overrides = {
+                "moon_empty" = "🌑";
+                "moon_1" = "🌘";
+                "moon_2" = "🌗";
+                "moon_3" = "🌖";
+                "moon_full" = "🌕";
+              };
+              interval = 300;
+              error_interval = 300;
+              click = [
+                {
+                  button = "up";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 8";
+                }
+                {
+                  button = "down";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 8";
+                }
+              ];
+              json = true;
               merge_with_next = true;
             }
             {
@@ -378,32 +403,6 @@ in {
                 {
                   button = "down";
                   cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
-                }
-              ];
-              json = true;
-              merge_with_next = true;
-            }
-            {
-              block = "custom";
-              command = "ddc-backlight 8"; # For i2c-8
-              format = "$icon$text";
-              icons_overrides = {
-                "moon_empty" = "🌑";
-                "moon_1" = "🌘";
-                "moon_2" = "🌗";
-                "moon_3" = "🌖";
-                "moon_full" = "🌕";
-              };
-              interval = 300;
-              error_interval = 300;
-              click = [
-                {
-                  button = "up";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 8";
-                }
-                {
-                  button = "down";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 8";
                 }
               ];
               json = true;
