@@ -54,6 +54,12 @@ in {
     enable = true;
 
     commands = {
+      archive = ''
+        ''${{
+          tar --create --xz --file="$PWD/$(basename "$f").tar.xz" "$f"
+        }}
+      '';
+
       chmod = ''
         ''${{
             printf "Mode Bits: "
