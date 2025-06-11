@@ -14,21 +14,25 @@
         fish_vi_key_bindings
 
         # VI mode updates
-        bind -s --preset -M default j backward-char
-        bind -s --preset -M default \; forward-char
+        bind -s --preset --mode default j backward-char
+        bind -s --preset --mode default \; forward-char
         bind -s --preset k down-or-search
         bind -s --preset l up-or-search
-        bind -s --preset -M visual j backward-char
-        bind -s --preset -M visual \; forward-char
-        bind -s --preset -M visual l up-line
-        bind -s --preset -M visual k down-line
+        bind -s --preset --mode visual j backward-char
+        bind -s --preset --mode visual \; forward-char
+        bind -s --preset --mode visual l up-line
+        bind -s --preset --mode visual k down-line
 
         # Completions
-        bind -s -M insert \cw forward-word
+        bind -s --mode insert \cw forward-word
         # Tab --> accept autosuggestions
-        bind -s -M insert \t accept-autosuggestion
+        bind -s --mode insert \t accept-autosuggestion
         # CTRL-S --> original TAB behaviour
-        bind -s -M insert \cs complete
+        bind -s --mode insert \cs complete
+
+        # Bang-Bang bindings, manually added so they have precedence:
+        bind --mode insert ! __history_previous_command
+        bind --mode insert '$' __history_previous_command_arguments
       '';
 
     ## Wrap LF to add ability to quit with Q in current directory
@@ -93,15 +97,10 @@
       '';
   };
 
-  plugins = [
+  plugins = with pkgs.fishPlugins; [
     {
       name = "bang-bang";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "plugin-bang-bang";
-        rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
-        sha256 = "oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
-      };
+      src = bang-bang.src;
     }
   ];
 
