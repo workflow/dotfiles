@@ -20,16 +20,10 @@ in {
       obs-vintage-filter
     ];
   };
-  xdg.desktopEntries = {
+  xdg.desktopEntries = lib.mkIf isFlexbox {
     obs = {
-      name =
-        if isFlexbox
-        then "OBS Studio (NVIDIA GPU)"
-        else "OBS Studio";
-      exec =
-        if isFlexbox
-        then "nvidia-offload obs"
-        else "obs";
+      name = "OBS Studio (NVIDIA GPU)";
+      exec = "nvidia-offload obs";
       genericName = "Streaming/Recording Software";
       terminal = false;
       type = "Application";
