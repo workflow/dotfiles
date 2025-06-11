@@ -2,9 +2,6 @@ require("neotest").setup({
   adapters = {
     require("neotest-rust") {
     },
-    require("neotest-vim-test")({
-      -- ignore_file_types = { "java" },
-    }),
   },
   consumers = {
     overseer = require("neotest.consumers.overseer"),
