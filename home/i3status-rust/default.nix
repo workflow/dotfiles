@@ -333,7 +333,7 @@ in {
           ++ lib.lists.optionals isNumenor [
             {
               block = "custom";
-              command = "ddc-backlight 6"; # For i2c-6
+              command = "ddc-backlight 7"; # For i2c-7
               format = "$icon$text";
               icons_overrides = {
                 "moon_empty" = "🌑";
@@ -347,14 +347,15 @@ in {
               click = [
                 {
                   button = "up";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 6";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 7";
                 }
                 {
                   button = "down";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 6";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
                 }
               ];
               json = true;
+              merge_with_next = true;
             }
             {
               block = "custom";
@@ -384,7 +385,7 @@ in {
             }
             {
               block = "custom";
-              command = "ddc-backlight 7"; # For i2c-7
+              command = "ddc-backlight 6"; # For i2c-6
               format = "$icon$text";
               icons_overrides = {
                 "moon_empty" = "🌑";
@@ -398,11 +399,11 @@ in {
               click = [
                 {
                   button = "up";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 7";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 6";
                 }
                 {
                   button = "down";
-                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
+                  cmd = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 6";
                 }
               ];
               json = true;
