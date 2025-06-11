@@ -298,11 +298,11 @@ in {
         "${mod}+b" =
           if isFlexbox
           then "exec \"brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\""
-          else "exec \"brave --profile-directory='Default'\"";
+          else "exec \"brave --profile-directory='Default' --password-store=seahorse\"";
         "${mod}+h" =
           if isFlexbox
           then "exec \"brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse\""
-          else "exec \"brave --profile-directory='Profile 1'\"";
+          else "exec \"brave --profile-directory='Profile 1' --password-store=seahorse\"";
 
         # File Manager ("navigate")
         "${mod}+n" = "exec \"alacritty -e fish -ic lf\"";
