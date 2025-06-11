@@ -95,7 +95,7 @@
       ./udiskie
       ./urxvt
       ./variety # Wallpaper Switcher/Randomizer with Quotes
-      ./virtual-cable
+      ./virtual-cable # Virtual inputs/outputs via Pipewire (for OBS and beyond)
       ./vlc
       ./wlsunset # Day/night gamma adjustments for Wayland
       ./xdg
