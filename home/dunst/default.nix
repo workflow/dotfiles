@@ -11,6 +11,7 @@
       global = {
         browser = "brave";
         dmenu = "fuzzel --dmenu";
+        follow = "mouse";
       };
 
       ignore_flameshot_warning = {
