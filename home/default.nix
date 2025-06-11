@@ -165,7 +165,7 @@ in {
       gomatrix # The Matrix
       google-chrome
       gucharmap # Unicode Character Map
-      hardinfo # Hardware/System Info
+      hardinfo2 # Hardware/System Info
       httpie
       iftop # Net top tool, see also nethogs
       imagemagick
@@ -185,7 +185,7 @@ in {
       neo-cowsay
       nix-tree
       oculante # img viewer written in Rust
-      okular # KDE document viewer
+      kdePackages.okular # KDE document viewer
       openssl
       pdftk # PDF Manipulation Toolkit
       pstree # Show the set of running processes as a tree
@@ -207,7 +207,7 @@ in {
       wireguard-tools
       whois
       wl-clipboard
-      xournal # PFD Annotations, useful for saving Okular annotations as well
+      xournalpp # PDF Annotations, useful for saving Okular annotations as well
       yq # Command-line YAML/XML/TOML processor - jq wrapper for YAML, XML, TOML documents
       yt-dlp
       zip
@@ -225,10 +225,6 @@ in {
   };
 
   inherit imports;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   programs = {
     bat = {
