@@ -6,9 +6,9 @@
     "vm.swappiness" = 20; # balanced setting favoring RAM usage, Default=60
   };
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
+  boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
   # Temporary pin to work around NVidia driver issues, see https://github.com/NixOS/nixpkgs/issues/375730#issuecomment-2625234288
-  boot.kernelPackages = pkgs.linuxPackages_6_12; # Optimized for desktop use
+  # boot.kernelPackages = pkgs.linuxPackages_6_12;
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.perf
     linuxKernel.packages.linux_zen.cpupower

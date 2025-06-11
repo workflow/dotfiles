@@ -19,7 +19,7 @@ fi 9>"$LOCK_FILE"
 # Check if monitor is connected and turned on - with better error handling
 # 1. Attempt to read the power state of the monitor using VCP code 0xD6 (Power Mode)
 {
-	timeout 2 ddcutil getvcp D6 -b "$BUS" --noverify --sleep-multiplier 2.0 >/dev/null
+	timeout 2 ddcutil getvcp D6 -b "$BUS" >/dev/null
 	power_status=$?
 } || {
 	power_status=1
@@ -33,7 +33,7 @@ fi
 
 # Otherwise, we can safely get brightness value without overloading the kernel...
 {
-	output=$(timeout 2 ddcutil getvcp 10 -b "$BUS" --noverify --sleep-multiplier 2.0 2>&1)
+	output=$(timeout 2 ddcutil getvcp 10 -b "$BUS" 2>&1)
 	status=$?
 } || {
 	status=1

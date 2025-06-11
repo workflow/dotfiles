@@ -14,21 +14,25 @@
         fish_vi_key_bindings
 
         # VI mode updates
-        bind -s --preset -M default j backward-char
-        bind -s --preset -M default \; forward-char
+        bind -s --preset --mode default j backward-char
+        bind -s --preset --mode default \; forward-char
         bind -s --preset k down-or-search
         bind -s --preset l up-or-search
-        bind -s --preset -M visual j backward-char
-        bind -s --preset -M visual \; forward-char
-        bind -s --preset -M visual l up-line
-        bind -s --preset -M visual k down-line
+        bind -s --preset --mode visual j backward-char
+        bind -s --preset --mode visual \; forward-char
+        bind -s --preset --mode visual l up-line
+        bind -s --preset --mode visual k down-line
 
         # Completions
-        bind -s -M insert \cw forward-word
+        bind -s --mode insert \cw forward-word
         # Tab --> accept autosuggestions
-        bind -s -M insert \t accept-autosuggestion
+        bind -s --mode insert \t accept-autosuggestion
         # CTRL-S --> original TAB behaviour
-        bind -s -M insert \cs complete
+        bind -s --mode insert \cs complete
+
+        # Bang-Bang bindings, manually added so they have precedence:
+        bind --mode insert ! __history_previous_command
+        bind --mode insert '$' __history_previous_command_arguments
       '';
 
     ## Wrap LF to add ability to quit with Q in current directory
@@ -93,61 +97,18 @@
       '';
   };
 
-  plugins = [
+  plugins = with pkgs.fishPlugins; [
     {
       name = "bang-bang";
-      src = pkgs.fetchFromGitHub {
-        owner = "oh-my-fish";
-        repo = "plugin-bang-bang";
-        rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
-        sha256 = "oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
-      };
+      src = bang-bang.src;
     }
   ];
 
   shellInit = ''
-    if test -e $HOME/.local-fishrc
-      source $HOME/.local-fishrc
-    end
-
     thefuck --alias | source
 
     ${variables}
-    ${theme}
   '';
-
-  theme =
-    /*
-    fish
-    */
-    ''
-      set -g fish_color_autosuggestion 586e75
-      set -g fish_color_cancel -r
-      set -g fish_color_command 93a1a1
-      set -g fish_color_comment 586e75
-      set -g fish_color_cwd green
-      set -g fish_color_cwd_root red
-      set -g fish_color_end 268bd2
-      set -g fish_color_error dc322f
-      set -g fish_color_escape 00a6b2
-      set -g fish_color_history_current --bold
-      set -g fish_color_host normal
-      set -g fish_color_match --background=blue
-      set -g fish_color_normal normal
-      set -g fish_color_operator 00a6b2
-      set -g fish_color_param 839496
-      set -g fish_color_quote 657b83
-      set -g fish_color_redirection 6c71c4
-      set -g fish_color_search_match bryellow --background=405555
-      set -g fish_color_selection white --bold --background=black
-      set -g fish_color_status red
-      set -g fish_color_user brgreen
-      set -g fish_color_valid_path --underline
-      set -g fish_pager_color_completion B3A06D
-      set -g fish_pager_color_description B3A06D
-      set -g fish_pager_color_prefix cyan --underline
-      set -g fish_pager_color_progress brwhite --background=cyan
-    '';
 
   variables =
     /*
@@ -159,10 +120,8 @@
     '';
 in {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
-    files = [
-      ".config/fish/fish_variables"
-    ];
     directories = [
+      ".config/fish"
       ".local/share/fish" # contains some unecessary state, but https://github.com/fish-shell/fish-shell/issues/10730 prevents us from only syncing the history file (.local/share/fish/fish_history)
     ];
   };

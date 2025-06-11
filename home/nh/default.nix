@@ -2,6 +2,6 @@
   home.packages = [pkgs.nh];
 
   home.sessionVariables = {
-    FLAKE = "/home/farlion/code/nixos-config";
+    NH_FLAKE = "/home/farlion/code/nixos-config";
   };
 }

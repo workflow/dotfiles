@@ -22,19 +22,19 @@ in {
     BROWSER =
       if isFlexbox
       then "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
-      else "brave";
+      else "brave --password-store=seahorse";
     DEFAULT_BROWSER =
       if isFlexbox
       then "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
-      else "brave";
+      else "brave --password-store=seahorse";
   };
 
   xdg.desktopEntries = {
     brave-browser = {
       exec =
         if isFlexbox
-        then "${pkgs.brave}/bin/brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --enable-raw-draw %U"
-        else "${pkgs.brave}/bin/brave";
+        then "${pkgs.brave}/bin/brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --enable-raw-draw %U --password-store=seahorse"
+        else "${pkgs.brave}/bin/brave --password-store=seahorse";
       name = "Brave Browser";
       comment = "Access the Internet";
       genericName = "Web Browser";
