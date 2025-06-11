@@ -12,7 +12,7 @@
 
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
 
-  locker = "${pkgs.bash}/bin/bash -c 'pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
+  locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
   suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
   mod = "Mod4";
@@ -61,7 +61,11 @@ in {
 
   programs.swaylock = {
     enable = true;
-    package = pkgs.swaylock;
+    settings = {
+      debug = true;
+      show-failed-attempts = true;
+      ignore-empty-password = true;
+    };
   };
 
   services.swayidle = {
@@ -80,8 +84,8 @@ in {
       }
       {
         timeout = 370;
-        command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-        resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+        command = "/etc/profiles/per-user/farlion/bin/swaymsg 'output * dpms off'";
+        resumeCommand = "${pkgs.coreutils}/bin/sleep 1; /etc/profiles/per-user/farlion/bin/swaymsg 'output * power on'";
       }
       {
         timeout = 1800;
