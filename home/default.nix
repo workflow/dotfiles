@@ -97,6 +97,7 @@
       ./variety # Wallpaper Switcher/Randomizer with Quotes
       ./virtual-cable # Virtual inputs/outputs via Pipewire (for OBS and beyond)
       ./vlc
+      ./waybar
       ./wlsunset # Day/night gamma adjustments for Wayland
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)

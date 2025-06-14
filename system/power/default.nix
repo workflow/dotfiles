@@ -14,29 +14,25 @@ in {
     HibernateDelaySec=1h
   '';
 
-  # Dell-specific power management
-  environment.systemPackages = lib.mkIf isFlexbox [
-    pkgs.libsmbios
-  ];
+  environment.systemPackages =
+    []
+    ++ lib.lists.optional isFlexbox pkgs.libsmbios; # Dell-specific power management
 
   services.auto-cpufreq = {
     enable = true;
     settings = {};
   };
+
   security.sudo.extraRules = [
     {
       users = ["farlion"];
       commands = [
         {
-          command = "/run/current-system/sw/bin/auto-cpufreq --force performance";
+          command = "${pkgs.auto-cpufreq}/bin/auto-cpufreq --force *";
           options = ["NOPASSWD" "SETENV"];
         }
         {
-          command = "/run/current-system/sw/bin/auto-cpufreq --force powersave";
-          options = ["NOPASSWD" "SETENV"];
-        }
-        {
-          command = "/run/current-system/sw/bin/auto-cpufreq --force reset";
+          command = "/run/current-system/sw/bin/auto-cpufreq --force *";
           options = ["NOPASSWD" "SETENV"];
         }
       ];

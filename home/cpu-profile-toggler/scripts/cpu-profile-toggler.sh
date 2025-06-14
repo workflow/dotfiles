@@ -1,19 +1,19 @@
-set -euo pipefail
-
 current_mode=$(cpupower frequency-info | grep -oP '(?<= governor ").*(?=")')
 
 if [[ "${1:-}" == "--toggle" ]]; then
 	if [ "$current_mode" == "powersave" ]; then
-		sudo auto-cpufreq --force performance >/dev/null 2>&1
-		echo "{\"icon\": \"performance\", \"text\": \"\", \"state\": \"Good\"}"
+		sudo auto-cpufreq --force performance
 	elif [ "$current_mode" == "performance" ]; then
-		sudo auto-cpufreq --force powersave >/dev/null 2>&1
-		echo "{\"icon\": \"powersave\", \"text\": \"\", \"state\": \"Good\"}"
+		sudo auto-cpufreq --force powersave
+	fi
+elif [[ "${1:-}" == "--reset" ]]; then
+	if [ "$current_mode" == "powersave" ]; then
+		sudo auto-cpufreq --force reset
 	fi
 else
 	if [ "$current_mode" == "powersave" ]; then
-		echo "{\"icon\": \"powersave\", \"text\": \"\", \"state\": \"Good\"}"
+		echo "{\"alt\": \"powersave\"}"
 	elif [ "$current_mode" == "performance" ]; then
-		echo "{\"icon\": \"performance\", \"text\": \"\", \"state\": \"Good\"}"
+		echo "{\"alt\": \"performance\"}"
 	fi
 fi

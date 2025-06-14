@@ -1,4 +1,3 @@
-# Themes and many setting looted from: https://github.com/Kthulu120/i3wm-themes/blob/master/Nature/.config/dunst/dunstrc
 {
   lib,
   osConfig,
