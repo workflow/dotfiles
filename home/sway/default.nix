@@ -151,8 +151,14 @@ in {
             size = 8.5; # Aligns separators properly, see https://github.com/greshake/i3status-rust/issues/246k
           };
           position = "bottom";
-          statusCommand = "${pkgs.unstable.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+          trayOutput = "none";
         }
+        #   # {
+        #   #   position = "bottom";
+        #   #   command = "${pkgs.waybar}/bin/waybar";
+        #   #   trayOutput = "*";
+        #   # }
       ];
       floating = {
         border = 0;
