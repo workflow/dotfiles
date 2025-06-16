@@ -20,7 +20,6 @@ in {
       ./avante # Cursor style AI IDE
       ./bookmarks-nvim
       ./carbon
-      ./chatgpt-nvim
       ./cmp
       ./copilot
       ./dadbod
