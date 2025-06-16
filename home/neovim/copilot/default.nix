@@ -11,7 +11,9 @@
   };
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      plugin = copilot-vim;
+      plugin = copilot-lua;
+      config = builtins.readFile ./copilot.lua;
+      type = "lua";
     }
   ];
 }
