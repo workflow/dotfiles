@@ -36,7 +36,7 @@ require('avante').setup({
 			model = "gemini-2.5-pro",
 		},
 	},
-	hints = { enabled = true },
+	hints = { enabled = false },
 	provider = "copilot",
 	web_search_engine = {
 		provider = "kagi",
