@@ -1,21 +1,43 @@
 require('avante_lib').load()
 require('avante').setup({
-	azure = {
-		endpoint = "https://hl-openai-sweden.openai.azure.com",
-		deployment = "gpt-4o",
-		api_version = "2024-10-21",
-	},
+	debug = false,
 	dual_boost = {
-		enabled = true,
+		enabled = false,
 		first_provider = "azure",
 	},
-	claude = {
-		endpoint = "https://api.anthropic.com",
-		model = "claude-3-7-sonnet-20250219",
-		temperature = 0,
-		max_tokens = 8192,
+	providers = {
+		azure = {
+			endpoint = "https://hl-openai-sweden.openai.azure.com",
+			deployment = "gpt-4.1-mini",
+			model = "gpt-4.1-mini",
+			api_version = "2025-04-01-preview",
+		},
+		azure_4_1 = {
+			__inherited_from = 'azure',
+			model = "gpt-4.1",
+			deployment = "gpt-4.1",
+		},
+		claude = {
+			endpoint = "https://api.anthropic.com",
+			model = "claude-sonnet-4-20250514",
+		},
+		claude_thinking = {
+			__inherited_from = 'claude',
+			model = "claude-sonnet-4-20250514",
+			thinking = {
+				type = "enabled",
+			},
+		},
+		copilot = {
+			model = "claude-sonnet-4",
+		},
+		copilot_gemini = {
+			__inherited_from = 'copilot',
+			model = "gemini-2.5-pro",
+		},
 	},
-	hints = { enabled = false },
+	hints = { enabled = true },
+	provider = "copilot",
 	web_search_engine = {
 		provider = "kagi",
 	},
