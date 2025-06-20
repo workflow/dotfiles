@@ -1,14 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{pkgs, ...}: {
+{...}: {
   # https://lore.kernel.org/linux-nvme/YnR%2FFiWbErNGXIx+@kbusch-mbp/T/
   boot.kernelParams = [
     "nvme_core.default_ps_max_latency_us=0" # Stability probs
     "acpiphp.disable=1" # NVME disk power management probs
   ];
-  # Temporary pin to work around NVidia driver issues, see https://github.com/NixOS/nixpkgs/issues/375730#issuecomment-2625234288
-  # boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # GPU
   hardware.nvidia.prime = {

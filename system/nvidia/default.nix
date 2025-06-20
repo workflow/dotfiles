@@ -1,9 +1,5 @@
 # See: https://nixos.wiki/wiki/Nvidia
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   boot.blacklistedKernelModules = ["nouveau"];
   environment.systemPackages = [
     pkgs.nvtopPackages.full # nvtop
@@ -38,15 +34,6 @@
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = true;
-
-    # Temporary fix for http://github.com/NixOS/nixpkgs/issues/375730
-    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #   version = "570.86.16"; # use new 570 drivers
-    #   sha256_64bit = "sha256-RWPqS7ZUJH9JEAWlfHLGdqrNlavhaR1xMyzs8lJhy9U=";
-    #   openSha256 = "sha256-DuVNA63+pJ8IB7Tw2gM4HbwlOh1bcDg2AN2mbEU9VPE=";
-    #   settingsSha256 = "sha256-9rtqh64TyhDF5fFAYiWl3oDHzKJqyOW3abpcf2iNRT8=";
-    #   usePersistenced = false;
-    # };
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
