@@ -103,7 +103,7 @@ in {
 
         "custom/gpu-usage" = {
           exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
-          format = "{}%";
+          format = " {}%";
           return-type = "";
           interval = 1;
           on-click = "alacritty -e nvtop";
