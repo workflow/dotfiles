@@ -6,16 +6,19 @@ require('avante').setup({
 		first_provider = "azure",
 	},
 	providers = {
-		azure = {
-			endpoint = "https://hl-openai-sweden.openai.azure.com",
-			deployment = "gpt-4.1-mini",
+		openai = {
 			model = "gpt-4.1-mini",
-			api_version = "2025-04-01-preview",
 		},
-		azure_4_1 = {
-			__inherited_from = 'azure',
+		openai_4_1 = {
+			__inherited_from = 'openai',
 			model = "gpt-4.1",
-			deployment = "gpt-4.1",
+		},
+		openai_o4_mini_high = {
+			__inherited_from = 'openai',
+			model = "o4-mini",
+			extra_request_body = {
+				reasoning_effort = "high",
+			},
 		},
 		claude = {
 			endpoint = "https://api.anthropic.com",
@@ -34,6 +37,13 @@ require('avante').setup({
 		copilot_gemini = {
 			__inherited_from = 'copilot',
 			model = "gemini-2.5-pro",
+		},
+		copilot_o4_mini_high = {
+			__inherited_from = 'copilot',
+			model = "o4-mini",
+			extra_request_body = {
+				reasoning_effort = "high",
+			},
 		},
 	},
 	hints = { enabled = false },
