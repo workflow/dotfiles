@@ -17,9 +17,9 @@ in {
     settings = {
       main = {
         modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["systemd-failed-units" "cpu" "memory" "disk" "custom/cpu-profile-toggler"];
+        modules-center = ["systemd-failed-units" "cpu" "memory" "disk" "custom/cpu-profile-toggler" "temperature"];
         expand-center = true;
-        modules-right = ["clock" "tray"];
+        modules-right = ["idle_inhibitor" "clock" "tray"];
         position = "bottom";
 
         systemd-failed-units = {
@@ -63,8 +63,8 @@ in {
         "custom/cpu-profile-toggler" = {
           format = "{icon}";
           format-icons = {
-            "performance" = "";
-            "powersave" = "";
+            performance = "";
+            powersave = "";
           };
           exec = "cpu-profile-toggler";
           on-click = "auto-cpufreq-gtk";
@@ -72,6 +72,14 @@ in {
           on-click-right = "cpu-profile-toggler --reset";
           return-type = "json";
           interval = 5;
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
         };
       };
     };
@@ -89,6 +97,10 @@ in {
 
       #systemd-failed-units.degraded {
         color: @base08;
+      }
+
+      #idle_inhibitor.activated {
+        color: @base0A;
       }
     '';
 
