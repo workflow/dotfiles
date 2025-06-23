@@ -74,6 +74,16 @@ in {
           interval = 5;
         };
 
+        temperature = {
+          critical-threshold = 90;
+          on-click = "alacritty -e btop";
+          on-click-right = "alacritty -e btop";
+          hwmon-path =
+            if isNumenor
+            then "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
+            else "TODO find me according to waybar docs and use coretemp-isa-0000 hwmon path";
+        };
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
@@ -86,13 +96,13 @@ in {
 
     style = ''
       .info {
-        background: @base0D;
+        color: @base0D;
       }
       .critical {
-        background: @base08;
+        color: @base08;
       }
       .warning {
-        background: @base0A;
+        color: @base0A;
       }
 
       #systemd-failed-units.degraded {
