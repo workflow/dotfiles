@@ -128,7 +128,7 @@ in {
         };
 
         "group/network" = {
-          modules = ["network"];
+          modules = ["network" "network#tailscale"];
           orientation = "inherit";
         };
 
@@ -141,6 +141,16 @@ in {
           tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask}";
           on-click = "networkmanager_dmenu";
           on-click-right = "alacritty -e nmtui";
+        };
+
+        "network#tailscale" = {
+          interface = "tailscale0";
+          interval = 10;
+          format-linked = " ";
+          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
+          tooltip-format = "IP:{ipaddr} NM:{netmask}";
+          on-click = "tailscale up";
+          on-click-right = "tailscale down";
         };
 
         idle_inhibitor = {
