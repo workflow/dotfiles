@@ -149,8 +149,8 @@ in {
           interval = 3;
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "IP:{ipaddr} NM:{netmask}";
-          tooltip-format-linked = "Down. Click to connect.";
+          tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask}";
+          tooltip-format-linked = " down. Click to connect.";
           on-click = "tailscale up";
           on-click-right = "tailscale down";
         };
@@ -162,9 +162,9 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
-          tooltip-format-linked = "Down. Click to connect.";
-          tooltip-format-disabled = "Down. Click to connect.";
+          tooltip-format = "  MacGyver IP:{ipaddr} NM:{netmask}";
+          tooltip-format-linked = " MacGyver down. Click to connect.";
+          tooltip-format-disabled = " MacGyver down. Click to connect.";
           on-click = "sudo systemctl start macgyver";
           on-click-right = "sudo systemctl stop macgyver";
         };
@@ -176,9 +176,9 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
-          tooltip-format-linked = "Down. Click to connect or rightclick for GUI.";
-          tooltip-format-disabled = "Down. Click to connect or rightclick for GUI.";
+          tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask}";
+          tooltip-format-linked = " Mullvad down. Click to connect or rightclick for GUI.";
+          tooltip-format-disabled = " Mullvad down. Click to connect or rightclick for GUI.";
           on-click = "mullvad connect";
           on-click-right = "mullvad disconnect";
           on-click-middle = "mullvad-gui";
@@ -191,9 +191,9 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "IF:{ifname} IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
-          tooltip-format-linked = "Down.";
-          tooltip-format-disabled = "Down.";
+          tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
+          tooltip-format-linked = " Wireguard down.";
+          tooltip-format-disabled = " Wireguard down.";
         };
 
         idle_inhibitor = {
