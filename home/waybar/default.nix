@@ -17,7 +17,7 @@ in {
     settings = {
       main = {
         modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["systemd-failed-units" "group/cpu" "memory" "disk" "custom/gpu-usage"];
+        modules-center = ["systemd-failed-units" "group/cpu" "memory" "disk" "group/gpu"];
         expand-center = true;
         modules-right = ["idle_inhibitor" "clock" "tray"];
         position = "bottom";
@@ -33,7 +33,7 @@ in {
         "group/cpu" = {
           modules = [
             "cpu"
-            "temperature"
+            "temperature#cpu"
             "custom/cpu-profile-toggler"
           ];
           orientation = "inherit";
@@ -48,7 +48,7 @@ in {
           on-click-right = "alacritty -e btop";
         };
 
-        temperature = {
+        "temperature#cpu" = {
           critical-threshold = 90;
           on-click = "alacritty -e btop";
           on-click-right = "alacritty -e btop";
@@ -93,13 +93,31 @@ in {
           };
         };
 
+        "group/gpu" = {
+          modules = [
+            "custom/gpu-usage"
+            "temperature#gpu"
+          ];
+          orientation = "inherit";
+        };
+
         "custom/gpu-usage" = {
           exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
-          format = " {}%";
+          format = "{}%";
           return-type = "";
           interval = 1;
           on-click = "alacritty -e nvtop";
           on-click-right = "alacritty -e nvtop";
+        };
+
+        "temperature#gpu" = {
+          critical-threshold = 90;
+          on-click = "alacritty -e nvtop";
+          on-click-right = "alacritty -e nvtop";
+          hwmon-path =
+            if isNumenor
+            then "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp2_input"
+            else "TODO find me according to waybar docs similar to CPU temp hwmon path";
         };
 
         idle_inhibitor = {
