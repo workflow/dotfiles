@@ -17,7 +17,14 @@ in {
     settings = {
       main = {
         modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["systemd-failed-units" "group/cpu" "memory" "disk" "group/gpu"];
+        modules-center = [
+          "systemd-failed-units"
+          "group/cpu"
+          "memory"
+          "disk"
+          "group/gpu"
+          "group/network"
+        ];
         expand-center = true;
         modules-right = ["idle_inhibitor" "clock" "tray"];
         position = "bottom";
@@ -118,6 +125,22 @@ in {
             if isNumenor
             then "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp2_input"
             else "TODO find me according to waybar docs similar to CPU temp hwmon path";
+        };
+
+        "group/network" = {
+          modules = ["network"];
+          orientation = "inherit";
+        };
+
+        "network" = {
+          interval = 10;
+          format-disconnected = "  ";
+          format-ethernet = " {bandwidthDownBytes}{bandwidthUpBytes}";
+          tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
+          format-wifi = " {bandwidthDownBytes}{bandwidthUpBytes}";
+          tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask}";
+          on-click = "networkmanager_dmenu";
+          on-click-right = "alacritty -e nmtui";
         };
 
         idle_inhibitor = {
