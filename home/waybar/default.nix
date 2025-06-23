@@ -91,6 +91,7 @@ in {
     systemd = {
       enable = true;
       enableDebug = true;
+      enableInspect = true;
       target = "sway-session.target";
     };
   };
