@@ -237,12 +237,6 @@ in {
         type = "lua";
       }
       {
-        plugin = nvim-web-devicons;
-        config = ''
-        '';
-        type = "lua";
-      }
-      {
         plugin = dressing-nvim; # Better UI for codeactions, code input etc...
         config = ''
 
