@@ -128,15 +128,15 @@ in {
         };
 
         "group/network" = {
-          modules = ["network" "network#tailscale" "network#macgyver"];
+          modules = ["network" "network#tailscale" "network#macgyver" "network#mullvad" "network#wireguard"];
           orientation = "inherit";
         };
 
         "network" = {
-          interval = 10;
+          interval = 3;
           format-disconnected = "  ";
           format-ethernet = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
+          tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
           format-wifi = " {bandwidthDownBytes}{bandwidthUpBytes}";
           tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask}";
           tooltip-format-linked = "Down. Click to connect.";
@@ -146,7 +146,7 @@ in {
 
         "network#tailscale" = {
           interface = "tailscale0";
-          interval = 10;
+          interval = 3;
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
           tooltip-format = "IP:{ipaddr} NM:{netmask}";
@@ -157,16 +157,43 @@ in {
 
         "network#macgyver" = {
           interface = "veth0*";
-          interval = 10;
+          interval = 3;
           format-disconnected = " ";
           format-disabled = " ";
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
           tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
           tooltip-format-linked = "Down. Click to connect.";
-          tooltip-disabled = "Down. Click to connect.";
+          tooltip-format-disabled = "Down. Click to connect.";
           on-click = "sudo systemctl start macgyver";
           on-click-right = "sudo systemctl stop macgyver";
+        };
+
+        "network#mullvad" = {
+          interface = "wg0-mullvad";
+          interval = 3;
+          format-disconnected = " ";
+          format-disabled = " ";
+          format-linked = " ";
+          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
+          tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
+          tooltip-format-linked = "Down. Click to connect or rightclick for GUI.";
+          tooltip-format-disabled = "Down. Click to connect or rightclick for GUI.";
+          on-click = "mullvad connect";
+          on-click-right = "mullvad disconnect";
+          on-click-middle = "mullvad-gui";
+        };
+
+        "network#wireguard" = {
+          interface = "wg0";
+          interval = 3;
+          format-disconnected = " ";
+          format-disabled = " ";
+          format-linked = " ";
+          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
+          tooltip-format = "IF:{ifname} IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
+          tooltip-format-linked = "Down.";
+          tooltip-format-disabled = "Down.";
         };
 
         idle_inhibitor = {
