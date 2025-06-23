@@ -17,7 +17,7 @@ in {
     settings = {
       main = {
         modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["systemd-failed-units" "cpu" "temperature" "custom/cpu-profile-toggler" "memory" "disk" "custom/gpu-usage"];
+        modules-center = ["systemd-failed-units" "group/cpu" "memory" "disk" "custom/gpu-usage"];
         expand-center = true;
         modules-right = ["idle_inhibitor" "clock" "tray"];
         position = "bottom";
@@ -28,6 +28,15 @@ in {
           hide-on-ok = false;
           on-click = "alacritty -e journalctl --pager-end --catalog --boot --priority 3..3 | lnav";
           on-click-right = "alacritty -e isd";
+        };
+
+        "group/cpu" = {
+          modules = [
+            "cpu"
+            "temperature"
+            "custom/cpu-profile-toggler"
+          ];
+          orientation = "inherit";
         };
 
         cpu = {
@@ -52,8 +61,8 @@ in {
         "custom/cpu-profile-toggler" = {
           format = "{icon}";
           format-icons = {
-            performance = " ";
-            powersave = " ";
+            performance = "";
+            powersave = "";
           };
           exec = "cpu-profile-toggler";
           on-click = "auto-cpufreq-gtk";
