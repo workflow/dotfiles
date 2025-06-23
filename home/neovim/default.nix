@@ -28,6 +28,7 @@ in {
       ./folds
       ./fugitive
       ./git-conflict-nvim
+      ./gitsigns
       ./jdtls
       ./lspsaga
       ./lualine
@@ -142,17 +143,6 @@ in {
         autocmd FileType fugitive call s:ftplugin_fugitive()
       augroup END
 
-      " Git-gutter
-      " Use nerdfont icons as signs - inspired by https://github.com/JakobGM/dotfiles/blob/2fdc40ece4b36cf1f5143b5778c171c0859e119f/config/nvim/init.vim#L574-L579
-      let g:gitgutter_sign_added = ''
-      let g:gitgutter_sign_modified = ''
-      let g:gitgutter_sign_removed = ''
-      let g:gitgutter_sign_removed_first_line = ''
-      let g:gitgutter_sign_modified_removed = ''
-      " Simpler highlighting, looted from https://jakobgm.com/posts/vim/git-integration/
-      let g:gitgutter_override_sign_column_highlight = 1
-      highlight clear SignColumn
-
       " Vim Visual Multi
       let g:VM_custom_motions = {'h': ';', ';': 'l', 'l': 'k', 'k': 'j', 'j': 'h'}
       let g:VM_mouse_mappings = 1
@@ -245,17 +235,6 @@ in {
       }
       {
         plugin = friendly-snippets; # User-friendly snippets, work with LuaSnip and other engines
-      }
-      {
-        plugin = gitgutter; # Git diff in the gutter
-        config = ''
-          require('which-key').add
-          {
-            { "<leader>h", group = "Git [H]unk" },
-            { "<leader>h_", hidden = true },
-          }
-        '';
-        type = "lua";
       }
       vim-highlightedyank
       {
