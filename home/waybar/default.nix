@@ -17,7 +17,7 @@ in {
     settings = {
       main = {
         modules-left = ["sway/workspaces" "sway/mode"];
-        modules-center = ["systemd-failed-units" "cpu" "memory" "disk" "custom/cpu-profile-toggler" "temperature"];
+        modules-center = ["systemd-failed-units" "cpu" "temperature" "custom/cpu-profile-toggler" "memory" "disk" "custom/gpu-usage"];
         expand-center = true;
         modules-right = ["idle_inhibitor" "clock" "tray"];
         position = "bottom";
@@ -37,6 +37,30 @@ in {
           };
           on-click = "alacritty -e btop";
           on-click-right = "alacritty -e btop";
+        };
+
+        temperature = {
+          critical-threshold = 90;
+          on-click = "alacritty -e btop";
+          on-click-right = "alacritty -e btop";
+          hwmon-path =
+            if isNumenor
+            then "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
+            else "TODO find me according to waybar docs and use coretemp-isa-0000 hwmon path";
+        };
+
+        "custom/cpu-profile-toggler" = {
+          format = "{icon}";
+          format-icons = {
+            performance = " ";
+            powersave = " ";
+          };
+          exec = "cpu-profile-toggler";
+          on-click = "auto-cpufreq-gtk";
+          on-click-middle = "cpu-profile-toggler --toggle";
+          on-click-right = "cpu-profile-toggler --reset";
+          return-type = "json";
+          interval = 5;
         };
 
         memory = {
@@ -60,28 +84,13 @@ in {
           };
         };
 
-        "custom/cpu-profile-toggler" = {
-          format = "{icon}";
-          format-icons = {
-            performance = "";
-            powersave = "";
-          };
-          exec = "cpu-profile-toggler";
-          on-click = "auto-cpufreq-gtk";
-          on-click-middle = "cpu-profile-toggler --toggle";
-          on-click-right = "cpu-profile-toggler --reset";
-          return-type = "json";
-          interval = 5;
-        };
-
-        temperature = {
-          critical-threshold = 90;
-          on-click = "alacritty -e btop";
-          on-click-right = "alacritty -e btop";
-          hwmon-path =
-            if isNumenor
-            then "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
-            else "TODO find me according to waybar docs and use coretemp-isa-0000 hwmon path";
+        "custom/gpu-usage" = {
+          exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
+          format = " {}%";
+          return-type = "";
+          interval = 1;
+          on-click = "alacritty -e nvtop";
+          on-click-right = "alacritty -e nvtop";
         };
 
         idle_inhibitor = {
