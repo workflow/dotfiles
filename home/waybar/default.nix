@@ -86,6 +86,10 @@ in {
       .warning {
         background: @base0A;
       }
+
+      #systemd-failed-units.degraded {
+        color: @base08;
+      }
     '';
 
     systemd = {
