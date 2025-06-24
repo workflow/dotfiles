@@ -25,7 +25,13 @@ in {
           "group/audio"
         ];
         expand-center = true;
-        modules-right = ["privacy" "idle_inhibitor" "clock" "tray"];
+        modules-right = [
+          "privacy"
+          "idle_inhibitor"
+          "sway/language"
+          "clock"
+          "tray"
+        ];
         position = "bottom";
 
         systemd-failed-units = {
@@ -311,6 +317,12 @@ in {
             activated = "";
             deactivated = "";
           };
+        };
+
+        "sway/language" = {
+          on-click = "swaymsg input type:keyboard xkb_switch_layout next";
+          on-click-right = "swaymsg input type:keyboard xkb_switch_layout prev";
+          on-click-middle = "swaymsg input type:keyboard xkb_switch_layout 0";
         };
 
         clock = {
