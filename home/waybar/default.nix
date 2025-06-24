@@ -203,7 +203,7 @@ in {
         };
 
         "custom/ddc-backlight-left" = {
-          format = "{icon}";
+          format = "{icon} ";
           tooltip-format = "Left {percentage}%";
           format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
           exec = "ddc-backlight 7"; # For i2c-7
@@ -217,7 +217,7 @@ in {
         };
 
         "custom/ddc-backlight-middle" = {
-          format = "{icon}";
+          format = "{icon} ";
           tooltip-format = "Middle {percentage}%";
           format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
           exec = "ddc-backlight 8"; # For i2c-8
