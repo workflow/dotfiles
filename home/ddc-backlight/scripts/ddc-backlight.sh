@@ -1,6 +1,5 @@
 # Usage: ./ddc_backlight.sh <i2c-bus>
 BUS="$1"
-ICONS=("moon_empty" "moon_1" "moon_2" "moon_3" "moon_full")
 
 LOCK_FILE="/tmp/ddc_backlight.lock"
 
@@ -12,7 +11,7 @@ sleep "$DELAY"
 # Prevent parallel execution, which can crash the kernel 
 if ! flock --nonblock 9; then
 	# Return a temporary placeholder instead of waiting
-	echo "{\"icon\":\"${ICONS[0]}\",\"text\":\"...\",\"short_text\":\"\"}"
+	echo "{\"percentage\":0}"
 	exit 0
 fi 9>"$LOCK_FILE"
 
@@ -27,7 +26,7 @@ fi 9>"$LOCK_FILE"
 
 if [ $power_status -ne 0 ]; then
 	# Failed to read power state -> no monitor or unresponsive
-	echo "{\"icon\":\"${ICONS[0]}\",\"text\":\"0\",\"short_text\":\"\"}"
+	echo "{\"percentage\":0}"
 	exit 0
 fi
 
@@ -40,15 +39,11 @@ fi
 }
 
 if [ $status -ne 0 ]; then
-	echo "{\"icon\":\"${ICONS[0]}\",\"text\":\"err\",\"short_text\":\"\",\"state\":\"critical\"}"
+	echo "{\"percentage\":0}"
 	exit 0
 fi
 
 # Extract percentage
 percent=$(echo "$output" | awk -F'=' '/current value/ {gsub(/,.*$/, "", $2); print $2+0}')
 
-# Calculate icon index
-index=$((percent / 20))
-[ $index -gt 4 ] && index=4
-
-echo "{\"icon\":\"${ICONS[$index]}\",\"text\":\"${percent}\",\"short_text\":\"\"}"
+echo "{\"percentage\":${percent}}"

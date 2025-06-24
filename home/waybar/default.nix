@@ -6,6 +6,7 @@
 }: let
   hostName = osConfig.networking.hostName;
   isNumenor = hostName == "numenor";
+  isFlexbox = hostName == "flexbox";
 in {
   programs.waybar = {
     enable = true;
@@ -20,6 +21,7 @@ in {
           "disk"
           "group/gpu"
           "group/network"
+          "group/backlight"
         ];
         expand-center = true;
         modules-right = ["idle_inhibitor" "clock" "tray"];
@@ -190,6 +192,56 @@ in {
           tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
           tooltip-format-linked = " Wireguard down.";
           tooltip-format-disabled = " Wireguard down.";
+        };
+
+        "group/backlight" = {
+          modules =
+            if isFlexbox
+            then ["backlight"]
+            else ["custom/ddc-backlight-left" "custom/ddc-backlight-middle" "custom/ddc-backlight-right"];
+          orientation = "inherit";
+        };
+
+        "custom/ddc-backlight-left" = {
+          format = "{icon}";
+          tooltip-format = "Left {percentage}%";
+          format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
+          exec = "ddc-backlight 7"; # For i2c-7
+          on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 7";
+          on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
+          on-click-left = "kanshictl switch numenor-movie";
+          on-click-middle = "wldisplays";
+          on-click-right = "kanshictl switch numenor";
+          return-type = "json";
+          interval = 300;
+        };
+
+        "custom/ddc-backlight-middle" = {
+          format = "{icon}";
+          tooltip-format = "Middle {percentage}%";
+          format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
+          exec = "ddc-backlight 8"; # For i2c-8
+          on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 8";
+          on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 8";
+          on-click-left = "kanshictl switch numenor-movie";
+          on-click-middle = "wldisplays";
+          on-click-right = "kanshictl switch numenor";
+          return-type = "json";
+          interval = 300;
+        };
+
+        "custom/ddc-backlight-right" = {
+          format = "{icon}";
+          tooltip-format = "Right {percentage}%";
+          format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
+          exec = "ddc-backlight 6"; # For i2c-6
+          on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 6";
+          on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 6";
+          on-click-left = "kanshictl switch numenor-movie";
+          on-click-middle = "wldisplays";
+          on-click-right = "kanshictl switch numenor";
+          return-type = "json";
+          interval = 300;
         };
 
         idle_inhibitor = {
