@@ -30,6 +30,7 @@ in {
           "group/network"
           "group/backlight"
           "group/audio"
+          "group/power"
         ];
         expand-center = true;
         modules-right = [
@@ -317,6 +318,13 @@ in {
           on-click-right = "alacritty --command pulsemixer";
           on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
           ignored-sinks = ["Easy Effects Sink"];
+        };
+
+        "group/power" = {
+          modules = [
+            "battery"
+          ];
+          orientation = "inherit";
         };
 
         "custom/dunst-dnd" = {
