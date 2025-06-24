@@ -31,8 +31,8 @@ in {
           format = " {nr_failed} failed";
           format-ok = " 0";
           hide-on-ok = false;
-          on-click = "alacritty -e journalctl --pager-end --catalog --boot --priority 3..3 | lnav";
-          on-click-right = "alacritty -e isd";
+          on-click = "alacritty --command journalctl --pager-end --catalog --boot --priority 3..3 | lnav";
+          on-click-right = "alacritty --command isd";
         };
 
         "group/cpu" = {
@@ -49,14 +49,14 @@ in {
           states = {
             info = 80;
           };
-          on-click = "alacritty -e btop";
-          on-click-right = "alacritty -e btop";
+          on-click = "alacritty --command btop";
+          on-click-right = "alacritty --command btop";
         };
 
         "temperature#cpu" = {
           critical-threshold = 90;
-          on-click = "alacritty -e btop";
-          on-click-right = "alacritty -e btop";
+          on-click = "alacritty --command btop";
+          on-click-right = "alacritty --command btop";
           hwmon-path =
             if isNumenor
             then "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
@@ -83,15 +83,15 @@ in {
             warning = 60;
             critical = 80;
           };
-          on-click = "alacritty -e btop";
-          on-click-right = "alacritty -e btop";
+          on-click = "alacritty --command btop";
+          on-click-right = "alacritty --command btop";
           tooltip-format = "{used:0.1f}GiB mem used, {swapUsed:0.1f}GiB swap used";
         };
 
         disk = {
           format = " {percentage_used}%";
-          on-click = "alacritty -e ncdu /";
-          on-click-right = "alacritty -e btop";
+          on-click = "alacritty --command ncdu /";
+          on-click-right = "alacritty --command btop";
           states = {
             warning = 60;
             critical = 80;
@@ -111,14 +111,14 @@ in {
           format = " {}%";
           return-type = "";
           interval = 1;
-          on-click = "alacritty -e nvtop";
-          on-click-right = "alacritty -e nvtop";
+          on-click = "alacritty --command nvtop";
+          on-click-right = "alacritty --command nvtop";
         };
 
         "temperature#gpu" = {
           critical-threshold = 90;
-          on-click = "alacritty -e nvtop";
-          on-click-right = "alacritty -e nvtop";
+          on-click = "alacritty --command nvtop";
+          on-click-right = "alacritty --command nvtop";
           hwmon-path =
             if isNumenor
             then "/sys/devices/pci0000:00/0000:00:01.1/0000:01:00.0/0000:02:00.0/0000:03:00.0/hwmon/hwmon1/temp2_input"
@@ -139,7 +139,7 @@ in {
           tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask}";
           tooltip-format-linked = "Down. Click to connect.";
           on-click = "networkmanager_dmenu";
-          on-click-right = "alacritty -e nmtui";
+          on-click-right = "alacritty --command nmtui";
         };
 
         "network#tailscale" = {
