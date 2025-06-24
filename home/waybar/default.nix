@@ -22,9 +22,10 @@ in {
           "group/gpu"
           "group/network"
           "group/backlight"
+          "group/audio"
         ];
         expand-center = true;
-        modules-right = ["idle_inhibitor" "clock" "tray"];
+        modules-right = ["privacy" "idle_inhibitor" "clock" "tray"];
         position = "bottom";
 
         systemd-failed-units = {
@@ -133,12 +134,12 @@ in {
         "network" = {
           interval = 3;
           format-disconnected = "  ";
-          format-ethernet = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask}";
-          format-wifi = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask}";
+          format-ethernet = " ";
+          format-wifi = " ";
+          format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
+          tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+          tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = "Down. Click to connect.";
-          on-click = "networkmanager_dmenu";
           on-click-right = "alacritty --command nmtui";
         };
 
@@ -146,8 +147,8 @@ in {
           interface = "tailscale0";
           interval = 3;
           format-linked = " ";
-          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask}";
+          format = " ";
+          tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = " Tailscale down. Click to connect.";
           on-click = "tailscale up";
           on-click-right = "tailscale down";
@@ -159,8 +160,8 @@ in {
           format-disconnected = " ";
           format-disabled = " ";
           format-linked = " ";
-          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "  MacGyver IP:{ipaddr} NM:{netmask}";
+          format = " ";
+          tooltip-format = "  MacGyver IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = " MacGyver down. Click to connect.";
           tooltip-format-disabled = " MacGyver down. Click to connect.";
           on-click = "sudo systemctl start macgyver";
@@ -173,8 +174,8 @@ in {
           format-disconnected = " ";
           format-disabled = " ";
           format-linked = " ";
-          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask}";
+          format = " ";
+          tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = " Mullvad down. Click to connect or middleclick for GUI.";
           tooltip-format-disabled = " Mullvad down. Click to connect or middleclick for GUI.";
           on-click = "mullvad connect";
@@ -188,8 +189,8 @@ in {
           format-disconnected = " ";
           format-disabled = " ";
           format-linked = " ";
-          format = " {bandwidthDownBytes}{bandwidthUpBytes}";
-          tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask}";
+          format = " ";
+          tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = " Wireguard down.";
           tooltip-format-disabled = " Wireguard down.";
         };
@@ -274,10 +275,10 @@ in {
           };
           actions = {
             on-click-right = "mode";
-            on-click-middle = "brave calendar.google.com";
             on-scroll-up = "shift_up";
             on-scroll-down = "shift_down";
           };
+          on-click-middle = "brave calendar.google.com";
         };
 
         tray = {
@@ -299,6 +300,14 @@ in {
 
       #systemd-failed-units.degraded {
         color: @base08;
+      }
+
+      #network.ethernet {
+        color: @base0B;
+      }
+
+      #network.wifi {
+        color: @base0B;
       }
 
       #idle_inhibitor.activated {
