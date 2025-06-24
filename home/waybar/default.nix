@@ -248,6 +248,63 @@ in {
           interval = 300;
         };
 
+        "group/audio" = {
+          modules = [
+            "pulseaudio#in"
+            "pulseaudio#out"
+          ];
+          orientation = "inherit";
+        };
+
+        "pulseaudio#in" = {
+          format = "{format_source}";
+          format-source = " {volume}%";
+          format-source-muted = "";
+          format-icons = {
+            "bluez_input.DC:69:E2:9A:6E:30" = "";
+            "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
+            default = ["" ""];
+          };
+          max-volume = 200;
+          scroll-step = 5;
+          on-scroll-up = "pactl set-source-volume @DEFAULT_SOURCE@ +5%";
+          on-scroll-down = "pactl set-source-volume @DEFAULT_SOURCE@ -5%";
+          on-click = "pavucontrol --tab=4";
+          on-click-right = "alacritty --command pulsemixer";
+          on-click-middle = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+          tooltip-format = "{format_source}";
+        };
+
+        "pulseaudio#out" = {
+          format = "{icon} {volume}%";
+          format-bluetooth = "{icon} {volume}%";
+          format-muted = "";
+          format-icons = {
+            "alsa_output.usb-Generic_USB_Audio-00.analog-stereo" = "";
+            "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
+            "bluez_output.14_3F_A6_28_DC_51.1" = "";
+            "alsa_output.pci-0000_03_00.1.hdmi-stereo-extra3" = "🍿";
+            "bluez_output.DC_69_E2_9A_6E_30.1" = "";
+            "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink" = "";
+            "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
+            "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
+            "bluez_output.34_E3_FB_C5_01_E0.1" = "";
+            "bluez_sink.34_E3_FB_C5_01_E0.handsfree_head_unit" = "";
+            default = ["" ""];
+          };
+          max-volume = 200;
+          scroll-step = 5;
+          on-click = "pavucontrol --tab=3";
+          on-click-right = "alacritty --command pulsemixer";
+          on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          ignored-sinks = ["Easy Effects Sink"];
+        };
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
