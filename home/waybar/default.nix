@@ -2,8 +2,15 @@
   config,
   lib,
   osConfig,
+  pkgs,
   ...
 }: let
+  dunst-dnd-waybar = pkgs.writeShellApplication {
+    name = "dunst-dnd-waybar";
+    runtimeInputs = [pkgs.dunst];
+    text = builtins.readFile ./scripts/dunst-dnd-waybar.sh;
+  };
+
   hostName = osConfig.networking.hostName;
   isNumenor = hostName == "numenor";
   isFlexbox = hostName == "flexbox";
@@ -27,6 +34,7 @@ in {
         expand-center = true;
         modules-right = [
           "privacy"
+          "custom/dunst-dnd"
           "idle_inhibitor"
           "sway/language"
           "clock"
@@ -311,6 +319,20 @@ in {
           ignored-sinks = ["Easy Effects Sink"];
         };
 
+        "custom/dunst-dnd" = {
+          exec = "${dunst-dnd-waybar}/bin/dunst-dnd-waybar";
+          return-type = "json";
+          interval = 1;
+          format = "{icon}{text}";
+          tooltip-format = "{text}";
+          format-icons = {
+            running = "";
+            dnd = "";
+          };
+          on-click = "dunstctl set-paused toggle";
+          on-click-right = "dunstctl set-paused false";
+        };
+
         idle_inhibitor = {
           format = "{icon}";
           format-icons = {
@@ -377,6 +399,10 @@ in {
 
       #network.wifi {
         color: @base0B;
+      }
+
+      #custom-dunst-dnd.dnd {
+        color: @base0A;
       }
 
       #idle_inhibitor.activated {
