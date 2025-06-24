@@ -34,7 +34,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Power Management |       [Auto-Cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)       |
 | Shell            |                     [Fish](https://fishshell.com/)                      |
 | Shell when data  |                   [Nushell](https://www.nushell.sh/)                    |
-| Status Bar       |       [i3status-rust](https://github.com/greshake/i3status-rust)        |
+| Status Bar       |               [waybar](https://github.com/Alexays/Waybar)               |
 | Style Manager    |                [stylix](https://github.com/danth/stylix)                |
 | Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
 | Window Manager   |                 [Sway](https://github.com/swaywm/sway)                  |

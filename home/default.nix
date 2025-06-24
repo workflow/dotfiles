@@ -48,7 +48,6 @@
       ./gimp
       ./git
       ./gtk-qt
-      ./i3status-rust
       ./isd # Interactive Systemd TUI in Python
       ./k9s
       ./kanshi # Wayland autorandr

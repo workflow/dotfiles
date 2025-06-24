@@ -130,36 +130,8 @@ in {
         ];
       };
 
-      bars = [
-        {
-          colors = rec {
-            activeWorkspace = {
-              background = color_bg;
-              border = color_txt;
-              text = color_txt;
-            };
-            background = "#282828"; # To match i3status_rust theme
-            focusedWorkspace = activeWorkspace;
-            inactiveWorkspace = {
-              background = "#282828"; # To match i3status_rust theme
-              border = "#282828"; # To match i3status_rust theme
-              text = "#ebdbb2"; # To match i3status_rust theme
-            };
-          };
-          fonts = {
-            names = ["Fira Code" "Font Awesome 6 Free"];
-            size = 8.5; # Aligns separators properly, see https://github.com/greshake/i3status-rust/issues/246k
-          };
-          position = "bottom";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
-          trayOutput = "none";
-        }
-        #   # {
-        #   #   position = "bottom";
-        #   #   command = "${pkgs.waybar}/bin/waybar";
-        #   #   trayOutput = "*";
-        #   # }
-      ];
+      bars = [];
+
       floating = {
         border = 0;
         criteria = [
