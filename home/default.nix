@@ -48,7 +48,6 @@
       ./gimp
       ./git
       ./gtk-qt
-      ./i3status-rust
       ./isd # Interactive Systemd TUI in Python
       ./k9s
       ./kanshi # Wayland autorandr
@@ -97,6 +96,7 @@
       ./variety # Wallpaper Switcher/Randomizer with Quotes
       ./virtual-cable # Virtual inputs/outputs via Pipewire (for OBS and beyond)
       ./vlc
+      ./waybar
       ./wlsunset # Day/night gamma adjustments for Wayland
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)

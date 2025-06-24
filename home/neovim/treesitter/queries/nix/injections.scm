@@ -74,3 +74,18 @@
 	(#match? @_path "^config$")
 	(#set! injection.combined)
 )
+
+; style -> CSS
+(binding
+  attrpath: (attrpath
+    (identifier) @_path)
+  expression: [
+    (string_expression
+      ((string_fragment) @injection.content
+        (#set! injection.language "css")))
+    (indented_string_expression
+      ((string_fragment) @injection.content
+        (#set! injection.language "css")))
+  ]
+  (#match? @_path "^style$")
+  (#set! injection.combined))
