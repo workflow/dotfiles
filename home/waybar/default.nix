@@ -382,6 +382,7 @@ in {
 
         tray = {
           show-passive-items = true;
+          spacing = 3;
         };
       };
     };

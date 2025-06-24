@@ -20,7 +20,6 @@ in {
     settings = {
       General = {
         copyPathAfterSave = true;
-        disabledTrayIcon = true;
       };
     };
   };
