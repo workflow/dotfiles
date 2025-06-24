@@ -2,14 +2,10 @@
   config,
   lib,
   osConfig,
-  isAmd,
-  isNvidia,
-  pkgs,
   ...
 }: let
   hostName = osConfig.networking.hostName;
   isNumenor = hostName == "numenor";
-  isFlexbox = hostName == "flexbox";
 in {
   programs.waybar = {
     enable = true;
@@ -150,7 +146,7 @@ in {
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
           tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask}";
-          tooltip-format-linked = " down. Click to connect.";
+          tooltip-format-linked = " Tailscale down. Click to connect.";
           on-click = "tailscale up";
           on-click-right = "tailscale down";
         };
@@ -177,8 +173,8 @@ in {
           format-linked = " ";
           format = " {bandwidthDownBytes}{bandwidthUpBytes}";
           tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask}";
-          tooltip-format-linked = " Mullvad down. Click to connect or rightclick for GUI.";
-          tooltip-format-disabled = " Mullvad down. Click to connect or rightclick for GUI.";
+          tooltip-format-linked = " Mullvad down. Click to connect or middleclick for GUI.";
+          tooltip-format-disabled = " Mullvad down. Click to connect or middleclick for GUI.";
           on-click = "mullvad connect";
           on-click-right = "mullvad disconnect";
           on-click-middle = "mullvad-gui";
