@@ -70,6 +70,7 @@
       ./obs # OBS Studio
       ./obsidian
       ./pavucontrol # Pulse Audio Volume Control GUI
+      ./pomodoro-gtk
       ./portfolio-performance
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
