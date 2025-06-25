@@ -10,7 +10,6 @@
     runtimeInputs = [pkgs.dunst];
     text = builtins.readFile ./scripts/dunst-dnd-waybar.sh;
   };
-
   hostName = osConfig.networking.hostName;
   isNumenor = hostName == "numenor";
   isFlexbox = hostName == "flexbox";
@@ -343,6 +342,7 @@ in {
         mpris = {
           format = "{player_icon}";
           format-paused = "{status_icon}";
+          on-click-right = ''swaymsg "[app_id=\"YouTube Music Desktop App\"] focus"'';
           player-icons = {
             default = "▶";
             mpv = "";
