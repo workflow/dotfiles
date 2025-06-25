@@ -30,6 +30,7 @@ in {
           "group/network"
           "group/backlight"
           "group/audio"
+          "bluetooth"
           "group/power"
         ];
         expand-center = true;
@@ -322,6 +323,24 @@ in {
           on-click-right = "alacritty --command pulsemixer";
           on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
           ignored-sinks = ["Easy Effects Sink"];
+        };
+
+        bluetooth = {
+          format = "{icon}";
+          format-connected = "{icon} {num_connections}";
+          format-connnected-battery = "{icon} {num_connections} {device_battery_percentage}%";
+          format-icons = {
+            connected = "";
+            on = "";
+            off = "";
+            disabled = "";
+            disconnected = "";
+            default = "";
+          };
+          on-click = "bluetoothctl power on";
+          on-click-right = "bluetoothctl power off";
+          on-click-middle = "blueman-manager";
+          tooltip-format = "{status} {num_connections}";
         };
 
         "group/power" = {
