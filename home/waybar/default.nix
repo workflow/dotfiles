@@ -269,13 +269,13 @@ in {
         };
 
         "custom/wlsunset" = {
-          interval = "once";
+          interval = 1;
           exec = "if pgrep wlsunset >/dev/null 2>&1; then stdbuf -oL printf '{\"alt\": \"on\",\"class\": \"on\"}'; else stdbuf -oL printf '{\"alt\": \"off\",\"class\": \"off\"}'; fi";
           on-click = "wlsunset-waybar";
-          signal = 1; # SIGRTMIN+1 or 35
           return-type = "json";
           format = " {icon}";
           tooltip-format = "wlsunset: {alt}";
+          signal = 1; # SIGRTMIN+1 or 35 for updating immediately from script
           format-icons = {
             on = "";
             off = "";

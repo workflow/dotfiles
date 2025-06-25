@@ -1,6 +1,6 @@
-# Looted from https://github.com/CyrilSLi/linux-scripts
-if pgrep wlsunset >/dev/null 2>&1; then
-	killall -9 wlsunset >/dev/null 2>&1
+# Originally looted from https://github.com/CyrilSLi/linux-scripts
+if pgrep -x wlsunset; then
+	killall -9 wlsunset
 else
 	RETRIES=30
 	counter=0
@@ -17,6 +17,6 @@ else
 	done
 	longitude=$(echo "$CONTENT" | jq .lon)
 	latitude=$(echo "$CONTENT" | jq .lat)
-	wlsunset -l "$latitude" -L "$longitude" >/dev/null 2>&1 &
+	wlsunset -l "$latitude" -L "$longitude" &
 fi
 pkill -35 waybar
