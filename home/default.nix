@@ -79,6 +79,7 @@
       ./remmina # Remote Desktop Client
       ./rofi
       ./rofimoji
+      ./showmethekey # screenkey for Wayland, show key presses
       ./signal
       ./solaar # Linux devices manager for the Logitech Unifying Receiver
       ./sound-switcher
