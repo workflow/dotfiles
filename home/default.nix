@@ -69,6 +69,7 @@
       ./nushell
       ./obs # OBS Studio
       ./obsidian
+      ./onboard # Virtual Keyboard for layout visualization (no good Wayland options work)
       ./pavucontrol # Pulse Audio Volume Control GUI
       ./pomodoro-gtk
       ./portfolio-performance
