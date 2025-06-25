@@ -421,6 +421,10 @@ in {
       #idle_inhibitor.activated {
         color: @base0A;
       }
+
+      #language:not(.us) {
+        color: @base0A;
+      }
     '';
 
     systemd = {
