@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: let
-  # https://github.com/unix121/i3wm-themer/blob/master/themes/001.json
-  color_bg = "#1E272B";
-  color_txt = "#EAD49B";
-
   isFlexbox = osConfig.networking.hostName == "flexbox";
 
   networkManager = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
@@ -380,6 +376,11 @@ in {
         {
           command = "systemctl --user restart kanshi";
           always = true;
+        }
+
+        # Manual wlsunset start
+        {
+          command = "wlsunset-waybar";
         }
       ];
 

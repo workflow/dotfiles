@@ -1,9 +1,14 @@
 # Day/night gamma adjustments for Wayland
-{...}: {
-  services.wlsunset = {
-    enable = true;
-    latitude = 38.7;
-    longitude = -9.1;
-    systemdTarget = "sway-session.target";
+{pkgs, ...}: let
+  # https://github.com/CyrilSLi/linux-scripts/blob/main/waybar/wlsunset.sh
+  wlsunset-waybar = pkgs.writeShellApplication {
+    name = "wlsunset-waybar";
+    runtimeInputs = with pkgs; [wlsunset procps killall];
+    text = builtins.readFile ./scripts/wlsunset-waybar.sh;
   };
+in {
+  home.packages = [
+    pkgs.wlsunset
+    wlsunset-waybar
+  ];
 }

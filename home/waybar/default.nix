@@ -28,7 +28,7 @@ in {
           "disk"
           "group/gpu"
           "group/network"
-          "group/backlight"
+          "group/screens"
           "group/audio"
           "bluetooth"
           "group/power"
@@ -215,11 +215,11 @@ in {
           tooltip-format-disabled = " Wireguard down.";
         };
 
-        "group/backlight" = {
+        "group/screens" = {
           modules =
             if isFlexbox
-            then ["backlight"]
-            else ["custom/ddc-backlight-left" "custom/ddc-backlight-middle" "custom/ddc-backlight-right"];
+            then ["backlight" "custom/wlsunset"]
+            else ["custom/ddc-backlight-left" "custom/ddc-backlight-middle" "custom/ddc-backlight-right" "custom/wlsunset"];
           orientation = "inherit";
         };
 
@@ -266,6 +266,20 @@ in {
           on-click-right = "kanshictl switch numenor";
           return-type = "json";
           interval = 300;
+        };
+
+        "custom/wlsunset" = {
+          interval = "once";
+          exec = "if pgrep wlsunset >/dev/null 2>&1; then stdbuf -oL printf '{\"alt\": \"on\",\"class\": \"on\"}'; else stdbuf -oL printf '{\"alt\": \"off\",\"class\": \"off\"}'; fi";
+          on-click = "wlsunset-waybar";
+          signal = 1; # SIGRTMIN+1 or 35
+          return-type = "json";
+          format = " {icon}";
+          tooltip-format = "wlsunset: {alt}";
+          format-icons = {
+            on = "";
+            off = "";
+          };
         };
 
         "group/audio" = {
@@ -434,6 +448,10 @@ in {
       }
 
       #custom-dunst-dnd.dnd {
+        color: @base0A;
+      }
+
+      #custom-wlsunset.off {
         color: @base0A;
       }
 
