@@ -163,10 +163,11 @@ in {
           interval = 3;
           format-linked = " ";
           format = " ";
+          format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-          tooltip-format-linked = " Tailscale down. Click to connect.";
-          on-click = "tailscale up";
-          on-click-right = "tailscale down";
+          tooltip-format-linked = " Tailscale down. Right click to connect.";
+          on-click-right = "tailscale up";
+          on-click-middle = "tailscale down";
         };
 
         "network#macgyver" = {
@@ -176,11 +177,12 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " ";
+          format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format = "  MacGyver IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-          tooltip-format-linked = " MacGyver down. Click to connect.";
-          tooltip-format-disabled = " MacGyver down. Click to connect.";
-          on-click = "sudo systemctl start macgyver";
-          on-click-right = "sudo systemctl stop macgyver";
+          tooltip-format-linked = " MacGyver down. Right click to connect.";
+          tooltip-format-disabled = " MacGyver down. Right click to connect.";
+          on-click-right = "sudo systemctl start macgyver";
+          on-click-middle = "sudo systemctl stop macgyver";
         };
 
         "network#mullvad" = {
@@ -190,12 +192,13 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " ";
+          format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-          tooltip-format-linked = " Mullvad down. Click to connect or middleclick for GUI.";
-          tooltip-format-disabled = " Mullvad down. Click to connect or middleclick for GUI.";
-          on-click = "mullvad connect";
-          on-click-right = "mullvad disconnect";
-          on-click-middle = "mullvad-gui";
+          tooltip-format-linked = " Mullvad down. Right click to connect or double right click for GUI.";
+          tooltip-format-disabled = " Mullvad down. Rickt click to connect or double right click for GUI.";
+          on-click-right = "mullvad connect";
+          on-double-click-right = "mullvad-gui";
+          on-click-middle = "mullvad disconnect";
         };
 
         "network#wireguard" = {
@@ -205,6 +208,7 @@ in {
           format-disabled = " ";
           format-linked = " ";
           format = " ";
+          format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = " Wireguard down.";
           tooltip-format-disabled = " Wireguard down.";
