@@ -286,6 +286,7 @@ in {
           modules = [
             "pulseaudio#in"
             "pulseaudio#out"
+            "mpris"
           ];
           orientation = "inherit";
         };
@@ -337,6 +338,19 @@ in {
           on-click-right = "alacritty --command pulsemixer";
           on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
           ignored-sinks = ["Easy Effects Sink"];
+        };
+
+        mpris = {
+          format = "{player_icon}";
+          format-paused = "{status_icon}";
+          player-icons = {
+            default = "▶";
+            mpv = "";
+            chromium = "";
+          };
+          status-icons = {
+            paused = "⏸";
+          };
         };
 
         bluetooth = {
