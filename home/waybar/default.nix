@@ -383,6 +383,15 @@ in {
           orientation = "inherit";
         };
 
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = " {icon} {capacity}%";
+          format-icons = ["" "" "" "" ""];
+        };
+
         "custom/dunst-dnd" = {
           exec = "${dunst-dnd-waybar}/bin/dunst-dnd-waybar";
           return-type = "json";
