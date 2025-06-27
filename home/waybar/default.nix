@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  isNvidia,
   osConfig,
   pkgs,
   ...
@@ -115,10 +116,15 @@ in {
         };
 
         "group/gpu" = {
-          modules = [
-            "custom/gpu-usage"
-            "temperature#gpu"
-          ];
+          modules =
+            [
+              (
+                if isNvidia
+                then "custom/nvidia"
+                else "custom/gpu-usage"
+              )
+            ]
+            ++ lib.optional (!isNvidia) "temperature#gpu";
           orientation = "inherit";
         };
 
@@ -129,6 +135,12 @@ in {
           interval = 1;
           on-click = "alacritty --command nvtop";
           on-click-right = "alacritty --command nvtop";
+        };
+
+        "custom/nvidia" = {
+          exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% \\2°C/g'";
+          format = " {}";
+          interval = 2;
         };
 
         "temperature#gpu" = {
