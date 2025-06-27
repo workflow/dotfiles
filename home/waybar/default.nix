@@ -72,12 +72,13 @@ in {
 
         "temperature#cpu" = {
           critical-threshold = 90;
+          format = " {temperature}°C";
           on-click = "alacritty --command btop";
           on-click-right = "alacritty --command btop";
           hwmon-path =
             if isNumenor
             then "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input"
-            else "TODO find me according to waybar docs and use coretemp-isa-0000 hwmon path";
+            else "/sys/devices/platform/coretemp.0/hwmon/hwmon7/temp1_input";
         };
 
         "custom/cpu-profile-toggler" = {
