@@ -166,7 +166,7 @@ in {
           format-wifi = " ";
           format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-          tooltip-format-wifi = "IF:{ifname} {ssid} {frequency} {signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netwmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+          tooltip-format-wifi = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
           tooltip-format-linked = "Down. Click to connect.";
           on-click-right = "alacritty --command nmtui";
         };
