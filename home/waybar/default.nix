@@ -142,6 +142,8 @@ in {
           exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1% \\2°C/g'";
           format = " {}";
           interval = 2;
+          on-click = "alacritty --command nvtop";
+          on-click-right = "alacritty --command nvtop";
         };
 
         "temperature#gpu" = {
