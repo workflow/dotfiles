@@ -72,7 +72,7 @@ in {
 
         "temperature#cpu" = {
           critical-threshold = 90;
-          format = " {temperature}°C";
+          format = " {temperatureC}°C";
           on-click = "alacritty --command btop";
           on-click-right = "alacritty --command btop";
           hwmon-path =
