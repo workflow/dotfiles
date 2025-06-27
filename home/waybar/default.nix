@@ -222,6 +222,11 @@ in {
           orientation = "inherit";
         };
 
+        backlight = {
+          format = "{icon} {percent}%";
+          format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
+        };
+
         "custom/ddc-backlight-left" = {
           format = "{icon} ";
           tooltip-format = "Left {percentage}%";
