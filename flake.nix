@@ -18,6 +18,10 @@
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets.url = "path:/home/farlion/code/nixos-secrets";
     stylix.url = "github:danth/stylix/release-25.05";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
