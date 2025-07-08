@@ -48,6 +48,7 @@
       impermanence.nixosModules.impermanence
       stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
+      niri.nixosModules.niri
     ];
     commonHomeManagerSettings = {
       useGlobalPkgs = true;
