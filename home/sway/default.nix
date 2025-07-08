@@ -295,8 +295,8 @@ in {
         "${mod}+e" = "exec rofimoji";
         "${mod}+Mod1+e" = "exec rofimoji --action clipboard";
 
-        # Reload Sway Config
-        "${mod}+Shift+r" = "reload";
+        # Reload Sway Config (and waybar)
+        "${mod}+Shift+r" = "reload; exec systemctl --user restart waybar.service";
 
         # Global Shortcuts (OBS etc...)
         "Mod1+F4" = "exec ydotool key alt+F4";
