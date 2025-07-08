@@ -39,6 +39,11 @@ with lib; let
     listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
 in {
   programs.niri.settings = {
+    # Environment
+    environment = {
+      NIXOS_OZONE_WL = "1"; # Enable Ozone-Wayland for Electron apps and Chromium, see https://nixos.wiki/wiki/Wayland
+    };
+
     # Input Settings
     input = {
       keyboard = {
