@@ -22,10 +22,6 @@
   };
 
   systemd.user.services.syncthingtray = {
-    # Remove existing graphical-session.target
-    Install = lib.mkForce {
-      WantedBy = ["sway-session.target"];
-    };
     Service = {
       Restart = "on-failure";
       RestartSec = 5;

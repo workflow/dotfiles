@@ -535,7 +535,6 @@ in {
       enable = true;
       enableDebug = false;
       enableInspect = false;
-      target = "sway-session.target";
     };
   };
 

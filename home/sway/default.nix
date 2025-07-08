@@ -58,7 +58,7 @@ in {
   programs.swaylock = {
     enable = true;
     settings = {
-      debug = true;
+      debug = false;
       show-failed-attempts = true;
       ignore-empty-password = true;
     };
@@ -72,7 +72,6 @@ in {
         command = "${locker}";
       }
     ];
-    systemdTarget = "sway-session.target";
     timeouts = [
       {
         timeout = 360;
@@ -391,7 +390,7 @@ in {
     };
 
     systemd = {
-      enable = true; # Enables sway-session.target, see home-manager manual
+      enable = false; # Enables sway-session.target, see home-manager manual
     };
 
     extraConfig = ''
