@@ -16,7 +16,7 @@
   isFlexbox = hostName == "flexbox";
 
   leftSection = {
-    modules-left = ["sway/workspaces" "sway/mode"];
+    modules-left = ["niri/workspaces" "niri/mode"];
   };
 
   centerSection = {
