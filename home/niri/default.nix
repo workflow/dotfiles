@@ -109,6 +109,20 @@ in {
       "10" = {name = "10: ";};
     };
 
+    # Layout
+    layout = {
+      gaps = 4; # Default 16
+
+      border = {
+        enable = true;
+        width = 2; # Default 4
+      };
+
+      shadow = {
+        enable = true;
+      };
+    };
+
     # Style
     prefer-no-csd = true;
 
