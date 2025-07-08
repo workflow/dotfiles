@@ -51,6 +51,7 @@ in {
       ./toggleterm
       ./treesitter
       ./trouble
+      ./undotree
       ./vim-visual-multi
     ]
     ++ lib.optionals isLightTheme [
