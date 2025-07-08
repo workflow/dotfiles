@@ -26,5 +26,9 @@
     Install = lib.mkForce {
       WantedBy = ["sway-session.target"];
     };
+    Service = {
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
   };
 }
