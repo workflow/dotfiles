@@ -57,6 +57,13 @@
       scrolling = {
         history = 100000;
       };
+
+      window = {
+        padding = {
+          x = 5;
+          y = 4;
+        };
+      };
     };
   };
 }
