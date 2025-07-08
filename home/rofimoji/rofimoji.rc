@@ -1,4 +1,3 @@
 files = [emojis, math, currency_symbols, combining_diacritical_marks, fontawesome6]
 skin-tone = "neutral"
 selector = "fuzzel"
-action = "clipboard" # workaround to work in browser windows etc... under Wayland since direct typing doesn't work reliably

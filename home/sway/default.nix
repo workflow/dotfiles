@@ -293,6 +293,7 @@ in {
 
         # Rofimoji
         "${mod}+e" = "exec rofimoji";
+        "${mod}+Mod1+e" = "exec rofimoji --action clipboard";
 
         # Reload Sway Config
         "${mod}+Shift+r" = "reload";
