@@ -170,9 +170,11 @@ in {
         }
         (binds {
           suffixes."Left" = "column-left";
+          suffixes."j" = "column-left";
           suffixes."Down" = "window-down";
           suffixes."Up" = "window-up";
           suffixes."Right" = "column-right";
+          suffixes."semicolon" = "column-right";
           prefixes."Mod" = "focus";
           prefixes."Mod+Ctrl" = "move";
           prefixes."Mod+Shift" = "focus-monitor";
