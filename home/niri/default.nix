@@ -132,6 +132,7 @@ in {
     prefer-no-csd = true;
 
     # Keybindings
+    hotkey-overlay.skip-at-startup = true;
     binds = with config.lib.niri.actions; let
       sh = spawn "sh" "-c";
     in
@@ -140,8 +141,11 @@ in {
           "Mod+Shift+Slash".action = show-hotkey-overlay;
 
           "Mod+Return".action = spawn "alacritty";
+          "Mod+Return".hotkey-overlay.title = "Open a Terminal: alacritty";
           "Mod+D".action = spawn "fuzzel";
+          "Mod+D".hotkey-overlay.title = "Run an Application: fuzzel";
           "Mod+Shift+X".action = spawn "swaylock";
+          "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
 
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
