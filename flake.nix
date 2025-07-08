@@ -7,6 +7,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +32,7 @@
     nixos-unstable,
     home-manager,
     impermanence,
+    niri,
     nur,
     secrets,
     stylix,
@@ -43,6 +47,7 @@
       nur.modules.nixos.default
       impermanence.nixosModules.impermanence
       stylix.nixosModules.stylix
+      home-manager.nixosModules.home-manager
     ];
     commonHomeManagerSettings = {
       useGlobalPkgs = true;
@@ -71,7 +76,6 @@
           ./machines/flexbox/hardware-scan.nix
           ./machines/flexbox/system.nix
           ./system/nvidia
-          home-manager.nixosModules.home-manager
           {
             home-manager =
               commonHomeManagerSettings
@@ -105,7 +109,6 @@
           ./machines/numenor/system.nix
           ./system/amd
           ./system/btrfs
-          home-manager.nixosModules.home-manager
           {
             home-manager =
               commonHomeManagerSettings
