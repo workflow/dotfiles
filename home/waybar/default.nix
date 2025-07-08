@@ -353,7 +353,7 @@
     mpris = {
       format = "{player_icon}";
       format-paused = "{status_icon}";
-      on-click-right = ''swaymsg "[app_id=\"YouTube Music Desktop App\"] focus"'';
+      on-click-right = ''niri msg action focus-window --id $(niri msg --json windows | jq -r '.[] | select(.app_id == "YouTube Music Desktop App") | .id')'';
       player-icons = {
         default = "▶";
         mpv = "";
@@ -432,9 +432,9 @@
     };
 
     "sway/language" = {
-      on-click = "swaymsg input type:keyboard xkb_switch_layout next";
-      on-click-right = "swaymsg input type:keyboard xkb_switch_layout prev";
-      on-click-middle = "swaymsg input type:keyboard xkb_switch_layout 0";
+      on-click = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | to_entries | map(select(.value.active == false)) | .[0].key')";
+      on-click-right = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | to_entries | map(select(.value.active == false)) | .[-1].key')";
+      on-click-middle = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | keys[0]')";
     };
 
     clock = {
