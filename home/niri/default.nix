@@ -98,7 +98,7 @@ in {
           {title = ".*zoom.*";}
           {app-id = "flameshot";}
         ];
-        default-column-width = {};
+        open-floating = true;
       }
     ];
 
