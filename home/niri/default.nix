@@ -137,16 +137,17 @@ in {
     in
       lib.attrsets.mergeAttrsList [
         {
-          "Mod+T".action = spawn "alacritty";
-          "Mod+O".action = show-hotkey-overlay;
+          "Mod+Shift+Slash".action = show-hotkey-overlay;
+
+          "Mod+Return".action = spawn "alacritty";
           "Mod+D".action = spawn "fuzzel";
+          "Mod+Shift+X".action = spawn "swaylock";
+
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
             ]
           );
-
-          "Mod+L".action = spawn "blurred-locker";
 
           "Mod+Shift+S".action = screenshot;
           "Print".action.screenshot-screen = [];
@@ -163,7 +164,7 @@ in {
           "XF86MonBrightnessUp".action = sh "brightnessctl set 10%+";
           "XF86MonBrightnessDown".action = sh "brightnessctl set 10%-";
 
-          "Mod+Q".action = close-window;
+          "Mod+Shift+Q".action = close-window;
 
           "Mod+Space".action = toggle-column-tabbed-display;
 
