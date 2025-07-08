@@ -152,10 +152,12 @@
 
     "network" = {
       interval = 3;
+      format = " ";
       format-disconnected = "  ";
       format-ethernet = " ";
       format-wifi = " ";
       format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
+      tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-wifi = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-linked = "Down. Click to connect.";
@@ -507,10 +509,7 @@ in {
         color: @base08;
       }
 
-      #network.ethernet {
-        color: @base0B;
-      }
-
+      #network.ethernet,
       #network.wifi {
         color: @base0B;
       }
