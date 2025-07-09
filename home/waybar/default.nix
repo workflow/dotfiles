@@ -16,7 +16,7 @@
   isFlexbox = hostName == "flexbox";
 
   leftSection = {
-    modules-left = ["niri/workspaces" "niri/mode"];
+    modules-left = ["niri/workspaces"];
   };
 
   centerSection = {
@@ -404,7 +404,7 @@
       "privacy"
       "custom/dunst-dnd"
       "idle_inhibitor"
-      "sway/language"
+      "niri/language"
       "clock"
       "tray"
     ];
@@ -431,10 +431,13 @@
       };
     };
 
-    "sway/language" = {
-      on-click = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | to_entries | map(select(.value.active == false)) | .[0].key')";
-      on-click-right = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | to_entries | map(select(.value.active == false)) | .[-1].key')";
-      on-click-middle = "niri msg action switch-layout $(niri msg --json keyboard-layouts | jq -r '.layouts | keys[0]')";
+    "niri/language" = {
+      # TODO: https://github.com/Alexays/Waybar/issues/3657
+      format = "<span color='#fabd2f'>{short}</span>";
+      format-English = "us";
+      on-click = "niri msg action switch-layout next";
+      on-click-right = "niri msg action switch-layout prev";
+      on-click-middle = "niri msg action switch-layout 0";
     };
 
     clock = {

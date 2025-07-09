@@ -65,7 +65,7 @@ in {
       keyboard = {
         xkb = {
           layout = "us,de,ua,pt";
-          options = "grp:ctrls_toggle,eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
+          options = "eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
         };
       };
       touchpad = {
@@ -312,6 +312,9 @@ in {
             ]
           );
           "Mod+W".hotkey-overlay.title = "Restart Waybar";
+
+          "Mod+Space".action = switch-layout "next";
+          "Mod+Shift+Space".action = switch-layout "prev";
         }
         {
           "Mod+Shift+S".action = screenshot;
