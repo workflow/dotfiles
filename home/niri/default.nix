@@ -77,24 +77,25 @@ in {
     window-rules = [
       {
         matches = [
+          {app-id = "^Todoist$";}
+          {app-id = "^obsidian$";}
+        ];
+        open-on-workspace = " 7";
+      }
+      {
+        matches = [
           {app-id = "^signal$";}
           {app-id = "^teams-for-linux$";}
           {app-id = "^org.telegram.desktop$";}
         ];
-        open-on-workspace = "8";
+        open-on-workspace = " 8";
       }
       {
         matches = [
           {app-id = "^YouTube Music Desktop App$";}
           {app-id = "^Todoist$";}
         ];
-        open-on-workspace = "9";
-      }
-      {
-        matches = [
-          {app-id = "^obsidian$";}
-        ];
-        open-on-workspace = "19";
+        open-on-workspace = " 9";
       }
       # Floating windows
       {
@@ -109,9 +110,17 @@ in {
 
     # Named Workspaces
     workspaces = {
-      "8" = {name = "8: ";};
-      "9" = {name = "9: ";};
-      "10" = {name = "10: ";};
+      "aa" = {name = " a";};
+      "b1" = {name = " 1";};
+      "c2" = {name = " 2";};
+      "d3" = {name = " 3";};
+      "e4" = {name = " 4";};
+      "f5" = {name = " 5";};
+      "g6" = {name = " 6";};
+      "h7" = {name = " 7";};
+      "i8" = {name = " 8";};
+      "j9" = {name = " 9";};
+      "k10" = {name = " 10";};
     };
 
     # Layout
