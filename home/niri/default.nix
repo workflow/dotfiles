@@ -284,6 +284,9 @@ in {
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
           "Mod+Ctrl+F".action = expand-column-to-available-width;
+
+          "Mod+C".action = center-column;
+          "Mod+Ctrl+C".action = center-visible-columns;
         }
         {
           "Mod+W".action = sh (
@@ -310,8 +313,6 @@ in {
           "Mod+Shift+V".action = toggle-window-floating;
         }
         {
-          "Mod+C".action = center-column;
-
           "Mod+Minus".action = set-column-width "-10%";
           "Mod+Plus".action = set-column-width "+10%";
           "Mod+Shift+Minus".action = set-window-height "-10%";
