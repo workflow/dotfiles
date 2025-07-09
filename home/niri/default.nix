@@ -295,14 +295,15 @@ in {
 
           "Mod+V".action = toggle-window-floating;
           "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
-        }
-        {
+
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
             ]
           );
-
+          "Mod+W".hotkey-overlay.title = "Restart Waybar";
+        }
+        {
           "Mod+Shift+S".action = screenshot;
           "Print".action.screenshot-screen = [];
           "Mod+Print".action = screenshot-window;
@@ -310,8 +311,6 @@ in {
           "Mod+Insert".action = set-dynamic-cast-window;
           "Mod+Shift+Insert".action = set-dynamic-cast-monitor;
           "Mod+Delete".action = clear-dynamic-cast-target;
-
-          "Mod+Space".action = toggle-column-tabbed-display;
 
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
