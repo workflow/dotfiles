@@ -320,7 +320,6 @@ in {
         {
           "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Shift+E".action = quit;
-          "Mod+Shift+P".action = power-off-monitors;
 
           "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
         }
