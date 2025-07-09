@@ -195,6 +195,19 @@ in {
           prefixes."Mod+Ctrl" = "move-window-to";
           prefixes."Mod+Shift" = "move";
         })
+        (binds {
+          suffixes = builtins.listToAttrs (
+            map (n: {
+              name = toString n;
+              value = [
+                "workspace"
+                n
+              ];
+            }) (range 1 9)
+          );
+          prefixes."Mod" = "focus";
+          prefixes."Mod+Ctrl" = "move-columnt-to-workspace";
+        })
         {
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
@@ -222,52 +235,6 @@ in {
           "Mod+V".action = switch-focus-between-floating-and-tiling;
           "Mod+Shift+V".action = toggle-window-floating;
         }
-        # Workspace bindings matching Sway config
-        (binds {
-          suffixes = builtins.listToAttrs (
-            map (n: {
-              name = toString n;
-              value = [
-                "workspace"
-                n
-              ];
-            }) (range 1 9)
-          );
-          prefixes."Mod" = "focus";
-          prefixes."Mod+Ctrl" = "move-window-to";
-        })
-        # # Additional workspace bindings
-        # {
-        #   "Mod+0".action = focus-workspace 10;
-        #   "Mod+Ctrl+0".action = move-window-to-workspace 10;
-        #
-        #   # Alt+number bindings for workspaces 11-20
-        #   "Mod+Alt+1".action = focus-workspace 11;
-        #   "Mod+Alt+2".action = focus-workspace 12;
-        #   "Mod+Alt+3".action = focus-workspace 13;
-        #   "Mod+Alt+4".action = focus-workspace 14;
-        #   "Mod+Alt+5".action = focus-workspace 15;
-        #   "Mod+Alt+6".action = focus-workspace 16;
-        #   "Mod+Alt+7".action = focus-workspace 17;
-        #   "Mod+Alt+8".action = focus-workspace 18;
-        #   "Mod+Alt+9".action = focus-workspace 19;
-        #   "Mod+Alt+0".action = focus-workspace 20;
-        #
-        #   "Mod+Ctrl+Alt+1".action = move-window-to-workspace 11;
-        #   "Mod+Ctrl+Alt+2".action = move-window-to-workspace 12;
-        #   "Mod+Ctrl+Alt+3".action = move-window-to-workspace 13;
-        #   "Mod+Ctrl+Alt+4".action = move-window-to-workspace 14;
-        #   "Mod+Ctrl+Alt+5".action = move-window-to-workspace 15;
-        #   "Mod+Ctrl+Alt+6".action = move-window-to-workspace 16;
-        #   "Mod+Ctrl+Alt+7".action = move-window-to-workspace 17;
-        #   "Mod+Ctrl+Alt+8".action = move-window-to-workspace 18;
-        #   "Mod+Ctrl+Alt+9".action = move-window-to-workspace 19;
-        #   "Mod+Ctrl+Alt+0".action = move-window-to-workspace 20;
-        #
-        #   # Workspace 'c' binding (moved from center-column to avoid conflict)
-        #   "Mod+Shift+C".action = focus-workspace "c";
-        #   "Mod+Ctrl+Shift+C".action = move-window-to-workspace "c";
-        # }
         {
           "Mod+Comma".action = consume-window-into-column;
           "Mod+Period".action = expel-window-from-column;
