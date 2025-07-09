@@ -276,6 +276,10 @@ in {
 
           "Mod+Comma".action = consume-window-into-column;
           "Mod+Period".action = expel-window-from-column;
+
+          "Mod+R".action = switch-preset-column-width;
+          "Mod+Shift+R".action = switch-preset-window-height;
+          "Mod+Ctrl+R".action = reset-window-height;
         }
         {
           "Mod+W".action = sh (
@@ -302,7 +306,6 @@ in {
           "Mod+Shift+V".action = toggle-window-floating;
         }
         {
-          "Mod+R".action = switch-preset-column-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
           "Mod+C".action = center-column;
