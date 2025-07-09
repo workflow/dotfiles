@@ -16,7 +16,14 @@
   isFlexbox = hostName == "flexbox";
 
   leftSection = {
-    modules-left = ["niri/workspaces"];
+    modules-left = [
+      "niri/workspaces"
+      # "wlr/taskbar" # Useful for finding title and app_id for niri
+    ];
+
+    "wlr/taskbar" = {
+      tooltip-format = "{title} | {app_id}";
+    };
   };
 
   centerSection = {

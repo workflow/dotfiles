@@ -87,6 +87,7 @@ in {
       {command = ["systemctl" "--user" "restart" "kanshi"];}
       {command = ["systemctl" "--user" "start" "waybar"];}
       {command = ["wlsunset-waybar"];}
+      {command = ["zen"];}
     ];
 
     # Window Rules
@@ -101,6 +102,12 @@ in {
       #   };
       #   clip-to-geometry = true;
       # }
+      {
+        matches = [
+          {app-id = "^zen-beta$";}
+        ];
+        open-on-workspace = " a";
+      }
       {
         matches = [
           {app-id = "^Todoist$";}
