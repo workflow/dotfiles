@@ -68,8 +68,8 @@ in {
     spawn-at-startup = [
       {command = ["ytmdesktop"];}
       {command = ["todoist-electron" "--ozone-platform-hint=auto"];}
-      {command = ["seahorse"];}
       {command = ["systemctl" "--user" "restart" "kanshi"];}
+      {command = ["systemctl" "--user" "start" "waybar"];}
       {command = ["wlsunset-waybar"];}
     ];
 
