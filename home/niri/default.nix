@@ -164,6 +164,22 @@ in {
           "Mod+Shift+Q".action = close-window;
           "Mod+Shift+Q".repeat = false;
         }
+        (binds {
+          suffixes."Left" = "column-left";
+          suffixes."j" = "column-left";
+          suffixes."Down" = "window-down";
+          suffixes."k" = "window-down";
+          suffixes."Up" = "window-up";
+          suffixes."l" = "window-up";
+          suffixes."Right" = "column-right";
+          suffixes."semicolon" = "column-right";
+          prefixes."Mod" = "focus";
+          prefixes."Mod+Ctrl" = "move";
+          prefixes."Mod+Shift" = "focus-monitor";
+          prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
+          substitutions."monitor-column" = "monitor";
+          substitutions."monitor-window" = "monitor";
+        })
         {
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
@@ -187,20 +203,6 @@ in {
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
         }
-        (binds {
-          suffixes."Left" = "column-left";
-          suffixes."j" = "column-left";
-          suffixes."Down" = "window-down";
-          suffixes."Up" = "window-up";
-          suffixes."Right" = "column-right";
-          suffixes."semicolon" = "column-right";
-          prefixes."Mod" = "focus";
-          prefixes."Mod+Ctrl" = "move";
-          prefixes."Mod+Shift" = "focus-monitor";
-          prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
-          substitutions."monitor-column" = "monitor";
-          substitutions."monitor-window" = "monitor";
-        })
         {
           "Mod+V".action = switch-focus-between-floating-and-tiling;
           "Mod+Shift+V".action = toggle-window-floating;
