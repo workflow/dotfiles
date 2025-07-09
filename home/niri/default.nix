@@ -147,6 +147,24 @@ in {
           "Mod+Shift+X".action = spawn "swaylock";
           "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
 
+          "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+          "XF86AudioRaiseVolume".allow-when-locked = true;
+          "XF86AudioLowerVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+          "XF86AudioLowerVolume".allow-when-locked = true;
+          "XF86AudioMute".action = sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute".allow-when-locked = true;
+          "XF86AudioMicMute".action = sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "XF86AudioMicMute".allow-when-locked = true;
+          "XF86MonBrightnessUp".action = sh "brightnessctl --class=backlight set 10%+";
+          "XF86MonBrightnessUp".allow-when-locked = true;
+
+          "XF86MonBrightnessDown".action = sh "brightnessctl --class=backlight set 10%-";
+          "XF86MonBrightnessDown".allow-when-locked = true;
+
+          "Mod+Shift+Q".action = close-window;
+          "Mod+Shift+Q".repeat = false;
+        }
+        {
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
@@ -160,15 +178,6 @@ in {
           "Mod+Insert".action = set-dynamic-cast-window;
           "Mod+Shift+Insert".action = set-dynamic-cast-monitor;
           "Mod+Delete".action = clear-dynamic-cast-target;
-
-          "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
-          "XF86AudioLowerVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
-          "XF86AudioMute".action = sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-
-          "XF86MonBrightnessUp".action = sh "brightnessctl set 10%+";
-          "XF86MonBrightnessDown".action = sh "brightnessctl set 10%-";
-
-          "Mod+Shift+Q".action = close-window;
 
           "Mod+Space".action = toggle-column-tabbed-display;
 
