@@ -91,6 +91,7 @@ in {
     ];
 
     # Window Rules
+    # Find app_id or title with `niri msg windows`
     window-rules = [
       # Rounded Window Corners
       # {
