@@ -4,7 +4,7 @@
   ...
 }:
 with lib; let
-  binds = {
+  niriBinds = {
     suffixes,
     prefixes,
     substitutions ? {},
@@ -38,7 +38,7 @@ with lib; let
   in
     listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
 in {
-  programs.niri.settings = {
+  programs.niri.settings = rec {
     # Environment
     environment = {
       NIXOS_OZONE_WL = "1"; # Enable Ozone-Wayland for Electron apps and Chromium, see https://nixos.wiki/wiki/Wayland
@@ -173,7 +173,7 @@ in {
           "Mod+Shift+Q".action = close-window;
           "Mod+Shift+Q".repeat = false;
         }
-        (binds {
+        (niriBinds {
           suffixes."Left" = "column-left";
           suffixes."j" = "column-left";
           suffixes."Down" = "window-down";
@@ -189,13 +189,13 @@ in {
           substitutions."monitor-column" = "monitor";
           substitutions."monitor-window" = "monitor";
         })
-        (binds {
+        (niriBinds {
           suffixes."Home" = "first";
           suffixes."End" = "last";
           prefixes."Mod" = "focus-column";
           prefixes."Mod+Ctrl" = "move-column-to";
         })
-        (binds {
+        (niriBinds {
           suffixes."U" = "workspace-down";
           suffixes."Page_Down" = "workspace-down";
           suffixes."I" = "workspace-up";
@@ -204,18 +204,22 @@ in {
           prefixes."Mod+Ctrl" = "move-window-to";
           prefixes."Mod+Shift" = "move";
         })
-        (binds {
-          suffixes = builtins.listToAttrs (
-            map (n: {
-              name = toString n;
-              value = [
-                "workspace"
-                n
-              ];
-            }) (range 1 9)
-          );
+        (niriBinds {
+          suffixes = {
+            "a" = ["workspace" "${workspaces.aa.name}"];
+            "1" = ["workspace" "${workspaces.b1.name}"];
+            "2" = ["workspace" "${workspaces.c2.name}"];
+            "3" = ["workspace" "${workspaces.d3.name}"];
+            "4" = ["workspace" "${workspaces.e4.name}"];
+            "5" = ["workspace" "${workspaces.f5.name}"];
+            "6" = ["workspace" "${workspaces.g6.name}"];
+            "7" = ["workspace" "${workspaces.h7.name}"];
+            "8" = ["workspace" "${workspaces.i8.name}"];
+            "9" = ["workspace" "${workspaces.j9.name}"];
+            "0" = ["workspace" "${workspaces.k10.name}"];
+          };
           prefixes."Mod" = "focus";
-          prefixes."Mod+Ctrl" = "move-columnt-to-workspace";
+          prefixes."Mod+Ctrl" = "move-column-to";
         })
         {
           "Mod+W".action = sh (
