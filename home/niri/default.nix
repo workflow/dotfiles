@@ -1,9 +1,25 @@
 {
   config,
   lib,
+  osConfig,
   ...
 }:
 with lib; let
+  isNumenor = osConfig.networking.hostName == "numenor";
+
+  leftScreen =
+    if isNumenor
+    then "HDMI-A-2"
+    else null;
+  mainScreen =
+    if isNumenor
+    then "DP-1"
+    else "eDP-1";
+  rightScreen =
+    if isNumenor
+    then "HDMI-A-1"
+    else null;
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -110,17 +126,50 @@ in {
 
     # Named Workspaces
     workspaces = {
-      "aa" = {name = " a";};
-      "b1" = {name = " 1";};
-      "c2" = {name = " 2";};
-      "d3" = {name = " 3";};
-      "e4" = {name = " 4";};
-      "f5" = {name = " 5";};
-      "g6" = {name = " 6";};
-      "h7" = {name = " 7";};
-      "i8" = {name = " 8";};
-      "j9" = {name = " 9";};
-      "k10" = {name = " 10";};
+      "aa" = {
+        name = " a";
+        open-on-output = "${rightScreen}";
+      };
+      "b1" = {
+        name = " 1";
+        open-on-output = "${mainScreen}";
+      };
+      "c2" = {
+        name = " 2";
+        open-on-output = "${mainScreen}";
+      };
+      "d3" = {
+        name = " 3";
+        open-on-output = "${rightScreen}";
+      };
+      "e4" = {
+        name = " 4";
+        open-on-output = "${leftScreen}";
+      };
+      "f5" = {
+        name = " 5";
+        open-on-output = "${mainScreen}";
+      };
+      "g6" = {
+        name = " 6";
+        open-on-output = "${mainScreen}";
+      };
+      "h7" = {
+        name = " 7";
+        open-on-output = "${rightScreen}";
+      };
+      "i8" = {
+        name = " 8";
+        open-on-output = "${mainScreen}";
+      };
+      "j9" = {
+        name = " 9";
+        open-on-output = "${leftScreen}";
+      };
+      "k10" = {
+        name = " 10";
+        open-on-output = "${mainScreen}";
+      };
     };
 
     # Layout
