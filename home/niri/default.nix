@@ -2,6 +2,7 @@
   config,
   lib,
   osConfig,
+  pkgs,
   ...
 }:
 with lib; let
@@ -19,6 +20,9 @@ with lib; let
     if isNumenor
     then "HDMI-A-1"
     else null;
+
+  locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
+  suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
   niriBinds = {
     suffixes,
@@ -54,6 +58,46 @@ with lib; let
   in
     listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
 in {
+  home.packages = with pkgs; [
+    brightnessctl # For brightness +/- keys
+    qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
+    playerctl # For play/pause etc... controlling media players that implement MPRIS
+  ];
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      debug = false;
+      show-failed-attempts = true;
+      ignore-empty-password = true;
+    };
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      {
+        event = "before-sleep";
+        command = "${locker}";
+      }
+    ];
+    timeouts = [
+      {
+        timeout = 360;
+        command = "${locker}";
+      }
+      {
+        timeout = 370;
+        command = "/run/current-system/sw/bin/niri msg action power-off-monitors";
+        resumeCommand = "${pkgs.coreutils}/bin/sleep 1; /run/current-system/sw/bin/niri msg action power-on-monitors";
+      }
+      {
+        timeout = 1800;
+        command = "${suspender}";
+      }
+    ];
+  };
+
   programs.niri.settings = rec {
     # Environment
     environment = {
