@@ -180,6 +180,21 @@ in {
           substitutions."monitor-column" = "monitor";
           substitutions."monitor-window" = "monitor";
         })
+        (binds {
+          suffixes."Home" = "first";
+          suffixes."End" = "last";
+          prefixes."Mod" = "focus-column";
+          prefixes."Mod+Ctrl" = "move-column-to";
+        })
+        (binds {
+          suffixes."U" = "workspace-down";
+          suffixes."Page_Down" = "workspace-down";
+          suffixes."I" = "workspace-up";
+          suffixes."Page_Up" = "workspace-up";
+          prefixes."Mod" = "focus";
+          prefixes."Mod+Ctrl" = "move-window-to";
+          prefixes."Mod+Shift" = "move";
+        })
         {
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
@@ -207,19 +222,6 @@ in {
           "Mod+V".action = switch-focus-between-floating-and-tiling;
           "Mod+Shift+V".action = toggle-window-floating;
         }
-        (binds {
-          suffixes."Home" = "first";
-          suffixes."End" = "last";
-          prefixes."Mod" = "focus-column";
-          prefixes."Mod+Ctrl" = "move-column-to";
-        })
-        (binds {
-          suffixes."U" = "workspace-down";
-          suffixes."I" = "workspace-up";
-          prefixes."Mod" = "focus";
-          prefixes."Mod+Ctrl" = "move-window-to";
-          prefixes."Mod+Shift" = "move";
-        })
         # Workspace bindings matching Sway config
         (binds {
           suffixes = builtins.listToAttrs (
