@@ -271,6 +271,13 @@ in {
           prefixes."Mod+Ctrl" = "move-column-to";
         })
         {
+          "Mod+BracketLeft".action = consume-or-expel-window-left;
+          "Mod+BracketRight".action = consume-or-expel-window-right;
+
+          "Mod+Comma".action = consume-window-into-column;
+          "Mod+Period".action = expel-window-from-column;
+        }
+        {
           "Mod+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
@@ -287,9 +294,6 @@ in {
 
           "Mod+Space".action = toggle-column-tabbed-display;
 
-          "XF86AudioNext".action = focus-column-right;
-          "XF86AudioPrev".action = focus-column-left;
-
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
         }
@@ -298,9 +302,6 @@ in {
           "Mod+Shift+V".action = toggle-window-floating;
         }
         {
-          "Mod+Comma".action = consume-window-into-column;
-          "Mod+Period".action = expel-window-from-column;
-
           "Mod+R".action = switch-preset-column-width;
           "Mod+F".action = maximize-column;
           "Mod+Shift+F".action = fullscreen-window;
