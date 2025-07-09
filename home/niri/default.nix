@@ -185,7 +185,7 @@ in {
           prefixes."Mod" = "focus";
           prefixes."Mod+Ctrl" = "move";
           prefixes."Mod+Shift" = "focus-monitor";
-          prefixes."Mod+Shift+Ctrl" = "move-window-to-monitor";
+          prefixes."Mod+Shift+Ctrl" = "move-workspace-to-monitor";
           substitutions."monitor-column" = "monitor";
           substitutions."monitor-window" = "monitor";
         })
