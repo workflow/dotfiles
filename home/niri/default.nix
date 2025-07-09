@@ -292,6 +292,9 @@ in {
           "Mod+Equal".action = set-column-width "+10%";
           "Mod+Shift+Minus".action = set-window-height "-10%";
           "Mod+Shift+Equal".action = set-window-height "+10%";
+
+          "Mod+V".action = toggle-window-floating;
+          "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
         }
         {
           "Mod+W".action = sh (
@@ -312,10 +315,6 @@ in {
 
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
-        }
-        {
-          "Mod+V".action = switch-focus-between-floating-and-tiling;
-          "Mod+Shift+V".action = toggle-window-floating;
         }
         {
           "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
