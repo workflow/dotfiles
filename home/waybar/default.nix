@@ -479,6 +479,7 @@ in {
     settings = {
       main =
         {
+          layer = "top";
           position = "bottom";
           expand-center = true;
           output = [
@@ -490,6 +491,7 @@ in {
 
       aux =
         {
+          layer = "top";
           position = "bottom";
           output = [
             "HDMI-A-1"
@@ -543,6 +545,12 @@ in {
     };
   };
 
-  # Give on-click commands access to binaries they need
-  systemd.user.services.waybar.Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
+  systemd.user.services.waybar = {
+    # Give on-click commands access to binaries they need
+    Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
+    # Fix for niri startup
+    Install.WantedBy = lib.mkForce ["niri.service"];
+    Unit.Requires = ["niri.service"];
+    Unit.After = ["niri.service"];
+  };
 }

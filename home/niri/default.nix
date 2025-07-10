@@ -126,10 +126,10 @@ in {
 
     # Startup
     spawn-at-startup = [
+      {command = ["systemctl" "--user" "restart" "xdg-desktop-portal-gtk"];} # Fix for portal startup delay, see https://github.com/sodiboo/niri-flake/issues/509
       {command = ["ytmdesktop"];}
       {command = ["todoist-electron" "--ozone-platform-hint=auto"];}
       {command = ["systemctl" "--user" "restart" "kanshi"];}
-      {command = ["systemctl" "--user" "start" "waybar"];}
       {command = ["wlsunset-waybar"];}
       {command = ["zen"];}
     ];
