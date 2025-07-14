@@ -425,6 +425,9 @@ in {
           "Mod+n".action = sh "alacritty -e fish -ic lf";
           "Mod+n".hotkey-overlay.hidden = true;
 
+          # Calcu[M]athlator
+          #"Mod+m".action = sh "rofi -modi calc -show calc";
+
           # Network ([W]ifi) Selection
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
           "Mod+w".hotkey-overlay.hidden = true;
@@ -434,6 +437,10 @@ in {
           "Mod+e".hotkey-overlay.hidden = true;
           "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
           "Mod+Shift+e".hotkey-overlay.hidden = true;
+
+          # [S]ound Switcher
+          "Mod+s".action = spawn "sound-switcher";
+          "Mod+s".hotkey-overlay.hidden = true;
         }
       ];
   };
