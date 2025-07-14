@@ -387,7 +387,7 @@ in {
           "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Shift+Escape".allow-inhibiting = false;
 
-          "Mod+Shift+E".action = quit;
+          "Ctrl+Alt+Delete".action = quit;
         }
         {
           # Dynamic Cast
@@ -417,6 +417,10 @@ in {
 
           # Network ([W]ifi) Selection
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+
+          # Rofi[e]moji
+          "Mod+e".action = spawn "rofimoji";
+          "Mod+Shift+e".action = sh ["rofimoji" "--action" "clipboard"];
         }
       ];
   };
