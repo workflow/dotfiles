@@ -107,6 +107,10 @@ in {
     ];
   };
 
+  programs.wlogout = {
+    enable = true;
+  };
+
   # Wallpaper, until stylix supports it :)
   home.file.".local/share/wallpapers/gruvbox-light.png".source = ./wallpapers/gruvbox-light-rainbow.png;
   home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./wallpapers/gruvbox-dark-rainbow.png;
@@ -467,6 +471,9 @@ in {
 
           # Calcu[M]athlator
           #"Mod+m".action = sh "rofi -modi calc -show calc";
+
+          # Logout and Power Menu
+          "Mod+Pause".action = spawn "wlogout";
 
           # Network ([W]ifi) Selection
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
