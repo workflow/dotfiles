@@ -384,6 +384,7 @@ in {
           # The allow-inhibiting=false property can be applied to other binds as well,
           # which ensures niri always processes them, even when an inhibitor is active.
           "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
+          "Mod+Shift+Escape".allow-inhibiting = false;
 
           "Mod+Shift+E".action = quit;
         }
