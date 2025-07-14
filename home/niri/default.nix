@@ -406,21 +406,26 @@ in {
             then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
             else "brave --profile-directory='Default' --password-store=seahorse"
           );
+          "Mod+b".hotkey-overlay.hidden = true;
           "Mod+h".action = sh (
             if isFlexbox
             then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
             else "brave --profile-directory='Profile 1' --password-store=seahorse"
           );
+          "Mod+h".hotkey-overlay.hidden = true;
 
           # File Manager [n]avigate
           "Mod+n".action = sh "alacritty -e fish -ic lf";
+          "Mod+n".hotkey-overlay.hidden = true;
 
           # Network ([W]ifi) Selection
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+          "Mod+w".hotkey-overlay.hidden = true;
 
           # Rofi[e]moji
           "Mod+e".action = spawn "rofimoji";
           "Mod+Shift+e".action = sh ["rofimoji" "--action" "clipboard"];
+          "Mod+Shift+e".hotkey-overlay.hidden = true;
         }
       ];
   };
