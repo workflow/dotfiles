@@ -6,6 +6,7 @@
   ...
 }:
 with lib; let
+  isFlexbox = osConfig.networking.hostName == "flexbox";
   isNumenor = osConfig.networking.hostName == "numenor";
 
   leftScreen =
@@ -389,12 +390,27 @@ in {
           "Mod+Shift+E".action = quit;
         }
         {
+          # Dynamic Cast
           "Mod+Insert".action = set-dynamic-cast-window;
           "Mod+Shift+Insert".action = set-dynamic-cast-monitor;
           "Mod+Delete".action = clear-dynamic-cast-target;
 
+          # Fancy Moving
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
+        }
+        {
+          # Browser
+          "Mod+b".action = sh (
+            if isFlexbox
+            then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
+            else "brave --profile-directory='Default' --password-store=seahorse"
+          );
+          "Mod+h".action = sh (
+            if isFlexbox
+            then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
+            else "brave --profile-directory='Profile 1' --password-store=seahorse"
+          );
         }
       ];
   };
