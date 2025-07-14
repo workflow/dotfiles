@@ -2,9 +2,7 @@
   isImpermanent,
   lib,
   ...
-}: let
-  session = "sway";
-in {
+}: {
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     files = [
       "/etc/ly/save.ini" # Selected user and session
@@ -12,7 +10,7 @@ in {
   };
 
   services.displayManager = {
-    defaultSession = session;
+    defaultSession = "niri";
     ly = {
       enable = true;
       settings = {
@@ -22,6 +20,8 @@ in {
       };
     };
   };
+
+  programs.niri.enable = true;
 
   programs.sway = {
     enable = true;

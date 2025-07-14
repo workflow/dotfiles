@@ -37,7 +37,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Status Bar       |               [waybar](https://github.com/Alexays/Waybar)               |
 | Style Manager    |                [stylix](https://github.com/danth/stylix)                |
 | Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
-| Window Manager   |                 [Sway](https://github.com/swaywm/sway)                  |
+| Window Manager   |                 [Niri](https://github.com/YaLTeR/niri)                  |
 
 ## Lack of Aesthetics
 

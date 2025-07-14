@@ -22,7 +22,6 @@ in {
 
   services.cliphist = {
     enable = true;
-    systemdTargets = ["sway-session.target"];
   };
 
   home.packages = [cliphist-fuzzel-img pkgs.xdg-utils]; # For image copy/pasting

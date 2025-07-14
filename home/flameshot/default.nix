@@ -23,12 +23,4 @@ in {
       };
     };
   };
-
-  # Fix timing issue on start
-  systemd.user.services.flameshot = {
-    # Remove existing graphical-session.target
-    Install = lib.mkForce {
-      WantedBy = ["sway-session.target"];
-    };
-  };
 }

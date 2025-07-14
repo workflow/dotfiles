@@ -16,7 +16,9 @@
   isFlexbox = hostName == "flexbox";
 
   leftSection = {
-    modules-left = ["sway/workspaces" "sway/mode"];
+    modules-left = [
+      "niri/workspaces"
+    ];
   };
 
   centerSection = {
@@ -353,7 +355,7 @@
     mpris = {
       format = "{player_icon}";
       format-paused = "{status_icon}";
-      on-click-right = ''swaymsg "[app_id=\"YouTube Music Desktop App\"] focus"'';
+      on-click-right = ''niri msg action focus-window --id $(niri msg --json windows | jq -r '.[] | select(.app_id == "YouTube Music Desktop App") | .id')'';
       player-icons = {
         default = "▶";
         mpv = "";
@@ -404,7 +406,7 @@
       "privacy"
       "custom/dunst-dnd"
       "idle_inhibitor"
-      "sway/language"
+      "niri/language"
       "clock"
       "tray"
     ];
@@ -431,10 +433,13 @@
       };
     };
 
-    "sway/language" = {
-      on-click = "swaymsg input type:keyboard xkb_switch_layout next";
-      on-click-right = "swaymsg input type:keyboard xkb_switch_layout prev";
-      on-click-middle = "swaymsg input type:keyboard xkb_switch_layout 0";
+    "niri/language" = {
+      # TODO: https://github.com/Alexays/Waybar/issues/3657
+      format = "<span color='#fabd2f'>{short}</span>";
+      format-English = "us";
+      on-click = "niri msg action switch-layout next";
+      on-click-right = "niri msg action switch-layout prev";
+      on-click-middle = "niri msg action switch-layout 0";
     };
 
     clock = {
@@ -474,6 +479,7 @@ in {
     settings = {
       main =
         {
+          layer = "top";
           position = "bottom";
           expand-center = true;
           output = [
@@ -485,6 +491,7 @@ in {
 
       aux =
         {
+          layer = "top";
           position = "bottom";
           output = [
             "HDMI-A-1"
@@ -535,10 +542,15 @@ in {
       enable = true;
       enableDebug = false;
       enableInspect = false;
-      target = "sway-session.target";
     };
   };
 
-  # Give on-click commands access to binaries they need
-  systemd.user.services.waybar.Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
+  systemd.user.services.waybar = {
+    # Give on-click commands access to binaries they need
+    Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
+    # Fix for niri startup
+    Install.WantedBy = lib.mkForce ["niri.service"];
+    Unit.Requires = ["niri.service"];
+    Unit.After = ["niri.service"];
+  };
 }

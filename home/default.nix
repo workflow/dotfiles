@@ -65,6 +65,7 @@
       ./neovim
       ./networkmanager-dmenu
       ./nh # https://github.com/nix-community/nh
+      ./niri
       ./nix-index
       ./nushell
       ./obs # OBS Studio
