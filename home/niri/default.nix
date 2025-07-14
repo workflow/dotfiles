@@ -362,12 +362,12 @@ in {
           "Mod+V".action = toggle-window-floating;
           "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-          "Mod+W".action = sh (
+          "Mod+Shift+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
             ]
           );
-          "Mod+W".hotkey-overlay.title = "Restart Waybar";
+          "Mod+Shift+W".hotkey-overlay.title = "Restart Waybar";
 
           "Mod+Space".action = switch-layout "next";
           "Mod+Shift+Space".action = switch-layout "prev";
@@ -414,6 +414,9 @@ in {
 
           # File Manager [n]avigate
           "Mod+n".action = sh "alacritty -e fish -ic lf";
+
+          # Network ([W]ifi) Selection
+          "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
         }
       ];
   };
