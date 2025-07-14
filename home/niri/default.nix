@@ -25,6 +25,13 @@ with lib; let
   locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
   suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
+  # Wallpaper, until stylix supports it :)
+  wallpaperSetter = pkgs.writeShellApplication {
+    name = "niri-set-wallpaper";
+    runtimeInputs = [pkgs.swaybg];
+    text = builtins.readFile ./scripts/niri-set-wallpaper.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -63,6 +70,7 @@ in {
     brightnessctl # For brightness +/- keys
     qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     playerctl # For play/pause etc... controlling media players that implement MPRIS
+    swaybg # Minmal wallpaper setter for Sway
   ];
 
   programs.swaylock = {
@@ -99,6 +107,10 @@ in {
     ];
   };
 
+  # Wallpaper, until stylix supports it :)
+  home.file.".local/share/wallpapers/gruvbox-light.png".source = ./wallpapers/gruvbox-light-rainbow.png;
+  home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./wallpapers/gruvbox-dark-rainbow.png;
+
   programs.niri.settings = rec {
     # Environment
     environment = {
@@ -128,10 +140,11 @@ in {
     # Startup
     spawn-at-startup = [
       {command = ["systemctl" "--user" "restart" "xdg-desktop-portal-gtk"];} # Fix for portal startup delay, see https://github.com/sodiboo/niri-flake/issues/509
+      {command = ["systemctl" "--user" "restart" "kanshi"];}
       {command = ["ytmdesktop"];}
       {command = ["todoist-electron" "--ozone-platform-hint=auto"];}
       {command = ["seahorse"];} # To unlock keyring
-      {command = ["systemctl" "--user" "restart" "kanshi"];}
+      {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
       {command = ["zen"];}
     ];
