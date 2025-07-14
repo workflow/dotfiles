@@ -414,6 +414,13 @@ in {
           );
           "Mod+h".hotkey-overlay.hidden = true;
 
+          # Cliphist via fuzzel
+          "Mod+p".action = spawn "cliphist-fuzzel-img";
+          "Mod+p".hotkey-overlay.hidden = true;
+          # Single item clearing
+          "Mod+Shift+p".action = sh "cliphist list | fuzzel --dmenu | cliphist delete";
+          "Mod+Shift+p".hotkey-overlay.hidden = true;
+
           # File Manager [n]avigate
           "Mod+n".action = sh "alacritty -e fish -ic lf";
           "Mod+n".hotkey-overlay.hidden = true;
@@ -424,7 +431,8 @@ in {
 
           # Rofi[e]moji
           "Mod+e".action = spawn "rofimoji";
-          "Mod+Shift+e".action = sh ["rofimoji" "--action" "clipboard"];
+          "Mod+e".hotkey-overlay.hidden = true;
+          "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
           "Mod+Shift+e".hotkey-overlay.hidden = true;
         }
       ];
