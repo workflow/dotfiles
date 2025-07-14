@@ -385,9 +385,12 @@ in {
           "Mod+Space".action = switch-layout "next";
           "Mod+Shift+Space".action = switch-layout "prev";
 
-          "Mod+Shift+S".action = screenshot;
-          "Print".action.screenshot-screen = [];
-          "Mod+Print".action = screenshot-window;
+          "Print".action = screenshot;
+          "Print".hotkey-overlay.title = "Screenshot via Niri";
+          "Mod+Print".action = sh "QT_SCALE_FACTOR=0.5 flameshot gui";
+          "Mod+Print".hotkey-overlay.title = "Screenshot via Flameshot";
+          "Mod+Shift+Print".action.screenshot-screen = [];
+          "Mod+Shift+Print".hotkey-overlay.title = "Instant Screenshot";
 
           # Applications such as remote-desktop clients and software KVM switches may
           # request that niri stops processing the keyboard shortcuts defined here
