@@ -267,6 +267,8 @@ in {
           "Mod+D".hotkey-overlay.title = "Run an Application: fuzzel";
           "Mod+Shift+X".action = spawn "swaylock";
           "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
+          "Mod+Shift+Ctrl+X".action = power-on-monitors;
+          "Mod+Shift+Ctrl+X".hotkey-overlay.title = "Power off Monitors";
 
           "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
           "XF86AudioRaiseVolume".allow-when-locked = true;
@@ -368,12 +370,24 @@ in {
 
           "Mod+Space".action = switch-layout "next";
           "Mod+Shift+Space".action = switch-layout "prev";
-        }
-        {
+
           "Mod+Shift+S".action = screenshot;
           "Print".action.screenshot-screen = [];
           "Mod+Print".action = screenshot-window;
 
+          # Applications such as remote-desktop clients and software KVM switches may
+          # request that niri stops processing the keyboard shortcuts defined here
+          # so they may, for example, forward the key presses as-is to a remote machine.
+          # It's a good idea to bind an escape hatch to toggle the inhibitor,
+          # so a buggy application can't hold your session hostage.
+          #
+          # The allow-inhibiting=false property can be applied to other binds as well,
+          # which ensures niri always processes them, even when an inhibitor is active.
+          "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
+
+          "Mod+Shift+E".action = quit;
+        }
+        {
           "Mod+Insert".action = set-dynamic-cast-window;
           "Mod+Shift+Insert".action = set-dynamic-cast-monitor;
           "Mod+Delete".action = clear-dynamic-cast-target;
@@ -382,9 +396,6 @@ in {
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
         }
         {
-          "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
-          "Mod+Shift+E".action = quit;
-
           "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
         }
       ];
