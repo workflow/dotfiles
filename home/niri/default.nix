@@ -411,6 +411,9 @@ in {
             then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
             else "brave --profile-directory='Profile 1' --password-store=seahorse"
           );
+
+          # File Manager [n]avigate
+          "Mod+n".action = sh "alacritty -e fish -ic lf";
         }
       ];
   };
