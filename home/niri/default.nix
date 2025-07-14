@@ -195,9 +195,29 @@ in {
         matches = [
           {title = ".*Pavucontrol.*";}
           {title = ".*zoom.*";}
+        ];
+        open-floating = true;
+      }
+      # Flameshot Fixes
+      {
+        matches = [
           {app-id = "flameshot";}
         ];
         open-floating = true;
+        open-fullscreen = false;
+        open-on-workspace = null; # Stay on current workspace
+        geometry-corner-radius = {
+          top-left = 0.0;
+          top-right = 0.0;
+          bottom-left = 0.0;
+          bottom-right = 0.0;
+        };
+        border = {
+          enable = false;
+        };
+        shadow = {
+          enable = false;
+        };
       }
     ];
 
