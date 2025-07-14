@@ -146,7 +146,7 @@ in {
       {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen"];}
+      {command = ["zen chatgpt.com"];}
     ];
 
     # Window Rules
@@ -164,7 +164,10 @@ in {
       # }
       {
         matches = [
-          {app-id = "^zen-beta$";}
+          {
+            app-id = "^zen-beta$";
+            title = ".*ChatGPT.*";
+          }
         ];
         open-on-workspace = " a";
       }
@@ -442,11 +445,7 @@ in {
         }
         {
           # Browser
-          "Mod+b".action = sh (
-            if isFlexbox
-            then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
-            else "brave --profile-directory='Default' --password-store=seahorse"
-          );
+          "Mod+b".action = spawn "zen";
           "Mod+b".hotkey-overlay.hidden = true;
           "Mod+h".action = sh (
             if isFlexbox
