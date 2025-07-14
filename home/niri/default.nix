@@ -286,6 +286,11 @@ in {
     # Style
     prefer-no-csd = true;
 
+    # Animations
+    animations = {
+      workspace-switch.enable = false;
+    };
+
     # Keybindings
     hotkey-overlay.skip-at-startup = true;
     binds = with config.lib.niri.actions; let
