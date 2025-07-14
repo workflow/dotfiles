@@ -267,8 +267,8 @@ in {
           "Mod+D".hotkey-overlay.title = "Run an Application: fuzzel";
           "Mod+Shift+X".action = spawn "swaylock";
           "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
-          "Mod+Shift+Ctrl+X".action = power-on-monitors;
-          "Mod+Shift+Ctrl+X".hotkey-overlay.title = "Power off Monitors";
+          "Mod+Shift+z".action = power-off-monitors;
+          "Mod+Shift+z".hotkey-overlay.title = "Power off Monitors";
 
           "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
           "XF86AudioRaiseVolume".allow-when-locked = true;
@@ -395,9 +395,6 @@ in {
 
           "Mod+Tab".action = focus-window-down-or-column-right;
           "Mod+Shift+Tab".action = focus-window-up-or-column-left;
-        }
-        {
-          "Mod+Shift+Ctrl+T".action = toggle-debug-tint;
         }
       ];
   };
