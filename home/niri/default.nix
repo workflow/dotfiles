@@ -190,47 +190,47 @@ in {
     workspaces = {
       "aa" = {
         name = " a";
-        open-on-output = "${rightScreen}";
+        open-on-output = rightScreen;
       };
       "b1" = {
         name = " 1";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
       "c2" = {
         name = " 2";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
       "d3" = {
         name = " 3";
-        open-on-output = "${rightScreen}";
+        open-on-output = rightScreen;
       };
       "e4" = {
         name = " 4";
-        open-on-output = "${leftScreen}";
+        open-on-output = leftScreen;
       };
       "f5" = {
         name = " 5";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
       "g6" = {
         name = " 6";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
       "h7" = {
         name = " 7";
-        open-on-output = "${rightScreen}";
+        open-on-output = rightScreen;
       };
       "i8" = {
         name = " 8";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
       "j9" = {
         name = " 9";
-        open-on-output = "${leftScreen}";
+        open-on-output = leftScreen;
       };
       "k10" = {
         name = " 10";
-        open-on-output = "${mainScreen}";
+        open-on-output = mainScreen;
       };
     };
 
