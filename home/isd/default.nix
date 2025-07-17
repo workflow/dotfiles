@@ -13,6 +13,6 @@
   };
 
   home.packages = [
-    pkgs.unstable.isd
+    pkgs.isd
   ];
 }
