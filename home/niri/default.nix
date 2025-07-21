@@ -491,6 +491,10 @@ in {
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
           "Mod+w".hotkey-overlay.hidden = true;
 
+          # Overview
+          "Mod+o".action = toggle-overview;
+          "Mod+o".repeat = false;
+
           # Rofi[e]moji
           "Mod+e".action = spawn "rofimoji";
           "Mod+e".hotkey-overlay.hidden = true;
