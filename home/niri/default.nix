@@ -130,9 +130,11 @@ in {
         };
       };
       touchpad = {
+        natural-scroll = false;
         tap = true;
         tap-button-map = "left-right-middle";
       };
+      focus-follows-mouse.enable = true;
     };
 
     # Cursor Settings
