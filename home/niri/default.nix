@@ -150,6 +150,7 @@ in {
       {command = ["systemctl" "--user" "restart" "xdg-desktop-portal-gtk"];} # Fix for portal startup delay, see https://github.com/sodiboo/niri-flake/issues/509
       {command = ["systemctl" "--user" "restart" "kanshi"];}
       {command = ["systemctl" "--user" "restart" "app-blueman@autostart"];}
+      {command = ["obsidian"];}
       {command = ["ytmdesktop"];}
       {command = ["todoist-electron" "--ozone-platform-hint=auto"];}
       {command = ["seahorse"];} # To unlock keyring
