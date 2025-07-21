@@ -20,7 +20,7 @@
     dira = "direnv allow";
     dird = "direnv deny";
     dirr = "direnv reload";
-    dark-theme = "nh os test --no-specialisation";
+    dark-theme = "nh os test --no-specialisation && niri-set-wallpaper";
     dr = "direnv reload";
 
     ga = "git add -p";
@@ -59,7 +59,7 @@
     kc-kind = "kubectl --context kind-kind";
 
     lh = "/run/current-system/sw/bin/ls -ah";
-    light-theme = "nh os test --specialisation light";
+    light-theme = "nh os test --specialisation light && niri-set-wallpaper";
 
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 

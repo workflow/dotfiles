@@ -28,7 +28,7 @@ with lib; let
   # Wallpaper, until stylix supports it :)
   wallpaperSetter = pkgs.writeShellApplication {
     name = "niri-set-wallpaper";
-    runtimeInputs = [pkgs.swaybg];
+    runtimeInputs = [pkgs.swaybg pkgs.procps];
     text = builtins.readFile ./scripts/niri-set-wallpaper.sh;
   };
 
@@ -71,6 +71,7 @@ in {
     qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     playerctl # For play/pause etc... controlling media players that implement MPRIS
     swaybg # Minmal wallpaper setter for Sway
+    wallpaperSetter # Specialization-aware wallpaper setting
   ];
 
   programs.swaylock = {
@@ -412,6 +413,7 @@ in {
           "Mod+Shift+W".action = sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
+              "${wallpaperSetter}/bin/niri-set-wallpaper"
             ]
           );
           "Mod+Shift+W".hotkey-overlay.title = "Restart Waybar";
@@ -439,6 +441,7 @@ in {
 
           "Ctrl+Alt+Delete".action = quit;
         }
+
         {
           # Dynamic Cast
           "Mod+Insert".action = set-dynamic-cast-window;
