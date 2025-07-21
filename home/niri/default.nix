@@ -131,6 +131,7 @@ in {
         };
       };
       touchpad = {
+        dwt = true; # Disable touchpad while typing
         natural-scroll = false;
         tap = true;
         tap-button-map = "left-right-middle";
