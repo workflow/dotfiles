@@ -454,8 +454,14 @@ in {
         }
         {
           # Browser
-          "Mod+b".action = spawn "zen";
+          "Mod+b".action = sh (
+            if isFlexbox
+            then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
+            else "brave --profile-directory='Default' --password-store=seahorse"
+          );
           "Mod+b".hotkey-overlay.hidden = true;
+          "Mod+Shift+b".action = spawn "zen";
+          "Mod+Shift+b".hotkey-overlay.hidden = true;
           "Mod+h".action = sh (
             if isFlexbox
             then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
