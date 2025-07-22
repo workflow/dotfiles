@@ -32,6 +32,13 @@ with lib; let
     text = builtins.readFile ./scripts/niri-set-wallpaper.sh;
   };
 
+  # Window Picker a la rofi
+  windowPicker = pkgs.writeShellApplication {
+    name = "niri-pick-window";
+    runtimeInputs = [pkgs.niri];
+    text = builtins.readFile ./scripts/niri-pick-window.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -72,6 +79,7 @@ in {
     playerctl # For play/pause etc... controlling media players that implement MPRIS
     swaybg # Minmal wallpaper setter for Sway
     wallpaperSetter # Specialization-aware wallpaper setting
+    windowPicker # niri-pick-window
   ];
 
   programs.swaylock = {
@@ -317,6 +325,8 @@ in {
           "Mod+Return".hotkey-overlay.title = "Open a Terminal: alacritty";
           "Mod+D".action = spawn "fuzzel";
           "Mod+D".hotkey-overlay.title = "Run an Application: fuzzel";
+          "Mod+Shift+D".action = spawn "${windowPicker}/bin/niri-pick-window";
+          "Mod+Shift+D".hotkey-overlay.title = "Pick a Window: niri-pick-window";
           "Mod+Shift+X".action = spawn "swaylock";
           "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
           "Mod+Shift+z".action = power-off-monitors;
