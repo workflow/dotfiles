@@ -240,6 +240,14 @@ in {
           enable = false;
         };
       }
+      # Block from screencasting
+      {
+        matches = [
+          {app-id = "^Bitwarden$";}
+          {app-id = "^com.obsproject.Studio$";}
+        ];
+        block-out-from = "screen-capture";
+      }
     ];
 
     # Named Workspaces
