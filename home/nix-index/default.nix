@@ -2,6 +2,7 @@
   inputs,
   isImpermanent,
   lib,
+  pkgs,
   ...
 }: {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
@@ -17,5 +18,9 @@
     enable = true;
   };
 
-  programs.nix-index-database.comma.enable = true;
+  # Use unstable comma to fix compatibility with nix-index 0.1.9
+  programs.nix-index-database.comma.enable = false;
+  home.packages = [
+    pkgs.unstable.comma
+  ];
 }
