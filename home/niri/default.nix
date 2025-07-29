@@ -464,9 +464,9 @@ in {
         }
 
         {
-          # Dynamic Cast
-          "Mod+Insert".action = set-dynamic-cast-window;
-          "Mod+Shift+Insert".action = set-dynamic-cast-monitor;
+          # Dynamic Cast ([G]rab Window or Screen)
+          "Mod+G".action = set-dynamic-cast-window;
+          "Mod+Shift+G".action = set-dynamic-cast-monitor;
           "Mod+Delete".action = clear-dynamic-cast-target;
 
           # Fancy Moving
