@@ -28,19 +28,18 @@
     enable = true;
     config = {
       common = {
-        default = ["wlr" "gtk"];
+        default = ["gnome" "gtk"];
       };
       niri = {
-        default = ["wlr" "gtk"];
-        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
-        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+        default = ["gnome" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
       };
     };
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-gtk
     ];
-    wlr.enable = true;
   };
 
   programs.sway = {
