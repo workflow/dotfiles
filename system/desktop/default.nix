@@ -1,6 +1,7 @@
 {
   isImpermanent,
   lib,
+  pkgs,
   ...
 }: {
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
@@ -22,6 +23,25 @@
   };
 
   programs.niri.enable = true;
+  # XDG Portal Settings For Niri
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = ["wlr" "gtk"];
+      };
+      niri = {
+        default = ["wlr" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+      };
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    wlr.enable = true;
+  };
 
   programs.sway = {
     enable = true;
