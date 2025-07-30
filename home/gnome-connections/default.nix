@@ -7,13 +7,11 @@
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".config/freerdp" # server keys connected to
-      ".config/remmina"
-      ".local/share/remmina"
-      ".cache/remmina"
+      ".local/share/gnome-connections" # connection profiles and data
     ];
   };
 
   home.packages = [
-    pkgs.remmina
+    pkgs.gnome-connections
   ];
 }

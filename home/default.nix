@@ -47,6 +47,7 @@
       ./galaxy-buds-client
       ./gimp
       ./git
+      ./gnome-connections # RDP/VNC Client for Wayland
       ./gtk-qt
       ./isd # Interactive Systemd TUI in Python
       ./k9s
@@ -77,7 +78,6 @@
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./qalculate # Calculator
-      ./remmina # Remote Desktop Client
       ./rofi
       ./rofimoji
       ./showmethekey # screenkey for Wayland, show key presses
