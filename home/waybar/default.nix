@@ -476,7 +476,7 @@
 in {
   programs.waybar = {
     enable = true;
-
+    package = pkgs.nixpkgs-waybar.waybar;
     settings = {
       main =
         {
