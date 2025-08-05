@@ -223,6 +223,7 @@ in {
         PATH = "$HOME/bin:$PATH";
         NIXOS_CONFIG = "$HOME/code/nixos-config/";
         DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
+        NIXOS_OZONE_WL = "1"; # Enable Ozone-Wayland for Electron apps and Chromium
       }
       // lib.optionalAttrs isNvidia {
         LIBVA_DRIVER_NAME = "nvidia";
