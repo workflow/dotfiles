@@ -20,7 +20,7 @@
     name = "Todoist";
     comment = "The world's #1 task manager and to-do list app";
     exec = "todoist-electron --ozone-platform-hint=auto %U";
-    icon = "todoist";
+    icon = "com.todoist.Todoist";
     terminal = false;
     categories = ["Office" "ProjectManagement"];
     mimeType = ["x-scheme-handler/todoist"];
