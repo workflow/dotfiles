@@ -4,10 +4,7 @@
   lib,
   pkgs,
   ...
-}: let
-  isFlexbox = config.networking.hostName == "flexbox";
-  isNumenor = config.networking.hostName == "numenor";
-in {
+}: {
   environment.persistence."/persist/system" = lib.mkIf isImpermanent {
     directories = [
       "/var/lib/containers" # Podman
@@ -37,20 +34,24 @@ in {
   # Allow connecting to resolved DNS from inside Docker containers
   networking.firewall.interfaces.docker0.allowedTCPPorts = [53];
   networking.firewall.interfaces.docker0.allowedUDPPorts = [53];
-  # Kind
-  networking.firewall.interfaces.br-19583dda413b = lib.mkIf isFlexbox {
-    allowedTCPPorts = [53];
-    allowedUDPPorts = [53];
-  };
-  networking.firewall.interfaces.br-3815f82c1c4c = lib.mkIf isNumenor {
-    allowedTCPPorts = [53];
-    allowedUDPPorts = [53];
-  };
-  # Ad-hoc (Docker Compose)
-  networking.firewall.interfaces.br-1a132ab74d09 = lib.mkIf isNumenor {
-    allowedTCPPorts = [53];
-    allowedUDPPorts = [53];
-  };
+
+  # Allow DNS on all Docker bridge interfaces (br-*)
+  networking.firewall.extraCommands = ''
+    # Allow DNS (port 53) on all Docker bridge interfaces
+    for iface in $(ip link show | grep -o 'br-[a-f0-9]\{12\}' || true); do
+      if [ -n "$iface" ]; then
+        iptables -A nixos-fw -i "$iface" -p tcp --dport 53 -j ACCEPT
+        iptables -A nixos-fw -i "$iface" -p udp --dport 53 -j ACCEPT
+      fi
+    done
+
+    # Allow Docker containers to reach Tailscale networks
+    # Insert rule before Tailscale's DROP rule to allow Docker -> Tailscale traffic
+    # iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.64.0.0/10 -j ACCEPT
+    # iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.100.0.0/16 -j ACCEPT
+    # iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.64.0.0/10 -j ACCEPT
+    # iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.100.0.0/16 -j ACCEPT
+  '';
 
   virtualisation.libvirtd.enable = true;
 
