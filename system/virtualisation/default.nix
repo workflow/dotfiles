@@ -47,10 +47,18 @@
 
     # Allow Docker containers to reach Tailscale networks
     # Insert rule before Tailscale's DROP rule to allow Docker -> Tailscale traffic
-    # iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.64.0.0/10 -j ACCEPT
-    # iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.100.0.0/16 -j ACCEPT
-    # iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.64.0.0/10 -j ACCEPT
-    # iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.100.0.0/16 -j ACCEPT
+    iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.64.0.0/10 -j ACCEPT
+    iptables -I ts-forward 3 -s 172.17.0.0/16 -d 100.100.0.0/16 -j ACCEPT
+    iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.64.0.0/10 -j ACCEPT
+    iptables -I ts-forward 3 -s 172.18.0.0/16 -d 100.100.0.0/16 -j ACCEPT
+
+    # Fix MTU issues for Docker -> Tailscale traffic
+    # Clamp MSS to account for Tailscale's MTU of 1280
+    # Without this, HTTPS connections from Docker to Tailscale frequently fail.
+    iptables -t mangle -A FORWARD -s 172.17.0.0/16 -d 100.64.0.0/10 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+    iptables -t mangle -A FORWARD -s 172.18.0.0/16 -d 100.64.0.0/10 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+    iptables -t mangle -A FORWARD -s 172.17.0.0/16 -d 100.100.0.0/16 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
+    iptables -t mangle -A FORWARD -s 172.18.0.0/16 -d 100.100.0.0/16 -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
   '';
 
   virtualisation.libvirtd.enable = true;
