@@ -7,7 +7,7 @@
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
       ".config/freerdp" # server keys connected to
-      ".local/share/gnome-connections" # connection profiles and data
+      ".config/dconf" # gnome-connections uses dconf/GSettings for storing connection profiles and settings
     ];
   };
 
