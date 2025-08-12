@@ -40,8 +40,9 @@
     # Allow DNS (port 53) on all Docker bridge interfaces
     for iface in $(${pkgs.iproute2}/bin/ip link show | grep -o 'br-[a-f0-9]\{12\}' || true); do
       if [ -n "$iface" ]; then
-        iptables -A nixos-fw -i "$iface" -p tcp --dport 53 -j ACCEPT
-        iptables -A nixos-fw -i "$iface" -p udp --dport 53 -j ACCEPT
+        # Insert before default REJECT so these rules are effective
+        iptables -I nixos-fw 1 -i "$iface" -p tcp --dport 53 -j ACCEPT
+        iptables -I nixos-fw 1 -i "$iface" -p udp --dport 53 -j ACCEPT
       fi
     done
 
