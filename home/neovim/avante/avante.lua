@@ -32,6 +32,10 @@ require('avante').setup({
 			},
 		},
 		copilot = {
+			model = "gpt-5",
+		},
+		copilot_claude = {
+			__inherited_from = 'copilot',
 			model = "claude-sonnet-4",
 		},
 		copilot_gemini = {
