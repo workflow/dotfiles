@@ -148,7 +148,7 @@
     };
 
     "group/network" = {
-      modules = ["network" "network#tailscale" "network#macgyver" "network#mullvad" "network#wireguard"];
+      modules = ["network" "network#tailscale" "custom/macgyver" "network#mullvad" "network#wireguard"];
       orientation = "inherit";
     };
 
@@ -179,17 +179,17 @@
       on-click-middle = "tailscale down";
     };
 
-    "network#macgyver" = {
-      interface = "veth0*";
+    "custom/macgyver" = {
+      exec = "macgyver-status";
+      return-type = "json";
       interval = 3;
-      format-disconnected = " ";
-      format-disabled = " ";
-      format-linked = " ";
-      format = " ";
-      format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
-      tooltip-format = "  MacGyver IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-      tooltip-format-linked = " MacGyver down. Right click to connect.";
-      tooltip-format-disabled = " MacGyver down. Right click to connect.";
+      format = "{icon}";
+      format-icons = {
+        up = "";
+        down = "";
+        error = "❌";
+      };
+      tooltip-format = " MacGyver is {text}";
       on-click-right = "sudo systemctl start macgyver";
       on-click-middle = "sudo systemctl stop macgyver";
     };
@@ -524,6 +524,10 @@ in {
 
       #custom-dunst-dnd.dnd {
         color: @base0A;
+      }
+
+      #custom-macgyver.up {
+        color: @base0B;
       }
 
       #custom-wlsunset.off {
