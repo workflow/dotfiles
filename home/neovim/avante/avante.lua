@@ -7,7 +7,7 @@ require('avante').setup({
 	},
 	providers = {
 		openai = {
-			model = "gpt-4.1-mini",
+			model = "gpt-5",
 		},
 		openai_4_1 = {
 			__inherited_from = 'openai',
