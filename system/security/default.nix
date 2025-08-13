@@ -23,13 +23,13 @@
 
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
-    # TODO: still needed?
-    gcr # Gnome crypto services for gnome-keyring
+    gcr # Gnome crypto services for gnome-keyring (needed for SSH agent integration)
+    libsecret # Already in home packages but ensuring it's available system-wide
   ];
 
   programs.gnupg.agent = {
     enable = true;
-    enableSSHSupport = true;
+    enableSSHSupport = false; # Let GNOME Keyring handle SSH agent
     pinentryPackage = pkgs.pinentry-gnome3;
   };
 
