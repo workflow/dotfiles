@@ -46,6 +46,11 @@
       fi
     done
 
+    # Allow cross-network DNS resolution between Docker networks
+    # This allows containers on any Docker network to reach DNS servers on other Docker networks
+    iptables -I FORWARD 1 -s 172.16.0.0/12 -d 172.16.0.0/12 -p tcp --dport 53 -j ACCEPT
+    iptables -I FORWARD 1 -s 172.16.0.0/12 -d 172.16.0.0/12 -p udp --dport 53 -j ACCEPT
+
     # Fix MTU issues for Docker -> Tailscale traffic
     # Clamp MSS to account for Tailscale's MTU of 1280
     # Without this, HTTPS connections from Docker to Tailscale frequently fail.
