@@ -22,6 +22,10 @@
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets.url = "path:/home/farlion/code/nixos-secrets";
     stylix.url = "github:danth/stylix/release-25.05";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,6 +41,7 @@
     niri,
     nur,
     secrets,
+    sops-nix,
     stylix,
     ...
   } @ inputs: let
@@ -48,6 +53,7 @@
       ./configuration.nix
       nur.modules.nixos.default
       impermanence.nixosModules.impermanence
+      sops-nix.nixosModules.sops
       stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       niri.nixosModules.niri

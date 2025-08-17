@@ -32,6 +32,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Notifications    |             [Dunst](https://github.com/dunst-project/dunst)             |
 | Prompt           |            [Starship](https://github.com/starship/starship)             |
 | Power Management |       [Auto-Cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)       |
+| Secrets Mgmt     |              [Sops-Nix](https://github.com/Mic92/sops-nix)              |
 | Shell            |                     [Fish](https://fishshell.com/)                      |
 | Shell when data  |                   [Nushell](https://www.nushell.sh/)                    |
 | Status Bar       |               [waybar](https://github.com/Alexays/Waybar)               |
