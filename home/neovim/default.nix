@@ -52,6 +52,7 @@ in {
       ./treesitter
       ./trouble
       ./undotree
+      ./vim-terraform
       ./vim-visual-multi
     ]
     ++ lib.optionals isLightTheme [
