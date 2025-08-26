@@ -135,7 +135,7 @@ in {
       keyboard = {
         xkb = {
           layout = "us,de,ua,pt";
-          options = "eurosign:e,caps:escape_shifted_capslock,terminate:ctrl_alt_bksp";
+          options = "eurosign:e,terminate:ctrl_alt_bksp";
         };
       };
       touchpad = {
