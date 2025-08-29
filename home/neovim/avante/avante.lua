@@ -64,7 +64,7 @@ require('avante').setup({
 	hints = { enabled = false },
 	provider = "copilot",
 	system_prompt =
-	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. Do not write a log of what you did to AGENTS.md. Do not offer to git commit or push changes.",
+	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. When writing to AGENTS.md, don't document history, only note architectural changes that would be important to know going forward. Do not offer to git commit or push changes.",
 
 	web_search_engine = {
 		provider = "kagi",
