@@ -61,6 +61,12 @@ in {
     53317 # Localsend
   ];
 
+  # BBR -> Better performance over weak/jittery links
+  boot.kernel.sysctl = {
+    "net.core.default_qdisc" = "fq";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
+
   networking.networkmanager = {
     enable = true;
   };
