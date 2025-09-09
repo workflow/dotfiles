@@ -140,6 +140,7 @@ in {
       };
       touchpad = {
         dwt = true; # Disable touchpad while typing
+        disabled-on-external-mouse = true;
         natural-scroll = false;
         tap = true;
         tap-button-map = "left-right-middle";
