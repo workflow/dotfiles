@@ -72,8 +72,9 @@ in {
   };
   users.users.farlion.extraGroups = ["networkmanager"];
 
-  # Prevent IPv6 leaks when using VPNs
+  # IPv6
   networking.enableIPv6 = false;
+  boot.kernelParams = ["ipv6.disable=1"];
 
   # Disabling DHCPCD in favor of NetworkManager
   networking.dhcpcd.enable = false;
