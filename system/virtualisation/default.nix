@@ -29,6 +29,9 @@
       # Have containers listen on localhost instead of 0.0.0.0,
       # see https://github.com/NixOS/nixpkgs/issues/111852#issuecomment-1954656069
       ip = "127.0.0.1";
+      ipv6 = false;
+      ip6tables = false;
+      iptables = true;
     };
   };
   # Allow connecting to resolved DNS from inside Docker containers
