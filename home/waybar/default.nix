@@ -346,7 +346,6 @@
         default = ["" ""];
       };
       max-volume = 200;
-      scroll-step = 5;
       on-click = "pavucontrol --tab=3";
       on-click-right = "alacritty --command pulsemixer";
       on-click-middle = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
