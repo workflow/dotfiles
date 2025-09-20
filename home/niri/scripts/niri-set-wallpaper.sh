@@ -12,12 +12,15 @@ fi
 case "$SPEC" in
 
 light)
-	swaybg -i "${wallpapersDir}/gruvbox-light.png" -m fill
+	swaybg -i "${wallpapersDir}/gruvbox-light.png" -m fill &
+	disown
 	;;
 dark)
-	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill
+	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill &
+	disown
 	;;
 *)
-	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill
+	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill &
+	disown
 	;;
 esac
