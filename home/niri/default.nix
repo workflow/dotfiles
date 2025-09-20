@@ -99,6 +99,10 @@ in {
         event = "before-sleep";
         command = "${locker}";
       }
+      {
+        event = "lock";
+        command = "${locker}";
+      }
     ];
     timeouts = [
       {

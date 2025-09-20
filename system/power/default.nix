@@ -10,6 +10,8 @@ in {
   services.thermald.enable = true;
 
   services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.lidSwitchDocked = "lock";
+  services.logind.lidSwitchExternalPower = "lock";
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h
   '';
