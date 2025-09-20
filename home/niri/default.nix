@@ -80,6 +80,7 @@ in {
     swaybg # Minmal wallpaper setter for Sway
     wallpaperSetter # Specialization-aware wallpaper setting
     windowPicker # niri-pick-window
+    xwayland-satellite # For apps that need Xwayland
   ];
 
   programs.swaylock = {
