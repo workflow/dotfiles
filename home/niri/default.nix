@@ -302,12 +302,20 @@ in {
 
     # Layout
     layout = {
-      gaps = 4; # Default 16
-
       border = {
         enable = true;
         width = 2; # Default 4
       };
+
+      default-column-width.proportion = 1. / 2.;
+
+      gaps = 4; # Default 16
+
+      preset-column-widths = [
+        {proportion = 1. / 2.;}
+        {proportion = 1. / 3.;}
+        {proportion = 2. / 3.;}
+      ];
 
       shadow = {
         enable = true;
