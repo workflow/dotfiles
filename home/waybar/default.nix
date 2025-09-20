@@ -405,7 +405,7 @@
     modules-right = [
       "privacy"
       "custom/dunst-dnd"
-      "idle_inhibitor"
+      "custom/caffeinate"
       "niri/language"
       "clock"
       "tray"
@@ -425,12 +425,18 @@
       on-click-right = "dunstctl set-paused false";
     };
 
-    idle_inhibitor = {
-      format = "{icon}";
+    "custom/caffeinate" = {
+      exec = "if systemctl --user is-active swayidle >/dev/null 2>&1; then echo '{\"alt\": \"deactivated\", \"class\": \"deactivated\"}'; else echo '{\"alt\": \"activated\", \"class\": \"activated\"}'; fi";
+      return-type = "json";
+      interval = 1;
+      format = " {icon}";
       format-icons = {
         activated = "";
-        deactivated = "";
+        deactivated = "";
       };
+      on-click = "systemctl --user stop swayidle";
+      on-click-right = "systemctl --user start swayidle";
+      on-click-middle = "systemctl --user start swayidle";
     };
 
     "niri/language" = {
@@ -533,7 +539,7 @@ in {
         color: @base0A;
       }
 
-      #idle_inhibitor.activated {
+      #custom-caffeinate.activated {
         color: @base0A;
       }
 
