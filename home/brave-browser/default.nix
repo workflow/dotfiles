@@ -6,6 +6,24 @@
   ...
 }: let
   isFlexbox = osConfig.networking.hostName == "flexbox";
+  # Try to focus an existing Brave window on link open so the workspace comes to the foreground
+  braveNiriOpen = pkgs.writeShellApplication {
+    name = "brave-niri-open";
+    runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils pkgs.brave];
+    text = ''
+      #!/usr/bin/env bash
+      set -euo pipefail
+      brave_id=$(niri msg --json windows | jq -r '.[] | select(.app_id == "brave-browser") | .id' | head -n1 || true)
+      if [ -n "''${brave_id:-}" ]; then
+        niri msg action focus-window --id "$brave_id" >/dev/null 2>&1 || true
+      fi
+      exec ${pkgs.brave}/bin/brave ${
+        if isFlexbox
+        then "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder --enable-raw-draw --password-store=seahorse"
+        else "--password-store=seahorse"
+      } "$@"
+    '';
+  };
 in {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
     directories = [
@@ -19,22 +37,13 @@ in {
   ];
 
   home.sessionVariables = {
-    BROWSER =
-      if isFlexbox
-      then "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
-      else "brave --password-store=seahorse";
-    DEFAULT_BROWSER =
-      if isFlexbox
-      then "brave --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
-      else "brave --password-store=seahorse";
+    BROWSER = "${braveNiriOpen}/bin/brave-niri-open";
+    DEFAULT_BROWSER = "${braveNiriOpen}/bin/brave-niri-open";
   };
 
   xdg.desktopEntries = {
     brave-browser = {
-      exec =
-        if isFlexbox
-        then "${pkgs.brave}/bin/brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --enable-raw-draw %U --password-store=seahorse"
-        else "${pkgs.brave}/bin/brave --password-store=seahorse";
+      exec = "${braveNiriOpen}/bin/brave-niri-open %U";
       name = "Brave Browser";
       comment = "Access the Internet";
       genericName = "Web Browser";
