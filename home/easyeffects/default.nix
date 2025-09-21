@@ -19,4 +19,12 @@
     enable = true;
     preset = "bass-enhancing-perfect-eq";
   };
+
+  systemd.user.services.easyeffects = {
+    # Used to hang the shutdown; prevent that
+    Service = {
+      TimeoutStopSec = "10s";
+      KillMode = "mixed";
+    };
+  };
 }

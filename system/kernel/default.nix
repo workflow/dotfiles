@@ -11,4 +11,12 @@
     linuxKernel.packages.linux_zen.perf
     linuxKernel.packages.linux_zen.cpupower
   ];
+
+  boot.initrd.verbose = true;
+  # Keep console visible during teardown
+  boot.kernelParams = [
+    "systemd.show_status=1"
+    "i915.enable_psr=0" # Intel PSR often blanks the console on transitions
+    "i915.fastboot=0" # avoid early/quiet KMS handover
+  ];
 }
