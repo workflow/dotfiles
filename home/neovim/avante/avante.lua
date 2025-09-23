@@ -63,6 +63,9 @@ require('avante').setup({
 	},
 	hints = { enabled = false },
 	provider = "copilot",
+	selector = {
+		provider = "telescope",
+	},
 	system_prompt =
 	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. When writing to AGENTS.md, don't document history, only note architectural changes that would be important to know going forward. Do not offer to git commit or push changes.",
 
@@ -74,33 +77,34 @@ require('avante').setup({
 -- Improve contrast for Avante diffs when using a light colorscheme (e.g., gruvbox-light)
 -- This specifically targets deleted lines which tend to have very low contrast.
 local function set_avante_light_highlights()
-  if vim.o.background ~= 'light' then return end
+	if vim.o.background ~= 'light' then return end
 
-  -- Make deleted lines readable on light background
-  -- Use a stronger red background and high-contrast foreground
-  vim.api.nvim_set_hl(0, 'DiffDelete', { fg = '#7c0000', bg = '#ffb4b4', bold = true })
+	-- Make deleted lines readable on light background
+	-- Use a stronger red background and high-contrast foreground
+	vim.api.nvim_set_hl(0, 'DiffDelete', { fg = '#7c0000', bg = '#ffb4b4', bold = true })
 
-  -- Ensure diff text hunk highlight is also visible enough on light backgrounds
-  vim.api.nvim_set_hl(0, 'DiffText', { bg = '#ffe29a' })
+	-- Ensure diff text hunk highlight is also visible enough on light backgrounds
+	vim.api.nvim_set_hl(0, 'DiffText', { bg = '#ffe29a' })
 
-  -- Avante-specific groups that can appear for deleted blocks in edit/suggestion views
-  pcall(vim.api.nvim_set_hl, 0, 'AvanteToBeDeleted', { fg = '#7c0000', bg = '#ffb4b4', strikethrough = true, bold = true })
-  pcall(vim.api.nvim_set_hl, 0, 'AvanteToBeDeletedWOStrikethrough', { fg = '#ffffff', bg = '#a23a3f', bold = true })
+	-- Avante-specific groups that can appear for deleted blocks in edit/suggestion views
+	pcall(vim.api.nvim_set_hl, 0, 'AvanteToBeDeleted',
+		{ fg = '#7c0000', bg = '#ffb4b4', strikethrough = true, bold = true })
+	pcall(vim.api.nvim_set_hl, 0, 'AvanteToBeDeletedWOStrikethrough', { fg = '#ffffff', bg = '#a23a3f', bold = true })
 
-  -- Avante exposes highlight groups for conflicts; set them to readable backgrounds if present
-  -- Use pcall so this doesn't error if groups don't exist or are managed by the plugin
-  pcall(vim.api.nvim_set_hl, 0, 'AvanteConflictCurrent', { bg = '#ffe8b3' })  -- ours/current
-  pcall(vim.api.nvim_set_hl, 0, 'AvanteConflictIncoming', { bg = '#d9f2d9' }) -- theirs/incoming
+	-- Avante exposes highlight groups for conflicts; set them to readable backgrounds if present
+	-- Use pcall so this doesn't error if groups don't exist or are managed by the plugin
+	pcall(vim.api.nvim_set_hl, 0, 'AvanteConflictCurrent', { bg = '#ffe8b3' }) -- ours/current
+	pcall(vim.api.nvim_set_hl, 0, 'AvanteConflictIncoming', { bg = '#d9f2d9' }) -- theirs/incoming
 end
 
 -- Apply immediately and re-apply when colorscheme or background changes
 set_avante_light_highlights()
 vim.api.nvim_create_autocmd('ColorScheme', {
-  callback = set_avante_light_highlights,
+	callback = set_avante_light_highlights,
 })
 vim.api.nvim_create_autocmd('OptionSet', {
-  pattern = 'background',
-  callback = set_avante_light_highlights,
+	pattern = 'background',
+	callback = set_avante_light_highlights,
 })
 
 local wk = require("which-key")
