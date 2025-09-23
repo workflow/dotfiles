@@ -121,6 +121,24 @@ in {
     ];
   };
 
+  # Fix swayidle service dependencies for Niri/Wayland session
+  # Fails to boot with default settings
+  systemd.user.services.swayidle = {
+    Unit = {
+      After = ["niri.service" "graphical-session.target"];
+      Wants = ["graphical-session.target"];
+      # Override the default ConditionEnvironment to be less strict
+      ConditionEnvironment = lib.mkForce [];
+    };
+    Service = {
+      # Add a small delay to double-ensure Wayland display is ready
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
+      # Restart the service if it fails (useful for session restarts)
+      Restart = lib.mkForce "on-failure";
+      RestartSec = "5";
+    };
+  };
+
   programs.wlogout = {
     enable = true;
   };
