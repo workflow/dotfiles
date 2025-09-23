@@ -179,37 +179,26 @@ in {
 
     # Startup
     spawn-at-startup = [
-      {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 10 && systemctl --user restart xdg-desktop-portal"];} # Fixes a timing prob with xdg-desktop-portal on first boot, see https://github.com/sodiboo/niri-flake/issues/509
+      {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 10 && systemctl --user restart xdg-desktop-portal"];} # Hacks around a timing prob with xdg-desktop-portal on first boot, see https://github.com/sodiboo/niri-flake/issues/509
       {command = ["systemctl" "--user" "restart" "kanshi"];}
       {command = ["systemctl" "--user" "restart" "app-blueman@autostart"];}
       {command = ["systemctl" "--user" "start" "gnome-keyring-ssh"];} # Start GNOME Keyring SSH agent
       {command = ["obsidian"];}
       {command = ["ytmdesktop"];}
-      {command = ["todoist-electron" "--ozone-platform-hint=auto"];}
+      {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 2 && todoist-electron --ozone-platform-hint=auto"];} # Hack timing problem with Todoist not coming up after boot
       {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen chatgpt.com"];}
+      {command = ["zen" "chatgpt.com"];}
     ];
 
     # Window Rules
     # Find app_id or title with `niri msg windows`
     window-rules = [
-      # Rounded Window Corners
-      # {
-      #   geometry-corner-radius = {
-      #     top-left = 4.0;
-      #     top-right = 4.0;
-      #     bottom-left = 4.0;
-      #     bottom-right = 4.0;
-      #   };
-      #   clip-to-geometry = true;
-      # }
       {
         matches = [
           {
             app-id = "^zen-beta$";
-            title = ".*ChatGPT.*";
           }
         ];
         open-on-workspace = " a";
