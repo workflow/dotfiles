@@ -53,6 +53,8 @@
     ghpa = "gh pr review --approve";
     ghmr = "gh pr merge -r";
 
+    isdu = "isd --startup_mode=user";
+
     k9s-kind = "k9s --context kind-kind";
 
     kc = "kubectl";
