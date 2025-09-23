@@ -22,7 +22,7 @@ with lib; let
     then "HDMI-A-1"
     else null;
 
-  locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize'";
+  locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize'";
   suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
   # Wallpaper, until stylix supports it :)
@@ -85,10 +85,14 @@ in {
 
   programs.swaylock = {
     enable = true;
+    package = pkgs.swaylock-effects;
     settings = {
       debug = false;
       show-failed-attempts = true;
       ignore-empty-password = true;
+      screenshots = true;
+      effect-pixelate = 10; # Pixellation level (higher = more pixelated)
+      effect-blur = "7x5";
     };
   };
 
