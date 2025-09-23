@@ -179,7 +179,7 @@ in {
 
     # Startup
     spawn-at-startup = [
-      {command = ["systemctl" "--user" "restart" "xdg-desktop-portal-gtk"];} # Fix for portal startup delay, see https://github.com/sodiboo/niri-flake/issues/509
+      {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 10 && systemctl --user restart xdg-desktop-portal"];} # Fixes a timing prob with xdg-desktop-portal on first boot, see https://github.com/sodiboo/niri-flake/issues/509
       {command = ["systemctl" "--user" "restart" "kanshi"];}
       {command = ["systemctl" "--user" "restart" "app-blueman@autostart"];}
       {command = ["systemctl" "--user" "start" "gnome-keyring-ssh"];} # Start GNOME Keyring SSH agent

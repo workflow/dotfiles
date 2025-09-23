@@ -43,6 +43,21 @@
     ];
   };
 
+  # Fix niri portals autostart order
+  # See https://github.com/sodiboo/niri-flake/issues/509
+  systemd.user.services.xdg-desktop-portal = {
+    after = ["xdg-desktop-autostart.target"];
+  };
+  systemd.user.services.xdg-desktop-portal-gtk = {
+    after = ["xdg-desktop-autostart.target"];
+  };
+  systemd.user.services.xdg-desktop-portal-gnome = {
+    after = ["xdg-desktop-autostart.target"];
+  };
+  systemd.user.services.niri-flake-polkit = {
+    after = ["xdg-desktop-autostart.target"];
+  };
+
   programs.sway = {
     enable = true;
   };
