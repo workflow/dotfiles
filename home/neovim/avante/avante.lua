@@ -67,7 +67,7 @@ require('avante').setup({
 		provider = "telescope",
 	},
 	system_prompt =
-	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. When writing to AGENTS.md, don't document history, only note architectural changes that would be important to know going forward. Do not offer to git commit or push changes.",
+	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. When writing to AGENTS.md, don't document history, only note architectural changes that would be important to know going forward. Do not offer to git commit or push changes. When writing shell scripts, always prefer the longhand version of arguments (e.g., --all instead of -a) and reserve the short-hand version for ad-hoc command invocations.",
 
 	web_search_engine = {
 		provider = "kagi",
