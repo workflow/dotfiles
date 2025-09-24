@@ -266,6 +266,23 @@ in {
         ];
         block-out-from = "screen-capture";
       }
+      # Screen Cast Target Highlight
+      {
+        matches = [
+          {is-window-cast-target = true;}
+        ];
+        border = {
+          active = {color = "#f38ba8";};
+          inactive = {color = "#7d0d2d";};
+        };
+        shadow = {
+          color = "#7d0d2d70";
+        };
+        tab-indicator = {
+          active = {color = "#f38ba8";};
+          inactive = {color = "#7d0d2d";};
+        };
+      }
     ];
 
     # Named Workspaces
