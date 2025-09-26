@@ -199,6 +199,7 @@ in {
     extraPackages = with pkgs; [
       nixd # Nix Language Server
       nodejs # For vim to have npm for Mason etc...
+      curl # Required by copilot.lua runtime
       prettierd # For yaml, html, json, markdown
       pyright
       shellcheck
