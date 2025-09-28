@@ -40,4 +40,7 @@ in {
       ];
     }
   ];
+
+  # Dbus Service provding historical battery stats, access to external device batteries... etc.
+  services.upower.enable = true;
 }

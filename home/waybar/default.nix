@@ -403,6 +403,8 @@
       };
       format = " {icon} {capacity}%";
       format-icons = ["" "" "" "" ""];
+      tooltip = true;
+      backend = "upower";
     };
   };
 
