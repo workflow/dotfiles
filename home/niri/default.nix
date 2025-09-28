@@ -193,7 +193,7 @@ in {
       {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen" "chatgpt.com"];}
+      {command = ["zen"];}
     ];
 
     # Window Rules
