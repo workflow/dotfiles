@@ -1,10 +1,15 @@
 require('avante_lib').load()
 require('avante').setup({
+	behaviour = {
+		enable_fastapply = true, -- Uses morphllm.com
+	},
 	debug = false,
 	dual_boost = {
 		enabled = false,
 		first_provider = "azure",
 	},
+	hints = { enabled = false },
+	instructions_file = "agents.md",
 	providers = {
 		openai = {
 			model = "gpt-5",
@@ -60,8 +65,10 @@ require('avante').setup({
 				reasoning_effort = "high",
 			},
 		},
+		morph = {
+			model = "auto",
+		},
 	},
-	hints = { enabled = false },
 	provider = "copilot",
 	selector = {
 		provider = "telescope",
