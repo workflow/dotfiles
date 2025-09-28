@@ -87,7 +87,6 @@
       ./ssh
       ./starship
       ./stylix
-      ./sway
       ./syncthing
       ./systemd-errors-and-warnings-counter
       ./tealdeer
@@ -150,7 +149,6 @@ in {
       alejandra # Nix Formatter
       ast-grep # Pure Magic
       asciinema # Terminal recording fun
-      autotiling # autotiling script for sway
       bc # calculator
       bind # Provides dig
       dconf # Gnome configuration database
