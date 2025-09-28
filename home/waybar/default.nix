@@ -160,7 +160,7 @@
       format-wifi = " ";
       format-linked = "  🚧";
       format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
-      tooltip-format = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+      tooltip-format = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-wifi = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
       tooltip-format-linked = "IF:{ifname} IP:{ipaddr} Connected but no internet";
