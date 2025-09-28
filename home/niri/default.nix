@@ -237,27 +237,6 @@ in {
         ];
         open-floating = true;
       }
-      # Flameshot Fixes
-      {
-        matches = [
-          {app-id = "flameshot";}
-        ];
-        open-floating = true;
-        open-fullscreen = false;
-        open-on-workspace = null; # Stay on current workspace
-        geometry-corner-radius = {
-          top-left = 0.0;
-          top-right = 0.0;
-          bottom-left = 0.0;
-          bottom-right = 0.0;
-        };
-        border = {
-          enable = false;
-        };
-        shadow = {
-          enable = false;
-        };
-      }
       # Block from screencasting
       {
         matches = [
@@ -487,8 +466,8 @@ in {
 
           "Print".action = screenshot;
           "Print".hotkey-overlay.title = "Screenshot via Niri";
-          "Mod+Print".action = sh "QT_SCALE_FACTOR=0.5 flameshot gui";
-          "Mod+Print".hotkey-overlay.title = "Screenshot via Flameshot";
+          "Mod+Print".action = spawn "satty-screenshot";
+          "Mod+Print".hotkey-overlay.title = "Screenshot via Satty";
           "Mod+Shift+Print".action.screenshot-screen = [];
           "Mod+Shift+Print".hotkey-overlay.title = "Instant Screenshot";
 

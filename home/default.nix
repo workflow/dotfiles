@@ -41,7 +41,7 @@
       ./firefox
       ./fish
       ./fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
-      ./flameshot
+      ./satty # Screenshot Annotation tool written in Rust
       ./fuzzel
       ./fzf
       ./galaxy-buds-client

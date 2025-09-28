@@ -13,12 +13,6 @@
         dmenu = "fuzzel --dmenu";
         follow = "mouse";
       };
-
-      ignore_flameshot_warning = {
-        appname = "flameshot";
-        body = "*implemented based on wlroots*";
-        skip_display = true;
-      };
     };
   };
 }
