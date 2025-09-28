@@ -72,6 +72,7 @@ require('avante').setup({
 	provider = "copilot",
 	selector = {
 		provider = "telescope",
+		exclude_auto_select = { "NvimTree" },
 	},
 	system_prompt =
 	"Do not directly run system commands to verify task success at the end, ask the user to run them and provide output. When writing to AGENTS.md, don't document history, only note architectural changes that would be important to know going forward. Do not offer to git commit or push changes. When writing shell scripts, always prefer the longhand version of arguments (e.g., --all instead of -a) and reserve the short-hand version for ad-hoc command invocations.",
@@ -124,3 +125,20 @@ wk.add(
 		},
 	}
 )
+
+-- Set up buffer-local mappings for NvimTree
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "NvimTree",
+	callback = function(args)
+		local bufnr = args.buf
+		vim.keymap.set("n", "<leader>a+", function()
+			local tree_ext = require("avante.extensions.nvim_tree")
+			tree_ext.add_file()
+		end, { buffer = bufnr, desc = "Select file in NvimTree" })
+
+		vim.keymap.set("n", "<leader>a-", function()
+			local tree_ext = require("avante.extensions.nvim_tree")
+			tree_ext.remove_file()
+		end, { buffer = bufnr, desc = "Deselect file in NvimTree" })
+	end,
+})
