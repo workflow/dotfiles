@@ -392,6 +392,11 @@
     };
 
     battery = {
+      events = {
+        on-discharging-warning = "notify-send -u normal 'Low Battery'";
+        on-discharging-critical = "notify-send -u critical 'Very Low Battery'";
+        on-charging-100 = "notify-send -u normal 'Battery is full'";
+      };
       states = {
         warning = 30;
         critical = 15;
