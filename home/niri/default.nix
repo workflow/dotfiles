@@ -344,9 +344,7 @@ in {
 
     # Keybindings
     hotkey-overlay.skip-at-startup = true;
-    binds = with config.lib.niri.actions; let
-      sh = spawn "sh" "-c";
-    in
+    binds = with config.lib.niri.actions;
       lib.attrsets.mergeAttrsList [
         {
           "Mod+Shift+Slash".action = show-hotkey-overlay;
@@ -357,23 +355,23 @@ in {
           "Mod+D".hotkey-overlay.title = "Run an Application: fuzzel";
           "Mod+Shift+D".action = spawn "${windowPicker}/bin/niri-pick-window";
           "Mod+Shift+D".hotkey-overlay.title = "Pick a Window: niri-pick-window";
-          "Mod+Shift+X".action = spawn "swaylock";
-          "Mod+Shift+X".hotkey-overlay.title = "Lock the screen: swaylock";
+          "Mod+Shift+X".action = spawn-sh "swaylock --daemonize && niri msg action power-off-monitors";
+          "Mod+Shift+X".hotkey-overlay.title = "Lock screen and turn off monitors";
           "Mod+Shift+z".action = power-off-monitors;
           "Mod+Shift+z".hotkey-overlay.title = "Power off Monitors";
 
-          "XF86AudioRaiseVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+          "XF86AudioRaiseVolume".action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
           "XF86AudioRaiseVolume".allow-when-locked = true;
-          "XF86AudioLowerVolume".action = sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+          "XF86AudioLowerVolume".action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
           "XF86AudioLowerVolume".allow-when-locked = true;
-          "XF86AudioMute".action = sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute".action = spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioMute".allow-when-locked = true;
-          "XF86AudioMicMute".action = sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "XF86AudioMicMute".action = spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
           "XF86AudioMicMute".allow-when-locked = true;
-          "XF86MonBrightnessUp".action = sh "brightnessctl --class=backlight set 10%+";
+          "XF86MonBrightnessUp".action = spawn-sh "brightnessctl --class=backlight set 10%+";
           "XF86MonBrightnessUp".allow-when-locked = true;
 
-          "XF86MonBrightnessDown".action = sh "brightnessctl --class=backlight set 10%-";
+          "XF86MonBrightnessDown".action = spawn-sh "brightnessctl --class=backlight set 10%-";
           "XF86MonBrightnessDown".allow-when-locked = true;
 
           "Mod+Shift+Q".action = close-window;
@@ -453,7 +451,7 @@ in {
           "Mod+V".action = toggle-window-floating;
           "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-          "Mod+Shift+W".action = sh (
+          "Mod+Shift+W".action = spawn-sh (
             builtins.concatStringsSep "; " [
               "systemctl --user restart waybar.service"
               "${wallpaperSetter}/bin/niri-set-wallpaper"
@@ -497,7 +495,7 @@ in {
         }
         {
           # Browser
-          "Mod+b".action = sh (
+          "Mod+b".action = spawn-sh (
             if isFlexbox
             then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
             else "brave --profile-directory='Default' --password-store=seahorse"
@@ -505,7 +503,7 @@ in {
           "Mod+b".hotkey-overlay.hidden = true;
           "Mod+Shift+b".action = spawn "zen";
           "Mod+Shift+b".hotkey-overlay.hidden = true;
-          "Mod+h".action = sh (
+          "Mod+h".action = spawn-sh (
             if isFlexbox
             then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
             else "brave --profile-directory='Profile 1' --password-store=seahorse"
@@ -516,15 +514,15 @@ in {
           "Mod+p".action = spawn "cliphist-fuzzel-img";
           "Mod+p".hotkey-overlay.hidden = true;
           # Single item clearing
-          "Mod+Shift+p".action = sh "cliphist list | fuzzel --dmenu | cliphist delete";
+          "Mod+Shift+p".action = spawn-sh "cliphist list | fuzzel --dmenu | cliphist delete";
           "Mod+Shift+p".hotkey-overlay.hidden = true;
 
           # File Manager [n]avigate
-          "Mod+n".action = sh "alacritty -e fish -ic lf";
+          "Mod+n".action = spawn-sh "alacritty -e fish -ic lf";
           "Mod+n".hotkey-overlay.hidden = true;
 
           # Calcu[M]athlator
-          #"Mod+m".action = sh "rofi -modi calc -show calc";
+          #"Mod+m".action = spawn-sh "rofi -modi calc -show calc";
 
           # Logout and Power Menu
           "Mod+Pause".action = spawn "wlogout";
