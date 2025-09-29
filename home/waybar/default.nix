@@ -447,9 +447,7 @@
     };
 
     "niri/language" = {
-      # TODO: https://github.com/Alexays/Waybar/issues/3657
-      format = "<span color='#fabd2f'>{short}</span>";
-      format-English = "us";
+      format = "{short}";
       on-click = "niri msg action switch-layout next";
       on-click-right = "niri msg action switch-layout prev";
       on-click-middle = "niri msg action switch-layout 0";
