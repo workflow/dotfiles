@@ -48,6 +48,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end
 })
 
+-- Existing Rust/C/C++ debug adapter (codelldb)
 dap.adapters.codelldb = {
   type = "executable",
   command = "codelldb",
@@ -66,4 +67,68 @@ dap.configurations.cpp = {
   },
 }
 dap.configurations.c = dap.configurations.cpp
+
+-- Rust uses the same config as C/C++
 dap.configurations.rust = dap.configurations.cpp
+
+-- JavaScript/TypeScript debug (vscode-js-debug via nvim-dap-vscode-js)
+-- Requires Mason package: js-debug-adapter
+local ok, vscode_js = pcall(require, 'dap-vscode-js')
+if ok then
+  vscode_js.setup({
+    -- Path where Mason installs the js-debug adapter
+    debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
+    adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+  })
+
+  local js_based_languages = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
+
+  for _, language in ipairs(js_based_languages) do
+    dap.configurations[language] = dap.configurations[language] or {}
+
+    -- Launch current file using ts-node
+    table.insert(dap.configurations[language], {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch TS (ts-node)',
+      program = '${file}',
+      cwd = '${workspaceFolder}',
+      runtimeExecutable = 'node',
+      runtimeArgs = { '-r', 'ts-node/register' },
+      sourceMaps = true,
+      protocol = 'inspector',
+      console = 'integratedTerminal',
+      env = { TS_NODE_PROJECT = '${workspaceFolder}/tsconfig.json' },
+    })
+
+    -- Attach to a running Node process (start node with --inspect or --inspect-brk)
+    table.insert(dap.configurations[language], {
+      type = 'pwa-node',
+      request = 'attach',
+      name = 'Attach to Node',
+      processId = require('dap.utils').pick_process,
+      cwd = '${workspaceFolder}',
+    })
+
+    -- Launch transpiled JS from dist (requires a build step)
+    table.insert(dap.configurations[language], {
+      type = 'pwa-node',
+      request = 'launch',
+      name = 'Launch built app (dist)',
+      program = '${workspaceFolder}/dist/index.js',
+      cwd = '${workspaceFolder}',
+      outFiles = { '${workspaceFolder}/dist/**/*.js' },
+      sourceMaps = true,
+      console = 'integratedTerminal',
+    })
+
+    -- Debug a web app in Chrome (points to local dev server)
+    table.insert(dap.configurations[language], {
+      type = 'pwa-chrome',
+      request = 'launch',
+      name = 'Chrome: localhost',
+      url = 'http://localhost:3000',
+      webRoot = '${workspaceFolder}',
+    })
+  end
+end

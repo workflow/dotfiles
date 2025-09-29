@@ -17,5 +17,9 @@
       '';
       type = "lua";
     }
+    # JavaScript/TypeScript DAP adapter
+    {
+      plugin = nvim-dap-vscode-js;
+    }
   ];
 }
