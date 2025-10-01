@@ -78,7 +78,6 @@
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./qalculate # Calculator
-      ./rofi
       ./rofimoji
       ./showmethekey # screenkey for Wayland, show key presses
       ./signal
