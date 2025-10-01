@@ -35,7 +35,7 @@ with lib; let
   # Window Picker a la rofi
   windowPicker = pkgs.writeShellApplication {
     name = "niri-pick-window";
-    runtimeInputs = [pkgs.niri pkgs.fuzzel pkgs.jq];
+    runtimeInputs = [pkgs.niri pkgs.unstable.fuzzel pkgs.jq];
     text = builtins.readFile ./scripts/niri-pick-window.sh;
   };
 
