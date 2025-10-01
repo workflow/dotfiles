@@ -39,6 +39,13 @@ with lib; let
     text = builtins.readFile ./scripts/niri-pick-window.sh;
   };
 
+  # Calculator via fuzzel + qalc
+  fuzzelCalc = pkgs.writeShellApplication {
+    name = "niri-qalc";
+    runtimeInputs = [pkgs.unstable.fuzzel pkgs.libqalculate pkgs.wl-clipboard pkgs.libnotify];
+    text = builtins.readFile ./scripts/niri-qalc.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -81,6 +88,7 @@ in {
     wallpaperSetter # Specialization-aware wallpaper setting
     windowPicker # niri-pick-window
     xwayland-satellite # For apps that need Xwayland
+    fuzzelCalc # niri-qalc
   ];
 
   programs.swaylock = {
@@ -522,7 +530,8 @@ in {
           "Mod+n".hotkey-overlay.hidden = true;
 
           # Calcu[M]athlator
-          #"Mod+m".action = spawn-sh "rofi -modi calc -show calc";
+          "Mod+m".action = spawn "${fuzzelCalc}/bin/niri-qalc";
+          "Mod+m".hotkey-overlay.title = "Calcu[M]athalor via qalculate";
 
           # Logout and Power Menu
           "Mod+Pause".action = spawn "wlogout";
