@@ -119,7 +119,7 @@ in {
       nnoremap <silent><nowait> <C-j> :cprev<cr>
       nnoremap <silent><nowait> <C-;> :cnext<cr>
 
-      " Saving
+      " Saving - use z. for centering the cursor instead
       nnoremap zz :update<CR>
 
       " Applying a macro to lines matching in visual selection
