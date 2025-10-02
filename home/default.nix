@@ -79,7 +79,7 @@
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./qalculate # Calculator
       ./ripgrep
-      ./ripgrep-all # Like rg, but also search in Office documents, PDFs etc...
+      ./ripgrep-all # Like rg, but also search in Office documents, PDFs etc...; rga-fzf is AMAZING!
       ./rofimoji
       ./showmethekey # screenkey for Wayland, show key presses
       ./signal
