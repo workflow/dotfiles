@@ -78,6 +78,8 @@
       ./psql # Postgresql Client with nicer config
       ./pulsemixer # TUI (curses) mixer for pulseaudio, still useful under pipewire
       ./qalculate # Calculator
+      ./ripgrep
+      ./ripgrep-all # Like rg, but also search in Office documents, PDFs etc...
       ./rofimoji
       ./showmethekey # screenkey for Wayland, show key presses
       ./signal
@@ -192,7 +194,6 @@ in {
       pdftk # PDF Manipulation Toolkit
       pstree # Show the set of running processes as a tree
       q-text-as-data # https://github.com/harelba/q
-      ripgrep # rg
       inputs.rmob.defaultPackage.x86_64-linux
       screenkey # Screencast tool to display your keys inspired by Screenflick
       smartmontools # Tools for monitoring the health of hard drives
