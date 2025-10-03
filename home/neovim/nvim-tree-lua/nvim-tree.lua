@@ -23,26 +23,18 @@ require("nvim-tree").setup({
 	-- Ensure devicons are enabled so the mini.icons mock is used
 	renderer = {
 		icons = {
-			web_devicons = {
-				file = { enable = true, color = true },
-				folder = { enable = true, color = true },
-			},
 			-- Use simple ASCII for folder glyphs to avoid NF v2/v3 codepoint mismatches
 			glyphs = {
 				folder = {
-					default = '▸',
-					open = '▾',
-					empty = '▸',
-					empty_open = '▾',
-					symlink = '▸',
-					symlink_open = '▾',
+					arrow_closed = "",
+					arrow_open = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
 				},
-			},
-			show = {
-				file = true,
-				folder = true,
-				folder_arrow = true,
-				git = true,
 			},
 		},
 	},
