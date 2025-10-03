@@ -1,3 +1,10 @@
+-- Ensure mini.icons mock is active before configuring nvim-tree
+local ok_icons, Icons = pcall(require, 'mini.icons')
+if ok_icons and Icons and Icons.mock_nvim_web_devicons then
+  -- Replace nvim-web-devicons so nvim-tree and others use mini.icons
+  pcall(Icons.mock_nvim_web_devicons)
+end
+
 local function my_on_attach(bufnr)
 	local api = require "nvim-tree.api"
 	local function opts(desc)
@@ -13,19 +20,29 @@ require("nvim-tree").setup({
 	on_attach = my_on_attach,
 	disable_netrw = false, -- keeping netrw for :GBrowse from fugitive to work
 	hijack_netrw = true, -- once no longer needed, check :he nvim-tree-netrw
+	-- Ensure devicons are enabled so the mini.icons mock is used
 	renderer = {
 		icons = {
+			web_devicons = {
+				file = { enable = true, color = true },
+				folder = { enable = true, color = true },
+			},
+			-- Use simple ASCII for folder glyphs to avoid NF v2/v3 codepoint mismatches
 			glyphs = {
 				folder = {
-					arrow_closed = "",
-					arrow_open = "",
-					default = "",
-					open = "",
-					empty = "",
-					empty_open = "",
-					symlink = "",
-					symlink_open = "",
+					default = '▸',
+					open = '▾',
+					empty = '▸',
+					empty_open = '▾',
+					symlink = '▸',
+					symlink_open = '▾',
 				},
+			},
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
 			},
 		},
 	},

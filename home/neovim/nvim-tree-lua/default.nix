@@ -5,8 +5,5 @@
       config = builtins.readFile ./nvim-tree.lua;
       type = "lua";
     }
-    {
-      plugin = nvim-web-devicons;
-    }
   ];
 }

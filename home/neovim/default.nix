@@ -32,7 +32,8 @@ in {
       ./jdtls
       ./lspsaga
       ./lualine
-      ./mason-lsp
+      # Ensure devicons module is available before mocking it with mini.icons
+      ./web-devicons
       ./mini-icons
       ./mini-operators
       ./neotest
