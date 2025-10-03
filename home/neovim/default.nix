@@ -52,6 +52,7 @@ in {
       ./treesitter
       ./trouble
       ./undotree
+      ./vim-be-good # Vim Motion Learnenings
       ./vim-terraform
       ./vim-visual-multi
     ]
