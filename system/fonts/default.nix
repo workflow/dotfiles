@@ -59,13 +59,13 @@ in {
   fonts = {
     enableDefaultPackages = false;
     packages = [
-      pkgs."fira-code"
-      pkgs."fira-code-symbols"
+      pkgs.fira-code
+      pkgs.fira-code-symbols
       pkgs.dejavu_fonts
-      pkgs."font-awesome_4"
-      pkgs."font-awesome_5"
-      pkgs."font-awesome_6"
-      pkgs."noto-fonts-color-emoji" # emoji font
+      pkgs.font-awesome_5
+      pkgs.font-awesome_6
+      pkgs.unstable.font-awesome
+      pkgs.noto-fonts-color-emoji # emoji font
     ];
     fontconfig = {
       defaultFonts = {
