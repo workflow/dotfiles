@@ -98,4 +98,8 @@
 
     userName = "workflow";
   };
+
+  programs.mergiraf = {
+    enable = true;
+  };
 }
