@@ -75,6 +75,7 @@
       ./obsidian
       ./onboard # Virtual Keyboard for layout visualization (no good Wayland options work)
       ./pavucontrol # Pulse Audio Volume Control GUI
+      ./pgcli # Actually usable PostgreSQL CLI
       ./pomodoro-gtk
       ./portfolio-performance
       ./psql # Postgresql Client with nicer config
