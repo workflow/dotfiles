@@ -1,0 +1,3 @@
+{pkgs, ...}: {
+  systemd.enableStrictShellChecks = true;
+}

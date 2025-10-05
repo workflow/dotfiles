@@ -32,6 +32,7 @@ in {
       ./security
       ./stylix
       ./syncthing
+      ./systemd
       ./users
       ./various
       ./video
