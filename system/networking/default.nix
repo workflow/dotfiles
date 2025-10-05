@@ -52,13 +52,11 @@ in {
 
   networking.firewall.allowedTCPPorts = [
     22000 # Syncthing TCP
-    53317 # Localsend
   ];
 
   networking.firewall.allowedUDPPorts = [
     22000 # Syncthing QUIC
     21027 # Syncthing discovery broadcasts on IPv4 and multicasts on IPv6
-    53317 # Localsend
   ];
 
   # BBR -> Better performance over weak/jittery links

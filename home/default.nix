@@ -61,7 +61,6 @@
       ./lf
       ./libation # Audible liberator
       ./libreoffice
-      ./localsend
       ./lnav # Log File Navigator
       ./mic-levels-maintainer
       ./mpv # Media Player

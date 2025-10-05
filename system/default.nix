@@ -23,6 +23,7 @@ in {
       ./io
       ./kernel
       ./kind-killer
+      ./localsend # Apple Airdrop OSS
       ./networking
       ./nix-ld
       ./performance
