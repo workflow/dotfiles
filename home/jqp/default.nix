@@ -1,0 +1,5 @@
+{...}: {
+  programs.jqp = {
+    enable = true;
+  };
+}
