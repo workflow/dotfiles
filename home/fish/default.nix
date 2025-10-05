@@ -105,8 +105,6 @@
   ];
 
   shellInit = ''
-    thefuck --alias | source
-
     ${variables}
   '';
 
