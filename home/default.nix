@@ -47,6 +47,7 @@
       ./galaxy-buds-client
       ./gimp
       ./git
+      ./git-worktree-switcher # Provides wt
       ./gnome-connections # RDP/VNC Client for Wayland
       ./gtk-qt
       ./isd # Interactive Systemd TUI in Python
