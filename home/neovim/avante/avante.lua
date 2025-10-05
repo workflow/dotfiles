@@ -38,11 +38,11 @@ require('avante').setup({
 		},
 		claude = {
 			endpoint = "https://api.anthropic.com",
-			model = "claude-sonnet-4-20250514",
+			model = "claude-sonnet",
 		},
 		claude_thinking = {
 			__inherited_from = 'claude',
-			model = "claude-sonnet-4-20250514",
+			model = "claude-sonnet",
 			thinking = {
 				type = "enabled",
 			},
@@ -52,15 +52,15 @@ require('avante').setup({
 		},
 		copilot_claude = {
 			__inherited_from = 'copilot',
-			model = "claude-sonnet-4",
+			model = "claude-sonnet-4.5",
 		},
 		copilot_gemini = {
 			__inherited_from = 'copilot',
 			model = "gemini-2.5-pro",
 		},
-		copilot_o4_mini_high = {
+		copilot_gpt5_high = {
 			__inherited_from = 'copilot',
-			model = "o4-mini",
+			model = "gpt-5",
 			extra_request_body = {
 				reasoning_effort = "high",
 			},
