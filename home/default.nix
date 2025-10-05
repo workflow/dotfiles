@@ -103,6 +103,7 @@
       ./vlc
       ./waybar
       ./wlsunset # Day/night gamma adjustments for Wayland
+      ./wluma # Automatic screen brightness adjustment
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
       ./yubico # Yubikeys
