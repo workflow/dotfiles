@@ -2,6 +2,7 @@ require('avante_lib').load()
 require('avante').setup({
 	behaviour = {
 		enable_fastapply = true, -- Uses morphllm.com
+		auto_approve_tool_permissions = false,
 	},
 	debug = false,
 	dual_boost = {
@@ -38,11 +39,11 @@ require('avante').setup({
 		},
 		claude = {
 			endpoint = "https://api.anthropic.com",
-			model = "claude-sonnet",
+			model = "claude-sonnet-4-5",
 		},
 		claude_thinking = {
 			__inherited_from = 'claude',
-			model = "claude-sonnet",
+			model = "claude-sonnet-4-5",
 			thinking = {
 				type = "enabled",
 			},
