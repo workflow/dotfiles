@@ -357,22 +357,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-avante": {
-      "locked": {
-        "lastModified": 1755958001,
-        "narHash": "sha256-/0ys+Mn39n/Q/DYxjnQ0CUedYBWMzxP4y19w/ho9wxI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "4bd0b9c7ab548711a03922851eebef7bc2ce9f1b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "4bd0b9c7ab548711a03922851eebef7bc2ce9f1b",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1759580034,
@@ -525,7 +509,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-avante": "nixpkgs-avante",
         "nur": "nur",
         "rmob": "rmob",
         "secrets": "secrets",

@@ -15,7 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-avante.url = "github:nixos/nixpkgs/4bd0b9c7ab548711a03922851eebef7bc2ce9f1b";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
@@ -35,7 +34,6 @@
   outputs = {
     nixpkgs,
     nixos-unstable,
-    nixpkgs-avante,
     home-manager,
     impermanence,
     niri,
@@ -68,9 +66,6 @@
       unstable = import nixos-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
-      };
-      nixpkgs-avante = import nixpkgs-avante {
-        system = "x86_64-linux";
       };
     };
   in {

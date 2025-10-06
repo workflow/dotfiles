@@ -5,7 +5,7 @@
       -- views can only be fully collapsed with the global statusline
       vim.opt.laststatus = 3
     '';
-    plugins = with pkgs.nixpkgs-avante.vimPlugins; [
+    plugins = with pkgs.unstable.vimPlugins; [
       {
         plugin = avante-nvim;
         config = builtins.readFile ./avante.lua;
