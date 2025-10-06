@@ -74,7 +74,6 @@
       specialArgs = {
         inherit inputs;
         inherit secrets;
-        waylandScaleFactor = 2.0;
         isImpermanent = false;
       };
       modules =
@@ -92,7 +91,6 @@
                   isImpermanent = false;
                   isLaptop = true;
                   isNvidia = true;
-                  waylandScaleFactor = 2.0;
                   inherit inputs;
                   inherit secrets;
                 };
@@ -107,7 +105,6 @@
         inherit inputs;
         inherit secrets;
         isImpermanent = true;
-        waylandScaleFactor = 1.5;
       };
       modules =
         commonModules
@@ -125,7 +122,6 @@
                   isImpermanent = true;
                   isLaptop = false;
                   isNvidia = false;
-                  waylandScaleFactor = 1.5;
                   inherit inputs;
                   inherit secrets;
                 };
