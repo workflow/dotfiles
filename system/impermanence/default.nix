@@ -57,6 +57,7 @@ in {
     };
     services = {
       root-explode = {
+        enableStrictShellChecks = false;
         wantedBy = ["initrd-root-device.target"];
         wants = ["lvm2-activation.service"];
         # See https://github.com/nix-community/impermanence/issues/250#issuecomment-2603848867
