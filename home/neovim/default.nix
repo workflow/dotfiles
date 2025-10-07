@@ -21,6 +21,7 @@ in {
       ./bookmarks-nvim
       ./carbon
       ./cmp
+      ./comment-nvim
       ./copilot
       ./dadbod
       ./dap
@@ -225,13 +226,6 @@ in {
               },
             }
           )
-        '';
-        type = "lua";
-      }
-      {
-        plugin = comment-nvim; # Commenting with gc
-        config = ''
-          require('Comment').setup()
         '';
         type = "lua";
       }
