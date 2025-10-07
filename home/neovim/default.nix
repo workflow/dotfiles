@@ -25,6 +25,7 @@ in {
       ./copilot
       ./dadbod
       ./dap
+      ./diffview-nvim
       ./fidget # Sidebar notifications for LSP
       ./folds
       ./fugitive
