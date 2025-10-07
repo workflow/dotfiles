@@ -224,6 +224,7 @@ in {
       {
         PATH = "$HOME/bin:$PATH";
         NIXOS_CONFIG = "$HOME/code/nixos-config/";
+        GC_INITIAL_HEAP_SIZE = "8G"; # Slightly improve nix eval times
         DIRENV_LOG_FORMAT = ""; # Disable verbose direnv output showing env variables changed
         NIXOS_OZONE_WL = "1"; # Enable Ozone-Wayland for Electron apps and Chromium
       }
