@@ -554,6 +554,21 @@ in {
           "Mod+s".action = spawn "sound-switcher";
           "Mod+s".hotkey-overlay.hidden = true;
         }
+        {
+          # OBS Studio Controls
+          "Alt+F1".action = spawn "obs-main-scene";
+          "Alt+F1".hotkey-overlay.title = "OBS: Switch to Main Scene";
+          "Alt+F2".action = spawn "obs-screensharing";
+          "Alt+F2".hotkey-overlay.title = "OBS: Switch to Screensharing";
+          "Alt+F3".action = spawn "obs-catcam-toggle";
+          "Alt+F3".hotkey-overlay.title = "OBS: Toggle Catcam";
+          "Alt+F4".action = spawn "obs-recording-toggle";
+          "Alt+F4".hotkey-overlay.title = "OBS: Start/Stop Recording";
+          "Alt+F5".action = spawn "obs-recording-pause";
+          "Alt+F5".hotkey-overlay.title = "OBS: Pause/Unpause Recording";
+          "Alt+F6".action = spawn "obs-webcam-toggle";
+          "Alt+F6".hotkey-overlay.title = "OBS: Toggle Webcam";
+        }
       ];
   };
 }
