@@ -2,6 +2,7 @@
   description = "nixos configuration using flakes";
 
   inputs = {
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +34,7 @@
 
   outputs = {
     self,
+    determinate,
     nixpkgs,
     nixos-unstable,
     home-manager,
@@ -48,6 +50,7 @@
       {
         nixpkgs.overlays = [(_: _: overlays)];
       }
+      determinate.nixosModules.default
       nixpkgs.nixosModules.notDetected
       ./configuration.nix
       nur.modules.nixos.default
