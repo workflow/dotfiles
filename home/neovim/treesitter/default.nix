@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  programs.neovim.extraPackages = [pkgs.gcc];
+  programs.neovim.extraPackages = [
+    pkgs.gcc
+    pkgs.tree-sitter
+  ];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # TODO: This is Neovim-Native after 0.10, see https://github.com/nvim-treesitter/playground
