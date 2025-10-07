@@ -32,6 +32,7 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     nixos-unstable,
     home-manager,
@@ -128,6 +129,18 @@
               };
           }
         ];
+    };
+
+    # Expose profiling helper as a package and an app
+    # Call with `nix run .#nh-eval-profile -- <HOST>`
+    packages.x86_64-linux.nh-eval-profile = let
+      pkgsFor = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      pkgsFor.callPackage ./system/scripts/nh-eval-profile.nix {};
+
+    apps.x86_64-linux.nh-eval-profile = {
+      type = "app";
+      program = "${self.packages.x86_64-linux.nh-eval-profile}/bin/nh-eval-profile";
     };
   };
 }
