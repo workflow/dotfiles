@@ -24,7 +24,6 @@ in {
       ./kernel
       ./kind-killer
       ./localsend # Apple Airdrop OSS
-      ./logrotate
       ./networking
       ./nix-ld
       ./performance
