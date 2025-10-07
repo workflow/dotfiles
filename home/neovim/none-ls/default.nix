@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   none-ls-extras = pkgs.vimUtils.buildVimPlugin {
     name = "none-ls-extras";
     doCheck = false;
@@ -14,6 +10,9 @@
     };
   };
 in {
+  programs.neovim.extraPackages = with pkgs; [
+    eslint
+  ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = none-ls-nvim; # Automatically install LSP servers
