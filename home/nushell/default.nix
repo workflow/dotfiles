@@ -5,9 +5,14 @@
   ...
 }: {
   home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
-    files = [
-      ".config/nushell/history.txt"
+    directories = [
+      ".config/nushell"
     ];
+  };
+  home.file = {
+    ".config/nushell/.stignore" = {
+      source = ./syncthing/stignore-nushell;
+    };
   };
   programs.nushell = {
     enable = true;
