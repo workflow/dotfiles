@@ -22,6 +22,7 @@
       ./aichat
       ./alacritty
       ./aliases
+      ./ansible
       ./aws
       ./bash
       ./bitwarden
