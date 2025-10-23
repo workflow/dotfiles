@@ -47,7 +47,10 @@
   security.pam = {
     u2f = {
       enable = true;
+      control = "sufficient";
       settings = {
+        origin = "pam://farlion-realm"; # Overridde host-dependent realm to share yubikey
+        appid = "pam://farlion-realm"; # keep equal to origin for compatibility
         cue = false; # CLI message to show touch is needed, not needed since using system-wide notification
       };
     };
