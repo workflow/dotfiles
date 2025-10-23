@@ -470,7 +470,7 @@ in {
           "Mod+Space".action = switch-layout "next";
           "Mod+Shift+Space".action = switch-layout "prev";
 
-          "Print".action = screenshot;
+          "Print".action.screenshot = [];
           "Print".hotkey-overlay.title = "Screenshot via Niri";
           "Mod+Print".action = spawn "satty-screenshot";
           "Mod+Print".hotkey-overlay.title = "Screenshot via Satty";
