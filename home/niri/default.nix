@@ -198,7 +198,7 @@ in {
       {command = ["obsidian"];}
       {command = ["ytmdesktop" "--password-store=gnome-libsecret"];}
       {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 2 && todoist-electron --ozone-platform-hint=auto"];} # Hack timing problem with Todoist not coming up after boot
-      {command = ["seahorse"];} # To unlock keyring
+      # {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
       {command = ["zen"];}
