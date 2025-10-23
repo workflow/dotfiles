@@ -4,6 +4,7 @@
   home.persistence."/persist" = {
     enable = true;
     directories = [
+      ".cache/nix"
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
       ".local/share/nix" # Nix Repl History

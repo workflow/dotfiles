@@ -73,6 +73,7 @@ in {
     enable = true;
     hideMounts = true;
     directories = [
+      "/root/.cache/nix"
       "/var/lib/logrotate" # See https://github.com/nix-community/impermanence/issues/270
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
