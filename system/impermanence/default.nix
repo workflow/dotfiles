@@ -1,6 +1,10 @@
 # General impermanence setup
 # Note: specifics should live with their respective modules, where possible!
-{pkgs, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   rootExplosion = ''
     echo "Time to 🧨" >/dev/kmsg
     mkdir /btrfs_tmp
@@ -69,6 +73,7 @@ in {
     enable = true;
     hideMounts = true;
     directories = [
+      "/var/lib/logrotate" # See https://github.com/nix-community/impermanence/issues/270
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/timers"
@@ -77,7 +82,6 @@ in {
     ];
     files = [
       "/etc/machine-id"
-      # "/var/lib/logrotate.status" # TODO: https://github.com/nix-community/impermanence/issues/270
     ];
   };
   # Workaround for /etc/ file timings not working with impermanence
@@ -85,6 +89,9 @@ in {
     # Timezone data linked by tzupdate
     "localtime".source = "/persist/system/etc/localtime";
   };
+
+  # Woraround for logrotate, see https://github.com/nix-community/impermanence/issues/270
+  services.logrotate.extraArgs = lib.mkAfter ["--state" "/var/lib/logrotate/logrotate.status"];
 
   # home-manager's impermanence module doesn't have permissions to bootstrap these dirs, so we do it here:
   system.activationScripts.bootstrapPersistHome.text = ''
