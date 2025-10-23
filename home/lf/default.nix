@@ -33,7 +33,7 @@
     fi
   '';
 in {
-  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+  home.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       ".local/share/lf"
     ];

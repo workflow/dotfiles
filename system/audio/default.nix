@@ -5,7 +5,7 @@
   ...
 }: let
 in {
-  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
     directories = [
       ".local/state/wireplumber" # Wireplumber state
       ".config/rncbc.org" # qpwgraph config file

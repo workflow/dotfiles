@@ -117,7 +117,7 @@
       set fish_greeting  # disable greeting
     '';
 in {
-  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+  home.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       ".config/fish"
       ".local/share/fish" # contains some unecessary state, but https://github.com/fish-shell/fish-shell/issues/10730 prevents us from only syncing the history file (.local/share/fish/fish_history)

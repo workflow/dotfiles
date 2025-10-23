@@ -33,7 +33,7 @@
     text = builtins.readFile ./scripts/patch-fira-with-fa6-pro.sh;
   };
 in {
-  home-manager.users.farlion.home.persistence."/persist/home/farlion" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
+  home-manager.users.farlion.home.persistence."/persist" = lib.mkIf config.home-manager.extraSpecialArgs.isImpermanent {
     directories = [
       ".local/share/fonts" # Locally persisted fonts (not nixos-managed)
       ".cache/fontconfig" # Fontconfig cache

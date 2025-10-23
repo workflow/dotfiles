@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  home.persistence."/persist/home/farlion" = lib.mkIf isImpermanent {
+  home.persistence."/persist" = lib.mkIf isImpermanent {
     files = [
       ".config/QtProject.conf" # Stuff like history and lastVisited
     ];
