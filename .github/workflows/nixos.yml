@@ -32,7 +32,7 @@ jobs:
           sudo rm -rf /home/runner/.rustup
 
       - name: "Maximize Disk Space 😈"
-        uses: easimon/maximize-build-space@v8
+        uses: easimon/maximize-build-space@v10
         with:
           root-reserve-mb: 8192
           swap-size-mb: 1024
@@ -43,16 +43,16 @@ jobs:
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: "Install Nix ❄️"
-        uses: cachix/install-nix-action@v27
+        uses: DeterminateSystems/nix-installer-action@main
         with:
-          extra_nix_config: |
+          extra-conf: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install Cachix ❄️"
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: workflow-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -85,7 +85,7 @@ jobs:
           sudo rm -rf /home/runner/.rustup
 
       - name: "Maximize Disk Space 😈"
-        uses: easimon/maximize-build-space@v8
+        uses: easimon/maximize-build-space@v10
         with:
           root-reserve-mb: 24432
           swap-size-mb: 512
@@ -96,16 +96,16 @@ jobs:
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: "Install Nix ❄️"
-        uses: cachix/install-nix-action@v27
+        uses: DeterminateSystems/nix-installer-action@main
         with:
-          extra_nix_config: |
+          extra-conf: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: "Install Cachix ❄️"
-        uses: cachix/cachix-action@v15
+        uses: cachix/cachix-action@v16
         with:
           name: workflow-nixos-config
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
