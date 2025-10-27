@@ -143,3 +143,16 @@ vim.api.nvim_create_autocmd("FileType", {
 		end, { buffer = bufnr, desc = "Deselect file in NvimTree" })
 	end,
 })
+
+-- Manual "Reject with reason"
+vim.keymap.set("n", "<leader>ax", function()
+	vim.ui.input({ prompt = "Why reject? " }, function(reason)
+		if reason and reason ~= "" then
+			-- send the feedback to Avante
+			vim.cmd("AvanteAsk " .. vim.fn.shellescape(
+				"I rejected your last action because: " .. reason ..
+				". Please adjust your plan and try again."
+			))
+		end
+	end)
+end, { desc = "Avante: reject with reason (send feedback)" })
