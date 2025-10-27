@@ -201,7 +201,7 @@ in {
       # {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen"];}
+      {command = ["zen-beta"];}
     ];
 
     # Window Rules
