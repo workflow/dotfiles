@@ -70,7 +70,7 @@ require('avante').setup({
 			model = "auto",
 		},
 	},
-	provider = "copilot_claude",
+	provider = "claude_thinking",
 	selector = {
 		provider = "telescope",
 		exclude_auto_select = { "NvimTree" },
