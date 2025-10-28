@@ -20,6 +20,7 @@
   imports =
     [
       ./aichat
+      ./aider
       ./alacritty
       ./aliases
       ./ansible
