@@ -45,6 +45,7 @@ in {
 
   # Tailscale
   services.tailscale.enable = true;
+  services.tailscale.package = pkgs.unstable.tailscale;
   services.tailscale.useRoutingFeatures = "client";
 
   # Allow for dynamic hosts file override (by root)
