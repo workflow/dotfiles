@@ -2,7 +2,7 @@
 {pkgs, ...}: let
   systemd-errors-and-warnings-counter = pkgs.writeShellApplication {
     name = "systemd-errors-and-warnings-counter";
-    runtimeInputs = [pkgs.ddcutil pkgs.coreutils];
+    runtimeInputs = [pkgs.systemd pkgs.coreutils];
     text = builtins.readFile ./scripts/systemd-errors-and-warnings-counter.sh;
   };
 in {
