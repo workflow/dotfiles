@@ -274,47 +274,47 @@ in {
 
     # Named Workspaces
     workspaces = {
-      "aa" = {
+      "00" = {
         name = " a";
         open-on-output = rightScreen;
       };
-      "b1" = {
+      "01" = {
         name = " 1";
-        open-on-output = mainScreen;
+        open-on-output = leftScreen;
       };
-      "c2" = {
+      "02" = {
         name = " 2";
         open-on-output = mainScreen;
       };
-      "d3" = {
+      "03" = {
         name = " 3";
         open-on-output = rightScreen;
       };
-      "e4" = {
+      "04" = {
         name = " 4";
-        open-on-output = leftScreen;
+        open-on-output = mainScreen;
       };
-      "f5" = {
+      "05" = {
         name = " 5";
         open-on-output = mainScreen;
       };
-      "g6" = {
+      "06" = {
         name = " 6";
         open-on-output = mainScreen;
       };
-      "h7" = {
+      "07" = {
         name = " 7";
         open-on-output = rightScreen;
       };
-      "i8" = {
+      "08" = {
         name = " 8";
         open-on-output = mainScreen;
       };
-      "j9" = {
+      "09" = {
         name = " 9";
         open-on-output = leftScreen;
       };
-      "k10" = {
+      "10" = {
         name = " 10";
         open-on-output = mainScreen;
       };
@@ -418,17 +418,17 @@ in {
         })
         (niriBinds {
           suffixes = {
-            "a" = ["workspace" "${workspaces.aa.name}"];
-            "1" = ["workspace" "${workspaces.b1.name}"];
-            "2" = ["workspace" "${workspaces.c2.name}"];
-            "3" = ["workspace" "${workspaces.d3.name}"];
-            "4" = ["workspace" "${workspaces.e4.name}"];
-            "5" = ["workspace" "${workspaces.f5.name}"];
-            "6" = ["workspace" "${workspaces.g6.name}"];
-            "7" = ["workspace" "${workspaces.h7.name}"];
-            "8" = ["workspace" "${workspaces.i8.name}"];
-            "9" = ["workspace" "${workspaces.j9.name}"];
-            "0" = ["workspace" "${workspaces.k10.name}"];
+            "a" = ["workspace" "${workspaces."00".name}"];
+            "1" = ["workspace" "${workspaces."01".name}"];
+            "2" = ["workspace" "${workspaces."02".name}"];
+            "3" = ["workspace" "${workspaces."03".name}"];
+            "4" = ["workspace" "${workspaces."04".name}"];
+            "5" = ["workspace" "${workspaces."05".name}"];
+            "6" = ["workspace" "${workspaces."06".name}"];
+            "7" = ["workspace" "${workspaces."07".name}"];
+            "8" = ["workspace" "${workspaces."08".name}"];
+            "9" = ["workspace" "${workspaces."09".name}"];
+            "0" = ["workspace" "${workspaces."10".name}"];
           };
           prefixes."Mod" = "focus";
           prefixes."Mod+Ctrl" = "move-column-to";
