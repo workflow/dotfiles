@@ -46,6 +46,13 @@ with lib; let
     text = builtins.readFile ./scripts/niri-qalc.sh;
   };
 
+  # Workspace reorderer - maintains logical order after moving workspaces between monitors
+  workspaceReorderer = pkgs.writeShellApplication {
+    name = "niri-reorder-workspaces";
+    runtimeInputs = [pkgs.niri pkgs.jq];
+    text = builtins.readFile ./scripts/niri-reorder-workspaces.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -89,6 +96,7 @@ in {
     windowPicker # niri-pick-window
     xwayland-satellite # For apps that need Xwayland
     fuzzelCalc # niri-qalc
+    workspaceReorderer # niri-reorder-workspaces
   ];
 
   programs.swaylock = {
@@ -543,6 +551,10 @@ in {
           # Overview
           "Mod+o".action = toggle-overview;
           "Mod+o".repeat = false;
+
+          # Reorder Workspaces (after moving them around)
+          "Mod+Shift+o".action = spawn "${workspaceReorderer}/bin/niri-reorder-workspaces";
+          "Mod+Shift+o".hotkey-overlay.title = "Re[o]rder workspaces to maintain logical order";
 
           # Rofi[e]moji
           "Mod+e".action = spawn "rofimoji";
