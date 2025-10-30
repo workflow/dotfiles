@@ -1,12 +1,9 @@
 {
   isImpermanent,
   lib,
-  osConfig,
   pkgs,
   ...
-}: let
-  isFlexbox = osConfig.networking.hostName == "flexbox";
-in {
+}: {
   home.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
       ".xournal" # Other recently used files
