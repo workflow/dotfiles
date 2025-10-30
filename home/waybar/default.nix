@@ -236,6 +236,9 @@
       format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
     };
 
+    # Direct ddcutil control - required for monitors that only expose VCP Feature 10 (Brightness)
+    # rather than the "Backlight Level White" feature that ddcci-driver-linux requires
+    # See https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux
     "custom/ddc-backlight-left" = {
       format = "{icon} ";
       tooltip-format = "Left {percentage}%";
@@ -248,7 +251,7 @@
       on-click-middle = "wdisplays";
       on-click-right = "kanshictl switch numenor";
       return-type = "json";
-      interval = 300;
+      interval = 60;
     };
 
     "custom/ddc-backlight-middle" = {
@@ -263,7 +266,7 @@
       on-click-middle = "wdisplays";
       on-click-right = "kanshictl switch numenor";
       return-type = "json";
-      interval = 300;
+      interval = 60;
     };
 
     "custom/ddc-backlight-right" = {
@@ -278,7 +281,7 @@
       on-click-middle = "wdisplays";
       on-click-right = "kanshictl switch numenor";
       return-type = "json";
-      interval = 300;
+      interval = 60;
     };
 
     "custom/wlsunset" = {
