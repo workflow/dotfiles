@@ -255,10 +255,10 @@
       format = "{icon} ";
       tooltip-format = "Middle {percentage}%";
       format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
-      exec = "ddc-backlight 8"; # For i2c-8
+      exec = "ddc-backlight 9"; # For i2c-9
       exec-on-event = false;
-      on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 8";
-      on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 8";
+      on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 9";
+      on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 9";
       on-click = "kanshictl switch numenor-movie";
       on-click-middle = "wdisplays";
       on-click-right = "kanshictl switch numenor";
