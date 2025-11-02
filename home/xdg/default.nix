@@ -8,9 +8,11 @@
     directories = [
       ".xournal" # Other recently used files
     ];
-    files = [
-      ".local/share/recently-used.xbel" # Recently used files
-    ];
+    # TODO: This somehow tries to replace the file after it's created by something else
+    # See https://github.com/nix-community/impermanence/issues/147
+    # files = [
+    #   ".local/share/recently-used.xbel" # Recently used files
+    # ];
   };
 
   home.packages = [
