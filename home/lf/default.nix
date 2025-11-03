@@ -93,6 +93,33 @@ in {
         }}
       '';
 
+      paste-image = ''
+        ''${{
+          printf "File Name (e.g., image.png): "
+          read ans
+
+          if [ -z "$ans" ]; then
+            echo "No filename provided"
+            exit 1
+          fi
+
+          if [ -e "$ans" ]; then
+            printf "File already exists, overwrite (y|n): "
+            read overwrite
+            if [ "$overwrite" != "y" ]; then
+              exit 1
+            fi
+          fi
+
+          wl-paste > "$ans"
+          if [ $? -eq 0 ]; then
+            echo "Pasted clipboard content to $ans"
+          else
+            echo "Failed to paste from clipboard"
+          fi
+        }}
+      '';
+
       open = ''
         ''${{
           case $(file --mime-type "$f" -bL) in
@@ -188,6 +215,7 @@ in {
       md = "mkdir";
       mf = "mkfile";
       mr = "sudomkfile";
+      mp = "paste-image";
       Q = "quit-and-cd";
       x = "cut";
     };
