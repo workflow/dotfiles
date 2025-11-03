@@ -22,8 +22,28 @@ vim.defer_fn(function()
       keymaps = {
         init_selection = '<c-s>',
         node_incremental = '<c-s>',
+        scope_incremental = false, -- Disable to avoid 'grc' conflict with mini.operators
         node_decremental = '<c-M-s>',
       },
     },
   }
+
+  -- Add additional intuitive keybindings for treesitter selection
+  -- These complement the <c-s> bindings and work in visual mode
+  vim.keymap.set('x', '+', function()
+    require('nvim-treesitter.incremental_selection').node_incremental()
+  end, { desc = 'Treesitter: Expand selection' })
+
+  vim.keymap.set('x', '_', function()
+    require('nvim-treesitter.incremental_selection').node_decremental()
+  end, { desc = 'Treesitter: Shrink selection' })
+
+  -- Document the keybindings with which-key
+  local wk = require("which-key")
+  wk.add({
+    { "<c-s>", desc = "Treesitter: Init/Expand selection", mode = {"n", "x"} },
+    { "<c-M-s>", desc = "Treesitter: Shrink selection", mode = "x" },
+    { "+", desc = "Treesitter: Expand selection", mode = "x" },
+    { "_", desc = "Treesitter: Shrink selection", mode = "x" },
+  })
 end, 0)
