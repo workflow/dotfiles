@@ -4,5 +4,11 @@
   ];
   programs.jujutsu = {
     enable = true;
+    settings = {
+      user = {
+        email = "4farlion@gmail.com";
+        name = "workflow";
+      };
+    };
   };
 }
