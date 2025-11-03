@@ -6,8 +6,11 @@
 }: {
   home.persistence."/persist" = lib.mkIf isImpermanent {
     directories = [
-      ".config/freerdp" # server keys connected to
-      ".config/dconf" # gnome-connections uses dconf/GSettings for storing connection profiles and settings
+      ".config/freerdp" # RDP server certificates/keys
+      ".config/dconf" # GNOME settings database (GSettings/dconf)
+    ];
+    files = [
+      ".config/connections.db" # GNOME Connections connection profiles database
     ];
   };
 
