@@ -43,7 +43,6 @@
       ./firefox
       ./fish
       ./fix-flexbox-mike # Fix ALSA not detecting microphone on XPS 9700
-      ./satty # Screenshot Annotation tool written in Rust
       ./fuzzel
       ./fzf
       ./galaxy-buds-client
@@ -55,6 +54,7 @@
       ./hwatch # Modern watch alternative
       ./isd # Interactive Systemd TUI in Python
       ./jqp # TUI Playground for interacting with jq
+      ./jujutsu
       ./k9s
       ./kanshi # Wayland autorandr
       ./kind-with-local-registry
@@ -88,6 +88,7 @@
       ./ripgrep-all # Like rg, but also search in Office documents, PDFs etc...; rga-fzf is AMAZING!
       ./rofimoji
       ./showmethekey # screenkey for Wayland, show key presses
+      ./satty # Screenshot Annotation tool written in Rust
       ./signal
       ./solaar # Linux devices manager for the Logitech Unifying Receiver
       ./sound-switcher
