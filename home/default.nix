@@ -77,7 +77,6 @@
       ./obsidian
       ./onboard # Virtual Keyboard for layout visualization (no good Wayland options work)
       ./pavucontrol # Pulse Audio Volume Control GUI
-      ./pay-respects # thefuck replacement written in Rust
       ./pgcli # Actually usable PostgreSQL CLI
       ./pomodoro-gtk
       ./portfolio-performance
