@@ -1,30 +1,6 @@
-local function showFugitiveGit()
-	if vim.fn.FugitiveHead() ~= '' then
-		vim.cmd [[
-            Git
-            setlocal nonumber
-            setlocal norelativenumber
-            ]]
-	end
-end
-local function toggleFugitiveGit()
-	if vim.fn.buflisted(vim.fn.bufname('fugitive:///*/.git//$')) ~= 0 then
-		vim.cmd [[ execute ":bdelete" bufname('fugitive:///*/.git//$') ]]
-	else
-		showFugitiveGit()
-	end
-end
-local function toggleFugitiveFromInsert()
-	vim.cmd.stopinsert()
-	toggleFugitiveGit()
-end
-
-
 local wk = require("which-key")
 wk.add(
 	{
-		{ "<F3>",        toggleFugitiveGit,         desc = "Toggle Fugitive",                mode = { "n", "v" } },
-		{ "<F3>",        toggleFugitiveFromInsert,  desc = "Toggle Fugitive",                mode = { "i" } },
 		{ "<leader>g",   group = "[G]it",           silent = false },
 		{ "<leader>gB",  ":Git blame<CR>",          desc = "[B]lame",                        silent = false },
 		{ "<leader>gb",  ":Git checkout -b<Space>", desc = "New [b]ranch",                   silent = false },

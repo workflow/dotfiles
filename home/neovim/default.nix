@@ -32,6 +32,7 @@ in {
       ./git-conflict-nvim
       ./gitsigns
       ./jdtls
+      ./jj
       ./lspsaga
       ./lualine
       # Ensure devicons module is available before mocking it with mini.icons
