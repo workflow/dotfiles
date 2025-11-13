@@ -32,6 +32,7 @@
       ./broot
       ./btop
       ./calibre # Ebook reader
+      ./claude-code
       ./cliphist
       ./cpu-profile-toggler
       ./devenv # devenv.sh
