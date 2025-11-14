@@ -9,6 +9,14 @@ require('avante').setup({
 				ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
 			},
 		},
+		["codex"] = {
+			command = "npx",
+			args = { "@zed-industries/codex-acp" },
+			env = {
+				NODE_NO_WARNINGS = "1",
+				OPENAI_API_KEY = os.getenv("OPENAI_API_KEY"),
+			},
+		},
 	},
 	behaviour = {
 		enable_fastapply = true, -- Uses morphllm.com
