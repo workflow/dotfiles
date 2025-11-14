@@ -34,6 +34,7 @@
       ./calibre # Ebook reader
       ./claude-code
       ./cliphist
+      ./codex # OpenAI Codex
       ./cpu-profile-toggler
       ./devenv # devenv.sh
       ./direnv
