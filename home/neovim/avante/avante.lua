@@ -1,5 +1,15 @@
 require('avante_lib').load()
 require('avante').setup({
+	acp_providers = {
+		["claude-code"] = {
+			command = "npx",
+			args = { "@zed-industries/claude-code-acp" },
+			env = {
+				NODE_NO_WARNINGS = "1",
+				ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+			},
+		},
+	},
 	behaviour = {
 		enable_fastapply = true, -- Uses morphllm.com
 		auto_approve_tool_permissions = false,
@@ -70,7 +80,7 @@ require('avante').setup({
 			model = "auto",
 		},
 	},
-	provider = "claude_thinking",
+	provider = "claude-code",
 	selector = {
 		provider = "telescope",
 		exclude_auto_select = { "NvimTree" },
