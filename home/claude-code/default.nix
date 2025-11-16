@@ -11,4 +11,13 @@
   };
 
   home.packages = with pkgs.unstable; [claude-code];
+
+  # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
+  programs.alacritty.settings.keyboard.bindings = [
+    {
+      key = "Return";
+      mods = "Shift";
+      chars = "\n";
+    }
+  ];
 }
