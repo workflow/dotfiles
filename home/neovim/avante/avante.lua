@@ -31,14 +31,14 @@ require('avante').setup({
 	instructions_file = "agents.md",
 	providers = {
 		openai = {
-			model = "gpt-5",
+			model = "gpt-5.1",
 			extra_request_body = {
 				temperature = 1,
 			},
 		},
 		openai_5_thinking = {
 			__inherited_from = 'openai',
-			model = "gpt-5",
+			model = "gpt-5.1",
 			extra_request_body = {
 				temperature = 1,
 				reasoning_effort = "high",
@@ -88,7 +88,7 @@ require('avante').setup({
 			model = "auto",
 		},
 	},
-	provider = "claude-code",
+	provider = "openai_5_thinking",
 	selector = {
 		provider = "telescope",
 		exclude_auto_select = { "NvimTree" },
