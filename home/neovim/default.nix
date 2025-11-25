@@ -41,7 +41,7 @@ in {
       ./mini-operators
       ./neotest
       ./noice # UI for commandline, messages and popupmenu
-      ./none-ls
+      ./conform
       ./notify # Pluggable Notifications
       ./nui # UI Components
       ./nvim-tree-lua # File Tree
