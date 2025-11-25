@@ -2,6 +2,7 @@
   config,
   lib,
   isImpermanent,
+  isLaptop,
   pkgs,
   ...
 }: let
@@ -77,6 +78,13 @@ in {
 
   # Disabling DHCPCD in favor of NetworkManager
   networking.dhcpcd.enable = false;
+
+  # Captive Browser
+  programs.captive-browser = lib.mkIf isLaptop {
+    enable = true;
+    bindInterface = false;
+  };
+
   # Only wait for a single interface to come up
   systemd.network.wait-online.anyInterface = true;
 }

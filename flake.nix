@@ -79,6 +79,7 @@
         inherit inputs;
         inherit secrets;
         isImpermanent = false;
+        isLaptop = true;
       };
       modules =
         commonModules
@@ -109,6 +110,7 @@
         inherit inputs;
         inherit secrets;
         isImpermanent = true;
+        isLaptop = false;
       };
       modules =
         commonModules
