@@ -72,68 +72,56 @@
         config.allowUnfree = true;
       };
     };
-  in {
-    nixosConfigurations.flexbox = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        inherit secrets;
-        isImpermanent = false;
-        isLaptop = true;
+
+    mkSystem = {
+      hostname,
+      isImpermanent,
+      isLaptop,
+      isAmd,
+      isNvidia,
+      extraModules ? [],
+    }: let
+      machineArgs = {
+        inherit inputs secrets isImpermanent isLaptop;
       };
-      modules =
-        commonModules
-        ++ [
-          ./machines/flexbox/hardware-scan.nix
-          ./machines/flexbox/system.nix
-          ./system/nvidia
-          {
-            home-manager =
-              commonHomeManagerSettings
-              // {
-                extraSpecialArgs = {
-                  isAmd = false;
-                  isImpermanent = false;
-                  isLaptop = true;
-                  isNvidia = true;
-                  inherit inputs;
-                  inherit secrets;
+    in
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = machineArgs;
+        modules =
+          commonModules
+          ++ [
+            ./machines/${hostname}/hardware-scan.nix
+            ./machines/${hostname}/system.nix
+            {
+              home-manager =
+                commonHomeManagerSettings
+                // {
+                  extraSpecialArgs = machineArgs // {
+                    inherit isAmd isNvidia;
+                  };
                 };
-              };
-          }
-        ];
+            }
+          ]
+          ++ extraModules;
+      };
+  in {
+    nixosConfigurations.flexbox = mkSystem {
+      hostname = "flexbox";
+      isImpermanent = false;
+      isLaptop = true;
+      isAmd = false;
+      isNvidia = true;
+      extraModules = [./system/nvidia];
     };
 
-    nixosConfigurations.numenor = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-        inherit secrets;
-        isImpermanent = true;
-        isLaptop = false;
-      };
-      modules =
-        commonModules
-        ++ [
-          ./machines/numenor/hardware-scan.nix
-          ./machines/numenor/system.nix
-          ./system/amd
-          ./system/btrfs
-          {
-            home-manager =
-              commonHomeManagerSettings
-              // {
-                extraSpecialArgs = {
-                  isAmd = true;
-                  isImpermanent = true;
-                  isLaptop = false;
-                  isNvidia = false;
-                  inherit inputs;
-                  inherit secrets;
-                };
-              };
-          }
-        ];
+    nixosConfigurations.numenor = mkSystem {
+      hostname = "numenor";
+      isImpermanent = true;
+      isLaptop = false;
+      isAmd = true;
+      isNvidia = false;
+      extraModules = [./system/amd ./system/btrfs];
     };
 
     # Expose profiling helper as a package and an app
