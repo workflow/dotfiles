@@ -10,7 +10,7 @@
       description = "Florian Peter";
       extraGroups = ["disk"];
       group = "users";
-      hashedPassword = lib.mkDefault "";
+      hashedPassword = lib.mkDefault ""; # For CI, otherwise gets overwritten by parent `secrets` flake
       isNormalUser = true;
       shell = pkgs.fish;
     };

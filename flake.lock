@@ -761,15 +761,21 @@
         "nur": "nur",
         "rmob": "rmob",
         "secrets": "secrets",
-        "sops-nix": "sops-nix",
+        "sops-nix": "sops-nix_2",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }
     },
     "secrets": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "sops-nix": "sops-nix"
+      },
       "locked": {
-        "lastModified": 1764098554,
-        "narHash": "sha256-xPZdmoTH3p+Y0h64NFQvjXxli+WzOap+ILszyqvD8Vc=",
+        "lastModified": 1764110740,
+        "narHash": "sha256-OrgYkZur8QssIojmmqNDy+8mWfB2b0h51SAfc+77f2c=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
@@ -779,6 +785,27 @@
       }
     },
     "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "secrets",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764021963,
+        "narHash": "sha256-1m84V2ROwNEbqeS9t37/mkry23GBhfMt8qb6aHHmjuc=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "c482a1c1bbe030be6688ed7dc84f7213f304f1ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "sops-nix_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"

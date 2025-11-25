@@ -19,6 +19,7 @@
 
   imports =
     [
+      inputs.sops-nix.homeManagerModules.sops
       ./aichat
       ./aider
       ./alacritty

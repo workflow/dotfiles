@@ -20,7 +20,10 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
-    secrets.url = "path:/home/farlion/code/nixos-secrets";
+    secrets = {
+      url = "path:/home/farlion/code/nixos-secrets";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix/release-25.05";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -97,9 +100,11 @@
               home-manager =
                 commonHomeManagerSettings
                 // {
-                  extraSpecialArgs = machineArgs // {
-                    inherit isAmd isNvidia;
-                  };
+                  extraSpecialArgs =
+                    machineArgs
+                    // {
+                      inherit isAmd isNvidia;
+                    };
                 };
             }
           ]
