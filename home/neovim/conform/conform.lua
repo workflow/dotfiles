@@ -6,7 +6,7 @@ require("conform").setup({
     json = { "prettierd" },
     yaml = { "prettierd" },
     markdown = { "prettierd" },
-    python = { "yapf" },
+    python = { "ruff_format", "ruff_organize_imports" },
   },
   -- Uncomment to enable format on save:
   -- format_on_save = {

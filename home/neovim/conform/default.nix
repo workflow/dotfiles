@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.neovim.extraPackages = with pkgs; [
     eslint
+    ruff
   ];
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
