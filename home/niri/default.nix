@@ -1,12 +1,12 @@
 {
   config,
+  isNvidia,
   lib,
   osConfig,
   pkgs,
   ...
 }:
 with lib; let
-  isFlexbox = osConfig.networking.hostName == "flexbox";
   isNumenor = osConfig.networking.hostName == "numenor";
 
   leftScreen =
@@ -512,16 +512,16 @@ in {
         {
           # Browser
           "Mod+b".action = spawn-sh (
-            if isFlexbox
-            then "brave --profile-directory='Default' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
+            if isNvidia
+            then "brave --profile-directory='Default' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
             else "brave --profile-directory='Default' --password-store=seahorse"
           );
           "Mod+b".hotkey-overlay.hidden = true;
           "Mod+Shift+b".action = spawn "zen";
           "Mod+Shift+b".hotkey-overlay.hidden = true;
           "Mod+h".action = spawn-sh (
-            if isFlexbox
-            then "brave --profile-directory='Profile 1' --enable-features='VaapiVideoDecoder,VaapiVideoEncoder' --enable-raw-draw --password-store=seahorse"
+            if isNvidia
+            then "brave --profile-directory='Profile 1' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
             else "brave --profile-directory='Profile 1' --password-store=seahorse"
           );
           "Mod+h".hotkey-overlay.hidden = true;

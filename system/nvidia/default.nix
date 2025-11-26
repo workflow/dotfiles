@@ -6,7 +6,15 @@
     pkgs.mesa-demos
     pkgs.vulkan-tools
     pkgs.libva-utils
+    pkgs.nvidia-vaapi-driver # VA-API implementation using NVIDIA's NVDEC
   ];
+
+  # Enable VAAPI for NVIDIA
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    NVD_BACKEND = "direct"; # Use direct backend for better performance
+  };
+
   services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics = {
     enable = true;

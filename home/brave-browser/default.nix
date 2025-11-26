@@ -1,11 +1,10 @@
 {
   lib,
   isImpermanent,
-  osConfig,
+  isNvidia,
   pkgs,
   ...
 }: let
-  isFlexbox = osConfig.networking.hostName == "flexbox";
   # Try to focus an existing Brave window on link open so the workspace comes to the foreground
   braveNiriOpen = pkgs.writeShellApplication {
     name = "brave-niri-open";
@@ -18,8 +17,8 @@
         niri msg action focus-window --id "$brave_id" >/dev/null 2>&1 || true
       fi
       exec ${pkgs.brave}/bin/brave ${
-        if isFlexbox
-        then "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder --enable-raw-draw --password-store=seahorse"
+        if isNvidia
+        then "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
         else "--password-store=seahorse"
       } "$@"
     '';
