@@ -21,6 +21,9 @@
   environment.systemPackages = with pkgs; [
     podman-compose # docker-compose rewritten with podman backend
     virt-manager # Desktop user interface for managing virtual machines
+    (pkgs.callPackage ./scripts/benchmark-containers.nix {})
+    (pkgs.callPackage ./scripts/benchmark-heavy-containers.nix {})
+    (pkgs.callPackage ./scripts/reset-container-state.nix {})
   ];
   virtualisation.docker = {
     enable = true;
