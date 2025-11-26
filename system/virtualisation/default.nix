@@ -24,6 +24,8 @@
   ];
   virtualisation.docker = {
     enable = true;
+    # Explicitly use overlay2 for baseline benchmarking
+    storageDriver = "overlay2";
     daemon.settings = {
       # Attach to resolved instead of using default Docker DNS servers
       dns = ["172.17.0.1"];
