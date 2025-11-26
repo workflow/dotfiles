@@ -82,11 +82,10 @@
       isLaptop,
       isAmd,
       isNvidia,
-      isBtrfs,
       extraModules ? [],
     }: let
       machineArgs = {
-        inherit inputs secrets isImpermanent isLaptop isBtrfs;
+        inherit inputs secrets isImpermanent isLaptop;
       };
     in
       nixpkgs.lib.nixosSystem {
@@ -118,7 +117,6 @@
       isLaptop = true;
       isAmd = false;
       isNvidia = true;
-      isBtrfs = false;
       extraModules = [./system/nvidia];
     };
 
@@ -128,7 +126,6 @@
       isLaptop = false;
       isAmd = true;
       isNvidia = false;
-      isBtrfs = true;
       extraModules = [./system/amd ./system/btrfs];
     };
 

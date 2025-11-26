@@ -1,7 +1,6 @@
 {
   config,
   isImpermanent,
-  isBtrfs,
   lib,
   pkgs,
   ...
@@ -28,30 +27,20 @@
   ];
   virtualisation.docker = {
     enable = true;
-    # Use native btrfs storage driver for better performance on btrfs filesystems
-    # For ext4, use overlay2 which is the default and most optimized
-    storageDriver = lib.mkIf isBtrfs "btrfs";
-    daemon.settings =
-      {
-        # Attach to resolved instead of using default Docker DNS servers
-        dns = ["172.17.0.1"];
-        # Have containers listen on localhost instead of 0.0.0.0,
-        # see https://github.com/NixOS/nixpkgs/issues/111852#issuecomment-1954656069
-        ip = "127.0.0.1";
-        ipv6 = false;
-        ip6tables = false;
-        iptables = true;
-        # Disable userland proxy for better performance (use kernel forwarding instead)
-        userland-proxy = false;
-      }
-      // lib.optionalAttrs (!isBtrfs) {
-        # Ext4-specific optimizations
-        # Use overlay2 with native diff for best performance on ext4
-        storage-driver = "overlay2";
-        storage-opts = [
-          "overlay2.override_kernel_check=true"
-        ];
-      };
+    # Explicitly use overlay2 for best performance and stability
+    storageDriver = "overlay2";
+    daemon.settings = {
+      # Attach to resolved instead of using default Docker DNS servers
+      dns = ["172.17.0.1"];
+      # Have containers listen on localhost instead of 0.0.0.0,
+      # see https://github.com/NixOS/nixpkgs/issues/111852#issuecomment-1954656069
+      ip = "127.0.0.1";
+      ipv6 = false;
+      ip6tables = false;
+      iptables = true;
+      # Disable userland proxy for better performance (use kernel forwarding instead)
+      userland-proxy = false;
+    };
   };
   # Allow connecting to resolved DNS from inside Docker containers
   networking.firewall.interfaces.docker0.allowedTCPPorts = [53];
@@ -86,49 +75,28 @@
 
   virtualisation.podman = {
     enable = true;
-    # Use native btrfs driver for better performance on btrfs filesystems
-    # This avoids the overhead of overlay's CoW on top of btrfs's CoW
-    extraPackages = lib.optionals isBtrfs [pkgs.btrfs-progs];
   };
 
-  # Configure Podman storage driver based on filesystem type
+  # Configure Podman to use overlay with optimizations
   virtualisation.containers.storage.settings = {
     storage = {
-      driver =
-        if isBtrfs
-        then "btrfs"
-        else "overlay";
+      driver = "overlay";
       runroot = "/run/containers/storage";
       graphroot = "/var/lib/containers/storage";
-      options =
-        if isBtrfs
-        then {
-          # Btrfs specific options
-          pull_options = {
-            enable_partial_images = "true";
-            use_hard_links = "false";
-            ostree_repos = "";
-          };
-          btrfs = {
-            # Don't use space reservations (better for performance)
-            # Relies on btrfs's built-in CoW and compression
-            min_space = "10GB";
-          };
-        }
-        else {
-          # Ext4-specific options
-          pull_options = {
-            enable_partial_images = "true";
-            use_hard_links = "false";
-            ostree_repos = "";
-          };
-          overlay = {
-            # Use native overlay with metacopy for better performance on ext4
-            # metacopy=on allows fast copy-up of large files
-            mountopt = "nodev,metacopy=on";
-            force_mask = "0000";
-          };
+      options = {
+        # Pull images in parallel for better performance
+        pull_options = {
+          enable_partial_images = "true";
+          use_hard_links = "false";
+          ostree_repos = "";
         };
+        overlay = {
+          # Use native overlay with metacopy for better performance
+          # metacopy=on allows fast copy-up of large files
+          mountopt = "nodev,metacopy=on";
+          force_mask = "0000";
+        };
+      };
     };
   };
 
