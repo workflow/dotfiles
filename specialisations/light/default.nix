@@ -45,6 +45,9 @@
         # Neovim
         neovim.enable = lib.mkForce true;
       };
+
+      # K9s
+      programs.k9s.settings.k9s.ui.skin = lib.mkForce "gruvbox-light";
     };
   };
 }
