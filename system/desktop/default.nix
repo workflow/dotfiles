@@ -22,6 +22,10 @@
     };
   };
 
+  # Mounting Android phone from Files
+  services.gvfs.enable = true;
+  services.udev.packages = [pkgs.android-udev-rules];
+
   programs.niri.enable = true;
   # XDG Portal Settings For Niri
   xdg.portal = {
