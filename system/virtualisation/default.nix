@@ -18,8 +18,9 @@
     ];
   };
 
-  environment.systemPackages = [
-    pkgs.virt-manager # Desktop user interface for managing virtual machines
+  environment.systemPackages = with pkgs; [
+    podman-compose # docker-compose rewritten with podman backend
+    virt-manager # Desktop user interface for managing virtual machines
   ];
   virtualisation.docker = {
     enable = true;
