@@ -217,14 +217,6 @@ in {
     window-rules = [
       {
         matches = [
-          {
-            app-id = "^zen-beta$";
-          }
-        ];
-        open-on-workspace = " a";
-      }
-      {
-        matches = [
           {app-id = "^Todoist$";}
           {app-id = "^obsidian$";}
         ];
