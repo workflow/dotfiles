@@ -30,6 +30,7 @@ in {
       ./power
       ./printing
       ./security
+      ./smb
       ./stylix
       ./syncthing
       ./systemd
