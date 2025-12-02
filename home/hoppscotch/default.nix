@@ -12,6 +12,11 @@
     '';
   };
 in {
+  home.persistence."/persist".directories = [
+    ".local/share/io.hoppscotch.desktop" # Auth tokens, collections, requests, workspaces
+    ".config/io.hoppscotch.desktop" # App settings, bundles, window state
+  ];
+
   home.packages = [
     hoppscotch-wrapped
   ];
