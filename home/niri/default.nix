@@ -89,14 +89,15 @@ with lib; let
 in {
   home.packages = with pkgs; [
     brightnessctl # For brightness +/- keys
-    qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
+    fuzzelCalc # niri-qalc
+    unstable.hyprmagnifier # Screen magnifier for Wayland
     playerctl # For play/pause etc... controlling media players that implement MPRIS
+    qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     swaybg # Minmal wallpaper setter for Sway
     wallpaperSetter # Specialization-aware wallpaper setting
     windowPicker # niri-pick-window
-    xwayland-satellite # For apps that need Xwayland
-    fuzzelCalc # niri-qalc
     workspaceReorderer # niri-reorder-workspaces
+    xwayland-satellite # For apps that need Xwayland
   ];
 
   programs.swaylock = {
@@ -365,6 +366,8 @@ in {
           "Mod+Shift+D".hotkey-overlay.title = "Pick a Window: niri-pick-window";
           "Mod+Shift+X".action = spawn-sh "swaylock --daemonize && niri msg action power-off-monitors";
           "Mod+Shift+X".hotkey-overlay.title = "Lock screen and turn off monitors";
+          "Mod+z".action = spawn "hyprmagnifier";
+          "Mod+z".hotkey-overlay.title = "Screen magnifier";
           "Mod+Shift+z".action = power-off-monitors;
           "Mod+Shift+z".hotkey-overlay.title = "Power off Monitors";
 
