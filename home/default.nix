@@ -54,6 +54,7 @@
       ./git-worktree-switcher # Provides wt
       ./gnome-connections # RDP/VNC Client for Wayland
       ./gtk-qt
+      ./hoppscotch # OSS Postman
       ./hwatch # Modern watch alternative
       ./isd # Interactive Systemd TUI in Python
       ./jqp # TUI Playground for interacting with jq
