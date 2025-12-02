@@ -12,7 +12,6 @@
     decaffeinate = "systemctl --user start swayidle";
 
     c = "wl-copy";
-    cc = "tee /dev/tty | wl-copy";
 
     cdn = "cd ~/nixos-config";
     cdc = "cd ~/code";
@@ -20,7 +19,6 @@
     dira = "direnv allow";
     dird = "direnv deny";
     dirr = "direnv reload";
-    dark-theme = "nh os test --no-specialisation && niri-set-wallpaper";
     dr = "direnv reload";
 
     ga = "git add -p";
@@ -34,16 +32,12 @@
     gd = "git diff";
     gdc = "git diff --cached";
     gf = "git fetch --prune";
-    gfo = "git fetch origin main:main || git fetch origin master:master";
     gl = "git log";
-    glcs = "git rev-parse HEAD | wl-copy"; # Get Latest Commit SHA
-    gm = "git checkout main || git checkout master";
     gp = "git pull --prune";
     gpf = "git push --force-with-lease";
     gpn = "git push -u origin HEAD";
     gr = "git rebase";
     grc = "git rebase --continue";
-    grm = "git rebase main || git rebase master";
     gs = "git status";
     gst = "git stash";
     gsa = "git stash apply";
@@ -61,7 +55,6 @@
     kc-kind = "kubectl --context kind-kind";
 
     lh = "/run/current-system/sw/bin/ls -ah";
-    light-theme = "nh os test --specialisation light && niri-set-wallpaper";
 
     myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
@@ -71,8 +64,6 @@
     ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
 
     nsn = "nh search";
-
-    pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
 
     paste = "wl-paste";
 

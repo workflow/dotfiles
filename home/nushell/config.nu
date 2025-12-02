@@ -9,36 +9,22 @@ $env.config = {
   }
 
   keybindings: [
-      #{
-      #  name: completion_menu
-      #  modifier: control
-      #  keycode: char_s
-      #  mode: [vi_insert vi_normal]
-      #  event: {
-      #    until: [
-      #      { send: menu name: completion_menu }
-      #      { send: menupagenext }
-      #    ]
-      #  }
-      #}
-      #{
-      #  name: history_menu
-      #  modifier: control
-      #  keycode: char_h
-      #  mode: [vi_insert vi_normal]
-      #  event: {
-      #    until: [
-      #      { send: menu name: history_menu }
-      #      { send: menupagenext }
-      #    ]
-      #  }
-      #}
       {
           name: open_command_editor
           modifier: control
           keycode: char_e
           mode: [emacs, vi_normal, vi_insert]
           event: { send: openeditor }
+      }
+      {
+          name: copy_command_line
+          modifier: control
+          keycode: char_x
+          mode: [emacs, vi_normal, vi_insert]
+          event: [
+              { edit: selectall }
+              { edit: copyselectionsystem }
+          ]
       }
     ]
 }
