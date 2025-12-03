@@ -128,18 +128,16 @@ in {
     enable = true;
     interactiveShellInit = shellInit;
     inherit functions plugins;
-    shellAbbrs = config.home.shellAliases // {
-      # Fish/bash-specific aliases that aren't compatible with nushell
-      # Use bashInteractive to ensure bind command is available
-      bash = "${config.programs.bash.package}/bin/bash";
-      cc = "tee /dev/tty | wl-copy";
-      dark-theme = "nh os test --no-specialisation && niri-set-wallpaper";
-      light-theme = "nh os test --specialisation light && niri-set-wallpaper";
-      gfo = "git fetch origin main:main || git fetch origin master:master";
-      glcs = "git rev-parse HEAD | wl-copy";
-      gm = "git checkout main || git checkout master";
-      grm = "git rebase main || git rebase master";
-      pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
-    };
+    shellAbbrs =
+      config.home.shellAliases
+      // {
+        # Fish/bash-specific aliases that aren't compatible with nushell
+        # Use bashInteractive to ensure bind command is available
+        bash = "${config.programs.bash.package}/bin/bash";
+        cc = "tee /dev/tty | wl-copy";
+        dark-theme = "nh os test --no-specialisation && niri-set-wallpaper";
+        light-theme = "nh os test --specialisation light && niri-set-wallpaper";
+        pa = "pw-play ~/Music/Own\\ Speech/IckbinArschratte.WAV";
+      };
   };
 }
