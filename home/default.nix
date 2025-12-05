@@ -76,6 +76,7 @@
       ./nh # https://github.com/nix-community/nh
       ./niri
       ./nix-index
+      ./nix-inspect # TUI for inspecting final NixOS config (and other nix exprs)
       ./nushell
       ./obs # OBS Studio
       ./obsidian
