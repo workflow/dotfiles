@@ -29,6 +29,7 @@ in {
       ./performance
       ./power
       ./printing
+      ./scrutiny # Hard Drive S.M.A.R.T Monitoring, historical trends
       ./security
       ./smb
       ./stylix
