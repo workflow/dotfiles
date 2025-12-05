@@ -774,8 +774,8 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1764849300,
-        "narHash": "sha256-9b5jmMVK5QgiYn9RbgjQfol7FmV39R55Jox9vN6YcB8=",
+        "lastModified": 1764964073,
+        "narHash": "sha256-LKA/o/Vf8UOvMzp+YQQNdYde8HpAg95GLtERVLt8g4k=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
