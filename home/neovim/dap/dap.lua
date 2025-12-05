@@ -7,6 +7,7 @@ wk.add(
     { "<leader>db", function() dap.toggle_breakpoint() end,                                    desc = "Toggle [B]reakpoint" },
     { "<leader>dc", function() dap.continue() end,                                             desc = "[C]ontinue" },
     { "<F5>",       function() dap.continue() end,                                             desc = "Continue" },
+    { "<leader>dC", function() dap.run_to_cursor() end,                                        desc = "Run to [C]ursor" },
     { "<leader>di", function() dap.step_into() end,                                            desc = "Step [I]nto" },
     { "<F6>",       function() dap.step_into() end,                                            desc = "Step Into" },
     { "<leader>do", function() dap.step_over() end,                                            desc = "Step [O]ver" },
