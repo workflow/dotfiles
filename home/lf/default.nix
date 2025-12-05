@@ -184,6 +184,16 @@ in {
       yank-basename = ''&basename -a -- $fx | head -c-1 | wl-copy'';
       yank-basename-without-extension = ''&basename -a -- $fx | sed -E 's/\.[^.]+$//' | head -c-1 | wl-copy'';
 
+      yank-image = ''
+        ''${{
+          # Copy the first selected file's binary content to clipboard
+          # Detect MIME type and copy accordingly
+          file="$(echo "$fx" | head -n1)"
+          mime_type="$(file --mime-type -b "$file")"
+          wl-copy -t "$mime_type" < "$file"
+        }}
+      '';
+
       z = ''
         %{{
           result="$(zoxide query --exclude $PWD $@ | sed 's/\\/\\\\/g;s/"/\\"/g')"
@@ -218,6 +228,7 @@ in {
       mp = "paste-image";
       Q = "quit-and-cd";
       x = "cut";
+      Y = "yank-image";
     };
 
     previewer = {
