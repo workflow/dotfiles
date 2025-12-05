@@ -70,6 +70,7 @@
       ./lnav # Log File Navigator
       ./mic-levels-maintainer
       ./mpv # Media Player
+      ./mullvad-browser
       ./nautilus # Gnome File Manager
       ./neovim
       ./networkmanager-dmenu
