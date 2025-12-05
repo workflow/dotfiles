@@ -42,6 +42,7 @@ in {
   home.packages = with pkgs; [
     chafa # Images to terminal pixels, used by pistol
     dlfile # Provides the ability to download a file by dropping it into a window
+    imagemagick # Image conversion for clipboard operations
     pistol # Image previewer
     ripdrag
   ];
@@ -186,11 +187,18 @@ in {
 
       yank-image = ''
         ''${{
-          # Copy the first selected file's binary content to clipboard
-          # Detect MIME type and copy accordingly
+          # Copy the first selected file's binary content to clipboard as PNG
+          # Many apps only accept PNG from clipboard on Wayland
           file="$(echo "$fx" | head -n1)"
           mime_type="$(file --mime-type -b "$file")"
-          wl-copy -t "$mime_type" < "$file"
+
+          if [[ "$mime_type" == image/png ]]; then
+            # Already PNG, copy directly
+            wl-copy -t image/png < "$file"
+          else
+            # Convert to PNG first for compatibility
+            convert "$file" png:- | wl-copy -t image/png
+          fi
         }}
       '';
 
