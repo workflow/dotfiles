@@ -196,3 +196,9 @@ require('lspconfig').nixd.setup {
     },
   },
 }
+-- Harper-ls (grammar/spell checker for prose)
+require('lspconfig').harper_ls.setup {
+  capabilities = capabilities,
+  on_attach = shared_lsp_config.on_attach,
+  filetypes = { "markdown", "text", "gitcommit" },
+}
