@@ -35,11 +35,6 @@ in {
     pkgs.brave
   ];
 
-  home.sessionVariables = {
-    BROWSER = "${braveNiriOpen}/bin/brave-niri-open";
-    DEFAULT_BROWSER = "${braveNiriOpen}/bin/brave-niri-open";
-  };
-
   xdg.desktopEntries = {
     brave-browser = {
       exec = "${braveNiriOpen}/bin/brave-niri-open %U";
