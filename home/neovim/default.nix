@@ -47,6 +47,7 @@ in {
       ./nvim-tree-lua # File Tree
       ./obsidian-nvim
       ./oil
+      ./otter # LSP for embedded code in markdown/quarto
       ./overseer
       ./plenary # LUA Functions
       ./rainbow-csv
