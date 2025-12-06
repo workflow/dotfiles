@@ -14,7 +14,7 @@ BLUE_MIC_ID=$(get_pipewire_node_id "alsa_input.usb-Generic_Blue_Microphones_LT_2
 
 wpctl set-volume "$OBS_SPEAKER_ID" 1.0
 wpctl set-volume "$OBS_MIC_ID" 1.0
-wpctl set-volume "$BLUE_MIC_ID" 1.0
+wpctl set-volume "$BLUE_MIC_ID" 0.7
 
 while true; do
 	current_volume_obs_speaker=$(wpctl get-volume "$OBS_SPEAKER_ID" | awk '{print $2}')
@@ -23,7 +23,7 @@ while true; do
 
 	[ "$current_volume_obs_speaker" != "1.0" ] && wpctl set-volume "$OBS_SPEAKER_ID" 1.0
 	[ "$current_volume_obs_mic" != "1.0" ] && wpctl set-volume "$OBS_MIC_ID" 1.0
-	[ "$current_volume_blue_mic" != "1.0" ] && wpctl set-volume "$BLUE_MIC_ID" 1.0
+	[ "$current_volume_blue_mic" != "0.7" ] && wpctl set-volume "$BLUE_MIC_ID" 0.7
 
 	sleep 1
 done
