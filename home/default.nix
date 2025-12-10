@@ -104,7 +104,6 @@
       ./systemd-errors-and-warnings-counter
       ./tealdeer
       ./telegram
-      ./todoist # Official Todoist app
       ./trash-cli
       ./udiskie
       ./urxvt
