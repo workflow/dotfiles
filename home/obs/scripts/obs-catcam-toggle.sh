@@ -1,2 +1,2 @@
 # Toggle Catcam source visibility
-obs-cmd scene-item toggle "OBS Vintage Cam" "Overlay: Cat Cam"
+obs-cmd scene-item toggle "Virtual Cam" "Overlay: Cat Cam"
