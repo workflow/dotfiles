@@ -15,6 +15,7 @@
         behavior = "own"; # sign commits you authored on modify
       };
       aliases = {
+        bt = ["bookmark" "track"];
         init = ["git" "init" "--colocate"];
         push = [
           "util"
