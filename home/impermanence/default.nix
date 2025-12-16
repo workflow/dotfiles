@@ -7,7 +7,9 @@
       ".cache/nix"
       ".config/helm" # Helm repositories
       ".config/nix" # cachix repositories and such
+      ".local/share/home-manager" # home-manager news read state
       ".local/share/nix" # Nix Repl History
+      ".local/state/home-manager" # home-manager generations and GC roots
     ];
   };
 }

@@ -157,6 +157,11 @@ in {
       target = "nixos-config";
     };
 
+    # Symlink flake for `home-manager news` CLI to find homeConfigurations
+    file.".config/home-manager/flake.nix" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/code/nixos-config/flake.nix";
+    };
+
     packages = with pkgs; [
       alejandra # Nix Formatter
       ast-grep # Pure Magic
@@ -181,6 +186,7 @@ in {
       google-chrome
       gucharmap # Unicode Character Map
       hardinfo2 # Hardware/System Info
+      home-manager # CLI for managing home-manager, needed for `home-manager news`
       httpie
       iftop # Net top tool, see also nethogs
       imagemagick

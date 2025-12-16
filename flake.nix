@@ -129,6 +129,21 @@
       extraModules = [./system/amd ./system/btrfs];
     };
 
+    # Minimal home-manager standalone configuration for `home-manager news` CLI only
+    # Actual home-manager is managed via NixOS module (see nixosConfigurations above)
+    homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        {
+          home = {
+            username = "farlion";
+            homeDirectory = "/home/farlion";
+            stateVersion = "24.11";
+          };
+        }
+      ];
+    };
+
     # Expose profiling helper as a package and an app
     # Call with `nix run .#nh-eval-profile -- <HOST>`
     packages.x86_64-linux.nh-eval-profile = let
