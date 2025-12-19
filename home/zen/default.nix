@@ -32,7 +32,13 @@ in {
   programs.zen-browser = {
     enable = true;
     profiles = {
-      main = {};
+      main = {
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          bitwarden
+          darkreader
+          ublock-origin
+        ];
+      };
     };
   };
 
