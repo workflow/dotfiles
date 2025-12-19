@@ -116,7 +116,7 @@
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
       ./yubico # Yubikeys
-      # ./zen
+      ./zen
       ./zoom
       ./zoxide
     ]

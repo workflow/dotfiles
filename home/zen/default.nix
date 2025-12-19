@@ -36,7 +36,7 @@ in {
     };
   };
 
-  config.stylix.targets.zen-browser.profileNames = ["main"];
+  stylix.targets.zen-browser.profileNames = ["main"];
 
   home.sessionVariables = {
     BROWSER = "${zenNiriOpen}/bin/zen-niri-open";
