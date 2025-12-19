@@ -25,15 +25,10 @@
     style.name = "kvantum";
   };
 
-  xdg.configFile = {
-    "qt5ct/qt5ct.conf".source = ./qtct.conf;
-    "qt6ct/qt6ct.conf".source = ./qtct.conf;
-  };
-
   home.packages = with pkgs; [
     lxappearance # GTK Theme testing + tweaking
     libsForQt5.qt5ct # Qt 5 Theme testing + tweaking
-    qt6ct # Qt 6 Theme testing + tweaking
+    qt6Packages.qt6ct # Qt 6 Theme testing + tweaking
   ];
 
   # https://wiki.archlinux.org/title/HiDPI

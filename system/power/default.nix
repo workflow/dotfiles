@@ -9,9 +9,15 @@ in {
   # This will save you money and possibly your life!
   services.thermald.enable = true;
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.lidSwitchDocked = "lock";
-  services.logind.lidSwitchExternalPower = "lock";
+  services.logind = {
+    settings = {
+      Login = {
+        HandleLidSwitch = "suspend-then-hibernate";
+        HandleLidSwitchDocked = "lock";
+        HandleLidSwitchExternalPower = "lock";
+      };
+    };
+  };
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h
   '';

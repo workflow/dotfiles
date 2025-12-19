@@ -18,63 +18,13 @@
 
   home.file.".config/gh/config.yml".source = ./github-cli/gh.config.yml;
 
-  programs.git = {
-    aliases = {
-      c = "commit";
-
-      # Difftastic
-      dlog = "-c diff.external=difft log --ext-diff";
-      dshow = "-c diff.external=difft show --ext-diff";
-      ddiff = "-c diff.external=difft diff";
-      # `git log` with patches shown with difftastic.
-      dl = "-c diff.external=difft log -p --ext-diff";
-      # Show the most recent commit with difftastic.
-      ds = "-c diff.external=difft show --ext-diff";
-      # `git diff` with difftastic.
-      dft = "-c diff.external=difft diff";
-
-      p = "push";
-      rim = "rebase -i main";
-      rimm = "rebase -i master";
-    };
-
-    difftastic = {
-      enable = true;
-    };
-
+  programs.difftastic = {
     enable = true;
+    git.enable = true;
+  };
 
-    extraConfig = {
-      pull = {
-        ff = "only";
-        rebase = true;
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      rebase = {
-        autoStash = true;
-        autoSquash = true;
-      };
-      # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
-      url = {
-        "https://github.com" = {
-          insteadOf = "git://github.com";
-        };
-      };
-      core = {
-        pager = "delta";
-      };
-      interactive = {
-        diffFilter = "delta --color-only";
-      };
-      merge = {
-        conflictstyle = "diff3";
-      };
-      diff = {
-        colorMoved = "default";
-      };
-    };
+  programs.git = {
+    enable = true;
 
     includes = [
       {
@@ -92,11 +42,60 @@
       key = "24575DB93F6CEC16";
     };
 
+    settings = {
+      alias = {
+        c = "commit";
+
+        # Difftastic
+        dlog = "-c diff.external=difft log --ext-diff";
+        dshow = "-c diff.external=difft show --ext-diff";
+        ddiff = "-c diff.external=difft diff";
+        # `git log` with patches shown with difftastic.
+        dl = "-c diff.external=difft log -p --ext-diff";
+        # Show the most recent commit with difftastic.
+        ds = "-c diff.external=difft show --ext-diff";
+        # `git diff` with difftastic.
+        dft = "-c diff.external=difft diff";
+
+        p = "push";
+        rim = "rebase -i main";
+        rimm = "rebase -i master";
+      };
+
+      core = {
+        pager = "delta";
+      };
+      diff = {
+        colorMoved = "default";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      interactive = {
+        diffFilter = "delta --color-only";
+      };
+      merge = {
+        conflictstyle = "diff3";
+      };
+      pull = {
+        ff = "only";
+        rebase = true;
+      };
+      rebase = {
+        autoStash = true;
+        autoSquash = true;
+      };
+      # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
+      url = {
+        "https://github.com" = {
+          insteadOf = "git://github.com";
+        };
+      };
+      user.email = "4farlion@gmail.com";
+      user.name = "workflow";
+    };
+
     ignores = [".idea" "nohup.out" "mzdata" ".vimspector.json"];
-
-    userEmail = "4farlion@gmail.com";
-
-    userName = "workflow";
   };
 
   programs.mergiraf = {

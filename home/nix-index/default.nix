@@ -2,7 +2,6 @@
   inputs,
   isImpermanent,
   lib,
-  pkgs,
   ...
 }: {
   home.persistence."/persist" = lib.mkIf isImpermanent {
@@ -11,16 +10,10 @@
     ];
   };
   imports = [
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
   ];
 
   programs.nix-index = {
     enable = true;
   };
-
-  # Use unstable comma to fix compatibility with nix-index 0.1.9
-  programs.nix-index-database.comma.enable = false;
-  home.packages = [
-    pkgs.unstable.comma
-  ];
 }

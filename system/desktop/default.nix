@@ -17,14 +17,12 @@
       settings = {
         animation = "doom";
         hide_borders = true;
-        tty = 7; # Hopefully less logs flowing into the login screen, see https://codeberg.org/AnErrupTion/ly/issues/537
       };
     };
   };
 
   # Mounting Android phone from Files
   services.gvfs.enable = true;
-  services.udev.packages = [pkgs.android-udev-rules];
 
   programs.niri.enable = true;
   # XDG Portal Settings For Niri

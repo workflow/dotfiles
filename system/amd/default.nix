@@ -4,10 +4,6 @@
   hardware.amdgpu = {
     initrd.enable = true;
     opencl.enable = true;
-    amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
   };
 
   # Disable AMD GPU power management to see if it prevents feezes on S3/s2idle

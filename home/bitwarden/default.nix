@@ -11,7 +11,7 @@
   };
 
   home.packages = [
-    pkgs.bitwarden
+    pkgs.bitwarden-desktop
     pkgs.bitwarden-cli
   ];
 }

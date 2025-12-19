@@ -20,11 +20,13 @@ in {
 
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      PubkeyAcceptedKeyTypes +ssh-rsa
-      HostKeyAlgorithms +ssh-rsa
-      AddKeysToAgent yes
-    '';
+    enableDefaultConfig = false;
+    # extraConfig = ''
+    #   PubkeyAcceptedKeyTypes +ssh-rsa
+    #   HostKeyAlgorithms +ssh-rsa
+    #   AddKeysToAgent yes
+    # '';
+    matchBlocks."*" = {};
   };
 
   # Enable SSH agent integration with GNOME Keyring

@@ -116,7 +116,7 @@
       ./xdg
       ./ytmdesktop # Youtube Music Desktop (unofficial)
       ./yubico # Yubikeys
-      ./zen
+      # ./zen
       ./zoom
       ./zoxide
     ]
@@ -193,7 +193,7 @@ in {
       iotop-c
       jq
       kind # Kubernetes In Docker
-      plasma5Packages.kruler # Screen ruler
+      kdePackages.kruler # Screen ruler
       lazydocker # kind for vanilla Docker, kind of
       libnotify # Provides notify-send
       libsecret # `secret-tool` for interacting with gnome-keyring

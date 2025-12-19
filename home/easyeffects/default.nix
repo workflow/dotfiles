@@ -21,12 +21,4 @@
       "bass-enhancing-perfect-eq" = builtins.fromJSON (builtins.readFile ./presets/output/bass-enhancing-perfect-eq.json);
     };
   };
-
-  systemd.user.services.easyeffects = {
-    # Used to hang the shutdown; prevent that
-    Service = {
-      TimeoutStopSec = "10s";
-      KillMode = "mixed";
-    };
-  };
 }

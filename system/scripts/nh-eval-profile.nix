@@ -2,7 +2,7 @@
 pkgs.writeShellApplication {
   name = "nh-eval-profile";
   runtimeInputs = with pkgs; [
-    linuxPackages.perf
+    perf
     flamegraph
     gnugrep
     coreutils

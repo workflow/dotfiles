@@ -11,6 +11,6 @@
   };
 
   home.packages = [
-    pkgs.tdesktop
+    pkgs.telegram-desktop
   ];
 }

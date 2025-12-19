@@ -90,7 +90,7 @@ in {
   home.packages = with pkgs; [
     brightnessctl # For brightness +/- keys
     fuzzelCalc # niri-qalc
-    unstable.hyprmagnifier # Screen magnifier for Wayland
+    hyprmagnifier # Screen magnifier for Wayland
     playerctl # For play/pause etc... controlling media players that implement MPRIS
     qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
     swaybg # Minmal wallpaper setter for Sway

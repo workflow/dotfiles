@@ -8,7 +8,7 @@
 
   boot.kernelPackages = pkgs.linuxPackages_zen; # Optimized for desktop use
   environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_zen.perf
+    perf
     linuxKernel.packages.linux_zen.cpupower
   ];
 
