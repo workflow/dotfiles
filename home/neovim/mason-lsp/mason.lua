@@ -161,21 +161,21 @@ capabilities.textDocument.foldingRange = {
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
-}
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    -- JDTLs is managed by the jdtls-nvim plugin which starts its own LSP client
-    -- But we still manage the installation via Mason
-    if server_name == 'jdtls' then
-      return
-    end
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = shared_lsp_config.on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
+  handlers = {
+    function(server_name)
+      -- JDTLs is managed by the jdtls-nvim plugin which starts its own LSP client
+      -- But we still manage the installation via Mason
+      if server_name == 'jdtls' then
+        return
+      end
+      require('lspconfig')[server_name].setup {
+        capabilities = capabilities,
+        on_attach = shared_lsp_config.on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      }
+    end,
+  },
 }
 
 -- Language Servers managed outside of Mason

@@ -21,7 +21,7 @@
 
         local wk = require("which-key")
         wk.add({
-          { "<leader><leader>o", "<cmd>ObsidianSearch<cr>", desc = "Search [O]bsidian" },
+          { "<leader><leader>o", "<cmd>Obsidian Search<cr>", desc = "Search [O]bsidian" },
         })
       '';
       type = "lua";
