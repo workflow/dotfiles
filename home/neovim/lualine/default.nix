@@ -42,7 +42,7 @@
                 cond = require("noice").api.status.search.has,
                 color = { fg = "#ff9e64" },
               },
-              'overseer',
+              { "overseer", colored = false },
               'encoding',
               'fileformat',
               'filetype'

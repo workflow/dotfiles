@@ -1,5 +1,4 @@
 require('overseer').setup({
-  strategy = "toggleterm",
   templates = {
     "builtin",
     "user.gmailctl_apply",
@@ -9,6 +8,14 @@ require('overseer').setup({
     "user.nixos_rebuild_boot",
     "user.nixos_update_secrets",
     "user.skaffold_dev",
+  },
+  component_aliases = {
+    default = {
+      "on_exit_set_status",
+      "on_complete_notify",
+      { "on_complete_dispose", require_view = { "SUCCESS", "FAILURE" } },
+      { "open_output", direction = "dock", on_start = "always", focus = true },
+    },
   },
 })
 local wk = require("which-key")
