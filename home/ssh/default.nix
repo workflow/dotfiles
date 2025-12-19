@@ -21,37 +21,16 @@ in {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    # extraConfig = ''
-    #   PubkeyAcceptedKeyTypes +ssh-rsa
-    #   HostKeyAlgorithms +ssh-rsa
-    #   AddKeysToAgent yes
-    # '';
-    matchBlocks."*" = {};
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
   };
 
-  # Enable SSH agent integration with GNOME Keyring
-  services.ssh-agent = {
-    enable = false; # Disable default ssh-agent since we'll use gnome-keyring
-  };
+  # Disable default ssh-agent since we use gcr-ssh-agent (via services.gnome.gnome-keyring)
+  services.ssh-agent.enable = false;
 
-  # Set up environment variables for SSH agent
+  # Point to the new gcr SSH agent socket (NixOS 25.11+)
   home.sessionVariables = {
-    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/keyring/ssh";
-  };
-
-  # Start GNOME Keyring SSH agent
-  systemd.user.services.gnome-keyring-ssh = {
-    Unit = {
-      Description = "GNOME Keyring SSH Agent";
-      PartOf = ["graphical-session.target"];
-    };
-    Service = {
-      Type = "forking";
-      ExecStart = "${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=ssh";
-      Restart = "on-failure";
-    };
-    Install = {
-      WantedBy = ["graphical-session.target"];
-    };
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
   };
 }

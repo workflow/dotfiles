@@ -23,7 +23,6 @@
 
   services.gnome.gnome-keyring.enable = true;
   environment.systemPackages = with pkgs; [
-    gcr # Gnome crypto services for gnome-keyring (needed for SSH agent integration)
     libsecret # Already in home packages but ensuring it's available system-wide
   ];
 
