@@ -13,7 +13,6 @@ wk.add(
     { "<leader>do", function() dap.step_over() end,                                            desc = "Step [O]ver" },
     { "<F7>",       function() dap.step_over() end,                                            desc = "Step Over" },
     { "<leader>dq", function() dap.close() end,                                                desc = "[Q]uit/Close dap" },
-    { "<F4>",       function() dap.close() end,                                                desc = "Quit/Close dap" },
     { "<leader>dr", function() dap.repl.open() end,                                            desc = "Open [R]epl" },
     { "<leader>du", function() dap.step_out() end,                                             desc = "Step O[u]t" },
     { "<F8>",       function() dap.step_out() end,                                             desc = "Step Out" },

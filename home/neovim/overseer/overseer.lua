@@ -24,5 +24,6 @@ wk.add(
     { "<leader>o",  group = "[O]verseer" },
     { "<leader>or", "<cmd>OverseerRun<CR>",    desc = "[R]un" },
     { "<leader>ot", "<cmd>OverseerToggle<CR>", desc = "[T]oggle List" },
+    { "<F4>",       "<cmd>OverseerToggle<CR>", desc = "Toggle Overseer" },
   }
 )
