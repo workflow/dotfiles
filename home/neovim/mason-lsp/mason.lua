@@ -1,5 +1,3 @@
-local shared_lsp_config = require('shared_lsp_config')
-
 -- General Diagnostic keymaps
 local wk = require("which-key")
 local lspsaga = require("lspsaga")
@@ -87,12 +85,9 @@ require('which-key').add(
   }
 )
 
--- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the LSP servers.
+-- Mason setup
 require('mason').setup()
-require('mason-lspconfig').setup()
 require("mason-nvim-dap").setup({
-  -- automatic_installation = true,
   ensure_installed = {
     "codelldb",
     "javadbg",
@@ -100,28 +95,52 @@ require("mason-nvim-dap").setup({
   },
 })
 
-local servers = {
-  bashls = {},
-  jdtls = {}, -- java
-  jsonls = {},
-  lua_ls = {
+-- Setup neovim lua configuration
+require('neodev').setup()
+
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+-- UFO code folding support
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
+-- Global LSP configuration applied to all servers
+vim.lsp.config('*', {
+  capabilities = capabilities,
+})
+
+-- Server-specific configurations using vim.lsp.config (Neovim 0.11+)
+vim.lsp.config('bashls', {})
+vim.lsp.config('jsonls', {})
+vim.lsp.config('julials', {})
+vim.lsp.config('ruff', {})
+vim.lsp.config('terraformls', {})
+vim.lsp.config('tflint', {})
+vim.lsp.config('ts_ls', {})
+
+vim.lsp.config('lua_ls', {
+  settings = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      -- diagnostics = { disable = { 'missing-fields', 'undefined-global' } },
     },
   },
-  julials = {},
-  ruff = {},
-  rust_analyzer = {
+})
+
+vim.lsp.config('rust_analyzer', {
+  settings = {
     checkOnSave = {
       command = 'clippy',
     },
   },
-  terraformls = {},
-  tflint = {},
-  ts_ls = {},
-  yamlls = {
+})
+
+vim.lsp.config('yamlls', {
+  settings = {
     schemas = {
       kubernetes = "*.yaml",
       ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
@@ -140,54 +159,12 @@ local servers = {
       "*flow*.{yml,yaml}",
     },
   },
-}
-
--- Setup neovim lua configuration
-require('neodev').setup()
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
--- UFO extension
--- Tell the server the capability of foldingRange,
--- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true
-}
-
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-  handlers = {
-    function(server_name)
-      -- JDTLs is managed by the jdtls-nvim plugin which starts its own LSP client
-      -- But we still manage the installation via Mason
-      if server_name == 'jdtls' then
-        return
-      end
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = shared_lsp_config.on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      }
-    end,
-  },
-}
+})
 
 -- Language Servers managed outside of Mason
--- Pyright
-require('lspconfig').pyright.setup {
-  capabilities = capabilities,
-  on_attach = shared_lsp_config.on_attach,
-}
--- Nixd
-require('lspconfig').nixd.setup {
-  capabilities = capabilities,
-  on_attach = shared_lsp_config.on_attach,
+vim.lsp.config('pyright', {})
+
+vim.lsp.config('nixd', {
   settings = {
     nixd = {
       formatting = {
@@ -195,10 +172,26 @@ require('lspconfig').nixd.setup {
       },
     },
   },
-}
--- Harper-ls (grammar/spell checker for prose)
-require('lspconfig').harper_ls.setup {
-  capabilities = capabilities,
-  on_attach = shared_lsp_config.on_attach,
+})
+
+vim.lsp.config('harper_ls', {
   filetypes = { "markdown", "text", "gitcommit" },
+})
+
+-- Mason-lspconfig with automatic_enable (v2.x for Neovim 0.11+)
+-- Automatically enables installed servers via vim.lsp.enable()
+require('mason-lspconfig').setup {
+  ensure_installed = {
+    'bashls', 'jsonls', 'lua_ls', 'julials', 'ruff',
+    'rust_analyzer', 'terraformls', 'tflint', 'ts_ls', 'yamlls',
+    'jdtls', -- Managed by jdtls-nvim plugin
+  },
+  automatic_enable = {
+    exclude = { 'jdtls' }, -- jdtls-nvim manages its own client
+  },
 }
+
+-- Enable servers managed outside Mason
+vim.lsp.enable('pyright')
+vim.lsp.enable('nixd')
+vim.lsp.enable('harper_ls')

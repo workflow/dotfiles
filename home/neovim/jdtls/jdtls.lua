@@ -1,4 +1,3 @@
-local shared_lsp_config = require('shared_lsp_config')
 local root_dir = require('jdtls.setup').find_root({ '.git' });
 local project_name = vim.fn.fnamemodify(root_dir, ':p:h:t')
 local data_dir = vim.fn.expand('$HOME/.cache/nvim/jdtls/workspaces/') .. project_name
@@ -16,9 +15,8 @@ vim.list_extend(bundles, vim.split(vim.fn.glob(jtest_path .. "/extension/server/
 local extendedClientCapabilities = require('jdtls').extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+-- Java-specific LSP keybindings (common ones are in shared_lsp_config via LspAttach)
 local on_attach = function(_, bufnr)
-  shared_lsp_config.on_attach(_, bufnr)
-
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc

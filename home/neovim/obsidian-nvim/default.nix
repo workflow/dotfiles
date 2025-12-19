@@ -7,15 +7,16 @@
           follow_img_func = function(img)
             vim.fn.jobstart({"xdg-open", url})
           end,
+          legacy_commands = false,
+          -- Clashes with render-markdown.nvim
+          ui = {
+            enable = false,
+          },
           workspaces = {
             {
               name = "main",
               path = "~/Obsidian",
             }
-          },
-          -- Clashes with render-markdown.nvim
-          ui = {
-            enable = false,
           },
         })
 
