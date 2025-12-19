@@ -129,18 +129,42 @@
       extraModules = [./system/amd ./system/btrfs];
     };
 
-    # Minimal home-manager standalone configuration for `home-manager news` CLI only
+    # Home-manager standalone configuration for `home-manager news` CLI
+    # Uses actual config with all host-specific features enabled for maximum news coverage
     # Actual home-manager is managed via NixOS module (see nixosConfigurations above)
     homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      extraSpecialArgs = {
+        inherit inputs secrets;
+        # Enable all host-specific features to get maximum applicable news
+        isImpermanent = true;
+        isLaptop = true;
+        isAmd = true;
+        isNvidia = true;
+        # Mock osConfig for standalone mode
+        osConfig = {
+          networking.hostName = "standalone-news-config";
+          specialisation = {};
+        };
+      };
       modules = [
+        {
+          nixpkgs.overlays = [(_: _: overlays)];
+        }
+        nur.modules.homeManager.default
+        stylix.homeManagerModules.stylix
+        niri.homeModules.niri
         {
           home = {
             username = "farlion";
             homeDirectory = "/home/farlion";
-            stateVersion = "24.11";
           };
+          # Override impermanence assertions for standalone mode
+          # The module requires NixOS integration, but we only need the option definition
+          home.persistence = nixpkgs.lib.mkOverride 1001 {};
+          assertions = nixpkgs.lib.mkForce [];
         }
+        (import ./home)
       ];
     };
 
