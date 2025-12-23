@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: let
-  # Script to take fullscreen screenshot and open with Satty
   sattyScreenshot = pkgs.writeShellApplication {
     name = "satty-screenshot";
     runtimeInputs = with pkgs; [
@@ -23,8 +22,15 @@ in {
     ];
   };
 
-  home.packages = with pkgs; [
-    satty
+  programs.satty = {
+    enable = true;
+    settings.general = {
+      fullscreen = true;
+      initial-tool = "crop";
+    };
+  };
+
+  home.packages = [
     sattyScreenshot
   ];
 }
