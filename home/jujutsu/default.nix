@@ -2,9 +2,11 @@
   home.packages = with pkgs; [
     jjui
   ];
+  programs.difftastic.enable = true;
   programs.jujutsu = {
     enable = true;
     settings = {
+      ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
       user = {
         email = "4farlion@gmail.com";
         name = "workflow";
