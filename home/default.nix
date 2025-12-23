@@ -4,6 +4,7 @@
   isImpermanent,
   isNvidia,
   lib,
+  modulesPath,
   osConfig,
   pkgs,
   secrets,
@@ -135,6 +136,60 @@
   numenorImports = lib.optionals isNumenor [
     ./ddc-backlight
   ];
+
+  # Explicit home-manager module imports for minimal mode
+  # These are the modules we actually use, avoiding loading all ~200+ modules
+  homeManagerModuleImports = [
+    # programs/*
+    "${modulesPath}/programs/alacritty.nix"
+    "${modulesPath}/programs/bash.nix"
+    "${modulesPath}/programs/bat.nix"
+    "${modulesPath}/programs/broot.nix"
+    "${modulesPath}/programs/btop.nix"
+    "${modulesPath}/programs/claude-code.nix"
+    "${modulesPath}/programs/difftastic.nix"
+    "${modulesPath}/programs/direnv.nix"
+    "${modulesPath}/programs/firefox"
+    "${modulesPath}/programs/fish.nix"
+    "${modulesPath}/programs/fuzzel.nix"
+    "${modulesPath}/programs/fzf.nix"
+    "${modulesPath}/programs/git.nix"
+    "${modulesPath}/programs/git-worktree-switcher.nix"
+    "${modulesPath}/programs/jqp.nix"
+    "${modulesPath}/programs/jujutsu.nix"
+    "${modulesPath}/programs/k9s.nix"
+    "${modulesPath}/programs/less.nix"
+    "${modulesPath}/programs/lf.nix"
+    "${modulesPath}/programs/man.nix"
+    "${modulesPath}/programs/mergiraf.nix"
+    "${modulesPath}/programs/neovim.nix"
+    "${modulesPath}/programs/nix-index.nix"
+    "${modulesPath}/programs/nushell.nix"
+    "${modulesPath}/programs/obs-studio.nix"
+    "${modulesPath}/programs/pgcli.nix"
+    "${modulesPath}/programs/ripgrep.nix"
+    "${modulesPath}/programs/ripgrep-all.nix"
+    "${modulesPath}/programs/ssh.nix"
+    "${modulesPath}/programs/starship.nix"
+    "${modulesPath}/programs/swaylock.nix"
+    "${modulesPath}/programs/tealdeer.nix"
+    "${modulesPath}/programs/thunderbird.nix"
+    "${modulesPath}/programs/urxvt.nix"
+    "${modulesPath}/programs/vscode"
+    "${modulesPath}/programs/waybar.nix"
+    "${modulesPath}/programs/wlogout.nix"
+    "${modulesPath}/programs/zoxide.nix"
+    # services/*
+    "${modulesPath}/services/cliphist.nix"
+    "${modulesPath}/services/dunst.nix"
+    "${modulesPath}/services/easyeffects.nix"
+    "${modulesPath}/services/kanshi.nix"
+    "${modulesPath}/services/ssh-agent.nix"
+    "${modulesPath}/services/swayidle.nix"
+    "${modulesPath}/services/syncthing.nix"
+    "${modulesPath}/services/udiskie.nix"
+    "${modulesPath}/services/wluma.nix"
+  ];
 in {
   home = {
     # This value determines the Home Manager release that your
@@ -246,7 +301,7 @@ in {
       };
   };
 
-  inherit imports;
+  imports = imports ++ homeManagerModuleImports;
 
   programs = {
     bat = {

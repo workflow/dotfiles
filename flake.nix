@@ -67,6 +67,7 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       backupFileExtension = "home-manager-backup";
+      minimal = true;
       users.farlion = import ./home;
     };
     overlays = {
@@ -132,6 +133,7 @@
     # Uses actual config with all host-specific features enabled for maximum news coverage
     # Actual home-manager is managed via NixOS module (see nixosConfigurations above)
     homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
+      minimal = true;
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       extraSpecialArgs = {
         inherit inputs secrets;
