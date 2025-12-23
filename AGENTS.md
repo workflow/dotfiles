@@ -1,11 +1,11 @@
-# Agents.md
+# Bash commands
+- `nh os switch`: build and switch to new NixOS generation (including home-manager)
+- `nh os build`: build only
+- `man configuration.nix`: NixOS manual
+- `man home-configuration.nix`: Home Manager manual
 
-Knock yourself out, but please only document architecturally relevant stuff, not small changes.
-
-# Shell Scripts in Nix
-
+# Code style
+## Shell Scripts in Nix
 Use `pkgs.writeShellApplication`, provide all necessary `runtimeInputs` and move the script into its own file inside the <module>/scripts/ dir.
 
-# Rebuild the system
-
-With `nh os switch`
+# Workflow
