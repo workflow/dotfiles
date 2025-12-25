@@ -30,35 +30,14 @@ cmp.setup {
     -- Accept ([y]es) the completion.
     --  This will auto-import if your LSP supports it.
     --  This will expand snippets if the LSP sent a snippet.
-    -- Confirm or accept with Ctrl-y:
-    -- - If nvim-cmp menu is visible: confirm the selection
-    -- - Else if Copilot suggestion is visible: accept Copilot suggestion
-    -- - Else: fallback (preserve native <C-y> or other mappings)
     ['<C-y>'] = cmp.mapping(function(fallback)
-      local copilot_ok, copilot = pcall(require, 'copilot.suggestion')
       if cmp.visible() then
         cmp.confirm({ select = true })
-      elseif copilot_ok and copilot.is_visible() then
-        copilot.accept()
       else
         fallback()
       end
     end),
     ['<CR>'] = cmp.mapping.confirm { select = true },
-    -- Accept also with Alt-l (Copilot default) without conflicts:
-    -- - If nvim-cmp menu is visible: confirm the selection
-    -- - Else if Copilot suggestion is visible: accept Copilot suggestion
-    -- - Else: fallback (let the key do whatever it normally does)
-    ['<M-l>'] = cmp.mapping(function(fallback)
-      local copilot_ok, copilot = pcall(require, 'copilot.suggestion')
-      if cmp.visible() then
-        cmp.confirm({ select = true })
-      elseif copilot_ok and copilot.is_visible() then
-        copilot.accept()
-      else
-        fallback()
-      end
-    end),
 
     ['<C-Space>'] = cmp.mapping.complete {},
   },
@@ -124,12 +103,3 @@ cmp.setup.filetype({ "sql" }, {
     { name = 'buffer' },
   },
 })
-
--- Copoilot integration
-cmp.event:on("menu_opened", function()
-  vim.b.copilot_suggestion_hidden = true
-end)
-
-cmp.event:on("menu_closed", function()
-  vim.b.copilot_suggestion_hidden = false
-end)

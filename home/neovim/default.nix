@@ -22,7 +22,6 @@ in {
       ./carbon
       ./cmp
       ./comment-nvim
-      ./copilot
       ./dadbod
       ./dap
       ./diffview-nvim
@@ -204,7 +203,6 @@ in {
     '';
 
     extraPackages = with pkgs; [
-      curl # Required by copilot.lua runtime
       harper # Grammar checker
       nixd # Nix Language Server
       nodejs # For vim to have npm for Mason etc...
