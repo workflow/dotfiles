@@ -104,6 +104,7 @@
       ./systemd-errors-and-warnings-counter
       ./tealdeer
       ./telegram
+      ./television # Fuzzy-finder in Rust with nixpkgs integration
       ./trash-cli
       ./tray-tui # TUI for tray icons
       ./udiskie
