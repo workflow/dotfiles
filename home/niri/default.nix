@@ -168,6 +168,23 @@ in {
   home.file.".local/share/wallpapers/gruvbox-light.png".source = ./wallpapers/gruvbox-light-rainbow.png;
   home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./wallpapers/gruvbox-dark-rainbow.png;
 
+  # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
+  programs.niri.config = lib.optionalString (leftScreen != null) ''
+    output "${leftScreen}" {
+      layout {
+        default-column-width { proportion 1.0; }
+      }
+    }
+  '' + lib.optionalString (rightScreen != null) ''
+    output "${rightScreen}" {
+      layout {
+        default-column-width { proportion 1.0; }
+      }
+    }
+  '';
+
+  programs.niri.package = pkgs.niri-unstable;
+
   programs.niri.settings = rec {
     # Environment
     environment = {

@@ -24,7 +24,10 @@
   # Mounting Android phone from Files
   services.gvfs.enable = true;
 
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
   # XDG Portal Settings For Niri
   xdg.portal = {
     enable = true;

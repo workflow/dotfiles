@@ -51,7 +51,10 @@
   } @ inputs: let
     commonModules = [
       {
-        nixpkgs.overlays = [(_: _: overlays)];
+        nixpkgs.overlays = [
+          (_: _: overlays)
+          niri.overlays.niri
+        ];
       }
       determinate.nixosModules.default
       nixpkgs.nixosModules.notDetected
