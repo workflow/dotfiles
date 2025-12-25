@@ -18,6 +18,7 @@
       };
       aliases = {
         bt = ["bookmark" "track"];
+        c = ["commit"];
         init = ["git" "init" "--colocate"];
         push = [
           "util"
