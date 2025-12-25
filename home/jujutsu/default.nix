@@ -1,8 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    jjui
-  ];
+{...}: {
   programs.difftastic.enable = true;
+  programs.jjui.enable = true;
   programs.jujutsu = {
     enable = true;
     settings = {
