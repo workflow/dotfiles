@@ -105,6 +105,7 @@
       ./tealdeer
       ./telegram
       ./trash-cli
+      ./tray-tui # TUI for tray icons
       ./udiskie
       ./urxvt
       ./variety # Wallpaper Switcher/Randomizer with Quotes
