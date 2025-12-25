@@ -209,7 +209,8 @@ in {
       # {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen-beta"];}
+      {command = ["zen-beta" "https://chatgpt.com/"];}
+      {command = ["zen-beta" "https://vikunja.hyena-byzantine.ts.net/"];}
     ];
 
     # Window Rules
@@ -234,6 +235,18 @@ in {
           {app-id = "^YouTube Music Desktop App$";}
         ];
         open-on-workspace = " 9";
+      }
+      {
+        matches = [
+          {title = ".*[Vv]ikunja.*";}
+        ];
+        open-on-workspace = " 9";
+      }
+      {
+        matches = [
+          {title = ".*ChatGPT.*";}
+        ];
+        open-on-workspace = " a";
       }
       # Floating windows
       {
