@@ -53,6 +53,13 @@ with lib; let
     text = builtins.readFile ./scripts/niri-reorder-workspaces.sh;
   };
 
+  # Auto-column - consumes new windows into columns on vertical monitors
+  autoColumn = pkgs.writeShellApplication {
+    name = "niri-auto-column";
+    runtimeInputs = [pkgs.niri-unstable pkgs.jq pkgs.coreutils];
+    text = builtins.readFile ./scripts/niri-auto-column.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -157,6 +164,23 @@ in {
       # Restart the service if it fails (useful for session restarts)
       Restart = lib.mkForce "on-failure";
       RestartSec = "5";
+    };
+  };
+
+  # Auto-column service for vertical monitors
+  systemd.user.services.niri-auto-column = lib.mkIf isNumenor {
+    Unit = {
+      Description = "Auto-consume windows into columns on vertical monitors";
+      After = ["niri.service" "graphical-session.target"];
+      Wants = ["graphical-session.target"];
+    };
+    Service = {
+      ExecStart = "${autoColumn}/bin/niri-auto-column";
+      Restart = "on-failure";
+      RestartSec = "5";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
     };
   };
 
