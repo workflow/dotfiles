@@ -1,7 +1,6 @@
 {
   lib,
   isImpermanent,
-  pkgs,
   ...
 }: {
   home.persistence."/persist" = lib.mkIf isImpermanent {
@@ -10,7 +9,7 @@
     ];
   };
 
-  home.packages = [
-    pkgs.discord
-  ];
+  programs.discord = {
+    enable = true;
+  };
 }
