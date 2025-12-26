@@ -106,6 +106,7 @@
       ./tealdeer
       ./telegram
       ./television # Fuzzy-finder in Rust with nixpkgs integration
+      ./tomat
       ./trash-cli
       ./tray-tui # TUI for tray icons
       ./udiskie

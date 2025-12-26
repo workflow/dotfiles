@@ -1,0 +1,5 @@
+{...}: {
+  services.tomat = {
+    enable = true;
+  };
+}
