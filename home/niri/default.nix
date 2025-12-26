@@ -56,7 +56,7 @@ with lib; let
   # Auto-column - consumes new windows into columns on vertical monitors
   autoColumn = pkgs.writeShellApplication {
     name = "niri-auto-column";
-    runtimeInputs = [pkgs.niri-unstable pkgs.jq pkgs.coreutils];
+    runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils];
     text = builtins.readFile ./scripts/niri-auto-column.sh;
   };
 
@@ -192,24 +192,23 @@ in {
   home.file.".local/share/wallpapers/gruvbox-light.png".source = ./wallpapers/gruvbox-light-rainbow.png;
   home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./wallpapers/gruvbox-dark-rainbow.png;
 
+  # TODO: Activate once the Niri flake supports niri 25.11
   # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
-  programs.niri.config =
-    lib.optionalString (leftScreen != null) ''
-      output "${leftScreen}" {
-        layout {
-          default-column-width { proportion 1.0; }
-        }
-      }
-    ''
-    + lib.optionalString (rightScreen != null) ''
-      output "${rightScreen}" {
-        layout {
-          default-column-width { proportion 1.0; }
-        }
-      }
-    '';
-
-  programs.niri.package = pkgs.niri-unstable;
+  # programs.niri.config =
+  #   lib.optionalString (leftScreen != null) ''
+  #     output "${leftScreen}" {
+  #       layout {
+  #         default-column-width { proportion 1.0; }
+  #       }
+  #     }
+  #   ''
+  #   + lib.optionalString (rightScreen != null) ''
+  #     output "${rightScreen}" {
+  #       layout {
+  #         default-column-width { proportion 1.0; }
+  #       }
+  #     }
+  #   '';
 
   programs.niri.settings = rec {
     # Environment

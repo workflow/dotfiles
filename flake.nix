@@ -53,7 +53,6 @@
       {
         nixpkgs.overlays = [
           (_: _: overlays)
-          niri.overlays.niri
         ];
       }
       determinate.nixosModules.default

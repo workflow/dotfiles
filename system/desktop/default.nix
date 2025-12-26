@@ -26,7 +26,6 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
   };
   # XDG Portal Settings For Niri
   xdg.portal = {
