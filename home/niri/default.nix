@@ -184,7 +184,7 @@ in {
     };
   };
 
-  programs.wlogout = {
+  programs.wleave = {
     enable = true;
   };
 
@@ -193,19 +193,21 @@ in {
   home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./wallpapers/gruvbox-dark-rainbow.png;
 
   # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
-  programs.niri.config = lib.optionalString (leftScreen != null) ''
-    output "${leftScreen}" {
-      layout {
-        default-column-width { proportion 1.0; }
+  programs.niri.config =
+    lib.optionalString (leftScreen != null) ''
+      output "${leftScreen}" {
+        layout {
+          default-column-width { proportion 1.0; }
+        }
       }
-    }
-  '' + lib.optionalString (rightScreen != null) ''
-    output "${rightScreen}" {
-      layout {
-        default-column-width { proportion 1.0; }
+    ''
+    + lib.optionalString (rightScreen != null) ''
+      output "${rightScreen}" {
+        layout {
+          default-column-width { proportion 1.0; }
+        }
       }
-    }
-  '';
+    '';
 
   programs.niri.package = pkgs.niri-unstable;
 
@@ -588,7 +590,7 @@ in {
           "Mod+m".hotkey-overlay.title = "Calcu[M]athalor via qalculate";
 
           # Logout and Power Menu
-          "Mod+Pause".action = spawn "wlogout";
+          "Mod+Pause".action = spawn "wleave";
 
           # Network ([W]ifi) Selection
           "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
