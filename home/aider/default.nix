@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = [
-    pkgs.unstable.aider-chat-full
-  ];
+{...}: {
+  programs.aider-chat = {
+    enable = true;
+  };
 }
