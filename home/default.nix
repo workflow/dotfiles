@@ -25,6 +25,7 @@
       ./alacritty
       ./aliases
       ./ansible
+      ./asciinema
       ./aws
       ./bash
       ./bitwarden
@@ -167,7 +168,6 @@ in {
     packages = with pkgs; [
       alejandra # Nix Formatter
       ast-grep # Pure Magic
-      asciinema # Terminal recording fun
       bc # calculator
       bind # Provides dig
       dconf # Gnome configuration database
