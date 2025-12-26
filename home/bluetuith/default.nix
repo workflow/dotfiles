@@ -1,16 +1,5 @@
-{
-  lib,
-  isImpermanent,
-  pkgs,
-  ...
-}: {
-  home.persistence."/persist" = lib.mkIf isImpermanent {
-    directories = [
-      ".config/bluetuith"
-    ];
+{...}: {
+  programs.bluetuith = {
+    enable = true;
   };
-
-  home.packages = [
-    pkgs.bluetuith
-  ];
 }
