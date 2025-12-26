@@ -63,6 +63,8 @@ niri msg --json event-stream | while IFS= read -r event; do
         # Move focus to the left column, then consume the new window from the right
         niri msg action focus-column-left 2>/dev/null || true
         niri msg action consume-window-into-column 2>/dev/null || true
+        # Focus the newly consumed window (inserted after current focus)
+        niri msg action focus-window-down 2>/dev/null || true
       fi
     fi
   fi
