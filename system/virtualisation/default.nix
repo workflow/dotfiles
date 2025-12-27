@@ -38,8 +38,6 @@
       ipv6 = false;
       ip6tables = false;
       iptables = true;
-      # Disable userland proxy for better performance (use kernel forwarding instead)
-      userland-proxy = false;
     };
   };
   # Allow connecting to resolved DNS from inside Docker containers
