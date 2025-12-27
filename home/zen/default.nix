@@ -25,6 +25,8 @@ in {
     ];
   };
 
+  home.packages = [zenNiriOpen];
+
   imports = [
     inputs.zen-browser.homeModules.beta
   ];
