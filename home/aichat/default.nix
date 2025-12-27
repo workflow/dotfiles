@@ -14,7 +14,7 @@
     enable = true;
     package = pkgs.unstable.aichat;
     settings = {
-      model = "openai:gpt-5";
+      model = "openai:gpt-5.1-chat-latest";
       keybindings = "vi";
       save_session = true;
       compress_threshold = 0;

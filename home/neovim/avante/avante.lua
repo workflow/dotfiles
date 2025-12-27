@@ -31,27 +31,16 @@ require('avante').setup({
 	instructions_file = "agents.md",
 	providers = {
 		openai = {
-			model = "gpt-5.1",
+			model = "gpt-5.2",
 			extra_request_body = {
 				temperature = 1,
 			},
 		},
 		openai_5_thinking = {
 			__inherited_from = 'openai',
-			model = "gpt-5.1",
+			model = "gpt-5.2",
 			extra_request_body = {
 				temperature = 1,
-				reasoning_effort = "high",
-			},
-		},
-		openai_4_1 = {
-			__inherited_from = 'openai',
-			model = "gpt-4.1",
-		},
-		openai_o4_mini_high = {
-			__inherited_from = 'openai',
-			model = "o4-mini",
-			extra_request_body = {
 				reasoning_effort = "high",
 			},
 		},
@@ -64,24 +53,6 @@ require('avante').setup({
 			model = "claude-sonnet-4-5",
 			thinking = {
 				type = "enabled",
-			},
-		},
-		copilot = {
-			model = "gpt-5",
-		},
-		copilot_claude = {
-			__inherited_from = 'copilot',
-			model = "claude-sonnet-4.5",
-		},
-		copilot_gemini = {
-			__inherited_from = 'copilot',
-			model = "gemini-2.5-pro",
-		},
-		copilot_gpt5_high = {
-			__inherited_from = 'copilot',
-			model = "gpt-5",
-			extra_request_body = {
-				reasoning_effort = "high",
 			},
 		},
 		morph = {
