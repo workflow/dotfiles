@@ -251,8 +251,8 @@ in {
       # {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen-beta" "https://chatgpt.com/"];}
-      {command = ["zen-beta" "https://vikunja.hyena-byzantine.ts.net/"];}
+      {command = ["zen" "--new-window" "https://chatgpt.com/"];}
+      {command = ["zen" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
     ];
 
     # Window Rules
