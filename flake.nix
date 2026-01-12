@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence/home-manager-v2";
+    impermanence.url = "github:nix-community/impermanence";
     niri = {
       url = "github:sodiboo/niri-flake";
     };
@@ -160,9 +160,6 @@
             username = "farlion";
             homeDirectory = "/home/farlion";
           };
-          # Override impermanence assertions for standalone mode
-          # The module requires NixOS integration, but we only need the option definition
-          home.persistence = nixpkgs.lib.mkOverride 1001 {};
           assertions = nixpkgs.lib.mkForce [];
         }
         (import ./home)

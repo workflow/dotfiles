@@ -9,13 +9,9 @@
   secrets,
   ...
 }: let
-  impermanenceImports =
-    [
-      inputs.impermanence.homeManagerModules.impermanence
-    ]
-    ++ lib.optionals isImpermanent [
-      ./impermanence
-    ];
+  impermanenceImports = lib.optionals isImpermanent [
+    ./impermanence
+  ];
 
   imports =
     [
