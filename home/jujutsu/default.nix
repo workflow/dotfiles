@@ -4,6 +4,7 @@
   programs.jujutsu = {
     enable = true;
     settings = {
+      remotes.origin.auto-track-bookmarks = "main";
       ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
       user = {
         email = "4farlion@gmail.com";
