@@ -49,5 +49,6 @@ in {
   home.sessionVariables = {
     BROWSER = "${zenNiriOpen}/bin/zen-niri-open";
     DEFAULT_BROWSER = "${zenNiriOpen}/bin/zen-niri-open";
+    MOZ_LEGACY_PROFILES = 1; # Temporary fix, see https://github.com/0xc000022070/zen-browser-flake/issues/179
   };
 }
