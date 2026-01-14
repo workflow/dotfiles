@@ -1,4 +1,6 @@
-{...}: {
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [comma];
+
   services.atd.enable = true;
 
   boot.supportedFilesystems = ["ntfs"];
