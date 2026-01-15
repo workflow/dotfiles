@@ -195,3 +195,6 @@ require('mason-lspconfig').setup {
 vim.lsp.enable('pyright')
 vim.lsp.enable('nixd')
 vim.lsp.enable('harper_ls')
+
+-- Load shared LSP keybindings (gd, gr, K, etc.)
+require('shared_lsp_config')
