@@ -111,6 +111,7 @@
       ./virtual-cable # Virtual inputs/outputs via Pipewire (for OBS and beyond)
       ./vlc
       ./waybar
+      ./witr # Why is this running?
       ./wlsunset # Day/night gamma adjustments for Wayland
       ./wluma # Automatic screen brightness adjustment
       ./xdg
