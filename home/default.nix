@@ -203,6 +203,7 @@ in {
       ncdu # Disk Space Usage Visualization
       nmap # Port Scanner
       nethogs # Net top tool, see also iftop
+      net-tools # Things like arp, ifconfig, route, netstat etc...
       neo-cowsay
       nix-tree
       oculante # img viewer written in Rust
