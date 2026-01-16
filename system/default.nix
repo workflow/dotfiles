@@ -39,6 +39,7 @@ in {
       ./various
       ./video
       ./virtualisation
+      ./wireshark
     ]
     ++ lib.lists.optionals isImpermanent [./impermanence]
     ++ [systemSecrets];
