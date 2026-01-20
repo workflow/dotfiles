@@ -60,6 +60,13 @@ with lib; let
     text = builtins.readFile ./scripts/niri-auto-column.sh;
   };
 
+  # Open a command and move its window to a workspace once title matches
+  openOnWorkspace = pkgs.writeShellApplication {
+    name = "niri-open-on-workspace";
+    runtimeInputs = [pkgs.niri pkgs.jq];
+    text = builtins.readFile ./scripts/niri-open-on-workspace.sh;
+  };
+
   niriBinds = {
     suffixes,
     prefixes,
@@ -251,8 +258,8 @@ in {
       # {command = ["seahorse"];} # To unlock keyring
       {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
       {command = ["wlsunset-waybar"];}
-      {command = ["zen" "--new-window" "https://chatgpt.com/"];}
-      {command = ["zen" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
+      {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen" "--new-window" "https://chatgpt.com/"];}
+      {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."09".name}" "[Vv]ikunja" "zen" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
     ];
 
     # Window Rules
