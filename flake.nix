@@ -152,6 +152,8 @@
         {
           nixpkgs.overlays = [(_: _: overlays)];
         }
+        # Import impermanence home-manager module directly (the flake output is deprecated)
+        "${impermanence}/home-manager.nix"
         nur.modules.homeManager.default
         stylix.homeManagerModules.stylix
         niri.homeModules.niri
