@@ -22,6 +22,11 @@
 
     settings = {
       permissions = {
+        allow = [
+          "Bash(jj log:*)"
+          "Bash(jj diff:*)"
+          "WebSearch"
+        ];
         deny = [
           "Read(./.env)"
           "Read(./.env.*)"
