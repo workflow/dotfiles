@@ -60,6 +60,7 @@ in {
       ./vim-terraform
       ./vim-visual-multi
       ./web-devicons
+      ./yank-file-line
     ]
     ++ lib.optionals isLightTheme [
       ./gruvbox
