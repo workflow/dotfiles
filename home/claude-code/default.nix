@@ -25,6 +25,7 @@
         allow = [
           "Bash(jj log:*)"
           "Bash(jj diff:*)"
+          "Grep"
           "WebSearch"
         ];
         deny = [
