@@ -26,6 +26,7 @@
           "Bash(jj log:*)"
           "Bash(jj diff:*)"
           "Grep"
+          "WebFetch(https://github.com/*)"
           "WebSearch"
         ];
         deny = [
