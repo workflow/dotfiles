@@ -1,8 +1,12 @@
-{...}: {
+{pkgs, ...}: {
   programs.difftastic.enable = true;
-  programs.jjui.enable = true;
+  programs.jjui = {
+    enable = true;
+    package = pkgs.unstable.jjui;
+  };
   programs.jujutsu = {
     enable = true;
+    package = pkgs.unstable.jujutsu;
     settings = {
       remotes.origin.auto-track-bookmarks = "main";
       ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
