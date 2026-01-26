@@ -13,4 +13,5 @@ Extensive File and function headers are still useful to give context.
 - Make a `jj commit` at the end of your changes: Don't include the "Created with Claude Code" and "Co-Authored-by" lines. Also keep commits short and to the point. Use conventional-commits (such as perf, feat...etc) for commit headings. Put the subject in parentheses, i.e. `feat(logic-module): add X operation` or `chore(clippy): add a lint`
 - `jj commit` does not have an `--amend` option - instead try `jj absorb` and if that doesn't find the right target then use `jj squash` to squash changes into the latest commit and then re-describe that commit as needed.
 - Use `jj` instead of `git` for all version control operations
-- For opening PRs on github, since jj does not map directly to git branches, first push the new bookmark with jj and then use `gh pr create --head <new bookmark name> --base main --draft ...`
+- For opening PRs on github, since jj does not map directly to git branches, first push the new bookmark with jj and then use `gh pr create --head <new bookmark name> --base main ...`
+- When offering to open Github PRs, open them in draft mode and do not include a "Generated with Claude" line
