@@ -25,6 +25,7 @@
         allow = [
           "Bash(jj log:*)"
           "Bash(jj diff:*)"
+          "Bash(jj status)"
           "Grep"
           "WebFetch(domain:github.com)"
           "WebSearch"
