@@ -36,7 +36,6 @@
             { "<leader><space>e", "<cmd>Telescope help_tags<CR>", desc = "H[e]lp Tags" },
             { "<leader><space>f", "<cmd>Telescope find_files<CR>", desc = "All [F]iles" },
             { "<leader><space>g", "<cmd>Telescope live_grep<CR>", desc = "[G]rep" },
-            { "<leader><space>m", "<cmd>Telescope bookmarks list<CR>", desc = "Book[m]arks" },
           }
         )
       '';

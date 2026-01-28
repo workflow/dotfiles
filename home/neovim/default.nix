@@ -18,7 +18,6 @@ in {
   imports =
     [
       ./avante # Cursor style AI IDE
-      ./bookmarks-nvim
       ./carbon
       ./cmp
       ./comment-nvim
