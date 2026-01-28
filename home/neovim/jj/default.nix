@@ -30,6 +30,7 @@ in {
           { "<leader>j", group = "[J]ujutsu" },
           { "<leader>jl", cmd.log, desc = "[L]og" },
           { "<leader>js", cmd.status, desc = "[S]tatus" },
+          { "<leader>jc", cmd.commit, desc = "[C]ommit" },
           { "<leader>jd", cmd.describe, desc = "[D]escribe" },
           { "<leader>jn", function() cmd.new({ show_log = true }) end, desc = "[N]ew change" },
           { "<leader>ju", cmd.undo, desc = "[U]ndo" },
