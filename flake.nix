@@ -42,6 +42,7 @@
       systems = ["x86_64-linux"];
 
       imports = [
+        inputs.flake-parts.flakeModules.modules
         ./parts/_bootstrap
         (inputs.import-tree ./parts)
       ];
