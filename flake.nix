@@ -3,11 +3,13 @@
 
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:nix-community/impermanence";
+    import-tree.url = "github:vic/import-tree";
     niri = {
       url = "github:sodiboo/niri-flake";
     };
@@ -35,149 +37,149 @@
     };
   };
 
-  outputs = {
-    self,
-    determinate,
-    nixpkgs,
-    nixos-unstable,
-    home-manager,
-    impermanence,
-    niri,
-    nur,
-    secrets,
-    sops-nix,
-    stylix,
-    ...
-  } @ inputs: let
-    commonModules = [
-      {
-        nixpkgs.overlays = [
-          (_: _: overlays)
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} ({...}: {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        ./parts/_bootstrap
+        (inputs.import-tree ./parts)
+      ];
+
+      # Legacy configuration - will be migrated to parts/ incrementally
+      flake = let
+        inherit (inputs) determinate nixpkgs nixos-unstable home-manager impermanence niri nur secrets sops-nix stylix;
+
+        commonModules = [
+          {
+            nixpkgs.overlays = [
+              (_: _: overlays)
+            ];
+          }
+          determinate.nixosModules.default
+          nixpkgs.nixosModules.notDetected
+          ./configuration.nix
+          nur.modules.nixos.default
+          impermanence.nixosModules.impermanence
+          sops-nix.nixosModules.sops
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          niri.nixosModules.niri
         ];
-      }
-      determinate.nixosModules.default
-      nixpkgs.nixosModules.notDetected
-      ./configuration.nix
-      nur.modules.nixos.default
-      impermanence.nixosModules.impermanence
-      sops-nix.nixosModules.sops
-      stylix.nixosModules.stylix
-      home-manager.nixosModules.home-manager
-      niri.nixosModules.niri
-    ];
-    commonHomeManagerSettings = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      backupFileExtension = "home-manager-backup";
-      users.farlion = import ./home;
-    };
-    overlays = {
-      unstable = import nixos-unstable {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
-    };
+        commonHomeManagerSettings = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          backupFileExtension = "home-manager-backup";
+          users.farlion = import ./home;
+        };
+        overlays = {
+          unstable = import nixos-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
 
-    mkSystem = {
-      hostname,
-      isImpermanent,
-      isLaptop,
-      isAmd,
-      isNvidia,
-      extraModules ? [],
-    }: let
-      machineArgs = {
-        inherit inputs secrets isImpermanent isLaptop;
-      };
-    in
-      nixpkgs.lib.nixosSystem {
-        specialArgs = machineArgs;
-        modules =
-          commonModules
-          ++ [
-            ./machines/${hostname}/hardware-scan.nix
-            ./machines/${hostname}/system.nix
-            {
-              home-manager =
-                commonHomeManagerSettings
-                // {
-                  extraSpecialArgs =
-                    machineArgs
+        mkSystem = {
+          hostname,
+          isImpermanent,
+          isLaptop,
+          isAmd,
+          isNvidia,
+          extraModules ? [],
+        }: let
+          machineArgs = {
+            inherit inputs secrets isImpermanent isLaptop;
+          };
+        in
+          nixpkgs.lib.nixosSystem {
+            specialArgs = machineArgs;
+            modules =
+              commonModules
+              ++ [
+                ./machines/${hostname}/hardware-scan.nix
+                ./machines/${hostname}/system.nix
+                {
+                  home-manager =
+                    commonHomeManagerSettings
                     // {
-                      inherit isAmd isNvidia;
+                      extraSpecialArgs =
+                        machineArgs
+                        // {
+                          inherit isAmd isNvidia;
+                        };
                     };
-                };
+                }
+              ]
+              ++ extraModules;
+          };
+      in {
+        nixosConfigurations.flexbox = mkSystem {
+          hostname = "flexbox";
+          isImpermanent = false;
+          isLaptop = true;
+          isAmd = false;
+          isNvidia = true;
+          extraModules = [./system/nvidia];
+        };
+
+        nixosConfigurations.numenor = mkSystem {
+          hostname = "numenor";
+          isImpermanent = true;
+          isLaptop = false;
+          isAmd = true;
+          isNvidia = false;
+          extraModules = [./system/amd ./system/btrfs];
+        };
+
+        # Home-manager standalone configuration for `home-manager news` CLI
+        # Uses actual config with all host-specific features enabled for maximum news coverage
+        # Actual home-manager is managed via NixOS module (see nixosConfigurations above)
+        homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs secrets;
+            # Enable all host-specific features to get maximum applicable news
+            isImpermanent = true;
+            isLaptop = true;
+            isAmd = true;
+            isNvidia = true;
+            # Mock osConfig for standalone mode
+            osConfig = {
+              networking.hostName = "standalone-news-config";
+              specialisation = {};
+            };
+          };
+          modules = [
+            {
+              nixpkgs.overlays = [(_: _: overlays)];
             }
-          ]
-          ++ extraModules;
-      };
-  in {
-    nixosConfigurations.flexbox = mkSystem {
-      hostname = "flexbox";
-      isImpermanent = false;
-      isLaptop = true;
-      isAmd = false;
-      isNvidia = true;
-      extraModules = [./system/nvidia];
-    };
+            # Import impermanence home-manager module directly (the flake output is deprecated)
+            "${impermanence}/home-manager.nix"
+            nur.modules.homeManager.default
+            stylix.homeManagerModules.stylix
+            niri.homeModules.niri
+            {
+              home = {
+                username = "farlion";
+                homeDirectory = "/home/farlion";
+              };
+              assertions = nixpkgs.lib.mkForce [];
+            }
+            (import ./home)
+          ];
+        };
 
-    nixosConfigurations.numenor = mkSystem {
-      hostname = "numenor";
-      isImpermanent = true;
-      isLaptop = false;
-      isAmd = true;
-      isNvidia = false;
-      extraModules = [./system/amd ./system/btrfs];
-    };
+        # Expose profiling helper as a package and an app
+        # Call with `nix run .#nh-eval-profile -- <HOST>`
+        packages.x86_64-linux.nh-eval-profile = let
+          pkgsFor = nixpkgs.legacyPackages.x86_64-linux;
+        in
+          pkgsFor.callPackage ./system/scripts/nh-eval-profile.nix {};
 
-    # Home-manager standalone configuration for `home-manager news` CLI
-    # Uses actual config with all host-specific features enabled for maximum news coverage
-    # Actual home-manager is managed via NixOS module (see nixosConfigurations above)
-    homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      extraSpecialArgs = {
-        inherit inputs secrets;
-        # Enable all host-specific features to get maximum applicable news
-        isImpermanent = true;
-        isLaptop = true;
-        isAmd = true;
-        isNvidia = true;
-        # Mock osConfig for standalone mode
-        osConfig = {
-          networking.hostName = "standalone-news-config";
-          specialisation = {};
+        apps.x86_64-linux.nh-eval-profile = {
+          type = "app";
+          program = "${inputs.self.packages.x86_64-linux.nh-eval-profile}/bin/nh-eval-profile";
         };
       };
-      modules = [
-        {
-          nixpkgs.overlays = [(_: _: overlays)];
-        }
-        # Import impermanence home-manager module directly (the flake output is deprecated)
-        "${impermanence}/home-manager.nix"
-        nur.modules.homeManager.default
-        stylix.homeManagerModules.stylix
-        niri.homeModules.niri
-        {
-          home = {
-            username = "farlion";
-            homeDirectory = "/home/farlion";
-          };
-          assertions = nixpkgs.lib.mkForce [];
-        }
-        (import ./home)
-      ];
-    };
-
-    # Expose profiling helper as a package and an app
-    # Call with `nix run .#nh-eval-profile -- <HOST>`
-    packages.x86_64-linux.nh-eval-profile = let
-      pkgsFor = nixpkgs.legacyPackages.x86_64-linux;
-    in
-      pkgsFor.callPackage ./system/scripts/nh-eval-profile.nix {};
-
-    apps.x86_64-linux.nh-eval-profile = {
-      type = "app";
-      program = "${self.packages.x86_64-linux.nh-eval-profile}/bin/nh-eval-profile";
-    };
-  };
+    });
 }
