@@ -14,14 +14,13 @@ This document describes the architecture of this NixOS configuration, which foll
 
 ```
 nixos-config/
-├── flake.nix                    # Minimal: inputs + flake-parts import
+├── flake.nix                    # Minimal: inputs + import-tree ./parts
 ├── flake.lock
 │
-├── parts/                       # All flake-parts modules
-│   ├── _bootstrap/              # Core infrastructure
-│   │   ├── default.nix          # Auto-imports all parts/**/*.nix
-│   │   ├── hosts.nix            # Host definitions and feature composition
-│   │   └── lib.nix              # Shared functions and constants
+├── parts/                       # All flake-parts modules (auto-imported)
+│   ├── options.nix              # config.dendrix.* option definitions
+│   ├── modules.nix              # Imports flake-parts.flakeModules.modules
+│   ├── hosts.nix                # Host definitions and feature composition
 │   │
 │   ├── features/                # Feature modules
 │   │   ├── core/                # Essential system features
@@ -114,7 +113,7 @@ A feature file configures all aspects of a single feature:
 Instead of threading `specialArgs` through module evaluations, host-specific values are defined as options in the top-level configuration. Every module can read from this shared config:
 
 ```nix
-# parts/_bootstrap/options.nix
+# parts/options.nix
 { lib, ... }:
 {
   options.dendrix = {
@@ -148,7 +147,7 @@ Instead of threading `specialArgs` through module evaluations, host-specific val
 
 ## Host Definition
 
-Hosts compose features in `parts/_bootstrap/hosts.nix`:
+Hosts compose features in `parts/hosts.nix`:
 
 ```nix
 { inputs, ... }:
