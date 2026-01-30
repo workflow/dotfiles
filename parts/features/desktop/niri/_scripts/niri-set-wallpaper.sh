@@ -1,0 +1,26 @@
+wallpapersDir="${HOME}/.local/share/wallpapers"
+
+pkill swaybg || true
+
+# Read the current specialisation, default to "dark" if missing
+if [ -r /etc/specialisation ]; then
+	SPEC=$(tr -d '\n' </etc/specialisation 2>/dev/null)
+else
+	SPEC=dark
+fi
+
+case "$SPEC" in
+
+light)
+	swaybg -i "${wallpapersDir}/gruvbox-light.png" -m fill &
+	disown
+	;;
+dark)
+	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill &
+	disown
+	;;
+*)
+	swaybg -i "${wallpapersDir}/gruvbox-dark.png" -m fill &
+	disown
+	;;
+esac
