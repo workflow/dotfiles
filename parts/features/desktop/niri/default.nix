@@ -26,36 +26,42 @@
       locker = "${pkgs.bash}/bin/bash -c '${pkgs.procps}/bin/pgrep -x swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize'";
       suspender = "${pkgs.systemd}/bin/systemctl suspend-then-hibernate";
 
+      # Wallpaper, until stylix supports it :)
       wallpaperSetter = pkgs.writeShellApplication {
         name = "niri-set-wallpaper";
         runtimeInputs = [pkgs.swaybg pkgs.procps];
         text = builtins.readFile ./_scripts/niri-set-wallpaper.sh;
       };
 
+      # Window Picker a la rofi
       windowPicker = pkgs.writeShellApplication {
         name = "niri-pick-window";
         runtimeInputs = [pkgs.niri pkgs.unstable.fuzzel pkgs.jq];
         text = builtins.readFile ./_scripts/niri-pick-window.sh;
       };
 
+      # Calculator via fuzzel + qalc
       fuzzelCalc = pkgs.writeShellApplication {
         name = "niri-qalc";
         runtimeInputs = [pkgs.unstable.fuzzel pkgs.libqalculate pkgs.wl-clipboard pkgs.libnotify];
         text = builtins.readFile ./_scripts/niri-qalc.sh;
       };
 
+      # Workspace reorderer - maintains logical order after moving workspaces between monitors
       workspaceReorderer = pkgs.writeShellApplication {
         name = "niri-reorder-workspaces";
         runtimeInputs = [pkgs.niri pkgs.jq];
         text = builtins.readFile ./_scripts/niri-reorder-workspaces.sh;
       };
 
+      # Auto-column - consumes new windows into columns on vertical monitors
       autoColumn = pkgs.writeShellApplication {
         name = "niri-auto-column";
         runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils];
         text = builtins.readFile ./_scripts/niri-auto-column.sh;
       };
 
+      # Open a command and move its window to a workspace once title matches
       openOnWorkspace = pkgs.writeShellApplication {
         name = "niri-open-on-workspace";
         runtimeInputs = [pkgs.niri pkgs.jq];
@@ -96,16 +102,16 @@
         listToAttrs (pairs prefixes (prefix: pairs suffixes (suffix: [(format prefix suffix)])));
     in {
       home.packages = with pkgs; [
-        brightnessctl
-        fuzzelCalc
-        hyprmagnifier
-        playerctl
-        qt5.qtwayland
-        swaybg
-        wallpaperSetter
-        windowPicker
-        workspaceReorderer
-        xwayland-satellite
+        brightnessctl # For brightness +/- keys
+        fuzzelCalc # niri-qalc
+        hyprmagnifier # Screen magnifier for Wayland
+        playerctl # For play/pause etc... controlling media players that implement MPRIS
+        qt5.qtwayland # Needed for QT_QPA_PLATFORM=wayland
+        swaybg # Minmal wallpaper setter for Sway
+        wallpaperSetter # Specialization-aware wallpaper setting
+        windowPicker # niri-pick-window
+        workspaceReorderer # niri-reorder-workspaces
+        xwayland-satellite # For apps that need Xwayland
       ];
 
       programs.swaylock = {
@@ -116,7 +122,7 @@
           show-failed-attempts = true;
           ignore-empty-password = true;
           screenshots = true;
-          effect-pixelate = 10;
+          effect-pixelate = 10; # Pixellation level (higher = more pixelated)
           effect-blur = "7x5";
         };
       };
@@ -150,19 +156,25 @@
         ];
       };
 
+      # Fix swayidle service dependencies for Niri/Wayland session
+      # Fails to boot with default settings
       systemd.user.services.swayidle = {
         Unit = {
           After = ["niri.service" "graphical-session.target"];
           Wants = ["graphical-session.target"];
+          # Override the default ConditionEnvironment to be less strict
           ConditionEnvironment = lib.mkForce [];
         };
         Service = {
+          # Add a small delay to double-ensure Wayland display is ready
           ExecStartPre = "${pkgs.coreutils}/bin/sleep 2";
+          # Restart the service if it fails (useful for session restarts)
           Restart = lib.mkForce "on-failure";
           RestartSec = "5";
         };
       };
 
+      # Auto-column service for vertical monitors
       systemd.user.services.niri-auto-column = lib.mkIf isNumenor {
         Unit = {
           Description = "Auto-consume windows into columns on vertical monitors";
@@ -174,24 +186,50 @@
           Restart = "on-failure";
           RestartSec = "5";
         };
-        Install.WantedBy = ["graphical-session.target"];
+        Install = {
+          WantedBy = ["graphical-session.target"];
+        };
       };
 
       programs.wleave.enable = true;
 
+      # Wallpaper, until stylix supports it :)
       home.file.".local/share/wallpapers/gruvbox-light.png".source = ./_wallpapers/gruvbox-light-rainbow.png;
       home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./_wallpapers/gruvbox-dark-rainbow.png;
 
+      # TODO: Activate once the Niri flake supports niri 25.11
+      # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
+      # programs.niri.config =
+      #   lib.optionalString (leftScreen != null) ''
+      #     output "${leftScreen}" {
+      #       layout {
+      #         default-column-width { proportion 1.0; }
+      #       }
+      #     }
+      #   ''
+      #   + lib.optionalString (rightScreen != null) ''
+      #     output "${rightScreen}" {
+      #       layout {
+      #         default-column-width { proportion 1.0; }
+      #       }
+      #     }
+      #   '';
       programs.niri.settings = rec {
-        environment.NIXOS_OZONE_WL = "1";
+        # Environment
+        environment = {
+          NIXOS_OZONE_WL = "1"; # Enable Ozone-Wayland for Electron apps and Chromium, see https://nixos.wiki/wiki/Wayland
+        };
 
+        # Input Settings
         input = {
-          keyboard.xkb = {
-            layout = "us,de,ua,pt";
-            options = "eurosign:e,terminate:ctrl_alt_bksp";
+          keyboard = {
+            xkb = {
+              layout = "us,de,ua,pt";
+              options = "eurosign:e,terminate:ctrl_alt_bksp";
+            };
           };
           touchpad = {
-            dwt = true;
+            dwt = true; # Disable touchpad while typing
             disabled-on-external-mouse = false;
             natural-scroll = false;
             tap = true;
@@ -200,28 +238,35 @@
           focus-follows-mouse.enable = true;
         };
 
+        # Cursor Settings
         cursor = {
           hide-after-inactive-ms = 3000;
           hide-when-typing = true;
         };
 
+        # Startup
         spawn-at-startup = [
-          {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 10 && systemctl --user restart xdg-desktop-portal"];}
+          {command = ["${pkgs.bash}/bin/bash" "-c" "sleep 10 && systemctl --user restart xdg-desktop-portal"];} # Hacks around a timing prob with xdg-desktop-portal on first boot, see https://github.com/sodiboo/niri-flake/issues/509
           {command = ["systemctl" "--user" "restart" "kanshi"];}
           {command = ["systemctl" "--user" "restart" "app-blueman@autostart"];}
-          {command = ["systemctl" "--user" "start" "gnome-keyring-ssh"];}
+          {command = ["systemctl" "--user" "start" "gnome-keyring-ssh"];} # Start GNOME Keyring SSH agent
           {command = ["obsidian"];}
           {command = ["ytmdesktop" "--password-store=gnome-libsecret"];}
-          {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];}
+          # {command = ["seahorse"];} # To unlock keyring
+          {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
           {command = ["wlsunset-waybar"];}
           {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen" "--new-window" "https://chatgpt.com/"];}
           {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."09".name}" "[Vv]ikunja" "zen" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
         ];
 
+        # Window Rules
+        # Find app_id or title with `niri msg windows`
         window-rules = [
           {
-            matches = [{app-id = "^obsidian$";}];
-            open-on-workspace = " 7";
+            matches = [
+              {app-id = "^obsidian$";}
+            ];
+            open-on-workspace = " 7";
           }
           {
             matches = [
@@ -229,20 +274,27 @@
               {app-id = "^teams-for-linux$";}
               {app-id = "^org.telegram.desktop$";}
             ];
-            open-on-workspace = " 8";
+            open-on-workspace = " 8";
           }
           {
-            matches = [{app-id = "^YouTube Music Desktop App$";}];
-            open-on-workspace = " 9";
+            matches = [
+              {app-id = "^YouTube Music Desktop App$";}
+            ];
+            open-on-workspace = " 9";
           }
           {
-            matches = [{title = ".*[Vv]ikunja.*";}];
-            open-on-workspace = " 9";
+            matches = [
+              {title = ".*[Vv]ikunja.*";}
+            ];
+            open-on-workspace = " 9";
           }
           {
-            matches = [{title = ".*ChatGPT.*";}];
-            open-on-workspace = " a";
+            matches = [
+              {title = ".*ChatGPT.*";}
+            ];
+            open-on-workspace = " a";
           }
+          # Floating windows
           {
             matches = [
               {title = ".*Pavucontrol.*";}
@@ -250,6 +302,7 @@
             ];
             open-floating = true;
           }
+          # Block from screencasting
           {
             matches = [
               {app-id = "^Bitwarden$";}
@@ -257,90 +310,110 @@
             ];
             block-out-from = "screen-capture";
           }
+          # Screen Cast Target Highlight
           {
-            matches = [{is-window-cast-target = true;}];
+            matches = [
+              {is-window-cast-target = true;}
+            ];
             border = {
-              active.color = "#f38ba8";
-              inactive.color = "#7d0d2d";
+              active = {color = "#f38ba8";};
+              inactive = {color = "#7d0d2d";};
             };
-            shadow.color = "#7d0d2d70";
+            shadow = {
+              color = "#7d0d2d70";
+            };
             tab-indicator = {
-              active.color = "#f38ba8";
-              inactive.color = "#7d0d2d";
+              active = {color = "#f38ba8";};
+              inactive = {color = "#7d0d2d";};
             };
           }
         ];
 
+        # Named Workspaces
         workspaces = {
           "00" = {
-            name = " a";
+            name = " a";
             open-on-output = rightScreen;
           };
           "01" = {
-            name = " 1";
+            name = " 1";
             open-on-output = leftScreen;
           };
           "02" = {
-            name = " 2";
+            name = " 2";
             open-on-output = mainScreen;
           };
           "03" = {
-            name = " 3";
+            name = " 3";
             open-on-output = rightScreen;
           };
           "04" = {
-            name = " 4";
+            name = " 4";
             open-on-output = mainScreen;
           };
           "05" = {
-            name = " 5";
+            name = " 5";
             open-on-output = mainScreen;
           };
           "06" = {
-            name = " 6";
+            name = " 6";
             open-on-output = mainScreen;
           };
           "07" = {
-            name = " 7";
+            name = " 7";
             open-on-output = rightScreen;
           };
           "08" = {
-            name = " 8";
+            name = " 8";
             open-on-output = mainScreen;
           };
           "09" = {
-            name = " 9";
+            name = " 9";
             open-on-output = leftScreen;
           };
           "10" = {
-            name = " 10";
+            name = " 10";
             open-on-output = mainScreen;
           };
         };
 
+        # Layout
         layout = {
           border = {
             enable = true;
-            width = 2;
+            width = 2; # Default 4
           };
+
           default-column-width.proportion = 1. / 2.;
-          gaps = 4;
+
+          gaps = 4; # Default 16
+
           preset-column-widths = [
             {proportion = 1. / 2.;}
             {proportion = 1. / 3.;}
             {proportion = 2. / 3.;}
           ];
-          shadow.enable = true;
+
+          shadow = {
+            enable = true;
+          };
         };
 
+        # Style
         prefer-no-csd = true;
-        animations.workspace-switch.enable = false;
-        hotkey-overlay.skip-at-startup = true;
 
+        # Animations
+        animations = {
+          workspace-switch.enable = false;
+        };
+
+        # Keybindings
+        hotkey-overlay.skip-at-startup = true;
         binds = with config.lib.niri.actions;
           lib.attrsets.mergeAttrsList [
             {
               "Mod+Shift+Slash".action = show-hotkey-overlay;
+
               "Mod+Return".action = spawn "alacritty";
               "Mod+Return".hotkey-overlay.title = "Open a Terminal: alacritty";
               "Mod+D".action = spawn "fuzzel";
@@ -353,6 +426,7 @@
               "Mod+z".hotkey-overlay.title = "Screen magnifier";
               "Mod+Shift+z".action = power-off-monitors;
               "Mod+Shift+z".hotkey-overlay.title = "Power off Monitors";
+
               "XF86AudioRaiseVolume".action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
               "XF86AudioRaiseVolume".allow-when-locked = true;
               "XF86AudioLowerVolume".action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
@@ -363,8 +437,10 @@
               "XF86AudioMicMute".allow-when-locked = true;
               "XF86MonBrightnessUp".action = spawn-sh "brightnessctl --class=backlight set 10%+";
               "XF86MonBrightnessUp".allow-when-locked = true;
+
               "XF86MonBrightnessDown".action = spawn-sh "brightnessctl --class=backlight set 10%-";
               "XF86MonBrightnessDown".allow-when-locked = true;
+
               "Mod+Shift+Q".action = close-window;
               "Mod+Shift+Q".repeat = false;
             }
@@ -419,22 +495,29 @@
             {
               "Mod+BracketLeft".action = consume-or-expel-window-left;
               "Mod+BracketRight".action = consume-or-expel-window-right;
+
               "Mod+Comma".action = consume-window-into-column;
               "Mod+Period".action = expel-window-from-column;
+
               "Mod+R".action = switch-preset-column-width;
               "Mod+Shift+R".action = switch-preset-window-height;
               "Mod+Ctrl+R".action = reset-window-height;
+
               "Mod+F".action = maximize-column;
               "Mod+Shift+F".action = fullscreen-window;
               "Mod+Ctrl+F".action = expand-column-to-available-width;
+
               "Mod+C".action = center-column;
               "Mod+Ctrl+C".action = center-visible-columns;
+
               "Mod+Minus".action = set-column-width "-10%";
               "Mod+Equal".action = set-column-width "+10%";
               "Mod+Shift+Minus".action = set-window-height "-10%";
               "Mod+Shift+Equal".action = set-window-height "+10%";
+
               "Mod+V".action = toggle-window-floating;
               "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
+
               "Mod+Shift+W".action = spawn-sh (
                 builtins.concatStringsSep "; " [
                   "systemctl --user restart waybar.service"
@@ -442,26 +525,43 @@
                 ]
               );
               "Mod+Shift+W".hotkey-overlay.title = "Restart Waybar";
+
               "Mod+Space".action = switch-layout "next";
               "Mod+Shift+Space".action = switch-layout "prev";
+
               "Print".action.screenshot = [];
               "Print".hotkey-overlay.title = "Screenshot via Niri";
               "Mod+Print".action = spawn "satty-screenshot";
               "Mod+Print".hotkey-overlay.title = "Screenshot via Satty";
               "Mod+Shift+Print".action.screenshot-screen = [];
               "Mod+Shift+Print".hotkey-overlay.title = "Instant Screenshot";
+
+              # Applications such as remote-desktop clients and software KVM switches may
+              # request that niri stops processing the keyboard shortcuts defined here
+              # so they may, for example, forward the key presses as-is to a remote machine.
+              # It's a good idea to bind an escape hatch to toggle the inhibitor,
+              # so a buggy application can't hold your session hostage.
+              #
+              # The allow-inhibiting=false property can be applied to other binds as well,
+              # which ensures niri always processes them, even when an inhibitor is active.
               "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
               "Mod+Shift+Escape".allow-inhibiting = false;
+
               "Ctrl+Alt+Delete".action = quit;
             }
+
             {
+              # Dynamic Cast ([G]rab Window or Screen)
               "Mod+G".action = set-dynamic-cast-window;
               "Mod+Shift+G".action = set-dynamic-cast-monitor;
               "Mod+Delete".action = clear-dynamic-cast-target;
+
+              # Fancy Moving
               "Mod+Tab".action = focus-window-down-or-column-right;
               "Mod+Shift+Tab".action = focus-window-up-or-column-left;
             }
             {
+              # Browser
               "Mod+b".action = spawn-sh (
                 if isNvidia
                 then "brave --profile-directory='Default' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
@@ -476,29 +576,49 @@
                 else "brave --profile-directory='Profile 1' --password-store=seahorse"
               );
               "Mod+h".hotkey-overlay.hidden = true;
+
+              # Cliphist via fuzzel
               "Mod+p".action = spawn "cliphist-fuzzel-img";
               "Mod+p".hotkey-overlay.hidden = true;
+              # Single item clearing
               "Mod+Shift+p".action = spawn-sh "cliphist list | fuzzel --dmenu | cliphist delete";
               "Mod+Shift+p".hotkey-overlay.hidden = true;
+
+              # File Manager [n]avigate
               "Mod+n".action = spawn-sh "alacritty -e fish -ic lf";
               "Mod+n".hotkey-overlay.hidden = true;
+
+              # Calcu[M]athlator
               "Mod+m".action = spawn "${fuzzelCalc}/bin/niri-qalc";
               "Mod+m".hotkey-overlay.title = "Calcu[M]athalor via qalculate";
+
+              # Logout and Power Menu
               "Mod+Pause".action = spawn "wleave";
+
+              # Network ([W]ifi) Selection
               "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
               "Mod+w".hotkey-overlay.hidden = true;
+
+              # Overview
               "Mod+o".action = toggle-overview;
               "Mod+o".repeat = false;
+
+              # Reorder Workspaces (after moving them around)
               "Mod+Shift+o".action = spawn "${workspaceReorderer}/bin/niri-reorder-workspaces";
               "Mod+Shift+o".hotkey-overlay.title = "Re[o]rder workspaces to maintain logical order";
+
+              # Rofi[e]moji
               "Mod+e".action = spawn "rofimoji";
               "Mod+e".hotkey-overlay.hidden = true;
               "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
               "Mod+Shift+e".hotkey-overlay.hidden = true;
+
+              # [S]ound Switcher
               "Mod+s".action = spawn "sound-switcher";
               "Mod+s".hotkey-overlay.hidden = true;
             }
             {
+              # OBS Studio Controls
               "Alt+F1".action = spawn "obs-main-scene";
               "Alt+F1".hotkey-overlay.title = "OBS: Switch to Main Scene";
               "Alt+F2".action = spawn "obs-screensharing";

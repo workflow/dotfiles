@@ -36,8 +36,8 @@
       ];
 
       systemd-failed-units = {
-        format = " {nr_failed} failed";
-        format-ok = " 0";
+        format = " {nr_failed} failed";
+        format-ok = " 0";
         hide-on-ok = false;
         on-click = "alacritty --command journalctl --pager-end --catalog --boot --priority 3..3 | lnav";
         on-click-right = "alacritty --command isd";
@@ -53,7 +53,7 @@
       };
 
       cpu = {
-        format = " {usage}%";
+        format = " {usage}%";
         states = {
           info = 80;
         };
@@ -63,7 +63,7 @@
 
       "temperature#cpu" = {
         critical-threshold = 90;
-        format = " {temperatureC}°C";
+        format = " {temperatureC}°C";
         on-click = "alacritty --command btop";
         on-click-right = "alacritty --command btop";
         hwmon-path =
@@ -75,8 +75,8 @@
       "custom/cpu-profile-toggler" = {
         format = "{icon}";
         format-icons = {
-          performance = "";
-          powersave = "";
+          performance = "";
+          powersave = "";
         };
         exec = "cpu-profile-toggler";
         on-click = "auto-cpufreq-gtk";
@@ -87,7 +87,7 @@
       };
 
       memory = {
-        format = " {percentage}%";
+        format = " {percentage}%";
         states = {
           warning = 60;
           critical = 80;
@@ -98,7 +98,7 @@
       };
 
       disk = {
-        format = " {percentage_used}%";
+        format = " {percentage_used}%";
         on-click = "alacritty --command ncdu /";
         on-click-right = "alacritty --command btop";
         states = {
@@ -122,7 +122,7 @@
 
       "custom/gpu-usage" = {
         exec = "cat /sys/class/hwmon/hwmon1/device/gpu_busy_percent";
-        format = " {}%";
+        format = " {}%";
         return-type = "";
         interval = 1;
         on-click = "alacritty --command nvtop";
@@ -130,8 +130,8 @@
       };
 
       "custom/nvidia" = {
-        exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1%  \\2°C/g'";
-        format = " {}";
+        exec = "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu --format=csv,nounits,noheader | sed 's/\\([0-9]\\+\\), \\([0-9]\\+\\)/\\1%  \\2°C/g'";
+        format = " {}";
         interval = 2;
         on-click = "alacritty --command nvtop";
         on-click-right = "alacritty --command nvtop";
@@ -154,15 +154,15 @@
 
       "network" = {
         interval = 3;
-        format = " ";
-        format-disconnected = "  ";
-        format-ethernet = " ";
-        format-wifi = " ";
-        format-linked = "  🚧";
-        format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-wifi = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        format = " ";
+        format-disconnected = "  ";
+        format-ethernet = " ";
+        format-wifi = " ";
+        format-linked = "  🚧";
+        format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format-wifi = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format-linked = "IF:{ifname} IP:{ipaddr} Connected but no internet";
         on-click-right = "alacritty --command nmtui";
       };
@@ -170,11 +170,11 @@
       "network#tailscale" = {
         interface = "tailscale0";
         interval = 3;
-        format-linked = " ";
-        format = " ";
-        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-linked = " Tailscale down. Right click to connect.";
+        format-linked = " ";
+        format = " ";
+        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format-linked = " Tailscale down. Right click to connect.";
         on-click-right = "tailscale up";
         on-click-middle = "tailscale down";
       };
@@ -185,11 +185,11 @@
         interval = 3;
         format = "{icon}";
         format-icons = {
-          up = "";
-          down = "";
-          error = "❌";
+          up = "";
+          down = "";
+          error = "❌";
         };
-        tooltip-format = " MacGyver is {text}";
+        tooltip-format = " MacGyver is {text}";
         on-click-right = "sudo systemctl start macgyver";
         on-click-middle = "sudo systemctl stop macgyver";
       };
@@ -197,14 +197,14 @@
       "network#mullvad" = {
         interface = "wg0-mullvad";
         interval = 3;
-        format-disconnected = " ";
-        format-disabled = " ";
-        format-linked = " ";
-        format = " ";
-        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-linked = " Mullvad down. Right click to connect or double right click for GUI.";
-        tooltip-format-disabled = " Mullvad down. Rickt click to connect or double right click for GUI.";
+        format-disconnected = " ";
+        format-disabled = " ";
+        format-linked = " ";
+        format = " ";
+        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format-linked = " Mullvad down. Right click to connect or double right click for GUI.";
+        tooltip-format-disabled = " Mullvad down. Rickt click to connect or double right click for GUI.";
         on-click-right = "mullvad connect";
         on-double-click-right = "mullvad-gui";
         on-click-middle = "mullvad disconnect";
@@ -213,14 +213,14 @@
       "network#wireguard" = {
         interface = "wg0";
         interval = 3;
-        format-disconnected = " ";
-        format-disabled = " ";
-        format-linked = " ";
-        format = " ";
-        format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-linked = " Wireguard down.";
-        tooltip-format-disabled = " Wireguard down.";
+        format-disconnected = " ";
+        format-disabled = " ";
+        format-linked = " ";
+        format = " ";
+        format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+        tooltip-format-linked = " Wireguard down.";
+        tooltip-format-disabled = " Wireguard down.";
       };
 
       "group/screens" = {
@@ -236,11 +236,14 @@
         format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
       };
 
+      # Direct ddcutil control - required for monitors that only expose VCP Feature 10 (Brightness)
+      # rather than the "Backlight Level White" feature that ddcci-driver-linux requires
+      # See https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux
       "custom/ddc-backlight-left" = {
         format = "{icon} ";
         tooltip-format = "Left {percentage}%";
         format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
-        exec = "ddc-backlight 7";
+        exec = "ddc-backlight 7"; # For i2c-7
         exec-on-event = false;
         on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 7";
         on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 7";
@@ -255,7 +258,7 @@
         format = "{icon} ";
         tooltip-format = "Middle {percentage}%";
         format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
-        exec = "ddc-backlight 9";
+        exec = "ddc-backlight 9"; # For i2c-9
         exec-on-event = false;
         on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 9";
         on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 9";
@@ -270,7 +273,7 @@
         format = "{icon}";
         tooltip-format = "Right {percentage}%";
         format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
-        exec = "ddc-backlight 6";
+        exec = "ddc-backlight 6"; # For i2c-6
         exec-on-event = false;
         on-scroll-up = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 + 5 -b 6";
         on-scroll-down = "flock /tmp/ddc_backlight.lock ddcutil setvcp 10 - 5 -b 6";
@@ -288,10 +291,10 @@
         return-type = "json";
         format = " {icon}";
         tooltip-format = "wlsunset: {alt}";
-        signal = 1;
+        signal = 1; # SIGRTMIN+1 or 35 for updating immediately from script
         format-icons = {
-          on = "";
-          off = "";
+          on = "";
+          off = "";
         };
       };
 
@@ -306,12 +309,12 @@
 
       "pulseaudio#in" = {
         format = "{format_source}";
-        format-source = " {volume}%";
-        format-source-muted = "";
+        format-source = " {volume}%";
+        format-source-muted = "";
         format-icons = {
-          "bluez_input.DC:69:E2:9A:6E:30" = "";
-          "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
-          default = ["" ""];
+          "bluez_input.DC:69:E2:9A:6E:30" = "";
+          "alsa_input.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.mono-fallback" = "";
+          default = ["" ""];
         };
         max-volume = 200;
         scroll-step = 5;
@@ -325,25 +328,25 @@
 
       "pulseaudio#out" = {
         format = "{icon} {volume}%";
-        format-bluetooth = "{icon} {volume}%";
-        format-muted = "";
+        format-bluetooth = "{icon} {volume}%";
+        format-muted = "";
         format-icons = {
-          "alsa_output.usb-Generic_USB_Audio-00.analog-stereo" = "";
-          "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
-          "bluez_output.14_3F_A6_28_DC_51.1" = "";
+          "alsa_output.usb-Generic_USB_Audio-00.analog-stereo" = "";
+          "alsa_output.usb-Lenovo_ThinkPad_Thunderbolt_3_Dock_USB_Audio_000000000000-00.analog-stereo" = "";
+          "bluez_output.14_3F_A6_28_DC_51.1" = "";
           "alsa_output.pci-0000_03_00.1.hdmi-stereo-extra3" = "🍿";
-          "bluez_output.DC_69_E2_9A_6E_30.1" = "";
-          "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink" = "";
-          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
-          "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
-          "bluez_output.34_E3_FB_C5_01_E0.1" = "";
-          "bluez_sink.34_E3_FB_C5_01_E0.handsfree_head_unit" = "";
-          default = ["" ""];
+          "bluez_output.DC_69_E2_9A_6E_30.1" = "";
+          "bluez_sink.DC_69_E2_9A_6E_30.handsfree_head_unit" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0003.hw_sofsoundwire_2__sink" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0005.hw_sofsoundwire_2__sink" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi___ucm0007.hw_sofsoundwire_2__sink" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire_2__sink" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink" = "";
+          "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
+          "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
+          "bluez_output.34_E3_FB_C5_01_E0.1" = "";
+          "bluez_sink.34_E3_FB_C5_01_E0.handsfree_head_unit" = "";
+          default = ["" ""];
         };
         max-volume = 200;
         on-click = "pavucontrol --tab=3";
@@ -358,8 +361,8 @@
         on-click-right = ''niri msg action focus-window --id $(niri msg --json windows | jq -r '.[] | select(.app_id == "YouTube Music Desktop App") | .id')'';
         player-icons = {
           default = "▶";
-          mpv = "";
-          chromium = "";
+          mpv = "";
+          chromium = "";
         };
         status-icons = {
           paused = "⏸";
@@ -371,12 +374,12 @@
         format-connected = "{icon} {num_connections}";
         format-connnected-battery = "{icon} {num_connections} {device_battery_percentage}%";
         format-icons = {
-          connected = "";
-          on = "";
-          off = "";
-          disabled = "";
-          disconnected = "";
-          default = "";
+          connected = "";
+          on = "";
+          off = "";
+          disabled = "";
+          disconnected = "";
+          default = "";
         };
         on-click = "bluetoothctl power on";
         on-click-right = "bluetoothctl power off";
@@ -402,7 +405,7 @@
           critical = 15;
         };
         format = " {icon} {capacity}%";
-        format-icons = ["" "" "" "" ""];
+        format-icons = ["" "" "" "" ""];
         tooltip = true;
         backend = "upower";
       };
@@ -425,8 +428,8 @@
         format = "{icon}{text}";
         tooltip-format = "{text}";
         format-icons = {
-          running = "";
-          dnd = "";
+          running = "";
+          dnd = "";
         };
         on-click = "dunstctl set-paused toggle";
         on-click-right = "dunstctl set-paused false";
@@ -438,8 +441,8 @@
         interval = 1;
         format = " {icon}";
         format-icons = {
-          activated = "";
-          deactivated = "";
+          activated = "";
+          deactivated = "";
         };
         on-click = "systemctl --user stop swayidle";
         on-click-right = "systemctl --user start swayidle";
@@ -455,7 +458,7 @@
 
       clock = {
         format = "{:%H:%M}";
-        format-alt = "{:%A, %B %d, %Y (%R)}  ";
+        format-alt = "{:%A, %B %d, %Y (%R)}  ";
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "year";
@@ -493,8 +496,8 @@
             position = "bottom";
             expand-center = true;
             output = [
-              "DP-1"
-              "eDP-1"
+              "DP-1" # Numenor main screen
+              "eDP-1" # Flexbox
             ];
           }
           // leftSection // centerSection // rightSection;
@@ -565,7 +568,9 @@
     };
 
     systemd.user.services.waybar = {
+      # Give on-click commands access to binaries they need
       Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
+      # Fix for niri startup
       Install.WantedBy = lib.mkForce ["niri.service"];
       Unit.Requires = ["niri.service"];
       Unit.After = ["niri.service"];
