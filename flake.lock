@@ -820,7 +820,7 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "narHash": "sha256-x3Mp8iZo/o5Xdz1s3og0cUAslOACoUqJolAjKk+H+ZE=",
+        "narHash": "sha256-inUTNigfTrWwN6eW7gRLUK9FZJF5VMUUU8mcwL2paJQ=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
