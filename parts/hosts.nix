@@ -57,6 +57,11 @@
         default = false;
         description = "Whether this machine has an AMD GPU";
       };
+      isBtrfs = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether this machine uses btrfs filesystem";
+      };
       stateVersion = lib.mkOption {
         type = lib.types.str;
         description = "NixOS state version for this host";
@@ -149,6 +154,7 @@ in {
         isImpermanent = false;
         hasNvidia = true;
         hasAmd = false;
+        isBtrfs = false;
         stateVersion = "22.05";
         homeStateVersion = "22.05";
       };
@@ -163,6 +169,7 @@ in {
         isImpermanent = true;
         hasNvidia = false;
         hasAmd = true;
+        isBtrfs = true;
         stateVersion = "24.11";
         homeStateVersion = "24.11";
       };
