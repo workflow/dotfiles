@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.ssh = {
+    osConfig,
     lib,
     pkgs,
     ...
@@ -12,7 +11,7 @@ in {
       text = builtins.readFile ./_scripts/ssh-add-all.sh;
     };
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".ssh"
       ];

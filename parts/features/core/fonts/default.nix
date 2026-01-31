@@ -1,6 +1,4 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.fonts = {pkgs, ...}: let
     fontSmokeTest = pkgs.writers.writeBashBin "font-smoke-test" ''
       set -e
@@ -65,8 +63,8 @@ in {
     };
   };
 
-  flake.modules.homeManager.fonts = {lib, ...}: {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+  flake.modules.homeManager.fonts = {lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".local/share/fonts"
         ".cache/fontconfig"

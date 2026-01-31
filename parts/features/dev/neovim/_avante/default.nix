@@ -1,11 +1,11 @@
 # Cursor style AI IDE
 {
-  isImpermanent,
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
-  home.persistence."/persist" = lib.mkIf isImpermanent {
+  home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
     directories = [
       ".config/avante.nvim" # Some Avante state like last used model
     ];

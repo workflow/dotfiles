@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.networking = {
+    config,
     lib,
     pkgs,
     ...
@@ -10,7 +9,7 @@ in {
       builtins.readFile ./_scripts/tailscale-ip.sh
     );
   in {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         "/etc/NetworkManager/system-connections"
         "/var/lib/tailscale"
@@ -49,7 +48,7 @@ in {
 
     networking.dhcpcd.enable = false;
 
-    programs.captive-browser = lib.mkIf cfg.dendrix.isLaptop {
+    programs.captive-browser = lib.mkIf config.dendrix.isLaptop {
       enable = true;
       bindInterface = false;
     };
@@ -57,8 +56,8 @@ in {
     systemd.network.wait-online.anyInterface = true;
   };
 
-  flake.modules.homeManager.networking = {lib, ...}: {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+  flake.modules.homeManager.networking = {lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".config/tailscale"];
     };
   };

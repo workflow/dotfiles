@@ -1,15 +1,14 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.niri = {
+    osConfig,
     config,
     lib,
     pkgs,
     ...
   }:
     with lib; let
-      isNumenor = cfg.dendrix.hostname == "numenor";
-      isNvidia = cfg.dendrix.hasNvidia;
+      isNumenor = osConfig.dendrix.hostname == "numenor";
+      isNvidia = osConfig.dendrix.hasNvidia;
 
       leftScreen =
         if isNumenor

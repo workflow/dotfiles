@@ -1,4 +1,4 @@
-{config, lib, ...}: {
+{...}: {
   flake.modules.nixos.syncthing = {pkgs, ...}: {
     # Prevent syncthing from preventing sleep
     powerManagement.powerDownCommands = ''
@@ -11,8 +11,8 @@
     '';
   };
 
-  flake.modules.homeManager.syncthing = {...}: {
-    home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
+  flake.modules.homeManager.syncthing = {lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".local/state/syncthing"
         ".config/syncthing"

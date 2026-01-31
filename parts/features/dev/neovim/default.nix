@@ -1,6 +1,4 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.neovim = {
     osConfig,
     pkgs,
@@ -9,7 +7,7 @@ in {
   }: let
     isLightTheme = osConfig.specialisation != {};
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".local/share/nvim"
         ".local/state/nvim"

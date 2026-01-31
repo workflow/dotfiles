@@ -1,13 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.audio = {
     config,
     lib,
     pkgs,
     ...
   }: {
-    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         ".local/state/wireplumber"
         ".config/rncbc.org"
@@ -74,9 +72,10 @@ in {
   flake.modules.homeManager.audio = {
     lib,
     pkgs,
+    osConfig,
     ...
   }: {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/easyeffects"
       ];

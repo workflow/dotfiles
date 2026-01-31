@@ -1,6 +1,4 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.virtualisation = {
     config,
     lib,
@@ -23,14 +21,14 @@ in {
       text = builtins.readFile ./_scripts/reset-container-state.sh;
     };
   in {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         "/var/lib/containers"
         "/var/lib/docker"
         "/var/lib/libvirt"
       ];
     };
-    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         ".local/share/containers"
       ];

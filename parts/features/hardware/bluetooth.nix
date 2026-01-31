@@ -1,8 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
-  flake.modules.nixos.bluetooth = {lib, ...}: {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+{...}: {
+  flake.modules.nixos.bluetooth = {config, lib, ...}: {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         "/var/lib/bluetooth"
       ];

@@ -1,12 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.obs = {
     lib,
     pkgs,
+    osConfig,
     ...
   }: let
-    isFlexbox = cfg.dendrix.hostname == "flexbox";
+    isFlexbox = osConfig.dendrix.hostname == "flexbox";
 
     obsMainScene = pkgs.writeShellApplication {
       name = "obs-main-scene";
@@ -54,7 +53,7 @@ in {
       obsWebcamToggle
     ];
 
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".config/obs-studio"];
     };
 

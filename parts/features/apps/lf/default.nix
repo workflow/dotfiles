@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.lf = {
+    osConfig,
     lib,
     pkgs,
     ...
@@ -34,7 +33,7 @@ in {
       fi
     '';
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".local/share/lf"
       ];

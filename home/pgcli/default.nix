@@ -1,5 +1,0 @@
-{...}: {
-  programs.pgcli = {
-    enable = true;
-  };
-}

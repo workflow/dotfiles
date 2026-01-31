@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.satty = {
+    osConfig,
     lib,
     pkgs,
     ...
@@ -18,7 +17,7 @@ in {
       text = builtins.readFile ./_scripts/satty-screenshot.sh;
     };
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".cache/satty"
       ];
