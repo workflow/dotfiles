@@ -12,6 +12,17 @@
   # All dendritic modules for home-manager
   homeManagerModules = builtins.attrValues config.flake.modules.homeManager;
 
+  # Secrets modules (CI-safe: when overridden with nixpkgs, these are empty)
+  secretNixosModules =
+    if (inputs.secrets ? modules.nixos)
+    then builtins.attrValues inputs.secrets.modules.nixos
+    else [];
+
+  secretHomeModules =
+    if (inputs.secrets ? modules.homeManager)
+    then builtins.attrValues inputs.secrets.modules.homeManager
+    else [];
+
   commonOverlays = {
     unstable = import inputs.nixos-unstable {
       system = "x86_64-linux";
@@ -80,9 +91,11 @@
     backupFileExtension = "home-manager-backup";
     sharedModules =
       homeManagerModules
+      ++ secretHomeModules
       ++ [
         "${impermanence}/home-manager.nix"
         nur.modules.homeManager.default
+        sops-nix.homeManagerModules.sops
         # Note: stylix home-manager module is injected by stylix.nixosModules.stylix
         # Note: niri home-manager module is injected by niri.nixosModules.niri
       ];
@@ -102,6 +115,7 @@
       modules =
         commonNixosModules
         ++ nixosModules
+        ++ secretNixosModules
         ++ [
           # Host-specific hardware and settings
           hostModule
