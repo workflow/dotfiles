@@ -1,8 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
-  flake.modules.nixos.firmware = {lib, ...}: {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+{...}: {
+  flake.modules.nixos.firmware = {config, lib, ...}: {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = ["/var/lib/fwupd"];
     };
 

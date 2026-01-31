@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.waybar = {
+    osConfig,
     config,
     lib,
     pkgs,
@@ -12,9 +11,9 @@ in {
       runtimeInputs = [pkgs.dunst];
       text = builtins.readFile ./_scripts/dunst-dnd-waybar.sh;
     };
-    isNvidia = cfg.dendrix.hasNvidia;
-    isNumenor = cfg.dendrix.hostname == "numenor";
-    isFlexbox = cfg.dendrix.hostname == "flexbox";
+    isNvidia = osConfig.dendrix.hasNvidia;
+    isNumenor = osConfig.dendrix.hostname == "numenor";
+    isFlexbox = osConfig.dendrix.hostname == "flexbox";
 
     leftSection = {
       modules-left = [

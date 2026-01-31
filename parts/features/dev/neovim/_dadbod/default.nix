@@ -1,10 +1,10 @@
 {
-  isImpermanent,
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
-  home.persistence."/persist" = lib.mkIf isImpermanent {
+  home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
     directories = [
       ".local/share/db_ui"
     ];

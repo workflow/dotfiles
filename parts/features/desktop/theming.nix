@@ -1,6 +1,4 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.theming = {
     pkgs,
     lib,

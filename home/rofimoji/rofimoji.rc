@@ -1,3 +1,0 @@
-files = [emojis, math, currency_symbols, combining_diacritical_marks, fontawesome6]
-skin-tone = "neutral"
-selector = "fuzzel"

@@ -1,8 +1,6 @@
-{config, ...}: let
-  cfg = config;
-in {
-  flake.modules.homeManager.mic-levels-maintainer = {pkgs, ...}: let
-    isNumenor = cfg.dendrix.hostname == "numenor";
+{...}: {
+  flake.modules.homeManager.mic-levels-maintainer = {pkgs, osConfig, ...}: let
+    isNumenor = osConfig.dendrix.hostname == "numenor";
     mic-levels-maintainer = pkgs.writers.writeBashBin "mic-levels-maintainer" (
       if isNumenor
       then (builtins.readFile ./_scripts/mic-levels-maintainer-numenor.sh)

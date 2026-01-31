@@ -1,6 +1,6 @@
-{config, lib, ...}: {
-  flake.modules.homeManager.zoxide = {...}: {
-    home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
+{...}: {
+  flake.modules.homeManager.zoxide = {lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".cache/zoxide"
         ".local/share/zoxide"

@@ -1,8 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
-  flake.modules.nixos.scrutiny = {lib, ...}: {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+{...}: {
+  flake.modules.nixos.scrutiny = {config, lib, ...}: {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         {
           directory = "/var/lib/private";

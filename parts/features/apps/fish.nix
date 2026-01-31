@@ -1,7 +1,6 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.fish = {
+    osConfig,
     config,
     lib,
     pkgs,
@@ -113,7 +112,7 @@ in {
         set fish_greeting  # disable greeting
       '';
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/fish"
         ".local/share/fish"

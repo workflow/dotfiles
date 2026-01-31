@@ -1,6 +1,6 @@
-{config, lib, ...}: {
-  flake.modules.homeManager.git = {pkgs, ...}: {
-    home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
+{...}: {
+  flake.modules.homeManager.git = {pkgs, lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".config/glab-cli"];
     };
 

@@ -19,7 +19,46 @@
     };
   };
 
+  # NixOS module that defines dendrix options for host-specific configuration
+  dendrixOptionsModule = {lib, ...}: {
+    options.dendrix = {
+      hostname = lib.mkOption {
+        type = lib.types.str;
+        description = "Hostname of this machine";
+      };
+      isLaptop = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether this is a laptop";
+      };
+      isImpermanent = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether this machine uses impermanence (ephemeral root)";
+      };
+      hasNvidia = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether this machine has an NVIDIA GPU";
+      };
+      hasAmd = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether this machine has an AMD GPU";
+      };
+      stateVersion = lib.mkOption {
+        type = lib.types.str;
+        description = "NixOS state version for this host";
+      };
+      homeStateVersion = lib.mkOption {
+        type = lib.types.str;
+        description = "Home Manager state version for this host";
+      };
+    };
+  };
+
   commonNixosModules = [
+    dendrixOptionsModule
     {
       nixpkgs.overlays = [
         (_: _: commonOverlays)
@@ -44,8 +83,8 @@
       ++ [
         "${impermanence}/home-manager.nix"
         nur.modules.homeManager.default
-        stylix.homeManagerModules.stylix
-        niri.homeModules.niri
+        # Note: stylix home-manager module is injected by stylix.nixosModules.stylix
+        # Note: niri home-manager module is injected by niri.nixosModules.niri
       ];
   };
 
@@ -89,7 +128,7 @@ in {
   flake.nixosConfigurations = {
     flexbox = mkHost {
       hostname = "flexbox";
-      hostModule = ./hosts/flexbox;
+      hostModule = ./_hosts/flexbox;
       dendrixConfig = {
         hostname = "flexbox";
         isLaptop = true;
@@ -103,7 +142,7 @@ in {
 
     numenor = mkHost {
       hostname = "numenor";
-      hostModule = ./hosts/numenor;
+      hostModule = ./_hosts/numenor;
       dendrixConfig = {
         hostname = "numenor";
         isLaptop = false;

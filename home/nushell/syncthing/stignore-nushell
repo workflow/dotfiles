@@ -1,7 +1,0 @@
-// .stignore for ~/.config/nushell
-// (?d) allows for removal when deleting parent dirs and only an ignored file/directory remains
-
-// Only sync nushell history
-!history.txt
-// Ignore everything else
-*

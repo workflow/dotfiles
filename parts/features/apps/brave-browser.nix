@@ -1,12 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.brave-browser = {
     lib,
     pkgs,
+    osConfig,
     ...
   }: let
-    isNvidia = cfg.dendrix.hasNvidia;
+    isNvidia = osConfig.dendrix.hasNvidia;
     braveNiriOpen = pkgs.writeShellApplication {
       name = "brave-niri-open";
       runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils pkgs.brave];
@@ -25,7 +24,7 @@ in {
       '';
     };
   in {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/BraveSoftware"
         ".cache/BraveSoftware"

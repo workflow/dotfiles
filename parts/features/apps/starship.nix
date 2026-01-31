@@ -1,6 +1,6 @@
-{config, lib, ...}: {
-  flake.modules.homeManager.starship = {...}: {
-    home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
+{...}: {
+  flake.modules.homeManager.starship = {lib, osConfig, ...}: {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".cache/starship"];
     };
 

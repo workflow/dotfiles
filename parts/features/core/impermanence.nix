@@ -1,5 +1,6 @@
 {...}: {
   flake.modules.nixos.impermanence = {
+    config,
     lib,
     pkgs,
     ...
@@ -35,7 +36,8 @@
       umount /btrfs_tmp
       echo "Done with 🧨. Au revoir!" >/dev/kmsg
     '';
-  in {
+  in
+    lib.mkIf config.dendrix.isImpermanent {
     boot.initrd.systemd = {
       extraBin = {
         grep = "${pkgs.gnugrep}/bin/grep";

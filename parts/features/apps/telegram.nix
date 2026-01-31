@@ -1,12 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.telegram = {
+    osConfig,
     lib,
     pkgs,
     ...
   }: {
-    home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".local/share/TelegramDesktop"
       ];

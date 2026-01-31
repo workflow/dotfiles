@@ -18,9 +18,16 @@ nixos-config/
 ├── flake.lock
 │
 ├── parts/                       # All flake-parts modules (auto-imported)
-│   ├── options.nix              # config.dendrix.* option definitions
 │   ├── modules.nix              # Imports flake-parts.flakeModules.modules
-│   ├── hosts.nix                # Host definitions and feature composition
+│   ├── hosts.nix                # Host definitions, dendrix options, and feature composition
+│   │
+│   ├── _hosts/                  # Host-specific config (underscore excludes from import-tree)
+│   │   ├── flexbox/
+│   │   │   ├── default.nix      # Host-specific NixOS settings
+│   │   │   └── hardware-scan.nix
+│   │   └── numenor/
+│   │       ├── default.nix
+│   │       └── hardware-scan.nix
 │   │
 │   ├── features/                # Feature modules
 │   │   ├── core/                # Essential system features
@@ -67,14 +74,6 @@ nixos-config/
 │   │       ├── sops.nix
 │   │       ├── gpg.nix
 │   │       └── keyring.nix
-│   │
-│   └── hosts/                   # Host-specific config
-│       ├── flexbox/
-│       │   ├── default.nix      # Host options + overrides
-│       │   └── hardware-scan.nix
-│       └── numenor/
-│           ├── default.nix
-│           └── hardware-scan.nix
 │
 └── doc/
     └── DENDRITIC.md
@@ -86,13 +85,13 @@ A feature file configures all aspects of a single feature:
 
 ```nix
 # parts/features/apps/alacritty.nix
-{ config, lib, ... }:
+{ ... }:
 {
   flake.modules.nixos.alacritty = { pkgs, ... }: {
     fonts.packages = [ pkgs.fira-code ];
   };
 
-  flake.modules.homeManager.alacritty = { pkgs, ... }: {
+  flake.modules.homeManager.alacritty = { pkgs, lib, osConfig, ... }: {
     programs.alacritty = {
       enable = true;
       settings = {
@@ -101,85 +100,118 @@ A feature file configures all aspects of a single feature:
     };
 
     # Feature owns its persistence paths
-    home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
+    # Use osConfig to access NixOS-level dendrix options from home-manager
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [ ".config/alacritty" ];
     };
   };
 }
 ```
 
-## Host-Specific Values via Top-Level Config
+## Host-Specific Values via NixOS Options
 
-Instead of threading `specialArgs` through module evaluations, host-specific values are defined as options in the top-level configuration. Every module can read from this shared config:
+Instead of threading `specialArgs` through module evaluations, host-specific values are defined as NixOS options (`config.dendrix.*`). These are defined in `parts/hosts.nix` and set for each host:
 
 ```nix
-# parts/options.nix
-{ lib, ... }:
-{
-  options.dendrix = {
-    hostname = lib.mkOption { type = lib.types.str; };
-    isLaptop = lib.mkOption { type = lib.types.bool; default = false; };
-    isImpermanent = lib.mkOption { type = lib.types.bool; default = false; };
-    hasNvidia = lib.mkOption { type = lib.types.bool; default = false; };
-    hasAmd = lib.mkOption { type = lib.types.bool; default = false; };
+# parts/hosts.nix (excerpt)
+{config, lib, inputs, ...}: let
+  # NixOS module that defines dendrix options
+  dendrixOptionsModule = {lib, ...}: {
+    options.dendrix = {
+      hostname = lib.mkOption { type = lib.types.str; };
+      isLaptop = lib.mkOption { type = lib.types.bool; default = false; };
+      isImpermanent = lib.mkOption { type = lib.types.bool; default = false; };
+      hasNvidia = lib.mkOption { type = lib.types.bool; default = false; };
+      hasAmd = lib.mkOption { type = lib.types.bool; default = false; };
+      stateVersion = lib.mkOption { type = lib.types.str; };
+      homeStateVersion = lib.mkOption { type = lib.types.str; };
+    };
+  };
+
+  mkHost = { hostname, hostModule, dendrixConfig, ... }:
+    nixpkgs.lib.nixosSystem {
+      modules = [
+        dendrixOptionsModule
+        { dendrix = dendrixConfig; }  # Set values for this host
+        # ... other modules
+      ];
+    };
+in {
+  flake.nixosConfigurations = {
+    flexbox = mkHost {
+      hostname = "flexbox";
+      hostModule = ./_hosts/flexbox;
+      dendrixConfig = {
+        hostname = "flexbox";
+        isLaptop = true;
+        hasNvidia = true;
+        # ...
+      };
+    };
   };
 }
+```
 
-# parts/hosts/flexbox/default.nix
+Feature modules access these values from NixOS config:
+
+```nix
+# parts/features/hardware/nvidia.nix - NixOS modules use config.dendrix.*
 { ... }:
 {
-  config.dendrix = {
-    hostname = "flexbox";
-    isLaptop = true;
-    hasNvidia = true;
+  flake.modules.nixos.nvidia = { config, lib, ... }: {
+    hardware.nvidia.enable = lib.mkIf config.dendrix.hasNvidia true;
   };
-}
 
-# Any feature can then access these values:
-# parts/features/hardware/nvidia.nix
-{ config, lib, ... }:
-{
-  flake.modules.nixos.nvidia = lib.mkIf config.dendrix.hasNvidia {
-    # NVIDIA configuration
+  # Home-manager modules use osConfig.dendrix.*
+  flake.modules.homeManager.nvidia = { osConfig, lib, ... }: {
+    home.sessionVariables = lib.mkIf osConfig.dendrix.hasNvidia {
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
   };
 }
 ```
 
 ## Host Definition
 
-Hosts compose features in `parts/hosts.nix`:
+Hosts are defined in `parts/hosts.nix` using a `mkHost` helper that composes all dendritic modules:
 
 ```nix
-{ inputs, ... }:
-{
-  flake.nixosConfigurations = {
-    flexbox = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        inputs.self.modules.nixos.boot
-        inputs.self.modules.nixos.networking
-        inputs.self.modules.nixos.users
-        inputs.self.modules.nixos.nvidia
-        inputs.self.modules.nixos.niri
-        inputs.self.modules.nixos.theming
-        inputs.self.modules.nixos.alacritty
+{ config, lib, inputs, ... }: let
+  # Collect all dendritic modules
+  nixosModules = builtins.attrValues config.flake.modules.nixos;
+  homeManagerModules = builtins.attrValues config.flake.modules.homeManager;
 
-        ../hosts/flexbox/hardware-scan.nix
-        inputs.self.modules.nixos.host-flexbox
-      ];
+  mkHost = { hostname, hostModule, dendrixConfig, ... }:
+    inputs.nixpkgs.lib.nixosSystem {
+      modules =
+        commonNixosModules      # External modules (home-manager, stylix, etc.)
+        ++ [ dendrixOptionsModule ]
+        ++ nixosModules         # All dendritic NixOS modules
+        ++ [
+          hostModule            # Host-specific hardware and settings
+          { dendrix = dendrixConfig; }
+          {
+            home-manager.sharedModules = homeManagerModules;
+          }
+        ];
     };
-
-    numenor = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        inputs.self.modules.nixos.amd
-        inputs.self.modules.nixos.impermanence
-        # ...
-      ];
+in {
+  flake.nixosConfigurations = {
+    flexbox = mkHost {
+      hostname = "flexbox";
+      hostModule = ./_hosts/flexbox;
+      dendrixConfig = { hostname = "flexbox"; isLaptop = true; hasNvidia = true; /* ... */ };
+    };
+    numenor = mkHost {
+      hostname = "numenor";
+      hostModule = ./_hosts/numenor;
+      dendrixConfig = { hostname = "numenor"; isImpermanent = true; hasAmd = true; /* ... */ };
     };
   };
 }
 ```
+
+All dendritic modules are included in all hosts. Features use `config.dendrix.*` to conditionally enable host-specific behavior.
 
 ## Key Concepts
 

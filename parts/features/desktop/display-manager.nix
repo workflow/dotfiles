@@ -1,12 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.display-manager = {
+    config,
     lib,
     pkgs,
     ...
   }: {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       files = ["/etc/ly/save.ini"];
     };
 

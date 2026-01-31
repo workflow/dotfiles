@@ -1,12 +1,11 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.power = {
+    config,
     lib,
     pkgs,
     ...
   }: let
-    isFlexbox = cfg.dendrix.hostname == "flexbox";
+    isFlexbox = config.dendrix.hostname == "flexbox";
   in {
     services.thermald.enable = true;
 

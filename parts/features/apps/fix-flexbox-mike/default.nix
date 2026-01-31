@@ -1,12 +1,11 @@
-{config, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.homeManager.fix-flexbox-mike = {
     lib,
     pkgs,
+    osConfig,
     ...
   }: let
-    isFlexbox = cfg.dendrix.hostname == "flexbox";
+    isFlexbox = osConfig.dendrix.hostname == "flexbox";
     xps-9700-mic-fixer = pkgs.writeShellApplication {
       name = "xps-9700-mic-fixer";
       runtimeInputs = [pkgs.alsa-utils];

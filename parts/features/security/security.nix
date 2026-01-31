@@ -1,18 +1,17 @@
-{config, lib, ...}: let
-  cfg = config;
-in {
+{...}: {
   flake.modules.nixos.security = {
+    config,
     lib,
     pkgs,
     ...
   }: {
-    environment.persistence."/persist/system" = lib.mkIf cfg.dendrix.isImpermanent {
+    environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         "/var/lib/boltd"
         "/run/sudo"
       ];
     };
-    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf cfg.dendrix.isImpermanent {
+    home-manager.users.farlion.home.persistence."/persist" = lib.mkIf config.dendrix.isImpermanent {
       directories = [
         ".local/share/keyrings"
         ".gnupg"
