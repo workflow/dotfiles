@@ -1,6 +1,7 @@
 {...}: {
-  flake.modules.nixos.nvidia = {pkgs, ...}: {
-    boot.blacklistedKernelModules = ["nouveau"];
+  flake.modules.nixos.nvidia = {config, lib, pkgs, ...}:
+    lib.mkIf config.dendrix.hasNvidia {
+      boot.blacklistedKernelModules = ["nouveau"];
     environment.systemPackages = [
       pkgs.nvtopPackages.full
       pkgs.mesa-demos
