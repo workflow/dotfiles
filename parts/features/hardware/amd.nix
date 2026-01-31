@@ -1,6 +1,7 @@
 {...}: {
-  flake.modules.nixos.amd = {pkgs, ...}: {
-    hardware.amdgpu = {
+  flake.modules.nixos.amd = {config, lib, pkgs, ...}:
+    lib.mkIf config.dendrix.hasAmd {
+      hardware.amdgpu = {
       initrd.enable = true;
       opencl.enable = true;
     };
