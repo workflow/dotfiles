@@ -1,3 +1,4 @@
+# Fuzzy-finder in Rust with nixpkgs integration
 {...}: {
   flake.modules.homeManager.television = {lib, osConfig, ...}: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {

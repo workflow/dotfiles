@@ -1,5 +1,6 @@
 {...}: {
   flake.modules.nixos.fonts = {pkgs, ...}: let
+    # Looted from https://gist.github.com/elijahmanor/c10e5787bf9ac6b8c276e47e6745826c, much obliged
     fontSmokeTest = pkgs.writers.writeBashBin "font-smoke-test" ''
       set -e
 
@@ -11,6 +12,7 @@
       printf "%b\n" "== === !== >= <= =>"
       printf "%b\n" "     󰾆      󱑥 󰒲 󰗼"
     '';
+    # Patch Fira Code with Nerd Fonts plus local Font Awesome 6 Pro glyphs into ~/.local/share/fonts
     patchFiraWithFA6Pro = pkgs.writeShellApplication {
       name = "patch-fira-with-fa6-pro";
       runtimeInputs = [
@@ -32,6 +34,7 @@
       patchFiraWithFA6Pro
     ];
 
+    # Run the patcher during Home Manager activation so that fonts are ready after switch
     home-manager.users.farlion.home.activation.patchFiraWithFA6Pro = ''
       OUT_DIR="$HOME/.local/share/fonts/NerdPatched/FiraCodeFAPro"
       if [ ! -d "$OUT_DIR" ] || [ -z "$(ls -A "$OUT_DIR" 2>/dev/null)" ]; then
@@ -51,7 +54,7 @@
         pkgs.font-awesome_5
         pkgs.font-awesome_6
         pkgs.unstable.font-awesome
-        pkgs.noto-fonts-color-emoji
+        pkgs.noto-fonts-color-emoji # emoji font
       ];
       fontconfig = {
         defaultFonts = {
@@ -66,8 +69,8 @@
   flake.modules.homeManager.fonts = {lib, osConfig, ...}: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
-        ".local/share/fonts"
-        ".cache/fontconfig"
+        ".local/share/fonts" # Locally persisted fonts (not nixos-managed)
+        ".cache/fontconfig" # Fontconfig cache
       ];
     };
   };

@@ -1,3 +1,4 @@
+# Gnome File Manager
 {...}: {
   flake.modules.homeManager.nautilus = {
     osConfig,

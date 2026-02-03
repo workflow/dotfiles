@@ -6,7 +6,7 @@
 
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       files = [
-        ".local/state/comma-choices"
+        ".local/state/comma-choices" # For ,
       ];
     };
 

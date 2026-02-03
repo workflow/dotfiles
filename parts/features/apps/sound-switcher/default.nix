@@ -1,3 +1,4 @@
+# Rofi-based sound switcher
 {...}: {
   flake.modules.homeManager.sound-switcher = {pkgs, osConfig, ...}: let
     isNumenor = osConfig.dendrix.hostname == "numenor";

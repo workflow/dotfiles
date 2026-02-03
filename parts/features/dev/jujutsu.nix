@@ -18,7 +18,7 @@
         signing = {
           backend = "gpg";
           key = "24575DB93F6CEC16";
-          behavior = "own";
+          behavior = "own"; # sign commits you authored on modify
         };
         aliases = {
           bt = ["bookmark" "track"];

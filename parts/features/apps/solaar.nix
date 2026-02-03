@@ -1,3 +1,4 @@
+# Linux devices manager for the Logitech Unifying Receiver
 {...}: {
   flake.modules.homeManager.solaar = {
     osConfig,

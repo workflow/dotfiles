@@ -1,3 +1,4 @@
+# Interactive Systemd TUI in Python
 {...}: {
   flake.modules.homeManager.isd = {
     osConfig,

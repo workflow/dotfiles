@@ -10,6 +10,8 @@
       pkgs.unstable.ytmdesktop
     ];
 
+    # Override the desktop file to add --password-store flag for Last.fm integration
+    # See: https://github.com/ytmdesktop/ytmdesktop/issues/1428
     xdg.desktopEntries.ytmdesktop = {
       name = "YouTube Music Desktop App";
       genericName = "Music Player";

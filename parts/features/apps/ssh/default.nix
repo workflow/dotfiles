@@ -27,9 +27,11 @@
       };
     };
 
+    # Disable default ssh-agent since we use gcr-ssh-agent (via services.gnome.gnome-keyring)
     services.ssh-agent.enable = false;
 
     home.sessionVariables = {
+      # Point to the new gcr SSH agent socket (NixOS 25.11+)
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
     };
   };

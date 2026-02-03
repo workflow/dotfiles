@@ -36,6 +36,10 @@
           bind --mode insert '$' __history_previous_command_arguments
         '';
 
+      ## Wrap LF to add ability to quit with Q in current directory
+      ##
+      ## Adapted for fish from https://github.com/gokcehan/lf/wiki/Tips#cd-to-current-directory-on-quit
+      ##
       lf =
         /*
         fish
@@ -69,6 +73,8 @@
           | pup 'textarea#translated json{}' | jq -r '.[0].text'
         '';
 
+      # Source .env files
+      # Source: http://lewandowski.io/2016/10/fish-env/
       posix-source =
         /*
         fish
@@ -115,7 +121,7 @@
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/fish"
-        ".local/share/fish"
+        ".local/share/fish" # contains some unecessary state, but https://github.com/fish-shell/fish-shell/issues/10730 prevents us from only syncing the history file (.local/share/fish/fish_history)
       ];
     };
 
@@ -126,6 +132,8 @@
       shellAbbrs =
         config.home.shellAliases
         // {
+          # Fish/bash-specific aliases that aren't compatible with nushell
+          # Use bashInteractive to ensure bind command is available
           bash = "${config.programs.bash.package}/bin/bash";
           cc = "tee /dev/tty | wl-copy";
           dark-theme = "nh os test --no-specialisation && niri-set-wallpaper";

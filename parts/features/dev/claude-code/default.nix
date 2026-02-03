@@ -7,11 +7,11 @@
   }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
-        ".claude"
-        ".cache/claude-cli-nodejs"
+        ".claude" # Claude Code global settings, agents, and credentials
+        ".cache/claude-cli-nodejs" # Claude Code cache
       ];
       files = [
-        ".claude.json"
+        ".claude.json" # Claude Code runtime state (credentials, project settings, etc.)
       ];
     };
 
@@ -42,6 +42,7 @@
       };
     };
 
+    # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
     programs.alacritty.settings.keyboard.bindings = [
       {
         key = "Return";

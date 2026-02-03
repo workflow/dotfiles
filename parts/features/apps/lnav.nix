@@ -1,3 +1,4 @@
+# Log File Navigator
 {...}: {
   flake.modules.homeManager.lnav = {
     osConfig,

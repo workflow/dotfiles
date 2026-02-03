@@ -1,3 +1,4 @@
+# Toggle CPU profiles
 {...}: {
   flake.modules.homeManager.cpu-profile-toggler = {pkgs, ...}: let
     cpu-profile-toggler = pkgs.writeShellApplication {

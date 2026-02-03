@@ -7,7 +7,7 @@
   }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       files = [
-        ".config/QtProject.conf"
+        ".config/QtProject.conf" # Stuff like history and lastVisited
       ];
     };
 
@@ -27,11 +27,12 @@
     };
 
     home.packages = with pkgs; [
-      lxappearance
-      libsForQt5.qt5ct
-      qt6Packages.qt6ct
+      lxappearance # GTK Theme testing + tweaking
+      libsForQt5.qt5ct # Qt 5 Theme testing + tweaking
+      qt6Packages.qt6ct # Qt 6 Theme testing + tweaking
     ];
 
+    # https://wiki.archlinux.org/title/HiDPI
     home.sessionVariables = {
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_ENABLE_HIGHDPI_SCALING = "1";

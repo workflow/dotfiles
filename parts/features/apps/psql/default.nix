@@ -1,3 +1,4 @@
+# Postgresql Client with nicer config
 {...}: {
   flake.modules.homeManager.psql = {pkgs, ...}: {
     home.packages = [pkgs.postgresql];

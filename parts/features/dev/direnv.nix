@@ -7,7 +7,7 @@
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      config.strict_env = true;
+      config.strict_env = true; # Forces all .envrc scripts through set -euo pipefail
     };
   };
 }

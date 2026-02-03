@@ -5,7 +5,7 @@
     };
 
     home.packages = with pkgs; [
-      delta
+      delta # Syntax highlighter for git
       github-cli
       glab
     ];
@@ -39,12 +39,18 @@
       settings = {
         alias = {
           c = "commit";
+
+          # Difftastic
           dlog = "-c diff.external=difft log --ext-diff";
           dshow = "-c diff.external=difft show --ext-diff";
           ddiff = "-c diff.external=difft diff";
+          # `git log` with patches shown with difftastic.
           dl = "-c diff.external=difft log -p --ext-diff";
+          # Show the most recent commit with difftastic.
           ds = "-c diff.external=difft show --ext-diff";
+          # `git diff` with difftastic.
           dft = "-c diff.external=difft diff";
+
           p = "push";
           rim = "rebase -i main";
           rimm = "rebase -i master";
@@ -63,6 +69,7 @@
           autoStash = true;
           autoSquash = true;
         };
+        # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
         url."https://github.com".insteadOf = "git://github.com";
         user.email = "4farlion@gmail.com";
         user.name = "workflow";

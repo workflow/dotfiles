@@ -1,3 +1,4 @@
+# Linux Firmware Updates
 {...}: {
   flake.modules.nixos.firmware = {config, lib, ...}: {
     environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {

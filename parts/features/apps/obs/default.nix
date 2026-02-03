@@ -7,6 +7,7 @@
   }: let
     isFlexbox = osConfig.dendrix.hostname == "flexbox";
 
+    # OBS Control Scripts
     obsMainScene = pkgs.writeShellApplication {
       name = "obs-main-scene";
       runtimeInputs = [pkgs.obs-cmd];

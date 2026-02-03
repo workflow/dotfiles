@@ -1,3 +1,4 @@
+# Screenshot Annotation tool written in Rust
 {...}: {
   flake.modules.homeManager.satty = {
     osConfig,

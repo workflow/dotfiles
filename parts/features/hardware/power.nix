@@ -7,6 +7,7 @@
   }: let
     isFlexbox = config.dendrix.hostname == "flexbox";
   in {
+    # This will save you money and possibly your life!
     services.thermald.enable = true;
 
     services.logind = {
@@ -24,7 +25,7 @@
 
     environment.systemPackages =
       []
-      ++ lib.lists.optional isFlexbox pkgs.libsmbios;
+      ++ lib.lists.optional isFlexbox pkgs.libsmbios; # Dell-specific power management
 
     services.auto-cpufreq = {
       enable = true;
@@ -47,6 +48,7 @@
       }
     ];
 
+    # Dbus Service provding historical battery stats, access to external device batteries... etc.
     services.upower.enable = true;
   };
 }

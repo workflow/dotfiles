@@ -6,6 +6,7 @@
     pkgs,
     ...
   }: let
+    # Try to focus an existing Zen window on link open so the workspace comes to the foreground
     zenNiriOpen = pkgs.writeShellApplication {
       name = "zen-niri-open";
       runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils config.programs.zen-browser.package];
@@ -48,7 +49,7 @@
     home.sessionVariables = {
       BROWSER = "${zenNiriOpen}/bin/zen-niri-open";
       DEFAULT_BROWSER = "${zenNiriOpen}/bin/zen-niri-open";
-      MOZ_LEGACY_PROFILES = 1;
+      MOZ_LEGACY_PROFILES = 1; # Temporary fix, see https://github.com/0xc000022070/zen-browser-flake/issues/179
     };
   };
 }

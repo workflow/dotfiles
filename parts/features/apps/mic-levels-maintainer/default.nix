@@ -1,3 +1,4 @@
+# Maintain input gain levels
 {...}: {
   flake.modules.homeManager.mic-levels-maintainer = {pkgs, osConfig, ...}: let
     isNumenor = osConfig.dendrix.hostname == "numenor";
