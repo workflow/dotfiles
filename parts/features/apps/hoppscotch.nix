@@ -1,4 +1,5 @@
 {...}: {
+  # Wrap Hoppscotch with Wayland-friendly flags
   flake.modules.homeManager.hoppscotch = {pkgs, ...}: let
     hoppscotch-wrapped = pkgs.symlinkJoin {
       name = "hoppscotch-wrapped";
@@ -13,8 +14,8 @@
     };
   in {
     home.persistence."/persist".directories = [
-      ".local/share/io.hoppscotch.desktop"
-      ".config/io.hoppscotch.desktop"
+      ".local/share/io.hoppscotch.desktop" # Auth tokens, collections, requests, workspaces
+      ".config/io.hoppscotch.desktop" # App settings, bundles, window state
     ];
 
     home.packages = [hoppscotch-wrapped];

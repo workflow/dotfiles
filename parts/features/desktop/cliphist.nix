@@ -15,6 +15,7 @@
       enable = true;
     };
 
+    # Fix cliphist systemd service to start after Niri is ready
     systemd.user.services.cliphist = {
       Install.WantedBy = lib.mkForce ["niri.service"];
       Unit.Requires = ["niri.service"];
@@ -26,6 +27,6 @@
       Unit.After = ["niri.service"];
     };
 
-    home.packages = [pkgs.xdg-utils];
+    home.packages = [pkgs.xdg-utils]; # For image copy/pasting
   };
 }

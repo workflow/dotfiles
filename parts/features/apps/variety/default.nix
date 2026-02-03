@@ -1,3 +1,4 @@
+# Wallpaper Switcher/Randomizer with Quotes
 {...}: {
   flake.modules.homeManager.variety = {pkgs, ...}: {
     home.packages = [pkgs.variety];

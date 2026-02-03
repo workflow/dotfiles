@@ -5,6 +5,7 @@
       enableGraphical = true;
     };
 
+    # Keyd remappenings
     environment.systemPackages = [pkgs.keyd];
     services.keyd = {
       enable = true;
@@ -12,6 +13,7 @@
         ids = ["*"];
         settings = {
           main = {
+            # Tap = Esc, hold = enter the fkeys layer
             capslock = "overload(fkeys, esc)";
           };
           fkeys = {
@@ -32,6 +34,7 @@
       };
     };
 
+    # Improves palm-rejection with the keyd virtual keyboard
     environment.etc."libinput/local-overrides.quirks".text = ''
       [Serial Keyboards]
       MatchUdevType=keyboard

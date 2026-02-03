@@ -1,3 +1,4 @@
+# Bluetooth TUI
 {...}: {
   flake.modules.nixos.bluetooth = {config, lib, ...}: {
     environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {

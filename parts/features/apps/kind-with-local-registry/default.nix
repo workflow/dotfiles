@@ -1,3 +1,6 @@
+# Local registry for faster image iteration, i.e. with Skaffold
+# See https://kind.sigs.k8s.io/docs/user/local-registry/
+# To use local registry, prefix images with localhost:5001/ and make sure `docker push` is enabled
 {...}: {
   flake.modules.homeManager.kind-with-local-registry = {pkgs, ...}: let
     kind-with-local-registry = pkgs.writers.writeBashBin "kind-with-local-registry" (

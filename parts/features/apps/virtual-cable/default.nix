@@ -1,3 +1,4 @@
+# Virtual inputs/outputs via Pipewire (for OBS and beyond)
 {...}: {
   flake.modules.homeManager.virtual-cable = {pkgs, ...}: let
     obs-mic = pkgs.writers.writeBashBin "obs-mic" (builtins.readFile ./scripts/obs-mic.sh);
@@ -13,7 +14,7 @@
       Install.WantedBy = ["wireplumber.service"];
       Service = {
         Environment = "PATH=$PATH:/run/current-system/sw/bin";
-        ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
+        ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; # TODO: Find a better way to wait for WirePlumber to fully start
         ExecStart = "${obs-mic}/bin/obs-mic";
         Type = "oneshot";
       };

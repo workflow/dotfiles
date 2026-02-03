@@ -16,6 +16,7 @@
       settings = {
         k9s = {
           ui = {
+            # Default to gruvbox-dark, override in light specialisation
             skin = lib.mkDefault "gruvbox-dark";
           };
         };

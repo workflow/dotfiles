@@ -1,3 +1,4 @@
+# devenv.sh
 {...}: {
   flake.modules.homeManager.devenv = {
     osConfig,

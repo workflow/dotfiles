@@ -1,3 +1,5 @@
+# See: https://wiki.nixos.org/wiki/AMD_GPU
+# Also see: https://wiki.archlinux.org/title/Hardware_video_acceleration
 {...}: {
   flake.modules.nixos.amd = {config, lib, pkgs, ...}:
     lib.mkIf config.dendrix.hasAmd {
@@ -6,15 +8,16 @@
       opencl.enable = true;
     };
 
+    # Disable AMD GPU power management to see if it prevents feezes on S3/s2idle
     boot.kernelParams = [
       "amdgpu.runpm=0"
     ];
 
     environment.systemPackages = with pkgs; [
-      lact
+      lact # GUI for overclocking, undervolting, setting fan curves, etc.
       libva-utils
       mesa-demos
-      nvtopPackages.full
+      nvtopPackages.full # nvtop
       vulkan-tools
     ];
     services.xserver.videoDrivers = ["amdgpu"];
@@ -23,6 +26,16 @@
       enable32Bit = true;
     };
 
+    # # AMDVLK drivers (programs will choose whether to use this over Mesa RADV drivers)
+    # hardware.graphics.extraPackages = with pkgs; [
+    #   amdvlk
+    # ];
+    # # For 32 bit applications
+    # hardware.opengl.extraPackages32 = with pkgs; [
+    #   driversi686Linux.amdvlk
+    # ];
+
+    # GUI for overclocking, undervolting, setting fan curves, etc.
     systemd.packages = with pkgs; [lact];
     systemd.services.lactd.wantedBy = ["multi-user.target"];
   };

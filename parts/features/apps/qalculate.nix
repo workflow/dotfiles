@@ -1,3 +1,4 @@
+# Calculator
 {...}: {
   flake.modules.homeManager.qalculate = {
     osConfig,

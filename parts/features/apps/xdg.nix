@@ -7,12 +7,17 @@
   }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
-        ".xournal"
+        ".xournal" # Other recently used files
       ];
+      # TODO: This somehow tries to replace the file after it's created by something else
+      # See https://github.com/nix-community/impermanence/issues/147
+      # files = [
+      #   ".local/share/recently-used.xbel" # Recently used files
+      # ];
     };
 
     home.packages = [
-      pkgs.selectdefaultapplication
+      pkgs.selectdefaultapplication # GUI XDG Default Application Chooser
     ];
 
     home.sessionVariables = {

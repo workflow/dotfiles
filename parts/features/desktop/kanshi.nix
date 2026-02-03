@@ -1,3 +1,4 @@
+# Wayland autorandr
 {...}: {
   flake.modules.homeManager.kanshi = {...}: {
     services.kanshi = {

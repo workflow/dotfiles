@@ -1,3 +1,4 @@
+# Media Player
 {...}: {
   flake.modules.homeManager.mpv = {
     osConfig,

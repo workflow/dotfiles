@@ -1,3 +1,4 @@
+# Ebook reader
 {...}: {
   flake.modules.homeManager.calibre = {
     osConfig,

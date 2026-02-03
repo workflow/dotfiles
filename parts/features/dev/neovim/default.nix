@@ -9,22 +9,22 @@
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
-        ".local/share/nvim"
-        ".local/state/nvim"
+        ".local/share/nvim" # Data
+        ".local/state/nvim" # state
         ".cache/nvim"
       ];
     };
 
     imports =
       [
-        ./_avante
+        ./_avante # Cursor style AI IDE
         ./_carbon
         ./_cmp
         ./_comment-nvim
         ./_dadbod
         ./_dap
         ./_diffview-nvim
-        ./_fidget
+        ./_fidget # Sidebar notifications for LSP
         ./_folds
         ./_fugitive
         ./_git-conflict-nvim
@@ -34,19 +34,20 @@
         ./_lspsaga
         ./_lualine
         ./_mason-lsp
+        # Ensure devicons module is available before mocking it with mini.icons
         ./_mini-icons
         ./_mini-operators
         ./_neotest
-        ./_noice
+        ./_noice # UI for commandline, messages and popupmenu
         ./_conform
-        ./_notify
-        ./_nui
-        ./_nvim-tree-lua
+        ./_notify # Pluggable Notifications
+        ./_nui # UI Components
+        ./_nvim-tree-lua # File Tree
         ./_obsidian-nvim
         ./_oil
-        ./_otter
+        ./_otter # LSP for embedded code in markdown/quarto
         ./_overseer
-        ./_plenary
+        ./_plenary # LUA Functions
         ./_rainbow-csv
         ./_render-markdown
         ./_telescope
@@ -54,7 +55,7 @@
         ./_treesitter
         ./_trouble
         ./_undotree
-        ./_vim-be-good
+        ./_vim-be-good # Vim Motion Learnenings
         ./_vim-terraform
         ./_vim-visual-multi
         ./_web-devicons
@@ -135,6 +136,7 @@
         lua require('crates').setup()
 
         " Fugitive
+        " See https://github.com/tpope/vim-fugitive/issues/1510#issuecomment-660837020
         function! s:ftplugin_fugitive() abort
           nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
           nnoremap <buffer> <silent> ca :Git commit --quiet --amend<CR>
@@ -175,10 +177,10 @@
       '';
 
       extraPackages = with pkgs; [
-        harper
-        nixd
-        nodejs
-        prettierd
+        harper # Grammar checker
+        nixd # Nix Language Server
+        nodejs # For vim to have npm for Mason etc...
+        prettierd # For yaml, html, json, markdown
         pyright
         shellcheck
         shfmt
@@ -187,7 +189,7 @@
       plugins = with pkgs.vimPlugins; [
         argtextobj-vim
         {
-          plugin = b64-nvim;
+          plugin = b64-nvim; # Base64 encoding/decoding
           config = ''
             local wk = require("which-key")
             wk.add(
@@ -204,14 +206,14 @@
           type = "lua";
         }
         {
-          plugin = dressing-nvim;
+          plugin = dressing-nvim; # Better UI for codeactions, code input etc...
           config = "";
           type = "lua";
         }
-        {plugin = friendly-snippets;}
+        {plugin = friendly-snippets;} # User-friendly snippets, work with LuaSnip and other engines
         vim-highlightedyank
         {
-          plugin = indent-blankline-nvim;
+          plugin = indent-blankline-nvim; # Indentation guides
           config = ''
             require("ibl").setup({
               exclude = {
@@ -233,8 +235,8 @@
           '';
           type = "lua";
         }
-        {plugin = nvim-lspconfig;}
-        {plugin = luasnip;}
+        {plugin = nvim-lspconfig;} # Defaults for loads of LSP languages
+        {plugin = luasnip;} # Snippet engine
         {
           plugin = markdown-preview-nvim;
           config = ''
@@ -247,11 +249,11 @@
         }
         vim-numbertoggle
         {
-          plugin = vim-qf;
+          plugin = vim-qf; # Quickfix improvements
           config = "";
         }
         vim-rooter
-        vim-sleuth
+        vim-sleuth # Automatic shiftwidth and expandtab
         {
           plugin = vim-startify;
           config = ''
@@ -262,7 +264,7 @@
           '';
         }
         vim-surround
-        {plugin = vim-suda;}
+        {plugin = vim-suda;} # Sudo support via :SudaRead and :SudaWrite
         {
           plugin = text-case-nvim;
           config = ''
@@ -288,13 +290,14 @@
           '';
           type = "lua";
         }
+        ## Language Specific Plugins
         crates-nvim
         dart-vim-plugin
         elm-vim
         vim-graphql
         vim-jsonnet
         {
-          plugin = neodev-nvim;
+          plugin = neodev-nvim; # Nvim LUA development
           config = ''
             require("neodev").setup({
               library = { plugins = { "nvim-dap-ui", "neotest" }, types = true },

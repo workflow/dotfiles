@@ -1,3 +1,4 @@
+# Fix ALSA not detecting microphone on XPS 9700, see https://github.com/NixOS/nixpkgs/issues/130882#issuecomment-2584286824
 {...}: {
   flake.modules.homeManager.fix-flexbox-mike = {
     lib,

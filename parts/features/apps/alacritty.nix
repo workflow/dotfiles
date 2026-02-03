@@ -51,7 +51,7 @@
         ];
 
         env = {
-          TERM = "xterm-256color";
+          TERM = "xterm-256color"; # Better color support in some apps
         };
 
         scrolling = {
