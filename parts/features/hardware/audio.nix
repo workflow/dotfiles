@@ -82,9 +82,6 @@
       directories = [
         ".config/easyeffects"
       ];
-      files = [
-        ".config/pavucontrol.ini"
-      ];
     };
 
     home.file = {
