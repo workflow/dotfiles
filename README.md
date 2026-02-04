@@ -30,6 +30,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Launcher         |               [Fuzzel](https://codeberg.org/dnkl/fuzzel)                |
 | Nix Builds       |                   [Nh](https://github.com/viperML/nh)                   |
 | Notifications    |             [Dunst](https://github.com/dunst-project/dunst)             |
+| Pattern           |            [Dendritic, mhhhhhhhhhhh](https://github.com/mightyiam/dendritic)             |
 | Prompt           |            [Starship](https://github.com/starship/starship)             |
 | Power Management |       [Auto-Cpufreq](https://github.com/AdnanHodzic/auto-cpufreq)       |
 | Secrets Mgmt     |              [Sops-Nix](https://github.com/Mic92/sops-nix)              |
