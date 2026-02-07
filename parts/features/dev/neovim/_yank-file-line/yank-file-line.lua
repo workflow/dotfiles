@@ -18,4 +18,5 @@ vim.keymap.set('v', '<leader>y', function()
   local result = relative_path .. ':' .. line_part
   vim.fn.setreg('+', result)
   vim.notify('Copied: ' .. result)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
 end, { desc = '[Y]ank file:line to clipboard' })
