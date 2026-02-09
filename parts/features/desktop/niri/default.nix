@@ -337,7 +337,7 @@
           };
           "01" = {
             name = " 1";
-            open-on-output = leftScreen;
+            open-on-output = mainScreen;
           };
           "02" = {
             name = " 2";
