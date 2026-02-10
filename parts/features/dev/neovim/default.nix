@@ -33,6 +33,7 @@
         ./_jj
         ./_lspsaga
         ./_lualine
+        ./_markdown-preview
         ./_mason-lsp
         # Ensure devicons module is available before mocking it with mini.icons
         ./_mini-icons
@@ -237,16 +238,6 @@
         }
         {plugin = nvim-lspconfig;} # Defaults for loads of LSP languages
         {plugin = luasnip;} # Snippet engine
-        {
-          plugin = markdown-preview-nvim;
-          config = ''
-            local wk = require("which-key")
-            wk.add({
-              { "<leader>p", "<Plug>MarkdownPreviewToggle", desc = "Toggle Markdown [P]review" },
-            })
-          '';
-          type = "lua";
-        }
         vim-numbertoggle
         {
           plugin = vim-qf; # Quickfix improvements
