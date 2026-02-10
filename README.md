@@ -41,6 +41,7 @@ Checkout the `home` directory for an up-to-date list of installed goodies. Here'
 | Style Manager    |                [stylix](https://github.com/danth/stylix)                |
 | Terminal         |           [Alacritty](https://github.com/alacritty/alacritty)           |
 | Version Control   |                 [JJ](https://github.com/jj-vcs/jj)                  |
+| Which Key        |     [wlr-which-key](https://github.com/MaxVerevkin/wlr-which-key)     |
 | Window Manager   |                 [Niri](https://github.com/YaLTeR/niri)                  |
 
 ## Lack of Aesthetics

@@ -9,6 +9,7 @@
     with lib; let
       isNumenor = osConfig.dendrix.hostname == "numenor";
       isNvidia = osConfig.dendrix.hasNvidia;
+      isLightTheme = osConfig.specialisation == {};
 
       leftScreen =
         if isNumenor
@@ -68,6 +69,90 @@
         text = builtins.readFile ./_scripts/niri-open-on-workspace.sh;
       };
 
+      yaml = pkgs.formats.yaml {};
+
+      braveWorkProfileCmd =
+        if isNvidia
+        then "brave --profile-directory='Profile 1' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
+        else "brave --profile-directory='Profile 1' --password-store=seahorse";
+
+      whichKeyConfig = {
+        font = "Fira Code 14";
+        background =
+          if isLightTheme
+          then "#eff1f5d0"
+          else "#282828d0";
+        color =
+          if isLightTheme
+          then "#4c4f69"
+          else "#ebdbb2";
+        border =
+          if isLightTheme
+          then "#df8e1d"
+          else "#fabd2f";
+        separator = " → ";
+        border_width = 2;
+        corner_r = 8;
+        padding = 12;
+        anchor = "center";
+        menu = [
+          {key = "z"; desc = "Zen Browser"; cmd = "zen";}
+          {key = "h"; desc = "Brave (Work)"; cmd = braveWorkProfileCmd;}
+          {key = "l"; desc = "File Manager (lf)"; cmd = "alacritty -e fish -ic lf";}
+          {key = "c"; desc = "Calculator"; cmd = "${fuzzelCalc}/bin/niri-qalc";}
+          {key = "w"; desc = "WiFi"; cmd = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";}
+          {key = "s"; desc = "Sound Switcher"; cmd = "sound-switcher";}
+          {key = "C"; desc = "Clipboard Delete"; cmd = "bash -c 'cliphist list | fuzzel --dmenu | cliphist delete'";}
+          {
+            key = "n";
+            desc = "Niri";
+            submenu = [
+              {key = "r"; desc = "Preset Column Width"; cmd = "niri msg action switch-preset-column-width";}
+              {key = "R"; desc = "Preset Window Height"; cmd = "niri msg action switch-preset-window-height";}
+              {key = "h"; desc = "Reset Window Height"; cmd = "niri msg action reset-window-height";}
+              {key = "c"; desc = "Center Column"; cmd = "niri msg action center-column";}
+              {key = "C"; desc = "Center Visible Columns"; cmd = "niri msg action center-visible-columns";}
+              {key = "minus"; desc = "Column Width -10%"; cmd = "niri msg action set-column-width -- -10%";}
+              {key = "equal"; desc = "Column Width +10%"; cmd = "niri msg action set-column-width -- +10%";}
+              {key = "v"; desc = "Toggle Floating"; cmd = "niri msg action toggle-window-floating";}
+              {key = "V"; desc = "Focus Floating/Tiling"; cmd = "niri msg action switch-focus-between-floating-and-tiling";}
+              {key = "q"; desc = "Quit Niri"; cmd = "niri msg action quit";}
+              {key = "Tab"; desc = "Focus Next Window/Column"; cmd = "niri msg action focus-window-down-or-column-right";}
+            ];
+          }
+          {
+            key = "k";
+            desc = "Keyboard";
+            submenu = [
+              {key = "n"; desc = "Next Layout"; cmd = "niri msg action switch-layout next";}
+              {key = "p"; desc = "Prev Layout"; cmd = "niri msg action switch-layout prev";}
+              {key = "u"; desc = "US"; cmd = "niri msg action switch-layout 0";}
+            ];
+          }
+          {
+            key = "o";
+            desc = "OBS";
+            submenu = [
+              {key = "m"; desc = "Main Scene"; cmd = "obs-main-scene";}
+              {key = "s"; desc = "Screensharing"; cmd = "obs-screensharing";}
+              {key = "c"; desc = "Catcam Toggle"; cmd = "obs-catcam-toggle";}
+              {key = "r"; desc = "Recording Toggle"; cmd = "obs-recording-toggle";}
+              {key = "p"; desc = "Recording Pause"; cmd = "obs-recording-pause";}
+              {key = "w"; desc = "Webcam Toggle"; cmd = "obs-webcam-toggle";}
+            ];
+          }
+          {
+            key = "d";
+            desc = "Display";
+            submenu = [
+              {key = "z"; desc = "Magnifier"; cmd = "hyprmagnifier";}
+              {key = "o"; desc = "Power Off Monitors"; cmd = "niri msg action power-off-monitors";}
+              {key = "r"; desc = "Restart Waybar + Wallpaper"; cmd = "systemctl --user restart waybar.service; ${wallpaperSetter}/bin/niri-set-wallpaper";}
+            ];
+          }
+        ];
+      };
+
       niriBinds = {
         suffixes,
         prefixes,
@@ -110,6 +195,7 @@
         swaybg # Minmal wallpaper setter for Sway
         wallpaperSetter # Specialization-aware wallpaper setting
         windowPicker # niri-pick-window
+        wlr-which-key # Chord key menu
         workspaceReorderer # niri-reorder-workspaces
         xwayland-satellite # For apps that need Xwayland
       ];
@@ -196,6 +282,9 @@
       # Wallpaper, until stylix supports it :)
       home.file.".local/share/wallpapers/gruvbox-light.png".source = ./_wallpapers/gruvbox-light-rainbow.png;
       home.file.".local/share/wallpapers/gruvbox-dark.png".source = ./_wallpapers/gruvbox-dark-rainbow.png;
+
+      xdg.configFile."wlr-which-key/config.yaml".source =
+        yaml.generate "wlr-which-key-config" whichKeyConfig;
 
       # TODO: Activate once the Niri flake supports niri 25.11
       # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
@@ -422,10 +511,6 @@
               "Mod+Shift+D".hotkey-overlay.title = "Pick a Window: niri-pick-window";
               "Mod+Shift+X".action = spawn-sh "swaylock --daemonize && niri msg action power-off-monitors";
               "Mod+Shift+X".hotkey-overlay.title = "Lock screen and turn off monitors";
-              "Mod+z".action = spawn "hyprmagnifier";
-              "Mod+z".hotkey-overlay.title = "Screen magnifier";
-              "Mod+Shift+z".action = power-off-monitors;
-              "Mod+Shift+z".hotkey-overlay.title = "Power off Monitors";
 
               "XF86AudioRaiseVolume".action = spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
               "XF86AudioRaiseVolume".allow-when-locked = true;
@@ -499,35 +584,9 @@
               "Mod+Comma".action = consume-window-into-column;
               "Mod+Period".action = expel-window-from-column;
 
-              "Mod+R".action = switch-preset-column-width;
-              "Mod+Shift+R".action = switch-preset-window-height;
-              "Mod+Ctrl+R".action = reset-window-height;
-
               "Mod+F".action = maximize-column;
               "Mod+Shift+F".action = fullscreen-window;
               "Mod+Ctrl+F".action = expand-column-to-available-width;
-
-              "Mod+C".action = center-column;
-              "Mod+Ctrl+C".action = center-visible-columns;
-
-              "Mod+Minus".action = set-column-width "-10%";
-              "Mod+Equal".action = set-column-width "+10%";
-              "Mod+Shift+Minus".action = set-window-height "-10%";
-              "Mod+Shift+Equal".action = set-window-height "+10%";
-
-              "Mod+V".action = toggle-window-floating;
-              "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
-
-              "Mod+Shift+W".action = spawn-sh (
-                builtins.concatStringsSep "; " [
-                  "systemctl --user restart waybar.service"
-                  "${wallpaperSetter}/bin/niri-set-wallpaper"
-                ]
-              );
-              "Mod+Shift+W".hotkey-overlay.title = "Restart Waybar";
-
-              "Mod+Space".action = switch-layout "next";
-              "Mod+Shift+Space".action = switch-layout "prev";
 
               "Print".action.screenshot = [];
               "Print".hotkey-overlay.title = "Screenshot via Niri";
@@ -536,18 +595,10 @@
               "Mod+Shift+Print".action.screenshot-screen = [];
               "Mod+Shift+Print".hotkey-overlay.title = "Instant Screenshot";
 
-              # Applications such as remote-desktop clients and software KVM switches may
-              # request that niri stops processing the keyboard shortcuts defined here
-              # so they may, for example, forward the key presses as-is to a remote machine.
-              # It's a good idea to bind an escape hatch to toggle the inhibitor,
-              # so a buggy application can't hold your session hostage.
-              #
-              # The allow-inhibiting=false property can be applied to other binds as well,
-              # which ensures niri always processes them, even when an inhibitor is active.
+              # Escape hatch for when a buggy app inhibits keyboard shortcuts.
+              # allow-inhibiting=false ensures niri always processes this bind.
               "Mod+Shift+Escape".action = toggle-keyboard-shortcuts-inhibit;
               "Mod+Shift+Escape".allow-inhibiting = false;
-
-              "Ctrl+Alt+Delete".action = quit;
             }
 
             {
@@ -555,12 +606,12 @@
               "Mod+G".action = set-dynamic-cast-window;
               "Mod+Shift+G".action = set-dynamic-cast-monitor;
               "Mod+Delete".action = clear-dynamic-cast-target;
-
-              # Fancy Moving
-              "Mod+Tab".action = focus-window-down-or-column-right;
-              "Mod+Shift+Tab".action = focus-window-up-or-column-left;
             }
             {
+              # Which Key chord menu
+              "Mod+w".action = spawn "wlr-which-key";
+              "Mod+w".hotkey-overlay.title = "Which Key Menu";
+
               # Browser
               "Mod+b".action = spawn-sh (
                 if isNvidia
@@ -568,36 +619,19 @@
                 else "brave --profile-directory='Default' --password-store=seahorse"
               );
               "Mod+b".hotkey-overlay.hidden = true;
-              "Mod+Shift+b".action = spawn "zen";
-              "Mod+Shift+b".hotkey-overlay.hidden = true;
-              "Mod+h".action = spawn-sh (
-                if isNvidia
-                then "brave --profile-directory='Profile 1' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
-                else "brave --profile-directory='Profile 1' --password-store=seahorse"
-              );
-              "Mod+h".hotkey-overlay.hidden = true;
 
               # Cliphist via fuzzel
               "Mod+p".action = spawn "cliphist-fuzzel-img";
               "Mod+p".hotkey-overlay.hidden = true;
-              # Single item clearing
-              "Mod+Shift+p".action = spawn-sh "cliphist list | fuzzel --dmenu | cliphist delete";
-              "Mod+Shift+p".hotkey-overlay.hidden = true;
 
-              # File Manager [n]avigate
-              "Mod+n".action = spawn-sh "alacritty -e fish -ic lf";
-              "Mod+n".hotkey-overlay.hidden = true;
-
-              # Calcu[M]athlator
-              "Mod+m".action = spawn "${fuzzelCalc}/bin/niri-qalc";
-              "Mod+m".hotkey-overlay.title = "Calcu[M]athalor via qalculate";
+              # Emoji
+              "Mod+e".action = spawn "rofimoji";
+              "Mod+e".hotkey-overlay.title = "Emoji Picker";
+              "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
+              "Mod+Shift+e".hotkey-overlay.title = "Emoji to Clipboard";
 
               # Logout and Power Menu
               "Mod+Pause".action = spawn "wleave";
-
-              # Network ([W]ifi) Selection
-              "Mod+w".action = spawn "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
-              "Mod+w".hotkey-overlay.hidden = true;
 
               # Overview
               "Mod+o".action = toggle-overview;
@@ -606,31 +640,6 @@
               # Reorder Workspaces (after moving them around)
               "Mod+Shift+o".action = spawn "${workspaceReorderer}/bin/niri-reorder-workspaces";
               "Mod+Shift+o".hotkey-overlay.title = "Re[o]rder workspaces to maintain logical order";
-
-              # Rofi[e]moji
-              "Mod+e".action = spawn "rofimoji";
-              "Mod+e".hotkey-overlay.hidden = true;
-              "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
-              "Mod+Shift+e".hotkey-overlay.hidden = true;
-
-              # [S]ound Switcher
-              "Mod+s".action = spawn "sound-switcher";
-              "Mod+s".hotkey-overlay.hidden = true;
-            }
-            {
-              # OBS Studio Controls
-              "Alt+F1".action = spawn "obs-main-scene";
-              "Alt+F1".hotkey-overlay.title = "OBS: Switch to Main Scene";
-              "Alt+F2".action = spawn "obs-screensharing";
-              "Alt+F2".hotkey-overlay.title = "OBS: Switch to Screensharing";
-              "Alt+F3".action = spawn "obs-catcam-toggle";
-              "Alt+F3".hotkey-overlay.title = "OBS: Toggle Catcam";
-              "Alt+F4".action = spawn "obs-recording-toggle";
-              "Alt+F4".hotkey-overlay.title = "OBS: Start/Stop Recording";
-              "Alt+F5".action = spawn "obs-recording-pause";
-              "Alt+F5".hotkey-overlay.title = "OBS: Pause/Unpause Recording";
-              "Alt+F6".action = spawn "obs-webcam-toggle";
-              "Alt+F6".hotkey-overlay.title = "OBS: Toggle Webcam";
             }
           ];
       };
