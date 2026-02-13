@@ -14,4 +14,4 @@ Extensive File and function headers are still useful to give context.
 - `jj commit` does not have an `--amend` option - instead try `jj absorb` and if that doesn't find the right target then use `jj squash` to squash changes into the latest commit and then re-describe that commit as needed.
 - Use `jj` instead of `git` for all version control operations
 - For opening PRs on github, since jj does not map directly to git branches, first push the new bookmark with jj and then use `gh pr create --head <new bookmark name> --base main ...`
-- When offering to open Github PRs, open them in draft mode and do not include a "Generated with Claude" line, nor a `## Test Plan` section unless the Test Plan is core to this specific PR.
+- When offering to open Github PRs, do not include a "Generated with Claude" line, nor a `## Test Plan` section unless the Test Plan is core to this specific PR.
