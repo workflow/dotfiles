@@ -54,7 +54,7 @@
               echo "Moving bookmark '$bookmark' to parent commit and pushing..."
               jj bookmark set "$bookmark" -r @-
               jj git fetch
-              jj git push --bookmark "$bookmark" --allow-new
+              jj git push --bookmark "$bookmark"
             ''
           ];
         };
