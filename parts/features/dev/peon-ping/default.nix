@@ -10,16 +10,11 @@
   };
 
   defaultPacks = [
+    "acolyte_de"
+    "aoe2"
+    "murloc"
     "peon"
-    "peasant"
-    "glados"
-    "sc_kerrigan"
-    "sc_battlecruiser"
-    "ra2_kirov"
-    "dota2_axe"
-    "duke_nukem"
-    "tf2_engineer"
-    "hd2_helldiver"
+    "peon_de"
   ];
 in {
   flake.modules.homeManager.peon-ping = {
@@ -44,9 +39,10 @@ in {
     };
 
     packSymlinks = lib.listToAttrs (map (name: {
-      name = ".claude/hooks/peon-ping/packs/${name}";
-      value = {source = "${og-packs-src}/${name}";};
-    }) defaultPacks);
+        name = ".claude/hooks/peon-ping/packs/${name}";
+        value = {source = "${og-packs-src}/${name}";};
+      })
+      defaultPacks);
   in {
     home.packages = [peon];
 
