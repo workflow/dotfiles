@@ -107,7 +107,6 @@
             key = "n";
             desc = "Niri";
             submenu = [
-              {key = "r"; desc = "Preset Column Width"; cmd = "niri msg action switch-preset-column-width";}
               {key = "R"; desc = "Preset Window Height"; cmd = "niri msg action switch-preset-window-height";}
               {key = "h"; desc = "Reset Window Height"; cmd = "niri msg action reset-window-height";}
               {key = "c"; desc = "Center Column"; cmd = "niri msg action center-column";}
@@ -584,6 +583,8 @@
               "Mod+Comma".action = consume-window-into-column;
               "Mod+Period".action = expel-window-from-column;
 
+              "Mod+R".action = switch-preset-column-width;
+              "Mod+R".hotkey-overlay.title = "Preset Column Width";
               "Mod+F".action = maximize-column;
               "Mod+Shift+F".action = fullscreen-window;
               "Mod+Ctrl+F".action = expand-column-to-available-width;
