@@ -38,13 +38,31 @@ in {
       text = builtins.readFile ./scripts/peon-wrapper.sh;
     };
 
+    peon-ping-waybar = pkgs.writeShellApplication {
+      name = "peon-ping-waybar";
+      runtimeInputs = [peon pkgs.gnugrep];
+      text = builtins.readFile ./scripts/peon-ping-waybar.sh;
+    };
+
+    peon-ping-toggle = pkgs.writeShellApplication {
+      name = "peon-ping-toggle";
+      runtimeInputs = [peon pkgs.gnugrep];
+      text = builtins.readFile ./scripts/peon-ping-toggle.sh;
+    };
+
+    focus-claude-session = pkgs.writeShellApplication {
+      name = "focus-claude-session";
+      runtimeInputs = with pkgs; [niri jq psmisc gnugrep];
+      text = builtins.readFile ./scripts/focus-claude-session.sh;
+    };
+
     packSymlinks = lib.listToAttrs (map (name: {
         name = ".claude/hooks/peon-ping/packs/${name}";
         value = {source = "${og-packs-src}/${name}";};
       })
       defaultPacks);
   in {
-    home.packages = [peon];
+    home.packages = [peon peon-ping-waybar peon-ping-toggle focus-claude-session];
 
     home.file = packSymlinks;
 

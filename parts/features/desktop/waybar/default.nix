@@ -11,6 +11,11 @@
       runtimeInputs = [pkgs.dunst];
       text = builtins.readFile ./_scripts/dunst-dnd-waybar.sh;
     };
+    dunst-dnd-toggle = pkgs.writeShellApplication {
+      name = "dunst-dnd-toggle";
+      runtimeInputs = [pkgs.dunst pkgs.gnugrep];
+      text = builtins.readFile ./_scripts/dunst-dnd-toggle.sh;
+    };
     isNvidia = osConfig.dendrix.hasNvidia;
     isNumenor = osConfig.dendrix.hostname == "numenor";
     isFlexbox = osConfig.dendrix.hostname == "flexbox";
@@ -414,12 +419,27 @@
     rightSection = {
       modules-right = [
         "privacy"
+        "custom/peon-ping"
         "custom/dunst-dnd"
         "custom/caffeinate"
         "niri/language"
         "clock"
         "tray"
       ];
+
+      "custom/peon-ping" = {
+        exec = "peon-ping-waybar";
+        on-click = "peon-ping-toggle";
+        on-click-right = "focus-claude-session";
+        return-type = "json";
+        interval = 2;
+        format = "{icon}";
+        format-icons = {
+          on = "";
+          off = "";
+        };
+        tooltip-format = "Peon sounds: {alt}. Right-click to focus claude-code session.";
+      };
 
       "custom/dunst-dnd" = {
         exec = "${dunst-dnd-waybar}/bin/dunst-dnd-waybar";
@@ -431,7 +451,7 @@
           running = "";
           dnd = "";
         };
-        on-click = "dunstctl set-paused toggle";
+        on-click = "${dunst-dnd-toggle}/bin/dunst-dnd-toggle";
         on-click-right = "dunstctl set-paused false";
       };
 
@@ -532,6 +552,14 @@
         #network.ethernet,
         #network.wifi {
           color: @base0B;
+        }
+
+        #custom-peon-ping {
+          margin-right: 4px;
+        }
+
+        #custom-peon-ping.off {
+          color: @base0A;
         }
 
         #custom-dunst-dnd.dnd {
