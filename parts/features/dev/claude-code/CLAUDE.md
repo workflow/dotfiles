@@ -1,3 +1,4 @@
+- Use asserts in code liberally. Better to fail fast on an unexpected path than to continue in an unknown state.
 - Comment code sparsely, and only where it adds true novel context to the code being executed. This is an example of superfluous commenting:
 ```rust
                 // Set current carrier in the database to track it in the logic module
