@@ -2,6 +2,7 @@
   flake.modules.homeManager.git = {pkgs, lib, osConfig, ...}: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".config/glab-cli"];
+      files = [".config/gh/hosts.yml"];
     };
 
     home.packages = with pkgs; [
