@@ -17,7 +17,7 @@
       genericName = "Music Player";
       comment = "YouTube Music Desktop App";
       exec = "${pkgs.unstable.ytmdesktop}/bin/ytmdesktop --password-store=gnome-libsecret %U";
-      icon = "ytmdesktop";
+      icon = "${pkgs.unstable.ytmdesktop}/share/pixmaps/ytmdesktop.png";
       terminal = false;
       type = "Application";
       categories = ["Audio" "AudioVideo" "Player"];
