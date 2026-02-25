@@ -1,5 +1,13 @@
 {...}: {
-  flake.modules.homeManager.git = {pkgs, lib, osConfig, ...}: {
+  flake.modules.homeManager.git = {pkgs, lib, osConfig, ...}: let
+    # Git init template that makes .git/info/exclude a symlink to
+    # .gitignore.local in the repo root, so per-repo local ignores
+    # are picked up automatically.
+    gitTemplate = pkgs.runCommand "git-template" {} ''
+      mkdir -p $out/info
+      ln -s ../../.gitignore.local $out/info/exclude
+    '';
+  in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".config/glab-cli"];
       files = [".config/gh/hosts.yml"];
@@ -60,6 +68,7 @@
         core.pager = "delta";
         diff.colorMoved = "default";
         init.defaultBranch = "main";
+        init.templateDir = "${gitTemplate}";
         interactive.diffFilter = "delta --color-only";
         merge.conflictstyle = "diff3";
         pull = {
@@ -76,9 +85,9 @@
         user.name = "workflow";
       };
 
-      ignores = [".idea" "nohup.out" "mzdata" ".vimspector.json"];
+      ignores = [".idea" "nohup.out" "mzdata" ".vimspector.json" ".gitignore.local"];
     };
 
     programs.mergiraf.enable = true;
-  };
+  }; # closes `in {`
 }
