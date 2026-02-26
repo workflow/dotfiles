@@ -96,57 +96,173 @@
         padding = 12;
         anchor = "center";
         menu = [
-          {key = "z"; desc = "Zen Browser"; cmd = "zen";}
-          {key = "h"; desc = "Brave (Work)"; cmd = braveWorkProfileCmd;}
-          {key = "l"; desc = "File Manager (lf)"; cmd = "alacritty -e fish -ic lf";}
-          {key = "c"; desc = "Calculator"; cmd = "${fuzzelCalc}/bin/niri-qalc";}
-          {key = "w"; desc = "WiFi"; cmd = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";}
-          {key = "s"; desc = "Sound Switcher"; cmd = "sound-switcher";}
-          {key = "C"; desc = "Clipboard Delete"; cmd = "bash -c 'cliphist list | fuzzel --dmenu | cliphist delete'";}
+          {
+            key = "z";
+            desc = "Zen Browser";
+            cmd = "zen-beta";
+          }
+          {
+            key = "h";
+            desc = "Brave (Work)";
+            cmd = braveWorkProfileCmd;
+          }
+          {
+            key = "l";
+            desc = "File Manager (lf)";
+            cmd = "alacritty -e fish -ic lf";
+          }
+          {
+            key = "c";
+            desc = "Calculator";
+            cmd = "${fuzzelCalc}/bin/niri-qalc";
+          }
+          {
+            key = "w";
+            desc = "WiFi";
+            cmd = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+          }
+          {
+            key = "s";
+            desc = "Sound Switcher";
+            cmd = "sound-switcher";
+          }
+          {
+            key = "C";
+            desc = "Clipboard Delete";
+            cmd = "bash -c 'cliphist list | fuzzel --dmenu | cliphist delete'";
+          }
           {
             key = "n";
             desc = "Niri";
             submenu = [
-              {key = "R"; desc = "Preset Window Height"; cmd = "niri msg action switch-preset-window-height";}
-              {key = "h"; desc = "Reset Window Height"; cmd = "niri msg action reset-window-height";}
-              {key = "c"; desc = "Center Column"; cmd = "niri msg action center-column";}
-              {key = "C"; desc = "Center Visible Columns"; cmd = "niri msg action center-visible-columns";}
-              {key = "minus"; desc = "Column Width -10%"; cmd = "niri msg action set-column-width -- -10%";}
-              {key = "equal"; desc = "Column Width +10%"; cmd = "niri msg action set-column-width -- +10%";}
-              {key = "v"; desc = "Toggle Floating"; cmd = "niri msg action toggle-window-floating";}
-              {key = "V"; desc = "Focus Floating/Tiling"; cmd = "niri msg action switch-focus-between-floating-and-tiling";}
-              {key = "q"; desc = "Quit Niri"; cmd = "niri msg action quit";}
-              {key = "Tab"; desc = "Focus Next Window/Column"; cmd = "niri msg action focus-window-down-or-column-right";}
+              {
+                key = "R";
+                desc = "Preset Window Height";
+                cmd = "niri msg action switch-preset-window-height";
+              }
+              {
+                key = "h";
+                desc = "Reset Window Height";
+                cmd = "niri msg action reset-window-height";
+              }
+              {
+                key = "c";
+                desc = "Center Column";
+                cmd = "niri msg action center-column";
+              }
+              {
+                key = "C";
+                desc = "Center Visible Columns";
+                cmd = "niri msg action center-visible-columns";
+              }
+              {
+                key = "minus";
+                desc = "Column Width -10%";
+                cmd = "niri msg action set-column-width -- -10%";
+              }
+              {
+                key = "equal";
+                desc = "Column Width +10%";
+                cmd = "niri msg action set-column-width -- +10%";
+              }
+              {
+                key = "v";
+                desc = "Toggle Floating";
+                cmd = "niri msg action toggle-window-floating";
+              }
+              {
+                key = "V";
+                desc = "Focus Floating/Tiling";
+                cmd = "niri msg action switch-focus-between-floating-and-tiling";
+              }
+              {
+                key = "q";
+                desc = "Quit Niri";
+                cmd = "niri msg action quit";
+              }
+              {
+                key = "Tab";
+                desc = "Focus Next Window/Column";
+                cmd = "niri msg action focus-window-down-or-column-right";
+              }
             ];
           }
           {
             key = "k";
             desc = "Keyboard";
             submenu = [
-              {key = "n"; desc = "Next Layout"; cmd = "niri msg action switch-layout next";}
-              {key = "p"; desc = "Prev Layout"; cmd = "niri msg action switch-layout prev";}
-              {key = "u"; desc = "US"; cmd = "niri msg action switch-layout 0";}
+              {
+                key = "n";
+                desc = "Next Layout";
+                cmd = "niri msg action switch-layout next";
+              }
+              {
+                key = "p";
+                desc = "Prev Layout";
+                cmd = "niri msg action switch-layout prev";
+              }
+              {
+                key = "u";
+                desc = "US";
+                cmd = "niri msg action switch-layout 0";
+              }
             ];
           }
           {
             key = "o";
             desc = "OBS";
             submenu = [
-              {key = "m"; desc = "Main Scene"; cmd = "obs-main-scene";}
-              {key = "s"; desc = "Screensharing"; cmd = "obs-screensharing";}
-              {key = "c"; desc = "Catcam Toggle"; cmd = "obs-catcam-toggle";}
-              {key = "r"; desc = "Recording Toggle"; cmd = "obs-recording-toggle";}
-              {key = "p"; desc = "Recording Pause"; cmd = "obs-recording-pause";}
-              {key = "w"; desc = "Webcam Toggle"; cmd = "obs-webcam-toggle";}
+              {
+                key = "m";
+                desc = "Main Scene";
+                cmd = "obs-main-scene";
+              }
+              {
+                key = "s";
+                desc = "Screensharing";
+                cmd = "obs-screensharing";
+              }
+              {
+                key = "c";
+                desc = "Catcam Toggle";
+                cmd = "obs-catcam-toggle";
+              }
+              {
+                key = "r";
+                desc = "Recording Toggle";
+                cmd = "obs-recording-toggle";
+              }
+              {
+                key = "p";
+                desc = "Recording Pause";
+                cmd = "obs-recording-pause";
+              }
+              {
+                key = "w";
+                desc = "Webcam Toggle";
+                cmd = "obs-webcam-toggle";
+              }
             ];
           }
           {
             key = "d";
             desc = "Display";
             submenu = [
-              {key = "z"; desc = "Magnifier"; cmd = "hyprmagnifier";}
-              {key = "o"; desc = "Power Off Monitors"; cmd = "niri msg action power-off-monitors";}
-              {key = "r"; desc = "Restart Waybar + Wallpaper"; cmd = "systemctl --user restart waybar.service; ${wallpaperSetter}/bin/niri-set-wallpaper";}
+              {
+                key = "z";
+                desc = "Magnifier";
+                cmd = "hyprmagnifier";
+              }
+              {
+                key = "o";
+                desc = "Power Off Monitors";
+                cmd = "niri msg action power-off-monitors";
+              }
+              {
+                key = "r";
+                desc = "Restart Waybar + Wallpaper";
+                cmd = "systemctl --user restart waybar.service; ${wallpaperSetter}/bin/niri-set-wallpaper";
+              }
             ];
           }
         ];
@@ -343,8 +459,8 @@
           # {command = ["seahorse"];} # To unlock keyring
           {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
           {command = ["wlsunset-waybar"];}
-          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen" "--new-window" "https://chatgpt.com/"];}
-          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."09".name}" "[Vv]ikunja" "zen" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
+          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen-beta" "--new-window" "https://chatgpt.com/"];}
+          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."09".name}" "[Vv]ikunja" "zen-beta" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
         ];
 
         # Window Rules
