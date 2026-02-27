@@ -23,6 +23,7 @@
         aliases = {
           bt = ["bookmark" "track"];
           c = ["commit"];
+          gf = ["git" "fetch"];
           init = ["git" "init" "--colocate"];
           push = [
             "util"
