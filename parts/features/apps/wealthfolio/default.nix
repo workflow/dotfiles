@@ -1,7 +1,5 @@
 {...}: {
   flake.modules.homeManager.wealthfolio = {
-    lib,
-    osConfig,
     pkgs,
     ...
   }: let
@@ -42,15 +40,22 @@
           | sponge apps/tauri/tauri.conf.json
       '';
     });
-  in {
-    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
-      directories = [
-        ".local/share/com.teymz.wealthfolio"
-        ".local/share/Wealthfolio"
-        ".config/com.teymz.wealthfolio"
-      ];
-    };
 
-    home.packages = [wealthfolio];
+    wealthfolio-wrapper = pkgs.writeShellApplication {
+      name = "wealthfolio-wrapper";
+      runtimeInputs = [wealthfolio pkgs.gocryptfs pkgs.zenity pkgs.util-linux pkgs.coreutils pkgs.procps];
+      text = builtins.readFile ./wealthfolio-wrapper.sh;
+    };
+  in {
+    home.packages = [wealthfolio wealthfolio-wrapper];
+
+    xdg.desktopEntries.Wealthfolio = {
+      name = "Wealthfolio";
+      exec = "wealthfolio-wrapper";
+      terminal = false;
+      type = "Application";
+      categories = ["Office" "Finance"];
+      icon = "com.teymz.wealthfolio";
+    };
   };
 }
