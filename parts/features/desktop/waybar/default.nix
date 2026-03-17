@@ -16,6 +16,11 @@
       runtimeInputs = [pkgs.dunst pkgs.gnugrep];
       text = builtins.readFile ./_scripts/dunst-dnd-toggle.sh;
     };
+    nightlight-toggle = pkgs.writeShellApplication {
+      name = "nightlight-toggle";
+      runtimeInputs = with pkgs; [wlsunset procps killall systemd curl jq libnotify];
+      text = builtins.readFile ./_scripts/nightlight-toggle.sh;
+    };
     isNvidia = osConfig.dendrix.hasNvidia;
     isNumenor = osConfig.dendrix.hostname == "numenor";
     isFlexbox = osConfig.dendrix.hostname == "flexbox";
@@ -231,8 +236,8 @@
       "group/screens" = {
         modules =
           if isFlexbox
-          then ["backlight" "custom/wlsunset"]
-          else ["custom/ddc-backlight-left" "custom/ddc-backlight-middle" "custom/ddc-backlight-right" "custom/wlsunset"];
+          then ["backlight" "custom/nightlight"]
+          else ["custom/ddc-backlight-left" "custom/ddc-backlight-middle" "custom/ddc-backlight-right" "custom/nightlight"];
         orientation = "inherit";
       };
 
@@ -289,13 +294,13 @@
         interval = 60;
       };
 
-      "custom/wlsunset" = {
+      "custom/nightlight" = {
         interval = 1;
         exec = "if pgrep wlsunset >/dev/null 2>&1; then stdbuf -oL printf '{\"alt\": \"on\",\"class\": \"on\"}'; else stdbuf -oL printf '{\"alt\": \"off\",\"class\": \"off\"}'; fi";
-        on-click = "wlsunset-waybar";
+        on-click = "${nightlight-toggle}/bin/nightlight-toggle";
         return-type = "json";
         format = " {icon}";
-        tooltip-format = "wlsunset: {alt}";
+        tooltip-format = "wlsunset + wluma: {alt}";
         signal = 1; # SIGRTMIN+1 or 35 for updating immediately from script
         format-icons = {
           on = "";
@@ -570,7 +575,7 @@
           color: @base0B;
         }
 
-        #custom-wlsunset.off {
+        #custom-nightlight.off {
           color: @base0A;
         }
 

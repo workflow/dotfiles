@@ -1,6 +1,8 @@
+# Toggles wlsunset (gamma) and wluma (brightness) together.
 # Originally looted from https://github.com/CyrilSLi/linux-scripts
 if pgrep -x wlsunset; then
 	killall -9 wlsunset
+	systemctl --user stop wluma.service
 else
 	RETRIES=30
 	counter=0
@@ -18,5 +20,6 @@ else
 	longitude=$(echo "$CONTENT" | jq .lon)
 	latitude=$(echo "$CONTENT" | jq .lat)
 	wlsunset -l "$latitude" -L "$longitude" &
+	systemctl --user start wluma.service
 fi
 pkill -35 waybar
