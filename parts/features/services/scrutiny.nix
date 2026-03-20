@@ -1,3 +1,5 @@
+# Scrutiny - S.M.A.R.T. disk health monitoring dashboard.
+# Web UI on port 8081.
 {...}: {
   flake.modules.nixos.scrutiny = {config, lib, ...}: {
     environment.persistence."/persist/system" = lib.mkIf config.dendrix.isImpermanent {
