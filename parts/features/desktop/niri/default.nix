@@ -8,7 +8,6 @@
   }:
     with lib; let
       isNumenor = osConfig.dendrix.hostname == "numenor";
-      isNvidia = osConfig.dendrix.hasNvidia;
       isLightTheme = osConfig.specialisation == {};
 
       leftScreen =
@@ -71,10 +70,7 @@
 
       yaml = pkgs.formats.yaml {};
 
-      braveWorkProfileCmd =
-        if isNvidia
-        then "brave --profile-directory='Profile 1' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
-        else "brave --profile-directory='Profile 1' --password-store=seahorse";
+      braveWorkProfileCmd = "brave --profile-directory='Profile 1' --password-store=seahorse";
 
       whichKeyConfig = {
         font = "Fira Code 14";
@@ -730,11 +726,7 @@
               "Mod+w".hotkey-overlay.title = "Which Key Menu";
 
               # Browser
-              "Mod+b".action = spawn-sh (
-                if isNvidia
-                then "brave --profile-directory='Default' --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --password-store=seahorse"
-                else "brave --profile-directory='Default' --password-store=seahorse"
-              );
+              "Mod+b".action = spawn-sh "brave --profile-directory='Default' --password-store=seahorse";
               "Mod+b".hotkey-overlay.hidden = true;
 
               # Cliphist via fuzzel

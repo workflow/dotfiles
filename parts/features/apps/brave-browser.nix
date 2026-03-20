@@ -5,7 +5,6 @@
     osConfig,
     ...
   }: let
-    isNvidia = osConfig.dendrix.hasNvidia;
     # Try to focus an existing Brave window on link open so the workspace comes to the foreground
     braveNiriOpen = pkgs.writeShellApplication {
       name = "brave-niri-open";
@@ -17,11 +16,7 @@
         if [ -n "''${brave_id:-}" ]; then
           niri msg action focus-window --id "$brave_id" >/dev/null 2>&1 || true
         fi
-        exec ${pkgs.brave}/bin/brave ${
-          if isNvidia
-          then ""
-          else "--password-store=seahorse"
-        } "$@"
+        exec ${pkgs.brave}/bin/brave --password-store=seahorse "$@"
       '';
     };
   in {
