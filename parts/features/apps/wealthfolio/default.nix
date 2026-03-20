@@ -55,7 +55,7 @@
       terminal = false;
       type = "Application";
       categories = ["Office" "Finance"];
-      icon = "com.teymz.wealthfolio";
+      icon = "Wealthfolio";
     };
   };
 }
