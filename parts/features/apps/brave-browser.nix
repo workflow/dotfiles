@@ -5,10 +5,18 @@
     osConfig,
     ...
   }: let
+    isNvidia = osConfig.dendrix.hasNvidia;
+    # Disable VA-API video acceleration on Nvidia — causes jitter and tab crashes in Chromium
+    # due to cross-GPU decode (Nvidia NVDEC) vs render (Intel iGPU) mismatch with PRIME offload.
+    # Chromium 146+ enables hardware decode by default, so we also need --disable-accelerated-video-decode.
+    brave =
+      if isNvidia
+      then pkgs.brave.override {enableVideoAcceleration = false;}
+      else pkgs.brave;
     # Try to focus an existing Brave window on link open so the workspace comes to the foreground
     braveNiriOpen = pkgs.writeShellApplication {
       name = "brave-niri-open";
-      runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils pkgs.brave];
+      runtimeInputs = [pkgs.niri pkgs.jq pkgs.coreutils brave];
       text = ''
         #!/usr/bin/env bash
         set -euo pipefail
@@ -16,7 +24,11 @@
         if [ -n "''${brave_id:-}" ]; then
           niri msg action focus-window --id "$brave_id" >/dev/null 2>&1 || true
         fi
-        exec ${pkgs.brave}/bin/brave --password-store=seahorse "$@"
+        exec ${brave}/bin/brave --password-store=seahorse ${
+          if isNvidia
+          then "--disable-accelerated-video-decode"
+          else ""
+        } "$@"
       '';
     };
   in {
@@ -28,7 +40,7 @@
     };
 
     home.packages = [
-      pkgs.brave
+      brave
     ];
 
     xdg.desktopEntries = {
