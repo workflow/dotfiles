@@ -39,6 +39,7 @@
           ];
         };
         alwaysThinkingEnabled = true;
+        effortLevel = "high";
       };
     };
 
