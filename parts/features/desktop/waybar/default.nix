@@ -512,6 +512,10 @@
       };
     };
   in {
+    home.packages = [
+      nightlight-toggle
+    ];
+
     programs.waybar = {
       enable = true;
       settings = {

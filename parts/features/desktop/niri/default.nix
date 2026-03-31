@@ -455,7 +455,7 @@
           {command = ["ytmdesktop" "--password-store=gnome-libsecret"];}
           # {command = ["seahorse"];} # To unlock keyring
           {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
-          {command = ["wlsunset-waybar"];}
+          {command = ["nightlight-toggle"];}
           {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen-beta" "--new-window" "https://chatgpt.com/"];}
           {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."09".name}" "[Vv]ikunja" "zen-beta" "--new-window" "https://vikunja.hyena-byzantine.ts.net/"];}
         ];
