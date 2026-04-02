@@ -15,7 +15,7 @@
         if [ -n "''${zen_id:-}" ]; then
           niri msg action focus-window --id "$zen_id" >/dev/null 2>&1 || true
         fi
-        exec ${config.programs.zen-browser.package}/bin/zen "$@"
+        exec ${config.programs.zen-browser.package}/bin/zen-beta "$@"
       '';
     };
   in {
