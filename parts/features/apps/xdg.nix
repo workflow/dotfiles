@@ -36,6 +36,7 @@
         enable = true;
         defaultApplications = {
           "application/pdf" = ["okular.desktop"];
+          "application/vnd.oasis.opendocument.text" = ["writer.desktop"];
           "applications/x-www-browser" = ["brave-browser.desktop"];
           "image/bmp" = ["oculante.desktop"];
           "image/gif" = ["oculante.desktop"];
