@@ -40,6 +40,9 @@
             darkreader
             ublock-origin
           ];
+          settings = {
+            "browser.shell.checkDefaultBrowser" = false;
+          };
         };
       };
     };
