@@ -40,6 +40,18 @@
         };
         alwaysThinkingEnabled = true;
         effortLevel = "high";
+        extraKnownMarketplaces = {
+          openai-codex = {
+            source = {
+              source = "github";
+              repo = "openai/codex-plugin-cc";
+            };
+          };
+        };
+        enabledPlugins = {
+          "rust-analyzer-lsp@claude-plugins-official" = true;
+          "codex@openai-codex" = true;
+        };
       };
     };
 
