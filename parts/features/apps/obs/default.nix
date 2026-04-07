@@ -62,10 +62,10 @@
       enable = true;
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
-        pkgs.unstable.obs-studio-plugins.obs-noise
-        pkgs.unstable.obs-studio-plugins.pixel-art
-        pkgs.unstable.obs-studio-plugins.obs-recursion-effect
-        pkgs.unstable.obs-studio-plugins.obs-retro-effects
+        obs-noise
+        pixel-art
+        obs-recursion-effect
+        obs-retro-effects
         obs-vintage-filter
       ];
     };
