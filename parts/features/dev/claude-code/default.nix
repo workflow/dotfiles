@@ -17,7 +17,15 @@
 
     programs.claude-code = {
       enable = true;
-      package = pkgs.unstable.claude-code;
+      package = pkgs.symlinkJoin {
+        name = "claude-code-wrapped";
+        paths = [ pkgs.unstable.claude-code ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/claude \
+            --prefix PATH : ${pkgs.nodejs}/bin
+        '';
+      };
 
       memory.source = ./CLAUDE.md;
 
