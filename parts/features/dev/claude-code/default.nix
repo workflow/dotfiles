@@ -19,8 +19,8 @@
       enable = true;
       package = pkgs.symlinkJoin {
         name = "claude-code-wrapped";
-        paths = [ pkgs.unstable.claude-code ];
-        nativeBuildInputs = [ pkgs.makeWrapper ];
+        paths = [pkgs.unstable.claude-code];
+        nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/claude \
             --prefix PATH : ${pkgs.nodejs}/bin
@@ -57,7 +57,6 @@
           };
         };
         enabledPlugins = {
-          "rust-analyzer-lsp@claude-plugins-official" = true;
           "codex@openai-codex" = true;
         };
       };
