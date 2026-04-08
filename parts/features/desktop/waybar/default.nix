@@ -590,11 +590,6 @@
         #language:not(.us) {
           color: @base0A;
         }
-
-        /* Can remove once https://github.com/nix-community/stylix/pull/1919 is merged */
-        tooltip label {
-          color: @base05;
-        }
       '';
 
       systemd = {
