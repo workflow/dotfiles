@@ -17,3 +17,4 @@ Extensive File and function headers are still useful to give context.
 - When resolving merge conflicts with `jj`, try `jj resolve --tool mergiraf` first for automatic resolution, then fallback to manually resolving remaining conflicts.
 - For opening PRs on github, since jj does not map directly to git branches, first push the new bookmark with jj and then use `gh pr create --head <new bookmark name> --base main ...`
 - When offering to open Github PRs, do not include a "Generated with Claude" line, nor a `## Test Plan` section unless the Test Plan is core to this specific PR.
+- When opening a PR fails with `failed to run git: fatal: not a git repository` check if you are in a JJ workspace; if you are, open the PR from the default JJ workspace instead.
