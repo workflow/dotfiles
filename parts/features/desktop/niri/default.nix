@@ -480,6 +480,7 @@
           {
             matches = [
               {app-id = "^YouTube Music Desktop App$";}
+              {title = ".*YouTube Music Desktop App.*";}
             ];
             open-on-workspace = " 9";
           }
