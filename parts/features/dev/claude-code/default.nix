@@ -32,6 +32,8 @@
       settings = {
         permissions = {
           allow = [
+            "Bash(gh pr view:*)"
+            "Bash(gh pr diff:*)"
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
             "Bash(jj status)"
