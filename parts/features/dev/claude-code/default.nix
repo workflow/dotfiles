@@ -48,13 +48,13 @@
             "Read(./secrets/secrets.json)"
             "Read(./config/credentials.json)"
             # Block destructive gh api flags (deny overrides allow)
-            "Bash(gh api:*--method*)"
-            "Bash(gh api:* -X *)"
-            "Bash(gh api:* -f *)"
-            "Bash(gh api:*--field*)"
-            "Bash(gh api:* -F *)"
-            "Bash(gh api:*--raw-field*)"
-            "Bash(gh api:*--input*)"
+            "Bash(gh api *--method*)"
+            "Bash(gh api * -X *)"
+            "Bash(gh api * -f *)"
+            "Bash(gh api *--field*)"
+            "Bash(gh api * -F *)"
+            "Bash(gh api *--raw-field*)"
+            "Bash(gh api *--input*)"
           ];
         };
         alwaysThinkingEnabled = true;
