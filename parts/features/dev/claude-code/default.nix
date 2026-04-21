@@ -29,6 +29,8 @@
 
       memory.source = ./CLAUDE.md;
 
+      skills.pr-review = ./skills/pr-review;
+
       settings = {
         permissions = {
           allow = [
