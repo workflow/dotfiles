@@ -40,6 +40,7 @@
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
             "Bash(jj status)"
+            "Bash(jj show:*)"
             "Grep"
             "WebFetch(domain:github.com)"
             "WebSearch"
