@@ -41,6 +41,7 @@
             "Bash(gh pr checks:*)"
             "Bash(gh release list:*)"
             "Bash(gh release view:*)"
+            "Bash(gh run list:*)"
             "Bash(gh run view:*)"
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
