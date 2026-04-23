@@ -39,6 +39,8 @@
             "Bash(gh api:*)"
             "Bash(gh issue view:*)"
             "Bash(gh pr checks:*)"
+            "Bash(gh release list:*)"
+            "Bash(gh release view:*)"
             "Bash(gh run view:*)"
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
