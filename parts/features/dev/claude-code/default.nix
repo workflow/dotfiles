@@ -37,6 +37,7 @@
             "Bash(gh pr view:*)"
             "Bash(gh pr diff:*)"
             "Bash(gh api:*)"
+            "Bash(gh issue view:*)"
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
             "Bash(jj status)"
