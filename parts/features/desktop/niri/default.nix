@@ -466,6 +466,7 @@
           {
             matches = [
               {app-id = "^obsidian$";}
+              {title = ".*- Obsidian \\d.*";}
             ];
             open-on-workspace = " 7";
           }
