@@ -45,6 +45,7 @@
             "Bash(gh run view:*)"
             "Bash(jj log:*)"
             "Bash(jj diff:*)"
+            "Bash(jj git fetch:*)"
             "Bash(jj status)"
             "Bash(jj show:*)"
             "Grep"
