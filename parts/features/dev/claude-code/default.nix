@@ -1,5 +1,6 @@
 {...}: {
   flake.modules.homeManager.claude-code = {
+    config,
     lib,
     pkgs,
     osConfig,
@@ -82,6 +83,21 @@
         };
       };
     };
+
+    # The home-manager module symlinks ~/.claude/settings.json into the read-only
+    # Nix store, so Claude Code's runtime updates (e.g. /effort) fail with EROFS.
+    # Skip the symlink and copy the same generated JSON as a writable file. Each
+    # `nh os switch` resets it to the Nix-defined value, which is acceptable because
+    # the runtime mutations Claude Code performs here are session-scoped.
+    home.file.".claude/settings.json".enable = lib.mkForce false;
+
+    home.activation.claudeCodeWritableSettings = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      src=${config.home.file.".claude/settings.json".source}
+      dest="${config.home.homeDirectory}/.claude/settings.json"
+      run mkdir -p "$(dirname "$dest")"
+      run rm -f "$dest"
+      run install -m644 -T "$src" "$dest"
+    '';
 
     # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
     programs.alacritty.settings.keyboard.bindings = [
