@@ -69,7 +69,7 @@
           ];
         };
         alwaysThinkingEnabled = true;
-        effortLevel = "high";
+        effortLevel = "xhigh";
         extraKnownMarketplaces = {
           openai-codex = {
             source = {
