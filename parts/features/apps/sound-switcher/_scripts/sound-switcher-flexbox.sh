@@ -4,6 +4,7 @@ chosen="$(echo -e "🔌local\n\
 🎧sony\n\
 🎧oh(localmic)
 🎧🎙️oh(ohmic)
+🎧poly
 📢boombox\n\
  budsFE(listen)\n\
  budsFE(talk)\n\
@@ -60,6 +61,24 @@ ohohmic() {
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	ohmike
+}
+
+poly() {
+	local card_name_pattern="Poly_BT700"
+	local sink="alsa_output.usb-Plantronics_Poly_BT700_88594754C6A94CFF9BF7A0D00CBE2F30-00.analog-stereo"
+	local card_profile="output:analog-stereo+input:mono-fallback"
+
+	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
+
+	polymike
+}
+
+polymike() {
+	local card_name_pattern="Poly_BT700"
+	local source="alsa_input.usb-Plantronics_Poly_BT700_88594754C6A94CFF9BF7A0D00CBE2F30-00.mono-fallback"
+	local card_profile="output:analog-stereo+input:mono-fallback"
+
+	set_default_source "$card_name_pattern" "$source" "$card_profile"
 }
 
 boombox() {
@@ -231,6 +250,7 @@ case "$chosen" in
 🔌local) localspeaker ;;
 "🎧oh(localmic)") ohlocalmic ;;
 "🎧🎙️oh(ohmic)") ohohmic ;;
+🎧poly) poly ;;
 🎧sony) sony ;;
 " budsFE(listen)") budsfelisten ;;
 " budsFE(talk)") budsfetalk ;;
