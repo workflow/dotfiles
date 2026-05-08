@@ -48,6 +48,7 @@
             "Bash(jj diff:*)"
             "Bash(jj git fetch:*)"
             "Bash(jj status)"
+            "Bash(jj st:*)"
             "Bash(jj show:*)"
             "Grep"
             "WebFetch(domain:github.com)"
