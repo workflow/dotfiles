@@ -37,7 +37,7 @@
 
       myip = "dig @resolver1.opendns.com ANY myip.opendns.com +short";
 
-      n = "nh os switch";
+      n = "nh os switch --no-specialisation";
 
       nl = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
       ngc = "sudo nix-env --delete-generations 30d --profile /nix/var/nix/profiles/system";
