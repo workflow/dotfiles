@@ -52,9 +52,6 @@
 
       stern-kind = "stern --context kind-kind";
 
-      tailup = "sudo tailscale up --accept-routes --accept-dns=false";
-      taildown = "sudo tailscale down";
-
       x = "exit";
     };
   };
