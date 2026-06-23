@@ -61,7 +61,7 @@
         qt.enable = lib.mkForce false;
 
         programs.neovim = {
-          extraLuaConfig = ''
+          initLua = ''
             -- Override lualine theme for light mode
             if require('lualine') then
               local lualine_config = require('lualine').get_config()
@@ -85,7 +85,7 @@
       pkgs.papirus-icon-theme
     ];
     stylix = {
-      iconTheme = {
+      icons = {
         enable = true;
         package = pkgs.papirus-icon-theme;
         light = "Papirus-Light";

@@ -27,7 +27,7 @@
       dmidecode # Hardware info read from Bios
       dnstracer
       efivar # Tools and Libraries to manipulate EFI variables
-      fast-cli # Fast.com CLI `fast`
+      fast-cli-zig # Fast.com CLI `fast-cli` (Zig rewrite; replaces removed fast-cli)
       fastfetch # neofetch sucessor, system information tool
       fd # Better find, written in Rust
       ffmpeg-full

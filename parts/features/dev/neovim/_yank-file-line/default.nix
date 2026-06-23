@@ -1,3 +1,3 @@
 {...}: {
-  programs.neovim.extraLuaConfig = builtins.readFile ./yank-file-line.lua;
+  programs.neovim.initLua = builtins.readFile ./yank-file-line.lua;
 }

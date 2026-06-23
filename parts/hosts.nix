@@ -99,7 +99,9 @@
       ++ secretHomeModules
       ++ [
         "${impermanence}/home-manager.nix"
-        nur.modules.homeManager.default
+        # NUR's overlay is attached at the NixOS level (nur.modules.nixos.default)
+        # and propagates to HM via useGlobalPkgs; the HM-level module would set
+        # nixpkgs.overlays again, which HM 26.05 deprecates with useGlobalPkgs.
         sops-nix.homeManagerModules.sops
         # Note: stylix home-manager module is injected by stylix.nixosModules.stylix
         # Note: niri home-manager module is injected by niri.nixosModules.niri

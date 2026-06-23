@@ -1,5 +1,5 @@
 ;extends
-; extraLuaConfig -> Lua
+; initLua -> Lua
 (binding
   attrpath: (attrpath
     (identifier) @_path)
@@ -11,7 +11,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "lua")))
   ]
-  (#match? @_path "^extraLuaConfig$")
+  (#match? @_path "^initLua$")
   (#set! injection.combined))
 
 ; neovim.extraConfig -> Vim

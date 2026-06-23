@@ -159,7 +159,7 @@
         cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
       '';
 
-      extraLuaConfig = ''
+      initLua = ''
         vim.opt.termguicolors = true
         vim.o.breakindent = true
         vim.keymap.set('n', 'k', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -247,11 +247,12 @@
         vim-sleuth # Automatic shiftwidth and expandtab
         {
           plugin = vim-startify;
+          type = "lua";
           config = ''
-            let g:startify_change_to_dir = 0
-            let g:startify_change_to_vcs_root = 1
-            let g:startify_session_persistence = 1
-            let g:startify_bookmarks = [ {'c': '~/nixos-config/parts/features/dev/neovim/default.nix'} ]
+            vim.g.startify_change_to_dir = 0
+            vim.g.startify_change_to_vcs_root = 1
+            vim.g.startify_session_persistence = 1
+            vim.g.startify_bookmarks = { { c = "~/nixos-config/parts/features/dev/neovim/default.nix" } }
           '';
         }
         vim-surround
@@ -306,6 +307,9 @@
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+
+      withPython3 = false;
+      withRuby = false;
     };
   };
 }

@@ -17,8 +17,6 @@
       settings.web.listen.port = 8081;
     };
 
-    systemd.services.scrutiny.enableStrictShellChecks = false;
-
     systemd.tmpfiles.rules = [
       "d /var/lib/private 0700 root root -"
     ];

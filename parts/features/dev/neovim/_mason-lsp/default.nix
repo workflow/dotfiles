@@ -11,7 +11,7 @@
   };
 
   programs.neovim = {
-    extraLuaConfig = ''
+    initLua = ''
       -- LSP diagnostics: show inline virtual text
       vim.diagnostic.config({
         virtual_text = {

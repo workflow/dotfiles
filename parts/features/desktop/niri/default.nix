@@ -327,16 +327,10 @@
 
       services.swayidle = {
         enable = true;
-        events = [
-          {
-            event = "before-sleep";
-            command = "${locker}";
-          }
-          {
-            event = "lock";
-            command = "${locker}";
-          }
-        ];
+        events = {
+          before-sleep = "${locker}";
+          lock = "${locker}";
+        };
         timeouts = [
           {
             timeout = 360;

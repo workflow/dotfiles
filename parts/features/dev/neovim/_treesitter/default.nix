@@ -5,13 +5,6 @@
   ];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    # TODO: This is Neovim-Native after 0.10, see https://github.com/nvim-treesitter/playground
-    {
-      plugin = playground;
-      config = ''
-      '';
-      type = "lua";
-    }
     {
       plugin = nvim-treesitter.withAllGrammars;
       config = builtins.readFile ./treesitter.lua;

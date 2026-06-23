@@ -28,7 +28,7 @@
         '';
       };
 
-      memory.source = ./CLAUDE.md;
+      context = ./CLAUDE.md;
 
       skills.pr-review = ./skills/pr-review;
 
@@ -90,15 +90,39 @@
     # Skip the symlink and copy the same generated JSON as a writable file. Each
     # `nh os switch` resets it to the Nix-defined value, which is acceptable because
     # the runtime mutations Claude Code performs here are session-scoped.
-    home.file.".claude/settings.json".enable = lib.mkForce false;
+    #
+    # HM 26.05 stopped evaluating `source` on disabled file entries, so we
+    # reproduce the upstream module's settings.json content locally (see
+    # nix-community/home-manager modules/programs/claude-code.nix) instead of
+    # reading config.home.file.".claude/settings.json".source.
+    #
+    # The upstream module keys the entry by absolute path (`${cfg.configDir}/...`,
+    # defaulting to `/home/$USER/.claude/...`), not relative, so this override has
+    # to match exactly or it won't take effect.
+    home.file."${config.programs.claude-code.configDir}/settings.json".enable = lib.mkForce false;
 
-    home.activation.claudeCodeWritableSettings = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      src=${config.home.file.".claude/settings.json".source}
-      dest="${config.home.homeDirectory}/.claude/settings.json"
-      run mkdir -p "$(dirname "$dest")"
-      run rm -f "$dest"
-      run install -m644 -T "$src" "$dest"
-    '';
+    home.activation.claudeCodeWritableSettings = let
+      cfg = config.programs.claude-code;
+      mkMarketplaceEntry = _: content: {
+        source = {
+          source = "directory";
+          path = content;
+        };
+      };
+      settingsContent =
+        cfg.settings
+        // {"$schema" = "https://json.schemastore.org/claude-code-settings.json";}
+        // lib.optionalAttrs (cfg.marketplaces or {} != {}) {
+          extraKnownMarketplaces = lib.mapAttrs mkMarketplaceEntry cfg.marketplaces;
+        };
+      settingsFile = (pkgs.formats.json {}).generate "claude-code-settings.json" settingsContent;
+    in
+      lib.hm.dag.entryAfter ["writeBoundary"] ''
+        dest="${config.home.homeDirectory}/.claude/settings.json"
+        run mkdir -p "$(dirname "$dest")"
+        run rm -f "$dest"
+        run install -m644 -T ${settingsFile} "$dest"
+      '';
 
     # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
     programs.alacritty.settings.keyboard.bindings = [

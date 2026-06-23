@@ -88,6 +88,10 @@
       ignores = [".idea" "nohup.out" "mzdata" ".vimspector.json" ".gitignore.local"];
     };
 
-    programs.mergiraf.enable = true;
+    programs.mergiraf = {
+      enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
+    };
   }; # closes `in {`
 }

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.neovim = {
-    extraLuaConfig = ''
+    initLua = ''
       vim.notify = require("notify")
     '';
     plugins = with pkgs.vimPlugins; [

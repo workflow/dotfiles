@@ -2,13 +2,11 @@
 {...}: {
   flake.modules.nixos.nvidia = {config, lib, pkgs, ...}:
     lib.mkIf config.dendrix.hasNvidia {
-      boot.blacklistedKernelModules = ["nouveau"];
     environment.systemPackages = [
       pkgs.nvtopPackages.full # nvtop
       pkgs.mesa-demos
       pkgs.vulkan-tools
       pkgs.libva-utils
-      pkgs.nvidia-vaapi-driver # VA-API implementation using NVIDIA's NVDEC
     ];
 
     # Enable VAAPI for NVIDIA

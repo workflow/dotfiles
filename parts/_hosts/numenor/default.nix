@@ -9,6 +9,12 @@
     };
   };
 
+  # NixOS 26.05 + systemd stage 1: with LVM-over-LUKS, the LV appears after
+  # systemd's default device-timeout. See release-notes 26.05 LUKS section.
+  fileSystems."/".options = lib.mkAfter ["x-systemd.device-timeout=infinity"];
+  fileSystems."/nix".options = lib.mkAfter ["x-systemd.device-timeout=infinity"];
+  fileSystems."/persist".options = lib.mkAfter ["x-systemd.device-timeout=infinity"];
+
   # Needed for ddcutil
   hardware.i2c.enable = true;
 
