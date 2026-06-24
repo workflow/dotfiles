@@ -146,6 +146,23 @@
         ++ extraModules;
     };
 in {
+  # Minimal standalone home-manager configuration consumed only by the
+  # `home-manager news` CLI (see home-cleanup-todo.nix). The real home-manager
+  # config is built via the NixOS module in mkHost above; this output exists
+  # solely so the CLI can resolve `homeConfigurations.farlion`.
+  flake.homeConfigurations.farlion = home-manager.lib.homeManagerConfiguration {
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    modules = [
+      {
+        home = {
+          username = "farlion";
+          homeDirectory = "/home/farlion";
+          stateVersion = "24.11";
+        };
+      }
+    ];
+  };
+
   flake.nixosConfigurations = {
     flexbox = mkHost {
       hostname = "flexbox";
