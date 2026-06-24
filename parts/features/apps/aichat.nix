@@ -13,7 +13,7 @@
 
     programs.aichat = {
       enable = true;
-      package = pkgs.unstable.aichat;
+      package = pkgs.aichat;
       settings = {
         model = "openai:gpt-5.1-chat-latest";
         keybindings = "vi";

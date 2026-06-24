@@ -6,7 +6,7 @@
   }: {
     programs.k9s = {
       enable = true;
-      package = pkgs.unstable.k9s;
+      package = pkgs.k9s;
 
       skins = {
         gruvbox-dark = ./_skins/gruvbox-dark.yaml;

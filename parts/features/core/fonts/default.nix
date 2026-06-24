@@ -53,7 +53,7 @@
         pkgs.dejavu_fonts
         pkgs.font-awesome_5
         pkgs.font-awesome_6
-        pkgs.unstable.font-awesome
+        pkgs.font-awesome
         pkgs.noto-fonts-color-emoji # emoji font
       ];
       fontconfig = {

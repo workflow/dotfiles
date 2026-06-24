@@ -6,6 +6,7 @@
       ];
     };
 
+    # Same version as stable, but unstable ships a cached binary; stable forces a slow Electron source build.
     home.packages = [
       pkgs.unstable.ytmdesktop
     ];

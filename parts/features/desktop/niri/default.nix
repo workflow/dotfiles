@@ -37,14 +37,14 @@
       # Window Picker a la rofi
       windowPicker = pkgs.writeShellApplication {
         name = "niri-pick-window";
-        runtimeInputs = [pkgs.niri pkgs.unstable.fuzzel pkgs.jq];
+        runtimeInputs = [pkgs.niri pkgs.fuzzel pkgs.jq];
         text = builtins.readFile ./_scripts/niri-pick-window.sh;
       };
 
       # Calculator via fuzzel + qalc
       fuzzelCalc = pkgs.writeShellApplication {
         name = "niri-qalc";
-        runtimeInputs = [pkgs.unstable.fuzzel pkgs.libqalculate pkgs.wl-clipboard pkgs.libnotify];
+        runtimeInputs = [pkgs.fuzzel pkgs.libqalculate pkgs.wl-clipboard pkgs.libnotify];
         text = builtins.readFile ./_scripts/niri-qalc.sh;
       };
 

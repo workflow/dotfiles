@@ -3,7 +3,7 @@
   flake.modules.homeManager.hoppscotch = {pkgs, ...}: let
     hoppscotch-wrapped = pkgs.symlinkJoin {
       name = "hoppscotch-wrapped";
-      paths = [pkgs.unstable.hoppscotch];
+      paths = [pkgs.hoppscotch];
       buildInputs = [pkgs.makeWrapper];
       postBuild = ''
         wrapProgram $out/bin/hoppscotch \

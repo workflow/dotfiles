@@ -6,7 +6,7 @@
     ...
   }: let
     # Custom nushell build with system-clipboard support for Ctrl+X keybinding
-    nushellWithClipboard = pkgs.unstable.nushell.overrideAttrs (oldAttrs: {
+    nushellWithClipboard = pkgs.nushell.overrideAttrs (oldAttrs: {
       cargoBuildFeatures = (oldAttrs.cargoBuildFeatures or []) ++ ["system-clipboard"];
     });
   in {

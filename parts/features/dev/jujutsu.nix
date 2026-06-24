@@ -3,7 +3,7 @@
     programs.difftastic.enable = true;
     programs.jjui = {
       enable = true;
-      package = pkgs.unstable.jjui;
+      package = pkgs.jjui;
     };
     programs.jujutsu = {
       enable = true;
