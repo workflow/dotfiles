@@ -13,8 +13,9 @@
       ];
     };
 
-    home.packages = [
-      pkgs.qalculate-gtk
-    ];
+    programs.qalculate = {
+      enable = true;
+      package = pkgs.qalculate-gtk;
+    };
   };
 }
