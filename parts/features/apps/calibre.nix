@@ -3,7 +3,6 @@
   flake.modules.homeManager.calibre = {
     osConfig,
     lib,
-    pkgs,
     ...
   }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
@@ -14,6 +13,6 @@
       ];
     };
 
-    home.packages = [pkgs.calibre];
+    programs.calibre.enable = true;
   };
 }
