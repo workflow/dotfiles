@@ -6,11 +6,11 @@
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
-      # nvim-treesitter 1.0 (main branch) removed `require('nvim-treesitter.configs').setup`
-      # entirely. Stick with the legacy v0.9 API for now; it's marked deprecated and
-      # will become a hard error in nixpkgs 26.11. Migration TODO: rewrite highlight/indent
-      # as FileType autocmds and replace incremental_selection (no drop-in successor).
-      plugin = nvim-treesitter-legacy.withAllGrammars;
+      # nvim-treesitter 1.0 (main branch). `require('nvim-treesitter.configs').setup`
+      # is gone: highlighting/indentation are enabled per-buffer via the native
+      # vim.treesitter API and incremental_selection is reimplemented on top of it.
+      # See treesitter.lua. Parsers are provided by nix, so no :TSInstall is needed.
+      plugin = nvim-treesitter.withAllGrammars;
       config = builtins.readFile ./treesitter.lua;
       runtime = {
         "after/queries/nix/injections.scm".source = ./queries/nix/injections.scm;
@@ -24,7 +24,7 @@
       type = "lua";
     }
     {
-      plugin = nvim-treesitter-textobjects-legacy; # ip, ap, etc... from treesitter!
+      plugin = nvim-treesitter-textobjects; # ip, ap, etc... from treesitter!
       config = ''
       '';
       type = "lua";
