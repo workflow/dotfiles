@@ -17,7 +17,6 @@
 
     imports =
       [
-        ./_avante # Cursor style AI IDE
         ./_carbon
         ./_cmp
         ./_comment-nvim

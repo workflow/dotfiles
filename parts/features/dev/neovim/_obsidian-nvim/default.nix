@@ -4,9 +4,6 @@
       plugin = obsidian-nvim;
       config = ''
         require("obsidian").setup({
-          follow_img_func = function(img)
-            vim.fn.jobstart({"xdg-open", url})
-          end,
           legacy_commands = false,
           -- Clashes with render-markdown.nvim
           ui = {

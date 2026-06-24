@@ -7,7 +7,7 @@
       plugin = render-markdown-nvim;
       config = ''
         require('render-markdown').setup({
-          file_types = {'markdown', 'Avante'},
+          file_types = {'markdown'},
         })
       '';
       type = "lua";
