@@ -1,7 +1,8 @@
-{...}: {
+{inputs, ...}: {
   flake.modules.homeManager.niri = {
     osConfig,
     config,
+    options,
     lib,
     pkgs,
     ...
@@ -392,23 +393,17 @@
       xdg.configFile."wlr-which-key/config.yaml".source =
         yaml.generate "wlr-which-key-config" whichKeyConfig;
 
-      # TODO: Activate once the Niri flake supports niri 25.11
-      # Per-output layout settings for vertical monitors (raw KDL - not exposed in niri-flake settings)
-      # programs.niri.config =
-      #   lib.optionalString (leftScreen != null) ''
-      #     output "${leftScreen}" {
-      #       layout {
-      #         default-column-width { proportion 1.0; }
-      #       }
-      #     }
-      #   ''
-      #   + lib.optionalString (rightScreen != null) ''
-      #     output "${rightScreen}" {
-      #       layout {
-      #         default-column-width { proportion 1.0; }
-      #       }
-      #     }
-      #   '';
+      # Per-output layout for vertical monitors (niri >= 25.11) is not exposed in
+      # niri-flake settings, so append raw KDL nodes to the rendered settings.
+      # TODO: Simplify once https://github.com/sodiboo/niri-flake/issues/1493 is out
+      programs.niri.config = with inputs.niri.lib.kdl;
+        options.programs.niri.config.default
+        ++ map (screen:
+          node "output" screen [
+            (plain "layout" [
+              (plain "default-column-width" [(leaf "proportion" 1.0)])
+            ])
+          ]) (filter (screen: screen != null) [leftScreen rightScreen]);
       programs.niri.settings = rec {
         # Environment
         environment = {

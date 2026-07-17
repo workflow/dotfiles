@@ -23,6 +23,9 @@
     services.gvfs.enable = true;
 
     programs.niri.enable = true;
+    # nixpkgs' niri (26.04) instead of niri-flake's stale niri-stable (25.08);
+    # also matches the pkgs.niri CLI used by our helper scripts
+    programs.niri.package = pkgs.niri;
 
     xdg.portal = {
       enable = true;
