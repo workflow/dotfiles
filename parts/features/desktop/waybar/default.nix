@@ -220,18 +220,18 @@
         on-click-middle = "mullvad disconnect";
       };
 
-      "network#wireguard" = {
-        interface = "wg0";
-        interval = 3;
-        format-disconnected = " ";
-        format-disabled = " ";
-        format-linked = " ";
-        format = "";
-        format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-        tooltip-format-linked = " Wireguard down.";
-        tooltip-format-disabled = " Wireguard down.";
-      };
+      # "network#wireguard" = {
+      #   interface = "wg0";
+      #   interval = 3;
+      #   format-disconnected = " ";
+      #   format-disabled = " ";
+      #   format-linked = " ";
+      #   format = "";
+      #   format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
+      #   tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
+      #   tooltip-format-linked = " Wireguard down.";
+      #   tooltip-format-disabled = " Wireguard down.";
+      # };
 
       "group/screens" = {
         modules =
