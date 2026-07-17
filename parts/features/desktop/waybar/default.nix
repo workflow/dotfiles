@@ -158,7 +158,7 @@
       };
 
       "group/network" = {
-        modules = ["network" "network#tailscale" "custom/macgyver" "network#mullvad" "network#wireguard"];
+        modules = ["network" "network#tailscale" "custom/macgyver" "network#mullvad"];
         orientation = "inherit";
       };
 
