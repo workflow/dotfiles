@@ -95,6 +95,15 @@
       pkgs.pulsemixer
     ];
 
+    # pulseaudioFull (needed for pactl) ships an XDG autostart entry running
+    # start-pulseaudio-x11, which always fails under PipeWire. Shadow it.
+    xdg.configFile."autostart/pulseaudio.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=PulseAudio Sound System
+      Hidden=true
+    '';
+
     # GUI for PipeWire effects
     services.easyeffects = {
       enable = true;
