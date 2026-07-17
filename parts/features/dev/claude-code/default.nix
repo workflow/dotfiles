@@ -71,6 +71,7 @@
         };
         alwaysThinkingEnabled = true;
         effortLevel = "xhigh";
+        model = "claude-fable-5";
         extraKnownMarketplaces = {
           openai-codex = {
             source = {
