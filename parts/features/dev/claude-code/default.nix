@@ -18,6 +18,8 @@
 
     programs.claude-code = {
       enable = true;
+      # The codex plugin's hooks invoke bare `node`, so keep it on claude's PATH
+      # without exposing it system-wide.
       package = pkgs.symlinkJoin {
         name = "claude-code-wrapped";
         paths = [pkgs.unstable.claude-code];
@@ -88,14 +90,9 @@
 
     # The home-manager module symlinks ~/.claude/settings.json into the read-only
     # Nix store, so Claude Code's runtime updates (e.g. /effort) fail with EROFS.
-    # Skip the symlink and copy the same generated JSON as a writable file. Each
-    # `nh os switch` resets it to the Nix-defined value, which is acceptable because
-    # the runtime mutations Claude Code performs here are session-scoped.
-    #
-    # HM 26.05 stopped evaluating `source` on disabled file entries, so we
-    # reproduce the upstream module's settings.json content locally (see
-    # nix-community/home-manager modules/programs/claude-code.nix) instead of
-    # reading config.home.file.".claude/settings.json".source.
+    # Skip the symlink and install the module-generated JSON as a writable copy.
+    # Each `nh os switch` resets it to the Nix-defined value, which is acceptable
+    # because the runtime mutations Claude Code performs here are session-scoped.
     #
     # The upstream module keys the entry by absolute path (`${cfg.configDir}/...`,
     # defaulting to `/home/$USER/.claude/...`), not relative, so this override has
@@ -103,26 +100,12 @@
     home.file."${config.programs.claude-code.configDir}/settings.json".enable = lib.mkForce false;
 
     home.activation.claudeCodeWritableSettings = let
-      cfg = config.programs.claude-code;
-      mkMarketplaceEntry = _: content: {
-        source = {
-          source = "directory";
-          path = content;
-        };
-      };
-      settingsContent =
-        cfg.settings
-        // {"$schema" = "https://json.schemastore.org/claude-code-settings.json";}
-        // lib.optionalAttrs (cfg.marketplaces or {} != {}) {
-          extraKnownMarketplaces = lib.mapAttrs mkMarketplaceEntry cfg.marketplaces;
-        };
-      settingsFile = (pkgs.formats.json {}).generate "claude-code-settings.json" settingsContent;
+      settingsSource = config.home.file."${config.programs.claude-code.configDir}/settings.json".source;
     in
       lib.hm.dag.entryAfter ["writeBoundary"] ''
-        dest="${config.home.homeDirectory}/.claude/settings.json"
-        run mkdir -p "$(dirname "$dest")"
+        dest="${config.programs.claude-code.configDir}/settings.json"
         run rm -f "$dest"
-        run install -m644 -T ${settingsFile} "$dest"
+        run install -m644 -DT ${settingsSource} "$dest"
       '';
 
     # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
