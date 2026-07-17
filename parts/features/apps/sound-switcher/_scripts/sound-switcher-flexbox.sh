@@ -4,7 +4,7 @@ chosen="$(echo -e "🔌local\n\
 🎧sony\n\
 🎧oh(localmic)
 🎧🎙️oh(ohmic)
-🎧poly
+poly
 📢boombox\n\
  budsFE(listen)\n\
  budsFE(talk)\n\
@@ -250,7 +250,7 @@ case "$chosen" in
 🔌local) localspeaker ;;
 "🎧oh(localmic)") ohlocalmic ;;
 "🎧🎙️oh(ohmic)") ohohmic ;;
-🎧poly) poly ;;
+poly) poly ;;
 🎧sony) sony ;;
 " budsFE(listen)") budsfelisten ;;
 " budsFE(talk)") budsfetalk ;;

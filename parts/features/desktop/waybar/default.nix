@@ -333,7 +333,7 @@
         on-click = "pavucontrol --tab=4";
         on-click-right = "alacritty --command pulsemixer";
         on-click-middle = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-        tooltip-format = "{format_source}";
+        tooltip-format = " {source_desc} · {source_volume}%";
       };
 
       "pulseaudio#out" = {
@@ -354,6 +354,7 @@
           "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__Speaker__sink" = "";
           "alsa_output.pci-0000_00_1f.3-platform-sof_sdw.HiFi__hw_sofsoundwire__sink" = "";
           "alsa_output.usb-Apple__Inc._USB-C_to_3.5mm_Headphone_Jack_Adapter_DWH84440324JKLTA7-00.analog-stereo" = "";
+          "alsa_output.usb-Plantronics_Poly_BT700_88594754C6A94CFF9BF7A0D00CBE2F30-00.analog-stereo" = "";
           "bluez_output.34_E3_FB_C5_01_E0.1" = "";
           "bluez_sink.34_E3_FB_C5_01_E0.handsfree_head_unit" = "";
           default = ["" ""];
