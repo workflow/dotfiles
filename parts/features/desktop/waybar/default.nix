@@ -164,11 +164,11 @@
 
       "network" = {
         interval = 3;
-        format = " ";
-        format-disconnected = "  ";
-        format-ethernet = " ";
-        format-wifi = " ";
-        format-linked = "  🚧";
+        format = "";
+        format-disconnected = " ";
+        format-ethernet = "";
+        format-wifi = "";
+        format-linked = " 🚧";
         format-alt = "{bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format = "IF:{ifname} SSID:{essid} FREQ:{frequency} :{signalStrength} IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format-ethernet = "IF:{ifname} IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
@@ -181,8 +181,8 @@
         interface = "tailscale0";
         interval = 3;
         format-linked = " ";
-        format = " ";
-        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
+        format = "";
+        format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format = " Tailscale IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format-linked = " Tailscale down. Right click to connect.";
         on-click-right = "tailscale up";
@@ -210,8 +210,8 @@
         format-disconnected = " ";
         format-disabled = " ";
         format-linked = " ";
-        format = " ";
-        format-alt = "  {bandwidthDownBytes} {bandwidthUpBytes}";
+        format = "";
+        format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format = "  Mullvad IP:{ipaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format-linked = " Mullvad down. Right click to connect or double right click for GUI.";
         tooltip-format-disabled = " Mullvad down. Rickt click to connect or double right click for GUI.";
@@ -226,7 +226,7 @@
         format-disconnected = " ";
         format-disabled = " ";
         format-linked = " ";
-        format = " ";
+        format = "";
         format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
         tooltip-format-linked = " Wireguard down.";
@@ -250,7 +250,7 @@
       # rather than the "Backlight Level White" feature that ddcci-driver-linux requires
       # See https://gitlab.com/ddcci-driver-linux/ddcci-driver-linux
       "custom/ddc-backlight-left" = {
-        format = "{icon} ";
+        format = "{icon}";
         tooltip-format = "Left {percentage}%";
         format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
         exec = "ddc-backlight 7"; # For i2c-7
@@ -265,7 +265,7 @@
       };
 
       # "custom/ddc-backlight-middle" = {
-      #   format = "{icon} ";
+      #   format = "{icon}";
       #   tooltip-format = "Middle {percentage}%";
       #   format-icons = ["🌑" "🌘" "🌗" "🌖" "🌕"];
       #   exec = "ddc-backlight 9"; # For i2c-9
@@ -299,7 +299,7 @@
         exec = "if pgrep wlsunset >/dev/null 2>&1; then stdbuf -oL printf '{\"alt\": \"on\",\"class\": \"on\"}'; else stdbuf -oL printf '{\"alt\": \"off\",\"class\": \"off\"}'; fi";
         on-click = "${nightlight-toggle}/bin/nightlight-toggle";
         return-type = "json";
-        format = " {icon}";
+        format = "{icon}";
         tooltip-format = "wlsunset + wluma: {alt}";
         signal = 1; # SIGRTMIN+1 or 35 for updating immediately from script
         format-icons = {
@@ -338,7 +338,7 @@
 
       "pulseaudio#out" = {
         format = "{icon} {volume}%";
-        format-bluetooth = "{icon} {volume}%";
+        format-bluetooth = " {icon} {volume}%";
         format-muted = "";
         format-icons = {
           "alsa_output.usb-Generic_USB_Audio-00.analog-stereo" = "";
@@ -415,7 +415,7 @@
           warning = 30;
           critical = 15;
         };
-        format = " {icon} {capacity}%";
+        format = "{icon} {capacity}%";
         format-icons = ["" "" "" "" ""];
         tooltip = true;
         backend = "upower";
@@ -451,7 +451,7 @@
         exec = "${dunst-dnd-waybar}/bin/dunst-dnd-waybar";
         return-type = "json";
         interval = 1;
-        format = "{icon}{text}";
+        format = "{icon} {text}";
         tooltip-format = "{text}";
         format-icons = {
           running = "";
@@ -465,7 +465,7 @@
         exec = "if systemctl --user is-active swayidle >/dev/null 2>&1; then echo '{\"alt\": \"deactivated\", \"class\": \"deactivated\"}'; else echo '{\"alt\": \"activated\", \"class\": \"activated\"}'; fi";
         return-type = "json";
         interval = 1;
-        format = " {icon}";
+        format = "{icon}";
         format-icons = {
           activated = "";
           deactivated = "";
@@ -484,7 +484,7 @@
 
       clock = {
         format = "{:%H:%M}";
-        format-alt = "{:%A, %B %d, %Y (%R)}  ";
+        format-alt = "{:%A, %B %d, %Y (%R)} ";
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
           mode = "year";
@@ -525,6 +525,7 @@
             layer = "top";
             position = "bottom";
             expand-center = true;
+            spacing = 6;
             output = [
               "DP-1" # Numenor main screen
               "eDP-1" # Flexbox
@@ -536,6 +537,7 @@
           {
             layer = "top";
             position = "bottom";
+            spacing = 6;
             output = [
               "HDMI-A-1"
               "HDMI-A-2"
@@ -545,6 +547,55 @@
       };
 
       style = ''
+        /* All rules carry the window#waybar prefix so they outrank the
+           per-module ID rules (e.g. "#cpu") that stylix injects above. */
+
+        /* Uniform gaps: modules inside groups are packed with 0 spacing,
+           so per-label padding is the single source of horizontal spacing. */
+        window#waybar widget > label {
+          padding: 0 4px;
+        }
+
+        /* Rounded island pill around every top-level area: a single module's
+           label, or a group's/workspaces' box. Content sits 9px from each
+           pill edge (boxes: 5px box padding + 4px inner padding). */
+        window#waybar .modules-left > widget > box,
+        window#waybar .modules-center > widget > label,
+        window#waybar .modules-center > widget > box,
+        window#waybar .modules-right > widget > label,
+        window#waybar .modules-right > widget > box {
+          background: @base01;
+          border-radius: 9px;
+          margin-top: 3px;
+          margin-bottom: 3px;
+        }
+
+        window#waybar .modules-center > widget > label,
+        window#waybar .modules-right > widget > label {
+          padding: 0 9px;
+        }
+
+        window#waybar .modules-left > widget > box,
+        window#waybar .modules-center > widget > box,
+        window#waybar .modules-right > widget > box {
+          padding: 0 5px;
+        }
+
+        /* Undo the GTK theme's roomy button defaults. */
+        window#waybar #workspaces button {
+          padding: 0 4px;
+          margin: 3px 2px;
+          min-width: 0;
+          border-radius: 9px;
+        }
+
+        /* Active workspace as a small pill instead of the underline. */
+        window#waybar #workspaces button.active,
+        window#waybar #workspaces button.focused {
+          background: @base02;
+          border-bottom: 3px solid transparent;
+        }
+
         .info {
           color: @base0D;
         }
@@ -562,10 +613,6 @@
         #network.ethernet,
         #network.wifi {
           color: @base0B;
-        }
-
-        #custom-peon-ping {
-          margin-right: 4px;
         }
 
         #custom-peon-ping.off {

@@ -529,47 +529,47 @@
         # Named Workspaces
         workspaces = {
           "00" = {
-            name = " a";
+            name = " a";
             open-on-output = rightScreen;
           };
           "01" = {
-            name = " 1";
+            name = " 1";
             open-on-output = mainScreen;
           };
           "02" = {
-            name = " 2";
+            name = " 2";
             open-on-output = mainScreen;
           };
           "03" = {
-            name = " 3";
+            name = " 3";
             open-on-output = rightScreen;
           };
           "04" = {
-            name = " 4";
+            name = " 4";
             open-on-output = mainScreen;
           };
           "05" = {
-            name = " 5";
+            name = " 5";
             open-on-output = mainScreen;
           };
           "06" = {
-            name = " 6";
+            name = " 6";
             open-on-output = mainScreen;
           };
           "07" = {
-            name = " 7";
+            name = " 7";
             open-on-output = rightScreen;
           };
           "08" = {
-            name = " 8";
+            name = " 8";
             open-on-output = mainScreen;
           };
           "09" = {
-            name = " 9";
+            name = " 9";
             open-on-output = leftScreen;
           };
           "10" = {
-            name = " 10";
+            name = " 10";
             open-on-output = mainScreen;
           };
         };
