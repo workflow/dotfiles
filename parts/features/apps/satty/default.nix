@@ -10,10 +10,9 @@
       name = "satty-screenshot";
       runtimeInputs = with pkgs; [
         satty
-        grim
         wl-clipboard
-        jq
         niri
+        coreutils
       ];
       text = builtins.readFile ./_scripts/satty-screenshot.sh;
     };
