@@ -457,7 +457,7 @@
               {app-id = "^obsidian$";}
               {title = ".*- Obsidian \\d.*";}
             ];
-            open-on-workspace = " 7";
+            open-on-workspace = workspaces."07".name;
           }
           {
             matches = [
@@ -465,26 +465,26 @@
               {app-id = "^teams-for-linux$";}
               {app-id = "^org.telegram.desktop$";}
             ];
-            open-on-workspace = " 8";
+            open-on-workspace = workspaces."08".name;
           }
           {
             matches = [
-              {app-id = "^YouTube Music Desktop App$";}
+              {app-id = "^youtube-music-desktop-app$";}
               {title = ".*YouTube Music Desktop App.*";}
             ];
-            open-on-workspace = " 9";
+            open-on-workspace = workspaces."09".name;
           }
           {
             matches = [
               {title = ".*[Vv]ikunja.*";}
             ];
-            open-on-workspace = " 9";
+            open-on-workspace = workspaces."09".name;
           }
           {
             matches = [
               {title = ".*ChatGPT.*";}
             ];
-            open-on-workspace = " a";
+            open-on-workspace = workspaces."00".name;
           }
           # Floating windows
           {
