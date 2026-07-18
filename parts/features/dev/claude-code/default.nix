@@ -72,7 +72,7 @@
           ];
         };
         alwaysThinkingEnabled = true;
-        effortLevel = "xhigh";
+        effortLevel = "high";
         model = "claude-fable-5";
         extraKnownMarketplaces = {
           openai-codex = {
