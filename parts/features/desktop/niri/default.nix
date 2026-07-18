@@ -689,8 +689,11 @@
 
               "Mod+R".action = switch-preset-column-width;
               "Mod+R".hotkey-overlay.title = "Preset Column Width";
-              "Mod+F".action = maximize-column;
+              "Mod+F".action = maximize-window-to-edges;
+              "Mod+F".hotkey-overlay.title = "Maximize Window to Edges (no gaps/borders)";
               "Mod+Shift+F".action = fullscreen-window;
+              "Mod+M".action = maximize-column;
+              "Mod+M".hotkey-overlay.title = "Maximize Column (full-width, keeps gaps)";
               "Mod+Ctrl+F".action = expand-column-to-available-width;
 
               "Print".action.screenshot = [];
