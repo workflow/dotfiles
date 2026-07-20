@@ -11,7 +11,7 @@ A comment like this would be a sign that the function naming (CurrentCarrierRepo
 Extensive File and function headers are still useful to give context.
 - Apply the "Small Functions" practice: functions should be small, stay at a single level of abstraction and extract helper functions with intention-revealing names so the code reads clearly without needing comments.
 - Apply the "step-down" rule: Top level reads like a story, details pushed into well-named helpers. Helpers should live below their main functions/tests wherever possible, reading like a newspaper (headlines first, details later).
-- Make a `jj commit` at the end of your changes: Don't include the "Created with Claude Code" and "Co-Authored-by" lines. Also keep commits short and to the point. Use conventional-commits (such as perf, feat...etc) for commit headings. Put the subject in parentheses, i.e. `feat(logic-module): add X operation` or `chore(clippy): add a lint`
+- Make a `jj commit` at the end of your changes: Don't include the "Created with Claude Code" and "Co-Authored-by" lines. Also keep commits short and to the point. Use conventional-commits (style, fix, feat, perf, test, doc etc..., swap chore for toil). Put the subject in parentheses, i.e. `feat(logic-module): add X operation` or `toil(clippy): add a lint`
 - `jj commit` does not have an `--amend` option - instead try `jj absorb` and if that doesn't find the right target then use `jj squash` to squash changes into the latest commit and then re-describe that commit as needed.
 - Use `jj` instead of `git` for all version control operations
 - When resolving merge conflicts with `jj`, try `jj resolve --tool mergiraf` first for automatic resolution, then fallback to manually resolving remaining conflicts.
