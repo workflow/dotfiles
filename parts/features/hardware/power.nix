@@ -27,6 +27,14 @@
       []
       ++ lib.lists.optional isFlexbox pkgs.libsmbios; # Dell-specific power management
 
+    # dell_wmi_ddv (Dell Data Vault diagnostics) has a runtime-PM bug: its hwmon
+    # child gets resumed while the parent BAT0 device is suspended ("hwmon: PM:
+    # parent BAT0 should not be sleeping"), which leaves the battery's sysfs
+    # subtree unreadable until an AC replug re-registers the device. Waybar then
+    # logs "No batteries." and the battery icon disappears. The module is purely
+    # diagnostic (battery temp sensor, eppid) and provides nothing we use.
+    boot.blacklistedKernelModules = lib.lists.optional isFlexbox "dell_wmi_ddv";
+
     services.auto-cpufreq = {
       enable = true;
       settings = {};
