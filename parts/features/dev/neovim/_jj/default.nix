@@ -1,14 +1,4 @@
-{pkgs, ...}: let
-  jj-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "jj-nvim";
-    src = pkgs.fetchFromGitHub {
-      owner = "NicolasGB";
-      repo = "jj.nvim";
-      rev = "v0.4.0";
-      sha256 = "sha256-BY4wDMMQUdu6DHfMqP4lpHQdHhS+yL6+CUiKQJFJY2Q=";
-    };
-  };
-in {
+{pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     {
       plugin = toggleterm-nvim;
@@ -16,11 +6,20 @@ in {
       type = "lua";
     }
     {
-      plugin = jj-nvim;
+      # v0.7.1 (:J resolve, fugitive-style :Jedit/:Jread, Jbrowse); stable still ships 0.6.0
+      plugin = pkgs.unstable.vimPlugins.jj-nvim;
       config = ''
         require("jj").setup({
           diff = {
             backend = "diffview",
+          },
+          editor = {
+            auto_insert = true,
+          },
+          cmd = {
+            resolve_strategies = {
+              { name = "Mergiraf", args = { "--tool", "mergiraf" }, external = true },
+            },
           },
         })
 
@@ -37,6 +36,14 @@ in {
           -- Bypass jj.nvim's push handler to use our custom jj push alias
           { "<leader>jp", function() require("jj.ui.terminal").run("jj push") end, desc = "[P]ush" },
           { "<leader>jr", cmd.redo, desc = "[R]edo" },
+          { "<leader>jb", "<cmd>Jbrowse<cr>", desc = "[B]rowse file on forge" },
+          { "<leader>jx", "<cmd>J resolve<cr>", desc = "Resolve conflicts" },
+          { "<leader>je", ":Jedit<Space>", desc = "[E]dit file at revision", silent = false },
+        })
+
+        wk.add({
+          { "<leader>j", group = "[J]ujutsu", mode = "v" },
+          { "<leader>jb", ":Jbrowse<CR>", desc = "[B]rowse selection on forge", mode = "v" },
         })
       '';
       type = "lua";
