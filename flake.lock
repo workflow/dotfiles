@@ -445,28 +445,6 @@
         "type": "github"
       }
     },
-    "littlesnitch": {
-      "inputs": {
-        "nixpkgs": [
-          "secrets",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1779158874,
-        "narHash": "sha256-10hD5Aka8M9k8m3rgsgfCy1EVIOrxEXlHyvjxmd69eA=",
-        "owner": "noblepayne",
-        "repo": "littlesnitch-linux-flake",
-        "rev": "3e6344ad3d6942242234a0fdbd5debb5e5e3650a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "noblepayne",
-        "repo": "littlesnitch-linux-flake",
-        "rev": "3e6344ad3d6942242234a0fdbd5debb5e5e3650a",
-        "type": "github"
-      }
-    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -900,13 +878,12 @@
       "inputs": {
         "flake-parts": "flake-parts_4",
         "import-tree": "import-tree_2",
-        "littlesnitch": "littlesnitch",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "narHash": "sha256-0z1qgNohw0u9M9YocMqEJdFjM2HXFs5RW+m/8Ao2L6U=",
+        "narHash": "sha256-Ia4qiLrI9Wj9cPTfvF+uYsb6x0jvRDCGModrpnPjnUo=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },
