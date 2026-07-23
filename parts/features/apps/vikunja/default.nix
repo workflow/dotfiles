@@ -4,7 +4,18 @@
     lib,
     pkgs,
     ...
-  }: {
+  }: let
+    vikunjaDesktopAutostart = pkgs.writeShellApplication {
+      name = "vikunja-desktop-autostart";
+      runtimeInputs = with pkgs; [
+        curl
+        coreutils
+        vikunja-desktop
+      ];
+      runtimeEnv.VIKUNJA_URL = "https://vikunja.hyena-byzantine.ts.net";
+      text = builtins.readFile ./_scripts/vikunja-desktop-autostart.sh;
+    };
+  in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/vikunja-desktop"
@@ -13,6 +24,7 @@
 
     home.packages = [
       pkgs.vikunja-desktop
+      vikunjaDesktopAutostart
     ];
 
     # The package ships no desktop entry, so provide one. The app's own

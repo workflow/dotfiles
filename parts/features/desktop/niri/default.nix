@@ -446,7 +446,7 @@
           {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
           {command = ["nightlight-toggle"];}
           {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen-beta" "--new-window" "https://chatgpt.com/"];}
-          {command = ["vikunja-desktop"];}
+          {command = ["vikunja-desktop-autostart"];}
         ];
 
         # Window Rules
