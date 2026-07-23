@@ -21,6 +21,8 @@
 
     # Scrutiny auto-enables influxdb2 as its backend; keep it off the network too.
     services.influxdb2.settings.http-bind-address = "127.0.0.1:8086";
+    # influxd otherwise phones home usage telemetry to usage.influxdata.com.
+    services.influxdb2.settings.reporting-disabled = true;
 
     systemd.tmpfiles.rules = [
       "d /var/lib/private 0700 root root -"
