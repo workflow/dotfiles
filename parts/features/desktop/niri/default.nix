@@ -63,6 +63,13 @@
         text = builtins.readFile ./_scripts/niri-auto-column.sh;
       };
 
+      # Whole-screen color inversion, e.g. for dark-only web pages
+      colorInverter = pkgs.writeShellApplication {
+        name = "niri-invert-colors";
+        runtimeInputs = [pkgs.wl-gammactl pkgs.procps pkgs.util-linux pkgs.coreutils];
+        text = builtins.readFile ./_scripts/niri-invert-colors.sh;
+      };
+
       # Open a command and move its window to a workspace once title matches
       openOnWorkspace = pkgs.writeShellApplication {
         name = "niri-open-on-workspace";
@@ -252,6 +259,11 @@
                 cmd = "hyprmagnifier";
               }
               {
+                key = "i";
+                desc = "Invert Colors";
+                cmd = "${colorInverter}/bin/niri-invert-colors";
+              }
+              {
                 key = "o";
                 desc = "Power Off Monitors";
                 cmd = "niri msg action power-off-monitors";
@@ -301,6 +313,7 @@
     in {
       home.packages = with pkgs; [
         brightnessctl # For brightness +/- keys
+        colorInverter # niri-invert-colors
         fuzzelCalc # niri-qalc
         hyprmagnifier # Screen magnifier for Wayland
         playerctl # For play/pause etc... controlling media players that implement MPRIS
@@ -733,6 +746,10 @@
               "Mod+e".hotkey-overlay.title = "Emoji Picker";
               "Mod+Shift+e".action = spawn ["rofimoji" "--action" "clipboard"];
               "Mod+Shift+e".hotkey-overlay.title = "Emoji to Clipboard";
+
+              # Invert screen colors (e.g. for dark-only web pages)
+              "Mod+n".action = spawn "${colorInverter}/bin/niri-invert-colors";
+              "Mod+n".hotkey-overlay.title = "Invert Scree[n] Colors";
 
               # Logout and Power Menu
               "Mod+Pause".action = spawn "wleave";
