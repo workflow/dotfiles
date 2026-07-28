@@ -5,12 +5,20 @@
     pkgs,
     ...
   }: let
+    # Without the patch, the hidden quick-entry window and the main window race
+    # to spend the same single-use OAuth refresh token at startup, logging the
+    # user out on every cold start.
+    # https://github.com/go-vikunja/vikunja/issues/3275
+    vikunjaDesktop = pkgs.vikunja-desktop.overrideAttrs (old: {
+      patches = (old.patches or []) ++ [./_patches/defer-quick-entry-window.patch];
+    });
+
     vikunjaDesktopAutostart = pkgs.writeShellApplication {
       name = "vikunja-desktop-autostart";
-      runtimeInputs = with pkgs; [
-        curl
-        coreutils
-        vikunja-desktop
+      runtimeInputs = [
+        pkgs.curl
+        pkgs.coreutils
+        vikunjaDesktop
       ];
       runtimeEnv.VIKUNJA_URL = "https://vikunja.hyena-byzantine.ts.net";
       text = builtins.readFile ./_scripts/vikunja-desktop-autostart.sh;
@@ -23,7 +31,7 @@
     };
 
     home.packages = [
-      pkgs.vikunja-desktop
+      vikunjaDesktop
       vikunjaDesktopAutostart
     ];
 
@@ -34,7 +42,7 @@
       name = "Vikunja";
       genericName = "Todo Manager";
       comment = "Todo-app to organize your life";
-      exec = "${pkgs.vikunja-desktop}/bin/vikunja-desktop %u";
+      exec = "${vikunjaDesktop}/bin/vikunja-desktop %u";
       icon = "vikunja-desktop";
       terminal = false;
       type = "Application";

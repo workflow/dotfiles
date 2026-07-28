@@ -1,0 +1,17 @@
+Create the quick-entry window lazily on first use instead of at startup.
+
+Creating it eagerly means two renderers boot the SPA simultaneously; with an
+expired JWT both spend the same single-use OAuth refresh token and the loser's
+401 drops the user to the login screen on every cold start.
+See https://github.com/go-vikunja/vikunja/issues/3275
+
+--- a/main.js
++++ b/main.js
+@@ -438,7 +438,6 @@
+ app.whenReady().then(() => {
+ 	startServer(() => {
+ 		createMainWindow()
+-		createQuickEntryWindow()
+ 		setupTray()
+ 
+ 		registerQuickEntryShortcut(DEFAULT_QUICK_ENTRY_SHORTCUT)
