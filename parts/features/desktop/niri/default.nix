@@ -482,8 +482,9 @@
           }
           {
             matches = [
-              # Pear Desktop keeps the pre-rebrand wm class
-              {app-id = "^com\\.github\\.th_ch\\.youtube_music$";}
+              # Pear Desktop keeps the pre-rebrand id (hyphenated, unlike the
+              # underscored StartupWMClass in its desktop file)
+              {app-id = "^com\\.github\\.th-ch\\.youtube-music$";}
             ];
             open-on-workspace = workspaces."09".name;
           }

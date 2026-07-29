@@ -369,7 +369,7 @@
       mpris = {
         format = "{player_icon}";
         format-paused = "{status_icon}";
-        on-click-right = ''niri msg action focus-window --id $(niri msg --json windows | jq -r '.[] | select(.app_id == "com.github.th_ch.youtube_music") | .id')'';
+        on-click-right = ''niri msg action focus-window --id $(niri msg --json windows | jq -r '.[] | select(.app_id == "com.github.th-ch.youtube-music") | .id')'';
         player-icons = {
           default = "▶";
           mpv = "";
