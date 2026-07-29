@@ -454,7 +454,7 @@
           {command = ["systemctl" "--user" "restart" "app-blueman@autostart"];}
           {command = ["systemctl" "--user" "start" "gnome-keyring-ssh"];} # Start GNOME Keyring SSH agent
           {command = ["obsidian"];}
-          {command = ["ytmdesktop" "--password-store=gnome-libsecret"];}
+          {command = ["pear-desktop"];}
           # {command = ["seahorse"];} # To unlock keyring
           {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
           {command = ["nightlight-toggle"];}
@@ -482,8 +482,8 @@
           }
           {
             matches = [
-              {app-id = "^youtube-music-desktop-app$";}
-              {title = ".*YouTube Music Desktop App.*";}
+              # Pear Desktop keeps the pre-rebrand wm class
+              {app-id = "^com\\.github\\.th_ch\\.youtube_music$";}
             ];
             open-on-workspace = workspaces."09".name;
           }
