@@ -18,7 +18,7 @@
     };
     nightlight-toggle = pkgs.writeShellApplication {
       name = "nightlight-toggle";
-      runtimeInputs = with pkgs; [wlsunset procps killall systemd curl jq libnotify];
+      runtimeInputs = with pkgs; [wlsunset procps killall systemd gawk libnotify];
       text = builtins.readFile ./_scripts/nightlight-toggle.sh;
     };
     isNvidia = osConfig.dendrix.hasNvidia;
