@@ -102,6 +102,7 @@ budsfelisten() {
 	local sink="bluez_output.34_E3_FB_C5_01_E0.1"
 	local card_profile="a2dp-sink-sbc"
 
+	ensure_audio_profile_connected "$card_name_pattern" "34:E3:FB:C5:01:E0" || return 1
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
@@ -112,6 +113,7 @@ budsfetalk() {
 	local sink="bluez_output.34_E3_FB_C5_01_E0.1"
 	local card_profile="headset-head-unit"
 
+	ensure_audio_profile_connected "$card_name_pattern" "34:E3:FB:C5:01:E0" || return 1
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	budsfemike
@@ -122,6 +124,7 @@ budslisten() {
 	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
 	local card_profile="a2dp-sink-sbc"
 
+	ensure_audio_profile_connected "$card_name_pattern" "DC:69:E2:9A:6E:30" || return 1
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	localmike
@@ -132,6 +135,7 @@ budstalk() {
 	local sink="bluez_output.DC_69_E2_9A_6E_30.1"
 	local card_profile="headset-head-unit"
 
+	ensure_audio_profile_connected "$card_name_pattern" "DC:69:E2:9A:6E:30" || return 1
 	set_default_sink "$card_name_pattern" "$sink" "$card_profile"
 
 	budsmike
@@ -210,7 +214,7 @@ budsmike() {
 
 get_card_id() {
 	local card_name_pattern="$1"
-	nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"$card_name_pattern\" | get id  | get 0" || true
+	nu -c "pactl list cards short | lines | parse \"{id}\t{name}\t{_}\" | where \$it.name =~ \"$card_name_pattern\" | get id  | get 0" 2>/dev/null || true
 }
 
 set_default_sink() {
@@ -244,6 +248,32 @@ connect_bluetooth() {
 	sleep 2
 	echo -e "connect $bd_address\nquit" | bluetoothctl
 	sleep 10
+}
+
+# The Buds are dual-mode (LE Audio + classic): a plain `connect` picks the LE
+# bearer and aborts, and GalaxyBudsClient's RFCOMM link already marks them
+# "Connected" so nothing else triggers the audio profiles. Connecting the A2DP
+# UUID explicitly forces BR/EDR and makes the bluez card appear.
+ensure_audio_profile_connected() {
+	local card_name_pattern="$1"
+	local bd_address="$2"
+	local a2dp_sink_uuid="0000110b-0000-1000-8000-00805f9b34fb"
+
+	if [[ -n $(get_card_id "$card_name_pattern") ]]; then
+		return 0
+	fi
+
+	bluetoothctl connect "$bd_address" "$a2dp_sink_uuid"
+
+	for _ in $(seq 1 20); do
+		if [[ -n $(get_card_id "$card_name_pattern") ]]; then
+			return 0
+		fi
+		sleep 0.5
+	done
+
+	notify-send "Sound Switcher" "Buds audio card did not appear" || true
+	return 1
 }
 
 case "$chosen" in
