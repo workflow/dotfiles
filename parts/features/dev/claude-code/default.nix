@@ -36,40 +36,21 @@
 
       settings = {
         permissions = {
-          allow = [
-            "Bash(gh pr view:*)"
-            "Bash(gh pr diff:*)"
-            "Bash(gh api:*)"
-            "Bash(gh issue view:*)"
-            "Bash(gh pr checks:*)"
-            "Bash(gh release list:*)"
-            "Bash(gh release view:*)"
-            "Bash(gh run list:*)"
-            "Bash(gh run view:*)"
-            "Bash(jj log:*)"
-            "Bash(jj diff:*)"
-            "Bash(jj git fetch:*)"
-            "Bash(jj status)"
-            "Bash(jj st:*)"
-            "Bash(jj show:*)"
-            "Grep"
-            "WebFetch(domain:github.com)"
-            "WebSearch"
-          ];
-          deny = [
-            "Read(./.env)"
-            "Read(./.env.*)"
-            "Read(./secrets/secrets.json)"
-            "Read(./config/credentials.json)"
-            # Block destructive gh api flags (deny overrides allow)
-            "Bash(gh api *--method*)"
-            "Bash(gh api * -X *)"
-            "Bash(gh api * -f *)"
-            "Bash(gh api *--field*)"
-            "Bash(gh api * -F *)"
-            "Bash(gh api *--raw-field*)"
-            "Bash(gh api *--input*)"
-          ];
+          allow =
+            map (prefix: "Bash(${prefix}:*)") config.dendrix.agents.shellAllowlist
+            ++ [
+              "Grep"
+              "WebFetch(domain:github.com)"
+              "WebSearch"
+            ];
+          deny =
+            map (pattern: "Bash(${pattern})") config.dendrix.agents.shellDenylist
+            ++ [
+              "Read(./.env)"
+              "Read(./.env.*)"
+              "Read(./secrets/secrets.json)"
+              "Read(./config/credentials.json)"
+            ];
         };
         alwaysThinkingEnabled = true;
         effortLevel = "high";
