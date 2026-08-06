@@ -20,7 +20,10 @@
     denyRules = lib.genAttrs config.dendrix.agents.shellDenylist (_: "deny");
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
-      directories = [".local/share/opencode"];
+      directories = [
+        ".local/share/opencode"
+        ".cache/uv" # kagimcp is fetched by uvx; keep it across boots
+      ];
     };
 
     programs.opencode = {
@@ -31,6 +34,10 @@
         small_model = "zai-coding-plan/glm-5-turbo";
         disabled_providers = ["zai"];
         permission.bash = {"*" = "ask";} // allowRules // denyRules;
+        mcp.kagi = {
+          type = "local";
+          command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];
+        };
       };
     };
   };
