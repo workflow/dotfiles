@@ -1,52 +1,32 @@
-{...}: let
-  peon-ping-src = builtins.fetchTarball {
-    url = "https://github.com/PeonPing/peon-ping/archive/60e2d9894edd22fa23b03d3d47956dbc0d781b32.tar.gz";
-    sha256 = "sha256-Xud7UmYquVtANmSoJOFjx+HcYSogJ0JHruJfTEFc8as=";
-  };
-
-  og-packs-src = builtins.fetchTarball {
-    url = "https://github.com/PeonPing/og-packs/archive/6970d159571aebbfc7457cb6a6cf2b764c8467e6.tar.gz";
-    sha256 = "sha256-spao/GTIhH4c5HOmVc0umMvrwOaMRa4s5Pem1AWyUOw=";
-  };
-
-  defaultPacks = [
-    "acolyte_de"
-    "aoe2"
-    "murloc"
-    "peon"
-    "peon_de"
-  ];
-in {
+{inputs, ...}: {
   flake.modules.homeManager.peon-ping = {
-    pkgs,
+    osConfig,
+    config,
     lib,
+    pkgs,
     ...
   }: let
-    peon = pkgs.writeShellApplication {
-      name = "peon";
-      runtimeInputs = with pkgs; [
-        python3
-        curl
-        libnotify
-        pipewire
-        procps
-        coreutils
-      ];
-      runtimeEnv = {
-        PEON_SCRIPT_PATH = "${peon-ping-src}/peon.sh";
-      };
-      text = builtins.readFile ./scripts/peon-wrapper.sh;
+    # Claude Code and opencode fire hooks outside a login shell, so bake the
+    # Linux audio/notification tools into the upstream package's PATH.
+    peon-ping = pkgs.symlinkJoin {
+      name = "peon-ping-wrapped";
+      paths = [inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default];
+      nativeBuildInputs = [pkgs.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/peon \
+          --prefix PATH : ${lib.makeBinPath (with pkgs; [pipewire libnotify procps])}
+      '';
     };
 
     peon-ping-waybar = pkgs.writeShellApplication {
       name = "peon-ping-waybar";
-      runtimeInputs = [peon pkgs.gnugrep];
+      runtimeInputs = [peon-ping pkgs.gnugrep];
       text = builtins.readFile ./scripts/peon-ping-waybar.sh;
     };
 
     peon-ping-toggle = pkgs.writeShellApplication {
       name = "peon-ping-toggle";
-      runtimeInputs = [peon pkgs.gnugrep];
+      runtimeInputs = [peon-ping pkgs.gnugrep];
       text = builtins.readFile ./scripts/peon-ping-toggle.sh;
     };
 
@@ -56,47 +36,149 @@ in {
       text = builtins.readFile ./scripts/focus-claude-session.sh;
     };
 
-    packSymlinks = lib.listToAttrs (map (name: {
-        name = ".claude/hooks/peon-ping/packs/${name}";
-        value = {source = "${og-packs-src}/${name}";};
-      })
-      defaultPacks);
+    configSeed = (pkgs.formats.json {}).generate "peon-ping-config-seed" config.programs.peon-ping.settings;
+
+    peonHook = {
+      type = "command";
+      command = lib.getExe peon-ping;
+      timeout = 10;
+      async = true;
+    };
+    mkPeonEvent = event: {
+      ${event} = [
+        {
+          matcher = "";
+          hooks = [peonHook];
+        }
+      ];
+    };
   in {
-    home.packages = [peon peon-ping-waybar peon-ping-toggle focus-claude-session];
+    imports = [inputs.peon-ping.homeManagerModules.default];
 
-    home.file = packSymlinks;
+    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
+      directories = [".openpeon"];
+    };
 
+    programs.peon-ping = {
+      enable = true;
+      package = peon-ping;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+      installPacks = [
+        "acolyte_de"
+        "aoe2"
+        "murloc"
+        "peon"
+        "peon_de"
+        {
+          name = "worms_armageddon_pt";
+          src = pkgs.fetchFromGitHub {
+            owner = "vmrfreitas";
+            repo = "openpeon-worms-pt";
+            rev = "a82c32f002d72f263e656addae85e89060f2f087";
+            sha256 = "sha256-Tidlp4fVJoV1UpdLGn8gXNN+icdWHHmPlNJz9LfT8J8=";
+          };
+        }
+      ];
+      settings = {
+        default_pack = "peon_de";
+        ide_rules = [
+          {
+            ide = "opencode";
+            pack = "worms_armageddon_pt";
+          }
+        ];
+        volume = 0.5;
+        enabled = true;
+        desktop_notifications = true;
+        categories = {
+          "session.start" = true;
+          "task.acknowledge" = false;
+          "task.complete" = true;
+          "task.error" = true;
+          "input.required" = true;
+          "resource.limit" = true;
+          "user.spam" = true;
+        };
+        annoyed_threshold = 3;
+        annoyed_window_seconds = 10;
+        session_start_cooldown_seconds = 30;
+      };
+    };
+
+    home.packages = [peon-ping peon-ping-waybar peon-ping-toggle focus-claude-session];
+
+    # `peon use/toggle/notifications` write config.json at runtime, so it must
+    # stay a seeded mutable file instead of the module's read-only store symlink.
+    home.file.".openpeon/config.json".enable = false;
     home.activation.seedPeonConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      peon_dir="$HOME/.claude/hooks/peon-ping"
-      if [ ! -f "$peon_dir/config.json" ]; then
-        mkdir -p "$peon_dir"
-        cp "${peon-ping-src}/config.json" "$peon_dir/config.json"
-        chmod 644 "$peon_dir/config.json"
+      if [ ! -f "$HOME/.openpeon/config.json" ]; then
+        install -m 644 ${configSeed} "$HOME/.openpeon/config.json"
       fi
     '';
 
-    programs.claude-code.settings.hooks = let
-      mkHook = event: {
-        ${event} = [
+    # The opencode adapter routes all events through peon.sh, but only probes
+    # ~/.claude/hooks/peon-ping/peon.sh — give it something to find there.
+    home.file.".claude/hooks/peon-ping/peon.sh".source = "${peon-ping}/bin/peon";
+    xdg.configFile."opencode/plugins/peon-ping.ts".source = "${peon-ping}/share/peon-ping/adapters/opencode/peon-ping.ts";
+
+    # Declarative equivalent of the upstream module's claudeCodeIntegration,
+    # which mutates ~/.claude/settings.json imperatively and would clash with
+    # the home-manager-managed settings file.
+    programs.claude-code = {
+      skills = lib.genAttrs [
+        "peon-ping-config"
+        "peon-ping-log"
+        "peon-ping-rename"
+        "peon-ping-toggle"
+        "peon-ping-use"
+      ] (name: "${peon-ping}/share/peon-ping/skills/${name}");
+
+      settings.hooks = lib.mkMerge ([
           {
-            matcher = "";
-            hooks = [
+            SessionStart = [
               {
-                type = "command";
-                command = "${peon}/bin/peon";
-                timeout = 10;
+                matcher = "";
+                hooks = [(builtins.removeAttrs peonHook ["async"])];
+              }
+            ];
+            UserPromptSubmit = [
+              {
+                matcher = "";
+                hooks = [peonHook];
+              }
+              {
+                matcher = "";
+                hooks = [
+                  {
+                    type = "command";
+                    command = "${peon-ping}/share/peon-ping/scripts/hook-handle-use.sh";
+                    timeout = 5;
+                  }
+                  {
+                    type = "command";
+                    command = "${peon-ping}/share/peon-ping/scripts/hook-handle-rename.sh";
+                    timeout = 5;
+                  }
+                ];
+              }
+            ];
+            PostToolUseFailure = [
+              {
+                matcher = "Bash";
+                hooks = [peonHook];
               }
             ];
           }
-        ];
-      };
-    in
-      lib.mkMerge (map mkHook [
-        "SessionStart"
-        "UserPromptSubmit"
-        "Stop"
-        "Notification"
-        "PermissionRequest"
-      ]);
+        ]
+        ++ map mkPeonEvent [
+          "SessionEnd"
+          "SubagentStart"
+          "Stop"
+          "Notification"
+          "PermissionRequest"
+          "PreCompact"
+        ]);
+    };
   };
 }

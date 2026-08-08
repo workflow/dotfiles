@@ -21,6 +21,10 @@
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
+    peon-ping = {
+      url = "github:PeonPing/peon-ping";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets = {
       url = "path:/home/farlion/code/nixos-secrets";
