@@ -40,7 +40,7 @@
 
     peonHook = {
       type = "command";
-      command = lib.getExe peon-ping;
+      command = "${peon-ping}/bin/peon";
       timeout = 10;
       async = true;
     };
