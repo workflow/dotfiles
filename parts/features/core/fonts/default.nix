@@ -55,12 +55,13 @@
         pkgs.font-awesome_6
         pkgs.font-awesome
         pkgs.noto-fonts-color-emoji # emoji font
+        pkgs.julia-mono # deep symbol coverage fallback (U+2B1D, U+23BF etc. used by TUI spinners)
       ];
       fontconfig = {
         defaultFonts = {
           sansSerif = ["DejaVu Sans"];
           serif = ["DejaVu Serif"];
-          monospace = ["FiraCode Nerd Font" "Fira Code"];
+          monospace = ["FiraCode Nerd Font" "Fira Code" "JuliaMono"];
         };
       };
     };
