@@ -38,6 +38,16 @@
 
     configSeed = (pkgs.formats.json {}).generate "peon-ping-config-seed" config.programs.peon-ping.settings;
 
+    # OpenCode fires several busy status events per prompt, which the upstream
+    # adapter each maps to UserPromptSubmit — tripping peon.sh's spam detection
+    # on normal use. Dedupe to actual idle->busy transitions.
+    opencodeAdapter = pkgs.runCommand "peon-ping-opencode-adapter.ts" {} ''
+      cp ${peon-ping}/share/peon-ping/adapters/opencode/peon-ping.ts .
+      chmod +w peon-ping.ts
+      patch peon-ping.ts ${./patches/opencode-busy-dedupe.patch}
+      cp peon-ping.ts $out
+    '';
+
     peonHook = {
       type = "command";
       command = "${peon-ping}/bin/peon";
@@ -120,7 +130,7 @@
     # The opencode adapter routes all events through peon.sh, but only probes
     # ~/.claude/hooks/peon-ping/peon.sh — give it something to find there.
     home.file.".claude/hooks/peon-ping/peon.sh".source = "${peon-ping}/bin/peon";
-    xdg.configFile."opencode/plugins/peon-ping.ts".source = "${peon-ping}/share/peon-ping/adapters/opencode/peon-ping.ts";
+    xdg.configFile."opencode/plugins/peon-ping.ts".source = opencodeAdapter;
 
     # Declarative equivalent of the upstream module's claudeCodeIntegration,
     # which mutates ~/.claude/settings.json imperatively and would clash with

@@ -1,0 +1,34 @@
+--- a/peon-ping.ts
++++ b/peon-ping.ts
+@@ -62,6 +62,7 @@
+   const cwd = directory || process.cwd()
+   const sessionId = `oc-${Date.now()}`
+   const subagentSessionIds = new Set<string>()
++  const busySessions = new Set<string>()
+ 
+   function firePeon(event: string): void {
+     const payload = JSON.stringify({
+@@ -121,6 +122,7 @@
+         case "session.idle": {
+           const sid = (event as any).properties?.sessionID
+           if (isSubagent(sid)) break
++          if (sid) busySessions.delete(sid)
+           setTabTitle(`\u25cf ${projectName}: done`)
+           firePeon("Stop")
+           break
+@@ -146,8 +148,15 @@
+           const status = event.properties?.status
+           const statusType = typeof status === "object" ? (status as any)?.type : status
+           if (statusType === "busy" || statusType === "running") {
++            // OpenCode emits several busy status events per prompt; only the
++            // idle->busy transition counts as a prompt, or spam detection
++            // misfires on the model's own status churn.
++            if (sid && busySessions.has(sid)) break
++            if (sid) busySessions.add(sid)
+             setTabTitle(`${projectName}: working`)
+             firePeon("UserPromptSubmit")
++          } else if (sid) {
++            busySessions.delete(sid)
+           }
+           break
+         }
