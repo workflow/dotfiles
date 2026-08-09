@@ -103,6 +103,7 @@
         model = "zai-coding-plan/glm-5.2";
         small_model = "zai-coding-plan/glm-5-turbo";
         disabled_providers = ["zai"];
+        permission.edit = "ask";
         permission.bash = {"*" = "ask";} // allowRules // askRules // denyRules;
         mcp.kagi = {
           type = "local";
