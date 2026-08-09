@@ -43,6 +43,7 @@
               "WebFetch(domain:github.com)"
               "WebSearch"
             ];
+          ask = map (pattern: "Bash(${pattern})") config.dendrix.agents.shellAsklist;
           deny =
             map (pattern: "Bash(${pattern})") config.dendrix.agents.shellDenylist
             ++ [

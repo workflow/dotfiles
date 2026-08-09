@@ -8,6 +8,11 @@
         default = [];
         description = "Shell command prefixes agents may run without prompting";
       };
+      shellAsklist = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [];
+        description = "Shell command glob patterns that always prompt, even when an allow rule matches";
+      };
       shellDenylist = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [];

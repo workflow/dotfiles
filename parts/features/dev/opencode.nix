@@ -17,6 +17,7 @@
         }
       ])
       config.dendrix.agents.shellAllowlist);
+    askRules = lib.genAttrs config.dendrix.agents.shellAsklist (_: "ask");
     denyRules = lib.genAttrs config.dendrix.agents.shellDenylist (_: "deny");
 
     # Stylix ships an opencode target that generates a "stylix" theme with
@@ -102,7 +103,7 @@
         model = "zai-coding-plan/glm-5.2";
         small_model = "zai-coding-plan/glm-5-turbo";
         disabled_providers = ["zai"];
-        permission.bash = {"*" = "ask";} // allowRules // denyRules;
+        permission.bash = {"*" = "ask";} // allowRules // askRules // denyRules;
         mcp.kagi = {
           type = "local";
           command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];
