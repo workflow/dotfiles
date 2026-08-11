@@ -86,6 +86,41 @@
           end
         '';
 
+      ## Wrap nh to work around a nixpkgs bug: the systemd-boot builder only
+      ## updates the loader.conf default entry when the activated toplevel is a
+      ## base generation, so switching while a specialisation is active leaves
+      ## an old generation preselected in the boot menu. Rerun the bootloader
+      ## install from the base profile after such switches.
+      nh =
+        /*
+        fish
+        */
+        ''
+          command nh $argv
+          set -l nh_status $status
+          if test $nh_status -eq 0; and __nh_switched_under_specialisation $argv
+              echo "nh wrapper: specialisation active, refreshing systemd-boot default entry"
+              sudo /nix/var/nix/profiles/system/bin/switch-to-configuration boot
+          end
+          return $nh_status
+        '';
+
+      __nh_switched_under_specialisation =
+        /*
+        fish
+        */
+        ''
+          test "$argv[1]" = os
+          and contains -- "$argv[2]" switch boot
+          and not contains -- --no-specialisation $argv
+          and not contains -- -S $argv
+          and begin
+              test -e /etc/specialisation
+              or contains -- --specialisation $argv
+              or contains -- -s $argv
+          end
+        '';
+
       kubectlgetall =
         /*
         fish
