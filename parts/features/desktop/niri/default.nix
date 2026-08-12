@@ -710,11 +710,11 @@
               "Mod+M".hotkey-overlay.title = "Maximize Column (full-width, keeps gaps)";
               "Mod+Ctrl+F".action = expand-column-to-available-width;
 
-              "Print".action.screenshot = [];
+              "Print".action.screenshot.show-pointer = false;
               "Print".hotkey-overlay.title = "Screenshot via Niri";
               "Mod+Print".action = spawn "satty-screenshot";
               "Mod+Print".hotkey-overlay.title = "Screenshot via Satty";
-              "Mod+Shift+Print".action.screenshot-screen = [];
+              "Mod+Shift+Print".action.screenshot-screen.show-pointer = false;
               "Mod+Shift+Print".hotkey-overlay.title = "Instant Screenshot";
 
               # Escape hatch for when a buggy app inhibits keyboard shortcuts.
