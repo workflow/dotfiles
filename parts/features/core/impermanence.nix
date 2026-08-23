@@ -101,7 +101,12 @@
         "/var/lib/udisks2"
         "/var/log"
       ];
-      files = ["/etc/machine-id"];
+      files = [
+        "/etc/machine-id"
+        # Host key for systemd encrypted credentials (systemd-creds); libvirt
+        # seals its secrets-encryption-key with it, so it must survive reboots
+        "/var/lib/systemd/credential.secret"
+      ];
     };
     # Workaround for /etc/ file timings not working with impermanence
     environment.etc = {
