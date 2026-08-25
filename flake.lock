@@ -919,7 +919,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-cXAsHk46N1F1e8GLgagHnMrGRLHYCZ6+EqLnlaPK/SM=",
+        "narHash": "sha256-fifaQaeHKEKOBicZXb3wGqZMJ8en3idyJUVi50R/zPY=",
         "path": "/home/farlion/code/nixos-secrets",
         "type": "path"
       },

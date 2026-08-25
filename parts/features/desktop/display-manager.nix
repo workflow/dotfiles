@@ -46,14 +46,22 @@
       ];
     };
 
+    # path = [] keeps NixOS's minimal default unit PATH out of the portal
+    # drop-ins: GDesktopAppInfo validates bare Exec= names (zoom, slack, ...)
+    # against PATH and silently drops unfindable handlers from OpenURI, which
+    # broke opening zoommtg:// links. With no Environment=PATH the portals
+    # inherit the full session PATH from the user manager.
     systemd.user.services.xdg-desktop-portal = {
       after = ["xdg-desktop-autostart.target"];
+      path = lib.mkForce [];
     };
     systemd.user.services.xdg-desktop-portal-gtk = {
       after = ["xdg-desktop-autostart.target"];
+      path = lib.mkForce [];
     };
     systemd.user.services.xdg-desktop-portal-gnome = {
       after = ["xdg-desktop-autostart.target"];
+      path = lib.mkForce [];
     };
     systemd.user.services.niri-flake-polkit = {
       after = ["xdg-desktop-autostart.target"];
