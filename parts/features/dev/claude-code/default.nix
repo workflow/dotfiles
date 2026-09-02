@@ -61,6 +61,8 @@
               "Read(./config/credentials.json)"
             ];
         };
+        # Don't auto-connect Remote Control; /rc stays available per session.
+        remoteControlAtStartup = false;
         alwaysThinkingEnabled = true;
         effortLevel = "high";
         model = "claude-fable-5";
