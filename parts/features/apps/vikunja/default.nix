@@ -11,7 +11,9 @@
     # v2.5.0 (https://github.com/go-vikunja/vikunja/issues/3275); drop once
     # nixpkgs ships >= 2.5.0.
     # fix-tray-icon-leak: every settings load recreated the Tray, leaking a
-    # ghost StatusNotifierItem per rebuild. Unfixed upstream as of v2.6.0.
+    # ghost StatusNotifierItem per rebuild (electron/electron#49517). Fixed
+    # upstream in v2.4.0 (commit e624c8a2); drop with the patch above once
+    # nixpkgs ships >= 2.5.0.
     vikunjaDesktop = pkgs.vikunja-desktop.overrideAttrs (old: {
       patches =
         (old.patches or [])
