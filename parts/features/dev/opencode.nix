@@ -95,7 +95,20 @@
 
     programs.opencode = {
       enable = true;
-      package = pkgs.unstable.opencode;
+      # SUDO_ASKPASS: agent shells have no TTY, so sudo fails its terminal
+      # check before PAM (pam_u2f yubikey touch) runs. An askpass helper makes
+      # sudo skip that check; the dummy helper is never consulted because
+      # pam_u2f needs no input, and it forecloses password fallback. opencode's
+      # settings have no env support, hence the wrapper.
+      package = pkgs.symlinkJoin {
+        name = "opencode-wrapped";
+        paths = [pkgs.unstable.opencode];
+        nativeBuildInputs = [pkgs.makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/opencode \
+            --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
+        '';
+      };
       # Override Stylix's broken light mapping; tui.theme = "stylix" is set by
       # the Stylix opencode target itself.
       themes.stylix.theme = lib.mkForce opencodeThemeColors;

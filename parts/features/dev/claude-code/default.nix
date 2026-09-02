@@ -61,6 +61,11 @@
               "Read(./config/credentials.json)"
             ];
         };
+        # The Bash tool has no TTY, so sudo fails its terminal check before PAM
+        # (pam_u2f yubikey touch) runs. With an askpass helper configured, sudo
+        # skips that check; the dummy helper is never consulted because pam_u2f
+        # needs no input, and it forecloses password fallback entirely.
+        env.SUDO_ASKPASS = lib.getExe' pkgs.coreutils "false";
         # Don't auto-connect Remote Control; /rc stays available per session.
         remoteControlAtStartup = false;
         alwaysThinkingEnabled = true;
