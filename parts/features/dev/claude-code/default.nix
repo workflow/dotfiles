@@ -43,7 +43,15 @@
               "WebFetch(domain:github.com)"
               "WebSearch"
             ];
-          ask = map (pattern: "Bash(${pattern})") config.dendrix.agents.shellAsklist;
+          ask =
+            map (pattern: "Bash(${pattern})") config.dendrix.agents.shellAsklist
+            # Keep manual approval for file edits even in auto mode (ask beats
+            # the auto-mode classifier).
+            ++ [
+              "Edit"
+              "Write"
+              "NotebookEdit"
+            ];
           deny =
             map (pattern: "Bash(${pattern})") config.dendrix.agents.shellDenylist
             ++ [
