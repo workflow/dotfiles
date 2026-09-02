@@ -5,12 +5,20 @@
     pkgs,
     ...
   }: let
-    # Without the patch, the hidden quick-entry window and the main window race
-    # to spend the same single-use OAuth refresh token at startup, logging the
-    # user out on every cold start.
-    # https://github.com/go-vikunja/vikunja/issues/3275
+    # defer-quick-entry-window: without it, the hidden quick-entry window and
+    # the main window race to spend the same single-use OAuth refresh token at
+    # startup, logging the user out on every cold start. Fixed upstream in
+    # v2.5.0 (https://github.com/go-vikunja/vikunja/issues/3275); drop once
+    # nixpkgs ships >= 2.5.0.
+    # fix-tray-icon-leak: every settings load recreated the Tray, leaking a
+    # ghost StatusNotifierItem per rebuild. Unfixed upstream as of v2.6.0.
     vikunjaDesktop = pkgs.vikunja-desktop.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [./_patches/defer-quick-entry-window.patch];
+      patches =
+        (old.patches or [])
+        ++ [
+          ./_patches/defer-quick-entry-window.patch
+          ./_patches/fix-tray-icon-leak.patch
+        ];
     });
 
     vikunjaDesktopAutostart = pkgs.writeShellApplication {

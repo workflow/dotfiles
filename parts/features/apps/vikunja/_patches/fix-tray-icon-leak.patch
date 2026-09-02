@@ -1,0 +1,63 @@
+Refresh the tray context menu in place instead of recreating the Tray.
+
+The frontend syncs the quick-entry shortcut to the main process every
+time settings load (auth store), and the handler responded by destroying
+and recreating the Tray. On Linux the StatusNotifierItem spec has no
+unregister call - hosts only drop items when the owning D-Bus connection
+dies - so every rebuild leaked a ghost tray icon (11+ icons after a day).
+
+--- a/main.js	2026-09-02 23:50:14.235657502 +0100
++++ b/main.js	2026-09-02 23:50:37.580085392 +0100
+@@ -331,15 +331,8 @@
+ }
+ 
+ // ─── System tray ─────────────────────────────────────────────────────
+-function setupTray() {
+-	if (tray) {
+-		tray.destroy()
+-	}
+-	const iconPath = path.join(__dirname, 'build', 'icon.png')
+-	const icon = nativeImage.createFromPath(iconPath).resize({width: 16, height: 16})
+-	tray = new Tray(icon)
+-
+-	const contextMenu = Menu.buildFromTemplate([
++function buildTrayMenu() {
++	return Menu.buildFromTemplate([
+ 		{
+ 			label: 'Show Vikunja',
+ 			click: () => {
+@@ -365,9 +358,18 @@
+ 			},
+ 		},
+ 	])
++}
++
++function setupTray() {
++	if (tray) {
++		tray.destroy()
++	}
++	const iconPath = path.join(__dirname, 'build', 'icon.png')
++	const icon = nativeImage.createFromPath(iconPath).resize({width: 16, height: 16})
++	tray = new Tray(icon)
+ 
+ 	tray.setToolTip('Vikunja')
+-	tray.setContextMenu(contextMenu)
++	tray.setContextMenu(buildTrayMenu())
+ 
+ 	tray.on('click', () => {
+ 		if (mainWindow) {
+@@ -428,9 +430,12 @@
+ 
+ ipcMain.on('desktop:update-quick-entry-shortcut', (_event, shortcut) => {
+ 	registerQuickEntryShortcut(shortcut)
+-	// Rebuild tray menu to reflect the new accelerator
++	// Refresh the tray menu in place to reflect the new accelerator.
++	// Recreating the Tray here leaks a StatusNotifierItem per call on Linux:
++	// the SNI spec has no unregister, so hosts only drop items when the app's
++	// D-Bus connection dies, and every rebuild left a ghost tray icon behind.
+ 	if (tray) {
+-		setupTray()
++		tray.setContextMenu(buildTrayMenu())
+ 	}
+ })
+ 
