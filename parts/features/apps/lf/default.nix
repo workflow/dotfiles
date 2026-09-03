@@ -8,7 +8,7 @@
     # Provides the ability to download a file by dropping it into a window
     dlfile = pkgs.writeShellApplication {
       name = "dlfile";
-      runtimeInputs = with pkgs; [curl ripdrag];
+      runtimeInputs = with pkgs; [coreutils curl ripdrag];
       text = builtins.readFile ./scripts/dlfile.sh;
     };
   in {
