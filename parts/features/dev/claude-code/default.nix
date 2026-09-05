@@ -61,6 +61,9 @@
               "Read(./config/credentials.json)"
             ];
         };
+        # Prose rules for the auto-mode permission classifier; "$defaults"
+        # keeps the built-in rules.
+        autoMode.soft_deny = ["$defaults"] ++ config.dendrix.agents.autoModeSoftDeny;
         # The Bash tool has no TTY, so sudo fails its terminal check before PAM
         # (pam_u2f yubikey touch) runs. With an askpass helper configured, sudo
         # skips that check; the dummy helper is never consulted because pam_u2f

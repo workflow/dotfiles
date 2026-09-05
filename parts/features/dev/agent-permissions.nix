@@ -18,6 +18,11 @@
         default = [];
         description = "Shell command glob patterns agents must never run";
       };
+      autoModeSoftDeny = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [];
+        description = "Natural-language rules Claude's auto-mode classifier must prompt on (autoMode.soft_deny)";
+      };
     };
   };
 }
