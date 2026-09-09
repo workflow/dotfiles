@@ -31,5 +31,17 @@
 
     xdg.configFile."herdr/config.toml".source =
       tomlFormat.generate "herdr-config.toml" settings;
+
+    # Pane shells inherit the server's environment. Without a service, the
+    # first `herdr` invocation spawns the server from whatever shell it runs
+    # in, leaking that project's devenv/direnv vars into every pane.
+    systemd.user.services.herdr-server = {
+      Unit.Description = "herdr agent multiplexer server";
+      Service = {
+        ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
+        Restart = "on-failure";
+      };
+      Install.WantedBy = ["default.target"];
+    };
   };
 }
