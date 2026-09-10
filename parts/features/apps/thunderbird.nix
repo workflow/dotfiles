@@ -42,6 +42,10 @@
             "calendar.alarms.showmissed" = false;
             "calendar.alarms.playsound" = false;
             "calendar.alarms.show" = false;
+            # Multi-GB mbox folders: compact unattended once 200 MB is
+            # reclaimable instead of prompting at the 20 MB default.
+            "mail.prompt_purge_threshhold" = false;
+            "mail.purge_threshhold_mb" = 200;
           };
         };
       };
