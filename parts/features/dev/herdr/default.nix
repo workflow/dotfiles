@@ -13,12 +13,20 @@
       runtimeInputs = [pkgs.python3];
       text = builtins.readFile ./scripts/herdr-agent-state.sh;
     };
+    claudeTabTitleHook = pkgs.writeShellApplication {
+      name = "herdr-tab-title";
+      runtimeInputs = [pkgs.unstable.herdr pkgs.jq];
+      text = builtins.readFile ./scripts/herdr-tab-title.sh;
+    };
     jjWorkspaceAction = key: action: description: {
       inherit key description;
       type = "plugin_action";
       command = "nathanflurry.jj-workspace.${action}";
     };
     settings = {
+      # Herdr can't write its "onboarding done" marker into the read-only
+      # store-managed config, so declare it done.
+      onboarding = false;
       # Self-updating is pointless under Nix; skip the background version check.
       update.version_check = false;
       keys.command = [
@@ -45,18 +53,40 @@
     # Installed at herdr's canonical path so `herdr integration status` sees it.
     home.file.${claudeHookPath}.source = lib.getExe claudeAgentStateHook;
 
-    programs.claude-code.settings.hooks.SessionStart = [
-      {
-        matcher = "*";
-        hooks = [
-          {
-            type = "command";
-            command = "'${claudeHookPath}' session";
-            timeout = 10;
-          }
-        ];
-      }
-    ];
+    programs.claude-code.settings.hooks = {
+      SessionStart = [
+        {
+          matcher = "*";
+          hooks = [
+            {
+              type = "command";
+              command = "'${claudeHookPath}' session";
+              timeout = 10;
+            }
+            {
+              type = "command";
+              command = lib.getExe claudeTabTitleHook;
+              async = true;
+              timeout = 10;
+            }
+          ];
+        }
+      ];
+      # Re-sync at each turn end so the label follows session renames.
+      Stop = [
+        {
+          matcher = "*";
+          hooks = [
+            {
+              type = "command";
+              command = lib.getExe claudeTabTitleHook;
+              async = true;
+              timeout = 10;
+            }
+          ];
+        }
+      ];
+    };
 
     # Pane shells inherit the server's environment. Without a service, the
     # first `herdr` invocation spawns the server from whatever shell it runs
