@@ -65,6 +65,11 @@
       Unit.Description = "herdr agent multiplexer server";
       Service = {
         ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
+        # Native detection reads the pty's foreground process group, which the
+        # devenv hook's nested shell session hides agents from; child-groups
+        # walks pane child processes instead. Revisit on herdr >= 0.9, where
+        # the claude integration may make this fallback unnecessary.
+        Environment = ["HERDR_PROCESS_DETECTION=child-groups"];
         Restart = "on-failure";
       };
       Install.WantedBy = ["default.target"];
