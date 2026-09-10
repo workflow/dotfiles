@@ -63,6 +63,10 @@
     # in, leaking that project's devenv/direnv vars into every pane.
     systemd.user.services.herdr-server = {
       Unit.Description = "herdr agent multiplexer server";
+      # A changed unit is restarted during `nh os switch`, killing every pane
+      # and the agents in them. Keep the old server running; restart manually
+      # (systemctl --user restart herdr-server) when no sessions are at risk.
+      Unit.X-SwitchMethod = "keep-old";
       Service = {
         ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
         # Native detection reads the pty's foreground process group, which the
