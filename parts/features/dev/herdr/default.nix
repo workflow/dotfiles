@@ -3,9 +3,16 @@
     osConfig,
     lib,
     pkgs,
+    config,
     ...
   }: let
     tomlFormat = pkgs.formats.toml {};
+    claudeHookPath = "${config.home.homeDirectory}/.claude/hooks/herdr-agent-state.sh";
+    claudeAgentStateHook = pkgs.writeShellApplication {
+      name = "herdr-agent-state";
+      runtimeInputs = [pkgs.python3];
+      text = builtins.readFile ./scripts/herdr-agent-state.sh;
+    };
     jjWorkspaceAction = key: action: description: {
       inherit key description;
       type = "plugin_action";
@@ -31,6 +38,25 @@
 
     xdg.configFile."herdr/config.toml".source =
       tomlFormat.generate "herdr-config.toml" settings;
+
+    # herdr's claude integration: a SessionStart hook reports the session →
+    # pane mapping over the herdr socket, so agents are recognized even when
+    # devenv nests them away from the pane's foreground process group.
+    # Installed at herdr's canonical path so `herdr integration status` sees it.
+    home.file.${claudeHookPath}.source = lib.getExe claudeAgentStateHook;
+
+    programs.claude-code.settings.hooks.SessionStart = [
+      {
+        matcher = "*";
+        hooks = [
+          {
+            type = "command";
+            command = "'${claudeHookPath}' session";
+            timeout = 10;
+          }
+        ];
+      }
+    ];
 
     # Pane shells inherit the server's environment. Without a service, the
     # first `herdr` invocation spawns the server from whatever shell it runs
