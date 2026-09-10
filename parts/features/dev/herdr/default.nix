@@ -29,6 +29,8 @@
       onboarding = false;
       # Self-updating is pointless under Nix; skip the background version check.
       update.version_check = false;
+      # peon-ping owns audio notifications; herdr's agent-state sounds double up.
+      ui.sound.enabled = false;
       keys.command = [
         (jjWorkspaceAction "prefix+a" "new-tab" "new jj workspace tab")
         (jjWorkspaceAction "prefix+shift+a" "new" "new jj workspace")
