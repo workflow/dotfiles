@@ -31,11 +31,25 @@
       update.version_check = false;
       # peon-ping owns audio notifications; herdr's agent-state sounds double up.
       ui.sound.enabled = false;
-      keys.command = [
-        (jjWorkspaceAction "prefix+a" "new-tab" "new jj workspace tab")
-        (jjWorkspaceAction "prefix+shift+a" "new" "new jj workspace")
-        (jjWorkspaceAction "prefix+d" "remove" "remove jj workspace")
-      ];
+      keys = {
+        prefix = "ctrl+space";
+        # Direct chords for frequent motions; directions follow the jkl;
+        # home-row remap (j=left k=down l=up ;=right).
+        focus_pane_left = "alt+j";
+        focus_pane_down = "alt+k";
+        focus_pane_up = "alt+l";
+        focus_pane_right = "alt+semicolon";
+        next_workspace = "alt+n";
+        previous_workspace = "alt+p";
+        next_agent = "alt+a";
+        previous_agent = "alt+shift+a";
+        switch_tab = "alt+1..9";
+        command = [
+          (jjWorkspaceAction "prefix+a" "new-tab" "new jj workspace tab")
+          (jjWorkspaceAction "prefix+shift+a" "new" "new jj workspace")
+          (jjWorkspaceAction "prefix+d" "remove" "remove jj workspace")
+        ];
+      };
     };
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
