@@ -27,7 +27,7 @@
         revsets.bookmark-advance-to = "@-";
         ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
         user = {
-          email = "4farlion@gmail.com";
+          email = "w0rkflow@pm.me";
           name = "workflow";
         };
         signing = {

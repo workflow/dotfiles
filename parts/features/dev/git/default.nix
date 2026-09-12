@@ -81,7 +81,7 @@
         };
         # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/javascript.section.md#git-protocol-error
         url."https://github.com".insteadOf = "git://github.com";
-        user.email = "4farlion@gmail.com";
+        user.email = "w0rkflow@pm.me";
         user.name = "workflow";
       };
 
