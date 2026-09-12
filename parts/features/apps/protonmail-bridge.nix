@@ -10,13 +10,20 @@
   # desktops (see ssh/default.nix), so no `pass` setup is needed.
   #
   # The account itself (accounts.email) is declared elsewhere. One-time
-  # activation after the first switch, in one `protonmail-bridge --cli` session:
-  #   login                        # password + 2FA
-  #   all-mail-visibility hide     # All Mail duplicates every label folder;
-  #                                # hide it BEFORE Thunderbird's first sync
-  #   info                         # → bridge password
-  #   exit
-  #   systemctl --user restart protonmail-bridge
+  # activation after the first switch. STOP THE SERVICE FIRST: the CLI is a
+  # second Bridge instance, its lock check does not notice the service, and
+  # when it finds 1143/1025 busy it moves to 1144/1026 and persists that in
+  # the shared vault — the service then comes back on the wrong ports.
+  #   systemctl --user stop protonmail-bridge
+  #   protonmail-bridge --cli
+  #     login                        # password + 2FA
+  #     all-mail-visibility hide     # All Mail duplicates every label folder;
+  #                                  # hide it BEFORE Thunderbird's first sync
+  #     updates autoupdates disable  # the store binary can't self-update;
+  #                                  # otherwise it keeps downloading tarballs
+  #     info                         # → bridge password
+  #     exit
+  #   systemctl --user start protonmail-bridge
   # then enter the bridge password when Thunderbird first connects.
   flake.modules.homeManager.protonmail-bridge = {
     lib,
