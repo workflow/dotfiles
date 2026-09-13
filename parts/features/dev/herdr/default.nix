@@ -113,6 +113,11 @@
       # and the agents in them. Keep the old server running; restart manually
       # (systemctl --user restart herdr-server) when no sessions are at risk.
       Unit.X-SwitchMethod = "keep-old";
+      # Start only once niri has imported WAYLAND_DISPLAY into the user
+      # manager; at default.target the env snapshot lacks it, breaking
+      # clipboard access (e.g. claude image paste) in every pane.
+      Unit.After = ["graphical-session.target"];
+      Unit.Requisite = ["graphical-session.target"];
       Service = {
         ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
         # Native detection reads the pty's foreground process group, which the
@@ -122,7 +127,7 @@
         Environment = ["HERDR_PROCESS_DETECTION=child-groups"];
         Restart = "on-failure";
       };
-      Install.WantedBy = ["default.target"];
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }
