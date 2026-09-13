@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{...}: {
   flake.modules.homeManager.home-cleanup-todo = {
     config,
     lib,
@@ -65,7 +65,6 @@
       pdftk # PDF Manipulation Toolkit
       pstree # Show the set of running processes as a tree
       q-text-as-data # https://github.com/harelba/q
-      inputs.rmob.defaultPackage.x86_64-linux
       screenkey # Screencast tool to display your keys inspired by Screenflick
       smartmontools # Tools for monitoring the health of hard drives
       s-tui # Processor monitor/stress test

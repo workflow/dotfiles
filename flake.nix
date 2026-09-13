@@ -25,7 +25,6 @@
       url = "github:PeonPing/peon-ping";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rmob.url = "https://flakehub.com/f/workflow/rmob/*.tar.gz";
     secrets = {
       url = "path:/home/farlion/code/nixos-secrets";
       inputs.nixpkgs.follows = "nixpkgs";
