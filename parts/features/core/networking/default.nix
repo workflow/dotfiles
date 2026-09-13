@@ -74,7 +74,11 @@
     systemd.network.wait-online.anyInterface = true;
   };
 
-  flake.modules.homeManager.networking = {lib, osConfig, ...}: {
+  flake.modules.homeManager.networking = {
+    lib,
+    osConfig,
+    ...
+  }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".config/tailscale" # Tailscale known hosts
