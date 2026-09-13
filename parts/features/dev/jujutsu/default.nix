@@ -26,6 +26,8 @@
         remotes.origin.auto-track-bookmarks = "main";
         revsets.bookmark-advance-to = "@-";
         ui.diff-formatter = ["difft" "--color=always" "$left" "$right"];
+        # DCO sign-off on every commit; agents are told not to add it themselves.
+        templates.commit_trailers = "format_signed_off_by_trailer(self)";
         user = {
           email = "w0rkflow@pm.me";
           name = "workflow";

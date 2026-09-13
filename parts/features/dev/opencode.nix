@@ -109,6 +109,7 @@
             --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
         '';
       };
+      context = ./AGENTS.md;
       # Override Stylix's broken light mapping; tui.theme = "stylix" is set by
       # the Stylix opencode target itself.
       themes.stylix.theme = lib.mkForce opencodeThemeColors;

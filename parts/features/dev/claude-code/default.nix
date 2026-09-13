@@ -30,7 +30,7 @@
         '';
       };
 
-      context = ./CLAUDE.md;
+      context = ../AGENTS.md;
 
       skills.pr-review = ./skills/pr-review;
 
