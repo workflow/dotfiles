@@ -63,6 +63,7 @@
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
         obs-noise
+        obs-plugin-countdown
         pixel-art
         obs-recursion-effect
         obs-retro-effects
