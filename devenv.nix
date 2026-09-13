@@ -6,6 +6,8 @@
   packages = [
     pkgs.alejandra
     pkgs.git
+    pkgs.python3
+    pkgs.python3Packages.pytest
     pkgs.shellcheck
   ];
 
