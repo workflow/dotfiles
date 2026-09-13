@@ -18,6 +18,12 @@
       runtimeInputs = [pkgs.unstable.herdr pkgs.jq];
       text = builtins.readFile ./scripts/herdr-tab-title.sh;
     };
+    codexHookPath = "${config.home.homeDirectory}/.codex/herdr-agent-state.sh";
+    codexAgentStateHook = pkgs.writeShellApplication {
+      name = "herdr-codex-agent-state";
+      runtimeInputs = [pkgs.python3];
+      text = builtins.readFile ./scripts/herdr-codex-agent-state.sh;
+    };
     jjWorkspaceAction = key: action: description: {
       inherit key description;
       type = "plugin_action";
@@ -103,6 +109,21 @@
         }
       ];
     };
+
+    home.file.${codexHookPath}.source = lib.getExe codexAgentStateHook;
+
+    dendrix.codex.settings.hooks.SessionStart = [
+      {
+        matcher = "";
+        hooks = [
+          {
+            type = "command";
+            command = "'${codexHookPath}' session";
+            timeout = 10;
+          }
+        ];
+      }
+    ];
 
     # Pane shells inherit the server's environment. Without a service, the
     # first `herdr` invocation spawns the server from whatever shell it runs

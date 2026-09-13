@@ -6,8 +6,8 @@
     pkgs,
     ...
   }: let
-    # Claude Code and opencode fire hooks outside a login shell, so bake the
-    # Linux audio/notification tools into the upstream package's PATH.
+    # Claude Code, opencode and Codex fire hooks outside a login shell, so bake
+    # the Linux audio/notification tools into the upstream package's PATH.
     peon-ping = pkgs.symlinkJoin {
       name = "peon-ping-wrapped";
       paths = [inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default];
@@ -36,7 +36,22 @@
       text = builtins.readFile ./scripts/focus-claude-session.sh;
     };
 
+    peon-ping-codex = pkgs.writeShellApplication {
+      name = "peon-ping-codex";
+      runtimeInputs = [pkgs.bash pkgs.python3];
+      runtimeEnv.PEON_CODEX_ADAPTER = "${peon-ping}/share/peon-ping/adapters/codex.sh";
+      text = builtins.readFile ./scripts/peon-ping-codex.sh;
+    };
+
     configSeed = (pkgs.formats.json {}).generate "peon-ping-config-seed" config.programs.peon-ping.settings;
+
+    peonSkills = lib.genAttrs [
+      "peon-ping-config"
+      "peon-ping-log"
+      "peon-ping-rename"
+      "peon-ping-toggle"
+      "peon-ping-use"
+    ] (name: "${peon-ping}/share/peon-ping/skills/${name}");
 
     peonHook = {
       type = "command";
@@ -44,14 +59,27 @@
       timeout = 10;
       async = true;
     };
-    mkPeonEvent = event: {
+    codexPeonHook = peonHook // {command = lib.getExe peon-ping-codex;};
+    mkPeonEvent = hook: event: {
       ${event} = [
         {
           matcher = "";
-          hooks = [peonHook];
+          hooks = [hook];
         }
       ];
     };
+    promptCommandHooks = [
+      {
+        type = "command";
+        command = "${peon-ping}/share/peon-ping/scripts/hook-handle-use.sh";
+        timeout = 5;
+      }
+      {
+        type = "command";
+        command = "${peon-ping}/share/peon-ping/scripts/hook-handle-rename.sh";
+        timeout = 5;
+      }
+    ];
   in {
     imports = [inputs.peon-ping.homeManagerModules.default];
 
@@ -126,13 +154,7 @@
     # which mutates ~/.claude/settings.json imperatively and would clash with
     # the home-manager-managed settings file.
     programs.claude-code = {
-      skills = lib.genAttrs [
-        "peon-ping-config"
-        "peon-ping-log"
-        "peon-ping-rename"
-        "peon-ping-toggle"
-        "peon-ping-use"
-      ] (name: "${peon-ping}/share/peon-ping/skills/${name}");
+      skills = peonSkills;
 
       settings.hooks = lib.mkMerge ([
           {
@@ -149,18 +171,7 @@
               }
               {
                 matcher = "";
-                hooks = [
-                  {
-                    type = "command";
-                    command = "${peon-ping}/share/peon-ping/scripts/hook-handle-use.sh";
-                    timeout = 5;
-                  }
-                  {
-                    type = "command";
-                    command = "${peon-ping}/share/peon-ping/scripts/hook-handle-rename.sh";
-                    timeout = 5;
-                  }
-                ];
+                hooks = promptCommandHooks;
               }
             ];
             PostToolUseFailure = [
@@ -171,11 +182,45 @@
             ];
           }
         ]
-        ++ map mkPeonEvent [
+        ++ map (mkPeonEvent peonHook) [
           "SessionEnd"
           "SubagentStart"
           "Stop"
           "Notification"
+          "PermissionRequest"
+          "PreCompact"
+        ]);
+    };
+
+    # Same event set upstream's install.sh registers for Codex; SessionEnd is
+    # left out because Codex caps it at 3s and runs it synchronously.
+    dendrix.codex = {
+      skills = peonSkills;
+
+      settings.hooks = lib.mkMerge ([
+          {
+            SessionStart = [
+              {
+                matcher = "startup|resume|clear";
+                hooks = [(builtins.removeAttrs codexPeonHook ["async"])];
+              }
+            ];
+            UserPromptSubmit = [
+              {
+                matcher = "";
+                hooks = [codexPeonHook];
+              }
+              {
+                matcher = "";
+                hooks = promptCommandHooks;
+              }
+            ];
+          }
+        ]
+        ++ map (mkPeonEvent codexPeonHook) [
+          "SubagentStart"
+          "SubagentStop"
+          "Stop"
           "PermissionRequest"
           "PreCompact"
         ]);

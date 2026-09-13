@@ -1,5 +1,5 @@
 {...}: {
-  # Shared shell permission lists for coding agents (claude-code, opencode).
+  # Shared shell permission lists for coding agents (claude-code, opencode, codex).
   # Values are set in the secrets flake; empty defaults keep CI evaluable.
   flake.modules.homeManager.agent-permissions = {lib, ...}: {
     options.dendrix.agents = {

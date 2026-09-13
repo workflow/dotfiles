@@ -73,8 +73,7 @@
       };
     };
 
-    claudeSkills = ["plannotator-review" "plannotator-annotate" "plannotator-last"];
-    opencodeCommands = ["plannotator-review" "plannotator-annotate" "plannotator-last"];
+    skillNames = ["plannotator-review" "plannotator-annotate" "plannotator-last"];
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
@@ -87,12 +86,30 @@
 
     programs.claude-code = {
       plugins = ["${src}/apps/hook"];
-      skills = lib.genAttrs claudeSkills (name: "${src}/apps/skills/claude/${name}");
+      skills = lib.genAttrs skillNames (name: "${src}/apps/skills/claude/${name}");
     };
 
     programs.opencode = {
       settings.plugin = ["@plannotator/opencode@${version}"];
-      commands = lib.genAttrs opencodeCommands (name: builtins.readFile "${src}/apps/opencode-plugin/commands/${name}.md");
+      commands = lib.genAttrs skillNames (name: builtins.readFile "${src}/apps/opencode-plugin/commands/${name}.md");
+    };
+
+    dendrix.codex = {
+      skills = lib.genAttrs skillNames (name: "${src}/apps/skills/core/${name}");
+      # Codex has no ExitPlanMode to intercept; upstream reviews plans from the
+      # Stop hook instead, with the same timeout as the Claude plugin's hook.
+      settings.hooks.Stop = [
+        {
+          matcher = "";
+          hooks = [
+            {
+              type = "command";
+              command = lib.getExe plannotator;
+              timeout = 345600;
+            }
+          ];
+        }
+      ];
     };
   };
 }
