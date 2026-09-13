@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencode-session-sync"
+version = "0.1.0"
+description = "Sync opencode sessions between machines as per-session JSON shards"
+requires-python = ">=3.11"
+
+[project.scripts]
+opencode-session-sync = "opencode_session_sync:main"
+
+[tool.setuptools]
+py-modules = ["opencode_session_sync"]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
