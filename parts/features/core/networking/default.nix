@@ -57,10 +57,9 @@
     networking.networkmanager.enable = true;
     users.users.farlion.extraGroups = ["networkmanager"];
 
-    # IPv6
-    # TODO: Temporarily enabled to allow buggy Hoppscotch to work
-    #networking.enableIPv6 = false;
-    #boot.kernelParams = ["ipv6.disable=1"];
+    # One stack only for simplicity
+    networking.enableIPv6 = false;
+    boot.kernelParams = ["ipv6.disable=1"];
 
     # Disabling DHCPCD in favor of NetworkManager
     networking.dhcpcd.enable = false;
