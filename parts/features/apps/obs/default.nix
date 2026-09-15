@@ -71,6 +71,14 @@
       ];
     };
 
+    # obs-backgroundremoval polls GitHub for a newer release synchronously in
+    # obs_module_load; any network stall there delays the OBS window. nixpkgs
+    # owns the plugin version, so the check is noise anyway.
+    xdg.configFile."obs-studio/plugin_config/obs-backgroundremoval/config.ini".text = ''
+      [config]
+      check_for_updates=false
+    '';
+
     xdg.desktopEntries = lib.mkIf isFlexbox {
       obs = {
         name = "OBS Studio (NVIDIA GPU)";
