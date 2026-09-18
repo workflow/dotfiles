@@ -13,11 +13,21 @@
       runtimeInputs = [pkgs.python3];
       text = builtins.readFile ./scripts/herdr-agent-state.sh;
     };
-    claudeTabTitleHook = pkgs.writeShellApplication {
+    tabTitleHook = pkgs.writeShellApplication {
       name = "herdr-tab-title";
       runtimeInputs = [pkgs.unstable.herdr pkgs.jq];
       text = builtins.readFile ./scripts/herdr-tab-title.sh;
     };
+    opencodeTabTitlePlugin =
+      pkgs.runCommand "herdr-tab-title.ts" {
+        nativeBuildInputs = [pkgs.bun];
+        src = ./plugins;
+      } ''
+        cp -r "$src" plugins && chmod -R u+w plugins && cd plugins
+        HOME=$TMPDIR bun test
+        substituteInPlace herdr-tab-title.ts --replace-fail @herdrTabTitle@ ${lib.getExe tabTitleHook}
+        cp herdr-tab-title.ts "$out"
+      '';
     codexHookPath = "${config.home.homeDirectory}/.codex/herdr-agent-state.sh";
     codexAgentStateHook = pkgs.writeShellApplication {
       name = "herdr-codex-agent-state";
@@ -87,7 +97,7 @@
             }
             {
               type = "command";
-              command = lib.getExe claudeTabTitleHook;
+              command = lib.getExe tabTitleHook;
               async = true;
               timeout = 10;
             }
@@ -101,7 +111,7 @@
           hooks = [
             {
               type = "command";
-              command = lib.getExe claudeTabTitleHook;
+              command = lib.getExe tabTitleHook;
               async = true;
               timeout = 10;
             }
@@ -109,6 +119,8 @@
         }
       ];
     };
+
+    xdg.configFile."opencode/plugins/herdr-tab-title.ts".source = opencodeTabTitlePlugin;
 
     home.file.${codexHookPath}.source = lib.getExe codexAgentStateHook;
 
