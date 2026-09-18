@@ -122,6 +122,25 @@
 
     xdg.configFile."opencode/plugins/herdr-tab-title.ts".source = opencodeTabTitlePlugin;
 
+    # herdr's opencode integration, vendored verbatim from
+    # `herdr integration install opencode` (herdr 0.9.0, integration v11).
+    # Unlike the claude hook it is the lifecycle authority: the server plugin
+    # reports idle/working/blocked from opencode events instead of herdr
+    # scraping the screen, and the TUI plugin reports the selected root session
+    # so panes resume with `opencode --session <id>` after a server restart.
+    # herdr registers the TUI plugin in tui.jsonc; opencode merges it with the
+    # home-manager (Stylix) tui.json, and `herdr integration status` looks for
+    # exactly this file.
+    xdg.configFile = {
+      "opencode/plugins/herdr-agent-state.js".source = ./integrations/opencode/herdr-agent-state.js;
+      "opencode/herdr-tui-session.js".source = ./integrations/opencode/herdr-tui-session.js;
+      "opencode/tui.jsonc".text = ''
+        {
+          "plugin": ["./herdr-tui-session.js"]
+        }
+      '';
+    };
+
     home.file.${codexHookPath}.source = lib.getExe codexAgentStateHook;
 
     dendrix.codex.settings.hooks.SessionStart = [
