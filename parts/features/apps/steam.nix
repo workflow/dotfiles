@@ -1,6 +1,13 @@
 {...}: {
-  flake.modules.nixos.steam = {...}: {
+  flake.modules.nixos.steam = {pkgs, ...}: {
     programs.steam.enable = true;
+
+    # Proton games run under Xwayland, which xwayland-satellite exposes at
+    # physical pixel size on fractionally scaled outputs. Wrapping a game in
+    # gamescope (a native Wayland client) restores correct pointer mapping:
+    #   gamescope -W 3840 -H 2160 -f -- %command%
+    programs.steam.extraPackages = [pkgs.gamescope];
+    programs.gamescope.enable = true;
 
     # Steam pulls in 32-bit graphics → 32-bit numpy → 32-bit openblas, and
     # cache.nixos.org doesn't ship an i686 openblas binary for nixos-26.05.
