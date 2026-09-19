@@ -76,6 +76,8 @@
 
     home.packages = [pkgs.unstable.herdr];
 
+    programs.fish.interactiveShellInit = builtins.readFile ./scripts/herdr-cwd-osc7.fish;
+
     xdg.configFile."herdr/config.toml".source =
       tomlFormat.generate "herdr-config.toml" settings;
 
@@ -177,6 +179,11 @@
         # walks pane child processes instead. Revisit on herdr >= 0.9, where
         # the claude integration may make this fallback unnecessary.
         Environment = ["HERDR_PROCESS_DETECTION=child-groups"];
+        # The default control-group kill SIGTERMs the pane shells together with
+        # the server, so the shutdown snapshot can no longer read their cwd and
+        # restores every pane in its spawn directory (herdrdev/herdr#3256).
+        # Signal only the server; leftovers are SIGKILLed once it has exited.
+        KillMode = "mixed";
         Restart = "on-failure";
       };
       Install.WantedBy = ["graphical-session.target"];
