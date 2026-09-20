@@ -6,19 +6,42 @@
     pkgs,
     ...
   }: let
-    allowRules = lib.listToAttrs (lib.concatMap (prefix: [
-        {
-          name = prefix;
-          value = "allow";
-        }
-        {
-          name = "${prefix} *";
-          value = "allow";
-        }
-      ])
-      config.dendrix.agents.shellAllowlist);
-    askRules = lib.genAttrs config.dendrix.agents.shellAsklist (_: "ask");
-    denyRules = lib.genAttrs config.dendrix.agents.shellDenylist (_: "deny");
+    agents = config.dendrix.agents;
+    rules = action: patterns: lib.genAttrs patterns (_: action);
+
+    # Mirrors claude-code auto mode: unlisted commands run, the soft-deny globs
+    # stand in for its classifier (prompt unless an allow rule matches), ask
+    # rules beat allow rules and deny rules beat everything.
+    #
+    # opencode resolves rules last-match-wins in key order, and Nix serialises
+    # attrsets sorted, so precedence can't come from listing order. Permission
+    # keys are wildcard-matched too, so each tier gets its own key: "bash*",
+    # "bash**", ... all match the bash permission and sort after "bash".
+    bashTiers = {
+      "bash" = softDenyTier agents.shellSoftDenylist;
+      "bash*" = allowRules;
+      "bash**" = rules "ask" agents.shellAsklist // redirectRules;
+      "bash***" = rules "deny" agents.shellDenylist;
+    };
+
+    # The catch-all has to sort before every pattern sharing its tier.
+    softDenyTier = patterns:
+      assert lib.all (pattern: pattern > "*") patterns; {"*" = "allow";} // rules "ask" patterns;
+
+    # A trailing " *" is optional in opencode's wildcard, so one pattern per
+    # prefix also covers the bare command.
+    allowRules = rules "allow" (map (prefix: "${prefix} *") agents.shellAllowlist);
+
+    # claude-code checks redirect targets against its Edit rules even for
+    # allowed commands; opencode has no such check, so redirects and heredocs
+    # prompt like edits do. "*> *" leaves `2>&1` and `>/dev/null` alone.
+    redirectRules = rules "ask" ["*> *" "*>>*" "*<<*"];
+
+    # The claude-code Read deny rules; opencode matches worktree-relative
+    # paths, so the leading "*" also covers "../".
+    readRules =
+      rules "deny" ["*.env" "*.env.*" "*secrets/secrets.json" "*config/credentials.json"]
+      // {"*.env.example" = "allow";};
 
     # Stylix ships an opencode target that generates a "stylix" theme with
     # per-key {dark, light} values and selects it. opencode chooses dark vs
@@ -115,8 +138,15 @@
       themes.stylix.theme = lib.mkForce opencodeThemeColors;
       settings = {
         disabled_providers = ["zai"];
-        permission.edit = "ask";
-        permission.bash = {"*" = "ask";} // allowRules // askRules // denyRules;
+        permission =
+          {
+            edit = "ask";
+            read = readRules;
+            # claude-code auto mode never prompts merely because a path lies
+            # outside the working directory; edits there still ask.
+            external_directory = "allow";
+          }
+          // bashTiers;
         mcp.kagi = {
           type = "local";
           command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];

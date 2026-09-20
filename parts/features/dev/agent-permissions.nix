@@ -23,6 +23,11 @@
         default = [];
         description = "Natural-language rules Claude's auto-mode classifier must prompt on (autoMode.soft_deny)";
       };
+      shellSoftDenylist = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [];
+        description = "Shell command glob patterns standing in for the auto-mode classifier in agents without one: they prompt unless an allow rule matches";
+      };
     };
   };
 }
