@@ -15,8 +15,6 @@
       Unit = {
         After = ["niri.service" "graphical-session.target"];
         Wants = ["graphical-session.target"];
-        # Relax environment conditions in case defaults are too strict for Niri
-        ConditionEnvironment = lib.mkForce [];
       };
       Service = {
         # Small delay to ensure Wayland environment and tray are ready
