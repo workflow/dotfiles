@@ -650,10 +650,6 @@
     systemd.user.services.waybar = {
       # Give on-click commands access to binaries they need
       Service.Environment = lib.mkForce "PATH=/run/wrappers/bin:${config.home.profileDirectory}/bin:/run/current-system/sw/bin";
-      # Fix for niri startup
-      Install.WantedBy = lib.mkForce ["niri.service"];
-      Unit.Requires = ["niri.service"];
-      Unit.After = ["niri.service"];
     };
   };
 }
