@@ -73,7 +73,7 @@
         remoteControlAtStartup = false;
         alwaysThinkingEnabled = true;
         effortLevel = "high";
-        model = "claude-fable-5-1";
+        model = "claude-opus-5-5";
         extraKnownMarketplaces = {
           openai-codex = {
             source = {
