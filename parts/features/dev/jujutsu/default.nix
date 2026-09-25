@@ -37,6 +37,9 @@
           key = "24575DB93F6CEC16";
           behavior = "own"; # sign commits you authored on modify
         };
+        # Sandboxed agents can't reach gpg-agent and commit unsigned; their
+        # commits get signed here instead.
+        git.sign-on-push = true;
         aliases = {
           bt = ["bookmark" "track"];
           c = ["commit"];
