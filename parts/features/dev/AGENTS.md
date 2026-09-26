@@ -10,4 +10,5 @@
 - When offering to open a pull/merge request on any forge (GitHub, GitLab, Codeberg, ...), do not include a "Generated with ..." AI-attribution line, nor a `## Test Plan` section unless the Test Plan is core to this specific PR. End the description with the same `Assisted-by:` and `Signed-off-by:` trailers if any commit in the PR carries them.
 - You can run most shell commands that aren't in the path with `, <cmd`, or ask an operator to install them
 - Commands that need `root` can be run via `sudo` after approval (interactive yubikey authorization)
+- Inside a nono sandbox (`NONO_*` env vars set, or "no new privileges" errors) there is no sudo, no SSH and only allowlisted network: ask the user to run such steps instead of working around the sandbox.
 - Always use the Edit/Write tools to create or modify files, even in auto mode. Never use shell commands (`sed -i`, `tee`, heredocs, redirects, `python -c`, ...) to write files: the file tools prompt for approval and shell edits bypass that prompt.
