@@ -36,6 +36,7 @@
 
       settings = {
         permissions = {
+          defaultMode = "auto";
           allow =
             map (prefix: "Bash(${prefix}:*)") config.dendrix.agents.shellAllowlist
             ++ [
