@@ -11,8 +11,21 @@
     # Chromium 146+ enables hardware decode by default, so we also need --disable-accelerated-video-decode.
     brave =
       if isNvidia
-      then pkgs.brave.override {enableVideoAcceleration = false;}
-      else pkgs.brave;
+      then
+        pkgs.brave.override {
+          enableVideoAcceleration = false;
+          commandLineArgs = "--enable-features=${pipeWireCameraFeature}";
+        }
+      else withPipeWireCamera pkgs.brave;
+    # Chromium's direct V4L2 path skips devices that also advertise output caps,
+    # which hides the exclusive_caps=0 OBS Cam (see video.nix); PipeWire lists it.
+    pipeWireCameraFeature = "WebRtcPipeWireCamera";
+    # Chromium honours only the last --enable-features, so splice into the wrapper's list.
+    withPipeWireCamera = pkg:
+      pkg.overrideAttrs (old: let
+        preFixup = builtins.replaceStrings ["--enable-features="] ["--enable-features=${pipeWireCameraFeature},"] old.preFixup;
+      in
+        assert preFixup != old.preFixup; {inherit preFixup;});
     # Try to focus an existing Brave window on link open so the workspace comes to the foreground
     braveNiriOpen = pkgs.writeShellApplication {
       name = "brave-niri-open";
