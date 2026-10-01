@@ -38,6 +38,9 @@
           "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
           "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
           "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
+          # gnome's AccessDialog forwards to org.gnome.Shell, absent under niri,
+          # so camera portal requests (e.g. Brave) fail without ever prompting.
+          "org.freedesktop.impl.portal.Access" = ["gtk"];
         };
       };
       extraPortals = [
