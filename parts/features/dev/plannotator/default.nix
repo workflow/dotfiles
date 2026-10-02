@@ -13,23 +13,23 @@
     pkgs,
     ...
   }: let
-    version = "0.27.12";
+    version = "0.27.24";
 
     src = pkgs.fetchFromGitHub {
       owner = "backnotprop";
       repo = "plannotator";
       tag = "v${version}";
-      hash = "sha256-Z3k/YnGXB/OGL3BP+2Z/Ck1H28rJeA+ihdZ8EaXKwIA=";
+      hash = "sha256-bMZhTKrp02jD3WPDuet3mj7sN542Pai4yTjPG+61VjA=";
     };
 
     releaseBinaries = {
       x86_64-linux = {
         asset = "plannotator-linux-x64";
-        hash = "sha256-R5uicXyqLad+Lhiwo9YfQldHzl+mh7JBN4Qr1VV09m0=";
+        hash = "sha256-qUn+xizTOORvAwYj1Y7eGkqrPg+de+T6i/CQrFQ7q58=";
       };
       aarch64-linux = {
         asset = "plannotator-linux-arm64";
-        hash = "sha256-5gP6u+lFk4v06fwvAuwEEs9wZlhZ/+PKAUwiHIKqEBk=";
+        hash = "sha256-v8+kmmXT/oB9LIRonj2nKUxMZNaoFms20wcuWL5iaSs=";
       };
     };
 
@@ -73,6 +73,46 @@
       };
     };
 
+    # Claude Code fills ExitPlanMode's `plan` from the plan file when the
+    # assistant message is recorded. When the model batches its plan Write/Edit
+    # into that same message, the snapshot predates the edit and plannotator
+    # shows the previous plan. Re-read `planFilePath` when the hook runs.
+    # Drop once upstream reads the plan file itself (PR pending).
+    mkFreshPlanHook = plannotatorPkg:
+      pkgs.writeShellApplication {
+        name = "plannotator-fresh-plan";
+        runtimeInputs = [plannotatorPkg pkgs.jq];
+        text = builtins.readFile ./scripts/plannotator-fresh-plan.sh;
+      };
+    freshPlanHook = mkFreshPlanHook plannotator;
+    freshPlanHookTests = let
+      echoPlannotator = pkgs.writeShellApplication {
+        name = "plannotator";
+        text = "cat";
+      };
+    in
+      pkgs.runCommand "plannotator-fresh-plan-tests" {
+        nativeBuildInputs = [(mkFreshPlanHook echoPlannotator) pkgs.jq];
+      } ''
+        bash ${./scripts/plannotator-fresh-plan.test.sh}
+        touch $out
+      '';
+
+    claudePlugin =
+      pkgs.runCommand "plannotator-claude-plugin" {
+        nativeBuildInputs = [pkgs.jq];
+        inherit freshPlanHookTests;
+      } ''
+        cp -r ${src}/apps/hook $out
+        chmod -R u+w $out
+        hooks=$out/hooks/hooks.json
+        exitPlanCommand='.hooks.PermissionRequest[] | select(.matcher == "ExitPlanMode") | .hooks[].command'
+        jq -e "[$exitPlanCommand] == [\"plannotator\"]" $hooks >/dev/null \
+          || { echo "upstream ExitPlanMode hook changed, revisit plannotator-fresh-plan" >&2; exit 1; }
+        jq --arg cmd ${lib.getExe freshPlanHook} "($exitPlanCommand) = \$cmd" $hooks > hooks.json
+        mv hooks.json $hooks
+      '';
+
     skillNames = ["plannotator-review" "plannotator-annotate" "plannotator-last"];
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
@@ -85,7 +125,7 @@
     home.packages = [plannotator];
 
     programs.claude-code = {
-      plugins = ["${src}/apps/hook"];
+      plugins = [claudePlugin];
       skills = lib.genAttrs skillNames (name: "${src}/apps/skills/claude/${name}");
     };
 
