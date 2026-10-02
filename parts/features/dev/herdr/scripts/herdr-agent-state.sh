@@ -1,7 +1,7 @@
-# Vendored verbatim from `herdr integration install claude` (herdr 0.9.0).
+# Vendored verbatim from `herdr integration install claude` (herdr 0.9.1).
 # Refresh from a sandbox-HOME install when herdr bumps the version below.
 # HERDR_INTEGRATION_ID=claude
-# HERDR_INTEGRATION_VERSION=9
+# HERDR_INTEGRATION_VERSION=10
 
 set -eu
 

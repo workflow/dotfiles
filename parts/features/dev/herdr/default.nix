@@ -82,21 +82,26 @@
       tomlFormat.generate "herdr-config.toml" settings;
 
     # herdr's claude integration: a SessionStart hook reports the session →
-    # pane mapping over the herdr socket, so agents are recognized even when
-    # devenv nests them away from the pane's foreground process group.
-    # Installed at herdr's canonical path so `herdr integration status` sees it.
+    # pane mapping over the herdr socket, so panes resume the right session
+    # after a server restart. Installed at herdr's canonical path so
+    # `herdr integration status` sees it; matcher as herdr installs it.
     home.file.${claudeHookPath}.source = lib.getExe claudeAgentStateHook;
 
     programs.claude-code.settings.hooks = {
       SessionStart = [
         {
-          matcher = "*";
+          matcher = "^(startup|resume|clear|compact|fork)$";
           hooks = [
             {
               type = "command";
               command = "'${claudeHookPath}' session";
               timeout = 10;
             }
+          ];
+        }
+        {
+          matcher = "*";
+          hooks = [
             {
               type = "command";
               command = lib.getExe tabTitleHook;
@@ -125,14 +130,15 @@
     xdg.configFile."opencode/plugins/herdr-tab-title.ts".source = opencodeTabTitlePlugin;
 
     # herdr's opencode integration, vendored verbatim from
-    # `herdr integration install opencode` (herdr 0.9.0, integration v11).
+    # `herdr integration install opencode` (herdr 0.9.1, integration v12).
     # Unlike the claude hook it is the lifecycle authority: the server plugin
     # reports idle/working/blocked from opencode events instead of herdr
     # scraping the screen, and the TUI plugin reports the selected root session
     # so panes resume with `opencode --session <id>` after a server restart.
     # herdr registers the TUI plugin in tui.jsonc; opencode merges it with the
     # home-manager (Stylix) tui.json, and `herdr integration status` looks for
-    # exactly this file.
+    # exactly this file. cli.json and herdr-opencode/ are the opencode V2
+    # entrypoints; V1 ignores them.
     xdg.configFile = {
       "opencode/plugins/herdr-agent-state.js".source = ./integrations/opencode/herdr-agent-state.js;
       "opencode/herdr-tui-session.js".source = ./integrations/opencode/herdr-tui-session.js;
@@ -140,6 +146,18 @@
         {
           "plugin": ["./herdr-tui-session.js"]
         }
+      '';
+      "opencode/cli.json".text = ''
+        {
+          "plugins": ["./herdr-opencode"]
+        }
+      '';
+      "opencode/herdr-opencode/tui.js".text = ''
+        // installed by herdr
+        // HERDR_INTEGRATION_ID=opencode-tui-v2
+        // HERDR_INTEGRATION_VERSION=12
+        // V2 resolves the directory's tui entrypoint; V1 uses the original file.
+        export { default } from "../herdr-tui-session.js";
       '';
     };
 
