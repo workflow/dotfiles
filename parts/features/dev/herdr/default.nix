@@ -192,15 +192,11 @@
       Unit.Requisite = ["graphical-session.target"];
       Service = {
         ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
-        # Native detection reads the pty's foreground process group, which the
-        # devenv hook's nested shell session hides agents from; child-groups
-        # walks pane child processes instead. Revisit on herdr >= 0.9, where
-        # the claude integration may make this fallback unnecessary.
-        Environment = ["HERDR_PROCESS_DETECTION=child-groups"];
         # The default control-group kill SIGTERMs the pane shells together with
         # the server, so the shutdown snapshot can no longer read their cwd and
         # restores every pane in its spawn directory (herdrdev/herdr#3256).
         # Signal only the server; leftovers are SIGKILLed once it has exited.
+        # Fixed upstream in herdr 0.9.2; drop after a restart test there.
         KillMode = "mixed";
         Restart = "on-failure";
       };
