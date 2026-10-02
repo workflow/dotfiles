@@ -5,7 +5,9 @@
     pkgs,
     osConfig,
     ...
-  }: {
+  }: let
+    model = "claude-opus-5-5";
+  in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
         ".claude" # Claude Code global settings, agents, and credentials
@@ -78,8 +80,11 @@
         # Don't auto-connect Remote Control; /rc stays available per session.
         remoteControlAtStartup = false;
         alwaysThinkingEnabled = true;
+        # Top-level effortLevel only reaches models on Claude Code's legacy
+        # allowlist; newer models (e.g. Opus 5.5) read it per model.
         effortLevel = "high";
-        model = "claude-opus-5-5";
+        modelSettings.${model}.effortLevel = "high";
+        inherit model;
         extraKnownMarketplaces = {
           openai-codex = {
             source = {
