@@ -77,7 +77,8 @@
     # assistant message is recorded. When the model batches its plan Write/Edit
     # into that same message, the snapshot predates the edit and plannotator
     # shows the previous plan. Re-read `planFilePath` when the hook runs.
-    # Drop once upstream reads the plan file itself (PR pending).
+    # Drop once upstream reads the plan file itself:
+    # https://github.com/backnotprop/plannotator/pull/1667
     mkFreshPlanHook = plannotatorPkg:
       pkgs.writeShellApplication {
         name = "plannotator-fresh-plan";
