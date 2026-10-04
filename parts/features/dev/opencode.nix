@@ -137,7 +137,6 @@
       # the Stylix opencode target itself.
       themes.stylix.theme = lib.mkForce opencodeThemeColors;
       settings = {
-        disabled_providers = ["zai"];
         permission =
           {
             edit = "ask";
