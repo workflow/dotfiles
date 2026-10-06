@@ -187,7 +187,8 @@ require('mason-lspconfig').setup {
     'jdtls', -- Managed by jdtls-nvim plugin
   },
   automatic_enable = {
-    exclude = { 'jdtls' }, -- jdtls-nvim manages its own client
+    -- jdtls-nvim manages its own client; yamlls fetches remote schemas, which decrypted sops secrets must not trigger
+    exclude = vim.g.sops_edit and { 'jdtls', 'yamlls' } or { 'jdtls' },
   },
 }
 

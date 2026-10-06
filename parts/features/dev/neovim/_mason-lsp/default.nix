@@ -10,6 +10,9 @@
     ];
   };
 
+  # Read by mason.lua; sops splits this shell-style before exec
+  home.sessionVariables.SOPS_EDITOR = "nvim --cmd 'let g:sops_edit = v:true'";
+
   programs.neovim = {
     initLua = ''
       -- LSP diagnostics: show inline virtual text
