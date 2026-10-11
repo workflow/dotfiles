@@ -490,6 +490,18 @@
             ];
             open-floating = true;
           }
+          # Zoom's windows share one Qt GUI thread that blocks on every render
+          # thread, so a scrolled-off main window (frame callbacks throttled)
+          # drags the meeting and chat windows down to a few fps
+          {
+            matches = [
+              {
+                app-id = "^zoom$";
+                title = "^Zoom Workplace$";
+              }
+            ];
+            open-floating = true;
+          }
           # Block from screencasting
           {
             matches = [
