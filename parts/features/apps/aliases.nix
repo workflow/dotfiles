@@ -6,7 +6,6 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
 
-      as = "aichat --model openai:gpt-4o-mini-search-preview";
       ae = "aichat -e";
 
       caffeinate = "systemctl --user stop swayidle";
