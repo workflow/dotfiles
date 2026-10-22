@@ -66,6 +66,35 @@
       after = ["xdg-desktop-autostart.target"];
       path = lib.mkForce [];
     };
+    # A single denied/dismissed Access dialog stores camera=no for all host apps
+    # (app id ""), after which Brave >= 1.97 hangs enumerateDevices() and Meet
+    # shows no cameras, mics or speakers. Host apps can open /dev/video* anyway,
+    # so the prompt protects nothing: grant it at every login.
+    systemd.user.services.portal-camera-grant = {
+      description = "Grant host apps camera access in the XDG permission store";
+      wantedBy = ["graphical-session.target"];
+      partOf = ["graphical-session.target"];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = lib.escapeShellArgs [
+          "${pkgs.systemd}/bin/busctl"
+          "--user"
+          "call"
+          "org.freedesktop.impl.portal.PermissionStore"
+          "/org/freedesktop/impl/portal/PermissionStore"
+          "org.freedesktop.impl.portal.PermissionStore"
+          "SetPermission"
+          "sbssas"
+          "devices"
+          "true"
+          "camera"
+          ""
+          "1"
+          "yes"
+        ];
+      };
+    };
+
     systemd.user.services.niri-flake-polkit = {
       after = ["xdg-desktop-autostart.target"];
     };
