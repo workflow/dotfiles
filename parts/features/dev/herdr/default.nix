@@ -188,12 +188,6 @@
       Unit.Requisite = ["graphical-session.target"];
       Service = {
         ExecStart = "${pkgs.unstable.herdr}/bin/herdr server";
-        # The default control-group kill SIGTERMs the pane shells together with
-        # the server, so the shutdown snapshot can no longer read their cwd and
-        # restores every pane in its spawn directory (herdrdev/herdr#3256).
-        # Signal only the server; leftovers are SIGKILLed once it has exited.
-        # Fixed upstream in herdr 0.9.2; drop after a restart test there.
-        KillMode = "mixed";
         Restart = "on-failure";
       };
       Install.WantedBy = ["graphical-session.target"];
