@@ -138,6 +138,11 @@
         # sudo skip that check; the dummy helper is never consulted because
         # pam_u2f needs no input, and it forecloses password fallback. opencode's
         # settings have no env support, hence the wrapper.
+        #
+        # opencode exits before draining a piped stdout (anomalyco/opencode#30831),
+        # and nixpkgs generates completions through a pipe, so the >64 KiB fish
+        # script is cut off; a sourcing error in it deadlocks fish's
+        # autosuggestions. Writing to a regular file gets the whole script.
         package = pkgs.symlinkJoin {
           name = "opencode-wrapped";
           paths = [pkgs.unstable.opencode];
@@ -145,6 +150,11 @@
           postBuild = ''
             wrapProgram $out/bin/opencode \
               --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
+
+            fish=$out/share/fish/vendor_completions.d/opencode.fish
+            rm "$fish"
+            HOME=$TMPDIR $out/bin/opencode --completions fish > "$fish"
+            tail -n1 "$fish" | grep -qx '###-end-opencode-completions-###'
           '';
         };
         context = ./AGENTS.md;
