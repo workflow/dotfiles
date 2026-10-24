@@ -110,6 +110,16 @@
     };
     jsonFormat = pkgs.formats.json {};
     cfg = config.dendrix.opencode;
+
+    kagiWebsearchPlugin =
+      pkgs.runCommand "opencode-kagi-websearch" {
+        nativeBuildInputs = [pkgs.bun];
+        src = ./plugins;
+      } ''
+        cp -r "$src" plugins && chmod -R u+w plugins && cd plugins
+        HOME=$TMPDIR bun test
+        install -Dm644 -t "$out" kagi-websearch.ts
+      '';
   in {
     options.dendrix.opencode.cliSettings = lib.mkOption {
       type = jsonFormat.type;
@@ -130,6 +140,7 @@
       dendrix.opencode.cliSettings.theme.name = lib.mkIf (config.programs.opencode.tui ? theme) config.programs.opencode.tui.theme;
       xdg.configFile."opencode/cli.json".source =
         jsonFormat.generate "cli.json" ({"$schema" = "https://opencode.ai/v2/cli.json";} // cfg.cliSettings);
+      xdg.configFile."opencode/plugins/kagi-websearch.ts".source = "${kagiWebsearchPlugin}/kagi-websearch.ts";
 
       programs.opencode = {
         enable = true;
@@ -163,13 +174,14 @@
             tail -n1 "$fish" | grep -qx '###-end-opencode-completions-###'
           '';
         };
-        context = ./AGENTS.md;
+        context = ../AGENTS.md;
         # Override Stylix's broken light mapping; tui.theme = "stylix" is set by
         # the Stylix opencode target itself. opencode 2.x still loads this V1
         # theme format, converting it on load.
         themes.stylix.theme = lib.mkForce opencodeThemeColors;
         settings = {
           inherit permissions;
+          websearch.provider = "kagi";
           mcp.kagi = {
             type = "local";
             command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];
