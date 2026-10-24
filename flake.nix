@@ -10,6 +10,8 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     import-tree.url = "github:vic/import-tree";
+    # Not following our nixpkgs, so builds hit cache.numtide.com.
+    llm-agents.url = "github:numtide/llm-agents.nix";
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
