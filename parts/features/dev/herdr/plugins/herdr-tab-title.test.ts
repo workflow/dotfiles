@@ -1,68 +1,82 @@
 import { describe, expect, test } from "bun:test"
-import type { Event } from "@opencode-ai/sdk"
-import type { Hooks } from "@opencode-ai/plugin"
-import { HerdrTabTitlePlugin } from "./herdr-tab-title"
+import plugin, { tabTitleSync } from "./herdr-tab-title"
 
 describe("herdr tab title plugin", () => {
-  test("renames the tab to a top-level session's title", async () => {
-    const { hooks, calls } = await load()
-    await emit(hooks, sessionUpdated({ title: "Fix the boot loader" }))
-    expect(calls).toEqual([[SCRIPT, "Fix the boot loader"]])
+  test("is a V2 TUI plugin definition", () => {
+    expect(plugin.id).toBe("herdr.tab-title")
+    expect(typeof plugin.setup).toBe("function")
   })
 
-  test("ignores child (subagent) sessions", async () => {
-    const { hooks, calls } = await load()
-    await emit(hooks, sessionUpdated({ title: "Explore repo", parentID: "ses_parent" }))
-    expect(calls).toEqual([])
+  test("renames the tab to the routed session's title", () => {
+    const { tui, sync, renames } = load()
+    tui.show({ id: "ses_1", title: "Fix the boot loader" })
+    sync()
+    expect(renames).toEqual(["Fix the boot loader"])
   })
 
-  test("ignores placeholder titles opencode assigns before naming", async () => {
-    const { hooks, calls } = await load()
-    await emit(hooks, sessionUpdated({ title: "New session - 2026-09-14T18:54:57.880Z" }))
-    await emit(hooks, sessionUpdated({ title: "Child session - 2026-09-14T18:54:57.880Z" }))
-    expect(calls).toEqual([])
+  test("names the tab after the root while a child session is routed", () => {
+    const { tui, sync, renames } = load()
+    tui.add({ id: "ses_root", title: "Fix the boot loader" })
+    tui.show({ id: "ses_child", title: "Explore repo", parentID: "ses_root" })
+    sync()
+    expect(renames).toEqual(["Fix the boot loader"])
   })
 
-  test("ignores other events", async () => {
-    const { hooks, calls } = await load()
-    await emit(hooks, { type: "session.idle", properties: { sessionID: "ses_1" } } as Event)
-    expect(calls).toEqual([])
+  test("ignores untitled sessions and placeholder titles", () => {
+    const { tui, sync, renames } = load()
+    tui.show({ id: "ses_1" })
+    sync()
+    tui.show({ id: "ses_2", title: "New session - 2026-09-14T18:54:57.880Z" })
+    sync()
+    tui.show({ id: "ses_3", title: "Child session - 2026-09-14T18:54:57.880Z" })
+    sync()
+    expect(renames).toEqual([])
   })
 
-  test("renames once per distinct title", async () => {
-    const { hooks, calls } = await load()
-    await emit(hooks, sessionUpdated({ title: "Same title" }))
-    await emit(hooks, sessionUpdated({ title: "Same title" }))
-    await emit(hooks, sessionUpdated({ title: "Renamed title" }))
-    expect(calls).toEqual([[SCRIPT, "Same title"], [SCRIPT, "Renamed title"]])
+  test("ignores routes other than sessions", () => {
+    const { tui, sync, renames } = load()
+    tui.home()
+    sync()
+    expect(renames).toEqual([])
+  })
+
+  test("renames once per distinct title", () => {
+    const { tui, sync, renames } = load()
+    tui.show({ id: "ses_1", title: "Same title" })
+    sync()
+    sync()
+    tui.add({ id: "ses_1", title: "Renamed title" })
+    sync()
+    expect(renames).toEqual(["Same title", "Renamed title"])
   })
 })
 
-const SCRIPT = "@herdrTabTitle@"
+type Session = { id: string; title?: string; parentID?: string }
 
-async function load(): Promise<{ hooks: Hooks; calls: string[][] }> {
-  const calls: string[][] = []
-  const hooks = await HerdrTabTitlePlugin({ $: fakeShell(calls) } as any)
-  return { hooks, calls }
+function load() {
+  const tui = fakeTui()
+  const renames: string[] = []
+  const sync = tabTitleSync(tui.api as any, (title) => renames.push(title))
+  return { tui, sync, renames }
 }
 
-async function emit(hooks: Hooks, event: Event): Promise<void> {
-  await hooks.event!({ event })
-}
-
-function sessionUpdated(session: { title: string; parentID?: string }): Event {
+function fakeTui() {
+  const sessions = new Map<string, Session>()
+  let route: { type: "home" } | { type: "session"; sessionID: string } = { type: "home" }
+  const root = (id: string): string => {
+    const parentID = sessions.get(id)?.parentID
+    return parentID ? root(parentID) : id
+  }
   return {
-    type: "session.updated",
-    properties: { info: { id: "ses_1", ...session } },
-  } as unknown as Event
-}
-
-function fakeShell(calls: string[][]) {
-  return (_strings: TemplateStringsArray, ...values: unknown[]) => {
-    calls.push(values.map(String))
-    const result: any = Promise.resolve({ exitCode: 0 })
-    result.quiet = () => result
-    result.nothrow = () => result
-    return result
+    api: {
+      ui: { router: { current: () => route } },
+      data: { session: { get: (id: string) => sessions.get(id), root } },
+    },
+    add: (session: Session) => void sessions.set(session.id, session),
+    show(session: Session) {
+      this.add(session)
+      route = { type: "session", sessionID: session.id }
+    },
+    home: () => void (route = { type: "home" }),
   }
 }
