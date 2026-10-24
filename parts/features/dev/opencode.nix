@@ -139,6 +139,11 @@
         # pam_u2f needs no input, and it forecloses password fallback. opencode's
         # settings have no env support, hence the wrapper.
         #
+        # OPENCODE_DB: opencode names its database after the build channel
+        # (opencode-stable.db for 1.x, opencode.db for 2.x's "latest"), so a
+        # nixpkgs build change silently hides every session. Pin the name;
+        # opencode-sync reads the same default.
+        #
         # opencode exits before draining a piped stdout (anomalyco/opencode#30831),
         # and nixpkgs generates completions through a pipe, so the >64 KiB fish
         # script is cut off; a sourcing error in it deadlocks fish's
@@ -149,7 +154,8 @@
           nativeBuildInputs = [pkgs.makeWrapper];
           postBuild = ''
             wrapProgram $out/bin/opencode \
-              --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
+              --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"} \
+              --set-default OPENCODE_DB opencode.db
 
             fish=$out/share/fish/vendor_completions.d/opencode.fish
             rm "$fish"
