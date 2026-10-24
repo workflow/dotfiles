@@ -18,10 +18,19 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-SHARD_FORMAT = 1
-SKIP_TABLES = frozenset({"event"})
+SHARD_FORMAT = 2
+SESSION_TABLE = "session_v2"
+# Child columns holding event sequence numbers; the session's event_sequence
+# watermark must not trail any of them.
+SEQUENCE_COLUMNS = {
+    "session_message": "seq",
+    "session_inbox": "enqueued_seq",
+    "session_pending": "admitted_seq",
+    "instruction_state": "through_seq",
+}
 DAY_MS = 86_400_000
 DEFAULT_DATA_DIR = Path.home() / ".local/share/opencode"
+DEFAULT_DB_NAME = "opencode.db"
 DEFAULT_SYNC_DIR = Path.home() / ".local/share/opencode-sync"
 DEFAULT_STATE = Path.home() / ".local/state/opencode-sync/state.json"
 IDENTIFIER = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
@@ -59,9 +68,11 @@ def export_sessions(cfg):
     owned = {sid: v for sid, v in versions.items() if state["applied"].get(sid) != v}
     host_dir = cfg.sync_dir / cfg.host
     host_dir.mkdir(parents=True, exist_ok=True)
-    written = write_changed_shards(db, tables, cfg.host, host_dir, owned, state["exported"])
+    exported = state["exported"] if state.get("format") == SHARD_FORMAT else {}
+    written = write_changed_shards(db, tables, cfg.host, host_dir, owned, exported)
     prune_own_shards(host_dir, owned.keys())
     state["exported"] = owned
+    state["format"] = SHARD_FORMAT
     save_state(cfg.state, state)
     log.info("exported %d shard(s) to %s", written, host_dir)
     return 0
@@ -148,6 +159,21 @@ def validate_shard(shard):
     children = shard.get("children")
     if not isinstance(children, dict) or not all(isinstance(rows, list) for rows in children.values()):
         raise ValueError("shard children must map table names to row lists")
+    if not isinstance(shard.get("blobs"), dict):
+        raise ValueError("shard blobs must map hashes to values")
+    validate_sequence(shard)
+
+
+def validate_sequence(shard):
+    sequence = shard.get("sequence")
+    if not isinstance(sequence, int):
+        raise ValueError("shard lacks an integer event sequence")
+    highest = max(
+        (r[column] for table, column in SEQUENCE_COLUMNS.items() for r in shard["children"].get(table, [])),
+        default=-1,
+    )
+    if highest > sequence:
+        raise ValueError(f"event sequence {sequence} trails child sequence {highest}")
 
 
 def should_apply(db, tables, shard):
@@ -161,18 +187,41 @@ def apply_shard(db, tables, shard):
     ordered = ordered_by_foreign_keys(db, tables)
     db.execute("BEGIN IMMEDIATE")
     try:
-        insert_rows(db, "project", [shard["project"]], "OR IGNORE")
+        project_id = local_project_id(db, shard["project"])
+        insert_rows(db, "project", [{**shard["project"], "id": project_id}], "OR IGNORE")
         if shard.get("workspace"):
             insert_rows(db, "workspace", [shard["workspace"]], "OR IGNORE")
+        blobs = [{"hash": h, "value": v} for h, v in shard["blobs"].items()]
+        insert_rows(db, "instruction_blob", blobs, "OR IGNORE")
         for table in ordered:
             db.execute(f'DELETE FROM "{table}" WHERE session_id = ?', (sid,))
-        insert_rows(db, "session", [shard["session"]], "OR REPLACE")
+        insert_rows(db, SESSION_TABLE, [{**shard["session"], "project_id": project_id}], "OR REPLACE")
         for table in ordered:
             insert_rows(db, table, shard["children"].get(table, []), "OR REPLACE")
+        replace_event_sequence(db, sid, shard["sequence"])
         db.execute("COMMIT")
     except BaseException:
         db.execute("ROLLBACK")
         raise
+
+
+def local_project_id(db, project):
+    """opencode 2.x may derive a repo's project id from its remote on one host and
+    from the root commit on another, so prefer a local project of the same worktree."""
+    if fetch_one(db, "SELECT id FROM project WHERE id = ?", (project["id"],)):
+        return project["id"]
+    same_worktree = fetch_one(
+        db, "SELECT id FROM project WHERE worktree = ? ORDER BY time_updated DESC", (project["worktree"],)
+    )
+    return same_worktree["id"] if same_worktree else project["id"]
+
+
+def replace_event_sequence(db, session_id, sequence):
+    """Like opencode's own session import: keep the watermark but no event history,
+    so the next event continues after the imported rows. Deleting the old
+    watermark cascades to the local events of the replaced history."""
+    db.execute("DELETE FROM event_sequence WHERE aggregate_id = ?", (session_id,))
+    db.execute("INSERT INTO event_sequence (aggregate_id, seq, owner_id) VALUES (?, ?, NULL)", (session_id, sequence))
 
 
 def insert_rows(db, table, rows, conflict):
@@ -189,7 +238,7 @@ def insert_rows(db, table, rows, conflict):
 
 
 def load_shard(db, session_id, tables, host, version):
-    session = fetch_one(db, "SELECT * FROM session WHERE id = ?", (session_id,))
+    session = fetch_one(db, f"SELECT * FROM {SESSION_TABLE} WHERE id = ?", (session_id,))
     assert session is not None, session_id
     project = fetch_one(db, "SELECT * FROM project WHERE id = ?", (session["project_id"],))
     assert project is not None, session["project_id"]
@@ -205,11 +254,30 @@ def load_shard(db, session_id, tables, host, version):
         "project": project,
         "workspace": workspace,
         "children": children,
+        "sequence": session_sequence(db, session_id),
+        "blobs": referenced_blobs(db, children.get("instruction_state", [])),
     }
 
 
+def session_sequence(db, session_id):
+    row = fetch_one(db, "SELECT seq FROM event_sequence WHERE aggregate_id = ?", (session_id,))
+    assert row is not None, f"session {session_id} has no event sequence"
+    return row["seq"]
+
+
+def referenced_blobs(db, instruction_states):
+    """instruction_state maps instruction keys to content-addressed instruction_blob rows."""
+    hashes = {
+        h for state in instruction_states for column in ("initial_values", "current_values") for h in json.loads(state[column]).values()
+    }
+    blobs = {h: fetch_one(db, "SELECT value FROM instruction_blob WHERE hash = ?", (h,)) for h in sorted(hashes)}
+    missing = [h for h, blob in blobs.items() if blob is None]
+    assert not missing, f"dangling instruction blobs {missing}"
+    return {h: blob["value"] for h, blob in blobs.items()}
+
+
 def session_versions(db, tables, since_ms):
-    versions = {r["id"]: r["time_updated"] for r in db.execute("SELECT id, time_updated FROM session")}
+    versions = {r["id"]: r["time_updated"] for r in db.execute(f"SELECT id, time_updated FROM {SESSION_TABLE}")}
     for table in tables_with_time_updated(db, tables):
         for r in db.execute(f'SELECT session_id, MAX(time_updated) AS v FROM "{table}" GROUP BY session_id'):
             sid = r["session_id"]
@@ -219,7 +287,7 @@ def session_versions(db, tables, since_ms):
 
 
 def local_session_version(db, tables, session_id):
-    row = fetch_one(db, "SELECT time_updated FROM session WHERE id = ?", (session_id,))
+    row = fetch_one(db, f"SELECT time_updated FROM {SESSION_TABLE} WHERE id = ?", (session_id,))
     if row is None:
         return None
     version = row["time_updated"]
@@ -235,12 +303,10 @@ def tables_with_time_updated(db, tables):
 
 
 def child_tables(db):
+    """Tables referencing the session table; the 1.x tables a migrated database
+    keeps also have session_id columns, but reference the legacy table."""
     names = [r["name"] for r in db.execute("SELECT name FROM sqlite_master WHERE type = 'table'")]
-    return sorted(
-        t
-        for t in names
-        if t != "session" and t not in SKIP_TABLES and not t.startswith("sqlite_") and "session_id" in table_columns(db, t)
-    )
+    return sorted(t for t in names if not t.startswith("sqlite_") and SESSION_TABLE in referenced_tables(db, t))
 
 
 def ordered_by_foreign_keys(db, tables):
@@ -291,11 +357,12 @@ def open_db(path, timeout=5.0):
 
 
 def resolve_db_path(explicit, data_dir):
+    """Like opencode: OPENCODE_DB, relative to the data dir, else opencode.db."""
     if explicit is not None:
         return explicit
-    candidates = sorted(data_dir.glob("opencode*.db"))
-    assert len(candidates) == 1, f"expected exactly one opencode database in {data_dir}, found {candidates}"
-    return candidates[0]
+    path = data_dir / os.environ.get("OPENCODE_DB", DEFAULT_DB_NAME)
+    assert path.exists(), f"no opencode database at {path}"
+    return path
 
 
 def shard_path(host_dir, session_id):
@@ -332,7 +399,7 @@ def since_ms(days):
 def parse_args(argv):
     parser = argparse.ArgumentParser(prog="opencode-session-sync", description=__doc__)
     common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--db", type=Path, help="opencode database (default: the single opencode*.db in the data dir)")
+    common.add_argument("--db", type=Path, help="opencode database (default: $OPENCODE_DB or opencode.db in the data dir)")
     common.add_argument("--sync-dir", type=Path, default=DEFAULT_SYNC_DIR, help="shared shard folder")
     common.add_argument("--host", default=socket.gethostname(), help="name of this host's shard directory")
     common.add_argument("--state", type=Path, default=DEFAULT_STATE, help="state file outside the sync folder")
