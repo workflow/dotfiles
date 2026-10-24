@@ -108,39 +108,56 @@
       syntaxOperator = c.base0C;
       syntaxPunctuation = c.base05;
     };
+    jsonFormat = pkgs.formats.json {};
+    cfg = config.dendrix.opencode;
   in {
-    home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
-      directories = [
-        ".local/share/opencode"
-        ".cache/uv" # kagimcp is fetched by uvx; keep it across boots
-      ];
+    options.dendrix.opencode.cliSettings = lib.mkOption {
+      type = jsonFormat.type;
+      default = {};
+      description = "opencode 2.x TUI settings (theme, TUI plugins, keybinds), written to cli.json";
     };
 
-    programs.opencode = {
-      enable = true;
-      # SUDO_ASKPASS: agent shells have no TTY, so sudo fails its terminal
-      # check before PAM (pam_u2f yubikey touch) runs. An askpass helper makes
-      # sudo skip that check; the dummy helper is never consulted because
-      # pam_u2f needs no input, and it forecloses password fallback. opencode's
-      # settings have no env support, hence the wrapper.
-      package = pkgs.symlinkJoin {
-        name = "opencode-wrapped";
-        paths = [pkgs.unstable.opencode];
-        nativeBuildInputs = [pkgs.makeWrapper];
-        postBuild = ''
-          wrapProgram $out/bin/opencode \
-            --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
-        '';
+    config = {
+      home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
+        directories = [
+          ".local/share/opencode"
+          ".cache/uv" # kagimcp is fetched by uvx; keep it across boots
+        ];
       };
-      context = ./AGENTS.md;
-      # Override Stylix's broken light mapping; tui.theme = "stylix" is set by
-      # the Stylix opencode target itself.
-      themes.stylix.theme = lib.mkForce opencodeThemeColors;
-      settings = {
-        inherit permissions;
-        mcp.kagi = {
-          type = "local";
-          command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];
+
+      # opencode 2.x moved TUI settings from tui.json to cli.json and stops
+      # reading tui.json once cli.json exists, so carry Stylix's theme over.
+      dendrix.opencode.cliSettings.theme.name = lib.mkIf (config.programs.opencode.tui ? theme) config.programs.opencode.tui.theme;
+      xdg.configFile."opencode/cli.json".source =
+        jsonFormat.generate "cli.json" ({"$schema" = "https://opencode.ai/v2/cli.json";} // cfg.cliSettings);
+
+      programs.opencode = {
+        enable = true;
+        # SUDO_ASKPASS: agent shells have no TTY, so sudo fails its terminal
+        # check before PAM (pam_u2f yubikey touch) runs. An askpass helper makes
+        # sudo skip that check; the dummy helper is never consulted because
+        # pam_u2f needs no input, and it forecloses password fallback. opencode's
+        # settings have no env support, hence the wrapper.
+        package = pkgs.symlinkJoin {
+          name = "opencode-wrapped";
+          paths = [pkgs.unstable.opencode];
+          nativeBuildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/opencode \
+              --set SUDO_ASKPASS ${lib.getExe' pkgs.coreutils "false"}
+          '';
+        };
+        context = ./AGENTS.md;
+        # Override Stylix's broken light mapping; tui.theme = "stylix" is set by
+        # the Stylix opencode target itself. opencode 2.x still loads this V1
+        # theme format, converting it on load.
+        themes.stylix.theme = lib.mkForce opencodeThemeColors;
+        settings = {
+          inherit permissions;
+          mcp.kagi = {
+            type = "local";
+            command = [(lib.getExe' pkgs.uv "uvx") "kagimcp"];
+          };
         };
       };
     };
