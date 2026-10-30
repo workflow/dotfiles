@@ -102,9 +102,9 @@
         anchor = "center";
         menu = [
           {
-            key = "z";
-            desc = "Zen Browser";
-            cmd = "zen-beta";
+            key = "f";
+            desc = "LibreWolf";
+            cmd = "librewolf";
           }
           {
             key = "h";
@@ -440,7 +440,7 @@
           # {command = ["seahorse"];} # To unlock keyring
           {command = ["${wallpaperSetter}/bin/niri-set-wallpaper"];} # Set wallpaper
           {command = ["nightlight-toggle"];}
-          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "zen-beta" "--new-window" "https://chatgpt.com/"];}
+          {command = ["${openOnWorkspace}/bin/niri-open-on-workspace" "${workspaces."00".name}" "ChatGPT" "librewolf" "--new-window" "https://chatgpt.com/"];}
           {command = ["vikunja-desktop-autostart"];}
         ];
 

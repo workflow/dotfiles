@@ -92,9 +92,6 @@
         dark = "Papirus-Dark";
       };
       targets = {
-        firefox = {
-          profileNames = ["main"];
-        };
         neovim.enable = false;
       };
     };

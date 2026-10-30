@@ -60,7 +60,7 @@ nixos-config/
 │   │   │   └── claude-code.nix
 │   │   │
 │   │   ├── apps/                # Applications
-│   │   │   ├── firefox.nix
+│   │   │   ├── librewolf.nix
 │   │   │   ├── alacritty.nix
 │   │   │   ├── fish.nix
 │   │   │   └── ...
