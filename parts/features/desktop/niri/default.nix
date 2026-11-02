@@ -457,6 +457,7 @@
           {
             matches = [
               {app-id = "^signal$";}
+              {app-id = "^Slack$";}
               {app-id = "^teams-for-linux$";}
               {app-id = "^org.telegram.desktop$";}
             ];

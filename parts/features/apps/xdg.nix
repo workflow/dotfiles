@@ -55,7 +55,6 @@
           "x-scheme-handler/https" = ["brave-browser.desktop"];
           "x-scheme-handler/mailto" = ["thunderbird.desktop"];
           "x-scheme-handler/msteams" = ["teams-for-linux.desktop"];
-          "x-scheme-handler/slack" = ["slack.desktop"];
           "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
           "x-scheme-handler/tonsite" = ["org.telegram.desktop.desktop"];
           "x-scheme-handler/unknown" = ["brave-browser.desktop"];
