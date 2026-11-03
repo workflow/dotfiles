@@ -107,11 +107,6 @@
             cmd = "librewolf";
           }
           {
-            key = "h";
-            desc = "Brave (Work)";
-            cmd = braveWorkProfileCmd;
-          }
-          {
             key = "l";
             desc = "File Manager (lf)";
             cmd = "alacritty -e fish -ic lf";
@@ -732,6 +727,8 @@
               # Browser
               "Mod+b".action = spawn-sh "brave --profile-directory='Default' --password-store=seahorse${optionalString isNvidia " --disable-accelerated-video-decode"}";
               "Mod+b".hotkey-overlay.hidden = true;
+              "Mod+h".action = spawn-sh braveWorkProfileCmd;
+              "Mod+h".hotkey-overlay.title = "Brave (Work)";
 
               # Cliphist via fuzzel
               "Mod+p".action = spawn "cliphist-fuzzel-img";
