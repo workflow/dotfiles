@@ -1,6 +1,9 @@
 # Wayland autorandr
 {...}: {
-  flake.modules.homeManager.kanshi = {...}: {
+  flake.modules.homeManager.kanshi = {pkgs, ...}: let
+    # dunst keeps its layer surface on the pre-switch output layout, leaving notifications invisible and unclickable
+    restartDunst = "${pkgs.systemd}/bin/systemctl --user try-restart dunst.service";
+  in {
     services.kanshi = {
       enable = true;
       settings = [
@@ -37,6 +40,7 @@
         {
           profile = {
             name = "numenor";
+            exec = restartDunst;
             outputs = [
               {
                 criteria = "$leftLG27";
@@ -56,6 +60,7 @@
         {
           profile = {
             name = "numenor-movie";
+            exec = restartDunst;
             outputs = [
               {
                 criteria = "$leftLG27";
