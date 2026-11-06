@@ -62,10 +62,11 @@
       keys = {
         prefix = "ctrl+space";
         # Direct chords for frequent motions; directions follow the jkl;
-        # home-row remap (j=left k=down l=up ;=right).
+        # home-row remap (j=left k=down ;=right), except up: alt+l is fish's
+        # list-files binding, so up takes alt+o (shadowing fish's file preview).
         focus_pane_left = "alt+j";
         focus_pane_down = "alt+k";
-        focus_pane_up = "alt+l";
+        focus_pane_up = "alt+o";
         focus_pane_right = "alt+semicolon";
         next_workspace = "alt+n";
         previous_workspace = "alt+p";
