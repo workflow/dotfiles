@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   flake.modules.homeManager.brave-browser = {
     lib,
     pkgs,
@@ -6,17 +6,22 @@
     ...
   }: let
     isNvidia = osConfig.dendrix.hasNvidia;
+    # TODO: back to pkgs.brave once nixos-26.05 includes cc58803 (see flake.nix)
+    pinnedBrave = (import inputs.nixpkgs-brave {
+      inherit (pkgs.stdenv.hostPlatform) system;
+      config.allowUnfree = true;
+    }).brave;
     # Disable VA-API video acceleration on Nvidia — causes jitter and tab crashes in Chromium
     # due to cross-GPU decode (Nvidia NVDEC) vs render (Intel iGPU) mismatch with PRIME offload.
     # Chromium 146+ enables hardware decode by default, so we also need --disable-accelerated-video-decode.
     brave =
       if isNvidia
       then
-        pkgs.brave.override {
+        pinnedBrave.override {
           enableVideoAcceleration = false;
           commandLineArgs = "--enable-features=${pipeWireCameraFeature}";
         }
-      else withPipeWireCamera pkgs.brave;
+      else withPipeWireCamera pinnedBrave;
     # Chromium's direct V4L2 path skips devices that also advertise output caps,
     # which hides the exclusive_caps=0 OBS Cam (see video.nix); PipeWire lists it.
     pipeWireCameraFeature = "WebRtcPipeWireCamera";

@@ -26,6 +26,8 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # TODO: remove once nixos-26.05 includes cc58803 (brave re-add backport, nixpkgs#584546)
+    nixpkgs-brave.url = "github:nixos/nixpkgs/cc588038c06d9a7c687b82a38112442f97649b31";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
     peon-ping = {
