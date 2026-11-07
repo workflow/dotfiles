@@ -7,14 +7,15 @@
     ...
   }: let
     model = "claude-opus-5-5";
+    configDir = config.programs.claude-code.configDir;
+    stateFile = "${configDir}/.claude.json";
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
-        ".claude" # Claude Code global settings, agents, and credentials
+        # Claude Code global settings, agents, credentials — and .claude.json,
+        # relocated here from ~/.claude.json by the CLAUDE_CONFIG_DIR wrapper below.
+        ".claude"
         ".cache/claude-cli-nodejs" # Claude Code cache
-      ];
-      files = [
-        ".claude.json" # Claude Code runtime state (credentials, project settings, etc.)
       ];
     };
 
@@ -22,13 +23,22 @@
       enable = true;
       # The codex plugin's hooks invoke bare `node`, so keep it on claude's PATH
       # without exposing it system-wide.
+      #
+      # CLAUDE_CONFIG_DIR relocates .claude.json from ~/.claude.json into
+      # ~/.claude. Impermanence bind-mounts single persisted files, and
+      # rename(2) over a mount point fails with EBUSY, so Claude Code's
+      # write-temp-then-rename save falls back to rewriting in place without
+      # truncation — leaving a stale tail (corrupt JSON) whenever the new
+      # state is shorter than the old. Inside the bind-mounted ~/.claude
+      # *directory* renames work, so the atomic save path succeeds again.
       package = pkgs.symlinkJoin {
         name = "claude-code-wrapped";
         paths = [pkgs.unstable.claude-code];
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/claude \
-            --prefix PATH : ${pkgs.nodejs}/bin
+            --prefix PATH : ${pkgs.nodejs}/bin \
+            --set-default CLAUDE_CONFIG_DIR ${configDir}
         '';
       };
 
@@ -117,6 +127,23 @@
         dest="${config.programs.claude-code.configDir}/settings.json"
         run rm -f "$dest"
         run install -m644 -DT ${settingsSource} "$dest"
+      '';
+
+    # One-time migration of the pre-CLAUDE_CONFIG_DIR state file. ~/.claude.json
+    # may still be bind-mounted until the next reboot (mv would hit EBUSY), so
+    # copy it, then drop the now-unpersisted copy in /persist. A copied file
+    # carrying the stale-tail corruption is fine: Claude Code quarantines it
+    # and restores from its own ~/.claude/backups.
+    home.activation.claudeCodeMigrateStateFile =
+      lib.hm.dag.entryAfter ["writeBoundary"]
+      ''
+        old="${config.home.homeDirectory}/.claude.json"
+        if [ -e "$old" ] && [ ! -e "${stateFile}" ]; then
+          run cp "$old" "${stateFile}"
+        fi
+        ${lib.optionalString osConfig.dendrix.isImpermanent ''
+          run rm -f "/persist${config.home.homeDirectory}/.claude.json"
+        ''}
       '';
 
     # See https://dylancastillo.co/til/fix-claude-code-shift-enter-alacritty.html
