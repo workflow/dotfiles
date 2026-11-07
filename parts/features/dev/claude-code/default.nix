@@ -9,6 +9,11 @@
     model = "claude-opus-5-5";
     configDir = config.programs.claude-code.configDir;
     stateFile = "${configDir}/.claude.json";
+    statusline = pkgs.writeShellApplication {
+      name = "claude-statusline";
+      runtimeInputs = [pkgs.jq config.programs.jujutsu.package];
+      text = builtins.readFile ./scripts/claude-statusline.sh;
+    };
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
@@ -89,6 +94,10 @@
         };
         # Don't auto-connect Remote Control; /rc stays available per session.
         remoteControlAtStartup = false;
+        statusLine = {
+          type = "command";
+          command = lib.getExe statusline;
+        };
         alwaysThinkingEnabled = true;
         # Top-level effortLevel only reaches models on Claude Code's legacy
         # allowlist; newer models (e.g. Opus 5.5) read it per model.
