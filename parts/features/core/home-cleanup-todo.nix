@@ -106,9 +106,5 @@
       enable = true;
       generateCaches = false; # Speed up builds
     };
-
-    programs.vscode = {
-      enable = true;
-    };
   };
 }
