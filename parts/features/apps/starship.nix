@@ -88,6 +88,7 @@
         ];
 
         vcs.order = ["jj" "git"];
+        jj_status.style = "yellow";
 
         aws.disabled = true;
 
