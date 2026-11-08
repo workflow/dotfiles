@@ -11,6 +11,8 @@
       caffeinate = "systemctl --user stop swayidle";
       decaffeinate = "systemctl --user start swayidle";
 
+      del = "trash-put";
+
       c = "wl-copy";
 
       cdn = "cd ~/nixos-config";
@@ -46,8 +48,6 @@
       paste = "wl-paste";
 
       ra = "systemctl restart --user pipewire";
-
-      rm = "trash-put";
 
       stern-kind = "stern --context kind-kind";
 
