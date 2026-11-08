@@ -1,5 +1,10 @@
 {...}: {
-  flake.modules.homeManager.starship = {lib, osConfig, ...}: {
+  flake.modules.homeManager.starship = {
+    lib,
+    osConfig,
+    pkgs,
+    ...
+  }: {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [".cache/starship"];
     };
@@ -7,6 +12,8 @@
     programs.starship = {
       enable = true;
       enableTransience = true;
+      # TODO: drop on the nixos-26.11 upgrade. jj_* modules need starship >= 1.27.0, 26.05 ships 1.25.1.
+      package = pkgs.unstable.starship;
 
       settings = {
         format = lib.concatStrings [
@@ -17,6 +24,7 @@
           "$singularity"
           "$directory"
           "$vcsh"
+          "$vcs"
           "$docker_context"
           "$package"
           "$buf"
@@ -78,6 +86,8 @@
           "$shell"
           "$character"
         ];
+
+        vcs.order = ["jj" "git"];
 
         aws.disabled = true;
 
