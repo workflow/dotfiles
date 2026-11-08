@@ -1,6 +1,5 @@
 {...}: {
   flake.modules.homeManager.obsidian = {
-    config,
     osConfig,
     lib,
     pkgs,
@@ -13,20 +12,20 @@
       paths = [pkgs.obsidian];
       nativeBuildInputs = [pkgs.makeWrapper];
       postBuild = ''
-        wrapProgram $out/bin/obsidian --add-flags "--password-store=gnome-libsecret"
+        wrapProgram $out/bin/obsidian \
+          --run '${lib.getExe clearStaleCache} "''${XDG_CONFIG_HOME:-$HOME/.config}/obsidian" ${pkgs.obsidian} || echo "obsidian-clear-stale-cache failed" >&2' \
+          --add-flags "--password-store=gnome-libsecret"
       '';
     };
 
-    # Obsidian's self-updater drops newer app.asar builds into its config dir and
-    # prefers them over the bundled one, but those target upstream's Electron, not
-    # nixpkgs'. A mismatch (1.15.0 on electron 43.8.3) leaves an empty window.
-    # TODO: drop this workaround (script + activation) once upstream handles it:
-    # nixpkgs' obsidian patching out the self-updater, or home-manager's
-    # programs.obsidian gaining an option for `updateDisabled` in obsidian.json.
-    pinBundledApp = pkgs.writeShellApplication {
-      name = "obsidian-pin-bundled-app";
-      runtimeInputs = [pkgs.coreutils pkgs.jq];
-      text = builtins.readFile ./_scripts/obsidian-pin-bundled-app.sh;
+    # nixpkgs' electron 43.7.11 -> 43.8.3 reused the stale V8 code cache in the
+    # profile, and the renderer died on `webFrame` with an empty window.
+    # TODO: drop once electron invalidates its code cache across versions again,
+    # see https://github.com/NixOS/nixpkgs/issues/578970
+    clearStaleCache = pkgs.writeShellApplication {
+      name = "obsidian-clear-stale-cache";
+      runtimeInputs = [pkgs.coreutils];
+      text = builtins.readFile ./_scripts/obsidian-clear-stale-cache.sh;
     };
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
@@ -39,9 +38,5 @@
     home.packages = [
       obsidian
     ];
-
-    home.activation.obsidianPinBundledApp = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      run ${lib.getExe pinBundledApp} "${config.xdg.configHome}/obsidian"
-    '';
   };
 }
