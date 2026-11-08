@@ -3,6 +3,31 @@
 {...}: let
   # Not a writeShellApplication: the initrd only pulls in ELF deps, so runtimeInputs would be missing there.
   rootExplodeScript = builtins.readFile ./scripts/root-explode.sh;
+
+  # Shared with the hibernate-resume check, so it exercises the real unit ordering
+  mkRootExplodeService = {
+    utils,
+    device,
+    script,
+  }: let
+    deviceUnit = "${utils.escapeSystemdPath device}.device";
+  in {
+    wantedBy = ["initrd-root-device.target"];
+    requires = [deviceUnit];
+    # Two independent layers keep a resume from hibernation safe, both ordering us after systemd-hibernate-resume.service,
+    # which never returns on success: default dependencies (After=sysinit.target, which wants it) and local-fs-pre.target.
+    # Dropping both makes checks.root-explode-hibernate-resume fail. See https://github.com/nix-community/impermanence/issues/250
+    after = [deviceUnit "local-fs-pre.target"];
+    before = ["sysroot.mount"];
+    enableStrictShellChecks = true;
+    environment.BTRFS_DEVICE = device;
+    serviceConfig = {
+      StandardOutput = "journal+console";
+      StandardError = "journal+console";
+      Type = "oneshot";
+    };
+    inherit script;
+  };
 in {
   flake.modules.homeManager.impermanence = {
     osConfig,
@@ -26,26 +51,12 @@ in {
     lib,
     utils,
     ...
-  }: let
-    rootDevice = "/dev/mapper/nixos--vg-root";
-    rootDeviceUnit = "${utils.escapeSystemdPath rootDevice}.device";
-  in
+  }:
     lib.mkIf config.dendrix.isImpermanent {
       # Explode / on every cold boot, see https://grahamc.com/blog/erase-your-darlings/
-      boot.initrd.systemd.services.root-explode = {
-        wantedBy = ["initrd-root-device.target"];
-        requires = [rootDeviceUnit];
-        # local-fs-pre.target is what keeps a resume from hibernation safe: systemd-hibernate-resume.service
-        # runs before it and never returns on success. See https://github.com/nix-community/impermanence/issues/250
-        after = [rootDeviceUnit "local-fs-pre.target"];
-        before = ["sysroot.mount"];
-        enableStrictShellChecks = true;
-        environment.BTRFS_DEVICE = rootDevice;
-        serviceConfig = {
-          StandardOutput = "journal+console";
-          StandardError = "journal+console";
-          Type = "oneshot";
-        };
+      boot.initrd.systemd.services.root-explode = mkRootExplodeService {
+        inherit utils;
+        device = "/dev/mapper/nixos--vg-root";
         script = rootExplodeScript;
       };
 
@@ -93,5 +104,6 @@ in {
 
   perSystem = {pkgs, ...}: {
     checks.root-explode = import ./_root-explode-test.nix {inherit pkgs rootExplodeScript;};
+    checks.root-explode-hibernate-resume = import ./_hibernate-resume-test.nix {inherit pkgs mkRootExplodeService;};
   };
 }
