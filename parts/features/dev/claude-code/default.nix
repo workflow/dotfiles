@@ -88,9 +88,13 @@
         # needs no input, and it forecloses password fallback entirely.
         env = {
           SUDO_ASKPASS = lib.getExe' pkgs.coreutils "false";
-          # Implies DISABLE_AUTOUPDATER, DISABLE_BUG_COMMAND,
-          # DISABLE_ERROR_REPORTING and DISABLE_TELEMETRY.
-          CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
+          # Spelled out instead of CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:
+          # since 2.1.318 that also disables AI session titles and the terminal
+          # title, which the status line and herdr tab names are built from.
+          # The nixpkgs wrapper already sets DISABLE_AUTOUPDATER.
+          DISABLE_TELEMETRY = "1";
+          DISABLE_ERROR_REPORTING = "1";
+          DISABLE_BUG_COMMAND = "1";
         };
         # Don't auto-connect Remote Control; /rc stays available per session.
         remoteControlAtStartup = false;

@@ -1,15 +1,22 @@
 # Renders Claude Code's status line from the session JSON it pipes to stdin.
 
 main() {
-  local session model dir used
+  local session name model dir used
   session=$(cat)
+  # session_name is absent until the session is renamed or AI-titled.
+  name=$(jq -r '.session_name // empty' <<<"$session")
   model=$(jq -r '.model.display_name' <<<"$session")
   dir=$(jq -r '.workspace.current_dir' <<<"$session")
   # used_percentage is null until the first API response of a session.
   used=$(jq -r '.context_window.used_percentage // 0 | floor' <<<"$session")
   assert_percentage "$used"
 
-  printf '%s%s · %s\n' "$model" "$(jj_segment "$dir")" "$(context_segment "$used")"
+  printf '%s%s%s · %s\n' "$(name_segment "$name")" "$model" "$(jj_segment "$dir")" "$(context_segment "$used")"
+}
+
+name_segment() {
+  [[ -n $1 ]] || return 0
+  printf '\e[1m%s\e[0m · ' "$1"
 }
 
 assert_percentage() {
