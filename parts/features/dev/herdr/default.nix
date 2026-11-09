@@ -46,6 +46,20 @@
       runtimeInputs = [pkgs.python3];
       text = builtins.readFile ./scripts/herdr-codex-agent-state.sh;
     };
+    jjWorkspacePlugin = pkgs.callPackage ./_jj-workspace-plugin.nix {};
+    # The plugin registry, written by herdr's own offline `plugin link` so the
+    # entry format follows herdr updates. herdr writes it only on plugin
+    # install/link/enable changes, which are declarative now; the server
+    # re-reads the linked manifest on startup. Linked plugins are left alone
+    # by `herdr plugin update`.
+    pluginRegistry = pkgs.runCommand "herdr-plugins.json" {nativeBuildInputs = [pkgs.unstable.herdr pkgs.jq];} ''
+      export HOME=$TMPDIR
+      herdr plugin link ${jjWorkspacePlugin}
+      jq -e --arg root ${jjWorkspacePlugin} \
+        'map({plugin_id, plugin_root, enabled}) == [{plugin_id: "nathanflurry.jj-workspace", plugin_root: $root, enabled: true}]' \
+        "$HOME/.config/herdr/plugins.json"
+      cp "$HOME/.config/herdr/plugins.json" "$out"
+    '';
     jjWorkspaceAction = key: action: description: {
       inherit key description;
       type = "plugin_action";
@@ -82,8 +96,8 @@
     };
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
-      # .config/herdr also holds the imperatively installed (and locally
-      # patched) plugins; .herdr holds the jj workspace checkouts.
+      # .config/herdr holds session state and plugin config dirs; .herdr holds
+      # the jj workspace checkouts.
       directories = [".config/herdr" ".herdr"];
     };
 
@@ -93,6 +107,7 @@
 
     xdg.configFile."herdr/config.toml".source =
       tomlFormat.generate "herdr-config.toml" settings;
+    xdg.configFile."herdr/plugins.json".source = pluginRegistry;
 
     # herdr's claude integration: a SessionStart hook reports the session →
     # pane mapping over the herdr socket, so panes resume the right session

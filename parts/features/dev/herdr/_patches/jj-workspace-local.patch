@@ -1,0 +1,145 @@
+Run the right-pane setup through sh (fish rejects POSIX `(...)` grouping when
+herdr types it into the pane's interactive shell) and start no agent: drop the
+Codex launch in the left pane and the trust-prompt auto-accept in finish-tab.
+
+diff --git a/src/main.rs b/src/main.rs
+index d00b584..f3b101a 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -340,16 +340,13 @@ fn open_tab_layout(workspace_id: &str, cwd: &str, label: &str, is_jj: bool) {
+     } else {
+         finish
+     };
++    // The pane runs the user's interactive shell, which may not be POSIX
++    // (fish rejects `(...)` grouping); delegate to sh explicitly.
++    let right_command = format!("sh -c {}", shell_quote(&right_command));
+     let mut run_right = Command::new(&herdr);
+     run_right.args(["pane", "run", &right_pane, &right_command]);
+     run_or(run_right, "start right-pane setup", fail);
+
+-    // Give checkout materialization a head start, then launch Codex without
+-    // changing focus away from the left pane.
+-    let mut start_codex = Command::new(&herdr);
+-    start_codex.args(["pane", "run", &left_pane, "co"]);
+-    run_or(start_codex, "start Codex in left pane", fail);
+-
+     if !is_jj {
+         let body = format!(
+             "{} is not a jj workspace; opened the same folder without creating a checkout.",
+@@ -407,82 +404,6 @@ fn required_json_string(value: &Value, pointer: &str) -> String {
+         .unwrap_or_else(|| fail(&format!("Herdr response is missing {pointer}")))
+ }
+
+-fn wait_for_codex_and_accept_trust(pane_id: &str, timeout: Duration) -> bool {
+-    let started = std::time::Instant::now();
+-    let mut trust_attempts = 0;
+-    let mut blocked_without_trust_since: Option<std::time::Instant> = None;
+-    let mut ready_since: Option<std::time::Instant> = None;
+-    while started.elapsed() < timeout {
+-        let pane_text = read_pane_text(pane_id);
+-        let normalized = pane_text.split_whitespace().collect::<Vec<_>>().join(" ");
+-        let trust_prompt = normalized.contains("Do you trust the contents of this directory?")
+-            && normalized.contains("1. Yes, continue")
+-            && normalized.contains("2. No, quit");
+-        if trust_prompt {
+-            if trust_attempts >= 5 {
+-                return false;
+-            }
+-            let mut accept = Command::new(herdr_bin());
+-            accept.args(["pane", "send-keys", pane_id, "enter"]);
+-            if !run(accept) {
+-                return false;
+-            }
+-            trust_attempts += 1;
+-            blocked_without_trust_since = None;
+-            ready_since = None;
+-            thread::sleep(Duration::from_millis(200));
+-            continue;
+-        }
+-        if normalized.contains("OpenAI Codex") && normalized.contains("Ask Codex to do anything") {
+-            let ready = ready_since.get_or_insert_with(std::time::Instant::now);
+-            if ready.elapsed() >= Duration::from_secs(1) {
+-                return true;
+-            }
+-        } else {
+-            ready_since = None;
+-        }
+-
+-        if let Ok(agents) = herdr_json(&["agent", "list"]) {
+-            let status = agents
+-                .pointer("/result/agents")
+-                .and_then(Value::as_array)
+-                .and_then(|agents| {
+-                    agents
+-                        .iter()
+-                        .find(|agent| {
+-                            agent.get("pane_id").and_then(Value::as_str) == Some(pane_id)
+-                                && agent.get("agent").and_then(Value::as_str) == Some("codex")
+-                        })
+-                        .and_then(|agent| agent.get("agent_status").and_then(Value::as_str))
+-                });
+-            match status {
+-                Some("blocked") => {
+-                    let blocked_since =
+-                        blocked_without_trust_since.get_or_insert_with(std::time::Instant::now);
+-                    if blocked_since.elapsed() >= Duration::from_secs(1) {
+-                        return false;
+-                    }
+-                }
+-                _ => blocked_without_trust_since = None,
+-            }
+-        }
+-        thread::sleep(Duration::from_millis(100));
+-    }
+-    false
+-}
+-
+-fn read_pane_text(pane_id: &str) -> String {
+-    Command::new(herdr_bin())
+-        .args([
+-            "pane", "read", pane_id, "--source", "visible", "--lines", "80",
+-        ])
+-        .output()
+-        .ok()
+-        .filter(|output| output.status.success())
+-        .map(|output| String::from_utf8_lossy(&output.stdout).into_owned())
+-        .unwrap_or_default()
+-}
+-
+ fn finish_tab_shell_command(workspace_id: &str, tab_id: &str, left_pane: &str) -> String {
+     let executable = env::current_exe()
+         .unwrap_or_else(|err| fail(&format!("cannot resolve jj-workspace executable: {err}")));
+@@ -507,32 +428,13 @@ fn cmd_finish_tab(args: &[String]) -> ! {
+         die("finish-tab requires workspace, tab, and pane IDs");
+     }
+
+-    if !wait_for_codex_and_accept_trust(left_pane, Duration::from_secs(20)) {
+-        let mut toast = Command::new(herdr_bin());
+-        toast.args([
+-            "notification",
+-            "show",
+-            "Codex needs attention",
+-            "--body",
+-            "Codex did not clear its startup prompt automatically.",
+-            "--position",
+-            "top-right",
+-            "--sound",
+-            "request",
+-        ]);
+-        let _ = toast.status();
+-        process::exit(1);
+-    }
+-
++    let _ = left_pane;
+     let herdr = herdr_bin();
+     for _ in 0..6 {
+         let _ = Command::new(&herdr)
+             .args(["workspace", "focus", workspace_id])
+             .status();
+         let _ = Command::new(&herdr).args(["tab", "focus", tab_id]).status();
+-        let _ = Command::new(&herdr)
+-            .args(["agent", "focus", left_pane])
+-            .status();
+         thread::sleep(Duration::from_millis(200));
+     }
+     process::exit(0);
