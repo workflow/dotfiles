@@ -34,6 +34,12 @@
               "-FontVisibilityLangPack"
               "-FontVisibilityRestrictGenerics"
             ];
+            # Stylix's former 12/11px values persist in prefs.js after its target is disabled; pin Brave's defaults so user.js wins
+            "font.size.variable.x-western" = 16;
+            "font.size.monospace.x-western" = 13;
+            "font.name.serif.x-western" = "serif";
+            "font.name.sans-serif.x-western" = "sans-serif";
+            "font.name.monospace.x-western" = "monospace";
           };
           id = 0;
           isDefault = true;
