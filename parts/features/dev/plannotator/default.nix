@@ -17,6 +17,7 @@
   };
 
   flake.modules.homeManager.plannotator = {
+    config,
     osConfig,
     lib,
     pkgs,
@@ -24,6 +25,9 @@
   }: let
     upstream = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.plannotator;
     inherit (upstream) version src;
+
+    # Overrides $BROWSER (Brave) for review UIs only.
+    browser = lib.getExe config.programs.librewolf.finalPackage;
 
     # Hooks fire from the agent's environment, not a login shell; make sure
     # the tools plannotator shells out to are reachable without shadowing
@@ -34,6 +38,7 @@
       nativeBuildInputs = [pkgs.makeWrapper];
       postBuild = ''
         wrapProgram $out/bin/plannotator \
+          --set-default PLANNOTATOR_BROWSER ${browser} \
           --suffix PATH : ${lib.makeBinPath (with pkgs; [git jujutsu xdg-utils procps])}
       '';
       meta.mainProgram = "plannotator";
@@ -49,6 +54,9 @@
     };
 
     home.packages = [plannotator];
+
+    # The opencode plugin opens the browser from inside opencode, not via the wrapper.
+    home.sessionVariables.PLANNOTATOR_BROWSER = browser;
 
     programs.claude-code = {
       plugins = ["${src}/apps/hook"];
