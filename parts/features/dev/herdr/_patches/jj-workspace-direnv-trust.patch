@@ -1,0 +1,49 @@
+Finish the right-pane setup by extending the main workspace's direnv approval
+to the new checkout (jj-workspace-direnv-trust; identical .envrc only). The
+placeholder is substituted with its store path by the Nix build.
+
+diff --git a/src/main.rs b/src/main.rs
+index f3b101a..2d9a66c 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -68,6 +68,9 @@ enum WizardField {
+ const CODEX_BOOTSTRAP_PATHS: [&str; 4] = ["AGENTS.md", "AGENTS.override.md", ".codex", ".agents"];
+ const JJ_MATERIALIZE_COMMAND: &str = "jj sparse set --clear --add .";
+ const JJ_UPDATE_COMMAND: &str = "jj git fetch && jj rebase -s @ -d 'trunk()'";
++// Substituted by the Nix build. Runs last (after `;`) so the approval covers
++// the final rebased .envrc, even when an offline fetch fails.
++const JJ_DIRENV_TRUST_COMMAND: &str = "@jjWorkspaceDirenvTrust@";
+
+ fn main() {
+     let args: Vec<String> = env::args().collect();
+@@ -375,7 +378,7 @@ fn jj_setup_command(workspace_name: &str) -> String {
+         "warning: could not create bookmark {workspace_name} (workspace still created)"
+     ));
+     format!(
+-        "{JJ_MATERIALIZE_COMMAND} && (jj bookmark create {} -r @ || printf '%s\\n' {bookmark_warning} >&2) && {JJ_UPDATE_COMMAND}",
++        "{JJ_MATERIALIZE_COMMAND} && (jj bookmark create {} -r @ || printf '%s\\n' {bookmark_warning} >&2) && {JJ_UPDATE_COMMAND}; {JJ_DIRENV_TRUST_COMMAND}",
+         shell_quote(workspace_name)
+     )
+ }
+@@ -1332,13 +1335,19 @@ mod tests {
+     }
+
+     #[test]
+-    fn right_pane_materializes_then_bookmarks_then_updates() {
++    fn right_pane_materializes_then_bookmarks_then_updates_then_trusts() {
+         assert_eq!(
+             jj_setup_command("workspace/fix-api"),
+-            "jj sparse set --clear --add . && (jj bookmark create 'workspace/fix-api' -r @ || printf '%s\\n' 'warning: could not create bookmark workspace/fix-api (workspace still created)' >&2) && jj git fetch && jj rebase -s @ -d 'trunk()'"
++            format!("jj sparse set --clear --add . && (jj bookmark create 'workspace/fix-api' -r @ || printf '%s\\n' 'warning: could not create bookmark workspace/fix-api (workspace still created)' >&2) && jj git fetch && jj rebase -s @ -d 'trunk()'; {JJ_DIRENV_TRUST_COMMAND}")
+         );
+     }
+
++    #[test]
++    fn direnv_trust_command_is_substituted_by_the_build() {
++        assert!(!JJ_DIRENV_TRUST_COMMAND.contains('@'), "{JJ_DIRENV_TRUST_COMMAND}");
++        assert!(JJ_DIRENV_TRUST_COMMAND.starts_with('/'), "{JJ_DIRENV_TRUST_COMMAND}");
++    }
++
+     #[test]
+     fn shell_arguments_are_single_quoted() {
+         assert_eq!(shell_quote("plain"), "'plain'");

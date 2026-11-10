@@ -46,7 +46,11 @@
       runtimeInputs = [pkgs.python3];
       text = builtins.readFile ./scripts/herdr-codex-agent-state.sh;
     };
-    jjWorkspacePlugin = pkgs.callPackage ./_jj-workspace-plugin.nix {};
+    jjWorkspaceDirenvTrust = pkgs.callPackage ./_jj-workspace-direnv-trust.nix {
+      jujutsu = config.programs.jujutsu.package;
+      direnv = config.programs.direnv.package;
+    };
+    jjWorkspacePlugin = pkgs.callPackage ./_jj-workspace-plugin.nix {inherit jjWorkspaceDirenvTrust;};
     # The plugin registry, written by herdr's own offline `plugin link` so the
     # entry format follows herdr updates. herdr writes it only on plugin
     # install/link/enable changes, which are declarative now; the server
@@ -207,6 +211,13 @@
         Restart = "on-failure";
       };
       Install.WantedBy = ["graphical-session.target"];
+    };
+  };
+
+  perSystem = {pkgs, ...}: {
+    checks.jj-workspace-direnv-trust = import ./_jj-workspace-direnv-trust-test.nix {
+      inherit pkgs;
+      jjWorkspaceDirenvTrust = pkgs.callPackage ./_jj-workspace-direnv-trust.nix {};
     };
   };
 }

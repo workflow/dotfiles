@@ -1,6 +1,8 @@
 {
+  lib,
   rustPlatform,
   fetchFromGitHub,
+  jjWorkspaceDirenvTrust,
 }:
 rustPlatform.buildRustPackage {
   pname = "herdr-plugin-jj-workspace";
@@ -14,7 +16,13 @@ rustPlatform.buildRustPackage {
   };
   cargoHash = "sha256-IQiS+IYHC6c5eBPsRZYyy6QeNv4b0jIDyUpjDHSi5Lk=";
 
-  patches = [./_patches/jj-workspace-local.patch];
+  patches = [
+    ./_patches/jj-workspace-local.patch
+    ./_patches/jj-workspace-direnv-trust.patch
+  ];
+  postPatch = ''
+    substituteInPlace src/main.rs --replace-fail @jjWorkspaceDirenvTrust@ ${lib.getExe jjWorkspaceDirenvTrust}
+  '';
 
   # The output is the plugin root: herdr resolves the manifest's
   # `./target/release/...` commands against it.
