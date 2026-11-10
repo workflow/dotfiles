@@ -9,6 +9,9 @@
 #
 # With --all, do that for every secondary workspace of the repo, keeping (and
 # reporting) each one whose work has not landed.
+#
+# A stale checkout is brought up to date with `jj workspace update-stale` first
+# (only previewed under --dry-run).
 
 main() {
   parse_args "$@"
@@ -20,6 +23,7 @@ main() {
 }
 
 retire_current_workspace() {
+  bring_working_copy_up_to_date
   locate_workspace
   ((no_fetch)) || jj git fetch --quiet
   assert_work_landed
@@ -61,6 +65,9 @@ parse_args() {
 retire_all_workspaces() {
   local workspaces name root
   local -a retired=() kept=()
+  if is_stale; then
+    jj_flags=(--ignore-working-copy)
+  fi
   workspaces=$(jj workspace list -T 'name ++ "\t" ++ root ++ "\n"')
   ((no_fetch)) || jj git fetch --quiet
   while IFS=$'\t' read -r name root; do
@@ -96,6 +103,41 @@ report_all() {
   local verb="retired"
   ((dry)) && verb="would retire"
   echo "$verb $retired_count workspace(s); kept $#${*:+: $*}"
+}
+
+# A stale checkout (its @ was rewritten from another workspace) blocks every
+# jj command that snapshots. update-stale keeps unrecorded edits by recording
+# them in a divergent sibling of @, which the landed-work check cannot see, so
+# a divergent @ afterwards means: keep the workspace.
+bring_working_copy_up_to_date() {
+  is_stale || return 0
+  if ((dry)); then
+    echo "stale working copy: would run \`jj workspace update-stale\` first; previewing jj's recorded state (edits on disk are not checked)"
+    jj_flags=(--ignore-working-copy)
+    return 0
+  fi
+  jj workspace update-stale
+  assert_working_copy_not_divergent
+}
+
+is_stale() {
+  local err
+  if err=$(jj status 2>&1 >/dev/null); then
+    return 1
+  fi
+  [[ "$err" == *"working copy is stale"* ]] || die "jj status failed: $err"
+}
+
+assert_working_copy_not_divergent() {
+  [[ "$(jj log -r @ --no-graph -T 'divergent')" == false ]] ||
+    die "update-stale saved edits jj had not seen yet into a divergent copy of @; review them with \`jj log -r 'change_id(@)'\`, keep or abandon that copy, then rerun"
+}
+
+# Global jj flags for this run; set to --ignore-working-copy where the
+# checkout must not (or cannot) be snapshotted.
+jj_flags=()
+jj() {
+  command jj "${jj_flags[@]}" "$@"
 }
 
 ws_root=""
