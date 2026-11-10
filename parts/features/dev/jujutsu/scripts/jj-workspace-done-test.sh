@@ -16,7 +16,70 @@ main() {
   test_all_keeps_a_stale_workspace_with_unrecorded_edits
   test_all_dry_run_previews_a_stale_workspace_without_updating_it
   test_all_from_inside_a_stale_workspace
+  test_all_closes_herdr_tabs_left_in_retired_workspaces
+  test_all_dry_run_only_previews_closing_tabs
   echo "all jj-workspace-done tests passed"
+}
+
+test_all_closes_herdr_tabs_left_in_retired_workspaces() {
+  new_repo tabs
+  add_idle_workspace tabs tabs-idle
+  add_unlanded_workspace tabs tabs-wip
+  fake_herdr_tab_running_jj_done "w1:own"
+  fake_herdr_panes \
+    "w1:all-in" "$TMPDIR/tabs-idle" \
+    "w1:all-in" "$TMPDIR/tabs-idle/sub" \
+    "w1:mixed" "$TMPDIR/tabs-idle" \
+    "w1:mixed" "$TMPDIR/tabs" \
+    "w1:prefix" "$TMPDIR/tabs-idle-other" \
+    "w1:kept-ws" "$TMPDIR/tabs-wip" \
+    "w1:own" "$TMPDIR/tabs-idle"
+  in_dir tabs jj-workspace-done --all
+  assert_workspaces tabs "default tabs-wip"
+  assert_closed_tabs "w1:all-in"
+}
+
+test_all_dry_run_only_previews_closing_tabs() {
+  new_repo drytabs
+  add_idle_workspace drytabs drytabs-idle
+  fake_herdr_tab_running_jj_done ""
+  fake_herdr_panes "w1:all-in" "$TMPDIR/drytabs-idle"
+  in_dir drytabs jj-workspace-done --all --dry-run | grep -qx -- "+ herdr tab close w1:all-in" ||
+    fail "dry run should preview closing w1:all-in"
+  assert_closed_tabs ""
+}
+
+# A stand-in `herdr` that serves the pane list from $TMPDIR/herdr-panes.json
+# and records `tab close` calls in $TMPDIR/herdr-closed.
+fake_herdr_panes() {
+  mkdir -p "$TMPDIR/fake-bin"
+  echo "#!$BASH" >"$TMPDIR/fake-bin/herdr"
+  cat >>"$TMPDIR/fake-bin/herdr" <<'EOF'
+case "$1 $2" in
+  "pane list") cat "$TMPDIR/herdr-panes.json" ;;
+  "tab close") echo "$3" >>"$TMPDIR/herdr-closed" ;;
+  *) echo "fake herdr: unexpected call: $*" >&2; exit 1 ;;
+esac
+EOF
+  chmod +x "$TMPDIR/fake-bin/herdr"
+  local panes=""
+  while (($#)); do
+    panes+="{\"tab_id\":\"$1\",\"cwd\":\"$2\"},"
+    shift 2
+  done
+  echo "{\"result\":{\"panes\":[${panes%,}]}}" >"$TMPDIR/herdr-panes.json"
+  : >"$TMPDIR/herdr-closed"
+  PATH="$TMPDIR/fake-bin:$PATH"
+}
+
+fake_herdr_tab_running_jj_done() {
+  export HERDR_TAB_ID=$1
+}
+
+assert_closed_tabs() {
+  local actual
+  actual=$(sort "$TMPDIR/herdr-closed" | paste -sd' ' -)
+  [[ "$actual" == "$1" ]] || fail "closed herdr tabs: expected '$1', got '$actual'"
 }
 
 test_all_updates_a_clean_stale_workspace_and_retires_it() {

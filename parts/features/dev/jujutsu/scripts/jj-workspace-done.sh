@@ -8,7 +8,8 @@
 # --close-tab close the Herdr tab it was started from.
 #
 # With --all, do that for every secondary workspace of the repo, keeping (and
-# reporting) each one whose work has not landed.
+# reporting) each one whose work has not landed, and close the Herdr tabs that
+# sat entirely inside a retired one.
 #
 # A stale checkout is brought up to date with `jj workspace update-stale` first
 # (only previewed under --dry-run).
@@ -76,6 +77,7 @@ retire_all_workspaces() {
     echo "== $name ($root)"
     if retire_in_child "$root"; then
       retired+=("$name")
+      close_herdr_tabs_inside "$root"
     else
       kept+=("$name")
     fi
@@ -95,6 +97,33 @@ retire_in_child() {
     return 1
   }
   (cd "$1" && "$self" "${args[@]}")
+}
+
+# Tabs whose every pane sits in the retired checkout are left with shells in a
+# deleted directory. The tab running this script is spared so the run can
+# finish and report.
+close_herdr_tabs_inside() {
+  local root=$1 tab tabs
+  command -v herdr >/dev/null || return 0
+  if ! tabs=$(tabs_entirely_inside "$root"); then
+    echo "jj-workspace-done: could not list Herdr panes; tabs in $root left open" >&2
+    return 0
+  fi
+  for tab in $tabs; do
+    if [[ "$tab" == "${HERDR_TAB_ID:-}" ]]; then
+      echo "left this Herdr tab ($tab) open; it is running jj done"
+      continue
+    fi
+    run herdr tab close "$tab"
+  done
+}
+
+tabs_entirely_inside() {
+  herdr pane list | jq -r --arg root "$1" '
+    .result.panes
+    | group_by(.tab_id)[]
+    | select(all(.cwd == $root or (.cwd | startswith($root + "/"))))
+    | .[0].tab_id'
 }
 
 report_all() {
@@ -248,7 +277,7 @@ change_exists() {
 
 # Closing the tab kills the shell running this script, so it is the last step
 # and only happens on request, from a tab that was started inside the
-# workspace being retired (Herdr exposes no tab cwd to check against).
+# workspace being retired.
 close_herdr_tab() {
   ((close_tab)) || return 0
   [[ -n "${HERDR_ENV:-}" && -n "${HERDR_TAB_ID:-}" ]] || die "--close-tab given but not running inside a Herdr tab"
