@@ -19,6 +19,7 @@ rustPlatform.buildRustPackage {
   patches = [
     ./_patches/jj-workspace-local.patch
     ./_patches/jj-workspace-direnv-trust.patch
+    ./_patches/jj-workspace-auto-update-stale.patch
   ];
   postPatch = ''
     substituteInPlace src/main.rs --replace-fail @jjWorkspaceDirenvTrust@ ${lib.getExe jjWorkspaceDirenvTrust}

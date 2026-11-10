@@ -1,0 +1,73 @@
+diff --git a/src/main.rs b/src/main.rs
+index 2d9a66c..4c8f66f 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -177,8 +177,8 @@ fn cmd_wizard() -> ! {
+             "+ jj workspace add --name {} -r {base} --sparse-patterns empty {dest}",
+             selection.name
+         );
+-        let mut add = Command::new("jj");
+-        add.current_dir(&repo).args([
++        let mut add = jj_in(&repo);
++        add.args([
+             "workspace",
+             "add",
+             "--name",
+@@ -191,10 +191,8 @@ fn cmd_wizard() -> ! {
+         ]);
+         run_or(add, "jj workspace add", fail);
+
+-        let mut bootstrap = Command::new("jj");
+-        bootstrap
+-            .current_dir(&dest)
+-            .args(["sparse", "set", "--clear"]);
++        let mut bootstrap = jj_in(&dest);
++        bootstrap.args(["sparse", "set", "--clear"]);
+         for path in CODEX_BOOTSTRAP_PATHS {
+             bootstrap.args(["--add", path]);
+         }
+@@ -480,8 +478,8 @@ fn cmd_remove() -> ! {
+         ));
+     }
+
+-    let mut forget = Command::new("jj");
+-    forget.current_dir(&canon).args(["workspace", "forget"]);
++    let mut forget = jj_in(&canon);
++    forget.args(["workspace", "forget"]);
+     run_or(forget, "jj workspace forget", die);
+
+     if let Err(err) = fs::remove_dir_all(&canon) {
+@@ -1205,6 +1203,17 @@ fn which(cmd: &str) -> Option<()> {
+         .map(|_| ())
+ }
+
++/// A jj command run in `dir`. jj refuses to run in a stale working copy (one
++/// whose @ was rewritten from another workspace), so update it the way
++/// `jj workspace update-stale` would; unrecorded edits survive in a divergent
++/// sibling of @.
++fn jj_in(dir: impl AsRef<Path>) -> Command {
++    let mut cmd = Command::new("jj");
++    cmd.current_dir(dir)
++        .args(["--config", "snapshot.auto-update-stale=true"]);
++    cmd
++}
++
+ fn run_or(cmd: Command, what: &str, on_err: fn(&str) -> !) {
+     let mut cmd = cmd;
+     match cmd.status() {
+@@ -1266,6 +1275,15 @@ fn json_string_field(json: &str, key: &str) -> Option<String> {
+ mod tests {
+     use super::*;
+
++    #[test]
++    fn jj_commands_update_a_stale_working_copy_instead_of_failing() {
++        let cmd = jj_in("/repo");
++        assert_eq!(cmd.get_program(), "jj");
++        assert_eq!(cmd.get_current_dir(), Some(Path::new("/repo")));
++        let args: Vec<_> = cmd.get_args().collect();
++        assert_eq!(args, ["--config", "snapshot.auto-update-stale=true"]);
++    }
++
+     #[test]
+     fn workspace_selector_wraps_in_both_directions() {
+         assert_eq!(previous_index(0, 3), 2);
