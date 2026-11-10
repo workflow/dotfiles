@@ -6,11 +6,22 @@
 # workspace bookmark locally and on the remote, forget the workspace, abandon
 # the straggling commits it leaves behind, delete the checkout, and with
 # --close-tab close the Herdr tab it was started from.
+#
+# With --all, do that for every secondary workspace of the repo, keeping (and
+# reporting) each one whose work has not landed.
 
 main() {
   parse_args "$@"
+  if ((all)); then
+    retire_all_workspaces
+  else
+    retire_current_workspace
+  fi
+}
+
+retire_current_workspace() {
   locate_workspace
-  jj git fetch --quiet
+  ((no_fetch)) || jj git fetch --quiet
   assert_work_landed
   assert_no_foreign_bookmarks
   delete_workspace_bookmarks
@@ -21,19 +32,70 @@ main() {
 force=0
 dry=0
 close_tab=0
+all=0
+no_fetch=0
 parse_args() {
   for arg in "$@"; do
     case $arg in
       --force) force=1 ;;
       --dry-run) dry=1 ;;
       --close-tab) close_tab=1 ;;
+      --all) all=1 ;;
+      --no-fetch) no_fetch=1 ;;
       -h | --help)
-        echo "usage: jj-workspace-done [--force] [--dry-run] [--close-tab]"
+        echo "usage: jj-workspace-done [--force] [--dry-run] [--close-tab] [--no-fetch]"
+        echo "       jj-workspace-done --all [--dry-run] [--no-fetch]"
         exit 0
         ;;
       *) die "unknown argument: $arg" ;;
     esac
   done
+  if ((all && (force || close_tab))); then
+    die "--all cannot be combined with --force or --close-tab"
+  fi
+}
+
+# Each workspace is retired by a separate run of this script: bash disables
+# errexit inside an `if` condition, so an in-process attempt could reach
+# `rm -rf` after a failed step.
+retire_all_workspaces() {
+  local workspaces name root
+  local -a retired=() kept=()
+  workspaces=$(jj workspace list -T 'name ++ "\t" ++ root ++ "\n"')
+  ((no_fetch)) || jj git fetch --quiet
+  while IFS=$'\t' read -r name root; do
+    [[ -n "$name" && -n "$root" ]] || die "unparseable workspace list entry: '$name' '$root'"
+    is_secondary_workspace "$root" || continue
+    echo "== $name ($root)"
+    if retire_in_child "$root"; then
+      retired+=("$name")
+    else
+      kept+=("$name")
+    fi
+  done <<<"$workspaces"
+  report_all "${#retired[@]}" "${kept[@]}"
+}
+
+is_secondary_workspace() {
+  [[ ! -d "$1/.jj/repo" ]]
+}
+
+retire_in_child() {
+  local -a args=(--no-fetch)
+  ((dry)) && args+=(--dry-run)
+  [[ -d "$1" ]] || {
+    echo "jj-workspace-done: $1 is missing on disk; run \`jj workspace forget\` for it" >&2
+    return 1
+  }
+  (cd "$1" && "$self" "${args[@]}")
+}
+
+report_all() {
+  local retired_count=$1
+  shift
+  local verb="retired"
+  ((dry)) && verb="would retire"
+  echo "$verb $retired_count workspace(s); kept $#${*:+: $*}"
 }
 
 ws_root=""
@@ -41,6 +103,7 @@ main_root=""
 ws_name=""
 wc_change=""
 start_dir=$PWD
+self=$(realpath "${BASH_SOURCE[0]}")
 locate_workspace() {
   ws_root=$(jj workspace root)
   [[ -f "$ws_root/.jj/repo" ]] || die "$ws_root is the main workspace, not a secondary one; refusing"
@@ -130,7 +193,11 @@ retire_workspace() {
     run jj abandon --quiet -r "$wc_change"
   fi
   run rm -rf -- "$ws_root"
-  echo "retired jj workspace $ws_name ($ws_root)"
+  if ((dry)); then
+    echo "would retire jj workspace $ws_name ($ws_root)"
+  else
+    echo "retired jj workspace $ws_name ($ws_root)"
+  fi
 }
 
 change_exists() {

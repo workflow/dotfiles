@@ -4,14 +4,10 @@
     pkgs,
     ...
   }: let
-    # `jj done`: retire the current secondary workspace after its work landed
-    # (direct fast-forward or merged PR) — see the script header. `herdr` is
-    # picked up from the user PATH when --close-tab is used inside a tab.
-    jjWorkspaceDone = pkgs.writeShellApplication {
-      name = "jj-workspace-done";
-      runtimeInputs = [config.programs.jujutsu.package pkgs.gh pkgs.coreutils pkgs.gnugrep pkgs.gnused];
-      text = builtins.readFile ./scripts/jj-workspace-done.sh;
-    };
+    # `jj done`: retire the current secondary workspace (or with --all, every
+    # one) after its work landed (direct fast-forward or merged PR) — see the
+    # script header.
+    jjWorkspaceDone = pkgs.callPackage ./_jj-workspace-done.nix {jujutsu = config.programs.jujutsu.package;};
   in {
     home.packages = [jjWorkspaceDone];
     programs.difftastic.enable = true;
@@ -56,6 +52,13 @@
           ];
         };
       };
+    };
+  };
+
+  perSystem = {pkgs, ...}: {
+    checks.jj-workspace-done = import ./_jj-workspace-done-test.nix {
+      inherit pkgs;
+      jjWorkspaceDone = pkgs.callPackage ./_jj-workspace-done.nix {};
     };
   };
 }
