@@ -94,7 +94,11 @@
         command = [
           (jjWorkspaceAction "prefix+a" "new-tab" "new jj workspace tab")
           (jjWorkspaceAction "prefix+shift+a" "new" "new jj workspace")
-          (jjWorkspaceAction "prefix+d" "remove" "remove jj workspace")
+          # Destructive (deletes the checkout), so a modified chord plus a y/N
+          # prompt; `jj done` is the safe everyday path. prefix+shift+d is
+          # herdr's close_workspace, and ctrl+d is too easy to hit while still
+          # holding the ctrl+space prefix.
+          (jjWorkspaceAction "prefix+alt+d" "remove" "remove jj workspace")
         ];
       };
     };

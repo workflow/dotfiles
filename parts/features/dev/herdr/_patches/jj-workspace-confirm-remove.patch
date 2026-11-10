@@ -1,0 +1,260 @@
+diff --git a/herdr-plugin.toml b/herdr-plugin.toml
+index 0c05fd6..02341ad 100644
+--- a/herdr-plugin.toml
++++ b/herdr-plugin.toml
+@@ -31,9 +31,15 @@ title = "New jj workspace"
+ placement = "overlay"
+ command = ["./target/release/jj-workspace", "wizard"]
+
+-# Remove the focused jj workspace.
++# Remove the focused jj workspace, after confirmation in the pane below.
+ [[actions]]
+ id = "remove"
+ title = "Remove jj workspace"
+ contexts = ["workspace"]
+ command = ["./target/release/jj-workspace", "remove"]
++
++[[panes]]
++id = "confirm-remove"
++title = "Remove jj workspace"
++placement = "overlay"
++command = ["./target/release/jj-workspace", "confirm-remove"]
+diff --git a/src/main.rs b/src/main.rs
+index a746f98..0e5b785 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -4,7 +4,8 @@
+ // One binary, dispatched by subcommand (set in herdr-plugin.toml):
+ //   open <workspace|tab>  action: capture the caller, open the wizard pane
+ //   wizard                pane:   select a source + name, create the two-pane workspace
+-//   remove                action: `jj workspace forget` + delete dir + close tab
++//   remove                action: capture the focused checkout, open confirm-remove
++//   confirm-remove        pane:   on yes, `jj workspace forget` + delete dir + close tab
+ //
+ // The wizard renders the actual "new worktree" modal using the same TUI stack as
+ // Herdr (ratatui + crossterm), ported from herdr's src/ui/dialogs.rs and
+@@ -79,8 +80,9 @@ fn main() {
+         Some("wizard") => cmd_wizard(),
+         Some("finish-tab") => cmd_finish_tab(&args),
+         Some("remove") => cmd_remove(),
++        Some("confirm-remove") => cmd_confirm_remove(),
+         other => {
+-            eprintln!("usage: jj-workspace <open [workspace|tab] | wizard | remove>");
++            eprintln!("usage: jj-workspace <open [workspace|tab] | wizard | remove | confirm-remove>");
+             eprintln!("got: {other:?}");
+             process::exit(2);
+         }
+@@ -490,63 +492,137 @@ fn cmd_finish_tab(args: &[String]) -> ! {
+     process::exit(0);
+ }
+
+-/// Action (headless): forget the current jj workspace, delete it, close its tab.
++/// Action (headless): capture the focused checkout and tab, then open the
++/// confirmation pane. Nothing is removed without an explicit yes there.
+ fn cmd_remove() -> ! {
+-    if which("jj").is_none() {
+-        die("jj not found on PATH");
+-    }
+     let ctx = env::var("HERDR_PLUGIN_CONTEXT_JSON").unwrap_or_default();
+     let tab = env::var("HERDR_TAB_ID")
+         .ok()
+         .filter(|s| !s.is_empty())
+-        .or_else(|| json_string_field(&ctx, "tab_id"));
+-    let cwd = json_string_field(&ctx, "workspace_cwd").unwrap_or_default();
+-    if cwd.is_empty() {
+-        die("no workspace cwd in context");
+-    }
++        .or_else(|| json_string_field(&ctx, "tab_id"))
++        .unwrap_or_default();
++    let cwd = json_string_field(&ctx, "focused_pane_cwd")
++        .or_else(|| json_string_field(&ctx, "workspace_cwd"))
++        .unwrap_or_default();
+
+-    let canon = match fs::canonicalize(&cwd) {
+-        Ok(p) => p,
+-        Err(err) => die(&format!("cannot resolve {cwd}: {err}")),
+-    };
+-    if !canon.join(".jj").exists() {
+-        die(&format!("{} is not a jj workspace", canon.display()));
++    let mut cmd = Command::new(herdr_bin());
++    cmd.args([
++        "plugin",
++        "pane",
++        "open",
++        "--plugin",
++        &plugin_id(),
++        "--entrypoint",
++        "confirm-remove",
++    ])
++    .arg("--env")
++    .arg(format!("JJ_REMOVE_CWD={cwd}"))
++    .arg("--env")
++    .arg(format!("JJ_REMOVE_TAB={tab}"))
++    .arg("--focus");
++    match cmd.status() {
++        Ok(status) => process::exit(status.code().unwrap_or(0)),
++        Err(err) => die(&format!("failed to open the removal confirmation pane: {err}")),
+     }
+-    // The MAIN workspace stores .jj/repo as a directory; a secondary workspace
+-    // stores it as a file pointer. Never remove the main workspace.
+-    if canon.join(".jj").join("repo").is_dir() {
+-        die(&format!(
+-            "refusing to remove the MAIN jj workspace ({})",
+-            canon.display()
+-        ));
++}
++
++/// Pane (interactive TTY): show what removal deletes, then on an explicit yes
++/// forget the jj workspace, delete its checkout and close its tab.
++fn cmd_confirm_remove() -> ! {
++    if which("jj").is_none() {
++        fail("jj not found on PATH");
+     }
+-    if canon == Path::new("/") || canon.parent().is_none() {
+-        die(&format!(
+-            "refusing to remove unsafe path: {}",
+-            canon.display()
+-        ));
++    let root = removable_workspace_root(&env::var("JJ_REMOVE_CWD").unwrap_or_default());
++    let tab = env::var("JJ_REMOVE_TAB").ok().filter(|s| !s.is_empty());
++
++    print!("{}", removal_prompt(&root, &commits_outside_trunk(&root)));
++    let _ = io::stdout().flush();
++    let mut answer = String::new();
++    if io::stdin().read_line(&mut answer).is_err() || !confirms_removal(&answer) {
++        process::exit(0);
+     }
+
+-    let mut forget = jj_in(&canon);
++    let mut forget = jj_in(&root);
+     forget.args(["workspace", "forget"]);
+-    run_or(forget, "jj workspace forget", die);
+-
+-    if let Err(err) = fs::remove_dir_all(&canon) {
+-        die(&format!("failed to delete {}: {err}", canon.display()));
++    run_or(forget, "jj workspace forget", fail);
++    if let Err(err) = fs::remove_dir_all(&root) {
++        fail(&format!("failed to delete {}: {err}", root.display()));
+     }
+-
+     match tab {
+         Some(tab) => {
+             let mut close = Command::new(herdr_bin());
+             close.args(["tab", "close", &tab]);
+-            run_or(close, "herdr tab close", die);
++            run_or(close, "herdr tab close", fail);
+         }
+-        None => eprintln!("warning: no tab id in context; Herdr tab left open"),
++        None => fail(&format!("removed {}, but no tab id was passed; close its tab by hand", root.display())),
+     }
+-    println!("removed jj workspace: {}", canon.display());
+     process::exit(0);
+ }
+
++fn removable_workspace_root(cwd: &str) -> PathBuf {
++    if cwd.is_empty() {
++        fail("no focused pane cwd in the plugin context");
++    }
++    let canon = fs::canonicalize(cwd).unwrap_or_else(|err| fail(&format!("cannot resolve {cwd}: {err}")));
++    let root = workspace_root_of(&canon).unwrap_or_else(|| fail(&format!("{} is not inside a jj workspace", canon.display())));
++    // The MAIN workspace stores .jj/repo as a directory; a secondary workspace
++    // stores it as a file pointer. Never remove the main workspace.
++    if root.join(".jj").join("repo").is_dir() {
++        fail(&format!("refusing to remove the MAIN jj workspace ({})", root.display()));
++    }
++    if root.parent().is_none() {
++        fail(&format!("refusing to remove unsafe path: {}", root.display()));
++    }
++    root
++}
++
++fn workspace_root_of(path: &Path) -> Option<PathBuf> {
++    path.ancestors()
++        .find(|dir| dir.join(".jj").is_dir())
++        .map(Path::to_path_buf)
++}
++
++/// Recorded state only: the preview must not touch the checkout, and
++/// `workspace forget` snapshots on-disk edits into @ before the folder goes.
++fn commits_outside_trunk(root: &Path) -> String {
++    let output = Command::new("jj")
++        .current_dir(root)
++        .args([
++            "--ignore-working-copy",
++            "log",
++            "--no-graph",
++            "-r",
++            "(trunk()..@) ~ (empty() & description(exact:\"\"))",
++            "-T",
++            "change_id.short() ++ \" \" ++ description.first_line() ++ \"\\n\"",
++        ])
++        .output();
++    match output {
++        Ok(output) if output.status.success() => String::from_utf8_lossy(&output.stdout).into_owned(),
++        _ => "(could not list them: jj log failed)\n".into(),
++    }
++}
++
++fn removal_prompt(root: &Path, outside_trunk: &str) -> String {
++    let name = root.file_name().and_then(|n| n.to_str()).unwrap_or("?");
++    let mut prompt = format!("Remove jj workspace {name}?\n  {}\n\n", root.display());
++    if outside_trunk.trim().is_empty() {
++        prompt.push_str("Nothing outside trunk() is checked out here.\n");
++    } else {
++        prompt.push_str("Not in trunk() (kept in the repo, but no longer checked out anywhere):\n");
++        for line in outside_trunk.lines() {
++            prompt.push_str(&format!("  {line}\n"));
++        }
++    }
++    prompt.push_str("\nThe folder is deleted, including ignored files (.env, build output), and its tab closes.\n");
++    prompt.push_str("Remove? [y/N] ");
++    prompt
++}
++
++fn confirms_removal(answer: &str) -> bool {
++    matches!(answer.trim().to_lowercase().as_str(), "y" | "yes")
++}
++
+ // --- wizard TUI (ported from herdr src/ui/dialogs.rs + widgets.rs) ----------
+
+ /// Herdr's catppuccin palette (src/app/state.rs `Palette::catppuccin`).
+@@ -1324,6 +1400,39 @@ fn json_string_field(json: &str, key: &str) -> Option<String> {
+ mod tests {
+     use super::*;
+
++    #[test]
++    fn only_an_explicit_yes_confirms_removal() {
++        assert!(confirms_removal("y\n"));
++        assert!(confirms_removal(" YES \n"));
++        assert!(!confirms_removal("\n"));
++        assert!(!confirms_removal("n\n"));
++        assert!(!confirms_removal("yy\n"));
++    }
++
++    #[test]
++    fn removal_prompt_names_the_checkout_and_what_is_left_behind() {
++        let root = Path::new("/h/.herdr/workspaces/korvane/kor-129");
++        let prompt = removal_prompt(root, "abc feat: lint\n");
++        assert!(prompt.contains("Remove jj workspace kor-129?"));
++        assert!(prompt.contains("/h/.herdr/workspaces/korvane/kor-129"));
++        assert!(prompt.contains("abc feat: lint"));
++        assert!(prompt.contains("ignored files"));
++        let clean = removal_prompt(root, "");
++        assert!(clean.contains("Nothing outside trunk()"));
++    }
++
++    #[test]
++    fn workspace_root_is_the_nearest_ancestor_holding_jj() {
++        let base = env::temp_dir().join(format!("jj-workspace-root-test-{}", process::id()));
++        let nested = base.join("ws/src/deep");
++        fs::create_dir_all(&nested).unwrap();
++        fs::create_dir_all(base.join("ws/.jj")).unwrap();
++        assert_eq!(workspace_root_of(&nested), Some(base.join("ws")));
++        assert_eq!(workspace_root_of(&base.join("ws")), Some(base.join("ws")));
++        assert_eq!(workspace_root_of(&base), None);
++        fs::remove_dir_all(&base).unwrap();
++    }
++
+     #[test]
+     fn repo_label_is_pinned_over_the_auto_label_of_a_jj_checkout() {
+         let checkouts = Path::new("/h/.herdr/workspaces/korvane");
