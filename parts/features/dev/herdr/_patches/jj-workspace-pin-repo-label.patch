@@ -1,0 +1,93 @@
+diff --git a/src/main.rs b/src/main.rs
+index 4c8f66f..a746f98 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -197,6 +197,7 @@ fn cmd_wizard() -> ! {
+             bootstrap.args(["--add", path]);
+         }
+         run_or(bootstrap, "materialize Codex startup files", fail);
++        pin_repo_label(&selection.source.id, &basename(&repo), &root.join(basename(&repo)));
+         dest
+     } else {
+         source
+@@ -295,6 +296,54 @@ fn herdr_json(args: &[&str]) -> Result<Value, String> {
+         .map_err(|err| format!("invalid JSON from herdr {}: {err}", args.join(" ")))
+ }
+
++/// Herdr labels a workspace after the git checkout of its first tab, and each
++/// jj workspace is a git worktree named after itself. Once a jj tab ends up
++/// first, the Herdr workspace takes that jj workspace's name and keeps it after
++/// the checkout is retired. Pin the repo name while the label still derives
++/// from this repo; labels set by hand are left alone.
++fn pin_repo_label(workspace_id: &str, repo_name: &str, checkouts_dir: &Path) {
++    if let Err(err) = try_pin_repo_label(workspace_id, repo_name, checkouts_dir) {
++        eprintln!("warning: could not pin the workspace label to {repo_name}: {err}");
++    }
++}
++
++fn try_pin_repo_label(workspace_id: &str, repo_name: &str, checkouts_dir: &Path) -> Result<(), String> {
++    let workspace = herdr_json(&["workspace", "get", workspace_id])?;
++    let label = workspace
++        .pointer("/result/workspace/label")
++        .and_then(Value::as_str)
++        .ok_or("Herdr returned no workspace label")?;
++    let panes = herdr_json(&["pane", "list"])?;
++    let cwds: Vec<PathBuf> = panes
++        .pointer("/result/panes")
++        .and_then(Value::as_array)
++        .ok_or("Herdr returned an invalid pane list")?
++        .iter()
++        .filter(|pane| pane.get("workspace_id").and_then(Value::as_str) == Some(workspace_id))
++        .filter_map(|pane| pane.get("cwd").and_then(Value::as_str).map(PathBuf::from))
++        .collect();
++    if !label_comes_from_repo(label, repo_name, checkouts_dir, &cwds) {
++        return Ok(());
++    }
++    // Renaming to the current label too: an automatic label is not sticky.
++    let mut rename = Command::new(herdr_bin());
++    rename.args(["workspace", "rename", workspace_id, repo_name]);
++    if !run(rename) {
++        return Err("herdr workspace rename failed".into());
++    }
++    Ok(())
++}
++
++/// True when `label` is the repo name or the auto label of one of the repo's jj
++/// checkouts that a pane of the workspace is still in.
++fn label_comes_from_repo(label: &str, repo_name: &str, checkouts_dir: &Path, pane_cwds: &[PathBuf]) -> bool {
++    if label == repo_name {
++        return true;
++    }
++    let is_plain_name = !label.is_empty() && label != "." && label != ".." && !label.contains('/');
++    is_plain_name && pane_cwds.iter().any(|cwd| cwd.starts_with(checkouts_dir.join(label)))
++}
++
+ fn open_tab_layout(workspace_id: &str, cwd: &str, label: &str, is_jj: bool) {
+     let herdr = herdr_bin();
+     eprintln!("+ herdr tab create --workspace {workspace_id} --cwd {cwd}");
+@@ -1275,6 +1324,25 @@ fn json_string_field(json: &str, key: &str) -> Option<String> {
+ mod tests {
+     use super::*;
+
++    #[test]
++    fn repo_label_is_pinned_over_the_auto_label_of_a_jj_checkout() {
++        let checkouts = Path::new("/h/.herdr/workspaces/korvane");
++        let cwds = [PathBuf::from("/h/.herdr/workspaces/korvane/kor-121/src")];
++        assert!(label_comes_from_repo("korvane", "korvane", checkouts, &[]));
++        assert!(label_comes_from_repo("kor-121", "korvane", checkouts, &cwds));
++    }
++
++    #[test]
++    fn labels_not_derived_from_the_repo_are_left_alone() {
++        let checkouts = Path::new("/h/.herdr/workspaces/korvane");
++        let cwds = [PathBuf::from("/h/.herdr/workspaces/korvane/kor-121")];
++        assert!(!label_comes_from_repo("my work", "korvane", checkouts, &cwds));
++        assert!(!label_comes_from_repo("kor-12", "korvane", checkouts, &cwds));
++        assert!(!label_comes_from_repo("kor-121", "korvane", checkouts, &[]));
++        assert!(!label_comes_from_repo("", "korvane", checkouts, &cwds));
++        assert!(!label_comes_from_repo("..", "korvane", checkouts, &cwds));
++    }
++
+     #[test]
+     fn jj_commands_update_a_stale_working_copy_instead_of_failing() {
+         let cmd = jj_in("/repo");
