@@ -158,7 +158,7 @@
       };
 
       "group/network" = {
-        modules = ["network" "network#tailscale" "custom/macgyver" "network#mullvad"];
+        modules = ["network" "network#tailscale" "network#mullvad"];
         orientation = "inherit";
       };
 
@@ -189,21 +189,6 @@
         on-click-middle = "tailscale down";
       };
 
-      "custom/macgyver" = {
-        exec = "macgyver-status";
-        return-type = "json";
-        interval = 3;
-        format = "{icon}";
-        format-icons = {
-          up = "";
-          down = "";
-          error = "❌";
-        };
-        tooltip-format = " MacGyver is {text}";
-        on-click-right = "sudo systemctl start macgyver";
-        on-click-middle = "sudo systemctl stop macgyver";
-      };
-
       "network#mullvad" = {
         interface = "wg0-mullvad";
         interval = 3;
@@ -219,19 +204,6 @@
         on-double-click-right = "mullvad-gui";
         on-click-middle = "mullvad disconnect";
       };
-
-      # "network#wireguard" = {
-      #   interface = "wg0";
-      #   interval = 3;
-      #   format-disconnected = " ";
-      #   format-disabled = " ";
-      #   format-linked = " ";
-      #   format = "";
-      #   format-alt = " {bandwidthDownBytes} {bandwidthUpBytes}";
-      #   tooltip-format = " Wireguard IP:{ipaddr} GW:{gwaddr} NM:{netmask} {bandwidthDownBytes} {bandwidthUpBytes}";
-      #   tooltip-format-linked = " Wireguard down.";
-      #   tooltip-format-disabled = " Wireguard down.";
-      # };
 
       "group/screens" = {
         modules =
@@ -621,10 +593,6 @@
 
         #custom-dunst-dnd.dnd {
           color: @base0A;
-        }
-
-        #custom-macgyver.up {
-          color: @base0B;
         }
 
         #custom-nightlight.off {

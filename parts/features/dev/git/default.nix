@@ -29,17 +29,6 @@
     programs.git = {
       enable = true;
 
-      includes = [
-        {
-          path = "~/code/dlh/.gitconfig";
-          condition = "gitdir:~/code/dlh/";
-        }
-        {
-          path = "~/code/dlh/plansee/.gitconfig";
-          condition = "gitdir:~/code/dlh/plansee/";
-        }
-      ];
-
       signing = {
         signByDefault = true;
         key = "24575DB93F6CEC16";
