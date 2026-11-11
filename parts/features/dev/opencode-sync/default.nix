@@ -7,7 +7,6 @@
   # being exported.
   flake.modules.homeManager.opencode-sync = {
     osConfig,
-    config,
     lib,
     pkgs,
     ...
@@ -21,14 +20,8 @@
       nativeCheckInputs = [pkgs.python3Packages.pytestCheckHook];
       meta.mainProgram = "opencode-session-sync";
     };
-    # One-off for the opencode 1.x -> 2.x upgrade; drop once every host ran it.
-    recover-v1-sessions = pkgs.writeShellApplication {
-      name = "opencode-recover-v1-sessions";
-      runtimeInputs = [config.programs.opencode.package pkgs.sqlite pkgs.procps pkgs.systemd];
-      text = builtins.readFile ./scripts/opencode-recover-v1-sessions.sh;
-    };
   in {
-    home.packages = [opencode-session-sync recover-v1-sessions];
+    home.packages = [opencode-session-sync];
 
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
       directories = [
