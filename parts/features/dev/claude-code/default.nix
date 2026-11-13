@@ -60,9 +60,6 @@
               "Grep"
               "WebFetch(domain:github.com)"
               "WebSearch"
-              # Requesting a reviewer only; any other `gh pr edit` still goes
-              # through the auto-mode classifier.
-              "Bash(gh pr edit * --add-reviewer *)"
             ];
           ask =
             map (pattern: "Bash(${pattern})") config.dendrix.agents.shellAsklist
