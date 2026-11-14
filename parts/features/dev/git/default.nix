@@ -9,12 +9,13 @@
     '';
   in {
     home.persistence."/persist" = lib.mkIf osConfig.dendrix.isImpermanent {
-      directories = [".config/glab-cli"];
+      directories = [".config/glab-cli" ".local/share/forgejo-cli"];
       files = [".config/gh/hosts.yml"];
     };
 
     home.packages = with pkgs; [
       delta # Syntax highlighter for git
+      forgejo-cli # `fj`, issue tracker CLI for the self-hosted Forgejo
       github-cli
       glab
     ];
