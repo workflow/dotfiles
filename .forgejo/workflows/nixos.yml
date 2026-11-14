@@ -1,0 +1,70 @@
+name: NixOS
+
+# Runs on a self-hosted Forgejo runner that builds with its host's nix daemon
+# (label `nixos`). The runner provides, via its environment:
+#   FORGEJO_LOCAL_URL  forge HTTP URL reachable from the runner
+#   FORGEJO_LOCAL_SSH  forge SSH URL reachable from the runner
+#   NIX_GCROOTS_DIR    persistent dir whose out-links pin builds as GC roots
+# Builds against the real secrets flake; main and nightly builds stay pinned so
+# a binary cache in front of that store can serve them.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "NOTES.md"
+      - ".gitignore"
+  schedule:
+    # Nightly: a secrets-only change can break the build without a push here
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+enable-email-notifications: true
+
+concurrency:
+  group: nixos-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: nixos
+    steps:
+      - name: Check out nixos-config
+        env:
+          TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          : "${FORGEJO_LOCAL_URL:?runner must set FORGEJO_LOCAL_URL}"
+          auth=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
+          git init -q .
+          git -c "http.extraHeader=Authorization: Basic $auth" \
+            fetch -q --depth 1 "$FORGEJO_LOCAL_URL/$REPO.git" "$SHA"
+          git checkout -q --detach FETCH_HEAD
+
+      - name: Check out nixos-secrets
+        env:
+          DEPLOY_KEY: ${{ secrets.NIXOS_SECRETS_DEPLOY_KEY }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          : "${FORGEJO_LOCAL_SSH:?runner must set FORGEJO_LOCAL_SSH}" "${DEPLOY_KEY:?NIXOS_SECRETS_DEPLOY_KEY secret missing}"
+          key=$(mktemp)
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$DEPLOY_KEY" > "$key"
+          secrets=$(mktemp -d)
+          GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new" \
+            git clone -q --depth 1 "$FORGEJO_LOCAL_SSH/$OWNER/nixos-secrets.git" "$secrets"
+          echo "SECRETS_DIR=$secrets" >> "$GITHUB_ENV"
+
+      - name: Build numenor ❄️
+        run: bash .forgejo/build-host.sh numenor "${{ github.event_name }}"
+
+      - name: Build flexbox ❄️
+        run: bash .forgejo/build-host.sh flexbox "${{ github.event_name }}"
+
+      - name: Clean up secrets checkout
+        if: always()
+        run: rm -rf "${SECRETS_DIR:?}"
